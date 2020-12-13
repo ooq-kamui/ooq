@@ -1,4 +1,10 @@
 
+# mac
+.DS_Store
+.swp
+.tags
+*.org
+
 # *.gui_script
 # *.lua
 # *.script
@@ -40,8 +46,6 @@ obj/chara/chara/img/
 obj/itm/blbrd/img/
 obj/itm/kagu/bed/img/
 obj/itm/kagu/door/img/
-
-
 
 
 
