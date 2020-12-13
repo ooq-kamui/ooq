@@ -1,0 +1,50 @@
+log.script("dryleaf.lua")
+
+Dryleaf = {
+	act_interval_time = 10,
+	name_idx_max = 4,
+}
+Dryleaf.cls = "dryleaf"
+Dryleaf.fac = Dryleaf.cls.."Fac"
+Dryleaf.Fac = Obj.fac..Dryleaf.cls
+Cls.add(Dryleaf)
+
+-- ar.idx_2_ha(Dryleaf.gold, "dryleaf")
+
+-- static
+
+function Dryleaf.cre(pos)
+	local Cls = Dryleaf
+	local id = Sp.cre(Cls, pos)
+	return id
+end
+
+-- script method
+
+function Dryleaf.init(_s)
+	
+	extend.init(_s, Sp)
+	extend.init(_s, Holdable)
+	extend.init(_s, Spwood)
+	extend._(_s, Dryleaf)
+end
+
+function Dryleaf.upd(_s, dt)
+
+	_s:act_interval(dt)
+
+	_s:upd_pos_static(dt)
+end
+
+function Dryleaf.act_interval(_s, dt)
+
+	if not _s:is_loop__act_interval__(dt) then return end
+
+	-- death
+	_s:per_trnsf(1 / 30 * 100, Humus)
+
+end
+
+function Dryleaf.final(_s)
+	Sp.final(_s)
+end

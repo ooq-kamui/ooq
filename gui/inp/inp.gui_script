@@ -1,0 +1,13 @@
+log.script("inp.gui_script")
+
+function init(_s)
+	Gui_inp.init(_s)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end
+
+function on_input(_s, key, keyact)
+	_s:on_inp(key, keyact)
+end

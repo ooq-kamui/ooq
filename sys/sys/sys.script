@@ -1,0 +1,24 @@
+
+-- u.log_script("system.script")
+
+-- init random()
+math.randomseed(os.time())
+math.random(1, 2) -- dmy
+
+require("assets/etc/lua/require")
+
+go.property("_title_id", hash(""))
+go.property("_game_id", hash(""))
+go.property("_cmr_id", hash(""))
+go.property("_msg_id", hash(""))
+-- go.property("_crnt_id", hash(""))
+
+function init(_s)
+	Sys.init(_s)
+
+	-- log._("sys _crnt_id", go.get_id(), _s._crnt_id, go.get("#script", "_crnt_id"))
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end

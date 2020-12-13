@@ -1,0 +1,29 @@
+log.script("gui.script")
+
+function on_message(_s, msg_id, prm, sender)
+	
+	if     ha.eq(msg_id, "del") then
+		go.delete()
+
+	elseif ha.eq(msg_id, "save") then
+		pst.script(Sys.game_id(), "save")
+
+	elseif ha.eq(msg_id, "buy") then
+		local pos = Game.cloud_pos()
+		Cls._(prm.cls).cre(pos, prm)
+		
+	elseif ha.eq(msg_id, "to_door") then
+		local plychara_id = Game.plychara_id()
+		pst.script(plychara_id, "to_door", prm)
+		
+	elseif ha.eq(msg_id, "plychara_itm_selected__") then
+		local plychara_id = Game.plychara_id()
+		pst.script(plychara_id, "itm_selected__", prm)
+
+	elseif ha.eq(msg_id, "food_cre") then
+		Food.cre_by_cls(nil, prm)
+
+	elseif ha.eq(msg_id, "map_pause__") then
+		pst.script(Game.map_id(), "pause__", prm)
+	end
+end

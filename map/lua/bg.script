@@ -1,0 +1,18 @@
+log.script("bg.script")
+
+go.property("_name", hash(""))
+go.property("_area", hash(""))
+go.property("_tilesize", vmath.vector3(0, 0, 0))
+go.property("_mv_rng_pos_algn", hash("c"))
+
+-- go.property("_tilemap", hash("")) -- same name
+-- go.property("_scrl_rate", 1) -- old
+
+function init(_s)
+	extend._(_s, Bg)
+	Bg.init(_s)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end

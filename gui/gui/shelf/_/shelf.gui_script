@@ -1,0 +1,9 @@
+log.script("shelf.gui_script")
+
+function init(_s)
+	g.Shelf.init(_s)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end

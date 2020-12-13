@@ -1,0 +1,49 @@
+
+# *.gui_script
+# *.lua
+# *.script
+
+*.atlas
+*.camera
+*.collection
+*.collectionfactory
+*.collisionobject
+*.factory
+*.font
+*.gif
+*.go
+*.gui
+*.icns
+*.info
+*.jpg
+*.label
+*.mp3
+*.ogg
+*.pmf
+*.png
+*.sh
+*.sound
+*.sprite
+*.svg
+*.tiff
+*.tilemap
+*.tilesource
+*.tpl
+*.ttf
+*.txt
+*.xcf
+
+typescript
+
+# originalImportedContentDocumentInfo ( .pxd )
+obj/chara/chara/img/
+obj/itm/blbrd/img/
+obj/itm/kagu/bed/img/
+obj/itm/kagu/door/img/
+
+
+
+
+
+
+

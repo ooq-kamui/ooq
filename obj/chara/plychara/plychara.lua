@@ -1,0 +1,644 @@
+log.script("plychara.lua")
+
+Play_chara = {}
+
+Plychara = {
+	
+	hold_max = 2,
+	jumping_time = 0.34,
+	act_interval_time = 5,
+	w = 20,
+	
+	name_idx_max = 1,
+	z = 0.3,
+
+	dir_h_dflt = u.dir_h[1],
+}
+
+Plychara.pos_game_new = n.vec( 500, 200)
+
+Plychara.cls = "plychara"
+Plychara.Fac = Obj.fac..Plychara.cls
+Cls.add(Plychara)
+
+-- static
+
+function Plychara.cre(pos, dir)
+	
+	pos = pos or Plychara.pos_game_new
+	dir = dir or Plychara.dir_h_dflt
+	
+	local name = "sanae"
+	
+	local t_id = Sp.cre(Plychara, pos, {name = ha._(name)})
+	-- log._("plychara cre id", t_id)
+
+	pst.script(t_id, "dir_h__", {dir_h = dir})
+	
+	Map.add_chara(name) -- todo > method
+	return t_id
+end
+
+-- script method
+
+function Plychara.init(_s)
+	
+	extend.init(_s, Sp)
+	extend._(_s, Plychara)
+	
+	_s._speed = 4.5
+	_s._dir_h = ha._("l")
+	_s._dir_v = ""
+	
+	_s._hmoving   = _.f
+	_s._vmoving   = _.f
+	_s._climbdown = _.f
+	_s._climbup   = _.f
+	_s._jumping   = 0
+	_s._dive      = _.f
+	
+	_s._itm_selected = "wand001" -- name
+
+	_s._hold = {}
+	_s._clsn = {
+		hold     = {},
+		hrvst    = {},
+		kitchen  = {},
+		reizoko  = {},
+		chara    = {},
+		animal   = {},
+		flpy     = {},
+		pc       = {},
+		shelf    = {},
+		door     = {},
+		tree     = {},
+		block    = {},
+	}
+	_s._clsn_holdable = {}
+
+	-- fairy
+	local fairy_id = _s:fairy_id()
+	-- log._("plychara.init fairy_id", fairy_id)
+	local z = 0.01
+	local t_pos = n.vec(0, Map.sq)
+	pst.parent__(fairy_id, _s._id, z, t_pos)
+end
+
+function Plychara.upd(_s, dt)
+	-- log._("plychara upd", _s._dir_h)
+	
+	local dir = n.vec()
+	local foot_o_tile = _s:foot_o_tile()
+	local foot_i_tile = _s:foot_i_tile()
+	
+	-- vec on_chara
+	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
+	
+	-- jump start
+	if _s._jumping == Plychara.jumping_time then
+		if Tile.is_block(foot_o_tile)
+		or is_on_chara
+		or Tile.is_climb(foot_o_tile)
+		or Tile.is_elv(  foot_o_tile)
+		or _s:is_on_obj_block()
+		-- or _s:on_by_mapobj()
+		then
+			-- jump start
+			Se.pst_ply("jmp001")
+			
+			if not jump_num then
+				jump_num = 1 
+			else
+				jump_num = jump_num + 1
+			end
+		else
+			_s._jumping = 0 -- jump can not
+		end
+	end
+
+	if _s._hmoving then
+		dir.x = 1
+		if ha.eq(_s._dir_h, "l") then dir.x = - dir.x end
+	end
+	
+	-- v move
+	-- jump continue
+	if     _s._jumping > 0 and not _s:head_o_is_block() then
+		dir.y = 1
+	elseif _s._vmoving then
+		if     _s._dir_v == "u" 
+		and Tile.is_climb(foot_i_tile) and not _s:head_o_is_block() then
+			dir.y =  1
+			_s._climbup = _.t
+		elseif _s._dir_v == "d"
+		and _s._jumping <= 0
+		and (Tile.is_climb(foot_i_tile) or Tile.is_climb(foot_o_tile)) then
+			dir.y = -1
+			_s._climbdown = _.t
+		end
+	end
+	dir = _s:dir__crct_hyprspc(dir)
+	
+	local vec_mv = dir * _s._speed
+	
+	-- vec tile
+	local vec_tile = _s:vec_tile(dt)
+
+	-- vec grv
+	local vec_grv
+	if is_on_chara then
+		vec_grv = n.vec()
+	else
+		vec_grv = _s:vec_grv(dt)
+	end
+	vec_grv = _s:dir__crct_hyprspc(vec_grv)
+	
+	-- total vec
+	local vec_total = vec_mv + vec_tile + vec_on_chara + vec_grv
+	_s:pos__add(vec_total)
+
+	
+	-- dstrct__mv
+	local is_dstrct_mv = _s:ox_dstrct__mv()
+	-- if is_dstrct_mv then return end
+	
+	
+	-- jumping dec
+	if _s._jumping > 0 then
+		_s._jumping = _s._jumping - dt
+	end
+	_s._turn_time = _s._turn_time + dt
+	
+	-- act clr
+	_s._hmoving   = _.f
+	_s._vmoving   = _.f
+	_s._climbdown = _.f
+	_s._climbup   = _.f
+	_s._dive      = _.f
+	
+	_s:clsn_clr()
+end
+
+function Plychara.dir__crct_hyprspc(_s, dir)
+	
+	local is_hyprspc, hyprspc_dir = _s:is_hyprspc()
+
+	if not is_hyprspc then return dir end
+
+	if     ar.in_(hyprspc_dir, u.lr) then
+		dir.y = 0
+		
+	elseif ar.in_(hyprspc_dir, u.ud) then
+		dir.x = 0
+	end
+	
+	return dir
+end
+
+function Plychara.is_hyprspc(_s)
+
+	local is_inside, dir = map.is_inside_cmpr(_s:pos(), _s:map_rng_pos())
+
+	local is_hyprspc = not is_inside
+
+	return is_hyprspc, dir
+end
+
+function Plychara.ox_dstrct__mv(_s)
+
+	-- dstrct__mv
+	local is_dstrct_mv, dstrct_mv_dir = _s:is_dstrct_mv()
+	-- log._("is_dstrct_mv", is_dstrct_mv, dstrct_mv_dir)
+	
+	if not is_dstrct_mv then return is_dstrct_mv end
+	
+	pst.script(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h})
+	
+	return is_dstrct_mv
+end
+
+function Plychara.is_dstrct_mv(_s, p_pos)
+
+	p_pos = p_pos or _s:pos()
+
+	local ret, dir = _.f, nil
+
+	local dstrct_mv_rng_pos = _s:dstrct_mv_rng_pos()
+
+	if     p_pos.x < dstrct_mv_rng_pos.min.x then
+		ret, dir = _.t, "l"
+
+	elseif p_pos.x > dstrct_mv_rng_pos.max.x then
+		ret, dir = _.t, "r"
+
+	elseif p_pos.y < dstrct_mv_rng_pos.min.y then
+		ret, dir = _.t, "d"
+
+	elseif p_pos.y > dstrct_mv_rng_pos.max.y then
+		ret, dir = _.t, "u"
+	end
+
+	return ret, dir
+end
+
+function Plychara.dstrct_mv_rng_pos(_s)
+
+	if _s._dstrct_mv_rng_pos then return _s._dstrct_mv_rng_pos end
+
+	_s._dstrct_mv_rng_pos = {
+		min = id.prp(_s._map_id, "_dstrct_mv_rng_pos_min"),
+		max = id.prp(_s._map_id, "_dstrct_mv_rng_pos_max"),
+	}
+	return _s._dstrct_mv_rng_pos
+end
+
+function Plychara.crct_inside_map(_s, vec)
+
+	-- nothing
+	
+	return vec
+end
+
+function Plychara.vec_on_clsn(_s, dt)
+	
+	local vec_on_obj
+	local on_pos
+	local on_id, o_cls = _s:on_clsn()
+	
+	if on_id and _s._jumping <= 0 and not _s._dive then
+		if o_cls == ha._("chara") then
+			on_pos = id.pos(on_id) + n.vec(0, Map.sq)
+		end
+		vec_on_obj = on_pos - _s:pos()
+	else
+		vec_on_obj = n.vec()
+	end
+	return on_id, vec_on_obj
+end
+
+function Plychara.on_msg(_s, msg_id, prm, sender)
+
+	local st
+
+	Sp.on_msg(_s, msg_id, prm, sender)
+	
+	st = _s:on_msg_clsn(msg_id, prm, sender)
+	if st then return end
+
+	_s:on_msg_mv(msg_id, prm, sender)
+
+	_s:on_msg_act(msg_id, prm, sender)
+end
+
+function Plychara.on_msg_clsn(_s, msg_id, prm, sender)
+
+	if ha.eq(msg_id, "collision_response") then return _.t end
+		
+	if not ha.eq(msg_id, "contact_point_response") then return end
+	
+	local o_pos = prm.other_position
+	local o_id  = prm.other_id
+	local o_name = id.prp(o_id, "_name")
+		
+	if     ha.eq(prm.group, "chara") then
+		_s:clsn_add("chara", o_id)
+
+	elseif ha.eq(prm.group, "hold") then
+		if not ar.in_(o_id, _s._hold) then
+			_s:clsn_add("hold", o_id)
+		end
+
+	elseif ha.eq(prm.group, "animal") then
+		_s:clsn_add("animal", o_id)
+
+	elseif ha.eq(prm.group, "tree") then
+		_s:clsn_add("tree", o_id)
+		
+	elseif ha.eq(prm.group, "box") then
+		
+		if     ha.eq(o_name, "hrvst001") then
+			_s:clsn_add("hrvst"  , o_id)
+		
+		elseif ha.eq(o_name, "reizoko001") then
+			_s:clsn_add("reizoko", o_id)
+		
+		elseif ha.eq(o_name, "kitchen001") then
+			_s:clsn_add("kitchen", o_id)
+		
+		elseif ha.eq(o_name, "flpy001") then
+			_s:clsn_add("flpy", o_id)
+		
+		elseif ha.eq(o_name, "pc001") then
+			_s:clsn_add("pc", o_id)
+		
+		elseif ha.eq(o_name, "shelf001") then
+			_s:clsn_add("shelf", o_id)
+		end
+	elseif ha.eq(prm.group, "door") then
+		_s:clsn_add("door", o_id)
+		
+	elseif ha.eq(prm.group, "block") then
+		_s:clsn_add("block", o_id)
+	end
+	return _.t
+end
+
+function Plychara.on_msg_mv(_s, msg_id, prm, sender)
+	
+	if not ha.eq(msg_id, "mv") then return end
+
+	-- if ar.in_(prm.dir, {"l", "r"}) then
+	if ar.in_(prm.dir, u.dir_h) then
+		
+		_s._hmoving = _.t
+		
+		-- turn
+		if not ha.eq(_s._dir_h, prm.dir) then
+			_s._turn_time = 0 
+
+			local val
+			if     prm.dir == "l" then val = _.f
+			elseif prm.dir == "r" then val = _.t
+			end
+			sprite.set_hflip("#sprite", val)
+		end
+		
+		-- dive
+		if prm.l then _s._dive = _.t end
+		
+		_s._dir_h = ha._(prm.dir) -- new
+		-- log._("plychara on_msg dir_h", _s._dir_h)
+
+	elseif prm.dir == "u" then
+		_s._vmoving = _.t
+		_s._dir_v = "u"
+
+	elseif prm.dir == "d" then
+		_s._vmoving = _.t
+		_s._dir_v = "d"
+	end
+end
+
+function Plychara.on_msg_act(_s, msg_id, prm, sender)
+	-- log._("plychara on_msg_act", msg_id)
+	
+	if     ha.eq(msg_id, "jmp") then -- jmp
+		_s._jumping = Plychara.jumping_time
+	
+	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
+		_s:itm_use(prm)
+		
+	elseif ha.eq(msg_id, "hold_switch") then -- input hold switch
+		_s:hold_switch()
+	
+	elseif ha.eq(msg_id, "hold__x") then
+		_s:hold__x(prm.id)
+	
+	elseif ha.eq(msg_id, "to_door") then
+		_s:to_door(prm.door_id)
+
+	elseif ha.eq(msg_id, "itm_selected__") then
+		_s:itm_selected__(prm.itm_selected)	
+
+	elseif ha.eq(msg_id, "menu_opn") then
+
+		local is_icn_opn
+		local t_clss = {"reizoko", "pc", "shelf", "door"}
+		for idx, t_cls in pairs(t_clss) do
+			if     #_s._clsn[t_cls] >= 1 then
+				pst.script(_s._clsn[t_cls][1], "opn")
+				is_icn_opn = _.t
+				break
+			end
+		end
+		if not is_icn_opn and #_s._clsn.flpy >= 1 then
+			pst.script(_s._clsn.flpy[1], "opn")
+			is_icn_opn = _.t
+		end
+		
+		if not is_icn_opn then
+			pst.script(Sys.game_id(), "bag_opn")
+		end
+	end
+end
+
+function Plychara.final(_s)
+end
+
+-- method
+
+function Plychara.itm_use(_s, prm)
+	
+	local itm = _s._itm_selected -- name
+	-- log._("plychara itm_use", itm)
+	
+	if     itm == "wand001" then
+		local tilepos = Magic.tilepos_by_inp_prm(_s._dir_h, prm)
+		Magic.cre(_s:pos(), tilepos)
+		
+	elseif itm == "wand002" then
+		Wall.__(_s:tilepos(), Wand.wand002.tile_idx)
+
+	elseif itm == "wand003" then
+		if #_s._clsn.tree > 0 then
+			pst.script(_s._clsn.tree[1], "trnsf_wood")
+		end
+	elseif itm == "wand004" then
+		Fire.cre(_s:pos_fw(2/3))
+		
+	elseif itm == "wand005" then
+		-- Warp.cre(_s:pos_fw(2/3))
+		-- Block.cre()
+	else
+		log._("not use itm")
+	end
+end
+
+function Plychara.pos_fw(_s, mlt)
+	
+	local pos = _s:pos()
+	local df  = n.vec(Map.sq * mlt, 0)
+	if     ha.eq(_s._dir_h, "l") then
+		pos = pos - df
+	elseif ha.eq(_s._dir_h, "r") then
+		pos = pos + df
+	end
+	return pos
+end
+
+function Plychara.clsn_add(_s, target, id)
+	
+	if ar.in_(id, _s._hold) then return end
+
+	ar.add(_s._clsn[target], id)
+end
+
+function Plychara.clsn_clr(_s)
+	for key, clsn in pairs(_s._clsn) do
+		ar.clr(_s._clsn[key])
+	end
+end
+
+function Plychara.hold_add(_s, id)
+	
+	if #_s._hold >= Plychara.hold_max then return end
+
+	ar.add(_s._hold, id)
+	return #_s._hold
+end
+
+function Plychara.hold(_s)
+	
+	if #_s._hold <= 0 then return end
+	
+	local id = _s._hold[#_s._hold]
+	return id
+end
+
+function Plychara.clsn_holdable__(_s)
+
+	local cls = {
+		"hold", "kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "door", "animal", "block",
+	}
+	
+	ar.clr(_s._clsn_holdable)
+	for idx, cls in pairs(cls) do
+		for idx, id in pairs(_s._clsn[cls]) do
+			ar.add(_s._clsn_holdable, id)
+		end
+	end
+	ar.exclude(_s._clsn_holdable , _s._hold)
+end
+
+function Plychara.hold_switch(_s)
+
+	_s:clsn_holdable__()
+
+	-- hold switch
+	if #_s._clsn.reizoko >= 1 and #_s._clsn.hold >= 1 and #_s._hold == 1 then
+		_s:hold_switch_o()
+	
+	elseif _s:in_clsn({"kitchen", "hrvst", "shelf", "reizoko", "animal"}) and #_s._hold >= 1 then
+		_s:hold_switch_x()
+		
+	elseif #_s._clsn_holdable >= 1 and not (#_s._hold >= Plychara.hold_max) then
+		_s:hold_switch_o()
+		
+	elseif #_s._hold > 0 then
+		_s:hold_switch_x()
+	else
+		_s:hold_tile_side()
+	end
+end
+
+function Plychara.hold_tile_side(_s)
+
+	local dir_h = ha.de(_s._dir_h)
+	local side_is_block, tile
+	side_is_block, tile = _s:side_is_block(dir_h)
+	-- log._("hold_tile_side ", side_is_block, tile)
+	
+	if not side_is_block             then return end
+	if not Magic.is_magic_vnsh(tile) then return end
+	
+	-- cre block obj
+	local id = Block.cre(nil, tile)
+	local hold_idx = _s:hold__o(id)
+	pst.script(id, "hold__o", {hold_id = _s._id, hold_idx = hold_idx})
+
+	-- tile emp
+	local side_pos = _s:side_pos(dir_h)
+	if dir_h == "l" then side_pos = side_pos + n.vec(-1, 0) end
+	_s:tile__(Tile.emp, side_pos)
+end
+
+function Plychara.hold_switch_o(_s)
+
+	if not (#_s._clsn_holdable >= 1) then return end
+
+	local hold_idx = _s:hold__o(_s._clsn_holdable[1])
+
+	pst.script(_s._clsn_holdable[1], "hold__o", {hold_id = _s._id, hold_idx = hold_idx})
+end
+
+function Plychara.hold__o(_s, hold_id)
+
+	local hold_idx = _s:hold_add(hold_id)
+	Se.pst_ply("back")
+
+	return hold_idx
+end
+
+function Plychara.hold_switch_x(_s)
+
+	if not (#_s._hold > 0) then return end
+
+	local id = _s:hold__x()
+	pst.script(id, "hold__x")
+
+	-- _hold__x to ...
+	if     #_s._clsn.chara   >= 1 then
+		pst.script(_s._clsn.chara[1], "present", {id = id})
+
+	elseif #_s._clsn.animal  >= 1 then
+		pst.script(_s._clsn.animal[1], "present", {id = id})
+
+	elseif #_s._clsn.hrvst   >= 1 then
+		pst.script(_s._clsn.hrvst[1], "in", {id = id})
+
+	elseif #_s._clsn.kitchen >= 1 then
+		pst.script(_s._clsn.kitchen[1], "kitchen_o", {id = id})
+
+	elseif #_s._clsn.reizoko >= 1 then
+		pst.script(_s._clsn.reizoko[1], "into_reizoko", {food_id = id})
+	end
+end
+
+function Plychara.hold__x(_s, p_id)
+
+	p_id = p_id or _s._hold[#_s._hold]
+
+	ar.del_by_val(p_id, _s._hold)
+	if ha.eq(id.cls(p_id), "block") then
+		ar.del_by_val(p_id, _s._clsn.block)
+	end
+	return p_id
+end
+
+function Plychara.in_clsn(_s, keys)
+	
+	local ret = _.f
+	for idx, key in pairs(keys) do
+		if _s:is_clsn(key) then
+			ret = _.t
+			return ret
+		end
+	end
+	return ret
+end
+
+function Plychara.is_clsn(_s, key)
+	local ret = _.f
+	if #_s._clsn[key] >= 1 then ret = _.t end
+	return ret
+end
+
+function Plychara.to_cloud(_s)
+	Sp.to_cloud(_s)
+	pst.script(Sys.cmr_id(), "pos__plychara")
+end
+
+function Plychara.to_door(_s, door_id)
+	local pos = id.pos(door_id)
+	_s:pos__(pos)
+	pst.script(Sys.cmr_id(), "pos__plychara")
+end
+
+function Plychara.itm_selected__(_s, itm)
+	_s._itm_selected = itm
+end
+
+function Plychara.fairy_id(_s)
+	local fairy_id = id.prp(_s._map_id , "_fairy_id")
+	return fairy_id
+end

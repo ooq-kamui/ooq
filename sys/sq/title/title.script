@@ -1,0 +1,17 @@
+log.script("title.script")
+
+function init(_s)
+	Title.init(_s)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end
+--[[
+function final(_s)
+end
+--]]

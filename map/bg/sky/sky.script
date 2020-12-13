@@ -1,0 +1,25 @@
+log.script("sky.script")
+
+go.property("_name", hash("sky"))
+go.property("_area", hash(""))
+go.property("_tilesize", vmath.vector3(24, 24, 0))
+go.property("_mv_rng_pos_algn", hash("c"))
+
+go.property("_sky_idx", 0)
+
+-- go.property("_tilemap", hash("sky")) -- same name
+-- go.property("_scrl_rate", 0)
+
+function init(_s)
+	extend._(_s, Bg)
+	extend._(_s, Sky)
+	Sky.init(_s)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end

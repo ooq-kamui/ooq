@@ -1,0 +1,28 @@
+log.script("dryleaf.script")
+---[[
+go.property("_cls", hash(""))
+go.property("_name", hash(""))
+go.property("_anim", hash(""))
+
+go.property("_game_id", hash(""))
+go.property("_map_id", hash(""))
+
+go.property("_parent_id", hash(""))
+go.property("_z", 0.2)
+--]]
+
+function init(_s)
+	Dryleaf.init(_s)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end
+
+function final(_s)
+	_s:final()
+end

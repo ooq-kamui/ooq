@@ -1,0 +1,27 @@
+log.script("game.script")
+
+go.property("_ply_slt_idx", 0)
+go.property("_map_id", hash(""))
+go.property("_dstrct", vmath.vector3(0, 0, 0))
+
+go.property("_sky_idx", 1)
+go.property("_sky_id" , hash(""))
+
+-- go.property("_plychara_pos_ltst", vmath.vector3(0, 0, 0))
+-- go.property("_dia_id", hash(""))
+
+function init(_s)
+	Game.init(_s)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end
+
+function on_message(_s, msg_id, prm, sender)
+	_s:on_msg(msg_id, prm, sender)
+end
+
+function final(_s)
+	_s:final()
+end
