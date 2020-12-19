@@ -1,0 +1,2 @@
+prototype: "/assets/gui/inp/inp.go"
+load_dynamically: true

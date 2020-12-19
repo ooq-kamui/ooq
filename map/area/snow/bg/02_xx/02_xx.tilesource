@@ -1,0 +1,9 @@
+image: "/assets/map/area/grassy/bg/mountain/img/mountain.png"
+tile_width: 24
+tile_height: 24
+tile_margin: 0
+tile_spacing: 0
+collision: ""
+material_tag: "tile"
+extrude_borders: 1
+inner_padding: 0

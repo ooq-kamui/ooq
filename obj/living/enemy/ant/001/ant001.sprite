@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/enemy/ant/001/ant001.atlas"
+default_animation: "walk"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

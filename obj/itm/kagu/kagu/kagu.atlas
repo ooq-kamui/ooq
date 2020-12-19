@@ -1,0 +1,1043 @@
+animations {
+  id: "kagu001"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu001.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu002"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu002.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu003"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu003.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu004"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu004.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu005"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu005.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu006"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu006.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu007"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu007.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu008"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu008.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu009"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu009.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu010"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu010.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu011"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu011.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu012"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu012.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu013"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu013.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu014"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu014.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu015"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu015.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu016"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu016.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu017"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu017.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu018"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu018.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu019"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu019.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu020"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu020.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu021"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu021.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu022"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu022.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu023"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu023.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu024"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu024.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu025"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu025.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu026"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu026.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu027"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu027.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu028"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu028.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu029"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu029.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu030"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu030.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu031"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu031.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu032"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu032.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu033"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu033.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu034"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu034.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu035"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu035.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu036"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu036.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu037"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu037.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu038"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu038.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu039"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu039.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu040"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu040.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu041"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu041.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu042"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu042.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu043"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu043.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu044"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu044.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu045"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu045.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu046"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu046.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu047"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu047.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu048"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu048.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu049"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu049.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu050"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu050.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu051"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu051.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu052"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu052.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu053"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu053.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu054"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu054.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu055"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu055.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu056"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu056.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu057"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu057.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu058"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu058.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu059"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu059.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu060"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu060.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu061"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu061.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu062"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu062.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu063"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu063.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu064"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu064.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu065"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu065.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu066"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu066.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu067"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu067.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu068"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu068.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu069"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu069.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu070"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu070.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu071"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu071.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu072"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu072.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu073"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu073.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu074"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu074.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu075"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu075.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu076"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu076.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu077"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu077.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu078"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu078.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu079"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu079.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu080"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu080.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu081"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu081.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu082"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu082.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu083"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu083.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu084"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu084.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu085"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu085.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu086"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu086.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu087"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu087.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu088"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu088.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu089"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu089.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu090"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu090.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu091"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu091.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu092"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu092.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu093"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu093.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu094"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu094.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu095"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu095.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu096"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu096.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu097"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu097.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu098"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu098.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu099"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu099.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu100"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu100.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu101"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu101.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu102"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu102.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu103"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu103.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "kagu104"
+  images {
+    image: "/assets/obj/itm/kagu/kagu/img/kagu104.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 1
+inner_padding: 0

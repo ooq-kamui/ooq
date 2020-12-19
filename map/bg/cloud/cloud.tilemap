@@ -1,0 +1,148 @@
+tile_set: "/assets/map/bg/cloud/cloud.tilesource"
+layers {
+  id: "cloud"
+  z: 0.0
+  is_visible: 1
+  cell {
+    x: -5
+    y: 6
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -4
+    y: 6
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 5
+    y: 8
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 6
+    y: 8
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -12
+    y: 8
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -11
+    y: 8
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 34
+    y: 10
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 35
+    y: 10
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 55
+    y: 10
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 56
+    y: 10
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -58
+    y: 10
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -57
+    y: 10
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -37
+    y: 10
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -36
+    y: 10
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 58
+    y: 16
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 59
+    y: 16
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 20
+    y: 23
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 21
+    y: 23
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -52
+    y: 23
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -51
+    y: 23
+    tile: 1
+    h_flip: 0
+    v_flip: 0
+  }
+}
+material: "/builtins/materials/tile_map.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/wood/wood/wood.tilesource"
+default_animation: "wood001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

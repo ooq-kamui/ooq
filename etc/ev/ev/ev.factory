@@ -1,0 +1,2 @@
+prototype: "/assets/etc/ev/ev/ev.go"
+load_dynamically: true

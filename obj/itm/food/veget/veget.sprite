@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/food/veget/veget.tilesource"
+default_animation: "veget098"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

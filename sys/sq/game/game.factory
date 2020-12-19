@@ -1,0 +1,2 @@
+prototype: "/assets/sys/sq/game/game.go"
+load_dynamically: true

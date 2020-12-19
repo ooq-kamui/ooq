@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/elm/fire/fire.tilesource"
+default_animation: "fire001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

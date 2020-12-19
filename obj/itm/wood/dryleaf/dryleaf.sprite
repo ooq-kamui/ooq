@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/wood/dryleaf/dryleaf.tilesource"
+default_animation: "dryleaf001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

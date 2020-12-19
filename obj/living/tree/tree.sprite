@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/tree/tree.tilesource"
+default_animation: "tree001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

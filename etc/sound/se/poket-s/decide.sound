@@ -1,0 +1,4 @@
+sound: "/assets/etc/sound/se/poket-s/ogg/decide.ogg"
+looping: 0
+group: "master"
+gain: 1.0

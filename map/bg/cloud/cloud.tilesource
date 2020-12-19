@@ -1,0 +1,10 @@
+image: "/assets/map/bg/cloud/img/cloud.png"
+tile_width: 48
+tile_height: 48
+tile_margin: 0
+tile_spacing: 0
+collision: ""
+material_tag: "tile"
+extrude_borders: 1
+inner_padding: 0
+sprite_trim_mode: SPRITE_TRIM_MODE_OFF

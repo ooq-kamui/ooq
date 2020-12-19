@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/food/fish/fish.tilesource"
+default_animation: "fish001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

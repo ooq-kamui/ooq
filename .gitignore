@@ -8,32 +8,37 @@
 # *.gui_script
 # *.lua
 # *.script
+# 
+# *.tilemap
+# *.tilesource
+# *.atlas
+# *.sprite
+# 
+# *.collectionfactory
+# *.collection
+# *.factory
+# *.go
+# 
+# *.gui
+# *.label
+# *.sound
+# 
+# *.camera
 
-*.atlas
-*.camera
-*.collection
-*.collectionfactory
+
 *.collisionobject
-*.factory
 *.font
 *.gif
-*.go
-*.gui
 *.icns
 *.info
 *.jpg
-*.label
 *.mp3
 *.ogg
 *.pmf
 *.png
 *.sh
-*.sound
-*.sprite
 *.svg
 *.tiff
-*.tilemap
-*.tilesource
 *.tpl
 *.ttf
 *.txt

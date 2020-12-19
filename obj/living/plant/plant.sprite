@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/plant/plant.tilesource"
+default_animation: "plant001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

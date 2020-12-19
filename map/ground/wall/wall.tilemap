@@ -1,0 +1,36 @@
+tile_set: "/assets/map/ground/wall/wall.tilesource"
+layers {
+  id: "wall"
+  z: 0.0
+  is_visible: 1
+  cell {
+    x: 62
+    y: -32
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -63
+    y: -32
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 62
+    y: 31
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -63
+    y: 31
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+  }
+}
+material: "/builtins/materials/tile_map.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -1,0 +1,28 @@
+animations {
+  id: "walk"
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/001.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/002.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/003.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/004.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/005.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/piyoco/img/006.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

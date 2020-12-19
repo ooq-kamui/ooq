@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/food/dish/dish.tilesource"
+default_animation: "dish001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

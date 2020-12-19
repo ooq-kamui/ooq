@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/kagu/kagu/kagu.atlas"
+default_animation: "kagu007"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/chara/fuki/fuki/fuki.atlas"
+default_animation: "fuki001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -1,0 +1,101 @@
+name: "default"
+instances {
+  id: "ground"
+  prototype: "/assets/map/ground/ground-hrzn.go"
+  children: "cloud"
+  children: "forest"
+  children: "mountain"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mountain"
+  prototype: "/assets/map/area/grassy/bg/mountain/mountain.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.8
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "_mv_rng_pos_algn"
+      value: "d_hrzn"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "forest"
+  prototype: "/assets/map/area/grassy/bg/forest/forest.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.7
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "_mv_rng_pos_algn"
+      value: "d_hrzn"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "cloud"
+  prototype: "/assets/map/bg/cloud/cloud.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.9
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

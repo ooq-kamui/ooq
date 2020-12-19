@@ -1,0 +1,80 @@
+animations {
+  id: "itm220x50"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item220x50.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm180x60"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item180x60.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm200x50_p"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item200x50_p.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm200x50_g"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item200x50_g.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm140x40_lb"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item140x40_lb.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm150x40_lg"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item150x40_lg.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "itm250x50_lb"
+  images {
+    image: "/assets/gui/txtr/atlas/itm/img/item250x50_lb.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

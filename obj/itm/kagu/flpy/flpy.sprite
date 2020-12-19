@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/kagu/flpy/flpy.atlas"
+default_animation: "flpy001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

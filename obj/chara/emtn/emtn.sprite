@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/chara/emtn/emtn.tilesource"
+default_animation: "emtn001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

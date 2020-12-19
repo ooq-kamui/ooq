@@ -1,0 +1,163 @@
+animations {
+  id: "magic001"
+  images {
+    image: "/assets/obj/elm/magic/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic002"
+  images {
+    image: "/assets/obj/elm/magic/img_/m002/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m002/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m002/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic003"
+  images {
+    image: "/assets/obj/elm/magic/img_/m003/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m003/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m003/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic004"
+  images {
+    image: "/assets/obj/elm/magic/img_/m004/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m004/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m004/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic007"
+  images {
+    image: "/assets/obj/elm/magic/img_/m007/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m007/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m007/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic008"
+  images {
+    image: "/assets/obj/elm/magic/img_/m008/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m008/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m008/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic009"
+  images {
+    image: "/assets/obj/elm/magic/img_/m009/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m009/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m009/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic010"
+  images {
+    image: "/assets/obj/elm/magic/img_/m010/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m010/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m010/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic011"
+  images {
+    image: "/assets/obj/elm/magic/img_/m011/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m011/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m011/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "magic012"
+  images {
+    image: "/assets/obj/elm/magic/img_/m012/img/01.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m012/img/02.png"
+  }
+  images {
+    image: "/assets/obj/elm/magic/img_/m012/img/03.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

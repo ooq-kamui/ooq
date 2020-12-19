@@ -1,0 +1,142 @@
+name: "default"
+instances {
+  id: "on"
+  prototype: "/assets/map/ground/ground-hrzn.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "sky"
+  prototype: "/assets/map/bg/sky/sky.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "cloud"
+  prototype: "/assets/map/bg/cloud/cloud.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.9
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bg_01_xx"
+  prototype: "/assets/map/area/snow/bg/01_xx/01_xx.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.7
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bg_02_xx"
+  prototype: "/assets/map/area/snow/bg/02_xx/02_xx.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.8
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fg_01_xx1"
+  prototype: "/assets/map/area/snow/fg/01_xx/01_xx.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.6
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fg_02_xx1"
+  prototype: "/assets/map/area/snow/fg/02_xx/02_xx.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.7
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

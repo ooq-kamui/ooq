@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/blbrd/blbrd.atlas"
+default_animation: "blbrd"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

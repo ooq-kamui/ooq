@@ -1,0 +1,377 @@
+script: ""
+textures {
+  name: "bg001"
+  texture: "/assets/gui/txtr/tilesource/bg/bg001.tilesource"
+}
+textures {
+  name: "bg002"
+  texture: "/assets/gui/txtr/tilesource/bg/bg002.tilesource"
+}
+textures {
+  name: "bg003"
+  texture: "/assets/gui/txtr/tilesource/bg/bg003.tilesource"
+}
+textures {
+  name: "bg004"
+  texture: "/assets/gui/txtr/tilesource/bg/bg004.tilesource"
+}
+textures {
+  name: "bg005"
+  texture: "/assets/gui/txtr/tilesource/bg/bg005.tilesource"
+}
+textures {
+  name: "bg006"
+  texture: "/assets/gui/txtr/tilesource/bg/bg006.tilesource"
+}
+textures {
+  name: "bg007"
+  texture: "/assets/gui/txtr/tilesource/bg/bg007.tilesource"
+}
+textures {
+  name: "bg008"
+  texture: "/assets/gui/txtr/tilesource/bg/bg008.tilesource"
+}
+textures {
+  name: "bg009"
+  texture: "/assets/gui/txtr/tilesource/bg/bg009.tilesource"
+}
+textures {
+  name: "bg010"
+  texture: "/assets/gui/txtr/tilesource/bg/bg010.tilesource"
+}
+textures {
+  name: "bg011"
+  texture: "/assets/gui/txtr/tilesource/bg/bg011.tilesource"
+}
+textures {
+  name: "bg012"
+  texture: "/assets/gui/txtr/tilesource/bg/bg012.tilesource"
+}
+textures {
+  name: "bg013"
+  texture: "/assets/gui/txtr/tilesource/bg/bg013.tilesource"
+}
+textures {
+  name: "bg014"
+  texture: "/assets/gui/txtr/tilesource/bg/bg014.tilesource"
+}
+textures {
+  name: "bg015"
+  texture: "/assets/gui/txtr/tilesource/bg/bg015.tilesource"
+}
+textures {
+  name: "bg016"
+  texture: "/assets/gui/txtr/tilesource/bg/bg016.tilesource"
+}
+textures {
+  name: "bg017"
+  texture: "/assets/gui/txtr/tilesource/bg/bg017.tilesource"
+}
+textures {
+  name: "bg018"
+  texture: "/assets/gui/txtr/tilesource/bg/bg018.tilesource"
+}
+textures {
+  name: "bg019"
+  texture: "/assets/gui/txtr/tilesource/bg/bg019.tilesource"
+}
+textures {
+  name: "bg020"
+  texture: "/assets/gui/txtr/tilesource/bg/bg020.tilesource"
+}
+textures {
+  name: "bg021"
+  texture: "/assets/gui/txtr/tilesource/bg/bg021.tilesource"
+}
+textures {
+  name: "bg022"
+  texture: "/assets/gui/txtr/tilesource/bg/bg022.tilesource"
+}
+textures {
+  name: "bg023"
+  texture: "/assets/gui/txtr/tilesource/bg/bg023.tilesource"
+}
+textures {
+  name: "bg024"
+  texture: "/assets/gui/txtr/tilesource/bg/bg024.tilesource"
+}
+textures {
+  name: "bg025"
+  texture: "/assets/gui/txtr/tilesource/bg/bg025.tilesource"
+}
+textures {
+  name: "bg026"
+  texture: "/assets/gui/txtr/tilesource/bg/bg026.tilesource"
+}
+textures {
+  name: "bg027"
+  texture: "/assets/gui/txtr/tilesource/bg/bg027.tilesource"
+}
+textures {
+  name: "bg028"
+  texture: "/assets/gui/txtr/tilesource/bg/bg028.tilesource"
+}
+textures {
+  name: "bg029"
+  texture: "/assets/gui/txtr/tilesource/bg/bg029.tilesource"
+}
+textures {
+  name: "bg030"
+  texture: "/assets/gui/txtr/tilesource/bg/bg030.tilesource"
+}
+textures {
+  name: "bg031"
+  texture: "/assets/gui/txtr/tilesource/bg/bg031.tilesource"
+}
+textures {
+  name: "bg032"
+  texture: "/assets/gui/txtr/tilesource/bg/bg032.tilesource"
+}
+textures {
+  name: "bg033"
+  texture: "/assets/gui/txtr/tilesource/bg/bg033.tilesource"
+}
+textures {
+  name: "bg034"
+  texture: "/assets/gui/txtr/tilesource/bg/bg034.tilesource"
+}
+textures {
+  name: "bg035"
+  texture: "/assets/gui/txtr/tilesource/bg/bg035.tilesource"
+}
+textures {
+  name: "bg036"
+  texture: "/assets/gui/txtr/tilesource/bg/bg036.tilesource"
+}
+textures {
+  name: "bg037"
+  texture: "/assets/gui/txtr/tilesource/bg/bg037.tilesource"
+}
+background_color {
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  w: 0.0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "base"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "itm"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "base"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "cursor"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "base"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 1300.0
+    y: 960.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "bg001/bg001"
+  id: "img"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "base"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 512

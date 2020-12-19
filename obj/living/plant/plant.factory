@@ -1,0 +1,2 @@
+prototype: "/assets/obj/living/plant/plant.go"
+load_dynamically: true

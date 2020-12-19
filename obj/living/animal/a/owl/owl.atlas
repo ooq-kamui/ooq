@@ -1,0 +1,44 @@
+animations {
+  id: "walk"
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk001.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk002.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk003.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk004.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk005.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/walk006.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "fly"
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/fly007.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/fly008.png"
+  }
+  images {
+    image: "/assets/obj/living/animal/a/owl/img/fly009.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 3
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

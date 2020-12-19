@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/fluff/fluff.tilesource"
+default_animation: "fluff001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/mshrm/mshrm.tilesource"
+default_animation: "mshrm001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
