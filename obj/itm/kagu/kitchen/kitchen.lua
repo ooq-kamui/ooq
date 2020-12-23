@@ -25,7 +25,7 @@ end
 function Kitchen.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Kitchen)
 	
 	_s.on = {} -- id ar
@@ -63,7 +63,7 @@ end
 function Kitchen.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 	
 	if     ha.eq(msg_id, "on_kitchen") then -- old
 		_s:kitchen_o(prm.id)
@@ -83,7 +83,7 @@ end
 function Kitchen.final(_s)
 	
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 	
 	for idx, food_id in pairs(_s.on) do
 		pst.script(food_id, "kitchen_x")
@@ -100,7 +100,7 @@ function Kitchen.kitchen_o(_s, food_id)
 	
 	-- local cls = u.get(food_id, "cls")
 	
-	if not ar.inHa(id.cls(food_id), Food.cookable) then return end
+	if not ar.inHa(id.cls(food_id), Food.cookabl) then return end
 	
 	if #_s.on >= Kitchen.on_max then return end
 	

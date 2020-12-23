@@ -462,8 +462,8 @@ function Sp.vec_grv(_s, dt)
 	elseif _s._is_fly then
 		vec = n.vec()
 	
-	elseif _s._hold_id then
-		-- log._("sp hold_id", _s._hold_id)
+	elseif _s._hld_id then
+		-- log._("sp hld_id", _s._hld_id)
 		vec = n.vec()
 	
 	elseif _s._kitchen_id then
@@ -712,7 +712,7 @@ function Sp.on_clsn(_s)
 	for i, t_cls in pairs(t_clss) do
 		for j, clsn_id in pairs(_s._clsn[t_cls]) do
 			clsn_pos = id.pos(clsn_id)
-			if t_cls == "block" and ar.inHa(clsn_id, _s._hold) then
+			if t_cls == "block" and ar.inHa(clsn_id, _s._hld) then
 			else
 				if _s:pos().y > clsn_pos.y + Map.sq*3/4 then
 					on_id = clsn_id

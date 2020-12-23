@@ -20,7 +20,7 @@ end
 function Fish.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend.init(_s, Food)
 	extend._(_s, Fish)
 end

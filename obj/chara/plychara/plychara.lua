@@ -4,7 +4,7 @@ Play_chara = {}
 
 Plychara = {
 	
-	hold_max = 2,
+	hld_max = 2,
 	jumping_time = 0.34,
 	act_interval_time = 5,
 	w = 20,
@@ -59,9 +59,9 @@ function Plychara.init(_s)
 	
 	_s._itm_selected = "wand001" -- name
 
-	_s._hold = {}
+	_s._hld = {}
 	_s._clsn = {
-		hold     = {},
+		hld     = {},
 		hrvst    = {},
 		kitchen  = {},
 		reizoko  = {},
@@ -74,7 +74,7 @@ function Plychara.init(_s)
 		tree     = {},
 		block    = {},
 	}
-	_s._clsn_holdable = {}
+	_s._clsn_hldabl = {}
 
 	-- fairy
 	local fairy_id = _s:fairy_id()
@@ -303,9 +303,9 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sender)
 	if     ha.eq(prm.group, "chara") then
 		_s:clsn_add("chara", o_id)
 
-	elseif ha.eq(prm.group, "hold") then
-		if not ar.in_(o_id, _s._hold) then
-			_s:clsn_add("hold", o_id)
+	elseif ha.eq(prm.group, "hld") then
+		if not ar.in_(o_id, _s._hld) then
+			_s:clsn_add("hld", o_id)
 		end
 
 	elseif ha.eq(prm.group, "animal") then
@@ -388,11 +388,11 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
 		_s:itm_use(prm)
 		
-	elseif ha.eq(msg_id, "hold_switch") then -- input hold switch
-		_s:hold_switch()
+	elseif ha.eq(msg_id, "hld_switch") then -- input hld switch
+		_s:hld_switch()
 	
-	elseif ha.eq(msg_id, "hold__x") then
-		_s:hold__x(prm.id)
+	elseif ha.eq(msg_id, "hld__x") then
+		_s:hld__x(prm.id)
 	
 	elseif ha.eq(msg_id, "to_door") then
 		_s:to_door(prm.door_id)
@@ -468,7 +468,7 @@ end
 
 function Plychara.clsn_add(_s, target, id)
 	
-	if ar.in_(id, _s._hold) then return end
+	if ar.in_(id, _s._hld) then return end
 
 	ar.add(_s._clsn[target], id)
 end
@@ -479,72 +479,72 @@ function Plychara.clsn_clr(_s)
 	end
 end
 
-function Plychara.hold_add(_s, id)
+function Plychara.hld_add(_s, id)
 	
-	if #_s._hold >= Plychara.hold_max then return end
+	if #_s._hld >= Plychara.hld_max then return end
 
-	ar.add(_s._hold, id)
-	return #_s._hold
+	ar.add(_s._hld, id)
+	return #_s._hld
 end
 
-function Plychara.hold(_s)
+function Plychara.hld(_s)
 	
-	if #_s._hold <= 0 then return end
+	if #_s._hld <= 0 then return end
 	
-	local id = _s._hold[#_s._hold]
+	local id = _s._hld[#_s._hld]
 	return id
 end
 
-function Plychara.clsn_holdable__(_s)
+function Plychara.clsn_hldabl__(_s)
 
 	local cls = {
-		"hold", "kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "door", "animal", "block",
+		"hld", "kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "door", "animal", "block",
 	}
 	
-	ar.clr(_s._clsn_holdable)
+	ar.clr(_s._clsn_hldabl)
 	for idx, cls in pairs(cls) do
 		for idx, id in pairs(_s._clsn[cls]) do
-			ar.add(_s._clsn_holdable, id)
+			ar.add(_s._clsn_hldabl, id)
 		end
 	end
-	ar.exclude(_s._clsn_holdable , _s._hold)
+	ar.exclude(_s._clsn_hldabl , _s._hld)
 end
 
-function Plychara.hold_switch(_s)
+function Plychara.hld_switch(_s)
 
-	_s:clsn_holdable__()
+	_s:clsn_hldabl__()
 
-	-- hold switch
-	if #_s._clsn.reizoko >= 1 and #_s._clsn.hold >= 1 and #_s._hold == 1 then
-		_s:hold_switch_o()
+	-- hld switch
+	if #_s._clsn.reizoko >= 1 and #_s._clsn.hld >= 1 and #_s._hld == 1 then
+		_s:hld_switch_o()
 	
-	elseif _s:in_clsn({"kitchen", "hrvst", "shelf", "reizoko", "animal"}) and #_s._hold >= 1 then
-		_s:hold_switch_x()
+	elseif _s:in_clsn({"kitchen", "hrvst", "shelf", "reizoko", "animal"}) and #_s._hld >= 1 then
+		_s:hld_switch_x()
 		
-	elseif #_s._clsn_holdable >= 1 and not (#_s._hold >= Plychara.hold_max) then
-		_s:hold_switch_o()
+	elseif #_s._clsn_hldabl >= 1 and not (#_s._hld >= Plychara.hld_max) then
+		_s:hld_switch_o()
 		
-	elseif #_s._hold > 0 then
-		_s:hold_switch_x()
+	elseif #_s._hld > 0 then
+		_s:hld_switch_x()
 	else
-		_s:hold_tile_side()
+		_s:hld_tile_side()
 	end
 end
 
-function Plychara.hold_tile_side(_s)
+function Plychara.hld_tile_side(_s)
 
 	local dir_h = ha.de(_s._dir_h)
 	local side_is_block, tile
 	side_is_block, tile = _s:side_is_block(dir_h)
-	-- log._("hold_tile_side ", side_is_block, tile)
+	-- log._("hld_tile_side ", side_is_block, tile)
 	
 	if not side_is_block             then return end
 	if not Magic.is_magic_vnsh(tile) then return end
 	
 	-- cre block obj
 	local id = Block.cre(nil, tile)
-	local hold_idx = _s:hold__o(id)
-	pst.script(id, "hold__o", {hold_id = _s._id, hold_idx = hold_idx})
+	local hld_idx = _s:hld__o(id)
+	pst.script(id, "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
 
 	-- tile emp
 	local side_pos = _s:side_pos(dir_h)
@@ -552,31 +552,31 @@ function Plychara.hold_tile_side(_s)
 	_s:tile__(Tile.emp, side_pos)
 end
 
-function Plychara.hold_switch_o(_s)
+function Plychara.hld_switch_o(_s)
 
-	if not (#_s._clsn_holdable >= 1) then return end
+	if not (#_s._clsn_hldabl >= 1) then return end
 
-	local hold_idx = _s:hold__o(_s._clsn_holdable[1])
+	local hld_idx = _s:hld__o(_s._clsn_hldabl[1])
 
-	pst.script(_s._clsn_holdable[1], "hold__o", {hold_id = _s._id, hold_idx = hold_idx})
+	pst.script(_s._clsn_hldabl[1], "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
 end
 
-function Plychara.hold__o(_s, hold_id)
+function Plychara.hld__o(_s, hld_id)
 
-	local hold_idx = _s:hold_add(hold_id)
+	local hld_idx = _s:hld_add(hld_id)
 	Se.pst_ply("back")
 
-	return hold_idx
+	return hld_idx
 end
 
-function Plychara.hold_switch_x(_s)
+function Plychara.hld_switch_x(_s)
 
-	if not (#_s._hold > 0) then return end
+	if not (#_s._hld > 0) then return end
 
-	local id = _s:hold__x()
-	pst.script(id, "hold__x")
+	local id = _s:hld__x()
+	pst.script(id, "hld__x")
 
-	-- _hold__x to ...
+	-- _hld__x to ...
 	if     #_s._clsn.chara   >= 1 then
 		pst.script(_s._clsn.chara[1], "present", {id = id})
 
@@ -594,11 +594,11 @@ function Plychara.hold_switch_x(_s)
 	end
 end
 
-function Plychara.hold__x(_s, p_id)
+function Plychara.hld__x(_s, p_id)
 
-	p_id = p_id or _s._hold[#_s._hold]
+	p_id = p_id or _s._hld[#_s._hld]
 
-	ar.del_by_val(p_id, _s._hold)
+	ar.del_by_val(p_id, _s._hld)
 	if ha.eq(id.cls(p_id), "block") then
 		ar.del_by_val(p_id, _s._clsn.block)
 	end

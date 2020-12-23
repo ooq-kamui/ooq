@@ -56,7 +56,7 @@ require("assets/etc/sound/bgm/bgm_bgm")
 require("assets/etc/sound/se/se")
 
 require("assets/obj/obj/sp")
-require("assets/obj/obj/holdable")
+require("assets/obj/obj/hldabl")
 require("assets/obj/obj/obj")
 require("assets/obj/obj/o_anim")
 

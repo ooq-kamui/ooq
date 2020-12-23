@@ -32,7 +32,7 @@ function Fire.upd(_s, dt)
 	_s:act_interval(dt)
 	
 	local pos = _s:pos()
-	local tile = map.tile(pos)
+	local tile = _s:tile() -- map.tile(pos)
 	
 	if not tile then log._("fire upd() tile", tile) end
 	

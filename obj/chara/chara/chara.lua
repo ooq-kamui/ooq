@@ -18,11 +18,11 @@ Chara = {
 		"shiki",
 		"kageri",
 	},
-	flyable = {
+	flyabl = {
 		"lily",
 		"sofia",
 	},
-	presentable = {"flower","dish","fruit","dairy","egg","veget",}, -- cls
+	presentabl = {"flower","dish","fruit","dairy","egg","veget",}, -- cls
 }
 Chara.cls = "chara"
 Chara.fac = "/objFac#chara"
@@ -42,7 +42,7 @@ function Chara.cre(pos, name)
 	prm.cls  = ha._("chara")
 	prm.name = ha._(name)
 	prm.anim = ha._(name)
-	prm.is_fly = Chara.is_flyable(name)
+	prm.is_fly = Chara.is_flyabl(name)
 	
 	-- game_id, map_id, parent_id
 	local map_id, game_id = Game.map_id()
@@ -61,8 +61,8 @@ function Chara.cre(pos, name)
 	return t_id
 end
 
-function Chara.is_flyable(chara)
-	local ret = ar.in_(chara, Chara.flyable)
+function Chara.is_flyabl(chara)
+	local ret = ar.in_(chara, Chara.flyabl)
 	return ret
 end
 
@@ -88,7 +88,7 @@ function Chara.upd(_s, dt)
 	
 	_s:act_interval(dt)
 	
-	_s:upd_pos_movable(dt)
+	_s:upd_pos_movabl(dt)
 end
 
 function Chara.act_interval(_s, dt)
@@ -117,7 +117,7 @@ function Chara.on_msg(_s, msg_id, prm, sender)
 	if ha.eq(msg_id, "present") then
 		local t_id = prm.id
 		local t_cls  = id.cls(t_id)
-		if not ar.inHa(t_cls, Chara.presentable) then return end
+		if not ar.inHa(t_cls, Chara.presentabl) then return end
 		
 		id.del(t_id)
 		Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
@@ -129,7 +129,7 @@ function Chara.kzn__pls(_s, point)
 
 	point = point or Mstr.kzn.point
 
-	if not Ply_data_kzn[_s:name()] then
+	if not Ply_data._kzn[_s:name()] then
 		Ply_data._kzn[_s:name()] = 0
 	end
 

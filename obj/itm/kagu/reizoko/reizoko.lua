@@ -23,7 +23,7 @@ end
 function Reizoko.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Reizoko)
 end
 
@@ -44,7 +44,7 @@ end
 function Reizoko.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 
 	if     ha.eq(msg_id, "opn") then
 		_s:opn()
@@ -64,7 +64,7 @@ end
 
 function Reizoko.final(_s)
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end
 
 -- method
@@ -79,7 +79,7 @@ function Reizoko.into_reizoko(_s, food_id)
 	
 	if not ar.inHa(cls, Food.cls) then return end
 	
-	Ply_data.reizoko__add({cls = cls, name = id.name(food_id)})
+	Ply_data.reizoko.__add({cls = cls, name = id.name(food_id)})
 	
 	pst.script(food_id, "into_reizoko")
 end

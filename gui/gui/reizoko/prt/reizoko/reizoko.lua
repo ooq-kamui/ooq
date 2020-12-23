@@ -86,11 +86,14 @@ end
 -- food
 
 function p.Reizoko.food_cre(_s)
-	log._("p.reizoko food_cre", #_s._itm)
-
+	-- log.pp("p.reizoko.food_cre", _s._itm)
+	
 	local food, dsp_idx, t_xy
 
 	local txtrs = ar.keyHa_srt(_s._itm)
+	-- log.pp("p.reizoko.food_cre", txtrs)
+	-- log.pp("p.reizoko.food_cre", ha.ha)
+	
 	local itm_idx = 1
 	for i, txtr in pairs(txtrs) do
 

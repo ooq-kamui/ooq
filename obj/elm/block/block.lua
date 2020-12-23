@@ -41,7 +41,7 @@ end
 function Block.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Block)
 end
 
@@ -61,7 +61,7 @@ end
 
 function Block.trnsf_tile(_s)
 	
-	if _s._hold_id then return end
+	if _s._hld_id then return end
 
 	local foot_o_tile = _s:foot_o_tile()
 	if not (
@@ -77,14 +77,14 @@ end
 function Block.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 end
 
 function Block.final(_s)
 	-- u.log("Block.final()")
 	
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 
 	if _s._is_trnsf_tile then
 		_s:tile__(_s._tile)

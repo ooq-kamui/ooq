@@ -135,11 +135,6 @@ function ar.clr(p_ar)
 	end
 end
 
-function ar.srt(p_ar, cmp)
-	table.sort(p_ar, cmp)
-	return p_ar
-end
-
 function ar.key(p_ar)
 	local keys = {}
 	for key, val in pairs(p_ar) do
@@ -148,14 +143,22 @@ function ar.key(p_ar)
 	return keys
 end
 
+function ar.srt(p_ar, cmp)
+	table.sort(p_ar, cmp)
+	return p_ar
+end
+
 function ar.keyHa_srt(p_ar)
 
 	local keys = ar.key(p_ar)
+	-- log.pp("keyHa_srt", keys)
 	
 	local cmp = function (val1, val2)
+		-- log._("keyHa_srt cmp", val1, val2)
 		return ha.de(val1) < ha.de(val2)
 	end
 	ar.srt(keys, cmp)
+	-- log.pp("keyHa_srt", keys)
 	return keys
 end
 

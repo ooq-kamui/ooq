@@ -74,7 +74,7 @@ end
 
 function p.Shop_tree.decide(_s)
 	
-	if not _s:is_cursor_itm_buyable() then
+	if not _s:is_cursor_itm_buyabl() then
 		Se.pst_ply("back")
 		_s:cursor_itm_iyaiya()
 	else
@@ -82,7 +82,7 @@ function p.Shop_tree.decide(_s)
 	end
 end
 
-function p.Shop_tree.is_cursor_itm_buyable(_s)
+function p.Shop_tree.is_cursor_itm_buyabl(_s)
 	local ret = _.f
 	if Ply_data.gold() >= _s:cursor_itm_price() then
 		ret = _.t

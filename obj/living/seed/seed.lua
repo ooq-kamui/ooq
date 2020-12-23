@@ -23,7 +23,7 @@ end
 function Seed.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Seed)
 end
 
@@ -71,10 +71,10 @@ end
 
 function Seed.on_msg(_s, msg_id, prm, sender)
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 end
 
 function Seed.final(_s)
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end

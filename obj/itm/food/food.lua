@@ -2,7 +2,7 @@ log.script("food.lua")
 
 Food = {
 	cls = {"dairy","dish","egg","fish","fruit","meat","veget",},
-	cookable = {"dairy","dish","egg","fish","fruit","meat","veget",},
+	cookabl = {"dairy","dish","egg","fish","fruit","meat","veget",},
 }
 
 function Food.cre_by_cls(pos, prm)
@@ -21,7 +21,7 @@ end
 function Food.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 
 	if     ha.eq(msg_id, "on_kitchen") then -- old
 		_s:kitchen_o(prm.id)
@@ -57,7 +57,7 @@ end
 function Food.final(_s)
 
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 
 	if     _s._kitchen_id then
 		pst.script(_s._kitchen_id, "kitchen_x", {id = _s._id})

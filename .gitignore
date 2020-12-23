@@ -5,9 +5,9 @@
 .tags
 *.org
 
-# *.gui_script
 # *.lua
 # *.script
+# *.gui_script
 # 
 # *.tilemap
 # *.tilesource
@@ -17,6 +17,7 @@
 # *.collectionfactory
 # *.collection
 # *.factory
+# *.collisionobject
 # *.go
 # 
 # *.gui
@@ -26,7 +27,6 @@
 # *.camera
 
 
-*.collisionobject
 *.font
 *.gif
 *.icns

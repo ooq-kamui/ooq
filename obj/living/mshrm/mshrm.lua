@@ -22,7 +22,7 @@ end
 function Mshrm.init(_s)
 
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Mshrm)
 end
 
@@ -47,7 +47,7 @@ end
 
 function Mshrm.on_msg(_s, msg_id, prm, sender)
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 end
 
 function Mshrm.final(_s)

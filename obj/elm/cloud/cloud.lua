@@ -26,7 +26,7 @@ function Cloud.init(_s)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Cloud)
 end
 
@@ -38,6 +38,7 @@ function Cloud.upd(_s, dt)
 
 	local vec = _s:vec_mv_living(dt)
 	log._("cloud.upd", vec)
+
 	_s:pos__add(vec)
 end
 
@@ -61,14 +62,16 @@ function Cloud.act_interval(_s, dt)
 
 	-- _s._speed = rnd.int(10, 50)
 	_s:moving_prp__rnd()
+	-- log._("cloud _dir_h", _s._dir_h)
+
 end
 
 function Cloud.on_msg(_s, msg_id, prm, sender)
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 end
 
 function Cloud.final(_s)
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end

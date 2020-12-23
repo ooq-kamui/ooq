@@ -37,13 +37,13 @@ function ha.add_by_key_num(key, num)
 	end
 end
 
-function ha.add_by_Cls(Cls)
+function ha.add_by_Cls(p_Cls)
 	
-	ha.add(Cls.cls)
+	ha.add(p_Cls.cls)
 	
-	if not Cls.idx_max then return end
+	if not p_Cls.name_idx_max then return end
 	
-	ha.add_by_key_num(Cls.cls, Cls.name_idx_max)
+	ha.add_by_key_num(p_Cls.cls, p_Cls.name_idx_max)
 end
 
 -- 

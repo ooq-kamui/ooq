@@ -23,7 +23,7 @@ end
 function Kagu.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Kagu)
 end
 
@@ -43,10 +43,10 @@ end
 
 function Kagu.on_msg(_s, msg_id, prm, sender)
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 end
 
 function Kagu.final(_s)
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end

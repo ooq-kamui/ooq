@@ -54,7 +54,7 @@ function Animal.init(_s)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Animal)
 end
 
@@ -62,7 +62,7 @@ function Animal.upd(_s, dt)
 	
 	_s:act_interval(dt)
 
-	_s:upd_pos_movable(dt)
+	_s:upd_pos_movabl(dt)
 end
 
 function Animal.act_interval(_s, dt)
@@ -86,12 +86,14 @@ function Animal.act_interval(_s, dt)
 	elseif dice100.chk(3) then
 		_s:trnsf(Meat)
 	end
+
+	_s:moving_prp__rnd()
 end
 
 function Animal.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 	
 	if ha.eq(msg_id, "present") then
 		_s:present(prm.id)
@@ -114,16 +116,19 @@ end
 function Animal.is_favo(_s, o_cls, o_name)
 
 	local ret = _.f
-	-- local favo = Mstr.animal.favo[_s:name()]
-	local favo = Mstr.animal[_s:name()].favo
-	if not favo[o_cls] then return ret end
-	ret = ar.in_(o_name, favo[o_cls])
+
+	local favo = Mstr.animal[ha.de(_s:name())].favo
+
+	if not favo[ha.de(o_cls)] then return ret end
+
+	ret = ar.inHa(o_name, favo[o_cls])
+
 	return ret
 end
 
 function Animal.final(_s)
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end
 
 -- method

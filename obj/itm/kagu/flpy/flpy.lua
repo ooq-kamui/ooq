@@ -22,7 +22,7 @@ end
 function Flpy.init(_s)
 	
 	extend.init(_s, Sp)
-	extend.init(_s, Holdable)
+	extend.init(_s, Hldabl)
 	extend._(_s, Flpy)
 end
 
@@ -43,7 +43,7 @@ end
 function Flpy.on_msg(_s, msg_id, prm, sender)
 	
 	Sp.on_msg(_s, msg_id, prm, sender)
-	Holdable.on_msg(_s, msg_id, prm, sender)
+	Hldabl.on_msg(_s, msg_id, prm, sender)
 	
 	if     ar.inHa(msg_id, {"opn"}) then
 		_s:opn()
@@ -53,7 +53,7 @@ end
 function Flpy.final(_s)
 	
 	Sp.final(_s)
-	Holdable.final(_s)
+	Hldabl.final(_s)
 end
 
 -- -- method

@@ -63,7 +63,7 @@ end
 
 function p.Shop_kagu.decide(_s)
 	
-	if not _s:is_item_buyable() then
+	if not _s:is_item_buyabl() then
 		Se.pst_ply("back")
 		_s:cursor_itm_iyaiya()
 	else
@@ -71,7 +71,7 @@ function p.Shop_kagu.decide(_s)
 	end
 end
 
-function p.Shop_kagu.is_item_buyable(_s)
+function p.Shop_kagu.is_item_buyabl(_s)
 	local ret = _.f
 	if Ply_data.gold() >= _s:cursor_itm_price() then
 		ret = _.t

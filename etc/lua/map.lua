@@ -18,7 +18,8 @@ end
 
 function map.tile(pos, p_id, p_tilemap, layer)
 
-	layer = layer or p_tilemap
+	p_tilemap = p_tilemap or Map.tilemap[1]
+	layer     = layer or p_tilemap
 
 	local tilepos = map.pos_2_tilepos(pos)
 
@@ -38,6 +39,8 @@ function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
 	if not is_inside then return end
 	
 	local t_url = url._(p_id, p_tilemap)
+	-- log._("map.tile_by_tilepos", t_url)
+
 	local tile = tilemap.get_tile(t_url, layer, tilepos.x, tilepos.y)
 	return tile
 end
