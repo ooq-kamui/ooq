@@ -18,7 +18,7 @@ end
 
 function map.tile(pos, p_id, p_tilemap, layer)
 
-	p_tilemap = p_tilemap or Map.tilemap[1]
+	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer     = layer or p_tilemap
 
 	local tilepos = map.pos_2_tilepos(pos)
@@ -32,6 +32,7 @@ end
 
 function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
 
+	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer = layer or p_tilemap
 
 	-- log._("map.tile_by_tilepos")

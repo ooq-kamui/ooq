@@ -5,6 +5,8 @@
 .tags
 *.org
 
+img/
+
 # *.lua
 # *.script
 # *.gui_script
@@ -28,31 +30,33 @@
 
 
 *.font
-*.gif
+
 *.icns
-*.info
+
+*.gif
 *.jpg
-*.mp3
-*.ogg
-*.pmf
 *.png
-*.sh
+*.pmf
+*.xcf
 *.svg
 *.tiff
-*.tpl
 *.ttf
+
+*.mp3
+*.ogg
+
+*.sh
+*.tpl
 *.txt
-*.xcf
+*.info
 
 typescript
 
 # originalImportedContentDocumentInfo ( .pxd )
-obj/chara/chara/img/
-obj/itm/blbrd/img/
-obj/itm/kagu/bed/img/
-obj/itm/kagu/door/img/
-
-
+#obj/chara/chara/img/
+#obj/itm/blbrd/img/
+#obj/itm/kagu/bed/img/
+#obj/itm/kagu/door/img/
 
 
 

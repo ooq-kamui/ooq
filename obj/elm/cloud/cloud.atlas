@@ -1,7 +1,8 @@
 animations {
   id: "cloud001"
   images {
-    image: "/assets/obj/elm/cloud/img/org001.png"
+    image: "/assets/obj/elm/cloud/img/cloud.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
   fps: 0
