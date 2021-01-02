@@ -12,8 +12,6 @@ go.property("_z", 0.2)
 --]]
 go.property("_tile", 0)
 
--- go.property("_is_hld", false)
-
 function init(_s)
 	Block.init(_s)
 end

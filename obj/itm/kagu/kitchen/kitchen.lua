@@ -1,10 +1,13 @@
 log.script("kitchen.lua")
 
 Kitchen = {
+
 	act_interval_time = 10,
 	name_idx_max = 1,
 	z = 0.1,
 	
+	weight = 2,
+
 	timer = 5.4,
 	on_max = 2,
 }

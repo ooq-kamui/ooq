@@ -4,6 +4,8 @@ Animal = {
 	act_interval_time = 10,
 	speed = 50,
 
+	weight = 2,
+
 	-- animal all
 	animal = {
 		"cat" , "pig"   , "dog"  , "fox"   , "sheep" , "duck",

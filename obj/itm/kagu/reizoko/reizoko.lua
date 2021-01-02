@@ -1,9 +1,12 @@
 log.script("reizoko.lua")
 
 Reizoko = {
+
 	act_interval_time = 20,
 	name_idx_max = 1,
 	z = 0.1,
+
+	weight = 2,
 }
 Reizoko.cls = "reizoko"
 Reizoko.fac = "kaguFac"

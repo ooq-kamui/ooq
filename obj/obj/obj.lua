@@ -13,8 +13,8 @@ function Obj.fall.tst()
 		Seed,
 		Kagu,
 		Plant,
-		Bush,
-		Mshrm,
+		Bush, Bush,
+		Mshrm, Mshrm, Mshrm, Mshrm, Mshrm, Mshrm,
 		Fluff, Fluff,
 		Flower, Flower,
 	}

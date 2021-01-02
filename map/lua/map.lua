@@ -231,7 +231,7 @@ function Map.del(_s)
 
 	go.delete(_.t)
 
-	Map.cnt__clr()
+	Map.obj__clr()
 end
 
 function Map.save_del(_s)
@@ -324,8 +324,8 @@ end
 
 -- static
 
-function Map.cnt__clr()
-	for clsHa, ids in pairs(Map.cnt) do
+function Map.obj__clr()
+	for clsHa, ids in pairs(Map._obj._) do
 		ar.clr(ids)
 	end
 end

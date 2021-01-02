@@ -1,9 +1,12 @@
 log.script("shelf.lua")
 
 Shelf = {
+
 	act_interval_time = 10,
 	name_idx_max = 1,
 	z = 0.1,
+
+	weight = 2,
 }
 Shelf.cls = "shelf"
 Shelf.fac = "kaguFac"

@@ -12,9 +12,9 @@ Cls.add(Bush)
 
 -- static
 
-function Bush.cre(pos)
+function Bush.cre(pos, prm)
 	local Cls = Bush
-	local id = Sp.cre(Cls, pos)
+	local id = Sp.cre(Cls, pos, prm)
 	return id
 end
 

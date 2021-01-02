@@ -10,6 +10,16 @@ function ha._(val)
 	return hash(val)
 end
 
+function ha._2_ha(p_str)
+
+	local t_type = type(p_str)
+	if t_type == "userdata" then return p_str end
+
+	local strHa = ha._(p_str)
+
+	return strHa
+end
+
 function ha.de(keyHa)
 	local val = ha.ha[keyHa]
 	if not val then --[[ log._("ha.de() nil", keyHa) --]] end

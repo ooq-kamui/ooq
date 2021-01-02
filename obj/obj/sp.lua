@@ -63,7 +63,7 @@ function Sp.init(_s)
 
 	_s:parent__map(_s._parent)
 
-	_s:map_cnt_add()
+	_s:map_obj__add()
 
 	local anim = _s._anim or _s._name
 	_s:anim__(anim)
@@ -113,7 +113,7 @@ end
 
 function Sp.final(_s)
 	
-	_s:map_cnt_del()
+	_s:map_obj__del()
 	
 	if _s:cls_is_mapobj() then
 		_s:mapobj_del()
@@ -576,17 +576,23 @@ function Sp.to_cloud(_s)
 	_s:pos__(pos)
 end
 
-function Sp.map_cnt_add(_s)
+function Sp.map_obj__add(_s)
 	
 	if ha.is_emp(_s._cls) then return end
 	
-	if not Map.cnt[_s._cls] then Map.cnt[_s._cls] = {} end
+	local clsDe = ha.de(_s._cls)
+
+	if not Map.st.obj(clsDe) then Map.st.obj__init(clsDe) end
 	
-	ar.add_unq(_s._id, Map.cnt[_s._cls])
+	ar.add_unq(_s._id, Map.st.obj(clsDe))
 end
 
-function Sp.map_cnt_del(_s)
-	ar.del_by_val(_s._id, Map.cnt[_s._cls])
+function Sp.map_cnt_del(_s) -- old
+	_s:map_obj__del()
+end
+
+function Sp.map_obj__del(_s)
+	ar.del_by_val(_s._id, Map.st.obj_by_ha(_s._cls))
 end
 
 function Sp.mapobj_del(_s)

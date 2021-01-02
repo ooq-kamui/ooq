@@ -44,12 +44,19 @@ function Fluff.act_interval(_s, dt)
 
 	if not _s:is_loop__act_interval__(dt) then return end
 
+	-- log._("fluff act_intrvl")
+	
 	-- death
 	if _s:per_trnsf(1, Humus) then return end
 
 	-- trnsf
 	if _s:per_trnsf(5, Seed) then return end
 
+	-- obj cre
+	dice100.throw()
+	if     dice100.chk(10) then
+		Seed.cre()
+	end
 	
 	_s:moving_prp__rnd()
 end

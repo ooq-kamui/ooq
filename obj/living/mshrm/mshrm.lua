@@ -11,9 +11,9 @@ Cls.add(Mshrm)
 
 -- static
 
-function Mshrm.cre(pos)
+function Mshrm.cre(pos, prm)
 	local Cls = Mshrm
-	local id = Sp.cre(Cls, pos)
+	local id = Sp.cre(Cls, pos, prm)
 	return id
 end
 
@@ -23,7 +23,7 @@ function Mshrm.init(_s)
 
 	extend.init(_s, Sp)
 	extend.init(_s, Hldabl)
-	extend._(_s, Mshrm)
+	extend._(   _s, Mshrm)
 end
 
 function Mshrm.upd(_s, dt)
@@ -52,4 +52,5 @@ end
 
 function Mshrm.final(_s)
 	Sp.final(_s)
+	Hldabl.final(_s)
 end

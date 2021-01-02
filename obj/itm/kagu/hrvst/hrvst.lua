@@ -1,9 +1,12 @@
 log.script("hrvst.lua")
 
 Hrvst = {
+
 	act_interval_time = 10,
 	name_idx_max = 1,
 	z = 0.1,
+
+	weight = 2,
 }
 Hrvst.cls = "hrvst"
 Hrvst.fac = "kaguFac"
@@ -70,7 +73,7 @@ function Hrvst.box_in(_s, prm)
 	if ar.inHa(t_cls, {"cloud"}) then return end
 	
 	if ar.inHa(t_cls, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
-	and #Map.cnt[t_cls] <= 1 then
+	and Map.st.obj_cnt(t_cls) <= 1 then
 		Msg.s("さいごの１つだよ")
 		return
 	end

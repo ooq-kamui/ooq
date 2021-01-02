@@ -3,7 +3,9 @@ log.script("mstr animal.lua")
 Mstr.animal = {}
 
 Mstr.animal["cat"] = {
+
 	gold = 1000,
+
 	favo = {
 		dish = {
 			"dish001",

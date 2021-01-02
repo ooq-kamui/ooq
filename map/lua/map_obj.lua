@@ -13,6 +13,44 @@ Map._obj.grp = {
 	"kagu",
 	"elm",
 }
+Map._obj._ = {} -- < Map.cnt
+
+
+-- static
+
+Map.st = {}
+
+function Map.st.obj__init(p_cls)
+
+	local clsHa = ha._(p_cls)
+	Map._obj._[clsHa] = {}
+end
+
+function Map.st.obj(p_cls)
+
+	local clsHa = ha._(p_cls)
+
+	return Map.st.obj_by_ha(clsHa)
+end
+
+function Map.st.obj_by_ha(p_clsHa)
+
+	if not Map._obj._[p_clsHa] then return end
+
+	return Map._obj._[p_clsHa]
+end
+
+function Map.st.obj_cnt(p_cls)
+
+	local obj = Map.st.obj(p_cls)
+
+	if not obj then return end
+
+	local cnt = #obj
+	return cnt
+end
+
+-- method
 
 function Map.obj_2_save_data(_s)
 	local obj = _s:obj()
@@ -43,8 +81,8 @@ end
 
 function Map.obj_living(_s)
 	local cls = {
-		-- "animal", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
-		"animal", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
+		-- "animal", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
+		"animal", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
 	}
 	return _s:obj_grp(cls)
 end
@@ -64,24 +102,32 @@ end
 
 function Map.obj_cls(_s, clsHa)
 	-- log._("Ply_data.data_obj_cls", clsHa)
+
 	local data_cls = {}
 
-	if not Map.cnt[clsHa] then return data_cls end
+	local t_obj = Map.st.obj_by_ha(clsHa)
+
+	if not t_obj then return data_cls end
 
 	local prm
-	-- log._("data_obj_cls", clsHa)
-	for j, t_id in pairs(Map.cnt[clsHa]) do
+
+	for j, t_id in pairs(t_obj) do
 		-- log._("Map.obj_cls()", clsHa)
+
 		prm = {name = ha.de(id.name(t_id)), pos = id.wpos(t_id)}
-		if ar.inHa(clsHa, {"seed"}) then
+
+		if     ar.inHa(clsHa, {"seed"}) then
 			prm.grw_cls   = id.prp_de(t_id, "_grw_cls"  )
 			prm.grw_name  = id.prp_de(t_id, "_grw_name" )
 			prm.bear_cls  = id.prp_de(t_id, "_bear_cls" )
 			prm.bear_name = id.prp_de(t_id, "_bear_name")
-		end
-		if ar.inHa(clsHa, {"tree"}) then
+
+		elseif ar.inHa(clsHa, {"tree"}) then
 			prm.bear_cls  = id.prp_de(t_id, "_bear_cls" )
 			prm.bear_name = id.prp_de(t_id, "_bear_name")
+
+		elseif ar.inHa(clsHa, {"mshrm"}) then
+			-- log.pp("Map.obj_cls mshrm", prm)
 		end
 		ar.add(data_cls, prm)
 	end
@@ -138,10 +184,10 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 
 	local tCls, prm
 	for cls, ar in pairs(data[grp]) do
-		-- log._("cls", cls)
-		-- pprint(tb)
-		-- log.pp(cls, tb)
+		log._("cls", cls, "grp", grp)
 		for idx, tb in pairs(ar) do
+			log._("name", tb["name"])
+			
 			tCls = Cls._(cls)
 			prm = {name = ha._(tb["name"])}
 			if     cls == "seed" then

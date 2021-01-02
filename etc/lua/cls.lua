@@ -1,4 +1,4 @@
-log.script("cls.script")
+log.script("cls.lua")
 
 Cls = {
 	Cls = {},
@@ -15,15 +15,22 @@ function Cls.add(p_Cls, ha_add_by)
 	end
 end
 
-function Cls._(cls)
+function Cls._(p_cls)
 
-	local t_type = type(cls)
-	-- if t_type ~= "userdata" then log._("Cls _ type", t_type) end
-	
-	local clsHa
-	if     t_type == "string"   then clsHa = ha._(cls)
-	elseif t_type == "userdata" then clsHa = cls
-	else                             clsHa = ha._(cls)
-	end
+	local clsHa = ha._2_ha(p_cls)
+
 	return Cls.Cls[clsHa]
+end
+
+function Cls.prp(p_clsHa, p_prp) -- old
+
+	local t_Cls = Cls._(p_clsHa)
+	
+	if not t_Cls then return end
+	
+	local ret = t_Cls[p_prp]
+
+	if not ret then return end
+
+	return ret
 end

@@ -233,9 +233,8 @@ function Inp.on_input_player(i)
 		end
 		pst.script(p_id, "itm_use", {dir_h = dir_h, hchain = hchain, dir_v = dir_v, vchain = vchain, l = l})
 
-	elseif i:p("x") then -- inp hld on / off
-		pst.script(p_id, "hld_switch")
-		-- Msg.s("msg dsp tst") -- tst
+	elseif i:p("x") then
+		pst.script(p_id, "hld__ox")
 
 	elseif i:p("s") then
 		pst.script(p_id, "menu_opn")

@@ -45,7 +45,7 @@ end
 
 function Hldabl.hld_pos(_s)
 	
-	local x = u.x_by_all_w(_s._hld_idx, Plychara.hld_max, Map.sqh)
+	local x = u.x_by_all_w(_s._hld_idx, Plychara.hld_idx_max, Map.sqh)
 	local y
 	if ar.inHa(_s:cls(), {"kagu"}) then
 		y = _s:foot_dst_i()
@@ -66,7 +66,7 @@ end
 function Hldabl.final(_s)
 
 	if _s._hld_id then
-		pst.script(_s._hld_id, "hld__x", {id = _s._id})
+		pst.script(_s._hld_id, "hld__del", {id = _s._id})
 		_s._hld_id = nil
 	end
 end

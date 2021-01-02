@@ -23,16 +23,11 @@ function p.Door.init(_s, parent_gui)
 	
 	_s._itm_pitch = 100
 	_s._itm_scrl_dir = "h"
-	_s._dsp_idx_max = #Map.cnt[ha._("door")]
 
-	--[[
-	_s._itm     = Map.cnt[ha._("door")] -- {}
-	_s:itm_len__()
-	_s:dsp1_itm_idx_max__()
-	--]]
-	_s:itm__by_ar(Map.cnt[ha._("door")])
+	_s._dsp_idx_max = Map.st.obj_cnt("door")
+	_s:itm__by_ar(Map.st.obj("door"))
 	
-	_s._itm_txt = Map.cnt[ha._("door")] -- {}
+	_s._itm_txt = Map.st.obj("door") -- {}
 	
 	-- nd itm
 	local node

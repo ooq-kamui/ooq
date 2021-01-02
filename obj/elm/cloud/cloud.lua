@@ -37,7 +37,7 @@ function Cloud.upd(_s, dt)
 	_s:act_interval(dt)
 
 	local vec = _s:vec_mv_living(dt)
-	log._("cloud.upd", vec)
+	-- log._("cloud.upd", vec)
 
 	_s:pos__add(vec)
 end
@@ -48,7 +48,8 @@ function Cloud.act_interval(_s, dt)
 	if not _s:is_loop__act_interval__(dt) then return end
 	
 	dice100.throw()
-	if not Map.chara_is_appear_all() and dice100.chk(7) then
+	-- if not Map.chara_is_appear_all() and dice100.chk(7) then
+	if not Map.chara_is_appear_all() and dice100.chk(85) then
 		Chara.cre()
 	elseif dice100.chk(4) then
 		Animal.cre()

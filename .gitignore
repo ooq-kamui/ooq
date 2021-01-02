@@ -37,6 +37,7 @@ img/
 *.jpg
 *.png
 *.pmf
+*.pxd
 *.xcf
 *.svg
 *.tiff
