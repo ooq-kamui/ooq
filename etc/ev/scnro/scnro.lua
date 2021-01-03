@@ -15,15 +15,6 @@ Scnro.tst = {
 		D._("わたしが あんない していくよ!")
 		D.o("よろしくね!!")
 	end,
-	--[[
-	function ()
-		Wa._(3)
-	end,
-	function ()
-		D.c("sanae")
-		D.o("わたげ は\nいってい かくりつ で\nたね になるよ")
-	end,
-	--]]
 }
 
 Scnro.chara_fall = {

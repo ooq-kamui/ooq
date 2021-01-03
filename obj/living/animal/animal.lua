@@ -111,19 +111,27 @@ function Animal.present(_s, o_id)
 	
 	id.del(o_id)
 	Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
+
 	-- Zu_animal_gui.animal__o(_s._name)
 	Ply_data._zu.animal[_s:name()] = _.t
 end
 
-function Animal.is_favo(_s, o_cls, o_name)
-
+function Animal.is_favo(_s, o_clsHa, o_nameHa)
+	-- log.pp("animal is_favo", Mstr.animal)
+	-- log._("animal is_favo", o_clsHa, o_nameHa)
+	
 	local ret = _.f
+	
+	local s_name = ha.de(_s:name())
+	-- log._("animal is_favo", s_name)
+	local favo = Mstr.animal[s_name].favo
 
-	local favo = Mstr.animal[ha.de(_s:name())].favo
+	local o_cls = ha.de(o_clsHa)
+	-- log._("animal is_favo", o_cls)
+	if not favo[o_cls] then return ret end
 
-	if not favo[ha.de(o_cls)] then return ret end
-
-	ret = ar.inHa(o_name, favo[o_cls])
+	local o_name = ha.de(o_nameHa)
+	ret = ar.in_(o_name, favo[o_cls])
 
 	return ret
 end

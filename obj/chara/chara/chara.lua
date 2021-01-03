@@ -19,6 +19,7 @@ Chara = {
 		"kageri",
 	},
 	flyabl = {
+		"katia",
 		"lily",
 		"sofia",
 	},
@@ -115,6 +116,7 @@ function Chara.on_msg(_s, msg_id, prm, sender)
 	Sp.on_msg(_s, msg_id, prm, sender)
 	
 	if ha.eq(msg_id, "present") then
+		
 		local t_id = prm.id
 		local t_cls  = id.cls(t_id)
 		if not ar.inHa(t_cls, Chara.presentabl) then return end

@@ -2,7 +2,7 @@ log.script("dish.lua")
 
 Dish = {
 	act_interval_time = 10,
-	name_idx_max = 188, -- 7
+	name_idx_max = 188, -- 10,
 }
 Dish.cls = "dish"
 Dish.fac = Dish.cls.."Fac"

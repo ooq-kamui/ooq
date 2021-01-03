@@ -1,7 +1,6 @@
 log.script("obj.lua")
 
 Obj = {}
--- Obj.fac = "objFac#fac_"
 Obj.fac = "objFac#"
 Obj.fall = {}
 
@@ -14,9 +13,10 @@ function Obj.fall.tst()
 		Kagu,
 		Plant,
 		Bush, Bush,
-		Mshrm, Mshrm, Mshrm, Mshrm, Mshrm, Mshrm,
+		Mshrm, Mshrm, Mshrm,
 		Fluff, Fluff,
 		Flower, Flower,
+		Dish, Dish, Dish, Dish, Dish, Dish,
 	}
 	Obj.fall._(Cls)
 end

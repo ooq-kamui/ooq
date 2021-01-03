@@ -101,7 +101,6 @@ require("assets/obj/itm/wood/leaf/leaf")
 require("assets/obj/itm/wood/dryleaf/dryleaf")
 
 require("assets/obj/chara/chara/chara")
-require("assets/obj/chara/chara/chara_favo")
 require("assets/obj/chara/plychara/plychara")
 require("assets/obj/chara/emtn/emtn")
 require("assets/obj/chara/fuki/fuki/fuki")
@@ -205,6 +204,7 @@ require("assets/gui/gui/reizoko/prt/reizoko/reizoko")
 -- mstr
 require("assets/sys/mstr/mstr")
 require("assets/sys/mstr/animal")
+require("assets/sys/mstr/chara")
 require("assets/sys/mstr/kzn")
 
 -- require("assets/sys/mstr/price/price")

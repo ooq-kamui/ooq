@@ -1,5 +1,5 @@
 images {
-  image: "/assets/gui/txtr/atlas/logo/img/title_logo.twilight.png"
+  image: "/assets/gui/txtr/atlas/logo/img/title_logo.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

@@ -48,8 +48,7 @@ function Cloud.act_interval(_s, dt)
 	if not _s:is_loop__act_interval__(dt) then return end
 	
 	dice100.throw()
-	-- if not Map.chara_is_appear_all() and dice100.chk(7) then
-	if not Map.chara_is_appear_all() and dice100.chk(85) then
+	if not Map.chara_is_appear_all() and dice100.chk(30) then
 		Chara.cre()
 	elseif dice100.chk(4) then
 		Animal.cre()
@@ -61,10 +60,8 @@ function Cloud.act_interval(_s, dt)
 		Fish.cre()
 	end
 
-	-- _s._speed = rnd.int(10, 50)
 	_s:moving_prp__rnd()
 	-- log._("cloud _dir_h", _s._dir_h)
-
 end
 
 function Cloud.on_msg(_s, msg_id, prm, sender)

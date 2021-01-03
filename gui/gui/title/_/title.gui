@@ -543,8 +543,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 555.0
-    y: 198.0
+    x: 522.0
+    y: 189.0
     z: 0.0
     w: 1.0
   }
@@ -556,7 +556,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "title/title_logo.twilight"
+  texture: "title/title_logo"
   id: "logo/img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -643,9 +643,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.9019608
-    y: 0.7019608
-    z: 0.9019608
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX

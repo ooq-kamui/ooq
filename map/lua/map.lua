@@ -17,7 +17,7 @@ Map = {
 		-- {name = "", id = hash}
 	},
 	
-	cnt = {}, -- hash("flower") = {}, -- id ar
+	-- cnt = {}, -- hash("flower") = {}, -- id ar -- old ?
 
 	dstrct_max = n.vec(1, 1),
 	
@@ -28,6 +28,7 @@ Map.layer        = Map.tilemap
 Map.layer_dflt   = Map.layer[1]
 
 Map.sqh   = Map.sq / 2
+Map.sqq   = Map.sq / 4
 Map.verge = Map.sq * 4 -- use scroll
 
 Map.maptip = n.vec(Map.sq, Map.sq)
@@ -60,8 +61,6 @@ function Map.cre(p_clct)
 
 	local area = "grassy"
 
-	-- sky_idx = sky_idx or 0
-	
 	local clct_url = "/mapClctFac#"..area.."_fac_"..p_clct
 	local pos = n.vec()
 	local prm = {}
@@ -71,8 +70,14 @@ function Map.cre(p_clct)
 	local clct_id = clct.cre(clct_url, pos, prm)
 	local map_id  = clct_id["/ground"]
 	
+	Map.chara__clr()
+
 	-- log.pp("map cre map_id", map_id)
 	return map_id
+end
+
+function Map.chara__clr()
+	ar.clr(Map.chara)
 end
 
 --
@@ -331,7 +336,9 @@ function Map.obj__clr()
 end
 
 function Map.chara_is_appear_all()
+
 	local ret = _.f
+
 	if #Map.chara >= #Chara.chara then
 		ret = _.t
 	end

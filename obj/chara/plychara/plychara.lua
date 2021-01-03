@@ -4,7 +4,8 @@ Play_chara = {}
 
 Plychara = {
 	
-	jumping_time = 0.34,
+	jmp_h_max = Map.sq + Map.sqq/2,
+
 	act_interval_time = 5,
 	w = 20,
 	
@@ -56,7 +57,9 @@ function Plychara.init(_s)
 	_s._vmoving   = _.f
 	_s._climbdown = _.f
 	_s._climbup   = _.f
-	_s._jumping   = 0
+	_s._is_jmping = _.f
+	_s._jmp_h_t   = 0
+
 	_s._dive      = _.f
 	
 	_s._itm_selected = "wand001" -- name
@@ -97,45 +100,36 @@ function Plychara.upd(_s, dt)
 	-- vec on_chara
 	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
 	
-	-- jump start
-	if _s._jumping == Plychara.jumping_time then
-		if Tile.is_block(foot_o_tile)
-		or is_on_chara
-		or Tile.is_climb(foot_o_tile)
-		or Tile.is_elv(  foot_o_tile)
-		or _s:is_on_obj_block()
-		-- or _s:on_by_mapobj()
-		then
-			-- jump start
-			Se.pst_ply("jmp001")
-			
-			if not jump_num then
-				jump_num = 1 
-			else
-				jump_num = jump_num + 1
-			end
-		else
-			_s._jumping = 0 -- jump can not
-		end
-	end
-
 	if _s._hmoving then
 		dir.x = 1
 		if ha.eq(_s._dir_h, "l") then dir.x = - dir.x end
 	end
 	
 	-- v move
-	-- jump continue
-	if     _s._jumping > 0 and not _s:head_o_is_block() then
-		dir.y = 1
+	-- jmping
+	if     _s._is_jmping then
+
+		if     _s:head_o_is_block() then
+			_s:jmp__off()
+
+		elseif _s:is_jmp_h_t() then
+			_s:jmp__off()
+		else
+			dir.y = 1
+		end
+
 	elseif _s._vmoving then
+
 		if     _s._dir_v == "u" 
 		   and Tile.is_climb(foot_i_tile) and not _s:head_o_is_block() then
+
 			dir.y =  1
 			_s._climbup = _.t
+
 		elseif _s._dir_v == "d"
-		   and _s._jumping <= 0
+		   -- and not _s._is_jmping
 		   and (Tile.is_climb(foot_i_tile) or Tile.is_climb(foot_o_tile)) then
+
 			dir.y = -1
 			_s._climbdown = _.t
 		end
@@ -161,12 +155,12 @@ function Plychara.upd(_s, dt)
 	_s:pos__add(vec_total)
 	
 	-- dstrct__mv
-	local is_dstrct_mv = _s:ox_dstrct__mv() -- ??
+	-- local is_dstrct_mv = _s:ox_dstrct__mv() -- ??
+	_s:ox_dstrct__mv()
 	
-	-- jumping dec
-	if _s._jumping > 0 then
-		_s._jumping = _s._jumping - dt
-	end
+	-- jmping off
+	-- _s:is_jmp__off()
+
 	_s._turn_time = _s._turn_time + dt
 	
 	-- act clr
@@ -177,6 +171,58 @@ function Plychara.upd(_s, dt)
 	_s._dive      = _.f
 	
 	_s:clsn_clr()
+end
+
+-- jmp
+
+function Plychara.is_jmpabl(_s)
+
+	local ret = _.f
+
+	local foot_o_tile = _s:foot_o_tile()
+	local foot_i_tile = _s:foot_i_tile()
+	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
+	
+	if Tile.is_block(foot_o_tile)
+	or is_on_chara
+	or Tile.is_climb(foot_o_tile)
+	or Tile.is_elv(  foot_o_tile)
+	or _s:is_on_obj_block()
+	-- or _s:on_by_mapobj()
+	then
+		ret = _.t
+	end
+
+	return ret
+end
+
+function Plychara.jmp__start(_s)
+
+	if _s._is_jmping then return end
+
+	if not _s:is_jmpabl() then return end
+
+	_s._is_jmping = _.t
+	_s._jmp_h_t   = _s:pos().y + Plychara.jmp_h_max
+
+	Se.pst_ply("jmp001")
+end
+
+function Plychara.is_jmp_h_t(_s)
+
+	local ret = _.f
+
+	if _s:pos().y >= _s._jmp_h_t then
+		ret = _.t
+	end
+
+	return ret
+end
+
+function Plychara.jmp__off(_s)
+
+	_s._is_jmping = _.f
+	_s._jmp_h_t   = 0
 end
 
 function Plychara.dir__crct_hyprspc(_s, dir)
@@ -265,7 +311,7 @@ function Plychara.vec_on_clsn(_s, dt)
 	local on_pos
 	local on_id, o_cls = _s:on_clsn()
 	
-	if on_id and _s._jumping <= 0 and not _s._dive then
+	if on_id and not _s._is_jmping and not _s._dive then
 		if o_cls == ha._("chara") then
 			on_pos = id.pos(on_id) + n.vec(0, Map.sq)
 		end
@@ -382,8 +428,8 @@ end
 function Plychara.on_msg_act(_s, msg_id, prm, sender)
 	-- log._("plychara on_msg_act", msg_id)
 	
-	if     ha.eq(msg_id, "jmp") then -- jmp
-		_s._jumping = Plychara.jumping_time
+	if     ha.eq(msg_id, "jmp") then
+		_s:jmp__start()
 	
 	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
 		_s:itm_use(prm)
@@ -646,6 +692,7 @@ function Plychara.hld__ox(_s)
 	local clsn_is_psting = _s:clsn_is_psting_cls()
 
 	if is_hld and clsn_is_psting then
+		log._("clsn_is_psting")
 		_s:hld__x()
 		return
 	end
@@ -666,9 +713,6 @@ function Plychara.clsn_is_psting_cls(_s)
 	local psting_cls = {"chara", "animal", "hrvst", "kitchen", "reizoko", }
 
 	local ret = _.f
-
-
-
 
 	return ret
 end
@@ -746,4 +790,3 @@ function Plychara.to_door(_s, door_id)
 	_s:pos__(pos)
 	pst.script(Sys.cmr_id(), "pos__plychara")
 end
-

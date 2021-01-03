@@ -184,9 +184,9 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 
 	local tCls, prm
 	for cls, ar in pairs(data[grp]) do
-		log._("cls", cls, "grp", grp)
+		-- log._("cls", cls, "grp", grp)
 		for idx, tb in pairs(ar) do
-			log._("name", tb["name"])
+			-- log._("name", tb["name"])
 			
 			tCls = Cls._(cls)
 			prm = {name = ha._(tb["name"])}

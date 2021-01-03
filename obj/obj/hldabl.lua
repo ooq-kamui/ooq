@@ -23,7 +23,7 @@ function Hldabl.hld__o(_s, prm)
 	
 	_s._hld_id  = prm.hld_id
 	_s._hld_idx = prm.hld_idx
-	log._("hldabl.hld__o", _s._hld_id, _s._hld_idx)
+	-- log._("hldabl.hld__o", _s._hld_id, _s._hld_idx)
 	
 	_s:anm_cancel_pos()
 	
