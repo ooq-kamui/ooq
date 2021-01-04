@@ -78,7 +78,7 @@ function map.tile__by_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer)
 
 	local tile_bndl = p_tile == 0 and tile_prv or p_tile
 	local arund_ar  = Map.arund_tile_bndl_ar(p_tilepos, tile_bndl)
-	-- log.pp("arund_ar", arund_ar)
+	log.pp("arund_ar", arund_ar)
 	
 	if not arund_ar then return end
 	

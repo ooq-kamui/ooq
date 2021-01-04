@@ -4,7 +4,7 @@ Play_chara = {}
 
 Plychara = {
 	
-	jmp_h_max = Map.sq + Map.sqq/2,
+	jmp_h_max = Map.sq + 1,
 
 	act_interval_time = 5,
 	w = 20,

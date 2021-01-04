@@ -353,11 +353,12 @@ end
 --
 
 function Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)
-	-- log._("map.tile__crct")
+	-- log._("map.tile__crct", p_tilepos, p_tilemap, layer)
 
 	local center_tile = map.tile_by_tilepos(p_tilepos, p_id, p_tilemap, layer)
 	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(center_tile)
 	-- log._("tile__crct ", center_tile, is_tile_bndl, base_tile)
+
 	if not is_tile_bndl then return end
 
 	--
@@ -380,6 +381,7 @@ function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
 
 	-- arund_tile
 	local tilepos_arund = Map.tilepos_arund(p_tilepos)
+	-- log.pp("Map.arund_tile_bndl_ar", tilepos_arund)
 
 	local tile_bndl_arund_ar = {}
 	local t_tile, t_tilepos, is_base_tile_bndl
@@ -389,12 +391,17 @@ function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
 		t_tile = map.tile_by_tilepos(t_tilepos, Game.map_id(), "ground")
 		-- log._("map.arund_tile_bndl_ar", idx, t_tile, t_tilepos)
 
-		is_base_tile_bndl = Tile_bndl.is_base_tile_bndl(t_tile, base_tile)
-		-- log._("is_base_tile_bndl", is_base_tile_bndl)
+		if t_tile then
+			is_base_tile_bndl = Tile_bndl.is_base_tile_bndl(t_tile, base_tile)
+		else
+			is_base_tile_bndl = _.f
+		end
+		log._("is_base_tile_bndl", is_base_tile_bndl)
 
 		ar.add(tile_bndl_arund_ar, is_base_tile_bndl)
 		-- log.pp("tile_bndl_arund_ar", tile_bndl_arund_ar)
 	end
+	-- log.pp("Map.arund_tile_bndl_ar", tile_bndl_arund_ar)
 	return tile_bndl_arund_ar
 end
 

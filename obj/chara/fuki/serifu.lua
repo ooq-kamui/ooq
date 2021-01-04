@@ -2,14 +2,15 @@ log.script("serifu.lua")
 
 Serifu = {
 	_ = {
+		{len =  3, txt = "ここに"},
+		{len =  2, txt = "ここ"},
+		{len =  3, txt = "いたか"},
+
 		{len =  2, txt = "うそ"},
 
 		{len =  4, txt = "わすれた"},
 		{len =  5, txt = "わすれない"},
 		
-		-- {len =  9, txt = "うんめいを かえる"},
-		-- {len =  8, txt = "おれたりしない！"},
-
 		{len =  8, txt = "はずかしいですぅ"},
 		
 		{len =  3, txt = "まいご"},
@@ -102,9 +103,6 @@ Serifu = {
 		{len =  5, txt = "ありがとう"},
 
 		-- name
-		-- {len =  4, txt = "みらさま"},
-		-- {len =  5, txt = "まむくーと"},
-		-- {len =  6, txt = "りゅうみゃく"},
 		{len =  4, txt = "ねえさま"},
 		{len =  7, txt = "しらない ひと"},
 		-- personal pronoun
@@ -179,11 +177,10 @@ Serifu = {
 		{len =  2, txt = "ゆめ"},
 		{len =  7, txt = "むにゃ むにゃ"},
 		{len =  3, txt = "ねむい"},
+		{len =  5, txt = "りらっくす"},
 		-- like
 		{len =  4, txt = "なかよし"},
 		-- love
-		-- {len =  8, txt = "あなたは あいを \nしんじますか"},
-		-- {len = 12, txt = "あなたには \nあいするひとが いますか"},
 		{len = 11, txt = "ずーっと いっしょだよ"},
 		{len =  4, txt = "だいすき"},
 		-- hate
