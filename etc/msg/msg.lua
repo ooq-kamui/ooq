@@ -7,7 +7,6 @@ Msg = {
 -- static
 
 function Sys.msg(txt)
-
 	
 end
 

@@ -322,11 +322,11 @@ function Game.map__cre(_s, dstrct)
 	return _s._map_id
 end
 
-function Game.map_plychara__cre(_s, pos)
+function Game.map_plychara__cre(_s, pos, dir)
 
 	if not _s._map_id then return end
 
-	pst.script(_s._map_id, "plychara__cre", {pos = pos})
+	pst.script(_s._map_id, "plychara__cre", {pos = pos, dir = dir})
 end
 
 function Game.map_fairy__cre(_s)
@@ -465,19 +465,15 @@ end
 
 function Game.map_dstrct__ch_map_cre(_s)
 
-	-- _s._dstrct = _s._dstrct_nxt
-
 	_s:map__cre(_s._map_dstrct__ch_dstrct)
 	-- log._("Map._final_fnc", _s._game_id, map_id)
 
-	pst.script(_s._map_id, "cloud__cre")
-
-	local prm = {
-		pos = _s._map_dstrct__ch_plychara.pos,
-		dir = ha.eq(_s._map_dstrct__ch_plychara.dir, "l") and "l" or "r",
-	}
+	_s:map_cloud__cre()
+	local pos = _s._map_dstrct__ch_plychara.pos
+	local dir = ha.eq(_s._map_dstrct__ch_plychara.dir, "l") and "l" or "r"
 	-- log._("map_dstrct__ch_map_cre", prm.pos, prm.dir)
-	pst.script(_s._map_id, "plychara__cre", prm)
+	_s:map_plychara__cre(pos, dir)
+	_s:map_fairy__cre()
 	
 	_s:map_dstrct__ch_tmp__clr()
 	

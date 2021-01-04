@@ -246,7 +246,6 @@ function Map.save_del(_s)
 	_s:del()
 end
 
--- function Map.dstrct__ch(_s, dstrct, plychara)
 function Map.dstrct__ch(_s, plychara)
 
 	_s._final_fnc = function ()
