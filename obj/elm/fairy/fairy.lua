@@ -11,7 +11,7 @@ Cls.add(Fairy)
 -- static
 
 function Fairy.cre(pos, prm)
-	log._("Fairy.cre")
+	-- log._("Fairy.cre")
 	local Cls = Fairy
 	local t_id = Sp.cre(Cls, pos, prm)
 	return t_id

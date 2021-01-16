@@ -8,7 +8,7 @@ function g.Msg.init(_s)
 	-- log._("g msg init")
 
 	extend.init(_s, g.Gui)
-	extend._(_s, g.Msg)
+	extend._(   _s, g.Msg)
 
 	_s._prt.msg = p.Msg.cre(_s)
 
@@ -20,8 +20,14 @@ function g.Msg.on_msg(_s, msg_id, prm, sender)
 
 	g.Gui.on_msg(_s, msg_id, prm, sender)
 
-	if ha.eq(msg_id, "itm__add") then
+	if     ha.eq(msg_id, "itm__add") then
 		_s:itm__add(prm.itm)
+
+	elseif ha.eq(msg_id, "base_pos__") then
+		_s:base_pos__()
+
+	elseif ha.eq(msg_id, "base_pos__d") then
+		_s:base_pos__d()
 	end
 end
 
@@ -31,8 +37,20 @@ function g.Msg.itm__add(_s, itm)
 	_s:actv_prt():itm__add(itm)
 end
 
+function g.Msg.base_pos__(_s)
+	log._("g msg base_pos__")
+
+	_s:actv_prt():base_pos__()
+end
+
+function g.Msg.base_pos__d(_s)
+	log._("g msg base_pos__d")
+
+	_s:actv_prt():base_pos__d()
+end
+
 function g.Msg.del(_s)
-	-- log._("g msg del")
+	log._("g msg del")
 
 	g.Gui.del(_s)
 	

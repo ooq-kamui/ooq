@@ -400,6 +400,8 @@ function Sp.crct_inside_map(_s, vec)
 	
 	if is_inside then return vec end
 
+	-- log._("crct_inside_map", dir)
+
 	
 	local inside_rng_pos = _s:map_inside_rng_pos()
 	
@@ -409,10 +411,10 @@ function Sp.crct_inside_map(_s, vec)
 	elseif dir == "r" then
 		nxt_pos.x = inside_rng_pos.max.x
 
-	elseif dir == "u" then
+	elseif dir == "d" then
 		nxt_pos.y = inside_rng_pos.min.y
 
-	elseif dir == "d" then
+	elseif dir == "u" then
 		nxt_pos.y = inside_rng_pos.max.y
 	end
 	

@@ -184,10 +184,11 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 	local tCls, prm
 	for cls, ar in pairs(data[grp]) do
 		-- log._("cls", cls, "grp", grp)
+		tCls = Cls._(cls)
+
 		for idx, tb in pairs(ar) do
 			-- log._("name", tb["name"])
 			
-			tCls = Cls._(cls)
 			prm = {name = ha._(tb["name"])}
 			if     cls == "seed" then
 				prm.grw_cls   = ha._(tb["grw_cls"])
@@ -199,6 +200,7 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 				prm.bear_name = ha._(tb["bear_name"])
 			end
 			tCls.cre(tb["pos"], prm)
+			-- log._("load obj cre", tb["name"], tb["pos"])
 		end
 	end
 end

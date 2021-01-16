@@ -1,4 +1,4 @@
-log.script("dia_gui.script")
+log.script("dia_gui.lua")
 
 g.Dia = {}
 

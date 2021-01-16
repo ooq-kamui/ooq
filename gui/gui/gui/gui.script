@@ -25,5 +25,11 @@ function on_message(_s, msg_id, prm, sender)
 
 	elseif ha.eq(msg_id, "map_pause__") then
 		pst.script(Game.map_id(), "pause__", prm)
+
+	elseif ha.eq(msg_id, "msg_base_pos__") then
+		Msg.base_pos__()
+
+	elseif ha.eq(msg_id, "msg_base_pos__d") then
+		Msg.base_pos__d()
 	end
 end

@@ -65,9 +65,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x450_lb"
+  id: "base400x450_bl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x450_lb.png"
+    image: "/assets/gui/txtr/atlas/base/img/base400x450_bl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -109,9 +109,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base350x450_lb"
+  id: "base350x450_bl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base350x450_lb.png"
+    image: "/assets/gui/txtr/atlas/base/img/base350x450_bl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -120,9 +120,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x450_lp"
+  id: "base400x450_pl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x450_lp.png"
+    image: "/assets/gui/txtr/atlas/base/img/base400x450_pl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

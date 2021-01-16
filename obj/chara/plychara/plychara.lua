@@ -683,7 +683,7 @@ function Plychara.is_hld_addabl(_s)
 end
 
 function Plychara.hld__ox(_s)
-	log._("plychara hld__ox")
+	-- log._("plychara hld__ox")
 
 	_s:clsn_hldabl__()
 

@@ -161,7 +161,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm150x40_lg"
+  texture: "itm/itm150x40_gl"
   id: "itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

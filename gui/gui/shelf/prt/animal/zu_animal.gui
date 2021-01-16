@@ -130,7 +130,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base350x450_lb"
+  texture: "base/base350x450_bl"
   id: "base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -184,7 +184,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm250x50_lb"
+  texture: "itm/itm250x50_bl"
   id: "itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

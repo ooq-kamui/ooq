@@ -36,9 +36,9 @@ function nd.pos(p_nd)
 	return pos
 end
 
-function nd.pos__(p_nd, vec)
-	vec = vec or n.vec()
-	gui.set_position(p_nd, vec)
+function nd.pos__(p_nd, p_vec)
+	p_vec = p_vec or n.vec()
+	gui.set_position(p_nd, p_vec)
 end
 
 function nd.color(p_nd)

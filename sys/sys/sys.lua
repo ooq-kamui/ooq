@@ -29,18 +29,6 @@ function Sys.cmr_pos()
 	return cmr_pos
 end
 
-function Sys.msg_id()
-	
-	local msg_id = Sys.prp("_msg_id")
-
-	if ha.is_emp(msg_id) then
-		msg_id = fac.cre("/sys#fac_msg_gui")
-		Sys.prp__("_msg_id", msg_id)
-	end
-	
-	return msg_id
-end
-
 function Sys.game_id()
 	local game_id = Sys.prp("_game_id")
 	return game_id
@@ -120,6 +108,29 @@ function Sys.crnt_del(_s)
 	_s[key] = ha.emp()
 	_s._crnt_lb = nil
 	-- log._("sys crnt_del")
+end
+
+function Sys.msg_cre()
+	log._("Sys.msg_cre")
+
+	local msg_id = Msg.cre()
+	return msg_id
+end
+
+function Sys.msg_id()
+	
+	local msg_id = Sys.prp("_msg_id")
+	log._("Sys.msg_id", msg_id)
+
+	if not ha.is_emp(msg_id) then return msg_id end
+
+	-- msg_id = fac.cre("/sys#fac_msg_gui")
+	-- msg_id = Msg.cre()
+	msg_id = Sys.msg_cre()
+	log._("Sys.msg_id cre", msg_id)
+	Sys.prp__("_msg_id", msg_id)
+	
+	return msg_id
 end
 
 function Sys.msg_id__del(_s)

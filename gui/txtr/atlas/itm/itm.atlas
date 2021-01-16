@@ -1,7 +1,7 @@
 animations {
   id: "itm220x50"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item220x50.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm220x50.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -12,7 +12,7 @@ animations {
 animations {
   id: "itm180x60"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item180x60.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm180x60.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -23,7 +23,7 @@ animations {
 animations {
   id: "itm200x50_p"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item200x50_p.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm200x50_p.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -34,7 +34,7 @@ animations {
 animations {
   id: "itm200x50_g"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item200x50_g.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm200x50_g.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -43,9 +43,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm140x40_lb"
+  id: "itm140x40_bl"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item140x40_lb.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm140x40_bl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -54,9 +54,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm150x40_lg"
+  id: "itm150x40_gl"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item150x40_lg.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm150x40_gl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -65,9 +65,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm250x50_lb"
+  id: "itm250x50_bl"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/item250x50_lb.png"
+    image: "/assets/gui/txtr/atlas/itm/img/itm250x50_bl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

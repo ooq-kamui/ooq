@@ -403,7 +403,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm250x50_lb"
+  texture: "itm/itm250x50_bl"
   id: "zu_animal/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1302,7 +1302,7 @@ nodes {
   }
   size {
     x: 550.0
-    y: 181.0
+    y: 180.0
     z: 0.0
     w: 1.0
   }
@@ -1412,7 +1412,7 @@ nodes {
   }
   size {
     x: 180.0
-    y: 59.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }

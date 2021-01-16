@@ -396,7 +396,7 @@ function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
 		else
 			is_base_tile_bndl = _.f
 		end
-		log._("is_base_tile_bndl", is_base_tile_bndl)
+		-- log._("is_base_tile_bndl", is_base_tile_bndl)
 
 		ar.add(tile_bndl_arund_ar, is_base_tile_bndl)
 		-- log.pp("tile_bndl_arund_ar", tile_bndl_arund_ar)

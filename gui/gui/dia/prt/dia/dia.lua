@@ -61,6 +61,10 @@ function p.Dia.opn(_s, prm)
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 	Se.pst_ply("forward")
+
+
+	log._("p.dia.opn")
+	pst._("#script", "msg_base_pos__")
 end
 
 function p.Dia.clz(_s, se_off)
@@ -76,6 +80,10 @@ function p.Dia.clz(_s, se_off)
 	_s:focus__(_.f)
 
 	_s._parent_gui:back()
+
+
+	log._("p.dia.clz")
+	pst._("#script", "msg_base_pos__d")
 end
 
 function p.Dia.decide(_s)
