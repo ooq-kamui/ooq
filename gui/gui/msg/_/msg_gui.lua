@@ -56,3 +56,4 @@ function g.Msg.del(_s)
 	
 	pst._("/sys#script", "msg_id__del")
 end
+

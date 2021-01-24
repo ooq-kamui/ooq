@@ -206,6 +206,9 @@ function Plychara.jmp__start(_s)
 	_s._jmp_h_t   = _s:pos().y + Plychara.jmp_h_max
 
 	Se.pst_ply("jmp001")
+	
+	-- msg debug
+	Msg.s("jmp")
 end
 
 function Plychara.is_jmp_h_t(_s)

@@ -348,7 +348,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base350x450_lb"
+  texture: "base/base350x450_bl"
   id: "zu_animal/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -657,8 +657,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 399.0
-    y: 449.0
+    x: 400.0
+    y: 450.0
     z: 0.0
     w: 1.0
   }
@@ -670,7 +670,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "zu_flower/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -979,8 +979,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 399.0
-    y: 449.0
+    x: 400.0
+    y: 450.0
     z: 0.0
     w: 1.0
   }
@@ -992,7 +992,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "zu_dish/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

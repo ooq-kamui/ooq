@@ -1,4 +1,4 @@
-log.script("system.lua")
+log.script("sys.lua")
 
 -- system
 
@@ -110,30 +110,32 @@ function Sys.crnt_del(_s)
 	-- log._("sys crnt_del")
 end
 
-function Sys.msg_cre()
-	log._("Sys.msg_cre")
-
-	local msg_id = Msg.cre()
-	return msg_id
-end
+-- msg
 
 function Sys.msg_id()
 	
 	local msg_id = Sys.prp("_msg_id")
-	log._("Sys.msg_id", msg_id)
-
-	if not ha.is_emp(msg_id) then return msg_id end
-
-	-- msg_id = fac.cre("/sys#fac_msg_gui")
-	-- msg_id = Msg.cre()
-	msg_id = Sys.msg_cre()
-	log._("Sys.msg_id cre", msg_id)
-	Sys.prp__("_msg_id", msg_id)
-	
 	return msg_id
+end
+
+function Sys.is_exst_msg()
+	
+	local ret = _.f
+
+	local msg_id = Sys.prp("_msg_id")
+
+	if not ha.is_emp(msg_id) then ret = _.t end
+
+	return ret, msg_id
 end
 
 function Sys.msg_id__del(_s)
 
 	_s._msg_id = ha.emp()
 end
+
+function Sys.msg_id__emp(_s)
+
+	_s._msg_id = ha.emp()
+end
+

@@ -66,7 +66,7 @@ function p.Prt_itm.itm__add(_s, itm)
 end
 
 function p.Prt_itm.itm__del_1(_s)
-	log.pp("prt itm itm del_1 _s._nd.itm", _s._nd.itm)
+	-- log.pp("prt itm itm del_1 _s._nd.itm", _s._nd.itm)
 
 	local t_itm_nd = _s._nd.itm[1][_s:lb("itm")]
 	

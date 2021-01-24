@@ -73,7 +73,7 @@ nodes {
   }
   size {
     x: 400.0
-    y: 398.0
+    y: 400.0
     z: 0.0
     w: 1.0
   }
@@ -886,7 +886,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "shop_flower/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1452,7 +1452,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "shop_tree/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2060,8 +2060,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 399.0
-    y: 449.0
+    x: 400.0
+    y: 450.0
     z: 0.0
     w: 1.0
   }
@@ -2073,7 +2073,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "shop_kagu_itm/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2458,7 +2458,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_lp"
+  texture: "base/base400x450_pl"
   id: "shop_kagu/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

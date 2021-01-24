@@ -69,11 +69,18 @@ function p.Msg.itm__plt_anm(_s)
 	_s:itm__plt()
 end
 
+function p.Msg.base_pos__(_s, p_pos)
+	log._("msg base_pos__", p_pos)
+
+	p_pos = p_pos or Disp.center
+
+	p.Prt_base.base_pos__(_s, p_pos)
+end
+
 function p.Msg.base_pos__d(_s)
 	log._("msg base_pos__d")
 
-	local t_pos = Disp.center
-	t_pos.y = Disp.center.y - 200
+	local t_pos = Disp.center + n.vec(0, -200)
 	_s:base_pos__(t_pos)
 end
 

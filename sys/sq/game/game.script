@@ -2,6 +2,7 @@ log.script("game.script")
 
 go.property("_ply_slt_idx", 0)
 go.property("_map_id", hash(""))
+go.property("_dia_id", hash(""))
 go.property("_dstrct", vmath.vector3(0, 0, 0))
 
 go.property("_sky_idx", 1)

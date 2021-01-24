@@ -129,6 +129,12 @@ function Game.map_clct(p_dstrct)
 	return clct
 end
 
+function Game.dia_id()
+	local game_id = Game.id()
+	local dia_id  = id.prp(game_id, "_dia_id")
+	return dia_id
+end
+
 -- script method
 
 function Game.init(_s)
@@ -207,6 +213,14 @@ function Game.on_msg(_s, msg_id, prm, sender)
 
 	elseif ha.eq(msg_id, "save") then
 		_s:save()
+
+	elseif ha.eq(msg_id, "dia__o") then
+		log._("game dia__o")
+		_s:dia__o()
+
+	elseif ha.eq(msg_id, "dia__clr") then
+		log._("game dia__clr")
+		_s:dia__clr()
 
 	elseif ha.eq(msg_id, "map_dstrct__mv") then
 		-- log._("game map_dstrct__mv", prm.dir, prm.plychara_dir)
@@ -520,17 +534,27 @@ function Game.bag_opn(_s)
 	pst.gui(_s._bag_id, "gui:opn")
 end
 
--- cmr
---[[
-function Game.cmr_pos__init(_s)
+-- dia
 
-	pst.script(Sys.cmr_id(), "pos__init")
+function Game.dia__cre(_s)
+	log._("game dia__cre")
 
-	-- pst.script(Sys.cmr_id(), "pos__plychara")
-	-- pst.script(Sys.cmr_id(), "z__far")
-	-- pst.script(Sys.cmr_id(), "zoom__dflt")
+	_s._dia_id = g.Dia.cre()
 end
---]]
+
+function Game.dia__o(_s)
+	log._("game dia__o")
+
+	if ha.is_emp(_s._dia_id) then _s:dia__cre() end
+
+	pst.gui(_s._dia_id, "chara__", {chara = Dia.chara})
+end
+
+function Game.dia__clr(_s)
+	log._("game dia__clr")
+
+	_s._dia_id = ha.emp()
+end
 
 --
 
@@ -545,3 +569,4 @@ function Game.new_event(_s)
 	-- Ev._("fire_fall")
 	-- Ev._("chara_fall")
 end
+
