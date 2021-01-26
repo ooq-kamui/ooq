@@ -168,8 +168,8 @@ function g.Bag.actv_prt(_s)
 	return actv_prt
 end
 
-function g.Bag.focus_ch(_s)
-	log._("g.Bag focus_ch")
+function g.Bag.focus__ch(_s)
+	log._("g.Bag focus__ch")
 
 	local r_view_prt_lb
 	if #_s._actv_prt == 1 then
