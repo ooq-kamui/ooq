@@ -109,7 +109,10 @@ function file.map.ltst.file_idx(ply_slt_idx, dstrct)
 
 	local data = file.map.ltst.load(ply_slt_idx, dstrct)
 
-	if u.is_emp(data) then log._("file.map.ltst.file_idx emp") return end
+	if u.is_emp(data) then
+		-- log._("file.map.ltst.file_idx emp")
+		return
+	end
 
 	return data[file.map.ltst.key]
 end

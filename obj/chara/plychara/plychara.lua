@@ -208,7 +208,7 @@ function Plychara.jmp__start(_s)
 	Se.pst_ply("jmp001")
 	
 	-- msg debug
-	Msg.s("jmp")
+	-- Msg.s("jmp")
 end
 
 function Plychara.is_jmp_h_t(_s)
@@ -466,7 +466,8 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 		end
 		
 		if not is_icn_opn then
-			pst.script(Sys.game_id(), "bag_opn")
+			pst.script(Game.id(), "bag_opn")
+			-- pst.script(Sys.game_id(), "bag_opn")
 		end
 	end
 end

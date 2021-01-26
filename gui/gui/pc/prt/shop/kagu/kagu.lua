@@ -32,8 +32,7 @@ function p.Shop_kagu.init(_s, parent_gui)
 	local node, name, price
 	for idx, name in pairs(_s._itm) do
 
-		-- if idx > 10 then break end -- test
-		log._("shop kagu init", idx, name)
+		-- log._("shop kagu init", idx, name)
 
 		node = _s:itm_clone()
 		-- kagu

@@ -50,7 +50,7 @@ function p.Dia.key_2_act_itm(_s, prm)
 end
 
 function p.Dia.opn(_s, prm)
-	log._("p.Dia.opn")
+	-- log._("p.Dia.opn")
 	
 	pst._(".", "map_pause__", {val = _.t})
 
@@ -63,7 +63,7 @@ function p.Dia.opn(_s, prm)
 	_s:focus__(_.t)
 	Se.pst_ply("forward")
 
-	log._("p.Dia.opn msg_base_pos__d")
+	-- log._("p.Dia.opn msg_base_pos__d")
 	pst._("#script", "msg_base_pos__d")
 end
 
@@ -81,7 +81,7 @@ function p.Dia.clz(_s, se_off)
 
 	_s._parent_gui:back()
 
-	log._("p.dia.clz")
+	-- log._("p.dia.clz")
 	pst._("#script", "msg_base_pos__")
 end
 

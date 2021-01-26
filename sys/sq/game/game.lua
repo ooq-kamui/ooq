@@ -215,11 +215,11 @@ function Game.on_msg(_s, msg_id, prm, sender)
 		_s:save()
 
 	elseif ha.eq(msg_id, "dia__o") then
-		log._("game dia__o")
+		-- log._("game dia__o")
 		_s:dia__o()
 
 	elseif ha.eq(msg_id, "dia__clr") then
-		log._("game dia__clr")
+		-- log._("game dia__clr")
 		_s:dia__clr()
 
 	elseif ha.eq(msg_id, "map_dstrct__mv") then
@@ -537,13 +537,13 @@ end
 -- dia
 
 function Game.dia__cre(_s)
-	log._("game dia__cre")
+	-- log._("game dia__cre")
 
 	_s._dia_id = g.Dia.cre()
 end
 
 function Game.dia__o(_s)
-	log._("game dia__o")
+	-- log._("game dia__o")
 
 	if ha.is_emp(_s._dia_id) then _s:dia__cre() end
 
@@ -551,7 +551,7 @@ function Game.dia__o(_s)
 end
 
 function Game.dia__clr(_s)
-	log._("game dia__clr")
+	-- log._("game dia__clr")
 
 	_s._dia_id = ha.emp()
 end

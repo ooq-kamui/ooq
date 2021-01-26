@@ -37,7 +37,7 @@ end
 -- method
 
 function p.Ply_data.opn(_s, prm)
-	log._("p.ply_data.opn")
+	-- log._("p.ply_data.opn")
 
 	if prm and prm.ply_slt_idx then
 		_s._ply_slt_idx = prm.ply_slt_idx

@@ -35,8 +35,7 @@ function p.Shop_flower.init(_s, parent_gui)
 	local node, price
 	for idx, name in pairs(_s._itm) do
 
-		-- if idx > 10 then break end -- test
-		log._("shop flower init", idx, name)
+		-- log._("shop flower init", idx, name)
 		
 		node = _s:itm_clone()
 		

@@ -6,7 +6,7 @@ Dia = {
 }
 
 function Dia.chara__(chara)
-	log._("dia chara__")
+	-- log._("dia chara__")
 	
 	Dia.chara = chara
 end

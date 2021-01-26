@@ -64,6 +64,8 @@ end
 function Gui_inp.on_msg(_s, msg_id, prm, sender)
 	
 	if     ha.eq(msg_id, "focus__t" ) then
+		log._("Gui_inp on_msg focus__t", prm.focus_gui, prm.focus_lb)
+		
 		if not Gui_inp.focus_gui then
 			pst._(".", "acquire_input_focus")
 		end

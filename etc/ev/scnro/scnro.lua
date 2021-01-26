@@ -6,6 +6,7 @@ Scnro.tst = {
 	function ()
 		Obj.fall.tst()
 		D.c("sanae")
+		--[[
 		D._("わーい")
 		D._("はじめまして こんにちは")
 		D._("わたし の なまえ は")
@@ -13,15 +14,18 @@ Scnro.tst = {
 		D._("fire emblem if(fate) の\nkamui ちゃん に かわって")
 		D._("これからは")
 		D._("わたしが あんない していくよ!")
+		--]]
 		D.o("よろしくね!!")
 	end,
+	--[[
 	function ()
-		Wa._(2)
+		Wa._(1)
 	end,
 	function ()
 		D.c("sanae")
 		D.o("たのしいね")
 	end,
+	--]]
 }
 
 Scnro.chara_fall = {

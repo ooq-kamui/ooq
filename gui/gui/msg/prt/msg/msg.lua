@@ -13,7 +13,7 @@ end
 -- script method
 
 function p.Msg.init(_s, parent_gui)
-	log._("p msg init")
+	-- log._("p msg init")
 
 	_s._lb = "msg"
 
@@ -28,7 +28,7 @@ function p.Msg.init(_s, parent_gui)
 	-- timer
 	local intrvl_time = 3
 	local fnc = function (slf, hndl, elpsd)
-		log._("timer.delay itm__del_1 #_s._itm", #_s._itm)
+		-- log._("timer.delay itm__del_1 #_s._itm", #_s._itm)
 		_s:itm__del_1()
 	end
 	local hndl = timer.delay(intrvl_time, _.t, fnc)
@@ -70,7 +70,7 @@ function p.Msg.itm__plt_anm(_s)
 end
 
 function p.Msg.base_pos__(_s, p_pos)
-	log._("msg base_pos__", p_pos)
+	-- log._("msg base_pos__", p_pos)
 
 	p_pos = p_pos or Disp.center
 
@@ -78,7 +78,7 @@ function p.Msg.base_pos__(_s, p_pos)
 end
 
 function p.Msg.base_pos__d(_s)
-	log._("msg base_pos__d")
+	-- log._("msg base_pos__d")
 
 	local t_pos = Disp.center + n.vec(0, -200)
 	_s:base_pos__(t_pos)

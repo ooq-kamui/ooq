@@ -30,10 +30,13 @@ end
 -- method
 
 function p.Bag_prt_itm.opn(_s)
-	-- log._("bag prt itm opn")
+	log._("p.Bag_prt_itm opn", _s._lb)
 
 	_s:itm__plt()
 	_s:base_dsp__o()
+
+	_s._focus = _.t
+	-- _s:focus__(_.t)
 end
 
 function p.Bag_prt_itm.parent_gui_clz(_s)

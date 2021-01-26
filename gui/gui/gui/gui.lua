@@ -102,7 +102,8 @@ function g.Gui.actv_prt__psh(_s, prt_lb)
 	_s:actv_prt_actv__o()
 end
 
-function g.Gui.actv_prt__pop(_s, prt_lb)
+-- function g.Gui.actv_prt__pop(_s, prt_lb)
+function g.Gui.actv_prt__pop(_s)
 
 	if #_s._actv_prt <= 0 then return end
 
@@ -167,7 +168,8 @@ end
 -- focus
 
 function g.Gui.focus__(_s, val)
-	-- log._("prt focus__", val)
+	log._("g.Gui focus__", val)
+	
 	local url = msg.url()
 	if val then
 		pst.gui(Gui_inp.id, "focus__t", {focus_gui = url, focus_lb = _s._lb})

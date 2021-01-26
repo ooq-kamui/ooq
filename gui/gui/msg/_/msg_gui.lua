@@ -38,19 +38,19 @@ function g.Msg.itm__add(_s, itm)
 end
 
 function g.Msg.base_pos__(_s)
-	log._("g msg base_pos__")
+	-- log._("g msg base_pos__")
 
 	_s:actv_prt():base_pos__()
 end
 
 function g.Msg.base_pos__d(_s)
-	log._("g msg base_pos__d")
+	-- log._("g msg base_pos__d")
 
 	_s:actv_prt():base_pos__d()
 end
 
 function g.Msg.del(_s)
-	log._("g msg del")
+	-- log._("g msg del")
 
 	g.Gui.del(_s)
 	

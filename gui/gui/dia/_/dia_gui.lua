@@ -43,7 +43,7 @@ function g.Dia.chara__(_s, chara)
 end
 
 function g.Dia.del(_s)
-	log._("g.dia del")
+	-- log._("g.dia del")
 
 	g.Gui.del(_s)
 
