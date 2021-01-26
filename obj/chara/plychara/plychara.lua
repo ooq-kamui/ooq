@@ -4,6 +4,8 @@ Play_chara = {}
 
 Plychara = {
 	
+	speed     = 4.5,
+	speed_jmp = 1.5, -- vec.y * ?
 	jmp_h_max = Map.sq + 1,
 
 	act_interval_time = 5,
@@ -49,7 +51,7 @@ function Plychara.init(_s)
 	extend.init(_s, Sp)
 	extend._(_s, Plychara)
 	
-	_s._speed = 4.5
+	_s._speed = Plychara.speed
 	_s._dir_h = ha._("l")
 	_s._dir_v = ""
 	
@@ -116,6 +118,7 @@ function Plychara.upd(_s, dt)
 			_s:jmp__off()
 		else
 			dir.y = 1
+			-- dir.y = 1.5
 		end
 
 	elseif _s._vmoving then
@@ -137,6 +140,7 @@ function Plychara.upd(_s, dt)
 	dir = _s:dir__crct_hyprspc(dir)
 	
 	local vec_mv = dir * _s._speed
+	if _s._is_jmping then vec_mv.y = vec_mv.y * Plychara.speed_jmp end
 	
 	-- vec tile
 	local vec_tile = _s:vec_tile(dt)
@@ -158,9 +162,6 @@ function Plychara.upd(_s, dt)
 	-- local is_dstrct_mv = _s:ox_dstrct__mv() -- ??
 	_s:ox_dstrct__mv()
 	
-	-- jmping off
-	-- _s:is_jmp__off()
-
 	_s._turn_time = _s._turn_time + dt
 	
 	-- act clr
