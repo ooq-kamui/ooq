@@ -1,4 +1,4 @@
-log.script("url.lua")
+log.scrpt("url.lua")
 
 url = {}
 

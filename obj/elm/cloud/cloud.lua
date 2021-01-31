@@ -1,4 +1,4 @@
-log.script("cloud.lua")
+log.scrpt("cloud.lua")
 
 Cloud = {
 	act_interval_time = 10,

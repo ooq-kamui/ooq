@@ -1,4 +1,4 @@
-log.script("mstr seed.lua")
+log.scrpt("mstr seed.lua")
 
 Mstr.seed = {} -- 7
 

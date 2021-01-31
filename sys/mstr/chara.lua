@@ -1,4 +1,4 @@
-log.script("mstr chara.lua")
+log.scrpt("mstr chara.lua")
 
 Mstr.chara = {}
 

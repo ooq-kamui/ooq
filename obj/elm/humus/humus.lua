@@ -1,4 +1,4 @@
-log.script("humus.lua")
+log.scrpt("humus.lua")
 
 Humus = {
 	act_interval_time = 15,

@@ -1,4 +1,4 @@
-log.script("file.ply_data.lua")
+log.scrpt("file.ply_data.lua")
 
 file.ply_data = {
 	file_idx_max = 4, -- 10,

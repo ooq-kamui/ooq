@@ -1,4 +1,4 @@
-log.script("fruit.script")
+log.scrpt("fruit.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

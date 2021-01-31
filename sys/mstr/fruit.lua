@@ -1,4 +1,4 @@
-log.script("mstr fruit.lua")
+log.scrpt("mstr fruit.lua")
 
 Mstr.fruit = {} -- 52
 

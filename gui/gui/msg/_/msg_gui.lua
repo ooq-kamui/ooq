@@ -1,4 +1,4 @@
-log.script("msg_gui.lua")
+log.scrpt("msg_gui.lua")
 
 g.Msg = {
 	act_interval_time = 3,

@@ -1,5 +1,4 @@
-
-log.script("dice100.lua")
+log.scrpt("dice100.lua")
 
 dice100 = {
 	dice     = nil,

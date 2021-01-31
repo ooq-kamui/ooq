@@ -1,7 +1,0 @@
-log.script("inp.script")
-
-function init(_s)
-	-- log._("gui_inp.init")
-	Gui_inp.id = go.get_id()
-	Gui_inp.gui = url._(Gui_inp.id, "gui")
-end

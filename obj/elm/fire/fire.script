@@ -1,4 +1,4 @@
-log.script("fire.script")
+log.scrpt("fire.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

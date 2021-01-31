@@ -1,4 +1,4 @@
-log.script("flpy.gui_script")
+log.scrpt("flpy.gui_script")
 
 function init(_s)
 	g.Flpy.init(_s)

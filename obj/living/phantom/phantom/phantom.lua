@@ -1,4 +1,4 @@
-log.script("phantom.lua")
+log.scrpt("phantom.lua")
 
 Phantom = {
 	act_interval_time = 10,

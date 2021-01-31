@@ -1,4 +1,4 @@
-log.script("p.prt_itm_mtrx.lua")
+log.scrpt("p.prt_itm_mtrx.lua")
 
 p.Prt_itm_mtrx = {}
 

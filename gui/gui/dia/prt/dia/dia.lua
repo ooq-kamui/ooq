@@ -1,4 +1,4 @@
-log.script("p.dia.lua")
+log.scrpt("p.dia.lua")
 
 p.Dia = {}
 
@@ -54,7 +54,7 @@ function p.Dia.opn(_s, prm)
 	
 	pst._(".", "map_pause__", {val = _.t})
 
-	pst.script(Ev.id, "wa_inp")
+	pst.scrpt(Ev.id, "wa_inp")
 
 	_s:txt__(D.txt[1])
 	nd.anm.pyon_d_l(_s._nd.arw)
@@ -72,7 +72,7 @@ function p.Dia.clz(_s, se_off)
 
 	pst._(".", "map_pause__", {val = _.f})
 
-	pst.script(Ev.id, "wa_inp_fin")
+	pst.scrpt(Ev.id, "wa_inp_fin")
 	
 	if not se_off then Se.pst_ply("clz") end
 

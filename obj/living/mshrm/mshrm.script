@@ -1,4 +1,4 @@
-log.script("mshrm.script")
+log.scrpt("mshrm.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

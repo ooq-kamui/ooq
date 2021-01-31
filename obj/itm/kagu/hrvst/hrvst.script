@@ -1,4 +1,4 @@
-log.script("hrvst.script")
+log.scrpt("hrvst.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash("hrvst"))

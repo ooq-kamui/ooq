@@ -1,4 +1,4 @@
-log.script("wall.lua")
+log.scrpt("wall.lua")
 
 Wall = {}
 

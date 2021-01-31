@@ -1,4 +1,4 @@
-log.script("joro.script")
+log.scrpt("joro.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash("joro001"))

@@ -1,4 +1,4 @@
-log.script("mshrm.lua")
+log.scrpt("mshrm.lua")
 
 Mshrm = {
 	act_interval_time = 15,

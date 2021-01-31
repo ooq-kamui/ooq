@@ -1,5 +1,4 @@
-
-log.script("extend.lua")
+log.scrpt("extend.lua")
 
 extend = {}
 

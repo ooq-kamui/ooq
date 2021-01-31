@@ -1,4 +1,3 @@
-
 -- print("require.lua")
 
 require("assets/etc/lua/_")
@@ -46,6 +45,9 @@ require("assets/sys/file/file")
 require("assets/sys/file/ply_data")
 require("assets/sys/file/map")
 
+require("assets/sys/inp/inp")
+require("assets/sys/inp/inp_gui")
+
 require("assets/etc/msg/msg")
 require("assets/etc/ev/ev/ev")
 require("assets/etc/ev/wa/wa")
@@ -60,7 +62,6 @@ require("assets/obj/obj/hldabl")
 require("assets/obj/obj/obj")
 require("assets/obj/obj/o_anim")
 
-require("assets/etc/lua/inp")
 require("assets/etc/lua/tile")
 require("assets/etc/lua/dice100")
 require("assets/etc/cmr/cmr")
@@ -128,7 +129,6 @@ require("assets/obj/itm/kagu/door/door")
 require("assets/obj/itm/kagu/flpy/flpy")
 
 -- gui
-require("assets/gui/inp/inp")
 require("assets/gui/gui/gui/gui")
 
 -- prt

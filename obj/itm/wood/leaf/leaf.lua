@@ -1,4 +1,4 @@
-log.script("leafFac.script")
+log.scrpt("leafFac.script")
 
 Leaf = {
 	act_interval_time = 10,

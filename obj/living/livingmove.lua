@@ -1,4 +1,4 @@
-log.script("livingmove.lua")
+log.scrpt("livingmove.lua")
 
 Livingmove = {}
 

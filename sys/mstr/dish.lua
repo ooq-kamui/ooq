@@ -1,4 +1,4 @@
-log.script("mstr dish.lua")
+log.scrpt("mstr dish.lua")
 
 Mstr.dish = {} -- 188
 

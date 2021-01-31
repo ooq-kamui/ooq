@@ -1,4 +1,4 @@
-log.script("file.lua")
+log.scrpt("file.lua")
 
 file = {
 	key = "ooq",

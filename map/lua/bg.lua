@@ -1,4 +1,4 @@
-log.script("bg.lua")
+log.scrpt("bg.lua")
 
 Bg = {
 	_ = {},
@@ -10,7 +10,8 @@ Bg = {
 
 function Bg.init(_s)
 
-	_s._id = go.get_id()
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	_s._tilemap = _s._name
 
 	_s._cmr_pos_rate = n.vec()

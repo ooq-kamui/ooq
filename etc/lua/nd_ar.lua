@@ -1,4 +1,4 @@
-log.script("nd.ar.lua")
+log.scrpt("nd.ar.lua")
 
 nd.ar = {}
 

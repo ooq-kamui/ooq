@@ -1,4 +1,4 @@
-log.script("sp_go_prp.lua")
+log.scrpt("sp_go_prp.lua")
 
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

@@ -1,4 +1,4 @@
-log.script("dish.lua")
+log.scrpt("dish.lua")
 
 Dish = {
 	act_interval_time = 10,

@@ -1,4 +1,4 @@
-log.script("u.lua")
+log.scrpt("u.lua")
 
 u = { -- util
 	-- hs = {"l", "r"}, -- old
@@ -10,7 +10,7 @@ u.dir_h = u.lr
 u.dir_v = u.ud
 ha.add_by_ar(u.dir_h)
 
--- log.script("util.script")
+-- log.scrpt("util.script")
 
 function u.is_emp(val)
 	if not val then return _.t end

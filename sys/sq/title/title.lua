@@ -1,5 +1,4 @@
-
-log.script("title.lua")
+log.scrpt("title.lua")
 
 Title = {
 }
@@ -15,7 +14,9 @@ end
 -- script method
 
 function Title.init(_s)
-	_s._id = go.get_id()
+
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	-- log._("title init", _s._id)
 	
 	extend._(_s, Title)

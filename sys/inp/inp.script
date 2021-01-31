@@ -1,0 +1,18 @@
+log.scrpt("inp.script")
+
+function init(_s)
+	Inp.init(_s)
+end
+
+function update(_s, dt)
+	_s:upd(dt)
+end
+
+function on_input(_s, key, keyact)
+	_s:on_inp(key, keyact)
+end
+
+function final(_s)
+	_s:final()
+end
+

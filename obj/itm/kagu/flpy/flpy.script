@@ -1,4 +1,4 @@
-log.script("flpy.script")
+log.scrpt("flpy.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

@@ -1,4 +1,4 @@
-log.script("mstr kagu_itm.lua")
+log.scrpt("mstr kagu_itm.lua")
 
 Mstr.kagu_itm = {}
 

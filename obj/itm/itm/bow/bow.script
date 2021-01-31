@@ -1,4 +1,4 @@
-log.script("bow.script")
+log.scrpt("bow.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash("bow001"))

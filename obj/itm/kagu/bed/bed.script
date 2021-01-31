@@ -1,4 +1,4 @@
-log.script("bed.")
+log.scrpt("bed.")
 
 
 function init(_s)

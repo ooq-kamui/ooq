@@ -1,4 +1,4 @@
-log.script("gold.script")
+log.scrpt("gold.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

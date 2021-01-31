@@ -1,4 +1,4 @@
-log.script("title.gui_script")
+log.scrpt("title.gui_script")
 
 function init(_s)
 	g.Title.init(_s)

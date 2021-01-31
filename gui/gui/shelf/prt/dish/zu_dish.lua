@@ -1,4 +1,4 @@
-log.script("p.zu_dish.lua")
+log.scrpt("p.zu_dish.lua")
 
 p.Zu_dish = {}
 

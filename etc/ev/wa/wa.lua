@@ -1,4 +1,4 @@
-log.script("wa.lua")
+log.scrpt("wa.lua")
 
 Wa = {}
 
@@ -12,7 +12,7 @@ function Wa.cre(sec)
 	local url = "/sys#wa"
 	-- local id = factory.create(url)
 	local id = fac.cre(url)
-	pst.script(id, "wa", {sec = sec})
+	pst.scrpt(id, "wa", {sec = sec})
 	return id
 end
 
@@ -49,6 +49,6 @@ end
 
 function Wa.wa_fin(_s)
 	-- log._("wa_fin")
-	pst.script(Ev.id, "wa_sec_fin")
+	pst.scrpt(Ev.id, "wa_sec_fin")
 	go.delete()
 end

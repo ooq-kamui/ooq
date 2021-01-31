@@ -1,4 +1,4 @@
-log.script("zu.lua")
+log.scrpt("zu.lua")
 
 Ply_data._zu = {
 	

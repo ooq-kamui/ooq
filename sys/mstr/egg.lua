@@ -1,4 +1,4 @@
-log.script("mstr egg.lua")
+log.scrpt("mstr egg.lua")
 
 Mstr.egg = {} -- 3
 

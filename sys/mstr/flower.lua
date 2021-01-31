@@ -1,4 +1,4 @@
-log.script("mstr flower.lua")
+log.scrpt("mstr flower.lua")
 
 Mstr.flower = {} -- 159
 

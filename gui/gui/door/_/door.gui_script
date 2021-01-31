@@ -1,4 +1,4 @@
-log.script("door.gui_script")
+log.scrpt("door.gui_script")
 
 function init(_s)
 	g.Door.init(_s)

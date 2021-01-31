@@ -1,4 +1,4 @@
-log.script("p.cfg.lua")
+log.scrpt("p.cfg.lua")
 
 p.Cfg = {}
 

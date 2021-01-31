@@ -1,4 +1,4 @@
-log.script("veget.script")
+log.scrpt("veget.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

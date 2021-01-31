@@ -1,4 +1,4 @@
-log.script("flpy_gui.lua")
+log.scrpt("flpy_gui.lua")
 
 g.Flpy = {}
 

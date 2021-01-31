@@ -1,4 +1,4 @@
-log.script("fg.script")
+log.scrpt("fg.script")
 
 go.property("_name", hash(""))
 go.property("_area", hash(""))

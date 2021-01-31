@@ -1,4 +1,4 @@
-log.script("file.map.lua")
+log.scrpt("file.map.lua")
 
 file.map = {
 	file_idx_max = 3, -- 10,

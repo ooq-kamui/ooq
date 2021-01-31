@@ -1,4 +1,4 @@
-log.script("map.lua")
+log.scrpt("map.lua")
 
 map = {
 	_ = {}, -- cache - [tilemap][bound]

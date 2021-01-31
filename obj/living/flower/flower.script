@@ -1,4 +1,4 @@
-log.script("flower.script")
+log.scrpt("flower.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

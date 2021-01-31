@@ -1,4 +1,4 @@
-log.script("kagu.lua")
+log.scrpt("kagu.lua")
 
 Kagu = {
 	act_interval_time = 10,

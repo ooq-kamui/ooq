@@ -1,4 +1,4 @@
-log.script("p.prt.lua")
+log.scrpt("p.prt.lua")
 
 p = {}
 p.Prt = {}
@@ -32,7 +32,7 @@ function p.Prt.behind(_s, fin)
 end
 
 function p.Prt.clz(_s, se_off)
-	log._("p.Prt clz")
+	-- log._("p.Prt clz")
 
 	if not se_off then Se.pst_ply("clz") end
 
@@ -75,10 +75,13 @@ end
 -- inp
 
 function p.Prt.key_2_act(_s, prm)
+	-- log._("p.Prt key_2_act", _s._lb, _s._focus)
 	-- log.pp("p.Prt key_2_act", prm)
-	log._("p.Prt key_2_act", _s._lb, _s._focus)
 	
-	if not _s._focus then log._("return") return end
+	if not _s._focus then
+		-- log._("return")
+		return
+	end
 
 	if     _s:is_inner_focus("itm") then
 		_s:key_2_act_itm(prm)
@@ -163,14 +166,14 @@ end
 -- focus
 
 function p.Prt.focus__(_s, val)
-	log._("p.Prt focus__", val)
+	-- log._("p.Prt focus__", val)
 
 	_s._focus = val
 	
 	if val then
-		pst.gui(Gui_inp.id, "focus__t", {focus_gui = _s:url(), focus_lb = _s._lb})
+		pst.gui(Inp_gui.id, "focus__t", {focus_gui = _s:url(), focus_lb = _s._lb})
 	else
-		pst.gui(Gui_inp.id, "focus__f")
+		pst.gui(Inp_gui.id, "focus__f")
 	end
 end
 

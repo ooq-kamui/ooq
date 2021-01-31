@@ -1,4 +1,4 @@
-log.script("p.bag_prt.lua")
+log.scrpt("p.bag_prt.lua")
 
 p.Bag_prt = {}
 

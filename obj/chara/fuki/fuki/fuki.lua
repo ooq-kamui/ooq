@@ -1,4 +1,4 @@
-log.script("Fuki.lua")
+log.scrpt("Fuki.lua")
 
 Fuki = {
 	act_interval_time = 5,

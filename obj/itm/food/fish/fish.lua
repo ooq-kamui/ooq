@@ -1,4 +1,4 @@
-log.script("fish.lua")
+log.scrpt("fish.lua")
 
 Fish = {
 	act_interval_time = 10,

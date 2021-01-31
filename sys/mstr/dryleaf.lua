@@ -1,4 +1,4 @@
-log.script("mstr dryleaf.lua")
+log.scrpt("mstr dryleaf.lua")
 
 Mstr.dryleaf = {} -- 4
 

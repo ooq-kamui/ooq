@@ -1,4 +1,4 @@
-log.script("magic.lua")
+log.scrpt("magic.lua")
 
 Magic = {
 	act_interval_time = 0.1,

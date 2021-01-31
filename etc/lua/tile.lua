@@ -1,4 +1,4 @@
-log.script("tile.lua")
+log.scrpt("tile.lua")
 
 Tile = { -- tile num
 	emp = 0,

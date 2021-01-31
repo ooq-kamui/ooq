@@ -1,4 +1,4 @@
-log.script("p.prt_cursor.lua")
+log.scrpt("p.prt_cursor.lua")
 
 p.Prt_cursor = {}
 

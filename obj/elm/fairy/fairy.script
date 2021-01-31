@@ -1,4 +1,4 @@
-log.script("fairy.script")
+log.scrpt("fairy.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

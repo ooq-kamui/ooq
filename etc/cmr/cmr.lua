@@ -1,4 +1,4 @@
-log.script("cmr.lua")
+log.scrpt("cmr.lua")
 
 Cmr = {
 	act_interval_time = 20,
@@ -46,7 +46,8 @@ end
 function Cmr.init(_s)
 	
 	extend._(_s, Cmr)
-	_s._id = go.get_id()
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	
 	local prm = {
 		aspect_ratio = Disp.x / Disp.y,

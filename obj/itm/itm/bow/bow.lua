@@ -1,4 +1,4 @@
-log.script("bow.lua")
+log.scrpt("bow.lua")
 
 Bow = {}
 

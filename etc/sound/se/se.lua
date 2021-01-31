@@ -1,4 +1,4 @@
-log.script("se.lua")
+log.scrpt("se.lua")
 
 Se = {}
 

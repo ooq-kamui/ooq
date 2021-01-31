@@ -1,4 +1,4 @@
-log.script("serifu.lua")
+log.scrpt("serifu.lua")
 
 Serifu = {
 	_ = {

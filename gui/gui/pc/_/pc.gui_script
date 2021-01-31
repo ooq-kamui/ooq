@@ -1,4 +1,4 @@
-log.script("pc.gui_script")
+log.scrpt("pc.gui_script")
 
 function init(_s)
 	g.Pc.init(_s)

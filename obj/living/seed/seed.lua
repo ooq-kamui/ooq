@@ -1,4 +1,4 @@
-log.script("seed.lua")
+log.scrpt("seed.lua")
 
 Seed = {
 	act_interval_time = 14,
@@ -59,7 +59,7 @@ function Seed.act_interval(_s, dt)
 				bear_name = _s._bear_name,
 			}
 			local id = _s:trnsf(grw_Cls, prm)
-			-- pst.script(id, "scl_anim__1")
+			-- pst.scrpt(id, "scl_anim__1")
 		end
 	else
 		dice100.throw()

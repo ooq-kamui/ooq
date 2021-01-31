@@ -1,4 +1,4 @@
-log.script("game.script")
+log.scrpt("game.script")
 
 go.property("_ply_slt_idx", 0)
 go.property("_map_id", hash(""))

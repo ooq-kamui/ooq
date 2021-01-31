@@ -1,4 +1,4 @@
-log.script("map.lua")
+log.scrpt("map.lua")
 
 Map = {
 	sq = 48,
@@ -88,7 +88,8 @@ function Map.init(_s)
 
 	extend._(_s, Map)
 
-	_s._id          = go.get_id()
+	_s._id          = id._()
+	-- _s._id          = go.get_id()
 	_s._game_id     = Game.id()
 	_s._ply_slt_idx = Game.ply_slt_idx()
 	_s._dstrct      = id.prp(_s._game_id, "_dstrct")
@@ -119,7 +120,7 @@ function Map.new_or_load(_s)
 end
 
 function Map.cmr_pos__plychara(_s)
-	pst.script(Sys.cmr_id(), "pos__plychara")
+	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
 function Map.upd(_s, dt)
@@ -249,7 +250,7 @@ end
 function Map.dstrct__ch(_s, plychara)
 
 	_s._final_fnc = function ()
-		pst.script(_s._game_id, "map_dstrct__ch_map_cre", {plychara = plychara})
+		pst.scrpt(_s._game_id, "map_dstrct__ch_map_cre", {plychara = plychara})
 	end
 	
 	_s:save_del()

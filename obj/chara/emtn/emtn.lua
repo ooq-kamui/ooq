@@ -1,4 +1,4 @@
-log.script("emtn.lua")
+log.scrpt("emtn.lua")
 
 Emtn = {
 	act_interval_time = 3,

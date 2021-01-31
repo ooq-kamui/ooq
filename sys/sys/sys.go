@@ -104,8 +104,8 @@ components {
   }
 }
 components {
-  id: "fac_gui_inp"
-  component: "/assets/gui/inp/inp.factory"
+  id: "fac_inp"
+  component: "/assets/sys/inp/inp.factory"
   position {
     x: 0.0
     y: 0.0

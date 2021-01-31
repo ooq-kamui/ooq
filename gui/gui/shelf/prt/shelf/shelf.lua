@@ -1,4 +1,4 @@
-log.script("p.shelf.lua")
+log.scrpt("p.shelf.lua")
 
 p.Shelf = {}
 

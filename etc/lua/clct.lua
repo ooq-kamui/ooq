@@ -1,4 +1,4 @@
-log.script("clct.lua")
+log.scrpt("clct.lua")
 
 clct = {}
 

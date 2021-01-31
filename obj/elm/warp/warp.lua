@@ -1,4 +1,4 @@
-log.script("warp.lua")
+log.scrpt("warp.lua")
 
 Warp = {
 	act_interval_time = 50,
@@ -36,6 +36,6 @@ function Warp.on_msg_clsn(_s, msg_id, prm, sender)
 	local o_pos = prm.other_position
 	local o_id  = prm.other_id
 	if ar.inHa(prm.group, {"chara", "player"}) then
-		pst.script(o_id, "to_cloud")
+		pst.scrpt(o_id, "to_cloud")
 	end
 end

@@ -1,4 +1,4 @@
-log.script("gui.lua")
+log.scrpt("gui.lua")
 
 g = {}
 g.Gui = {}
@@ -172,9 +172,9 @@ function g.Gui.focus__(_s, val)
 	
 	local url = msg.url()
 	if val then
-		pst.gui(Gui_inp.id, "focus__t", {focus_gui = url, focus_lb = _s._lb})
+		pst.gui(Inp_gui.id, "focus__t", {focus_gui = url, focus_lb = _s._lb})
 	else
-		pst.gui(Gui_inp.id, "focus__f")
+		pst.gui(Inp_gui.id, "focus__f")
 	end
 end
 

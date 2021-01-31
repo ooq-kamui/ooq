@@ -1,4 +1,4 @@
-log.script("bag.lua")
+log.scrpt("bag.lua")
 
 g.Bag = {
 	lb  = "bag",

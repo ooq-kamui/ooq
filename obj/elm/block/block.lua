@@ -1,4 +1,4 @@
-log.script("block.lua")
+log.scrpt("block.lua")
 
 Block = {
 	tile = Tile.magic_block,

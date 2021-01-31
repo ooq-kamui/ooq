@@ -1,4 +1,4 @@
-log.script("map.script")
+log.scrpt("map.script")
 
 go.property("_tilesize", vmath.vector3(48, 48, 0))
 go.property("_rng_pos_min", vmath.vector3( 0, 0, 0))

@@ -1,4 +1,4 @@
-log.script("bed.lua")
+log.scrpt("bed.lua")
 
 Bed = {}
 

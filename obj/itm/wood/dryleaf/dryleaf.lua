@@ -1,4 +1,4 @@
-log.script("dryleaf.lua")
+log.scrpt("dryleaf.lua")
 
 Dryleaf = {
 	act_interval_time = 10,

@@ -1,4 +1,4 @@
-log.script("egg.lua")
+log.scrpt("egg.lua")
 
 Egg = {
 	act_interval_time = 10,

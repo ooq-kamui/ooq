@@ -1,4 +1,4 @@
-log.script("arw.lua")
+log.scrpt("arw.lua")
 
 Arw = {
 	act_interval_time = 5,

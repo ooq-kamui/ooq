@@ -1,4 +1,4 @@
-log.script("cfg.lua")
+log.scrpt("cfg.lua")
 
 Ply_data._cfg = {}
 Ply_data.cfg  = {}

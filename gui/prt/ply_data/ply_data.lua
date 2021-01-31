@@ -1,4 +1,4 @@
-log.script("p.ply_data.lua")
+log.scrpt("p.ply_data.lua")
 
 p.Ply_data = {}
 
@@ -173,5 +173,5 @@ end
 
 function p.Ply_data.game_continue(_s)
 	_s:parent_gui_del()
-	pst.script(Sys.id, "game_continue", {ply_slt_idx = _s._ply_slt_idx, ply_data_file_idx = _s:cursor_ply_data_thmb_idx()})
+	pst.scrpt(Sys.id, "game_continue", {ply_slt_idx = _s._ply_slt_idx, ply_data_file_idx = _s:cursor_ply_data_thmb_idx()})
 end

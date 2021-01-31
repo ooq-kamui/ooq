@@ -1,4 +1,4 @@
-log.script("nd_anm.lua")
+log.scrpt("nd_anm.lua")
 
 nd.anm = {
 	time      = 0.2,

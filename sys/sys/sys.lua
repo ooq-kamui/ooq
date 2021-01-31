@@ -1,4 +1,4 @@
-log.script("sys.lua")
+log.scrpt("sys.lua")
 
 -- system
 
@@ -40,15 +40,13 @@ function Sys.init(_s)
 
 	extend._(_s, Sys)
 	
-	Sys.id = go.get_id()
+	Sys.id = id._()
 
-	-- camera
 	_s._cmr_id = Cmr.cre()
 
-	-- gui
-	Gui_inp.cre()
+	Inp.cre()
+	-- Inp_gui.cre()
 
-	-- title
 	_s:title()
 end
 
@@ -103,7 +101,7 @@ function Sys.crnt_del(_s)
 	if not _s._crnt_lb then return end
 
 	local key = "_".._s._crnt_lb.."_id"
-	pst.script(_s[key], "del")
+	pst.scrpt(_s[key], "del")
 
 	_s[key] = ha.emp()
 	_s._crnt_lb = nil

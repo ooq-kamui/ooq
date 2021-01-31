@@ -1,4 +1,4 @@
-log.script("plychara.lua")
+log.scrpt("plychara.lua")
 
 Play_chara = {}
 
@@ -38,7 +38,7 @@ function Plychara.cre(pos, dir)
 	local t_id = Sp.cre(Plychara, pos, {name = ha._(name)})
 	-- log._("plychara cre id", t_id)
 
-	pst.script(t_id, "dir_h__", {dir_h = dir})
+	pst.scrpt(t_id, "dir_h__", {dir_h = dir})
 	
 	Map.add_chara(name) -- todo > method
 	return t_id
@@ -262,7 +262,7 @@ function Plychara.ox_dstrct__mv(_s)
 	
 	if not is_dstrct_mv then return is_dstrct_mv end
 	
-	pst.script(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h})
+	pst.scrpt(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h})
 	
 	return is_dstrct_mv
 end
@@ -456,19 +456,19 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 		local t_clss = {"reizoko", "pc", "shelf", "door"}
 		for idx, t_cls in pairs(t_clss) do
 			if     #_s._clsn[t_cls] >= 1 then
-				pst.script(_s._clsn[t_cls][1], "opn")
+				pst.scrpt(_s._clsn[t_cls][1], "opn")
 				is_icn_opn = _.t
 				break
 			end
 		end
 		if not is_icn_opn and #_s._clsn.flpy >= 1 then
-			pst.script(_s._clsn.flpy[1], "opn")
+			pst.scrpt(_s._clsn.flpy[1], "opn")
 			is_icn_opn = _.t
 		end
 		
 		if not is_icn_opn then
-			pst.script(Game.id(), "bag_opn")
-			-- pst.script(Sys.game_id(), "bag_opn")
+			pst.scrpt(Game.id(), "bag_opn")
+			-- pst.scrpt(Sys.game_id(), "bag_opn")
 		end
 	end
 end
@@ -492,7 +492,7 @@ function Plychara.itm_use(_s, prm)
 
 	elseif itm == "wand003" then
 		if #_s._clsn.tree > 0 then
-			pst.script(_s._clsn.tree[1], "trnsf_wood")
+			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
 	elseif itm == "wand004" then
 		Fire.cre(_s:pos_fw(2/3))
@@ -730,7 +730,7 @@ function Plychara.hld__o(_s)
 
 	local hld_idx = _s:hld__add(t_id)
 
-	pst.script(t_id, "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
+	pst.scrpt(t_id, "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
 
 	Se.pst_ply("hld")
 end
@@ -741,25 +741,25 @@ function Plychara.hld__x(_s)
 
 	local t_id = _s:hld__del()
 
-	pst.script(t_id, "hld__x")
+	pst.scrpt(t_id, "hld__x")
 
 	--
 	-- other effect
 	--
 	if     #_s._clsn.chara   >= 1 then
-		pst.script(_s._clsn.chara[1], "present", {id = t_id})
+		pst.scrpt(_s._clsn.chara[1], "present", {id = t_id})
 
 	elseif #_s._clsn.animal  >= 1 then
-		pst.script(_s._clsn.animal[1], "present", {id = t_id})
+		pst.scrpt(_s._clsn.animal[1], "present", {id = t_id})
 
 	elseif #_s._clsn.hrvst   >= 1 then
-		pst.script(_s._clsn.hrvst[1], "in", {id = t_id})
+		pst.scrpt(_s._clsn.hrvst[1], "in", {id = t_id})
 
 	elseif #_s._clsn.kitchen >= 1 then
-		pst.script(_s._clsn.kitchen[1], "kitchen_o", {id = t_id})
+		pst.scrpt(_s._clsn.kitchen[1], "kitchen_o", {id = t_id})
 
 	elseif #_s._clsn.reizoko >= 1 then
-		pst.script(_s._clsn.reizoko[1], "into_reizoko", {food_id = t_id})
+		pst.scrpt(_s._clsn.reizoko[1], "into_reizoko", {food_id = t_id})
 	end
 end
 
@@ -787,11 +787,11 @@ end
 
 function Plychara.to_cloud(_s)
 	Sp.to_cloud(_s)
-	pst.script(Sys.cmr_id(), "pos__plychara")
+	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
 function Plychara.to_door(_s, door_id)
 	local pos = id.pos(door_id)
 	_s:pos__(pos)
-	pst.script(Sys.cmr_id(), "pos__plychara")
+	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end

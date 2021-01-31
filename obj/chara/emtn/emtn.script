@@ -1,4 +1,4 @@
-log.script("emtn.script")
+log.scrpt("emtn.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash("emtn"))

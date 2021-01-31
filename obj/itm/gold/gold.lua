@@ -1,4 +1,4 @@
-log.script("gold.lua")
+log.scrpt("gold.lua")
 
 Gold = {
 	act_interval_time = 0.4,
@@ -24,7 +24,8 @@ function Gold.init(_s)
 	extend.init(_s, Sp)
 	extend._(_s, Gold)
 	
-	_s._id = go.get_id()
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	
 	-- _s.jumping = 0.5
 

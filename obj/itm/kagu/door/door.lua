@@ -1,4 +1,4 @@
-log.script("door.lua")
+log.scrpt("door.lua")
 
 Door = {
 	act_interval_time = 60,

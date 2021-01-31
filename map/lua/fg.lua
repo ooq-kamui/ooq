@@ -1,4 +1,4 @@
-log.script("fg.lua")
+log.scrpt("fg.lua")
 
 Fg = {
 	_ = {},
@@ -21,9 +21,11 @@ end
 
 function Fg.upd(_s, dt)
 	-- log._("fg upd scrl_rate", _s.area, _s.name, log.f(_s.scrl_rate))
+
 	local cmr_pos = id.pos(Sys.cmr_id())
 	local pos = cmr_pos * (1 - _s._scrl_rate)
-	id.pos__(go.get_id(), pos)
+	id.pos__(id._(), pos)
+	-- id.pos__(go.get_id(), pos)
 end
 
 function Fg.on_msg(_s, msg_id, prm, sender)

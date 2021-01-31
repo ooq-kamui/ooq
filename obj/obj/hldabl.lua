@@ -1,4 +1,4 @@
-log.script("hldabl.lua")
+log.scrpt("hldabl.lua")
 
 Hldabl = {}
 
@@ -28,12 +28,12 @@ function Hldabl.hld__o(_s, prm)
 	_s:anm_cancel_pos()
 	
 	if _s:is_food() and _s._kitchen_id then
-		pst.script(_s._kitchen_id, "kitchen_x", {id = _s._id})
+		pst.scrpt(_s._kitchen_id, "kitchen_x", {id = _s._id})
 		_s:kitchen_x()
 	end
 	
 	if _s._bear_tree_id then
-		pst.script(_s._bear_tree_id, "bear_x", {bear_id = _s._id})
+		pst.scrpt(_s._bear_tree_id, "bear_x", {bear_id = _s._id})
 		_s._bear_tree_id = nil
 	end
 
@@ -66,14 +66,8 @@ end
 function Hldabl.final(_s)
 
 	if _s._hld_id then
-		pst.script(_s._hld_id, "hld__del", {id = _s._id})
+		pst.scrpt(_s._hld_id, "hld__del", {id = _s._id})
 		_s._hld_id = nil
 	end
 end
 
---[[
-function Hldabl.hld_pos__(_s, p_pos)
-	p_pos = p_pos or _s:hld_pos()
-	pst.script(_s._id, "pos__", {pos = p_pos})
-end
---]]

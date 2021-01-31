@@ -1,4 +1,4 @@
-log.script("kitchen.lua")
+log.scrpt("kitchen.lua")
 
 Kitchen = {
 
@@ -89,7 +89,7 @@ function Kitchen.final(_s)
 	Hldabl.final(_s)
 	
 	for idx, food_id in pairs(_s.on) do
-		pst.script(food_id, "kitchen_x")
+		pst.scrpt(food_id, "kitchen_x")
 	end
 end
 
@@ -108,7 +108,7 @@ function Kitchen.kitchen_o(_s, food_id)
 	if #_s.on >= Kitchen.on_max then return end
 	
 	ar.add(_s.on, food_id)
-	pst.script(food_id, "kitchen_o", {id = _s._id})
+	pst.scrpt(food_id, "kitchen_o", {id = _s._id})
 	
 	_s:_food_pos__()
 	
@@ -124,7 +124,7 @@ function Kitchen._food_pos__(_s)
 		pos = n.vec(x, Map.sqh*3/2)
 		
 		pst.parent__(food_id, _s._id)
-		pst.script(food_id, "pos__", {pos = pos})
+		pst.scrpt(food_id, "pos__", {pos = pos})
 	end
 end
 
@@ -159,7 +159,7 @@ end
 
 function Kitchen._cre_dish(_s)
 	for idx, id in pairs(_s.on) do
-		pst.script(id, "cook_to_dish")
+		pst.scrpt(id, "cook_to_dish")
 	end
 	for idx = 1, #_s.on do
 		table.remove(_s.on)

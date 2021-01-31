@@ -1,4 +1,4 @@
-log.script("ha.lua")
+log.scrpt("ha.lua")
 
 ha = {
 	ha = {}, -- hash key list

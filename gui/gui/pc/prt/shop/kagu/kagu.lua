@@ -1,4 +1,4 @@
-log.script("p.shop_kagu.lua")
+log.scrpt("p.shop_kagu.lua")
 
 p.Shop_kagu = {}
 

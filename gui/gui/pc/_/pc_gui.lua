@@ -1,4 +1,4 @@
-log.script("pc.lua")
+log.scrpt("pc.lua")
 
 g.Pc = {}
 

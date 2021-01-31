@@ -1,4 +1,4 @@
-log.script("bag.gui_script")
+log.scrpt("bag.gui_script")
 
 function init(_s)
 	g.Bag.init(_s)

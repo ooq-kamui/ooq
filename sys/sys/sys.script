@@ -1,5 +1,4 @@
-
--- u.log_script("system.script")
+-- log.scrpt("system.script")
 
 -- init random()
 math.randomseed(os.time())

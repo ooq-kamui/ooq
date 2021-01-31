@@ -1,4 +1,4 @@
-log.script("fire.lua")
+log.scrpt("fire.lua")
 
 Fire = {
 	act_interval_time = 15,
@@ -103,7 +103,7 @@ function Fire.burn_obj(_s)
 		-- log.pp(clsHa, obj_arund)
 		
 		for id, val in pairs(obj_arund) do
-			pst.script(id, "burn")
+			pst.scrpt(id, "burn")
 		end
 	end
 end

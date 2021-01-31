@@ -1,4 +1,4 @@
-log.script("reizoko.lua")
+log.scrpt("reizoko.lua")
 
 Ply_data._reizoko = {}
 Ply_data.reizoko  = {}

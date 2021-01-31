@@ -1,4 +1,4 @@
-log.script("ev.lua")
+log.scrpt("ev.lua")
 
 Ev = {
 	id = nil,
@@ -9,7 +9,7 @@ Ev = {
 
 function Ev._(name)
 	Ev.scnro = Scnro[name]
-	pst.script(Ev.id, "start")
+	pst.scrpt(Ev.id, "start")
 end
 
 function Ev.cre()

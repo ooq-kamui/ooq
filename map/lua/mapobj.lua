@@ -1,5 +1,4 @@
-
-log.script("mapobj.lua")
+log.scrpt("mapobj.lua")
 
 Mapobj = {
 	cls = {"wood", "dryleaf", "leaf", "block"}, -- use by fire , block

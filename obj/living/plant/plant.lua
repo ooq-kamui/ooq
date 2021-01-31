@@ -1,4 +1,4 @@
-log.script("plant.lua")
+log.scrpt("plant.lua")
 
 Plant = {
 	act_interval_time = 15,

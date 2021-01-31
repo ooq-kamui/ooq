@@ -1,4 +1,4 @@
-log.script("grave.lua")
+log.scrpt("grave.lua")
 
 Grave = {
 	act_interval_time = 10,

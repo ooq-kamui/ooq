@@ -1,4 +1,4 @@
-log.script("p.snn_dtl.lua")
+log.scrpt("p.snn_dtl.lua")
 
 p.Snn_dtl = {}
 

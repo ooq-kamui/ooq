@@ -1,4 +1,4 @@
-log.script("fluff.lua")
+log.scrpt("fluff.lua")
 
 Fluff = {
 	act_interval_time = 14,

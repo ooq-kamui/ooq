@@ -1,4 +1,4 @@
-log.script("sky.lua")
+log.scrpt("sky.lua")
 
 Sky = {
 

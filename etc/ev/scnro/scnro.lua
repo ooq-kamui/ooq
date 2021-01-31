@@ -1,4 +1,4 @@
-log.script("scnro.lua")
+log.scrpt("scnro.lua")
 
 Scnro = {}
 

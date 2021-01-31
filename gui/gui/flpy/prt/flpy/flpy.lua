@@ -1,4 +1,4 @@
-log.script("p.flpy.lua")
+log.scrpt("p.flpy.lua")
 
 p.Flpy = {}
 
@@ -71,7 +71,7 @@ end
 function p.Flpy.back_to_title(_s)
 	
 	Se.pst_ply("forward")
-	pst.script(Sys.id, "title")
+	pst.scrpt(Sys.id, "title")
 	_s:parent_gui_del()
 end
 

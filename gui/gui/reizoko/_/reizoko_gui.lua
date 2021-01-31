@@ -1,4 +1,4 @@
-log.script("reizoko_gui.lua")
+log.scrpt("reizoko_gui.lua")
 
 g.Reizoko = {}
 

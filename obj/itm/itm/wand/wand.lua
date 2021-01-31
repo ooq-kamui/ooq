@@ -1,4 +1,4 @@
-log.script("wand.lua")
+log.scrpt("wand.lua")
 
 Wand = {
 	wand001 = {

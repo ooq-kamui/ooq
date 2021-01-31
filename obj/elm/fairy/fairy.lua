@@ -1,4 +1,4 @@
-log.script("fairy.lua")
+log.scrpt("fairy.lua")
 
 Fairy = {
 	act_interval_time = 100,

@@ -1,6 +1,6 @@
 components {
-  id: "gui"
-  component: "/assets/gui/inp/inp.gui"
+  id: "script"
+  component: "/assets/sys/inp/inp.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "script"
-  component: "/assets/gui/inp/inp.script"
+  id: "gui"
+  component: "/assets/sys/inp/inp_gui.gui"
   position {
     x: 0.0
     y: 0.0

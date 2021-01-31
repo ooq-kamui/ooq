@@ -1,4 +1,4 @@
-log.script("wood.lua")
+log.scrpt("wood.lua")
 
 Wood = {
 	act_interval_time = 10,

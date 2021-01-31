@@ -1,4 +1,4 @@
-log.script("bg.script")
+log.scrpt("bg.script")
 
 go.property("_name", hash(""))
 go.property("_area", hash(""))

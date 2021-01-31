@@ -1,4 +1,4 @@
-log.script("tree.script")
+log.scrpt("tree.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

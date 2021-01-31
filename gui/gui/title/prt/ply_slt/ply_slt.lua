@@ -1,4 +1,4 @@
-log.script("p.ply_slt.lua")
+log.scrpt("p.ply_slt.lua")
 
 p.Ply_slt = {}
 
@@ -119,7 +119,7 @@ function p.Ply_slt.decide(_s)
 end
 
 function p.Ply_slt.game_new(_s)
-	pst.script(Sys.id, "game_new", {ply_slt_idx = _s:cursor_itm_idx()})
+	pst.scrpt(Sys.id, "game_new", {ply_slt_idx = _s:cursor_itm_idx()})
 	_s:parent_gui_del()
 end
 

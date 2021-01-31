@@ -1,4 +1,4 @@
-log.script("gold.lua")
+log.scrpt("gold.lua")
 
 Ply_data._gold = 0
 

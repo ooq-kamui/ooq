@@ -1,4 +1,4 @@
-log.script("title.script")
+log.scrpt("title.script")
 
 function init(_s)
 	Title.init(_s)

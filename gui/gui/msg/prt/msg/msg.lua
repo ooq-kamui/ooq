@@ -1,4 +1,4 @@
-log.script("p.msg.lua")
+log.scrpt("p.msg.lua")
 
 p.Msg = {}
 

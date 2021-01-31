@@ -1,4 +1,4 @@
-log.script("shelf.gui_script")
+log.scrpt("shelf.gui_script")
 
 function init(_s)
 	g.Shelf.init(_s)

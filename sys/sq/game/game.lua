@@ -1,4 +1,4 @@
-log.script("game.lua")
+log.scrpt("game.lua")
 
 Game = {
 	act_interval_time = 60, -- 30, 15, 10, 5,
@@ -141,7 +141,8 @@ function Game.init(_s)
 	
 	extend._(_s, Game)
 
-	_s._id = go.get_id()
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	-- log._("game init", _s._map_id)
 
 	-- gui
@@ -157,7 +158,7 @@ function Game.init(_s)
 
 	_s:bgm_ply_rnd()
 
-	-- pst.script(Sys.cmr_id(), "pos__dflt")
+	-- pst.scrpt(Sys.cmr_id(), "pos__dflt")
 end
 
 function Game.upd(_s, dt)
@@ -263,7 +264,7 @@ function Game.new(_s)
 	_s:map_plychara__cre()
 	_s:map_fairy__cre()
 	
-	pst.script(Sys.cmr_id(), "__game_start")
+	pst.scrpt(Sys.cmr_id(), "__game_start")
 
 	_s:new_event()
 end
@@ -283,7 +284,7 @@ function Game.continue(_s, ply_data_file_idx)
 	_s:map_plychara__cre(plychara_pos)
 	_s:map_fairy__cre()
 	
-	pst.script(Sys.cmr_id(), "__game_start")
+	pst.scrpt(Sys.cmr_id(), "__game_start")
 end
 
 function Game.save(_s)
@@ -293,7 +294,7 @@ function Game.save(_s)
 
 	if _s:is_map_pause()  then log._("map is_pause") return end
 
-	if Gui_inp.is_focus() then log._("map Gui_inp.is_focus") return end
+	if Inp_gui.is_focus() then log._("map Inp_gui.is_focus") return end
 
 	-- save
 	_s:ply_data__save()
@@ -340,35 +341,35 @@ function Game.map_plychara__cre(_s, pos, dir)
 
 	if not _s._map_id then return end
 
-	pst.script(_s._map_id, "plychara__cre", {pos = pos, dir = dir})
+	pst.scrpt(_s._map_id, "plychara__cre", {pos = pos, dir = dir})
 end
 
 function Game.map_fairy__cre(_s)
 
 	if not _s._map_id then return end
 
-	pst.script(_s._map_id, "fairy__cre")
+	pst.scrpt(_s._map_id, "fairy__cre")
 end
 
 function Game.map_cloud__cre(_s)
 
 	if not _s._map_id then return end
 
-	pst.script(_s._map_id, "cloud__cre")
+	pst.scrpt(_s._map_id, "cloud__cre")
 end
 
 function Game.map__save(_s)
 	
 	if not _s._map_id then return end
 
-	pst.script(_s._map_id, "save")
+	pst.scrpt(_s._map_id, "save")
 end
 
 function Game.map__del(_s)
 
 	if not _s._map_id then return end
 	
-	pst.script(_s._map_id, "del")
+	pst.scrpt(_s._map_id, "del")
 	_s._map_id = ha.emp()
 end
 
@@ -376,7 +377,7 @@ function Game.map__save_del(_s)
 
 	if not _s._map_id then return end
 	
-	pst.script(_s._map_id, "save_del")
+	pst.scrpt(_s._map_id, "save_del")
 	_s._map_id = ha.emp()
 end
 
@@ -457,10 +458,10 @@ function Game.map_dstrct__ch(_s, dstrct, plychara)
 
 	_s:map_dstrct__ch_tmp__(dstrct, plychara)
 
-	-- pst.script(_s._map_id, "dstrct__ch", {dstrct = dstrct, plychara = plychara})
-	pst.script(_s._map_id, "dstrct__ch")
+	-- pst.scrpt(_s._map_id, "dstrct__ch", {dstrct = dstrct, plychara = plychara})
+	pst.scrpt(_s._map_id, "dstrct__ch")
 
-	-- pst.script(Sys.cmr_id(), "pos__plychara")
+	-- pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
 function Game.map_dstrct__ch_tmp__(_s, dstrct, plychara)
@@ -491,7 +492,7 @@ function Game.map_dstrct__ch_map_cre(_s)
 	
 	_s:map_dstrct__ch_tmp__clr()
 	
-	pst.script(Sys.cmr_id(), "__dstrct_ch")
+	pst.scrpt(Sys.cmr_id(), "__dstrct_ch")
 
 	Msg.s("district ".._s._dstrct.x..", ".._s._dstrct.y)
 end
@@ -515,7 +516,7 @@ function Game.sky__del(_s)
 
 	if not _s._sky_id then return end
 
-	pst.script(_s._sky_id, "del")
+	pst.scrpt(_s._sky_id, "del")
 	_s._sky_id = ha.emp()
 end
 

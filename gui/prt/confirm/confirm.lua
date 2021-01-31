@@ -1,4 +1,4 @@
-log.script("p.confirm.lua")
+log.scrpt("p.confirm.lua")
 
 p.Confirm = {}
 

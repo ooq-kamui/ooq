@@ -1,4 +1,4 @@
-log.script("obj.lua")
+log.scrpt("obj.lua")
 
 Obj = {}
 Obj.fac = "objFac#"

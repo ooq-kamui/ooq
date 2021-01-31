@@ -1,4 +1,4 @@
-log.script("dia.gui_script")
+log.scrpt("dia.gui_script")
 
 function init(_s)
 	g.Dia.init(_s)

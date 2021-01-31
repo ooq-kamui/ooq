@@ -1,4 +1,4 @@
-log.script("n.lua")
+log.scrpt("n.lua")
 
 -- new
 n = {}

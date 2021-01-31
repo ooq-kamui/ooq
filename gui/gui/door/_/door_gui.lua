@@ -1,4 +1,4 @@
-log.script("door_gui.lua")
+log.scrpt("door_gui.lua")
 
 g.Door = {}
 

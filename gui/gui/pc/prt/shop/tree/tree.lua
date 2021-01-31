@@ -1,4 +1,4 @@
-log.script("p.shop_tree.lua")
+log.scrpt("p.shop_tree.lua")
 
 p.Shop_tree = {}
 

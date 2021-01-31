@@ -1,4 +1,4 @@
-log.script("mstr veget.lua")
+log.scrpt("mstr veget.lua")
 
 Mstr.veget = {} -- 98
 

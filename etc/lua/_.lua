@@ -1,4 +1,4 @@
--- log.script("_.lua")
+-- log.scrpt("_.lua")
 
 _ = {}
 
@@ -7,3 +7,4 @@ _.f = false
 
 _.o = true
 _.x = false
+

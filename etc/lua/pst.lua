@@ -1,4 +1,4 @@
-log.script("pst.lua")
+log.scrpt("pst.lua")
 
 pst = {}
 post = pst -- old
@@ -11,7 +11,7 @@ function pst._(url, msg_id, prm)
 	end
 end
 
-function pst.script(id, msg_id, prm)
+function pst.scrpt(id, msg_id, prm)
 	local url = msg.url(nil, id, "script")
 	pst._(url, msg_id, prm)
 end
@@ -30,7 +30,7 @@ function pst.parent__(t_id, p_id, z, p_pos)
 
 	if ha.is_emp(t_id) then return end
 
-	pst.script(t_id, "set_parent", {parent_id = p_id, keep_world_transform = 1})
+	pst.scrpt(t_id, "set_parent", {parent_id = p_id, keep_world_transform = 1})
 
 	z = z or - 0.01
 	pst.z__(t_id, z)
@@ -53,10 +53,10 @@ function pst.pos__(p_id, p_pos)
 	
 	p_pos = p_pos or n.vec()
 	
-	pst.script(p_id, "pos__", {pos = p_pos})
+	pst.scrpt(p_id, "pos__", {pos = p_pos})
 end
 
 function pst.z__(p_id, z)
 	z = z or 0
-	pst.script(p_id, "z__", {z = z})
+	pst.scrpt(p_id, "z__", {z = z})
 end

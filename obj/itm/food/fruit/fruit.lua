@@ -1,4 +1,4 @@
-log.script("fruit.lua")
+log.scrpt("fruit.lua")
 
 Fruit = {
 	act_interval_time = 10,

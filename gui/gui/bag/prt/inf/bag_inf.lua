@@ -1,4 +1,4 @@
-log.script("p.bag_inf.lua")
+log.scrpt("p.bag_inf.lua")
 
 p.Bag_inf = {
 	base_pos = n.vec(0, Disp.yh - Map.sq * 1.5),

@@ -1,4 +1,4 @@
-log.script("blbrd.lua")
+log.scrpt("blbrd.lua")
 
 Blbrd = {}
 

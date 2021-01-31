@@ -1,4 +1,4 @@
-log.script("pc.lua")
+log.scrpt("pc.lua")
 
 Pc = {
 	act_interval_time = 7,

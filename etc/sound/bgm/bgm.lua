@@ -1,4 +1,4 @@
-log.script("bgm.lua")
+log.scrpt("bgm.lua")
 
 Bgm = {
 	_plying_idx = nil,

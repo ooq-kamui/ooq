@@ -1,4 +1,4 @@
-log.script("dia.lua")
+log.scrpt("dia.lua")
 
 Dia = {
 	chara = nil,

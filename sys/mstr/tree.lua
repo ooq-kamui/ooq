@@ -1,4 +1,4 @@
-log.script("mstr tree.lua")
+log.scrpt("mstr tree.lua")
 
 Mstr.tree = {} -- 100
 

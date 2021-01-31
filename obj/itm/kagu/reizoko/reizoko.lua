@@ -1,4 +1,4 @@
-log.script("reizoko.lua")
+log.scrpt("reizoko.lua")
 
 Reizoko = {
 
@@ -84,11 +84,6 @@ function Reizoko.into_reizoko(_s, food_id)
 	
 	Ply_data.reizoko.__add({cls = cls, name = id.name(food_id)})
 	
-	pst.script(food_id, "into_reizoko")
+	pst.scrpt(food_id, "into_reizoko")
 end
 
---[[
-function Reizoko.take_reizoko(_s, food_idx)
-	pst.gui(Reizoko_gui.id, "del", {food_idx = food_idx})
-end
---]]

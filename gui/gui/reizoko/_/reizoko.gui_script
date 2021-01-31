@@ -1,4 +1,4 @@
-log.script("reizoko.gui_script")
+log.scrpt("reizoko.gui_script")
 
 -- script method
 

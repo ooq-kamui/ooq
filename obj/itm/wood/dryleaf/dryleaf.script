@@ -1,4 +1,4 @@
-log.script("dryleaf.script")
+log.scrpt("dryleaf.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

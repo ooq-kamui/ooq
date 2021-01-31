@@ -1,4 +1,4 @@
-log.script("wa.script")
+log.scrpt("wa.script")
 
 function init(_s)
 	Wa.init(_s)

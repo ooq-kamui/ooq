@@ -1,4 +1,4 @@
-log.script("mstr block.lua")
+log.scrpt("mstr block.lua")
 
 Mstr.block = {}
 

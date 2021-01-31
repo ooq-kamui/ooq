@@ -1,4 +1,4 @@
-log.script("spwood.lua")
+log.scrpt("spwood.lua")
 
 Spwood = {}
 

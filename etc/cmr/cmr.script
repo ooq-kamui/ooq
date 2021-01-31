@@ -1,4 +1,4 @@
-log.script("cmr.script")
+log.scrpt("cmr.script")
 
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

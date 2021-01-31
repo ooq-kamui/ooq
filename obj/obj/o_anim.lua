@@ -1,4 +1,4 @@
-log.script("o_anim.lua")
+log.scrpt("o_anim.lua")
 
 O_anim = {}
 

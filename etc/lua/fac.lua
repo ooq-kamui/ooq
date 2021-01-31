@@ -1,4 +1,4 @@
-log.script("fac.lua")
+log.scrpt("fac.lua")
 
 fac = {}
 

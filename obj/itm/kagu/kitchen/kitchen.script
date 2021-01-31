@@ -1,4 +1,4 @@
-log.script("kitchen.script")
+log.scrpt("kitchen.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

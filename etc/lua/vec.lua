@@ -1,4 +1,4 @@
-log.script("vec.lua")
+log.scrpt("vec.lua")
 
 vec = {}
 

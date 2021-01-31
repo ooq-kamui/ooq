@@ -1,4 +1,4 @@
-log.script("bush.lua")
+log.scrpt("bush.lua")
 
 Bush = {
 	act_interval_time = 15,

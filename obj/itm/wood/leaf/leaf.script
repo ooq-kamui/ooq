@@ -1,4 +1,4 @@
-log.script("leaf.script")
+log.scrpt("leaf.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

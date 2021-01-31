@@ -1,4 +1,4 @@
-log.script("map_obj.lua")
+log.scrpt("map_obj.lua")
 
 function Map.add_chara(chara)
 	ar.add_unq(chara, Map.chara)

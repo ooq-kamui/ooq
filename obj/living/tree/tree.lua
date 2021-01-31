@@ -1,4 +1,4 @@
-log.script("tree.lua")
+log.scrpt("tree.lua")
 
 Tree = {
 	act_interval_time = 5,
@@ -76,7 +76,7 @@ function Tree.final(_s)
 	Sp.final(_s)
 	
 	for idx, bear_id in pairs(_s._bear) do
-		pst.script(bear_id, "bear_x")
+		pst.scrpt(bear_id, "bear_x")
 	end
 end
 
@@ -99,7 +99,7 @@ function Tree.bear(_s)
 	local pos = _s:wpos() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
 	local id = bear_Cls.cre(pos, {name = _s._bear_name}, 0.2)
-	pst.script(id, "bear_o", {tree_id = _s._id})
+	pst.scrpt(id, "bear_o", {tree_id = _s._id})
 	ar.add(_s._bear, id)
 end
 

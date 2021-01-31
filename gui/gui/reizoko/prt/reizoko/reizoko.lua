@@ -1,4 +1,4 @@
-log.script("p.prt_reizoko.lua")
+log.scrpt("p.prt_reizoko.lua")
 
 p.Reizoko = {}
 
@@ -77,7 +77,7 @@ function p.Reizoko.decide(_s)
 
 	-- food cre
 	Se.pst_ply("pop")
-	pst.script(p.Reizoko.id, "food_cre", {cls = txtr, name = anim})
+	pst.scrpt(p.Reizoko.id, "food_cre", {cls = txtr, name = anim})
 	
 	nd.anm.poyon(_s._nd.cursor)
 	nd.anm.poyon(_s._nd.itm[idx][_s:lb("itm")])

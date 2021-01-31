@@ -1,4 +1,4 @@
-log.script("grave.script")
+log.scrpt("grave.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

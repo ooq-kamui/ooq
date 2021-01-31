@@ -1,4 +1,4 @@
-log.script("p.prt_itm_menu.lua")
+log.scrpt("p.prt_itm_menu.lua")
 
 p.Prt_itm_menu = {}
 

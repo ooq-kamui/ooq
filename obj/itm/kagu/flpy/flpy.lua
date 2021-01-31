@@ -1,4 +1,4 @@
-log.script("flpy.lua")
+log.scrpt("flpy.lua")
 
 Flpy ={
 	act_interval_time = 50,

@@ -1,4 +1,4 @@
-log.script("page.lua")
+log.scrpt("page.lua")
 
 page = {}
 

@@ -1,4 +1,4 @@
-log.script("bush.script")
+log.scrpt("bush.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

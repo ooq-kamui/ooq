@@ -1,4 +1,4 @@
-log.script("msg.gui_script")
+log.scrpt("msg.gui_script")
 
 function init(_s)
 	g.Msg.init(_s)

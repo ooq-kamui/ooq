@@ -1,4 +1,4 @@
-log.script("sp.lua")
+log.scrpt("sp.lua")
 
 Sp = {}
 
@@ -47,7 +47,7 @@ function Sp.cre(Cls, pos, prm, scl)
 	-- local id = factory.create(t_url, pos, nil, prm)
 	-- local id = factory.create(t_url, pos, nil, prm, nil)
 	
-	-- pst.script(t_id, "scl_anim__1")
+	-- pst.scrpt(t_id, "scl_anim__1")
 	return t_id
 end
 
@@ -55,7 +55,8 @@ end
 
 function Sp.init(_s)
 	
-	_s._id = go.get_id()
+	_s._id = id._()
+	-- _s._id = go.get_id()
 	
 	_s._foot_dst_i = _s:Cls().foot_dst_i or Map.sqh
 
@@ -627,7 +628,7 @@ function Sp.say(_s, str)
 	end
 	
 	local id = Fuki.cre(nil, {parent_id = _s._id})
-	pst.script(id, "s", {str = str, len = len})
+	pst.scrpt(id, "s", {str = str, len = len})
 end
 
 function Sp.tilepos_arund(_s)

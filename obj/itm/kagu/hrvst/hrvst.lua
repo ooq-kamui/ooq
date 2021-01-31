@@ -1,4 +1,4 @@
-log.script("hrvst.lua")
+log.scrpt("hrvst.lua")
 
 Hrvst = {
 

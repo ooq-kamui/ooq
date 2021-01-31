@@ -1,4 +1,4 @@
-log.script("veget.lua")
+log.scrpt("veget.lua")
 
 Veget = {
 	act_interval_time = 10,

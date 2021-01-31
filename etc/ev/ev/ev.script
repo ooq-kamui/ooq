@@ -1,4 +1,4 @@
-log.script("ev.script")
+log.scrpt("ev.script")
 
 function init(_s)
 	Ev.init(_s)

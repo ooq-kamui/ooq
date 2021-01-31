@@ -1,4 +1,4 @@
-log.script("meat.lua")
+log.scrpt("meat.lua")
 
 Meat = {
 	act_interval_time = 10,

@@ -1,4 +1,4 @@
-log.script("plyr.lua")
+log.scrpt("plyr.lua")
 
 Plyr = { -- memory
 	plychara_id = nil,

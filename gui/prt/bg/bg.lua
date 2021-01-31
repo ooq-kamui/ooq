@@ -1,4 +1,4 @@
-log.script("p.bg.lua")
+log.scrpt("p.bg.lua")
 
 p.Bg = {
 	bg_idx_max =  37,

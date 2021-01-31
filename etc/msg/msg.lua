@@ -1,4 +1,4 @@
-log.script("msg.lua")
+log.scrpt("msg.lua")
 
 Msg = {
 	idx = 0,

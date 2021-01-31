@@ -1,4 +1,4 @@
-log.script("mstr leaf.lua")
+log.scrpt("mstr leaf.lua")
 
 Mstr.leaf = {} -- 4
 

@@ -1,4 +1,4 @@
-log.script("map_tile.lua")
+log.scrpt("map_tile.lua")
 
 -- tile
 

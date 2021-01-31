@@ -1,4 +1,4 @@
-log.script("title_gui.lua")
+log.scrpt("title_gui.lua")
 
 g.Title = {}
 

@@ -1,4 +1,4 @@
-log.script("mstr animal.lua")
+log.scrpt("mstr animal.lua")
 
 Mstr.animal = {}
 

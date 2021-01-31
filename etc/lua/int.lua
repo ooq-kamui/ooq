@@ -1,4 +1,4 @@
-log.script("int.lua")
+log.scrpt("int.lua")
 
 int = {_ = {}}
 

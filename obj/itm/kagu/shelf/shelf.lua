@@ -1,4 +1,4 @@
-log.script("shelf.lua")
+log.scrpt("shelf.lua")
 
 Shelf = {
 

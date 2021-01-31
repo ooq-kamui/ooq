@@ -1,4 +1,4 @@
-log.script("food.lua")
+log.scrpt("food.lua")
 
 Food = {
 	cls = {"dairy","dish","egg","fish","fruit","meat","veget",},
@@ -60,10 +60,10 @@ function Food.final(_s)
 	Hldabl.final(_s)
 
 	if     _s._kitchen_id then
-		pst.script(_s._kitchen_id, "kitchen_x", {id = _s._id})
+		pst.scrpt(_s._kitchen_id, "kitchen_x", {id = _s._id})
 	
 	elseif _s._bear_tree_id then
-		pst.script(_s._bear_tree_id, "bear_x", {bear_id = _s._id})
+		pst.scrpt(_s._bear_tree_id, "bear_x", {bear_id = _s._id})
 	end
 end
 

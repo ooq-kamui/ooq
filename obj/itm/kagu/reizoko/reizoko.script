@@ -1,4 +1,4 @@
-log.script("reizoko.script")
+log.scrpt("reizoko.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash("reizoko"))

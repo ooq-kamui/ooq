@@ -1,4 +1,4 @@
-log.script("bgm_bgm.lua")
+log.scrpt("bgm_bgm.lua")
 
 Bgm.bgm = {
 	"pocketsound_ainikite",

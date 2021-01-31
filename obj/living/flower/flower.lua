@@ -1,4 +1,4 @@
-log.script("flower.lua")
+log.scrpt("flower.lua")
 
 Flower = {
 	act_interval_time = 100,

@@ -1,4 +1,4 @@
-log.script("kzn.lua")
+log.scrpt("kzn.lua")
 
 Ply_data._kzn = {}
 Ply_data.kzn  = {}

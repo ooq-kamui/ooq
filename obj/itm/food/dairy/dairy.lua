@@ -1,4 +1,4 @@
-log.script("dairy.lua")
+log.scrpt("dairy.lua")
 
 Dairy = {
 	Cls = "Dairy",

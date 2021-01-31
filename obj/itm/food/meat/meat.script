@@ -1,4 +1,4 @@
-log.script("meat.script")
+log.scrpt("meat.script")
 ---[[
 go.property("_cls", hash(""))
 go.property("_name", hash(""))

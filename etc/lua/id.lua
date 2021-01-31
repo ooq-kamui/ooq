@@ -1,6 +1,12 @@
-log.script("id.lua")
+log.scrpt("id.lua")
 
 id = {}
+
+function id._()
+	
+	local t_id = go.get_id()
+	return t_id
+end
 
 function id.prp(p_id, key)
 	-- log._("id.prp", p_id, key)
@@ -77,7 +83,7 @@ function id.z__(p_id, z)
 end
 
 function id.pst(id, msg_id, prm)
-	pst.script(id, msg_id, prm)
+	pst.scrpt(id, msg_id, prm)
 end
 
 function id.del(p_id, val)
@@ -125,3 +131,4 @@ function id.Cls_prp_weight(p_id)
 
 	return weight
 end
+
