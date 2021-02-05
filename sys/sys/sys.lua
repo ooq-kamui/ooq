@@ -19,7 +19,6 @@ end
 
 function Sys.cmr_id()
 	local cmr_id = Sys.prp("_cmr_id")
-	-- log._("Sys cmr_id", cmr_id)
 	return cmr_id
 end
 
@@ -34,6 +33,11 @@ function Sys.game_id()
 	return game_id
 end
 
+function Sys.inp_id()
+	local inp_id = Sys.prp("_inp_id")
+	return inp_id
+end
+
 -- script method
 
 function Sys.init(_s)
@@ -44,7 +48,7 @@ function Sys.init(_s)
 
 	_s._cmr_id = Cmr.cre()
 
-	Inp.cre()
+	_s._inp_id = Inp.cre()
 	-- Inp_gui.cre()
 
 	_s:title()
@@ -110,6 +114,8 @@ end
 
 -- msg
 
+-- msg static
+
 function Sys.msg_id()
 	
 	local msg_id = Sys.prp("_msg_id")
@@ -126,6 +132,8 @@ function Sys.is_exst_msg()
 
 	return ret, msg_id
 end
+
+-- msg method
 
 function Sys.msg_id__del(_s)
 

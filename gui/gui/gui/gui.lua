@@ -170,11 +170,11 @@ end
 function g.Gui.focus__(_s, val)
 	log._("g.Gui focus__", val)
 	
-	local url = msg.url()
+	local url = url.slf()
 	if val then
-		pst.gui(Inp_gui.id, "focus__t", {focus_gui = url, focus_lb = _s._lb})
+		pst._(".", "inp_focus__t", {focus_gui_url = url, focus_gui_lb = _s._lb})
 	else
-		pst.gui(Inp_gui.id, "focus__f")
+		pst._(".", "inp_focus__f")
 	end
 end
 

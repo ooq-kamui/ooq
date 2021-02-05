@@ -13,6 +13,11 @@ function url._(p_id, cmp)
 	return url
 end
 
+function url.slf()
+	return msg.url()
+end
+
+--[[
 function url.main(id, cmp)
 
 	if not id then return end
@@ -22,3 +27,5 @@ function url.main(id, cmp)
 	local url = msg.url("main", id, cmp)
 	return url
 end
+--]]
+

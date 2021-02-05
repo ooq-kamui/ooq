@@ -47,6 +47,7 @@ require("assets/sys/file/map")
 
 require("assets/sys/inp/inp")
 require("assets/sys/inp/inp_gui")
+require("assets/sys/inp/inp_plyr")
 
 require("assets/etc/msg/msg")
 require("assets/etc/ev/ev/ev")

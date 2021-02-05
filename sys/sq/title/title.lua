@@ -21,7 +21,7 @@ function Title.init(_s)
 	
 	extend._(_s, Title)
 	
-	local title_gui_id = factory.create("#fac_title_gui")
+	local title_gui_id = fac.cre("#fac_title_gui")
 	-- log._("title init title_gui_id", title_gui_id)
 
 	Bgm.ply_rnd()

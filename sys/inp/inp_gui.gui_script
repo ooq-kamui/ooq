@@ -1,7 +1,7 @@
 log.scrpt("gui inp.gui_script")
 
 function init(_s)
-	Inp_gui.init(_s)
+	-- Inp_gui.init(_s)
 end
 
 function on_message(_s, msg_id, prm, sender)

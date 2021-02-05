@@ -16,3 +16,4 @@ function g.Title.init(_s)
 	
 	_s:opn("logo")
 end
+

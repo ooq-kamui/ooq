@@ -170,10 +170,13 @@ function p.Prt.focus__(_s, val)
 
 	_s._focus = val
 	
+	local t_url = url.slf()
 	if val then
-		pst.gui(Inp_gui.id, "focus__t", {focus_gui = _s:url(), focus_lb = _s._lb})
+		-- log._("p.Prt focus__t", val)
+		pst._(".", "inp_focus__t", {focus_gui_url = t_url, focus_gui_lb = _s._lb})
 	else
-		pst.gui(Inp_gui.id, "focus__f")
+		-- log._("p.Prt focus__f", val)
+		pst._(".", "inp_focus__f")
 	end
 end
 
@@ -210,10 +213,12 @@ function p.Prt.confirm_opn(_s)
 end
 
 -- url
-
+--[[
 function p.Prt.url(_s)
-	return msg.url()
+	local t_url = url.slf()
+	return t_url
 end
+--]]
 
 -- nd
 

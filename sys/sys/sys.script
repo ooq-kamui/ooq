@@ -7,9 +7,10 @@ math.random(1, 2) -- dmy
 require("assets/etc/lua/require")
 
 go.property("_title_id", hash(""))
-go.property("_game_id", hash(""))
-go.property("_cmr_id", hash(""))
-go.property("_msg_id", hash(""))
+go.property("_game_id",  hash(""))
+go.property("_cmr_id",   hash(""))
+go.property("_inp_id",   hash(""))
+go.property("_msg_id",   hash(""))
 -- go.property("_crnt_id", hash(""))
 
 function init(_s)
