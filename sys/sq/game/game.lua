@@ -288,14 +288,13 @@ function Game.continue(_s, ply_data_file_idx)
 end
 
 function Game.save(_s)
-	-- log._("game save")
+	log._("game save")
 
 	if not _s._ply_slt_idx then return end
 
 	if _s:is_map_pause()  then log._("map is_pause") return end
 
-	if Sys.is_inp_gui_focus() then log._("map Inp_gui.is_focus") return end
-	-- if Inp_gui.is_focus() then log._("map Inp_gui.is_focus") return end
+	if Sys.is_inp_focus_gui() then log._("map Inp_gui.is_focus") return end
 
 	-- save
 	_s:ply_data__save()

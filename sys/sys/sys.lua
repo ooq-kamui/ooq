@@ -6,6 +6,8 @@ Sys = {
 	id = nil,
 }
 
+-- static
+
 function Sys.prp(key)
 	local t_url = "/sys#script"
 	local val = go.get(t_url, key)
@@ -38,11 +40,24 @@ function Sys.inp_id()
 	return inp_id
 end
 
-function Sys.is_inp_focus_gui()
+function Sys.inp_focus_gui_url()
 
 	local inp_id = Sys.inp_id()
+	-- log._("inp_id", inp_id)
 	local focus_gui_url = id.prp(inp_id, "_focus_gui_url")
 	return focus_gui_url
+end
+
+function Sys.is_inp_focus_gui()
+
+	local ret
+	local focus_gui_url = Sys.inp_focus_gui_url()
+	if ha.is_emp(focus_gui_url) then
+		ret = _.f
+	else
+		ret = _.t
+	end
+	return ret
 end
 
 -- script method
@@ -56,6 +71,7 @@ function Sys.init(_s)
 	_s._cmr_id = Cmr.cre()
 
 	_s._inp_id = Inp.cre()
+	log._("sys init inp_id", _s._inp_id)
 	-- Inp_gui.cre()
 
 	_s:title()

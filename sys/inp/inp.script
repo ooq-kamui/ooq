@@ -1,6 +1,6 @@
 log.scrpt("inp.script")
 
-go.property("_focus_gui_url", "")
+go.property("_focus_gui_url", hash(""))
 
 function init(_s)
 	Inp.init(_s)
