@@ -43,7 +43,7 @@ function Inp.gui.init_gui(_s)
 	
 	_s._gui_url = url._(_s._id, "gui")
 
-	_s._focus_gui_url = nil
+	_s._focus_gui_url = ha.emp()
 	_s._focus_gui_lb  = nil
 
 	_s._gui = {}

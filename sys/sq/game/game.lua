@@ -294,7 +294,8 @@ function Game.save(_s)
 
 	if _s:is_map_pause()  then log._("map is_pause") return end
 
-	if Inp_gui.is_focus() then log._("map Inp_gui.is_focus") return end
+	if Sys.is_inp_gui_focus() then log._("map Inp_gui.is_focus") return end
+	-- if Inp_gui.is_focus() then log._("map Inp_gui.is_focus") return end
 
 	-- save
 	_s:ply_data__save()

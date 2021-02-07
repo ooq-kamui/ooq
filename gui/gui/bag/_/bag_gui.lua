@@ -42,7 +42,7 @@ end
 -- method
 
 function g.Bag.opn(_s, prm)
-	log._("g.Bag opn")
+	-- log._("g.Bag opn")
 
 	_s:dsp__(_.t)
 
@@ -54,7 +54,7 @@ function g.Bag.opn(_s, prm)
 end
 
 function g.Bag.clz(_s)
-	log._("g.Bag clz")
+	-- log._("g.Bag clz")
 
 	_s:dsp__(_.f)
 

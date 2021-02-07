@@ -146,7 +146,9 @@ function u.rad_diff(vec1, vec2)
 end
 
 function u.eq(val1, val2)
+
 	local ret = _.f
+
 	if val1 == val2 then
 		ret = _.t
 	end

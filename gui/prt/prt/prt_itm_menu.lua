@@ -14,7 +14,7 @@ function p.Prt_itm_menu.key_2_act_itm_menu(_s, prm)
 	local keyact = prm.keyact
 
 	if     _s:is_key_arw(key, keyact) then
-		prm.dir = Inp.arwHa_2_inp_dir(key)
+		prm.dir = Inp.gui.arwHa_2_inp_dir[key]
 		_s:itm_menu_arw_act(prm)
 
 	elseif keyact == "p" then

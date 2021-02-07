@@ -61,14 +61,17 @@ function Magic.tilepos_by_inp_prm(dir_h, prm) -- return tilepos diff
 		x = 1
 	elseif ar.in_(prm.dir_h, {"l","r"}) then
 		x = 2
-		if prm.hchain >= 2 then
-			x = prm.hchain + 1
+		if prm.dir_h_msh_cnt >= 2 then
+			x = prm.dir_h_msh_cnt + 1
 		end
 	end
 	if prm.dir_h == "l" or (prm.dir_h == "" and dir_h == ha._("l")) then x = -x end
 
-	y = prm.vchain
-	if prm.l then y = 1; x = 0 end
+	y = prm.dir_v_msh_cnt
+	if prm.is_lng then
+		y = 1
+		x = 0
+	end
 	if prm.dir_v == "d" then y = -y end
 	
 	local tilepos = n.vec(x, y)

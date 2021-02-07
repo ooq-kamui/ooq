@@ -168,7 +168,7 @@ end
 -- focus
 
 function g.Gui.focus__(_s, val)
-	log._("g.Gui focus__", val)
+	-- log._("g.Gui focus__", val)
 	
 	local url = url.slf()
 	if val then

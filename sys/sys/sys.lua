@@ -38,6 +38,13 @@ function Sys.inp_id()
 	return inp_id
 end
 
+function Sys.is_inp_focus_gui()
+
+	local inp_id = Sys.inp_id()
+	local focus_gui_url = id.prp(inp_id, "_focus_gui_url")
+	return focus_gui_url
+end
+
 -- script method
 
 function Sys.init(_s)

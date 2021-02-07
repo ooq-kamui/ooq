@@ -48,20 +48,19 @@ function Inp.on_msg(_s, msg_id, prm, sender)
 	elseif ha.eq(msg_id, "focus__f") then
 		-- log._("Inp on_msg focus__f")
 		
-		_s._focus_gui_url = nil
+		_s._focus_gui_url = ha.emp()
 		_s._focus_gui_lb  = nil
 	end
 end
 
-function Inp.focus(_s)
-
-	local ret = _s._focus_gui_url and "gui" or "plyr"
-	return ret
-end
-
 function Inp.is_focus_gui(_s)
 
-	local ret = (_s:focus() == "gui") and _.t or _.f
+	local ret
+	if ha.is_emp(_s._focus_gui_url) then
+		ret = _.f
+	else
+		ret = _.t
+	end
 	return ret
 end
 

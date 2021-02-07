@@ -8,24 +8,11 @@ Inp.plyr = {
 		"a", "z", "x", "s",
 		"q", "w",
 	},
-	chain_limit_time = 0.5, -- chain press limit time
-	long_fil_num     = 0.5, -- long press fil time
+	msh_time_lmt = 0.5, -- msh lmt ( time )
+	-- msh_lmt_time = 0.5, -- msh lmt ( time )
+	lng_fil_num  = 0.5, -- lng press ( time )
 }
 ha.add_by_ar(Inp.plyr.keys)
-
--- static
-
-function Inp.plyr.key_by_ha(keyHa)
-
-	local key = ha.de(keyHa)
-	return key
-end
-
-function Inp.plyr.arwHa_2_inp_dir(key) -- key:hash
-
-	local dir = Inp.gui.arwHa_2_inp_dir[key]
-	return dir
-end
 
 -- script method
 
@@ -35,54 +22,60 @@ function Inp.plyr.init_plyr(_s)
 	
 	_s._plyr = {}
 
-	_s._plyr._chain_lmt = {} -- time from prev pressed
-	_s._plyr._chain_cnt = {} -- chain success count
+	_s._plyr._msh = {}
+	for idx, key in pairs(Inp.plyr.keys) do
+		_s._plyr._msh[key] = {
+			time = 0,
+			cnt  = 0,
+		}
+	end
 
-	_s._plyr._long_fil = {}  -- keep time
-	_s._plyr._dt       = 0.1 -- keep logic interval time ... 
+	_s._plyr._lng_fil = {}  -- keep time
 
-	_s._plyr._keep = nil -- atonce
+	_s._plyr._keep    = nil -- atonce
 
-	_s._plyr._key    = nil -- action_id
-	_s._plyr._keyact = nil -- action
+	_s._plyr._key     = nil
+	_s._plyr._keyact  = nil
 
-	_s._plyr._keep_long = {}
 end
 
 -- upd
 
 function Inp.plyr.upd_plyr(_s, dt)
 
-	_s:upd_plyr_dec_chain_limit(dt)
-	_s:upd_plyr_inc_long(dt)
+	_s:upd_plyr_msh_time__dec(dt)
+	_s:upd_plyr_lng__inc(dt)
 end
 
-function Inp.plyr.upd_plyr_dec_chain_limit(_s, dt)
+function Inp.plyr.upd_plyr_msh_time__dec(_s, dt)
 
-	for key, val in pairs(_s._plyr._chain_lmt) do
-		if _s._plyr._chain_lmt[key] > 0 then
-			_s._plyr._chain_lmt[key] = _s._plyr._chain_lmt[key] - dt
-			if _s._plyr._chain_lmt[key] <= 0 then
-				_s._plyr._chain_cnt[key] = 0
+	for key, tbl in pairs(_s._plyr._msh) do
+
+		if _s._plyr._msh[key].time > 0 then
+
+			_s._plyr._msh[key].time = _s._plyr._msh[key].time - dt
+			if _s._plyr._msh[key].time <= 0 then
+				_s._plyr._msh[key].cnt = 0
 			end
 		end
 	end
 end
 
-function Inp.plyr.upd_plyr_inc_long(_s, dt)
+function Inp.plyr.upd_plyr_lng__inc(_s, dt)
 
 	if not _s._plyr._key then return end
 	
-	-- long_fil
-	for key, time in pairs(_s._plyr._long_fil) do
-		_s._plyr._long_fil[key] = _s._plyr._long_fil[key] + dt
+	-- lng_fil
+	for key, time in pairs(_s._plyr._lng_fil) do
+		_s._plyr._lng_fil[key] = _s._plyr._lng_fil[key] + dt
 	end
 end
 
 -- on_inp
 
-function Inp.plyr.on_inp_plyr(_s, key, keyact)
+function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 	-- log._("Inp on_inp_plyr")
+	local key = ha.de(keyHa)
 
 	_s:__(key, keyact)
 	_s:on_inp_plyr_pst()
@@ -90,15 +83,16 @@ function Inp.plyr.on_inp_plyr(_s, key, keyact)
 end
 
 function Inp.plyr.__(_s, key, keyact)
+	-- log._("inp.plyr __", key)
 
-	_s._plyr._key    = key    -- action_id
-	_s._plyr._keyact = keyact -- action
+	_s._plyr._key    = key
+	_s._plyr._keyact = keyact
 
-	-- use _upd_inc_long
+	-- lng_fil
 	if     keyact.pressed  then
-		_s._plyr._long_fil[key] = 0
+		_s._plyr._lng_fil[key] = 0
 	elseif keyact.released then
-		_s._plyr._long_fil[key] = nil
+		_s._plyr._lng_fil[key] = nil
 	end
 end
 
@@ -109,11 +103,11 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	-- mv
 	if     _s:k("arw_l") then
 		-- log._("ar_l")
-		pst.scrpt(p_id, "mv", {dir = "l", s = _s:p("arw_l"), l = _s:l("arw_l")})
+		pst.scrpt(p_id, "mv", {dir = "l", s = _s:p("arw_l"), l = _s:is_lng("arw_l")})
 
 	elseif _s:k("arw_r") then
 		-- log._("ar_r")
-		pst.scrpt(p_id, "mv", {dir = "r", s = _s:p("arw_r"), l = _s:l("arw_r")})
+		pst.scrpt(p_id, "mv", {dir = "r", s = _s:p("arw_r"), l = _s:is_lng("arw_r")})
 
 	elseif _s:k("arw_u") then
 		pst.scrpt(p_id, "mv", {dir = "u"})
@@ -125,41 +119,66 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	elseif _s:p("z") then -- jmp
 		pst.scrpt(p_id, "jmp")
 
-	elseif _s:p("a") then -- item
+	elseif _s:p("a") then -- itm
 		
-		local dir_h, hchain, dir_v, vchain, l
-		-- h
-		dir_h = ""; hchain = 0
-		if     _s:ccWithin("arw_l", 2) then
-			dir_h = "l"; hchain = 2
-		
-		elseif _s:with("arw_l") then
-			dir_h = "l"
-		
-		elseif _s:ccWithin("arw_r", 2) then
-			dir_h = "r"; hchain = 2
+		local dir_h, dir_h_msh_cnt
+		local dir_v, dir_v_msh_cnt
+		local is_lng
 
-		elseif _s:with("arw_r") then
-			dir_h = "r"
+		-- h
+		dir_h         = ""
+		dir_h_msh_cnt = 0
+		if     _s:is_msh_cnt_within("arw_l", 2) then
+			dir_h         = "l"
+			dir_h_msh_cnt = 2
+		
+		elseif _s:is_with("arw_l") then
+			dir_h         = "l"
+		
+		elseif _s:is_msh_cnt_within("arw_r", 2) then
+			dir_h         = "r"
+			dir_h_msh_cnt = 2
+
+		elseif _s:is_with("arw_r") then
+			dir_h         = "r"
 		end
 
 		-- v
-		dir_v = ""; vchain = 0; l = _.f
-		if     _s:l("arw_u")  then
-			dir_v = "u"; l = _.t
-		elseif _s:ccWithin("arw_u", 2) then
-			dir_v = "u"; vchain = 2
-		elseif _s:ccWithin("arw_u", 1) then
-			dir_v = "u"; vchain = 1
+		dir_v         = ""
+		dir_v_msh_cnt = 0
+		is_lng        = _.f
+		if     _s:is_lng("arw_u")  then
+			dir_v         = "u"
+			is_lng        = _.t
+
+		elseif _s:is_msh_cnt_within("arw_u", 2) then
+			dir_v         = "u"
+			dir_v_msh_cnt = 2
+
+		elseif _s:is_msh_cnt_within("arw_u", 1) then
+			dir_v         = "u"
+			dir_v_msh_cnt = 1
 			
-		elseif _s:l("arw_d") then
-			dir_v = "d"; l = _.t
-		elseif _s:ccWithin("arw_d", 2) then
-			dir_v = "d"; vchain = 2
-		elseif _s:ccWithin("arw_d", 1) then
-			dir_v = "d"; vchain = 1
+		elseif _s:is_lng("arw_d") then
+			dir_v         = "d"
+			is_lng        = _.t
+
+		elseif _s:is_msh_cnt_within("arw_d", 2) then
+			dir_v         = "d"
+			dir_v_msh_cnt = 2
+
+		elseif _s:is_msh_cnt_within("arw_d", 1) then
+			dir_v         = "d"
+			dir_v_msh_cnt = 1
 		end
-		pst.scrpt(p_id, "itm_use", {dir_h = dir_h, hchain = hchain, dir_v = dir_v, vchain = vchain, l = l})
+		local prm = {
+			dir_h         = dir_h        ,
+			dir_h_msh_cnt = dir_h_msh_cnt,
+			dir_v         = dir_v        ,
+			dir_v_msh_cnt = dir_v_msh_cnt,
+			is_lng        = is_lng       ,
+		}
+		pst.scrpt(p_id, "itm_use", prm)
 
 	elseif _s:p("x") then
 		pst.scrpt(p_id, "hld__ox")
@@ -175,14 +194,19 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 end
 
 function Inp.plyr.nxt(_s)
+	-- log._("inp.plyr nxt")
 	
-	local key = _s:key_by_ha(_s._key) -- input key , refac?
-
-	-- chain press
+	local key = _s._plyr._key -- alias
+	
+	-- msh
 	if _s:p(key) then
-		_s._plyr._chain_lmt[key] = Inp.plyr.chain_limit_time
-		if _s:within(key) then
-			_s._plyr._chain_cnt[key] = _s:cc(key) + 1
+
+		if not _s._plyr._msh[key] then _s._plyr._msh[key] = {} end
+
+		_s._plyr._msh[key].time = Inp.plyr.msh_time_lmt
+
+		if _s:is_within(key) then
+			_s._plyr._msh[key].cnt = _s:msh_cnt(key) + 1
 		end
 	end
 
@@ -202,89 +226,116 @@ end
 
 function Inp.plyr.k(_s, key) -- press keep
 
-	if _s._plyr._key == ha._(key) and not _s._plyr._keyact.released then
-		return _.t
+	local ret = _.f
+
+	if u.eq(_s._plyr._key, key) and not _s._plyr._keyact.released then
+		ret = _.t
 	end
-	return _.f
+
+	return ret
 end
 
-function Inp.plyr.f(_s, key) -- release -> free
+function Inp.plyr.f(_s, key) -- free ( released )
 	local ret = _s:is_key_act(key, "released")
+	return ret
+end
+
+function Inp.plyr.is_lng(_s, key) -- lng press
+
+	local ret = _.f
+	
+	if not _s._plyr._lng_fil[key] then
+		-- nothing
+	elseif _s._plyr._lng_fil[key] >= Inp.plyr.lng_fil_num then
+		ret = _.t
+	end
 	return ret
 end
 
 function Inp.plyr.is_key_act(_s, key, act)
 
 	local ret = _.f
-	if not (_s._plyr._key == ha._(key)) then
+
+	if not u.eq(_s._plyr._key, key) then
+	-- if not ha.eq(_s._plyr._key, key) then
 		-- nothing
-	elseif (act == "pressed"  and _s._plyr._keyact.pressed )
-	    or (act == "released" and _s._plyr._keyact.released) then
+
+	elseif (act == "pressed"  and _s._plyr._keyact.pressed ) then
+		ret = _.t
+
+	elseif (act == "released" and _s._plyr._keyact.released) then
 		ret = _.t
 	end
 	return ret
 end
 
-function Inp.plyr.within(_s, key) -- within
+function Inp.plyr.is_within(_s, key)
 
-	local ret = _.f
-	if _s._plyr._chain_lmt[key] > 0 then
+	local ret
+	if _s._plyr._msh[key].time > 0 then
 		ret = _.t
+	else
+		ret = _.f
 	end
+	-- log._("inp.plyr is_within", key, ret)
 	return ret
 end
 
-function Inp.plyr.cc(_s, key) -- get chain count
+function Inp.plyr.msh_cnt(_s, key)
+	-- log._("inp.plyr msh_cnt", key)
+	-- log._("inp.plyr msh_cnt", key, _s._plyr._msh[key].cnt)
 
-	local cc = _s._plyr._chain_cnt[key] or 0
-	return cc
+	return _s._plyr._msh[key].cnt
 end
 
-function Inp.plyr.ccWithin(_s, key, cnt) -- success cnt + is possible chain
+-- msh success cnt
+function Inp.plyr.is_msh_cnt_within(_s, key, cnt)
 
-	local ret = _.f
-	if _s:cc(key) >= cnt and _s:within(key) then
+	local ret
+	if _s:msh_cnt(key) >= cnt and _s:is_within(key) then
 		ret = _.t
+	else
+		ret = _.f
 	end
+	-- log._("inp.plyr is_msh_cnt_within", key, ret)
 	return ret
 end
 
-function Inp.plyr.l(_s, key) -- press long
+function Inp.plyr.is_with(_s, key) -- keep
 
-	local ret = _.f
-	
-	if not _s._plyr._long_fil[ha._(key)] then
-		-- nothing
-	elseif _s._plyr._long_fil[ha._(key)] >= Inp.plyr.long_fil_num then
-		ret = _.t
-	end
-	return ret
-end
-
-function Inp.plyr.with(_s, key) -- key keep and ...
-
-	local ret = _.f
+	local ret
 	if _s._plyr._keep == key then
 		ret = _.t
+	else
+		ret = _.f
 	end
+	-- log._("inp.plyr is_with", ret)
 	return ret
 end
 
-function Inp.plyr.with_p(_s, key1, key2) -- key1 keep and key2 press
+-- key1 keep and key2 press
+function Inp.plyr.is_with_p(_s, key1, key2) -- use not
 
-	local ret = _.f
+	local ret
 	if _s._plyr._keep == key1 and _s:p(key2) then
 		ret = _.t
+	else
+		ret = _.f
 	end
+	-- log._("inp.plyr is_with_p", key, ret)
 	return ret
 end
 
-function Inp.plyr.with_k(_s, key1, key2) -- key1 keep and key2 keep
+-- key1 keep and key2 keep
+function Inp.plyr.is_with_k(_s, key1, key2) -- use not
 
-	local ret = _.f
+	local ret
 	if _s._plyr._keep == key1 and _s:k(key2) then
 		ret = _.t
+	else
+		ret = _.f
 	end
+	-- log._("inp.plyr is_with_k", key, ret)
 	return ret
 end
 

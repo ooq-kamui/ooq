@@ -68,9 +68,12 @@ function ha.idx2ha(idx_ar)
 end
 
 function ha.is_emp(val)
-	local ret = _.f
+
+	local ret
 	if not val or val == ha._emp then
 		ret = _.t
+	else
+		ret = _.f
 	end
 	return ret
 end

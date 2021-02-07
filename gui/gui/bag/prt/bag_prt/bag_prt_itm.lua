@@ -30,7 +30,7 @@ end
 -- method
 
 function p.Bag_prt_itm.opn(_s)
-	log._("p.Bag_prt_itm opn", _s._lb)
+	-- log._("p.Bag_prt_itm opn", _s._lb)
 
 	_s:itm__plt()
 	_s:base_dsp__o()
