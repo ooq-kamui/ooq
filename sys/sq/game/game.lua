@@ -165,15 +165,17 @@ function Game.upd(_s, dt)
 	
 	_s:act_interval(dt)
 	
-	
 end
 
 function Game.act_interval(_s, dt)
 
 	if not _s:is_loop__act_interval__(dt) then return end
 
-	-- log._("game act_intrvl", _s._id)
+	log._("game act_intrvl", _s._id)
 	
+	if _s:is_map_pause()      then log._("map is_pause")         return end
+	if Sys.is_inp_focus_gui() then log._("map Inp_gui.is_focus") return end
+
 	_s:save()
 
 	_s:bgm_ply_nxt_rnd()
@@ -291,10 +293,6 @@ function Game.save(_s)
 	log._("game save")
 
 	if not _s._ply_slt_idx then return end
-
-	if _s:is_map_pause()  then log._("map is_pause") return end
-
-	if Sys.is_inp_focus_gui() then log._("map Inp_gui.is_focus") return end
 
 	-- save
 	_s:ply_data__save()

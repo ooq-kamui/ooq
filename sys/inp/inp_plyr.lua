@@ -77,13 +77,13 @@ function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 	-- log._("Inp on_inp_plyr")
 	local key = ha.de(keyHa)
 
-	_s:__(key, keyact)
+	_s:on_inp_plyr__(key, keyact)
 	_s:on_inp_plyr_pst()
-	_s:nxt()
+	_s:on_inp_plyr__nxt()
 end
 
-function Inp.plyr.__(_s, key, keyact)
-	-- log._("inp.plyr __", key)
+function Inp.plyr.on_inp_plyr__(_s, key, keyact)
+	-- log._("inp.plyr on_inp_plyr__", key)
 
 	_s._plyr._key    = key
 	_s._plyr._keyact = keyact
@@ -100,14 +100,27 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	
 	local p_id = Game.plychara_id()
 
+	-- fairy
+	if     _s:k("arw_l") then
+
+		_s:is_lng("arw_u")
+		_s:is_msh_cnt_within("arw_u", 2)
+
+	elseif _s:k("arw_r") then
+	elseif _s:k("arw_u") then
+	elseif _s:k("arw_d") then
+	end
+
 	-- mv
 	if     _s:k("arw_l") then
 		-- log._("ar_l")
-		pst.scrpt(p_id, "mv", {dir = "l", s = _s:p("arw_l"), l = _s:is_lng("arw_l")})
+		pst.scrpt(p_id, "mv", {dir = "l", l = _s:is_lng("arw_l")})
+		-- pst.scrpt(p_id, "mv", {dir = "l", s = _s:p("arw_l"), l = _s:is_lng("arw_l")})
 
 	elseif _s:k("arw_r") then
 		-- log._("ar_r")
-		pst.scrpt(p_id, "mv", {dir = "r", s = _s:p("arw_r"), l = _s:is_lng("arw_r")})
+		pst.scrpt(p_id, "mv", {dir = "r", l = _s:is_lng("arw_r")})
+		-- pst.scrpt(p_id, "mv", {dir = "r", s = _s:p("arw_r"), l = _s:is_lng("arw_r")})
 
 	elseif _s:k("arw_u") then
 		pst.scrpt(p_id, "mv", {dir = "u"})
@@ -193,8 +206,8 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	end
 end
 
-function Inp.plyr.nxt(_s)
-	-- log._("inp.plyr nxt")
+function Inp.plyr.on_inp_plyr__nxt(_s)
+	-- log._("inp.plyr on_inp_plyr__nxt")
 	
 	local key = _s._plyr._key -- alias
 	
