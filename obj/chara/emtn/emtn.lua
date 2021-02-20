@@ -1,7 +1,7 @@
 log.scrpt("emtn.lua")
 
 Emtn = {
-	act_interval_time = 3,
+	act_intrvl_time = 3,
 	name_idx_max = 1, -- 28
 }
 Emtn.cls = "emtn"
@@ -36,15 +36,15 @@ end
 
 function Emtn.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	local vec = n.vec(0, 1) * _s._speed * dt
 	_s:pos__add(vec)
 end
 
-function Emtn.act_interval(_s, dt)
+function Emtn.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	_s:del()
 end

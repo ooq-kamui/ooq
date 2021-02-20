@@ -1,7 +1,7 @@
 log.scrpt("dryleaf.lua")
 
 Dryleaf = {
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	name_idx_max = 4,
 }
 Dryleaf.cls = "dryleaf"
@@ -31,14 +31,14 @@ end
 
 function Dryleaf.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
 end
 
-function Dryleaf.act_interval(_s, dt)
+function Dryleaf.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 	_s:per_trnsf(1 / 30 * 100, Humus)

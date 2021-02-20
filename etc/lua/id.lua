@@ -54,11 +54,15 @@ function id.pos(id)
 	return pos
 end
 
-function id.wpos(id)
+function id.wpos(p_id) -- old
+	return id.pos_w(p_id)
+end
+
+function id.pos_w(p_id)
 	
-	if not id then return end
+	if not p_id then return end
 	
-	local pos = go.get_world_position(id)
+	local pos = go.get_world_position(p_id)
 	return pos
 end
 

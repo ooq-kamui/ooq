@@ -1,7 +1,7 @@
 log.scrpt("fire.lua")
 
 Fire = {
-	act_interval_time = 15,
+	act_intrvl_time = 15,
 	name_idx_max = 1,
 	z = 0.4,
 }
@@ -29,7 +29,7 @@ end
 
 function Fire.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	local pos = _s:pos()
 	local tile = _s:tile() -- map.tile(pos)
@@ -46,11 +46,11 @@ function Fire.upd(_s, dt)
 	_s:pos__add(vec)
 end
 
-function Fire.act_interval(_s, dt)
+function Fire.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	log._("fire.act_interval", _s:pos())
+	log._("fire.act_intrvl", _s:pos())
 	
 	-- death
 	if _s:per_del(1 / 5 * 100) then return end

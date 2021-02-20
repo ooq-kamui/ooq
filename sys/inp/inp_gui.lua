@@ -23,13 +23,13 @@ Inp.gui = {
 	}, -- lb
 }
 
-Inp.gui.arwHa_2_inp_dir = {}
+Inp.gui.arwHa_2_inp_dir = {} -- old
 Inp.gui.arwHa_2_inp_dir[ha._("arw_u")] = "u"
 Inp.gui.arwHa_2_inp_dir[ha._("arw_d")] = "d"
 Inp.gui.arwHa_2_inp_dir[ha._("arw_l")] = "l"
 Inp.gui.arwHa_2_inp_dir[ha._("arw_r")] = "r"
 
-Inp.gui.dir_2_arw = {}
+Inp.gui.dir_2_arw = {} -- old
 Inp.gui.dir_2_arw["u"] = "arw_u"
 Inp.gui.dir_2_arw["d"] = "arw_d"
 Inp.gui.dir_2_arw["l"] = "arw_l"

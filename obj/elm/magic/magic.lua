@@ -1,20 +1,23 @@
 log.scrpt("magic.lua")
 
 Magic = {
-	act_interval_time = 0.1,
+	act_intrvl_time = 0.1,
 	name_idx_max = 1,
 	z = 0.4,
 }
 Magic.cls = "magic"
-Magic.fac = Magic.cls.."Fac"
+-- Magic.fac = Magic.cls.."Fac" -- old
 Magic.Fac = Obj.fac..Magic.cls
 Cls.add(Magic)
 
 -- static
 
 function Magic.cre(pos, tilepos)
+
 	local Cls = Magic
-	pos = pos + tilepos * Map.sq
+
+	if tilepos then pos = pos + tilepos * Map.sq end
+
 	local id = Sp.cre(Cls, pos)
 	return id
 end
@@ -29,14 +32,14 @@ end
 
 function Magic.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 
 end
 
-function Magic.act_interval(_s, dt)
+function Magic.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	local pos  = _s:pos()
 	local tile = _s:tile()
@@ -93,3 +96,4 @@ function Magic.is_magic_vnsh(tile)
 	end
 	return ret
 end
+

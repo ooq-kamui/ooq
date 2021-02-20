@@ -2,7 +2,7 @@ log.scrpt("block.lua")
 
 Block = {
 	tile = Tile.magic_block,
-	act_interval_time = 3, -- 7, -- 20,
+	act_intrvl_time = 3, -- 7, -- 20,
 }
 Block.name_idx_max = #Block.tile
 
@@ -47,14 +47,14 @@ end
 
 function Block.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	_s:upd_pos_static(dt)
 end
 
-function Block.act_interval(_s, dt)
+function Block.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	_s:trnsf_tile()
 end

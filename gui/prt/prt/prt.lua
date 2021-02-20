@@ -118,7 +118,8 @@ end
 function p.Prt.is_key_arw(_s, key, keyact)
 
 	local ret = _.f
-	if      ar.inHa(key, {"arw_u", "arw_d", "arw_l", "arw_r"})
+	if      ar.inHa(key, Inp.keys_arw)
+	-- if      ar.inHa(key, {"arw_u", "arw_d", "arw_l", "arw_r"})
 	and not ar.in_(keyact, {"w", "f"}) then
 		ret = _.t
 	end

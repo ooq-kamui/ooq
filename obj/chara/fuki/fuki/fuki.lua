@@ -1,8 +1,10 @@
 log.scrpt("Fuki.lua")
 
 Fuki = {
-	act_interval_time = 5,
+	act_intrvl_time = 5,
 	name_idx_max = 1,
+	z = 0.4,
+
 	id = nil,
 	scrpt = nil,
 }
@@ -29,18 +31,20 @@ end
 
 function Fuki.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	_s:pos__(_s:pos() + n.vec(0, 0.5))
 end
 
-function Fuki.act_interval(_s, dt)
+function Fuki.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
+
+	log._("fuki pos", _s:pos())
 
 	local anim = {}
 	anim[1] = function ()
-		go.animate(_s._id, "scale", O_es.fwd, n.vec(), O_es.sin_io, 0.3, 0, anim[2])
+		go.animate(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
 	end
 	anim[2] = function ()
 		go.delete(_.t)
@@ -71,3 +75,4 @@ function Fuki._s(_s, str, len)
 	-- _s:scl_anim__1()
 	-- go.set_scale(1)
 end
+

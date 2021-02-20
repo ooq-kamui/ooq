@@ -2,7 +2,7 @@ log.scrpt("reizoko.lua")
 
 Reizoko = {
 
-	act_interval_time = 20,
+	act_intrvl_time = 20,
 	name_idx_max = 1,
 	z = 0.1,
 
@@ -34,12 +34,12 @@ function Reizoko.upd(_s, dt)
 
 	_s:upd_pos_static(dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 end
 
-function Reizoko.act_interval(_s, dt)
+function Reizoko.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	
 end

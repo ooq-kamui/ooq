@@ -8,7 +8,7 @@ Plychara = {
 	speed_jmp = 1.5, -- vec.y * ?
 	jmp_h_max = Map.sq + 1,
 
-	act_interval_time = 5,
+	act_intrvl_time = 5,
 	w = 20,
 	
 	name_idx_max = 1,
@@ -66,20 +66,20 @@ function Plychara.init(_s)
 	
 	_s._itm_selected = "wand001" -- name
 
-	_s._hld = {}
+	_s._hld  = {}
 	_s._clsn = {
 		hld     = {},
-		hrvst    = {},
-		kitchen  = {},
-		reizoko  = {},
-		chara    = {},
-		animal   = {},
-		flpy     = {},
-		pc       = {},
-		shelf    = {},
-		door     = {},
-		tree     = {},
-		block    = {},
+		hrvst   = {},
+		kitchen = {},
+		reizoko = {},
+		chara   = {},
+		animal  = {},
+		flpy    = {},
+		pc      = {},
+		shelf   = {},
+		door    = {},
+		tree    = {},
+		block   = {},
 	}
 	_s._clsn_hldabl = {}
 
@@ -208,8 +208,7 @@ function Plychara.jmp__start(_s)
 
 	Se.pst_ply("jmp001")
 	
-	-- msg debug
-	-- Msg.s("jmp")
+	-- Msg.s("jmp") -- msg debug
 end
 
 function Plychara.is_jmp_h_t(_s)
@@ -414,7 +413,8 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 		end
 		
 		-- dive
-		if prm.l then _s._dive = _.t end
+		if prm.dive then _s._dive = _.t end
+		-- if prm.l then _s._dive = _.t end
 		
 		_s._dir_h = ha._(prm.dir) -- new
 		-- log._("plychara on_msg dir_h", _s._dir_h)
@@ -436,7 +436,8 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 		_s:jmp__start()
 	
 	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
-		_s:itm_use(prm)
+		_s:itm_use()
+		-- _s:itm_use(prm)
 		
 	elseif ha.eq(msg_id, "hld__ox") then -- input hld switch
 		_s:hld__ox()
@@ -478,14 +479,18 @@ end
 
 -- method
 
-function Plychara.itm_use(_s, prm)
+-- function Plychara.itm_use(_s, prm)
+function Plychara.itm_use(_s)
 	
 	local itm = _s._itm_selected -- name
 	-- log._("plychara itm_use", itm)
 	
 	if     itm == "wand001" then
-		local tilepos = Magic.tilepos_by_inp_prm(_s._dir_h, prm)
-		Magic.cre(_s:pos(), tilepos)
+		-- local fairy_id = _s:fairy_id()
+		pst.scrpt(_s:fairy_id(), "magic")
+
+		-- local tilepos = Magic.tilepos_by_inp_prm(_s._dir_h, prm)
+		-- Magic.cre(_s:pos(), tilepos)
 		
 	elseif itm == "wand002" then
 		Wall.__(_s:tilepos(), Wand.wand002.tile_idx)
@@ -795,3 +800,4 @@ function Plychara.to_door(_s, door_id)
 	_s:pos__(pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
+

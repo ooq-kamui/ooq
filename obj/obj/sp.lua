@@ -47,7 +47,7 @@ function Sp.cre(Cls, pos, prm, scl)
 	-- local id = factory.create(t_url, pos, nil, prm)
 	-- local id = factory.create(t_url, pos, nil, prm, nil)
 	
-	-- pst.scrpt(t_id, "scl_anim__1")
+	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id
 end
 
@@ -69,7 +69,7 @@ function Sp.init(_s)
 	local anim = _s._anim or _s._name
 	_s:anim__(anim)
 
-	_s._act_interval = 0
+	_s._act_intrvl = 0
 end
 
 function Sp.on_msg(_s, msg_id, prm, sender)
@@ -107,8 +107,14 @@ function Sp.on_msg(_s, msg_id, prm, sender)
 		log._("to_cloud")
 		_s:to_cloud()
 
-	elseif ha.eq(msg_id, "scl_anim__1") then
-		_s:scl_anim__1()
+	elseif ha.eq(msg_id, "scl_anim__1") then -- old
+		_s:anm_scl__1()
+
+	elseif ha.eq(msg_id, "anm_scl__1") then
+		_s:anm_scl__1()
+
+	elseif ha.eq(msg_id, "anm_pos__") then
+		_s:anm_pos__(prm.pos, prm.time)
 	end
 end
 
@@ -161,18 +167,20 @@ function Sp.scl__1(_s)
 	_s:scl__(n.vec(1, 1))
 end
 
-function Sp.scl_anim__1(_s)
-	-- log._("sp scl_anim__1")
-	O_anim.scl__1(_s._id)
-end
-
 function Sp.url(_s, cmp)
 	local t_url = url._(_s._id, cmp)
 	return t_url
 end
 
-function Sp.wpos(_s)
-	local pos = go.get_world_position(_s._id)
+function Sp.wpos(_s) -- old
+	return _s:pos_w()
+end
+
+function Sp.pos_w(_s)
+
+	local pos = id.pos_w(_s._id)
+	-- local pos = go.get_world_position(_s._id)
+
 	return pos
 end
 
@@ -455,13 +463,14 @@ function Sp.vec_grv(_s, dt)
 	local foot_i_tile = _s:foot_i_tile()
 	local foot_o_tile = _s:foot_o_tile()
 	
-	if     _s._jumping and _s._jumping > 0 then
-		vec = n.vec()
-	
-	elseif _s:is_on_obj_block() then
+	if     _s:is_on_obj_block() then
 		-- log._("is_on_obj_block")
 		vec = n.vec()
-		
+
+	--[[
+	elseif _s._jmping and _s._jmping > 0 then -- use ?
+		vec = n.vec()
+	--]]
 	elseif _s._is_fly then
 		vec = n.vec()
 	
@@ -602,18 +611,18 @@ function Sp.mapobj_del(_s)
 	Mapobj.del(_s:tilepos(), _s._cls, _s._id)
 end
 
-function Sp.is_loop__act_interval__(_s, dt)
+function Sp.is_loop__act_intrvl__(_s, dt)
 	
 	if _s:is_pause() then return end
 
-	local is_loop = _s:act_interval__(dt)
+	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
 end
 
-function Sp.act_interval__(_s, dt)
-	local act_interval_time = _s:Cls().act_interval_time
+function Sp.act_intrvl__(_s, dt)
+	local act_intrvl_time = _s:Cls().act_intrvl_time
 	local is_loop
-	_s._act_interval, is_loop = u.pls_loop(_s._act_interval, dt, act_interval_time)
+	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, act_intrvl_time)
 	return is_loop
 end
 
@@ -905,3 +914,20 @@ end
 function Sp.anm_cancel_pos(_s)
 	go.cancel_animations(_s._id, "position")
 end
+
+function Sp.scl_anim__1(_s) -- old
+	_s:anm_scl__1(_s)
+end
+
+function Sp.anm_scl__1(_s)
+	-- log._("sp anm_scl__1")
+	obj_anm.scl__1(_s._id)
+end
+
+function Sp.anm_pos__(_s, p_pos, time)
+
+	local t_id = _s:id()
+
+	obj_anm.pos__(t_id, p_pos, time)
+end
+

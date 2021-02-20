@@ -1,7 +1,7 @@
 log.scrpt("plant.lua")
 
 Plant = {
-	act_interval_time = 15,
+	act_intrvl_time = 15,
 	name_idx_max = 91,
 }
 Plant.cls = "plant"
@@ -27,14 +27,14 @@ end
 
 function Plant.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	_s:upd_pos_static(dt)
 end
 
-function Plant.act_interval(_s, dt)
+function Plant.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf(1 / 10 * 100, Humus) then return end
 

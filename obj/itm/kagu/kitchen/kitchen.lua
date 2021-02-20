@@ -2,7 +2,7 @@ log.scrpt("kitchen.lua")
 
 Kitchen = {
 
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	name_idx_max = 1,
 	z = 0.1,
 	
@@ -137,7 +137,7 @@ function Kitchen.cooking_start(_s)
 	for idx, food_id in ipairs(_s.on) do
 		delay = (idx - 1) * 0.5
 		pos = id.pos(food_id)
-		go.animate(food_id, "position.y", O_es.pinpon, pos.y + Map.sq, O_es.bnd_i, Kitchen.timer - delay, delay)
+		go.animate(food_id, "position.y", es.pinpon, pos.y + Map.sq, es.bnd_i, Kitchen.timer - delay, delay)
 	end
 end
 

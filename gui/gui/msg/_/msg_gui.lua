@@ -1,7 +1,7 @@
 log.scrpt("msg_gui.lua")
 
 g.Msg = {
-	act_interval_time = 3,
+	act_intrvl_time = 3,
 }
 
 function g.Msg.init(_s)

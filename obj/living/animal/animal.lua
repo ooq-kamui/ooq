@@ -1,7 +1,7 @@
 log.scrpt("animal.lua")
 
 Animal = {
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	speed = 50,
 
 	weight = 2,
@@ -62,14 +62,14 @@ end
 
 function Animal.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
 end
 
-function Animal.act_interval(_s, dt)
+function Animal.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("animal z", _s:z())
 	

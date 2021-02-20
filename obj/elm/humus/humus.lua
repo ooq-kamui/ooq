@@ -1,7 +1,7 @@
 log.scrpt("humus.lua")
 
 Humus = {
-	act_interval_time = 15,
+	act_intrvl_time = 15,
 	name_idx_max = 1,
 }
 Humus.cls = "humus"
@@ -27,14 +27,14 @@ end
 
 function Humus.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
 end
 
-function Humus.act_interval(_s, dt)
+function Humus.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 	if _s:per_del(1 / 5 * 100) then return end

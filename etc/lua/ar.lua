@@ -59,12 +59,6 @@ function ar.del_by_idx(p_ar, idx)
 	table.remove(p_ar, idx)
 end
 
---[[
-function ar.del1(p_ar) -- old
-	ar.del_1(p_ar)
-end
---]]
-
 function ar.del_1(p_ar)
 	ar.del_by_idx(p_ar, 1)
 end
@@ -89,7 +83,11 @@ function ar.cp(p_ar)
 	return cp
 end
 
-function ar.exclude(base, exclude)
+function ar.exclude(base, exclude) -- old
+	ar.excld(base, exclude)
+end
+
+function ar.excld(base, exclude)
 	-- u.log("ar.exclude() bases", unpack(bases))
 	-- u.log("ar.exclude() excludes", unpack(excludes))
 
@@ -110,23 +108,21 @@ function ar.exclude(base, exclude)
 	end
 end
 
-function ar.exclude_cp(base, exclude)
+function ar.exclude_cp(base, exclude) -- old
+	return ar.excld_cp(base, exclude)
+end
+
+function ar.excld_cp(base, exclude)
 	local cp = ar.cp(base)
 	ar.exclude(cp, exclude)
 	return cp
 end
 
-function ar.join(...)
+function ar.add_ar(p_ar1, p_ar2)
 
-	local args = {...}
-	
-	local ret = {}
-	for idx, arg in pairs(args) do
-		for idx2, val in pairs(arg) do
-			ar.add(ret, val)
-		end
+	for idx, val in pairs(p_ar2) do
+		ar.add(p_ar1, val)
 	end
-	return ret
 end
 
 function ar.clr(p_ar)
@@ -163,8 +159,8 @@ function ar.keyHa_srt(p_ar)
 end
 
 function ar.key_mrg(ar_org, ar_add)
-	for idHa, val in pairs(ar_add) do
-		ar_org[idHa] = val
+	for key, val in pairs(ar_add) do
+		ar_org[key] = val
 	end
 	return ar_org
 end
@@ -220,3 +216,4 @@ function ar.val_str_2_ha(p_ar)
 		end
 	end
 end
+

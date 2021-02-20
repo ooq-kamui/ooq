@@ -1,7 +1,7 @@
 log.scrpt("warp.lua")
 
 Warp = {
-	act_interval_time = 50,
+	act_intrvl_time = 50,
 	name_idx_max = 1,
 }
 Warp.cls = "warp"

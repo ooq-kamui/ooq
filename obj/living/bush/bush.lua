@@ -1,7 +1,7 @@
 log.scrpt("bush.lua")
 
 Bush = {
-	act_interval_time = 15,
+	act_intrvl_time = 15,
 	name_idx_max = 100,
 	foot_dst_i = 40,
 	z = 0.04,
@@ -28,14 +28,14 @@ end
 
 function Bush.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
 end
 
-function Bush.act_interval(_s, dt)
+function Bush.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf(1 / 10 * 100, Humus) then return end
 

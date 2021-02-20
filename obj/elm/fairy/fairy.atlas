@@ -1,10 +1,15 @@
 animations {
   id: "fairy001"
   images {
-    image: "/assets/obj/elm/fairy/img/fairy.png"
+    image: "/assets/obj/elm/fairy/img/fairy001.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_NONE
-  fps: 0
+  images {
+    image: "/assets/obj/elm/fairy/img/fairy002.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 2
   flip_horizontal: 0
   flip_vertical: 0
 }

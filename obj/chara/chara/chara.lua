@@ -2,7 +2,7 @@ log.scrpt("chara.lua")
 
 Chara = {
 	
-	act_interval_time = 8,
+	act_intrvl_time = 8,
 	speed = 50,
 	
 	chara = {
@@ -82,21 +82,21 @@ function Chara.init(_s, dt)
 	extend._(_s, Chara)
 	
 	_s:say()
-	_s:act_interval_time__()
+	_s:act_intrvl_time__()
 end
 
 function Chara.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	_s:upd_pos_movabl(dt)
 end
 
-function Chara.act_interval(_s, dt)
+function Chara.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- log._("chara act_interval is_loop", _s:name(), _s._act_interval_time)
+	-- log._("chara act_intrvl is_loop", _s:name(), _s._act_intrvl_time)
 	
 	dice100.throw()
 	if     dice100.chk(1) then
@@ -108,7 +108,7 @@ function Chara.act_interval(_s, dt)
 	-- say
 	if rnd.by_f(2/5) then _s:say() end
 
-	_s:act_interval_time__()
+	_s:act_intrvl_time__()
 end
 
 function Chara.on_msg(_s, msg_id, prm, sender)
@@ -143,12 +143,12 @@ end
 
 -- --
 
-function Chara.act_interval__(_s, dt)
+function Chara.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_interval, is_loop = u.pls_loop(_s._act_interval, dt, _s._act_interval_time)
+	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, _s._act_intrvl_time)
 	return is_loop
 end
 
-function Chara.act_interval_time__(_s)
-	_s._act_interval_time = _s:Cls().act_interval_time + rnd.int(0, 3)
+function Chara.act_intrvl_time__(_s)
+	_s._act_intrvl_time = _s:Cls().act_intrvl_time + rnd.int(0, 3)
 end

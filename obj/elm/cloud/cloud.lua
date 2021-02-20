@@ -1,7 +1,7 @@
 log.scrpt("cloud.lua")
 
 Cloud = {
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	name_idx_max = 1,
 	speed = 50,
 }
@@ -34,7 +34,7 @@ end
 
 function Cloud.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	local vec = _s:vec_mv_living(dt)
 	-- log._("cloud.upd", vec)
@@ -42,10 +42,10 @@ function Cloud.upd(_s, dt)
 	_s:pos__add(vec)
 end
 
-function Cloud.act_interval(_s, dt)
-	-- log._("Cloud.act_interval", _s._id)
+function Cloud.act_intrvl(_s, dt)
+	-- log._("Cloud.act_intrvl", _s._id)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	dice100.throw()
 	if not Map.chara_is_appear_all() and dice100.chk(30) then

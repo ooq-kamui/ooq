@@ -1,7 +1,7 @@
 log.scrpt("flpy.lua")
 
 Flpy ={
-	act_interval_time = 50,
+	act_intrvl_time = 50,
 	name_idx_max = 1,
 	z = 0.1,
 }
@@ -28,14 +28,14 @@ end
 
 function Flpy.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
 end
 
-function Flpy.act_interval(_s, dt)
+function Flpy.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	
 end

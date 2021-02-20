@@ -1,6 +1,38 @@
 log.scrpt("inp.lua")
 
-Inp = {}
+Inp = {
+	keys_arw_h = {
+		"arw_l", "arw_r",
+	},
+	keys_arw_v = {
+		"arw_u", "arw_d",
+	},
+	keys_btn = {
+		"a", "z", "x", "s",
+		"q", "w",
+	},
+}
+Inp.keys_arw = {}
+ar.add_ar(Inp.keys_arw, Inp.keys_arw_h)
+ar.add_ar(Inp.keys_arw, Inp.keys_arw_v)
+
+Inp.arw_2_dir = {}
+Inp.arw_2_dir["arw_u"] = "u"
+Inp.arw_2_dir["arw_d"] = "d"
+Inp.arw_2_dir["arw_l"] = "l"
+Inp.arw_2_dir["arw_r"] = "r"
+
+Inp.arwHa_2_dir = {}
+Inp.arwHa_2_dir[ha._("arw_u")] = "u"
+Inp.arwHa_2_dir[ha._("arw_d")] = "d"
+Inp.arwHa_2_dir[ha._("arw_l")] = "l"
+Inp.arwHa_2_dir[ha._("arw_r")] = "r"
+
+Inp.dir_2_arw = {}
+Inp.dir_2_arw["u"] = "arw_u"
+Inp.dir_2_arw["d"] = "arw_d"
+Inp.dir_2_arw["l"] = "arw_l"
+Inp.dir_2_arw["r"] = "arw_r"
 
 -- static
 

@@ -1,7 +1,7 @@
 log.scrpt("cmr.lua")
 
 Cmr = {
-	act_interval_time = 20,
+	act_intrvl_time = 20,
 	name_idx_max = 1,
 	
 	z_lst = {
@@ -368,7 +368,7 @@ end
 
 function Cmr.zoom__anm(_s, time)
 	time = time or 2
-	go.animate(_s._id, "position.z", O_es.fwd, _s:target_z(), O_es.sin_o, time, 0)
+	go.animate(_s._id, "position.z", es.fwd, _s:target_z(), es.sin_o, time, 0)
 end
 
 -- plychara

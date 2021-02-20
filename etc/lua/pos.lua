@@ -7,7 +7,7 @@ function n.pos(x, y, z)
 end
 
 function pos.new(x, y, z)
-	return vec.new(x, y, z)
+	return n.vec(x, y, z)
 end
 
 function pos._(id)

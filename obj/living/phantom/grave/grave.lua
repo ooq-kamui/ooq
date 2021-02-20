@@ -1,7 +1,7 @@
 log.scrpt("grave.lua")
 
 Grave = {
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	name_idx_max = 1,
 }
 Grave.cls = "grave"
@@ -30,14 +30,14 @@ end
 
 function Grave.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
 end
 
-function Grave.act_interval(_s, dt)
+function Grave.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- dead
 	if _s:per_trnsf(1 / 10 * 100, Phantom) then return end

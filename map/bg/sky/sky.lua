@@ -10,7 +10,7 @@ Sky = {
 	
 	gradation_idx_max = 20,
 	
-	interval_max = 5, -- 2, -- 15, -- 60,
+	act_intrvl_max = 5, -- 2, -- 15, -- 60,
 }
 Sky.sky_idx_max = #Sky._sky_tile_base
 
@@ -40,7 +40,7 @@ function Sky.init(_s)
 	_s._is_changing = _.f
 	_s._x_once = 2 -- default
 	
-	_s._interval = 0
+	_s._act_intrvl = 0
 
 	_s._upd_style = "v" -- or raindrop
 
@@ -88,7 +88,7 @@ end
 function Sky.upd(_s, dt)
 	-- log._("sky upd")
 
-	_s:act_interval__(dt)
+	_s:act_intrvl__(dt)
 
 	_s:pos__()
 	
@@ -119,16 +119,16 @@ function Sky.upd_dsp__(_s) -- not use now
 	end
 end
 
-function Sky.act_interval__(_s, dt)
+function Sky.act_intrvl__(_s, dt)
 
 	if _s._is_changing == _.t then return end
 	
-	if _s._interval < Sky.interval_max then
-		_s._interval = _s._interval + dt 
+	if _s._act_intrvl < Sky.act_intrvl_max then
+		_s._act_intrvl = _s._act_intrvl + dt 
 		return
 	end
 	
-	_s._interval = 0 -- reset
+	_s._act_intrvl = 0 -- reset
 
 	-- changing init
 	_s._is_changing = _.t

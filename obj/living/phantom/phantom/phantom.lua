@@ -1,7 +1,7 @@
 log.scrpt("phantom.lua")
 
 Phantom = {
-	act_interval_time = 10,
+	act_intrvl_time = 10,
 	name_idx_max = 1,
 }
 Phantom.cls = "phantom"
@@ -29,16 +29,16 @@ end
 
 function Phantom.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	local vec_mv = n.vec(0, 0.5)
 	local vec_total = vec_mv
 	_s:pos__add(vec_total)
 end
 
-function Phantom.act_interval(_s, dt)
+function Phantom.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 	if _s:per_trnsf(1 / 10 * 100, Fire) then return end

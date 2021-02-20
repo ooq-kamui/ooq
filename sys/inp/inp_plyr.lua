@@ -2,16 +2,12 @@ log.scrpt("inp_plyr.lua")
 
 Inp.plyr = {
 
-	-- static
-	keys = {
-		"arw_l", "arw_r", "arw_u", "arw_d",
-		"a", "z", "x", "s",
-		"q", "w",
-	},
 	msh_time_lmt = 0.5, -- msh lmt ( time )
-	-- msh_lmt_time = 0.5, -- msh lmt ( time )
 	lng_fil_num  = 0.5, -- lng press ( time )
 }
+Inp.plyr.keys = {}
+ar.add_ar(Inp.plyr.keys, Inp.keys_arw)
+ar.add_ar(Inp.plyr.keys, Inp.keys_btn)
 ha.add_by_ar(Inp.plyr.keys)
 
 -- script method
@@ -32,11 +28,10 @@ function Inp.plyr.init_plyr(_s)
 
 	_s._plyr._lng_fil = {}  -- keep time
 
-	_s._plyr._keep    = nil -- atonce
+	_s._plyr._ltst_keep = nil
 
 	_s._plyr._key     = nil
 	_s._plyr._keyact  = nil
-
 end
 
 -- upd
@@ -78,8 +73,14 @@ function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 	local key = ha.de(keyHa)
 
 	_s:on_inp_plyr__(key, keyact)
+
 	_s:on_inp_plyr_pst()
-	_s:on_inp_plyr__nxt()
+
+	_s:on_inp_plyr_msh__()
+
+	_s:on_inp_fairy_pst()
+
+	_s:on_inp_plyr_ltst_keep__()
 end
 
 function Inp.plyr.on_inp_plyr__(_s, key, keyact)
@@ -96,44 +97,72 @@ function Inp.plyr.on_inp_plyr__(_s, key, keyact)
 	end
 end
 
+function Inp.plyr.on_inp_fairy_pst(_s)
+
+	if not _s:is_arw() then return end
+
+	local key = _s._plyr._key -- alias
+
+	local fairy_id = Game.fairy_id()
+
+	local prm = {}
+
+	if     _s:p() then
+
+		prm.pos = _s:msh_fairy_pos()
+		pst.scrpt(fairy_id, "anm_pos__", prm)
+		-- pst.scrpt(fairy_id, "pos__", prm)
+
+	elseif _s:k() and _s:is_arw_v() and _s:is_lng() then
+
+		prm.pos = _s:keep_fairy_pos()
+		pst.scrpt(fairy_id, "anm_pos__", prm)
+		-- pst.scrpt(fairy_id, "pos__", prm)
+
+	elseif _s:f() then
+		
+	end
+end
+
+function Inp.plyr.is_arw(_s, key)
+
+	key = key or _s._plyr._key
+
+	local ret = ar.in_(key, Inp.keys_arw)
+	return ret
+end
+
+function Inp.plyr.is_arw_v(_s, key)
+
+	key = key or _s._plyr._key
+
+	local ret = ar.in_(key, Inp.keys_arw_v)
+	return ret
+end
+
 function Inp.plyr.on_inp_plyr_pst(_s)
 	
-	local p_id = Game.plychara_id()
-
-	-- fairy
-	if     _s:k("arw_l") then
-
-		_s:is_lng("arw_u")
-		_s:is_msh_cnt_within("arw_u", 2)
-
-	elseif _s:k("arw_r") then
-	elseif _s:k("arw_u") then
-	elseif _s:k("arw_d") then
-	end
+	local plychara_id = Game.plychara_id()
 
 	-- mv
 	if     _s:k("arw_l") then
-		-- log._("ar_l")
-		pst.scrpt(p_id, "mv", {dir = "l", l = _s:is_lng("arw_l")})
-		-- pst.scrpt(p_id, "mv", {dir = "l", s = _s:p("arw_l"), l = _s:is_lng("arw_l")})
+		pst.scrpt(plychara_id, "mv", {dir = "l", dive = _s:is_lng("arw_l")})
 
 	elseif _s:k("arw_r") then
-		-- log._("ar_r")
-		pst.scrpt(p_id, "mv", {dir = "r", l = _s:is_lng("arw_r")})
-		-- pst.scrpt(p_id, "mv", {dir = "r", s = _s:p("arw_r"), l = _s:is_lng("arw_r")})
+		pst.scrpt(plychara_id, "mv", {dir = "r", dive = _s:is_lng("arw_r")})
 
 	elseif _s:k("arw_u") then
-		pst.scrpt(p_id, "mv", {dir = "u"})
+		pst.scrpt(plychara_id, "mv", {dir = "u"})
 
 	elseif _s:k("arw_d") then
-		pst.scrpt(p_id, "mv", {dir = "d"})
+		pst.scrpt(plychara_id, "mv", {dir = "d"})
 
 	-- button
 	elseif _s:p("z") then -- jmp
-		pst.scrpt(p_id, "jmp")
+		pst.scrpt(plychara_id, "jmp")
 
 	elseif _s:p("a") then -- itm
-		
+		--[[
 		local dir_h, dir_h_msh_cnt
 		local dir_v, dir_v_msh_cnt
 		local is_lng
@@ -141,14 +170,14 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 		-- h
 		dir_h         = ""
 		dir_h_msh_cnt = 0
-		if     _s:is_msh_cnt_within("arw_l", 2) then
+		if     _s:is_msh_cnt_ovr("arw_l", 2) then
 			dir_h         = "l"
 			dir_h_msh_cnt = 2
 		
 		elseif _s:is_with("arw_l") then
 			dir_h         = "l"
 		
-		elseif _s:is_msh_cnt_within("arw_r", 2) then
+		elseif _s:is_msh_cnt_ovr("arw_r", 2) then
 			dir_h         = "r"
 			dir_h_msh_cnt = 2
 
@@ -164,11 +193,11 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 			dir_v         = "u"
 			is_lng        = _.t
 
-		elseif _s:is_msh_cnt_within("arw_u", 2) then
+		elseif _s:is_msh_cnt_ovr("arw_u", 2) then
 			dir_v         = "u"
 			dir_v_msh_cnt = 2
 
-		elseif _s:is_msh_cnt_within("arw_u", 1) then
+		elseif _s:is_msh_cnt_ovr("arw_u", 1) then
 			dir_v         = "u"
 			dir_v_msh_cnt = 1
 			
@@ -176,11 +205,11 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 			dir_v         = "d"
 			is_lng        = _.t
 
-		elseif _s:is_msh_cnt_within("arw_d", 2) then
+		elseif _s:is_msh_cnt_ovr("arw_d", 2) then
 			dir_v         = "d"
 			dir_v_msh_cnt = 2
 
-		elseif _s:is_msh_cnt_within("arw_d", 1) then
+		elseif _s:is_msh_cnt_ovr("arw_d", 1) then
 			dir_v         = "d"
 			dir_v_msh_cnt = 1
 		end
@@ -191,69 +220,102 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 			dir_v_msh_cnt = dir_v_msh_cnt,
 			is_lng        = is_lng       ,
 		}
-		pst.scrpt(p_id, "itm_use", prm)
+		--]]
+		pst.scrpt(plychara_id, "itm_use")
+		-- pst.scrpt(plychara_id, "itm_use", prm)
 
 	elseif _s:p("x") then
-		pst.scrpt(p_id, "hld__ox")
+		pst.scrpt(plychara_id, "hld__ox")
 
 	elseif _s:p("s") then
-		pst.scrpt(p_id, "menu_opn")
+		pst.scrpt(plychara_id, "menu_opn")
 
 	elseif _s:p("q") then
 		pst.scrpt(Sys.cmr_id(), "zoom__o")
+
 	elseif _s:p("w") then
 		pst.scrpt(Sys.cmr_id(), "zoom__i")
 	end
 end
 
-function Inp.plyr.on_inp_plyr__nxt(_s)
+function Inp.plyr.on_inp_plyr_msh__(_s)
 	-- log._("inp.plyr on_inp_plyr__nxt")
-	
-	local key = _s._plyr._key -- alias
-	
-	-- msh
-	if _s:p(key) then
 
-		if not _s._plyr._msh[key] then _s._plyr._msh[key] = {} end
+	local key = _s._plyr._key -- alias
+
+	local is_msh, cnt
+
+	if _s:p(key) then
 
 		_s._plyr._msh[key].time = Inp.plyr.msh_time_lmt
 
-		if _s:is_within(key) then
-			_s._plyr._msh[key].cnt = _s:msh_cnt(key) + 1
+		is_msh, cnt = _s:is_msh(key)
+		if is_msh then
+			_s._plyr._msh[key].cnt = cnt + 1
 		end
-	end
-
-	-- keep
-	if     _s:k(key) then
-		_s._plyr._keep = key
-	elseif _s:f(key) then
-		_s._plyr._keep = nil
 	end
 end
 
---
+function Inp.plyr.on_inp_plyr_ltst_keep__(_s)
+
+	if     _s:k(key) then
+		_s._plyr._ltst_keep = key
+	elseif _s:f(key) then
+		_s._plyr._ltst_keep = nil
+	end
+end
 
 function Inp.plyr.p(_s, key) -- press
-	return _s:is_key_act(key, "pressed")
+
+	local ret = _.f
+
+	if key then
+		if not u.eq(_s._plyr._key, key) then return ret end
+	else
+		key = _s._plyr._key
+	end
+
+	if _s._plyr._keyact.pressed then
+		ret = _.t
+	end
+	return ret
+end
+
+function Inp.plyr.f(_s, key) -- free ( released )
+
+	local ret = _.f
+
+	if key then
+		if not u.eq(_s._plyr._key, key) then return ret end
+	else
+		key = _s._plyr._key
+	end
+
+	if _s._plyr._keyact.released then
+		ret = _.t
+	end
+	return ret
 end
 
 function Inp.plyr.k(_s, key) -- press keep
 
 	local ret = _.f
 
-	if u.eq(_s._plyr._key, key) and not _s._plyr._keyact.released then
-		ret = _.t
+	if key then
+		if not u.eq(_s._plyr._key, key) then return ret end
+	else
+		key = _s._plyr._key
 	end
 
-	return ret
-end
-
-function Inp.plyr.f(_s, key) -- free ( released )
-	local ret = _s:is_key_act(key, "released")
+	if not _s._plyr._keyact.released then
+		ret = _.t
+	end
 	return ret
 end
 
 function Inp.plyr.is_lng(_s, key) -- lng press
+
+	key = key or _s._plyr._key
 
 	local ret = _.f
 	
@@ -265,77 +327,106 @@ function Inp.plyr.is_lng(_s, key) -- lng press
 	return ret
 end
 
-function Inp.plyr.is_key_act(_s, key, act)
+function Inp.plyr.is_msh(_s, key)
 
-	local ret = _.f
+	key = key or _s._plyr._key
 
-	if not u.eq(_s._plyr._key, key) then
-	-- if not ha.eq(_s._plyr._key, key) then
-		-- nothing
-
-	elseif (act == "pressed"  and _s._plyr._keyact.pressed ) then
-		ret = _.t
-
-	elseif (act == "released" and _s._plyr._keyact.released) then
-		ret = _.t
-	end
-	return ret
-end
-
-function Inp.plyr.is_within(_s, key)
-
-	local ret
+	local ret, cnt
 	if _s._plyr._msh[key].time > 0 then
 		ret = _.t
+		cnt = _s:msh_cnt(key)
 	else
 		ret = _.f
 	end
-	-- log._("inp.plyr is_within", key, ret)
-	return ret
+	return ret, cnt
 end
 
 function Inp.plyr.msh_cnt(_s, key)
-	-- log._("inp.plyr msh_cnt", key)
-	-- log._("inp.plyr msh_cnt", key, _s._plyr._msh[key].cnt)
-
-	return _s._plyr._msh[key].cnt
+	local cnt = _s._plyr._msh[key].cnt
+	return cnt
 end
 
--- msh success cnt
-function Inp.plyr.is_msh_cnt_within(_s, key, cnt)
+function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt
 
 	local ret
-	if _s:msh_cnt(key) >= cnt and _s:is_within(key) then
+	local is_msh, cnt = _s:is_msh(key)
+	if is_msh and cnt >= p_cnt then
 		ret = _.t
 	else
 		ret = _.f
 	end
-	-- log._("inp.plyr is_msh_cnt_within", key, ret)
 	return ret
+end
+
+function Inp.plyr.msh_fairy_pos(_s)
+
+	local msh_pos = _s:msh_tilepos() * Map.sq
+	return msh_pos
+end
+
+function Inp.plyr.msh_tilepos(_s)
+
+	local x = _s:msh_tilepos_x()
+	local y = _s:msh_tilepos_y()
+	local msh_tilepos = n.vec(x, y)
+	return msh_tilepos
+end
+
+function Inp.plyr.msh_tilepos_x(_s)
+	
+	local x = 0
+	local l_cnt = _s._plyr._msh["arw_l"].cnt
+	local r_cnt = _s._plyr._msh["arw_r"].cnt
+	if     l_cnt > 0 then x = - l_cnt
+	elseif r_cnt > 0 then x =   r_cnt
+	end
+	return x
+end
+
+function Inp.plyr.msh_tilepos_y(_s)
+
+	local y = 0
+	local u_cnt = _s._plyr._msh["arw_u"].cnt
+	local d_cnt = _s._plyr._msh["arw_d"].cnt
+	if     u_cnt > 0 then y =   u_cnt
+	elseif d_cnt > 0 then y = - d_cnt
+	end
+	return y
 end
 
 function Inp.plyr.is_with(_s, key) -- keep
 
 	local ret
-	if _s._plyr._keep == key then
+	if _s._plyr._ltst_keep == key then
 		ret = _.t
 	else
 		ret = _.f
 	end
-	-- log._("inp.plyr is_with", ret)
 	return ret
+end
+
+function Inp.plyr.keep_fairy_pos(_s, key)
+
+	key = key or _s._plyr._key
+
+	local keep_fairy_pos
+	if     key == "arw_u" then
+		keep_fairy_pos = n.vec(0,   Map.sq)
+	elseif key == "arw_d" then
+		keep_fairy_pos = n.vec(0, - Map.sq)
+	end
+	return keep_fairy_pos
 end
 
 -- key1 keep and key2 press
 function Inp.plyr.is_with_p(_s, key1, key2) -- use not
 
 	local ret
-	if _s._plyr._keep == key1 and _s:p(key2) then
+	if _s._plyr._ltst_keep == key1 and _s:p(key2) then
 		ret = _.t
 	else
 		ret = _.f
 	end
-	-- log._("inp.plyr is_with_p", key, ret)
 	return ret
 end
 
@@ -343,12 +434,11 @@ end
 function Inp.plyr.is_with_k(_s, key1, key2) -- use not
 
 	local ret
-	if _s._plyr._keep == key1 and _s:k(key2) then
+	if _s._plyr._ltst_keep == key1 and _s:k(key2) then
 		ret = _.t
 	else
 		ret = _.f
 	end
-	-- log._("inp.plyr is_with_k", key, ret)
 	return ret
 end
 

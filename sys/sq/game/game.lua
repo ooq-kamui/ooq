@@ -1,7 +1,7 @@
 log.scrpt("game.lua")
 
 Game = {
-	act_interval_time = 60, -- 30, 15, 10, 5,
+	act_intrvl_time = 60, -- 30, 15, 10, 5,
 }
 
 -- static
@@ -69,7 +69,8 @@ function Game.plychara_id()
 	-- log._("Game.plychara_id()", map_id)
 	
 	local plychara_id = id.prp(map_id, "_plychara_id")
-	if u.is_emp(plychara_id) then return end
+	if ha.is_emp(plychara_id) then return end
+	-- if u.is_emp(plychara_id) then return end
 	
 	return plychara_id
 end
@@ -90,6 +91,20 @@ function Game.plychara_dir()
 
 	local plychara_dir = id.prp(plychara_id, "_dir_h")
 	return plychara_dir
+end
+
+function Game.fairy_id()
+
+	local game_id = Game.id()
+	if ha.is_emp(game_id) then return end
+	
+	local map_id = id.prp(game_id, "_map_id")
+	if ha.is_emp(map_id) then return end
+
+	local fairy_id = id.prp(map_id, "_fairy_id")
+	if ha.is_emp(fairy_id) then return end
+
+	return fairy_id
 end
 
 function Game.dstrct()
@@ -154,7 +169,7 @@ function Game.init(_s)
 
 	_s._ply_start_ts = ts.now()
 
-	_s._act_interval = 0
+	_s._act_intrvl = 0
 
 	_s:bgm_ply_rnd()
 
@@ -163,13 +178,13 @@ end
 
 function Game.upd(_s, dt)
 	
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 end
 
-function Game.act_interval(_s, dt)
+function Game.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	log._("game act_intrvl", _s._id)
 	
@@ -181,14 +196,14 @@ function Game.act_interval(_s, dt)
 	_s:bgm_ply_nxt_rnd()
 end
 
-function Game.is_loop__act_interval__(_s, dt)
-	local is_loop = _s:act_interval__(dt)
+function Game.is_loop__act_intrvl__(_s, dt)
+	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
 end
 
-function Game.act_interval__(_s, dt)
+function Game.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_interval, is_loop = u.pls_loop(_s._act_interval, dt, Game.act_interval_time)
+	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
 	return is_loop
 end
 

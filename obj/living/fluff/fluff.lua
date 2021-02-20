@@ -1,7 +1,7 @@
 log.scrpt("fluff.lua")
 
 Fluff = {
-	act_interval_time = 14,
+	act_intrvl_time = 14,
 	name_idx_max = 1,
 
 	foot_dst_i = 20,
@@ -33,16 +33,16 @@ end
 
 function Fluff.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 
 	local vec = _s:vec_mv_living(dt)
 	-- log._("fluff vec", vec)
 	_s:pos__add(vec)
 end
 
-function Fluff.act_interval(_s, dt)
+function Fluff.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("fluff act_intrvl")
 	

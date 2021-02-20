@@ -10,7 +10,7 @@ Map = {
 	},
 	tilemap = {"ground", "wall", "underground", },
 	
-	act_interval_time = 15, -- 45, -- 5,
+	act_intrvl_time = 15, -- 45, -- 5,
 
 	-- obj
 	chara = {
@@ -94,7 +94,7 @@ function Map.init(_s)
 	_s._ply_slt_idx = Game.ply_slt_idx()
 	_s._dstrct      = id.prp(_s._game_id, "_dstrct")
 	
-	_s._act_interval = 0
+	_s._act_intrvl = 0
 
 	_s:rng_pos__init()
 	_s:dstrct_mv_rng_pos__init()
@@ -125,26 +125,26 @@ end
 
 function Map.upd(_s, dt)
 
-	_s:act_interval(dt)
+	_s:act_intrvl(dt)
 	
 	
 end
 
-function Map.act_interval(_s, dt)
+function Map.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_interval__(dt) then return end
+	if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	-- log._("map act_intrvl", _s._dstrct)
 end
 
-function Map.is_loop__act_interval__(_s, dt)
-	local is_loop = _s:act_interval__(dt)
+function Map.is_loop__act_intrvl__(_s, dt)
+	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
 end
 
-function Map.act_interval__(_s, dt)
+function Map.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_interval, is_loop = u.pls_loop(_s._act_interval, dt, Map.act_interval_time)
+	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
 	return is_loop
 end
 
