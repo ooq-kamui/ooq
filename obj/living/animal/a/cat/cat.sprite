@@ -1,4 +1,0 @@
-tile_set: "/assets/obj/living/animal/a/cat/cat.atlas"
-default_animation: "walk"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

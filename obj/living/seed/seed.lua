@@ -59,7 +59,7 @@ function Seed.act_intrvl(_s, dt)
 				bear_name = _s._bear_name,
 			}
 			local id = _s:trnsf(grw_Cls, prm)
-			-- pst.scrpt(id, "scl_anim__1")
+			-- pst.scrpt(id, "anm_scl__1")
 		end
 	else
 		dice100.throw()

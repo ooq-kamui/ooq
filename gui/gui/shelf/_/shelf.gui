@@ -312,7 +312,7 @@ nodes {
   layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/assets/gui/gui/shelf/prt/animal/zu_animal.gui"
+  template: "/assets/gui/gui/shelf/prt/anml/zu_anml.gui"
   template_node_child: false
 }
 nodes {

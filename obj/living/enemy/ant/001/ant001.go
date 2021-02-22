@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "animal"
-  component: "/assets/obj/living/animal/animal.script"
+  component: "/assets/obj/living/anml/anml.script"
   position {
     x: 0.0
     y: 0.0

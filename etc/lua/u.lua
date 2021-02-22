@@ -1,8 +1,6 @@
 log.scrpt("u.lua")
 
 u = { -- util
-	-- hs = {"l", "r"}, -- old
-	-- vs = {"u", "d"}, -- old
 	lr    = {"l", "r"},
 	ud    = {"u", "d"},
 }
@@ -13,7 +11,9 @@ ha.add_by_ar(u.dir_h)
 -- log.scrpt("util.script")
 
 function u.is_emp(val)
+
 	if not val then return _.t end
+
 	local val_type = type(val)
 	if val_type == "string" and val == "" then return _.t end
 	if val_type == "table"  and ar.is_emp(val) then return _.t end

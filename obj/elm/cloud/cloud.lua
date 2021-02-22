@@ -51,7 +51,7 @@ function Cloud.act_intrvl(_s, dt)
 	if not Map.chara_is_appear_all() and dice100.chk(30) then
 		Chara.cre()
 	elseif dice100.chk(4) then
-		Animal.cre()
+		Anml.cre()
 	elseif dice100.chk(1) then
 		Veget.cre()
 	elseif dice100.chk(1) then

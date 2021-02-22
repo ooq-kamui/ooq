@@ -41,5 +41,5 @@ function Egg.act_intrvl(_s, dt)
 	-- death
 	if _s:per_trnsf(1 / 20 * 100, Humus) then return end
 
-	_s:per_trnsf(1 / 25 * 100, Animal, {name = ha._(rnd.ar(Animal.bird))})
+	_s:per_trnsf(1 / 25 * 100, Anml, {name = ha._(rnd.ar(Anml.bird))})
 end

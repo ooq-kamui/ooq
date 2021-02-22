@@ -8,7 +8,7 @@ function Obj.fall.tst()
 	local Cls = {
 		Chara,
 		Block,
-		Animal,
+		Anml,
 		Seed,
 		Kagu,
 		Plant,
@@ -59,7 +59,7 @@ function Obj.fall.game_start()
 	
 	local Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
-		Animal,Animal,Animal,Animal,Animal,Animal,Animal,Animal,
+		Anml,Anml,Anml,Anml,Anml,Anml,Anml,Anml,
 		---[[
 		Flower,Flower,Flower,Flower,
 		Veget,Veget,Veget,Veget,Veget,Veget,

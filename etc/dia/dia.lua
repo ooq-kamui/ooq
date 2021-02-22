@@ -16,7 +16,12 @@ function Dia.txt__add(txt)
 	ar.add(Dia.txt, txt)
 end
 
-function Dia.txt__add__o(txt)
+function Dia.txt__add__v(txt)
+
+	ar.add(Dia.txt, txt)
+end
+
+function Dia.txt__add__x(txt)
 
 	Dia.txt__add(txt)
 
@@ -24,7 +29,7 @@ function Dia.txt__add__o(txt)
 
 	if ha.is_emp(game_id) then return end
 
-	pst._(game_id, "dia__o")
+	pst._(game_id, "dia__opn")
 end
 
 -- alias
@@ -32,5 +37,6 @@ end
 D   = Dia
 D.c = Dia.chara__
 D._ = Dia.txt__add
-D.o = Dia.txt__add__o
+D.v = Dia.txt__add__v
+D.x = Dia.txt__add__x
 

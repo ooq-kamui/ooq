@@ -61,8 +61,9 @@ require("assets/etc/sound/se/se")
 require("assets/obj/obj/sp")
 require("assets/obj/obj/hldabl")
 require("assets/obj/obj/obj")
-require("assets/obj/obj/obj_anm")
-require("assets/obj/obj/es")
+
+require("assets/obj/anm/anm")
+require("assets/obj/anm/es")
 
 require("assets/etc/lua/tile")
 require("assets/etc/lua/dice100")
@@ -110,7 +111,7 @@ require("assets/obj/chara/fuki/fuki/fuki")
 require("assets/obj/chara/fuki/serifu")
 
 require("assets/obj/living/livingmove")
-require("assets/obj/living/animal/animal")
+require("assets/obj/living/anml/anml")
 require("assets/obj/living/flower/flower")
 require("assets/obj/living/plant/plant")
 require("assets/obj/living/bush/bush")
@@ -190,7 +191,7 @@ require("assets/gui/gui/pc/prt/snn/snn_lst/snn_lst")
 -- shelf
 require("assets/gui/gui/shelf/_/shelf_gui")
 require("assets/gui/gui/shelf/prt/shelf/shelf")
-require("assets/gui/gui/shelf/prt/animal/zu_animal")
+require("assets/gui/gui/shelf/prt/anml/zu_anml")
 require("assets/gui/gui/shelf/prt/dish/zu_dish")
 require("assets/gui/gui/shelf/prt/flower/zu_flower")
 
@@ -205,7 +206,7 @@ require("assets/gui/gui/reizoko/prt/reizoko/reizoko")
 
 -- mstr
 require("assets/sys/mstr/mstr")
-require("assets/sys/mstr/animal")
+require("assets/sys/mstr/anml")
 require("assets/sys/mstr/chara")
 require("assets/sys/mstr/kzn")
 

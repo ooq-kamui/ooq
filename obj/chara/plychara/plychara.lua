@@ -303,7 +303,7 @@ end
 
 function Plychara.crct_inside_map(_s, vec)
 
-	-- nothing
+	-- nothing ???
 	
 	return vec
 end
@@ -396,7 +396,6 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 	
 	if not ha.eq(msg_id, "mv") then return end
 
-	-- if ar.in_(prm.dir, {"l", "r"}) then
 	if ar.in_(prm.dir, u.dir_h) then
 		
 		_s._hmoving = _.t
@@ -414,10 +413,8 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 		
 		-- dive
 		if prm.dive then _s._dive = _.t end
-		-- if prm.l then _s._dive = _.t end
 		
 		_s._dir_h = ha._(prm.dir) -- new
-		-- log._("plychara on_msg dir_h", _s._dir_h)
 
 	elseif prm.dir == "u" then
 		_s._vmoving = _.t
@@ -437,7 +434,6 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 	
 	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
 		_s:itm_use()
-		-- _s:itm_use(prm)
 		
 	elseif ha.eq(msg_id, "hld__ox") then -- input hld switch
 		_s:hld__ox()
@@ -469,7 +465,6 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 		
 		if not is_icn_opn then
 			pst.scrpt(Game.id(), "bag_opn")
-			-- pst.scrpt(Sys.game_id(), "bag_opn")
 		end
 	end
 end
@@ -479,18 +474,13 @@ end
 
 -- method
 
--- function Plychara.itm_use(_s, prm)
 function Plychara.itm_use(_s)
 	
 	local itm = _s._itm_selected -- name
 	-- log._("plychara itm_use", itm)
 	
 	if     itm == "wand001" then
-		-- local fairy_id = _s:fairy_id()
 		pst.scrpt(_s:fairy_id(), "magic")
-
-		-- local tilepos = Magic.tilepos_by_inp_prm(_s._dir_h, prm)
-		-- Magic.cre(_s:pos(), tilepos)
 		
 	elseif itm == "wand002" then
 		Wall.__(_s:tilepos(), Wand.wand002.tile_idx)

@@ -29,7 +29,7 @@ function p.Bag_inf.init(_s, parent_gui)
 end
 
 function p.Bag_inf.opn(_s)
-	log._("bag_inf.opn")
+	-- log._("bag_inf.opn")
 
 	nd.txt__(_s:nd("gold"), Ply_data.gold())
 

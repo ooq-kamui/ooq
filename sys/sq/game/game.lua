@@ -186,7 +186,7 @@ function Game.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	log._("game act_intrvl", _s._id)
+	-- log._("game act_intrvl", _s._id)
 	
 	if _s:is_map_pause()      then log._("map is_pause")         return end
 	if Sys.is_inp_focus_gui() then log._("map Inp_gui.is_focus") return end
@@ -232,9 +232,9 @@ function Game.on_msg(_s, msg_id, prm, sender)
 	elseif ha.eq(msg_id, "save") then
 		_s:save()
 
-	elseif ha.eq(msg_id, "dia__o") then
-		-- log._("game dia__o")
-		_s:dia__o()
+	elseif ha.eq(msg_id, "dia__opn") then
+		-- log._("game dia__opn")
+		_s:dia__opn()
 
 	elseif ha.eq(msg_id, "dia__clr") then
 		-- log._("game dia__clr")
@@ -556,8 +556,8 @@ function Game.dia__cre(_s)
 	_s._dia_id = g.Dia.cre()
 end
 
-function Game.dia__o(_s)
-	-- log._("game dia__o")
+function Game.dia__opn(_s)
+	-- log._("game dia__opn")
 
 	if ha.is_emp(_s._dia_id) then _s:dia__cre() end
 

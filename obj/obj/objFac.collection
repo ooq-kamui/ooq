@@ -1,7 +1,7 @@
 name: "default"
 instances {
   id: "animalFac"
-  prototype: "/assets/obj/living/animal/animalFac.go"
+  prototype: "/assets/obj/living/anml/anmlFac.go"
   position {
     x: 0.0
     y: 0.0

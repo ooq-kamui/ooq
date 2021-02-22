@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/living/anml/a/horse/horse.atlas"
+default_animation: "walk"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

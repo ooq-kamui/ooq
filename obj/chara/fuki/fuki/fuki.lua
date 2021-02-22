@@ -40,7 +40,7 @@ function Fuki.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	log._("fuki pos", _s:pos())
+	-- log._("fuki pos", _s:pos())
 
 	local anim = {}
 	anim[1] = function ()
@@ -72,7 +72,7 @@ function Fuki._s(_s, str, len)
 	if scale_x < 1 then scale_x = 1 end
 	go.set("#sprite", "scale.x", scale_x)
 	
-	-- _s:scl_anim__1()
+	-- _s:anm_scl__1()
 	-- go.set_scale(1)
 end
 

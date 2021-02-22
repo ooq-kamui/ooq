@@ -101,23 +101,18 @@ function Inp.plyr.on_inp_fairy_pst(_s)
 
 	if not _s:is_arw() then return end
 
-	local key = _s._plyr._key -- alias
-
 	local fairy_id = Game.fairy_id()
 
 	local prm = {}
+	prm.dir = Inp.arw_2_dir[_s._plyr._key]
 
 	if     _s:p() then
 
-		prm.pos = _s:msh_fairy_pos()
-		pst.scrpt(fairy_id, "anm_pos__", prm)
-		-- pst.scrpt(fairy_id, "pos__", prm)
+		pst.scrpt(fairy_id, "mv__dir", prm)
 
 	elseif _s:k() and _s:is_arw_v() and _s:is_lng() then
 
-		prm.pos = _s:keep_fairy_pos()
-		pst.scrpt(fairy_id, "anm_pos__", prm)
-		-- pst.scrpt(fairy_id, "pos__", prm)
+		pst.scrpt(fairy_id, "mv__plychara_v", prm)
 
 	elseif _s:f() then
 		
@@ -162,67 +157,7 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 		pst.scrpt(plychara_id, "jmp")
 
 	elseif _s:p("a") then -- itm
-		--[[
-		local dir_h, dir_h_msh_cnt
-		local dir_v, dir_v_msh_cnt
-		local is_lng
-
-		-- h
-		dir_h         = ""
-		dir_h_msh_cnt = 0
-		if     _s:is_msh_cnt_ovr("arw_l", 2) then
-			dir_h         = "l"
-			dir_h_msh_cnt = 2
-		
-		elseif _s:is_with("arw_l") then
-			dir_h         = "l"
-		
-		elseif _s:is_msh_cnt_ovr("arw_r", 2) then
-			dir_h         = "r"
-			dir_h_msh_cnt = 2
-
-		elseif _s:is_with("arw_r") then
-			dir_h         = "r"
-		end
-
-		-- v
-		dir_v         = ""
-		dir_v_msh_cnt = 0
-		is_lng        = _.f
-		if     _s:is_lng("arw_u")  then
-			dir_v         = "u"
-			is_lng        = _.t
-
-		elseif _s:is_msh_cnt_ovr("arw_u", 2) then
-			dir_v         = "u"
-			dir_v_msh_cnt = 2
-
-		elseif _s:is_msh_cnt_ovr("arw_u", 1) then
-			dir_v         = "u"
-			dir_v_msh_cnt = 1
-			
-		elseif _s:is_lng("arw_d") then
-			dir_v         = "d"
-			is_lng        = _.t
-
-		elseif _s:is_msh_cnt_ovr("arw_d", 2) then
-			dir_v         = "d"
-			dir_v_msh_cnt = 2
-
-		elseif _s:is_msh_cnt_ovr("arw_d", 1) then
-			dir_v         = "d"
-			dir_v_msh_cnt = 1
-		end
-		local prm = {
-			dir_h         = dir_h        ,
-			dir_h_msh_cnt = dir_h_msh_cnt,
-			dir_v         = dir_v        ,
-			dir_v_msh_cnt = dir_v_msh_cnt,
-			is_lng        = is_lng       ,
-		}
-		--]]
 		pst.scrpt(plychara_id, "itm_use")
-		-- pst.scrpt(plychara_id, "itm_use", prm)
 
 	elseif _s:p("x") then
 		pst.scrpt(plychara_id, "hld__ox")
@@ -239,7 +174,6 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 end
 
 function Inp.plyr.on_inp_plyr_msh__(_s)
-	-- log._("inp.plyr on_inp_plyr__nxt")
 
 	local key = _s._plyr._key -- alias
 
@@ -358,7 +292,7 @@ function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt
 	return ret
 end
 
-function Inp.plyr.msh_fairy_pos(_s)
+function Inp.plyr.msh_fairy_pos(_s) -- use not
 
 	local msh_pos = _s:msh_tilepos() * Map.sq
 	return msh_pos
@@ -377,6 +311,7 @@ function Inp.plyr.msh_tilepos_x(_s)
 	local x = 0
 	local l_cnt = _s._plyr._msh["arw_l"].cnt
 	local r_cnt = _s._plyr._msh["arw_r"].cnt
+
 	if     l_cnt > 0 then x = - l_cnt
 	elseif r_cnt > 0 then x =   r_cnt
 	end
@@ -403,19 +338,6 @@ function Inp.plyr.is_with(_s, key) -- keep
 		ret = _.f
 	end
 	return ret
-end
-
-function Inp.plyr.keep_fairy_pos(_s, key)
-
-	key = key or _s._plyr._key
-
-	local keep_fairy_pos
-	if     key == "arw_u" then
-		keep_fairy_pos = n.vec(0,   Map.sq)
-	elseif key == "arw_d" then
-		keep_fairy_pos = n.vec(0, - Map.sq)
-	end
-	return keep_fairy_pos
 end
 
 -- key1 keep and key2 press

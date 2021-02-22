@@ -44,7 +44,7 @@ end
 -- method
 
 function p.Bag_block.decide(_s)
-	log._("bag block decide")
+	-- log._("bag block decide")
 
 	if _s:is_selected_eq_cursor() then return end
 

@@ -104,7 +104,7 @@ function Food.bear_o(_s, tree_id)
 	_s._bear_tree_id = tree_id
 	pst.parent__(_s._id, tree_id, 0.05)
 	
-	_s:scl_anim__1()
+	_s:anm_scl__1()
 	-- _s:scl__1()
 end
 

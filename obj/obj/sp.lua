@@ -104,11 +104,11 @@ function Sp.on_msg(_s, msg_id, prm, sender)
 		_s:parent__map(prm.z)
 	
 	elseif ha.eq(msg_id, "to_cloud") then
-		log._("to_cloud")
+		-- log._("to_cloud")
 		_s:to_cloud()
 
-	elseif ha.eq(msg_id, "scl_anim__1") then -- old
-		_s:anm_scl__1()
+	elseif ha.eq(msg_id, "mv__pos") then
+		_s:mv__pos(prm.pos)
 
 	elseif ha.eq(msg_id, "anm_scl__1") then
 		_s:anm_scl__1()
@@ -864,13 +864,13 @@ function Sp.ply_slt_idx(_s)
 	return ply_slt_idx
 end
 
---
+-- dir
 
 function Sp.dir_h__(_s, dir_h)
 	-- log._("Sp.dir_h__", dir_h)
 	
 	_s._dir_h = ha._(dir_h)
-	_s:hflip__()
+	_s:flip_h__()
 end
 
 function Sp.dir_h__rnd(_s)
@@ -896,7 +896,7 @@ function Sp.dir_v__rnd(_s)
 	_s:dir_v__(dir_v)
 end
 
-function Sp.hflip__(_s, dir_h)
+function Sp.flip_h__(_s, dir_h)
 
 	if dir_h then _s:dir_h__(dir_h) end
 	
@@ -909,25 +909,25 @@ function Sp.hflip__(_s, dir_h)
 	sprite.set_hflip("#sprite", val)
 end
 
+-- mv
+
+function Sp.mv__pos(_s, p_pos)
+	_s:anm_pos__(p_pos)
+end
+
 -- anm
 
 function Sp.anm_cancel_pos(_s)
 	go.cancel_animations(_s._id, "position")
 end
 
-function Sp.scl_anim__1(_s) -- old
-	_s:anm_scl__1(_s)
-end
-
 function Sp.anm_scl__1(_s)
 	-- log._("sp anm_scl__1")
-	obj_anm.scl__1(_s._id)
+	anm.scl__1(_s._id)
 end
 
 function Sp.anm_pos__(_s, p_pos, time)
 
-	local t_id = _s:id()
-
-	obj_anm.pos__(t_id, p_pos, time)
+	anm.pos__(_s:id(), p_pos, time)
 end
 
