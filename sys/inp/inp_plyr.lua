@@ -280,7 +280,7 @@ function Inp.plyr.msh_cnt(_s, key)
 	return cnt
 end
 
-function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt
+function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt, use not, but rest
 
 	local ret
 	local is_msh, cnt = _s:is_msh(key)
@@ -292,44 +292,7 @@ function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt
 	return ret
 end
 
-function Inp.plyr.msh_fairy_pos(_s) -- use not
-
-	local msh_pos = _s:msh_tilepos() * Map.sq
-	return msh_pos
-end
-
-function Inp.plyr.msh_tilepos(_s)
-
-	local x = _s:msh_tilepos_x()
-	local y = _s:msh_tilepos_y()
-	local msh_tilepos = n.vec(x, y)
-	return msh_tilepos
-end
-
-function Inp.plyr.msh_tilepos_x(_s)
-	
-	local x = 0
-	local l_cnt = _s._plyr._msh["arw_l"].cnt
-	local r_cnt = _s._plyr._msh["arw_r"].cnt
-
-	if     l_cnt > 0 then x = - l_cnt
-	elseif r_cnt > 0 then x =   r_cnt
-	end
-	return x
-end
-
-function Inp.plyr.msh_tilepos_y(_s)
-
-	local y = 0
-	local u_cnt = _s._plyr._msh["arw_u"].cnt
-	local d_cnt = _s._plyr._msh["arw_d"].cnt
-	if     u_cnt > 0 then y =   u_cnt
-	elseif d_cnt > 0 then y = - d_cnt
-	end
-	return y
-end
-
-function Inp.plyr.is_with(_s, key) -- keep
+function Inp.plyr.is_with(_s, key) -- keep, use not, but rest
 
 	local ret
 	if _s._plyr._ltst_keep == key then
@@ -341,7 +304,7 @@ function Inp.plyr.is_with(_s, key) -- keep
 end
 
 -- key1 keep and key2 press
-function Inp.plyr.is_with_p(_s, key1, key2) -- use not
+function Inp.plyr.is_with_p(_s, key1, key2) -- use not, but rest
 
 	local ret
 	if _s._plyr._ltst_keep == key1 and _s:p(key2) then
@@ -353,7 +316,7 @@ function Inp.plyr.is_with_p(_s, key1, key2) -- use not
 end
 
 -- key1 keep and key2 keep
-function Inp.plyr.is_with_k(_s, key1, key2) -- use not
+function Inp.plyr.is_with_k(_s, key1, key2) -- use not, but rest
 
 	local ret
 	if _s._plyr._ltst_keep == key1 and _s:k(key2) then
@@ -363,4 +326,43 @@ function Inp.plyr.is_with_k(_s, key1, key2) -- use not
 	end
 	return ret
 end
+
+--[[[
+function Inp.plyr.msh_fairy_pos(_s) -- use not
+
+	local msh_pos = _s:msh_tilepos() * Map.sq
+	return msh_pos
+end
+
+function Inp.plyr.msh_tilepos(_s)  -- use not
+
+	local x = _s:msh_tilepos_x()
+	local y = _s:msh_tilepos_y()
+	local msh_tilepos = n.vec(x, y)
+	return msh_tilepos
+end
+
+function Inp.plyr.msh_tilepos_x(_s)  -- use not
+	
+	local x = 0
+	local l_cnt = _s._plyr._msh["arw_l"].cnt
+	local r_cnt = _s._plyr._msh["arw_r"].cnt
+
+	if     l_cnt > 0 then x = - l_cnt
+	elseif r_cnt > 0 then x =   r_cnt
+	end
+	return x
+end
+
+function Inp.plyr.msh_tilepos_y(_s)  -- use not
+
+	local y = 0
+	local u_cnt = _s._plyr._msh["arw_u"].cnt
+	local d_cnt = _s._plyr._msh["arw_d"].cnt
+	if     u_cnt > 0 then y =   u_cnt
+	elseif d_cnt > 0 then y = - d_cnt
+	end
+	return y
+end
+--]]
 

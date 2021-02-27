@@ -21,11 +21,9 @@ require("assets/etc/lua/ts")
 require("assets/etc/lua/cls")
 require("assets/etc/lua/map")
 require("assets/etc/lua/fac")
-require("assets/etc/lua/nd")
-require("assets/etc/lua/nd_anm")
-require("assets/etc/lua/nd_ar")
 require("assets/etc/lua/xy")
 require("assets/etc/lua/page")
+require("assets/etc/lua/accl")
 
 require("assets/sys/etc/disp")
 require("assets/sys/sys/sys")
@@ -134,6 +132,11 @@ require("assets/obj/itm/kagu/flpy/flpy")
 -- gui
 require("assets/gui/gui/gui/gui")
 
+-- nd
+require("assets/gui/lua/nd")
+require("assets/gui/lua/nd_anm")
+require("assets/gui/lua/nd_ar")
+
 -- prt
 require("assets/gui/prt/prt/prt")
 require("assets/gui/prt/prt/prt_base")
@@ -218,3 +221,4 @@ require("assets/sys/mstr/kagu")
 
 -- cfg
 require("assets/sys/cfg/cfg")
+
