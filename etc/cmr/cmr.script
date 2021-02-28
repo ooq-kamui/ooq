@@ -1,7 +1,7 @@
 log.scrpt("cmr.script")
 
-go.property("_cls", hash(""))
-go.property("_name", hash(""))
+go.property("_clsHa",  hash(""))
+go.property("_nameHa", hash(""))
 
 function init(_s)
 	Cmr.init(_s)
@@ -18,3 +18,4 @@ end
 function final(_s)
 	_s:final()
 end
+

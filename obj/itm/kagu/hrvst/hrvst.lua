@@ -66,26 +66,26 @@ end
 
 function Hrvst.box_in(_s, prm)
 	
-	local t_id = prm.id
-	local t_cls  = id.prp(t_id, "_cls")
-	local t_name = id.prp(t_id, "_name")
+	local t_id     = prm.id
+	local t_clsHa  = id.prp(t_id, "_clsHa" )
+	local t_nameHa = id.prp(t_id, "_nameHa")
 	
-	if ar.inHa(t_cls, {"cloud"}) then return end
+	if ar.inHa(t_clsHa, {"cloud"}) then return end
 	
-	if ar.inHa(t_cls, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
-	and Map.st.obj_cnt(t_cls) <= 1 then
+	if ar.inHa(t_clsHa, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
+	and Map.st.obj_cnt(t_clsHa) <= 1 then
 		Msg.s("さいごの１つだよ")
 		return
 	end
 
-	local t_Cls = Cls._(t_cls)
+	local t_cls = Cls._(t_clsHa)
 	local gold
 	if t_Cls and t_Cls.gold then
-		gold = t_Cls.gold[t_name]
+		gold = t_Cls.gold[t_nameHa]
 	else
 		gold = 10
 	end
-	-- log._("in box", t_cls, t_name, gold)
+	-- log._("in box", t_cls, t_nameHa, gold)
 	Ply_data.gold__add(gold)
 	Se.pst_ply("coin")
 	Gold.cre(_s:plychara_pos(), {price = gold})
@@ -94,9 +94,10 @@ function Hrvst.box_in(_s, prm)
 
 	-- zu unlock
 	if     ha.eq(t_cls, "flower") then
-		Ply_data._zu.flower[t_name] = _.t
+		Ply_data._zu.flower[t_nameHa] = _.t
 
 	elseif ha.eq(t_cls, "dish") then
-		Ply_data._zu.dish[t_name] = _.t
+		Ply_data._zu.dish[t_nameHa] = _.t
 	end
 end
+

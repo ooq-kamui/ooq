@@ -34,8 +34,10 @@ function Plychara.cre(pos, dir)
 	dir = dir or Plychara.dir_h_dflt
 	
 	local name = "sanae"
-	
-	local t_id = Sp.cre(Plychara, pos, {name = ha._(name)})
+	local prm = {
+		nameHa = ha._(name),
+	}
+	local t_id = Sp.cre(Plychara, pos, prm)
 	-- log._("plychara cre id", t_id)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir})
@@ -347,7 +349,7 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sender)
 	
 	local o_pos = prm.other_position
 	local o_id  = prm.other_id
-	local o_name = id.prp(o_id, "_name")
+	local o_name = id.prp(o_id, "_nameHa")
 		
 	if     ha.eq(prm.group, "chara") then
 		_s:clsn_add("chara", o_id)

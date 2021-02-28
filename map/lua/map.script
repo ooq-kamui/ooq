@@ -9,7 +9,7 @@ go.property("_dstrct_mv_rng_pos_max", vmath.vector3( 0, 0, 0))
 go.property("_game_id", hash(""))
 go.property("_ply_slt_idx", 0)
 
-go.property("_area", hash(""))
+go.property("_areaHa", hash(""))
 -- go.property("_dstrct", vmath.vector3(0, 0, 0))
 
 go.property("_cloud_id", hash(""))

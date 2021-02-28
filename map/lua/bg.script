@@ -1,12 +1,9 @@
 log.scrpt("bg.script")
 
-go.property("_name", hash(""))
-go.property("_area", hash(""))
+go.property("_nameHa", hash(""))
+go.property("_areaHa", hash(""))
 go.property("_tilesize", vmath.vector3(0, 0, 0))
 go.property("_mv_rng_pos_algn", hash("c"))
-
--- go.property("_tilemap", hash("")) -- same name
--- go.property("_scrl_rate", 1) -- old
 
 function init(_s)
 	extend._(_s, Bg)

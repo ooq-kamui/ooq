@@ -87,7 +87,7 @@ end
 
 function Food.kitchen_x(_s)
 	_s._kitchen_id = nil
-	pst.parent__(_s._id, _s._map_id, Cls._(_s._cls).z)
+	pst.parent__(_s._id, _s._map_id, Cls._(_s._clsHa).z)
 end
 
 function Food.take_kitchen(_s) -- old

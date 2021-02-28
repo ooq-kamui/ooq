@@ -65,7 +65,7 @@ function Map.cre(p_clct)
 	local pos = n.vec()
 	local prm = {}
 	prm[ha._("/ground")] = {
-		_area   = ha._(area),
+		_areaHa = ha._(area),
 	}
 	local clct_id = clct.cre(clct_url, pos, prm)
 	local map_id  = clct_id["/ground"]

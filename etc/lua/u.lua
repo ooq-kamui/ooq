@@ -103,18 +103,8 @@ function u.x_by_all_w(idx, max, wa)
 	return x
 end
 
-function u.get_dcl_len(speed, accl)
-	
-	if accl >= 0 or speed <= 0 then return 0 end
-
-	local len = speed
-	while speed > 0 do
-		speed = speed + accl
-		if speed < 0 then speed = 0 end
-
-		len = len + speed
-	end
-	return len
+function u.get_dcl_len(speed, accl) -- old
+	return accl.dcl_len(speed, accl)
 end
 
 function u.vec_2_rad(vec)

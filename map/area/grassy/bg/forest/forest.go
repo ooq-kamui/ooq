@@ -13,7 +13,7 @@ components {
     w: 1.0
   }
   properties {
-    id: "_name"
+    id: "_nameHa"
     value: "forest"
     type: PROPERTY_TYPE_HASH
   }

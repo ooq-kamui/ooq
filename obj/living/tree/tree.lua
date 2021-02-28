@@ -32,7 +32,7 @@ function Tree.init(_s)
 	local scale = go.get(t_url, "scale")
 	go.set(t_url, "scale", scale * size)
 
-	-- log._("tree init", _s._name, _s._bear_cls, _s._bear_name)
+	-- log._("tree init", _s._nameHa, _s._bear_cls, _s._bear_name)
 	_s._bear = {}
 end
 

@@ -11,12 +11,12 @@ Bg = {
 function Bg.init(_s)
 
 	_s._id = id._()
-	-- _s._id = go.get_id()
-	_s._tilemap = _s._name
+	_s._tilemap = _s._nameHa
 
 	_s._cmr_pos_rate = n.vec()
 	_s._bg_mv_scl    = n.vec()
 	
+	-- log._("bg init", _s._map_id, _s._tilemap)
 	-- log._("Bg.init", _s._map_id, _s._map_tilesize)
 end
 
@@ -25,7 +25,7 @@ function Bg.upd(_s, dt)
 end
 
 function Bg.pos__(_s, pos)
-	-- log._("bg pos__", _s._area, _s._name)
+	-- log._("bg pos__", _s._areaHa, _s._nameHa)
 
 	pos = pos or _s:pos_by_bg_mv_scl()
 

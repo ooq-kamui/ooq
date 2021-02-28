@@ -116,14 +116,14 @@ function Map.obj_cls(_s, clsHa)
 		prm = {name = ha.de(id.name(t_id)), pos = id.wpos(t_id)}
 
 		if     ar.inHa(clsHa, {"seed"}) then
-			prm.grw_cls   = id.prp_de(t_id, "_grw_cls"  )
-			prm.grw_name  = id.prp_de(t_id, "_grw_name" )
-			prm.bear_cls  = id.prp_de(t_id, "_bear_cls" )
-			prm.bear_name = id.prp_de(t_id, "_bear_name")
+			prm.grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )
+			prm.grw_name  = id.prp_de(t_id, "_grw_nameHa" )
+			prm.bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
+			prm.bear_name = id.prp_de(t_id, "_bear_nameHa")
 
 		elseif ar.inHa(clsHa, {"tree"}) then
-			prm.bear_cls  = id.prp_de(t_id, "_bear_cls" )
-			prm.bear_name = id.prp_de(t_id, "_bear_name")
+			prm.bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
+			prm.bear_name = id.prp_de(t_id, "_bear_nameHa")
 
 		elseif ar.inHa(clsHa, {"mshrm"}) then
 			-- log.pp("Map.obj_cls mshrm", prm)
@@ -187,7 +187,7 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 		tCls = Cls._(cls)
 
 		for idx, tb in pairs(ar) do
-			-- log._("name", tb["name"])
+		-- log._("name", tb["name"])
 			
 			prm = {name = ha._(tb["name"])}
 			if     cls == "seed" then

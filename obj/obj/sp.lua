@@ -18,9 +18,13 @@ function Sp.cre(Cls, pos, prm, scl)
 	end
 
 	-- name, anim
-	prm.cls  = ha._(Cls.cls)
-	if ha.is_emp(prm.name) then prm.name = ha._(Cls.cls..rnd.int_pad(Cls.name_idx_max)) end
-	if ha.is_emp(prm.anim) then prm.anim = prm.name end
+	prm.clsHa  = ha._(Cls.cls)
+	if ha.is_emp(prm.nameHa) then
+		prm.nameHa = ha._(Cls.cls..rnd.int_pad(Cls.name_idx_max))
+	end
+	if ha.is_emp(prm.animHa) then
+		prm.animHa = prm.nameHa
+	end
 
 	-- game_id, map_id
 	local map_id, game_id = Game.map_id()
@@ -66,7 +70,7 @@ function Sp.init(_s)
 
 	_s:map_obj__add()
 
-	local anim = _s._anim or _s._name
+	local anim = _s._animHa or _s._nameHa
 	_s:anim__(anim)
 
 	_s._act_intrvl = 0
@@ -199,11 +203,11 @@ function Sp.z__(_s, z)
 end
 
 function Sp.log(_s, ...)
-	log._(_s._cls, ...)
+	log._(_s._clsHa, ...)
 end
 
 function Sp.log_cls(_s, cls, ...)
-	if _s._cls == ha._(cls) then
+	if _s._clsHa == ha._(cls) then
 		log._(cls, ...)
 	end
 end
@@ -212,9 +216,9 @@ function Sp.anim__(_s, anim) -- anim(hash())
 	
 	if not anim then return end
 
-	-- log._("anim", anim, _s._cls, _s._name)
+	-- log._("anim", anim, _s._clsHa, _s._nameHa)
 	pst._("#sprite", "play_animation", {id = anim})
-	_s._anim = anim
+	_s._animHa = anim
 end
 
 function Sp.foot_i_tile(_s)
@@ -235,7 +239,7 @@ function Sp.foot_dst_i(_s)
 	
 	local foot_dst_i
 
-	if ar.inHa(_s._cls, {"kagu"}) then
+	if ar.inHa(_s._clsHa, {"kagu"}) then
 		local h = go.get("#sprite", "size.y")
 		foot_dst_i = num._2_int_d(h / 2)
 	else
@@ -274,7 +278,7 @@ end
 
 function Sp.cls_is_mapobj(_s)
 	
-	local ret = ar.inHa(_s._cls, Mapobj.cls)
+	local ret = ar.inHa(_s._clsHa, Mapobj.cls)
 	return ret
 end
 
@@ -305,7 +309,7 @@ end
 
 function Sp.crct_vec_block(_s, vec)
 	
-	if ha.eq(_s._cls, "fire") then return vec end
+	if ha.eq(_s._clsHa, "fire") then return vec end
 	
 	-- crrct side block
 	vec = _s:crct_side(vec)
@@ -590,9 +594,9 @@ end
 
 function Sp.map_obj__add(_s)
 	
-	if ha.is_emp(_s._cls) then return end
+	if ha.is_emp(_s._clsHa) then return end
 	
-	local clsDe = ha.de(_s._cls)
+	local clsDe = ha.de(_s._clsHa)
 
 	if not Map.st.obj(clsDe) then Map.st.obj__init(clsDe) end
 	
@@ -604,11 +608,11 @@ function Sp.map_cnt_del(_s) -- old
 end
 
 function Sp.map_obj__del(_s)
-	ar.del_by_val(_s._id, Map.st.obj_by_ha(_s._cls))
+	ar.del_by_val(_s._id, Map.st.obj_by_ha(_s._clsHa))
 end
 
 function Sp.mapobj_del(_s)
-	Mapobj.del(_s:tilepos(), _s._cls, _s._id)
+	Mapobj.del(_s:tilepos(), _s._clsHa, _s._id)
 end
 
 function Sp.is_loop__act_intrvl__(_s, dt)
@@ -668,11 +672,11 @@ function Sp.mapobj__(_s)
 	
 	local tilepos = _s:tilepos()
 	
-	Mapobj.__(tilepos, _s._cls, _s._id)
+	Mapobj.__(tilepos, _s._clsHa, _s._id)
 	
 	if _s.tilepos_pre
 	and ((tilepos.x ~= _s.tilepos_pre.x) or (tilepos.y ~= _s.tilepos_pre.y)) then
-		Mapobj.del(_s.tilepos_pre, _s._cls, _s._id)
+		Mapobj.del(_s.tilepos_pre, _s._clsHa, _s._id)
 	end
 	
 	_s.tilepos_pre = tilepos
@@ -734,7 +738,7 @@ function Sp.on_clsn(_s)
 			else
 				if _s:pos().y > clsn_pos.y + Map.sq*3/4 then
 					on_id = clsn_id
-					on_cls = id.prp(on_id, "_cls")
+					on_cls = id.prp(on_id, "_clsHa")
 					break
 				end
 			end
@@ -777,7 +781,7 @@ function Sp.per_del(_s, per)
 end
 
 function Sp.is_food(_s)
-	return ar.inHa(_s._cls, Food.cls)
+	return ar.inHa(_s._clsHa, Food.cls)
 end
 
 function Sp.is_pause(_s)
@@ -836,20 +840,20 @@ function Sp.parent__map(_s)
 end
 
 function Sp.cls(_s)
-	return _s._cls
+	return _s._clsHa
 end
 
 function Sp.name(_s)
-	return _s._name
+	return _s._nameHa
 end
 
 function Sp.Cls(_s, p_prp)
 
-	if ha.is_emp(_s._cls) then log._("sp cls is_emp") return end
+	if ha.is_emp(_s._clsHa) then log._("sp cls is_emp") return end
 
-	local t_Cls = Cls._(_s._cls)
+	local t_Cls = Cls._(_s._clsHa)
 	
-	if not t_Cls then log._("sp cls Cls[_s._cls] is nil") return end
+	if not t_Cls then log._("sp cls Cls[_s._clsHa] is nil") return end
 	
 	if not p_prp then
 		return t_Cls

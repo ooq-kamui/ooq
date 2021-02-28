@@ -1,11 +1,11 @@
 log.scrpt("bow.script")
 ---[[
-go.property("_cls", hash(""))
-go.property("_name", hash("bow001"))
-go.property("_anim", hash(""))
+go.property("_clsHa",  hash(""))
+go.property("_nameHa", hash("bow001"))
+go.property("_animHa", hash(""))
 
 go.property("_game_id", hash(""))
-go.property("_map_id", hash(""))
+go.property("_map_id",  hash(""))
 
 go.property("_parent_id", hash(""))
 go.property("_z", 0.2)

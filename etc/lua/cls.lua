@@ -15,13 +15,15 @@ function Cls.add(p_Cls, ha_add_by)
 	end
 end
 
-function Cls._(p_cls)
+function Cls._(p_cls) -- get
 
 	local clsHa = ha._2_ha(p_cls)
+	-- local clsHa = ha._2_ha(p_cls)
 
 	return Cls.Cls[clsHa]
 end
 
+--[[
 function Cls.prp(p_clsHa, p_prp) -- old
 
 	local t_Cls = Cls._(p_clsHa)
@@ -34,3 +36,5 @@ function Cls.prp(p_clsHa, p_prp) -- old
 
 	return ret
 end
+--]]
+

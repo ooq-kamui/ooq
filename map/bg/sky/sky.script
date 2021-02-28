@@ -1,14 +1,11 @@
 log.scrpt("sky.script")
 
-go.property("_name", hash("sky"))
-go.property("_area", hash(""))
+go.property("_nameHa", hash("sky"))
+go.property("_areaHa", hash(""))
 go.property("_tilesize", vmath.vector3(24, 24, 0))
 go.property("_mv_rng_pos_algn", hash("c"))
 
 go.property("_sky_idx", 0)
-
--- go.property("_tilemap", hash("sky")) -- same name
--- go.property("_scrl_rate", 0)
 
 function init(_s)
 	extend._(_s, Bg)

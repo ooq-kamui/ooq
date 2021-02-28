@@ -112,7 +112,7 @@ function Cmr.upd_vec(_s, dt)
 	_s.rad_d = math.abs(u.rad_diff(_s._vec, _s._t_vec) or 0)
 	
 	-- accl
-	local slw_len = u.get_dcl_len(_s._speed, - _s._v) + Map.sq
+	local slw_len = accl.dcl_len(_s._speed, - _s._v) + Map.sq
 	if _s._t_len < slw_len then
 		_s:upd_vec_near(dt)
 	else

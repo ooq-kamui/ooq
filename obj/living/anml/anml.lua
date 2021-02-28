@@ -1,4 +1,4 @@
-log.scrpt("animal.lua")
+log.scrpt("anml.lua")
 
 Anml = {
 	act_intrvl_time = 10,
@@ -30,11 +30,11 @@ function Anml.cre(pos, prm)
 
 	prm = prm or {}
 	
-	prm.cls  = ha._(Anml.cls)
-	if not prm.name then
-		prm.name = ha._(rnd.ar(Anml.animal))
+	prm.clsHa  = ha._(Anml.cls)
+	if not prm.nameHa then
+		prm.nameHa = ha._(rnd.ar(Anml.animal))
 	end
-	prm.anim = ha._("walk")
+	prm.animHa = ha._("walk")
 
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
@@ -43,9 +43,9 @@ function Anml.cre(pos, prm)
 	prm.map_id    = map_id
 	prm.parent_id = map_id
 	
-	local t_url = url._(Anml.fac, prm.name)
+	local t_url = url._(Anml.fac, prm.nameHa)
 	ar.key___(prm)
-	-- log.pp("animal cre", prm)
+	-- log.pp("animal cre" .. t_url, prm)
 	local t_id = factory.create(t_url, pos, nil, prm)
 	return t_id
 end
@@ -112,7 +112,7 @@ function Anml.present(_s, o_id)
 	id.del(o_id)
 	Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
 
-	-- Zu_animal_gui.animal__o(_s._name)
+	-- Zu_animal_gui.animal__o(_s._nameHa)
 	Ply_data._zu.animal[_s:name()] = _.t
 end
 
@@ -144,11 +144,12 @@ end
 -- method
 
 function Anml.is_bird(_s)
-	local ret = ar.inHa(_s._name, Anml.bird)
+	local ret = ar.inHa(_s._nameHa, Anml.bird)
 	return ret
 end
 
 function Anml.is_put_dairy(_s)
-	local ret = ar.inHa(_s._name, Anml.put_dairy)
+	local ret = ar.inHa(_s._nameHa, Anml.put_dairy)
 	return ret
 end
+

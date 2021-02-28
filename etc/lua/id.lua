@@ -39,11 +39,11 @@ function id.prp__(p_id, key, val)
 end
 
 function id.cls(p_id)
-	return id.prp(p_id, "_cls")
+	return id.prp(p_id, "_clsHa")
 end
 
 function id.name(p_id)
-	return id.prp(p_id, "_name")
+	return id.prp(p_id, "_nameHa")
 end
 
 function id.pos(id)

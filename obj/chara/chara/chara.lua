@@ -40,9 +40,9 @@ function Chara.cre(pos, name)
 	name = name or Chara.new_name()
 	
 	local prm = {}
-	prm.cls  = ha._("chara")
-	prm.name = ha._(name)
-	prm.anim = ha._(name)
+	prm.clsHa  = ha._("chara")
+	prm.nameHa = ha._(name)
+	prm.animHa = ha._(name)
 	prm.is_fly = Chara.is_flyabl(name)
 	
 	-- game_id, map_id, parent_id

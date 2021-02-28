@@ -43,13 +43,13 @@ function Seed.act_intrvl(_s, dt)
 	-- death
 	if _s:per_trnsf(1, Humus) then return end
 
-	if     ar.inHa(_s._name, {"seed001"}) then
+	if     ar.inHa(_s._nameHa, {"seed001"}) then
 		dice100.throw()
 		if dice100.chk(20) then
 			local grw_cls  = Cls._(_s._grw_cls) or Flower
 			_s:trnsf(grw_cls, {name = _s._grw_name})
 		end
-	elseif ar.inHa(_s._name, {"seed005"}) then
+	elseif ar.inHa(_s._nameHa, {"seed005"}) then
 		dice100.throw()
 		if dice100.chk(20) then
 			local grw_Cls  = Cls._(_s._grw_cls) or Tree
