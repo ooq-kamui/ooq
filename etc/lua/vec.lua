@@ -3,10 +3,10 @@ log.scrpt("vec.lua")
 vec = {}
 
 function n.vec(x, y, z)   -- alias <- use now
-	return vec.n(x, y, z)
+	return vec.new(x, y, z)
 end
 
-function vec.n(x, y, z)
+function vec.new(x, y, z)
 	x = x or 0
 	y = y or 0
 	z = z or 0

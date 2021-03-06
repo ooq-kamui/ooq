@@ -2,6 +2,47 @@ log.scrpt("accl.lua")
 
 accl = {}
 
+-- static
+
+function n.accl() -- alias
+	return accl.new()
+end
+
+function accl.new()
+	local obj = {}
+	extend.init(obj, accl)
+	return obj
+end
+
+-- method
+
+function accl.init(_s)
+
+	_s._speed  = n.vec()
+	_s._accl_h = 0
+	_s._grv    = 0
+
+
+
+
+
+
+end
+
+function accl.speed(_s)
+	return _s._speed
+end
+
+
+
+
+
+
+
+
+
+-- static
+
 function accl.dcl_len(speed, accl)
 	
 	if accl >= 0 or speed <= 0 then return 0 end
@@ -15,10 +56,4 @@ function accl.dcl_len(speed, accl)
 	end
 	return len
 end
-
-
-
-
-
-
 

@@ -57,10 +57,10 @@ function Plychara.init(_s)
 	_s._dir_h = ha._("l")
 	_s._dir_v = ""
 	
-	_s._hmoving   = _.f
-	_s._vmoving   = _.f
-	_s._climbdown = _.f
-	_s._climbup   = _.f
+	_s._moving_h  = _.f
+	_s._moving_v  = _.f
+	_s._clmb_d   = _.f
+	_s._clmb_u   = _.f
 	_s._is_jmping = _.f
 	_s._jmp_h_t   = 0
 
@@ -104,7 +104,7 @@ function Plychara.upd(_s, dt)
 	-- vec on_chara
 	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
 	
-	if _s._hmoving then
+	if _s._moving_h then
 		dir.x = 1
 		if ha.eq(_s._dir_h, "l") then dir.x = - dir.x end
 	end
@@ -123,20 +123,20 @@ function Plychara.upd(_s, dt)
 			-- dir.y = 1.5
 		end
 
-	elseif _s._vmoving then
+	elseif _s._moving_v then
 
 		if     _s._dir_v == "u" 
-		   and Tile.is_climb(foot_i_tile) and not _s:head_o_is_block() then
+		   and Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() then
 
 			dir.y =  1
-			_s._climbup = _.t
+			_s._clmb_u = _.t
 
 		elseif _s._dir_v == "d"
 		   -- and not _s._is_jmping
-		   and (Tile.is_climb(foot_i_tile) or Tile.is_climb(foot_o_tile)) then
+		   and (Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile)) then
 
 			dir.y = -1
-			_s._climbdown = _.t
+			_s._clmb_d = _.t
 		end
 	end
 	dir = _s:dir__crct_hyprspc(dir)
@@ -167,11 +167,11 @@ function Plychara.upd(_s, dt)
 	_s._turn_time = _s._turn_time + dt
 	
 	-- act clr
-	_s._hmoving   = _.f
-	_s._vmoving   = _.f
-	_s._climbdown = _.f
-	_s._climbup   = _.f
-	_s._dive      = _.f
+	_s._moving_h = _.f
+	_s._moving_v = _.f
+	_s._clmb_d  = _.f
+	_s._clmb_u  = _.f
+	_s._dive     = _.f
 	
 	_s:clsn_clr()
 end
@@ -188,7 +188,7 @@ function Plychara.is_jmpabl(_s)
 	
 	if Tile.is_block(foot_o_tile)
 	or is_on_chara
-	or Tile.is_climb(foot_o_tile)
+	or Tile.is_clmb(foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
 	or _s:is_on_obj_block()
 	-- or _s:on_by_mapobj()
@@ -400,7 +400,7 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 
 	if ar.in_(prm.dir, u.dir_h) then
 		
-		_s._hmoving = _.t
+		_s._moving_h = _.t
 		
 		-- turn
 		if not ha.eq(_s._dir_h, prm.dir) then
@@ -419,11 +419,11 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 		_s._dir_h = ha._(prm.dir) -- new
 
 	elseif prm.dir == "u" then
-		_s._vmoving = _.t
+		_s._moving_v = _.t
 		_s._dir_v = "u"
 
 	elseif prm.dir == "d" then
-		_s._vmoving = _.t
+		_s._moving_v = _.t
 		_s._dir_v = "d"
 	end
 end

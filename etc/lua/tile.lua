@@ -23,15 +23,15 @@ Tile = { -- tile num
 	block_excld = {
 		15, 16, 17,
 	},
-	climb = {15, 16}, -- enum
+	clmb = {15, 16}, -- enum
 	elv_u = {17}, -- enum
 	magic_vnsh_impsbl = {45, 65,}, -- enum
 
 	col_idx_max = 20,
 }
 
-function Tile.is_climb(tile)
-	local ret = ar.in_(tile, Tile.climb)
+function Tile.is_clmb(tile)
+	local ret = ar.in_(tile, Tile.clmb)
 	return ret
 end
 

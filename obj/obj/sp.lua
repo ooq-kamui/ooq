@@ -298,8 +298,8 @@ function Sp.crct_vec(_s, vec)
 	
 	vec = _s:crct_vec_block(vec) -- better -> crct_vec_tile_block
 	
-	-- crrct climb
-	vec = _s:crct_climb(vec)
+	-- crrct clmb
+	vec = _s:crct_clmb(vec)
 	
 	-- crrct inside map
 	vec = _s:crct_inside_map(vec)
@@ -374,14 +374,14 @@ function Sp.side_pos(_s, dir_h, vec)
 	return side_pos
 end
 
-function Sp.crct_climb(_s, vec)
+function Sp.crct_clmb(_s, vec)
 	
-	if not (_s._vmoving and _s._dir_v == "u") then return vec end
+	if not (_s._moving_v and _s._dir_v == "u") then return vec end
 
 	local cf_pos_i = _s:foot_i_pos()
 	local nf_pos_i = cf_pos_i + vec
 	
-	if not (_s:is_climb(cf_pos_i) and not _s:is_climb(nf_pos_i)) then return vec end
+	if not (_s:is_clmb(cf_pos_i) and not _s:is_clmb(nf_pos_i)) then return vec end
 	
 	vec.y = map.pos_by_pos(cf_pos_i).y + Map.sq - _s:pos().y
 	return vec
@@ -493,8 +493,8 @@ function Sp.vec_grv(_s, dt)
 		
 	elseif Tile.is_elv(  foot_i_tile)
 		or Tile.is_elv(  foot_o_tile)
-		or Tile.is_climb(foot_i_tile)
-		or Tile.is_climb(foot_o_tile)
+		or Tile.is_clmb(foot_i_tile)
+		or Tile.is_clmb(foot_o_tile)
 		or Tile.is_block(foot_o_tile) then
 		vec = n.vec()
 	else
@@ -552,12 +552,12 @@ function Sp.is_block(_s, pos)
 	return ret, tile
 end
 
-function Sp.is_climb(_s, pos)
+function Sp.is_clmb(_s, pos)
 	
 	local ret = _.f
 	local tile = _s:tile(pos)
 	
-	if Tile.is_climb(tile) then
+	if Tile.is_clmb(tile) then
 		ret = _.t
 	end
 	return ret

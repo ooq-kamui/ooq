@@ -66,7 +66,7 @@ function Block.trnsf_tile(_s)
 	local foot_o_tile = _s:foot_o_tile()
 	if not (
 	   Tile.is_block(foot_o_tile)
-	or Tile.is_climb(foot_o_tile)
+	or Tile.is_clmb(foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
 	) then return end
 	
