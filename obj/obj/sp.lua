@@ -471,10 +471,6 @@ function Sp.vec_grv(_s, dt)
 		-- log._("is_on_obj_block")
 		vec = n.vec()
 
-	--[[
-	elseif _s._jmping and _s._jmping > 0 then -- use ?
-		vec = n.vec()
-	--]]
 	elseif _s._is_fly then
 		vec = n.vec()
 	
@@ -486,9 +482,6 @@ function Sp.vec_grv(_s, dt)
 		vec = n.vec()
 	
 	elseif _s._bear_tree_id then
-		vec = n.vec()
-		
-	elseif _s.status == "phantom" then
 		vec = n.vec()
 		
 	elseif Tile.is_elv(  foot_i_tile)
@@ -505,9 +498,12 @@ end
 
 function Sp.vec_grv_cnst(_s, dt)
 	
+	-- local dir = n.vec(0, -1)
+	-- local vec = dir * speed
+
+	-- local speed = 1
 	local speed = 3
-	local dir = n.vec(0, -1)
-	local vec = dir * speed
+	local vec = Accl.grv_cnst * speed
 	return vec
 end
 

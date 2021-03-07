@@ -57,15 +57,18 @@ function Plychara.init(_s)
 	_s._dir_h = ha._("l")
 	_s._dir_v = ""
 	
-	_s._moving_h  = _.f
-	_s._moving_v  = _.f
+	_s._moving_h = _.f
+	_s._moving_v = _.f
 	_s._clmb_d   = _.f
 	_s._clmb_u   = _.f
 	_s._is_jmping = _.f
 	_s._jmp_h_t   = 0
 
-	_s._dive      = _.f
+	_s._dive = _.f
 	
+	_s._accl = n.Accl()
+	_s._vec_grv = n.vec()
+
 	_s._itm_selected = "wand001" -- name
 
 	_s._hld  = {}
@@ -144,36 +147,67 @@ function Plychara.upd(_s, dt)
 	local vec_mv = dir * _s._speed
 	if _s._is_jmping then vec_mv.y = vec_mv.y * Plychara.speed_jmp end
 	
-	-- vec tile
+	-- vec tile  -  tile crct ???
 	local vec_tile = _s:vec_tile(dt)
 
 	-- vec grv
-	local vec_grv
+	-- local vec_grv
 	if is_on_chara then
-		vec_grv = n.vec()
+		_s._vec_grv = n.vec()
 	else
-		vec_grv = _s:vec_grv(dt)
+		_s:vec_grv__(dt)
+		-- _s._vec_grv = _s:vec_grv(dt)
 	end
-	vec_grv = _s:dir__crct_hyprspc(vec_grv)
+	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 	
-	-- total vec
-	local vec_total = vec_mv + vec_tile + vec_on_chara + vec_grv
+	-- total vec  -  refactoring
+	local vec_total = vec_mv + vec_tile + vec_on_chara + _s._vec_grv
 	_s:pos__add(vec_total)
 	
-	-- dstrct__mv
-	-- local is_dstrct_mv = _s:ox_dstrct__mv() -- ??
 	_s:ox_dstrct__mv()
 	
-	_s._turn_time = _s._turn_time + dt
+	_s:turn_time__add(dt)
 	
-	-- act clr
-	_s._moving_h = _.f
-	_s._moving_v = _.f
-	_s._clmb_d  = _.f
-	_s._clmb_u  = _.f
-	_s._dive     = _.f
+	_s:act__clr()
+	_s:clsn__clr()
+end
+
+function Plychara.vec_grv__(_s, dt)
+	-- log._("sp vec_grv__ speed", _s._accl._speed)
+
+	local foot_i_tile = _s:foot_i_tile()
+	local foot_o_tile = _s:foot_o_tile()
 	
-	_s:clsn_clr()
+	if     _s:is_on_obj_block() then
+		_s:vec_grv__clr()
+
+	elseif _s._is_fly then
+		_s:vec_grv__clr()
+	
+	elseif _s._hld_id then
+		_s:vec_grv__clr()
+	
+	elseif _s._kitchen_id then
+		_s:vec_grv__clr()
+	
+	elseif _s._bear_tree_id then
+		_s:vec_grv__clr()
+		
+	elseif Tile.is_elv(  foot_i_tile)
+		or Tile.is_elv(  foot_o_tile)
+		or Tile.is_clmb(foot_i_tile)
+		or Tile.is_clmb(foot_o_tile)
+		or Tile.is_block(foot_o_tile) then
+
+		_s:vec_grv__clr()
+	else
+		_s._accl:speed__add_accl()
+		_s._vec_grv = _s._accl:speed()
+	end
+end
+
+function Plychara.vec_grv__clr(_s)
+	vec.xy__clr(_s._vec_grv)
 end
 
 -- jmp
@@ -523,6 +557,20 @@ function Plychara.pos_fw(_s, mlt)
 	return pos
 end
 
+function Plychara.turn_time__add(_s, dt)
+
+	_s._turn_time = _s._turn_time + dt
+end
+
+function Plychara.act__clr(_s)
+
+	_s._moving_h = _.f
+	_s._moving_v = _.f
+	_s._clmb_d   = _.f
+	_s._clmb_u   = _.f
+	_s._dive     = _.f
+end
+
 -- clsn
 
 function Plychara.clsn_add(_s, target, id)
@@ -532,7 +580,7 @@ function Plychara.clsn_add(_s, target, id)
 	ar.add(_s._clsn[target], id)
 end
 
-function Plychara.clsn_clr(_s)
+function Plychara.clsn__clr(_s)
 	for key, clsn in pairs(_s._clsn) do
 		ar.clr(_s._clsn[key])
 	end

@@ -103,10 +103,6 @@ function u.x_by_all_w(idx, max, wa)
 	return x
 end
 
-function u.get_dcl_len(speed, accl) -- old
-	return accl.dcl_len(speed, accl)
-end
-
 function u.vec_2_rad(vec)
 	local rad = math.atan2(vec.y, vec.x)
 	return rad

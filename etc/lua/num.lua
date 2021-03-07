@@ -26,3 +26,19 @@ function num._2_sign(p_num)
 	local sign = ( p_num >= 0 ) and "+" or "-"
 	return sign
 end
+
+function num.__pls_abs_stop(p_num, p_pls, p_max)
+
+	p_num = p_num + p_pls
+
+	if     p_num >   p_max then
+		p_num =   p_max
+		log._("num.__pls_abs_stop max", p_num)
+	elseif p_num < - p_max then
+		p_num = - p_max
+		log._("num.__pls_abs_stop max", p_num)
+	end
+
+	return p_num
+end
+

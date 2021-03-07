@@ -2,7 +2,7 @@ log.scrpt("vec.lua")
 
 vec = {}
 
-function n.vec(x, y, z)   -- alias <- use now
+function n.vec(x, y, z)   -- alias
 	return vec.new(x, y, z)
 end
 
@@ -27,7 +27,27 @@ function vec.len(vec1, vec2)
 	return len
 end
 
-function vec.clone(p_vec)
+function vec.cp(p_vec)
 	local t_vec = n.vec(p_vec.x, p_vec.y, p_vec.z)
 	return t_vec
 end
+
+function vec.__clr(p_vec)
+
+	p_vec.x = 0
+	p_vec.y = 0
+	p_vec.z = 0
+end
+
+function vec.xy__clr(p_vec)
+
+	p_vec.x = 0
+	p_vec.y = 0
+end
+
+--[[
+function vec.clone(p_vec) -- old
+	return vec.cp(p_vec)
+end
+--]]
+

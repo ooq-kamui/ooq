@@ -10,7 +10,7 @@ function Livingmove.init(_s)
 	_s._dir_v = ""
 	_s._is_moving = _.f
 	_s._speed  = _s:Cls().speed
-	_s.status = "live"
+	_s._status = "live"
 end
 
 --- method
@@ -24,7 +24,12 @@ function Livingmove.upd_pos_movabl(_s, dt)
 	local vec_tile = _s:vec_tile(dt)
 
 	-- gravity
-	local vec_grv = _s:vec_grv(dt)
+	local vec_grv
+	if _s._status == "phantom" then
+		vec = n.vec()
+	else
+		vec_grv = _s:vec_grv(dt)
+	end
 
 	-- total
 	local vec_total = vec_mv + vec_tile + vec_grv
@@ -34,10 +39,10 @@ end
 function Livingmove.vec_mv(_s, dt)
 	
 	local vec
-	if     _s.status == "live"    then
+	if     _s._status == "live"    then
 		vec = _s:vec_mv_living(dt)
 		
-	elseif _s.status == "phantom" then
+	elseif _s._status == "phantom" then
 		vec = n.vec(0, 1)
 	else
 		vec = n.vec()
@@ -111,3 +116,4 @@ function Livingmove.vec_mv_living(_s, dt)
 	
 	return vec
 end
+
