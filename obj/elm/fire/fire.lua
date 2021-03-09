@@ -44,6 +44,8 @@ function Fire.upd(_s, dt)
 		vec = _s:vec_grv(dt)
 	end
 	_s:pos__add(vec)
+
+	_s:upd_final()
 end
 
 function Fire.act_intrvl(_s, dt)

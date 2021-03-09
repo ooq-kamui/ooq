@@ -26,3 +26,4 @@ function pos.len(pos1, pos2)
 	local len = math.sqrt(d.x^2 + d.y^2)
 	return len
 end
+

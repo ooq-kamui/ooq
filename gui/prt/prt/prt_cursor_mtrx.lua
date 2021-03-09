@@ -31,22 +31,22 @@ function p.Prt_cursor_mtrx.cursor_mv(_s, dir)
 
 		if     u.eq(dir, "dec") then
 			
-			_s._cursor_xy.x, edge = u.dec_loop(_s._cursor_xy.x, _s._xy_size.x)
+			_s._cursor_xy.x, edge = int.dec_loop(_s._cursor_xy.x, _s._xy_size.x)
 			
 		elseif u.eq(dir, "inc") then
 			
-			_s._cursor_xy.x, edge = u.inc_loop(_s._cursor_xy.x, _s._xy_size.x)
+			_s._cursor_xy.x, edge = int.inc_loop(_s._cursor_xy.x, _s._xy_size.x)
 		end
 		
 		if edge then _s:page_mv(dir) end
 		
 	elseif dir == "dec_y" then
 		
-		_s._cursor_xy.y, edge = u.dec_loop(_s._cursor_xy.y, _s._xy_size.y)
+		_s._cursor_xy.y, edge = int.dec_loop(_s._cursor_xy.y, _s._xy_size.y)
 		
 	elseif dir == "inc_y" then
 		
-		_s._cursor_xy.y, edge = u.inc_loop(_s._cursor_xy.y, _s._xy_size.y)
+		_s._cursor_xy.y, edge = int.inc_loop(_s._cursor_xy.y, _s._xy_size.y)
 	end
 	_s:cursor_pos__()
 	

@@ -32,6 +32,7 @@ function Egg.upd(_s, dt)
 
 	_s:upd_pos_static(dt)
 
+	_s:upd_final()
 end
 
 function Egg.act_intrvl(_s, dt)

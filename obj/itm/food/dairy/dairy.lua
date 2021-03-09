@@ -33,6 +33,8 @@ function Dairy.upd(_s, dt)
 	_s:act_intrvl(dt)
 
 	_s:upd_pos_static(dt)
+
+	_s:upd_final()
 end
 
 function Dairy.act_intrvl(_s, dt)

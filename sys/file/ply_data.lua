@@ -43,7 +43,7 @@ function file.ply_data.file_idx_nxt(ply_slt_idx)
 	if not file_idx_ltst then
 		file_idx_nxt = 1
 	else
-		file_idx_nxt = u.inc_loop(file_idx_ltst, file.ply_data.file_idx_max)
+		file_idx_nxt = int.inc_loop(file_idx_ltst, file.ply_data.file_idx_max)
 	end
 	return file_idx_nxt
 end

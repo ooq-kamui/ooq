@@ -18,6 +18,8 @@ function Arw.upd(_s, dt)
 	_s:act_intrvl(dt)
 
 	local move_diff = n.vec(_s._dir_h, 0) * _s._speed * dt
+
+	_s:upd_final()
 end
 
 function Arw.act_intrvl(_s, dt)

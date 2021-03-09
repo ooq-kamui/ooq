@@ -98,7 +98,7 @@ function Plychara.init(_s)
 end
 
 function Plychara.upd(_s, dt)
-	-- log._("plychara upd", _s._dir_h)
+	-- log._("plychara upd start")
 	
 	local dir = n.vec()
 	local foot_o_tile = _s:foot_o_tile()
@@ -168,8 +168,12 @@ function Plychara.upd(_s, dt)
 	
 	_s:turn_time__add(dt)
 	
+	-- upd final
 	_s:act__clr()
 	_s:clsn__clr()
+
+	_s:upd_final()
+	-- log._("plychara upd end")
 end
 
 function Plychara.vec_grv__(_s, dt)

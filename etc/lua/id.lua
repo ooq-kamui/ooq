@@ -50,8 +50,8 @@ function id.pos(id)
 	
 	if not id then return end
 	
-	local pos = go.get_position(id)
-	return pos
+	local t_pos = go.get_position(id)
+	return t_pos
 end
 
 function id.wpos(p_id) -- old

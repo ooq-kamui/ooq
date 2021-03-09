@@ -60,7 +60,6 @@ end
 function Sp.init(_s)
 	
 	_s._id = id._()
-	-- _s._id = go.get_id()
 	
 	_s._foot_dst_i = _s:Cls().foot_dst_i or Map.sqh
 
@@ -74,6 +73,8 @@ function Sp.init(_s)
 	_s:anim__(anim)
 
 	_s._act_intrvl = 0
+
+	_s:pos__init()
 end
 
 function Sp.on_msg(_s, msg_id, prm, sender)
@@ -131,15 +132,15 @@ function Sp.final(_s)
 	end
 end
 
---- method
+-- method
 
 function Sp.__(_s, key, val)
 	_s[key] = val
 end
 
 function Sp.pos(_s)
-	local pos = id.pos(_s._id)
-	return pos
+	local t_pos = id.pos(_s._id)
+	return t_pos
 end
 
 function Sp.pos__(_s, pos)
@@ -230,9 +231,11 @@ end
 
 function Sp.foot_o_tile(_s)
 	
-	local pos  = _s:foot_o_pos()
-	local tile = _s:tile(pos)
-	return tile
+	local t_pos  = _s:foot_o_pos()
+	-- log._("sp foot_o_tile t_pos", t_pos)
+
+	local t_tile = _s:tile(t_pos)
+	return t_tile
 end
 
 function Sp.foot_dst_i(_s)
@@ -249,16 +252,36 @@ function Sp.foot_dst_i(_s)
 end
 
 function Sp.foot_i_pos(_s)
-	local foot_i_pos = _s:pos() + n.vec(0, - _s:foot_dst_i())
-	return foot_i_pos
+
+	if _s._foot_i_pos_flg then return _s._foot_i_pos end
+
+	local c_pos = _s:pos()
+	_s._foot_i_pos.x = c_pos.x
+	_s._foot_i_pos.y = c_pos.y - _s:foot_dst_i()
+
+	_s._foot_i_pos_flg = _.t
+
+	return _s._foot_i_pos
 end
 
 function Sp.foot_o_pos(_s)
-	local foot_o_pos = _s:foot_i_pos() + n.vec(0, -1)
-	return foot_o_pos
+
+	if _s._foot_o_pos_flg then return _s._foot_o_pos end
+
+	local c_foot_i_pos = _s:foot_i_pos()
+	_s._foot_o_pos.x = c_foot_i_pos.x
+	_s._foot_o_pos.y = c_foot_i_pos.y - 1
+
+	_s._foot_o_pos_flg = _.t
+
+	return _s._foot_o_pos
 end
 
 -- upd pos
+
+function Sp.upd_final(_s)
+    _s:pos_flg__clr()
+end
 
 function Sp.upd_pos_static(_s, dt) -- static
 	
@@ -335,15 +358,14 @@ function Sp.crct_foot(_s, vec)
 	return vec
 end
 
-function Sp.crct_head(_s, vec)
+function Sp.crct_head(_s, p_vec)
 
-	local c_head_o_pos = _s:head_o_pos()
-	local n_head_o_pos = c_head_o_pos + vec
+	local head_o_pos_nxt = _s:head_o_pos() + p_vec
 	
-	if not _s:is_block(n_head_o_pos) then return vec end
+	if not _s:is_block(head_o_pos_nxt) then return p_vec end
 	
-	vec.y = map.pos_by_pos(n_head_o_pos).y - Map.sq - _s:pos().y
-	return vec
+	p_vec.y = map.pos_by_pos(head_o_pos_nxt).y - Map.sq - _s:pos().y
+	return p_vec
 end
 
 function Sp.crct_side(_s, vec)
@@ -498,80 +520,81 @@ end
 
 function Sp.vec_grv_cnst(_s, dt)
 	
-	-- local dir = n.vec(0, -1)
-	-- local vec = dir * speed
-
-	-- local speed = 1
-	local speed = 3
+	local speed = 3 -- 1
 	local vec = Accl.grv_cnst * speed
 	return vec
 end
 
 function Sp.head_o_pos(_s)
+	-- log._("sp head_o_pos ", _s._head_o_pos_flg)
+
+	if _s._head_o_pos_flg then return _s._head_o_pos end
+
 	local c_pos = _s:pos()
-	local h_pos = c_pos + n.vec(0, Map.sqh)
-	return h_pos
+
+	_s._head_o_pos.x = c_pos.x
+	_s._head_o_pos.y = c_pos.y + Map.sqh
+
+	_s._head_o_pos_flg = _.t
+
+	return _s._head_o_pos
 end
 
 function Sp.head_o_tile(_s)
 	
-	local pos  = _s:head_o_pos()
-	local tile = _s:tile(pos)
-	return tile
+	local t_pos  = _s:head_o_pos()
+	local t_tile = _s:tile(t_pos)
+	return t_tile
 end
 
 function Sp.head_o_is_block(_s)
-	local pos = _s:head_o_pos()
-	local ret = _s:is_block(pos)
+	local t_pos = _s:head_o_pos()
+	local ret = _s:is_block(t_pos)
 	return ret
 end
 
-function Sp.side_is_block(_s, dir_h, vec)
+function Sp.side_is_block(_s, dir_h, p_vec)
 	
-	vec = vec or n.vec()
-	local pos = _s:side_pos(dir_h) + vec
-	if dir_h == "l" then pos.x = pos.x - 1 end
+	p_vec = p_vec or n.vec()
+	local t_pos = _s:side_pos(dir_h) + p_vec
+	if dir_h == "l" then t_pos.x = t_pos.x - 1 end
 	
-	return _s:is_block(pos)
+	return _s:is_block(t_pos)
 end
 
-function Sp.is_block(_s, pos)
+function Sp.is_block(_s, p_pos)
 
 	local ret = _.f
-	local tile = _s:tile(pos)
+	local t_tile = _s:tile(p_pos)
 
-	if Tile.is_block(tile) then
+	if Tile.is_block(t_tile) then
 		ret = _.t
 	else
-		tile = nil
+		t_tile = nil
 	end
-	return ret, tile
+	return ret, t_tile
 end
 
-function Sp.is_clmb(_s, pos)
+function Sp.is_clmb(_s, p_pos)
 	
 	local ret = _.f
-	local tile = _s:tile(pos)
+	local t_tile = _s:tile(p_pos)
 	
-	if Tile.is_clmb(tile) then
+	if Tile.is_clmb(t_tile) then
 		ret = _.t
 	end
 	return ret
 end
 
-function Sp.is_soil(_s, pos)
+function Sp.is_soil(_s, p_pos)
 	
 	local ret = _.f
-	local tile = _s:tile(pos)
+	local t_tile = _s:tile(p_pos)
 	
-	if ar.in_(tile, Tile.soil) then
+	if ar.in_(t_tile, Tile.soil) then
 		ret = _.t
 	end
 	return ret
-end
-
-function Sp.on_block(_s) -- old
-	return _s:foot_o_is_block()
 end
 
 function Sp.foot_o_is_block(_s)
@@ -599,10 +622,6 @@ function Sp.map_obj__add(_s)
 	ar.add_unq(_s._id, Map.st.obj(clsDe))
 end
 
-function Sp.map_cnt_del(_s) -- old
-	_s:map_obj__del()
-end
-
 function Sp.map_obj__del(_s)
 	ar.del_by_val(_s._id, Map.st.obj_by_ha(_s._clsHa))
 end
@@ -622,7 +641,7 @@ end
 function Sp.act_intrvl__(_s, dt)
 	local act_intrvl_time = _s:Cls().act_intrvl_time
 	local is_loop
-	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, act_intrvl_time)
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, act_intrvl_time)
 	return is_loop
 end
 
@@ -702,12 +721,12 @@ function Sp.is_on_obj_block(_s)
 	return ret, block_id
 end
 
-function Sp.tile(_s, pos)
+function Sp.tile(_s, p_pos)
 	
-	pos = pos or _s:pos()
+	p_pos = p_pos or _s:pos()
 	
-	local tile = map.tile(pos, _s._map_id, "ground")
-	return tile
+	local t_tile = map.tile(p_pos, _s._map_id, "ground")
+	return t_tile
 end
 
 function Sp.tile__(_s, p_tile, p_pos)
@@ -930,4 +949,36 @@ function Sp.anm_pos__(_s, p_pos, time)
 
 	anm.pos__(_s:id(), p_pos, time)
 end
+
+function Sp.pos__init(_s)
+
+	_s._foot_i_pos = n.vec()
+	_s._foot_o_pos = n.vec()
+	_s._head_o_pos = n.vec()
+
+	_s:pos_flg__f()
+end
+
+function Sp.pos_flg__clr(_s)
+	_s:pos_flg__f()
+end
+
+function Sp.pos_flg__f(_s)
+
+	_s._foot_i_pos_flg = _.f
+	_s._foot_o_pos_flg = _.f
+	_s._head_o_pos_flg = _.f
+end
+
+--[[
+function Sp.on_block(_s) -- old
+	return _s:foot_o_is_block()
+end
+--]]
+
+--[[
+function Sp.map_cnt_del(_s) -- old
+	_s:map_obj__del()
+end
+--]]
 

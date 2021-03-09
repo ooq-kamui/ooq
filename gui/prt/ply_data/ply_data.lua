@@ -70,7 +70,7 @@ function p.Ply_data.opn(_s, prm)
 		nd.txt__(itm_nd[_s:lb("data_idx")], int.pad(ply_data_file_idx, 2))
 		-- nd.anm.dsp__(itm_nd[_s:lb("data_idx")], _.f)
 		
-		ply_data_file_idx = u.dec_loop(ply_data_file_idx, #_s._nd.itm)
+		ply_data_file_idx = int.dec_loop(ply_data_file_idx, #_s._nd.itm)
 	end
 end
 

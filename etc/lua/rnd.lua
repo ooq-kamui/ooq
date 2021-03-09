@@ -16,7 +16,7 @@ function rnd.int(min, max, excld)
 	local val = math.random(min, max)
 	local val_pre = val
 
-	if excld and val == excld then val = u.inc_loop(val, max, min) end
+	if excld and val == excld then val = int.inc_loop(val, max, min) end
 
 	return val
 end

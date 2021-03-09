@@ -9,19 +9,19 @@ function map.pos_by_tilepos(tilepos)
 	return pos
 end
 
-function map.pos_2_tilepos(pos)
-	local x = math.floor((pos.x + Map.sq) / Map.sq)
-	local y = math.floor((pos.y + Map.sq) / Map.sq)
+function map.pos_2_tilepos(p_pos)
+	local x = math.floor((p_pos.x + Map.sq) / Map.sq)
+	local y = math.floor((p_pos.y + Map.sq) / Map.sq)
 	local tilepos = n.vec(x, y)
 	return tilepos
 end
 
-function map.tile(pos, p_id, p_tilemap, layer)
+function map.tile(p_pos, p_id, p_tilemap, layer)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer     = layer or p_tilemap
 
-	local tilepos = map.pos_2_tilepos(pos)
+	local tilepos = map.pos_2_tilepos(p_pos)
 
 	-- log._("map.tile")
 	local is_inside, dir = map.is_inside_tilepos(tilepos, p_id, p_tilemap)

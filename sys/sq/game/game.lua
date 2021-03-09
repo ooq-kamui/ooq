@@ -203,7 +203,7 @@ end
 
 function Game.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
 	return is_loop
 end
 
@@ -425,11 +425,11 @@ function Game.map_dstrct__mv_h(_s, dir, plychara_dir) -- dir : l r
 
 	local dstrct = n.vec(_s._dstrct.x, _s._dstrct.y)
 	if     dir == "l" then
-		dstrct.x = u.dec_loop(dstrct.x, x_max, x_min)
+		dstrct.x = int.dec_loop(dstrct.x, x_max, x_min)
 		plychara.pos.x = map_rng_pos_max.x + Map.sqh
 		
 	elseif dir == "r" then
-		dstrct.x = u.inc_loop(dstrct.x, x_max, x_min)
+		dstrct.x = int.inc_loop(dstrct.x, x_max, x_min)
 		plychara.pos.x = map_rng_pos_min.x - Map.sqh
 	end
 	-- log._("game.map_dstrct__mv_h dstrct", dstrct)
@@ -453,11 +453,11 @@ function Game.map_dstrct__mv_v(_s, dir, plychara_dir) -- dir : u d
 
 	local dstrct = n.vec(_s._dstrct.x, _s._dstrct.y)
 	if     dir == "u" then
-		dstrct.y = u.inc_loop(dstrct.y, y_max, y_min)
+		dstrct.y = int.inc_loop(dstrct.y, y_max, y_min)
 		plychara.pos.y = map_rng_pos_min.y - Map.sqh
 
 	elseif dir == "d" then
-		dstrct.y = u.dec_loop(dstrct.y, y_max, y_min)
+		dstrct.y = int.dec_loop(dstrct.y, y_max, y_min)
 		plychara.pos.y = map_rng_pos_max.y - Map.sqh
 	end
 	-- log._("game.map_dstrct__mv_v dstrct", dstrct)

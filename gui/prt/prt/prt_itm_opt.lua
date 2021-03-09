@@ -33,8 +33,8 @@ function p.Prt_itm_opt.cursor_itm_opt_ch(_s, dir)
 
 	local val = _s:cursor_itm_opt()
 
-	if     dir == "inc" then val = u.inc_loop(val, Fruit.name_idx_max)
-	elseif dir == "dec" then val = u.dec_loop(val, Fruit.name_idx_max)
+	if     dir == "inc" then val = int.inc_loop(val, Fruit.name_idx_max)
+	elseif dir == "dec" then val = int.dec_loop(val, Fruit.name_idx_max)
 	end
 	_s:cursor_itm_opt__(val)
 

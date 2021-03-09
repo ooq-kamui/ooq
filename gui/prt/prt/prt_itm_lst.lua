@@ -15,10 +15,10 @@ function p.Prt_itm_lst.itm_scrl(_s, inc_dir)
 	-- log._("prt itm_scrl", _s._dsp1_itm_idx, _s._dsp1_itm_idx_max)
 
 	if     inc_dir == "inc" then
-		_s._dsp1_itm_idx = u.inc_stop(_s._dsp1_itm_idx, _s._dsp1_itm_idx_max)
+		_s._dsp1_itm_idx = int.inc_stop(_s._dsp1_itm_idx, _s._dsp1_itm_idx_max)
 
 	elseif inc_dir == "dec" then
-		_s._dsp1_itm_idx = u.dec_stop(_s._dsp1_itm_idx, _s._dsp1_itm_idx_max)
+		_s._dsp1_itm_idx = int.dec_stop(_s._dsp1_itm_idx, _s._dsp1_itm_idx_max)
 	end
 
 	_s:itm__plt_anm()

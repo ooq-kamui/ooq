@@ -38,6 +38,8 @@ function Fluff.upd(_s, dt)
 	local vec = _s:vec_mv_living(dt)
 	-- log._("fluff vec", vec)
 	_s:pos__add(vec)
+
+	_s:upd_final()
 end
 
 function Fluff.act_intrvl(_s, dt)

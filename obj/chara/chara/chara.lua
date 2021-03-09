@@ -90,6 +90,8 @@ function Chara.upd(_s, dt)
 	_s:act_intrvl(dt)
 	
 	_s:upd_pos_movabl(dt)
+
+	_s:upd_final()
 end
 
 function Chara.act_intrvl(_s, dt)
@@ -145,7 +147,7 @@ end
 
 function Chara.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, _s._act_intrvl_time)
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, _s._act_intrvl_time)
 	return is_loop
 end
 

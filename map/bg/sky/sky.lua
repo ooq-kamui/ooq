@@ -175,7 +175,7 @@ function Sky.upd_tile_v__(_s, dt)
 
 	if gradation_idx > Sky.gradation_idx_max + 1 then  
 		_s._is_changing = _.f
-		_s._sky_idx = u.inc_loop(_s._sky_idx, Sky.sky_idx_max)
+		_s._sky_idx = int.inc_loop(_s._sky_idx, Sky.sky_idx_max)
 		return
 	end
 	

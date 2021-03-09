@@ -2,6 +2,51 @@ log.scrpt("int.lua")
 
 int = {_ = {}}
 
+function int.inc_stop(val, max)
+	local edge = _.f
+	val = val + 1
+	if val > max then
+		val = max
+		edge = _.t
+	end
+	return val, edge
+end
+
+function int.inc_loop(val, max, min)
+	min = min or 1
+	local loop = _.f
+	val = val + 1
+	-- u.log(val, max)
+	if val > max then
+		val = min
+		loop = _.t
+	end
+	-- u.log(loop)
+	return val, loop
+end
+
+function int.dec_stop(val, max, min)
+	min = min or 1
+	local edge = _.f
+	val = val - 1
+	if val < min then
+		val = min
+		edge = _.t
+	end
+	return val, edge
+end
+
+function int.dec_loop(val, max, min)
+	min = min or 1
+	local loop = _.f
+	val = val - 1
+	if val < min then
+		val = max
+		loop = _.t
+	end
+	return val, loop
+end
+
 function int.sub_loop(num, d, max)
 	-- log._("int.sub_loop()", num, d, max)
 	local ret = num - d

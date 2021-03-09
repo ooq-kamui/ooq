@@ -65,6 +65,8 @@ function Anml.upd(_s, dt)
 	_s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
+
+	_s:upd_final()
 end
 
 function Anml.act_intrvl(_s, dt)

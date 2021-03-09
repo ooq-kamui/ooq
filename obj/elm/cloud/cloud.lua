@@ -40,6 +40,8 @@ function Cloud.upd(_s, dt)
 	-- log._("cloud.upd", vec)
 
 	_s:pos__add(vec)
+
+	_s:upd_final()
 end
 
 function Cloud.act_intrvl(_s, dt)

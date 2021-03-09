@@ -52,7 +52,7 @@ function Bgm.ply_rnd()
 end
 
 function Bgm.ply_nxt()
-	local bgm_idx = u.inc_loop(Bgm._plying_idx, #Bgm.bgm)
+	local bgm_idx = int.inc_loop(Bgm._plying_idx, #Bgm.bgm)
 	Bgm.ply(bgm_idx)
 end
 

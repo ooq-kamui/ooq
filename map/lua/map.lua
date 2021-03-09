@@ -144,7 +144,7 @@ end
 
 function Map.act_intrvl__(_s, dt)
 	local is_loop
-	_s._act_intrvl, is_loop = u.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
 	return is_loop
 end
 

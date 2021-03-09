@@ -42,3 +42,16 @@ function num.__pls_abs_stop(p_num, p_pls, p_max)
 	return p_num
 end
 
+function num.pls_loop(val1, val2, max, min)
+
+	min = min or 0
+	local is_loop = _.f
+	
+	val1 = val1 + val2
+	if val1 > max then
+		val1 = min
+		is_loop = _.t
+	end
+	return val1, is_loop
+end
+

@@ -55,11 +55,11 @@ function p.Prt_cursor.cursor_mv(_s, inc_dir, keyact)
 	local cursor_edge, dsp_itm_edge
 
 	if     inc_dir == "inc" then
-		_s._cursor_dsp_idx, cursor_edge = u.inc_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
+		_s._cursor_dsp_idx, cursor_edge = int.inc_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
 		dsp_itm_edge = _s:is_dsp_itm_E()
 
 	elseif inc_dir == "dec" then
-		_s._cursor_dsp_idx, cursor_edge = u.dec_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
+		_s._cursor_dsp_idx, cursor_edge = int.dec_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
 		dsp_itm_edge = _s:is_dsp_itm_1()
 	end
 

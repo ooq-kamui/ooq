@@ -86,26 +86,26 @@ function Fairy.tilepos__add_dir(_s, p_dir)
 		if _s._tilepos.x == 0 and _s._tilepos.y <= 0 then
 			_s:tilepos__init(rnd.ar(u.lr))
 		else
-			_s._tilepos.y = u.inc_stop(_s._tilepos.y, dst_max, - dst_max)
+			_s._tilepos.y = int.inc_stop(_s._tilepos.y, dst_max, - dst_max)
 		end
 	elseif p_dir == "d" then
 
 		if _s._tilepos.x == 0 and _s._tilepos.y >= 0 then
 			_s:tilepos__init(rnd.ar(u.lr))
 		else
-			_s._tilepos.y = u.dec_stop(_s._tilepos.y, dst_max, - dst_max)
+			_s._tilepos.y = int.dec_stop(_s._tilepos.y, dst_max, - dst_max)
 		end
 	elseif p_dir == "l" then
 
 		if _s._tilepos.x < 0 then
-			_s._tilepos.x = u.dec_stop(_s._tilepos.x, dst_max, - dst_max)
+			_s._tilepos.x = int.dec_stop(_s._tilepos.x, dst_max, - dst_max)
 		else
 			_s:tilepos__init("l")
 		end
 	elseif p_dir == "r" then
 
 		if _s._tilepos.x > 0 then
-			_s._tilepos.x = u.inc_stop(_s._tilepos.x, dst_max, - dst_max)
+			_s._tilepos.x = int.inc_stop(_s._tilepos.x, dst_max, - dst_max)
 		else
 			_s:tilepos__init("r")
 		end

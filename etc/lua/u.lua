@@ -15,77 +15,11 @@ function u.is_emp(val)
 	if not val then return _.t end
 
 	local val_type = type(val)
-	if val_type == "string" and val == "" then return _.t end
+	if val_type == "string" and val == ""      then return _.t end
 	if val_type == "table"  and ar.is_emp(val) then return _.t end
 	
 	return _.f
 end
-
-function u.inc_stop(val, max)
-	local edge = _.f
-	val = val + 1
-	if val > max then
-		val = max
-		edge = _.t
-	end
-	return val, edge
-end
-
-function u.inc_loop(val, max, min)
-	min = min or 1
-	local loop = _.f
-	val = val + 1
-	-- u.log(val, max)
-	if val > max then
-		val = min
-		loop = _.t
-	end
-	-- u.log(loop)
-	return val, loop
-end
-
-function u.dec_stop(val, max, min)
-	min = min or 1
-	local edge = _.f
-	val = val - 1
-	if val < min then
-		val = min
-		edge = _.t
-	end
-	return val, edge
-end
-
-function u.dec_loop(val, max, min)
-	min = min or 1
-	local loop = _.f
-	val = val - 1
-	if val < min then
-		val = max
-		loop = _.t
-	end
-	return val, loop
-end
-
-function u.pls_loop(val1, val2, max, min)
-
-	-- log._("u.pls_loop", val1, val2, max, min)
-
-	min = min or 0
-	local is_loop = _.f
-	
-	val1 = val1 + val2
-	if val1 > max then
-		val1 = min
-		is_loop = _.t
-	end
-	return val1, is_loop
-end
-
---[[
-function u.is_rng(idx, p_ar) -- ar: {min, max} -- old
-	return num.is_rng(idx, p_ar)
-end
---]]
 
 function u.x_by_itm_w(idx, max, w)
 	
@@ -140,3 +74,32 @@ function u.eq(val1, val2)
 	end
 	return ret
 end
+
+--[[
+function u.inc_stop(val, max) -- old
+	return int.inc_stop(val, max)
+end
+
+function u.inc_loop(val, max, min) -- old
+	return int.inc_loop(val, max, min)
+end
+
+function u.dec_stop(val, max, min) -- old
+	return int.dec_stop(val, max, min)
+end
+
+function u.dec_loop(val, max, min) -- old
+	return int.dec_loop(val, max, min)
+end
+
+function u.pls_loop(val1, val2, max, min) -- old
+	return num.pls_loop(val1, val2, max, min)
+end
+--]]
+
+--[[
+function u.is_rng(idx, p_ar) -- ar: {min, max} -- old
+	return num.is_rng(idx, p_ar)
+end
+--]]
+

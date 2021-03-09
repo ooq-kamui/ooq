@@ -342,14 +342,14 @@ end
 function Cmr.zoom__i(_s)
 	
 	-- _s._zoom_dir = "i"
-	_s._z_idx = u.dec_stop(_s._z_idx, #Cmr.z_lst)
+	_s._z_idx = int.dec_stop(_s._z_idx, #Cmr.z_lst)
 	_s:zoom__anm()
 end
 
 function Cmr.zoom__o(_s)
 	
 	-- _s._zoom_dir = "o"
-	_s._z_idx = u.inc_stop(_s._z_idx, #Cmr.z_lst)
+	_s._z_idx = int.inc_stop(_s._z_idx, #Cmr.z_lst)
 	_s:zoom__anm()
 end
 

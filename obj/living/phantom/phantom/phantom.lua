@@ -34,6 +34,8 @@ function Phantom.upd(_s, dt)
 	local vec_mv = n.vec(0, 0.5)
 	local vec_total = vec_mv
 	_s:pos__add(vec_total)
+
+	_s:upd_final()
 end
 
 function Phantom.act_intrvl(_s, dt)

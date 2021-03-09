@@ -35,6 +35,8 @@ function Reizoko.upd(_s, dt)
 	_s:upd_pos_static(dt)
 
 	_s:act_intrvl(dt)
+
+	_s:upd_final()
 end
 
 function Reizoko.act_intrvl(_s, dt)

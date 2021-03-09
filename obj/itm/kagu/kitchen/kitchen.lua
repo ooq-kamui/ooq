@@ -45,6 +45,8 @@ function Kitchen.upd(_s, dt)
 
 	-- cooking timer dec
 	_s:upd_cooking_timer(dt)
+
+	_s:upd_final()
 end
 
 function Kitchen.upd_cooking(_s)

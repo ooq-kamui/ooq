@@ -40,9 +40,9 @@ end
 
 function p.Prt_itm_mtrx.page_idx__mv(_s, dir)
 	if     dir == "dec" then
-		_s._page_idx = u.dec_loop(_s._page_idx, _s._page_idx_max)
+		_s._page_idx = int.dec_loop(_s._page_idx, _s._page_idx_max)
 	elseif dir == "inc" then
-		_s._page_idx = u.inc_loop(_s._page_idx, _s._page_idx_max)
+		_s._page_idx = int.inc_loop(_s._page_idx, _s._page_idx_max)
 	end
 	log._("itm mtrx page_idx__mv", _s._page_idx)
 end
