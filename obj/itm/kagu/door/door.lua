@@ -6,7 +6,8 @@ Door = {
 	z = 0.1,
 }
 Door.cls = "door"
-Door.fac = "kaguFac"
+-- Door.fac = "kaguFac"
+Door.Fac = Obj.fac..Door.cls
 Cls.add(Door)
 
 -- static

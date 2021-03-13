@@ -6,7 +6,6 @@ Leaf = {
 
 }
 Leaf.cls = "leaf"
--- Leaf.fac = Leaf.cls.."Fac"
 Leaf.Fac = Obj.fac..Leaf.cls
 Cls.add(Leaf)
 
@@ -50,3 +49,4 @@ end
 function Leaf.final(_s)
 	Sp.final(_s)
 end
+

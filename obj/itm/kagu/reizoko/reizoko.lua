@@ -9,7 +9,6 @@ Reizoko = {
 	weight = 2,
 }
 Reizoko.cls = "reizoko"
--- Reizoko.fac = "kaguFac"
 Reizoko.Fac = Obj.fac..Reizoko.cls
 Cls.add(Reizoko)
 

@@ -7,15 +7,15 @@ Sp = {}
 function Sp.cre(Cls, p_pos, prm, scl)
 	
 	p_pos = p_pos or pos.pos_w()
-	-- p_pos = p_pos or go.get_world_position()
 	prm = prm or {}
 
 	local t_url
 	if Cls.Fac then
-		-- log._("sp cre by Fac", Cls.cls)
+		-- log._("sp cre by Fac ( new )", Cls.cls)
 		t_url = "/objFac/"..Cls.Fac
 	else
-		t_url = url._("/objFac/"..Cls.fac, Cls.cls)
+		log._("sp cre by fac ( old )", Cls.cls)
+		t_url = url._("/objFac/"..Cls.fac, Cls.cls) -- old
 	end
 
 	-- name, anim
@@ -972,68 +972,4 @@ function Sp.pos_flg__f(_s)
 	_s._foot_o_pos_flg = _.f
 	_s._head_o_pos_flg = _.f
 end
-
---[[
-function Sp.on_block(_s) -- old
-	return _s:foot_o_is_block()
-end
---]]
-
---[[
-function Sp.map_cnt_del(_s) -- old
-	_s:map_obj__del()
-end
---]]
-
---[[
-function Sp.wpos(_s) -- old
-	return _s:pos_w()
-end
---]]
-
---[[
-function Sp.vec_grv(_s, dt) -- old - static
-	
-	local foot_i_tile = _s:foot_i_tile()
-	local foot_o_tile = _s:foot_o_tile()
-	local t_vec
-	
-	if     _s:is_on_obj_block() then
-		-- log._("is_on_obj_block")
-		t_vec = n.vec()
-
-	elseif _s._is_fly then
-		t_vec = n.vec()
-	
-	elseif _s._hld_id then
-		-- log._("sp hld_id", _s._hld_id)
-		t_vec = n.vec()
-	
-	elseif _s._kitchen_id then
-		t_vec = n.vec()
-	
-	elseif _s._bear_tree_id then
-		t_vec = n.vec()
-		
-	elseif Tile.is_elv(  foot_i_tile)
-		or Tile.is_elv(  foot_o_tile)
-		or Tile.is_clmb( foot_i_tile)
-		or Tile.is_clmb( foot_o_tile)
-		or Tile.is_block(foot_o_tile) then
-		t_vec = n.vec()
-	else
-		t_vec = _s:vec_grv_cnst(dt)
-	end
-	return t_vec
-end
---]]
-
---[[
-function Sp.vec_grv_cnst(_s, dt) -- old
-	
-	local speed = 3 -- 1
-	local t_vec = Accl.grv_cnst * speed
-	return t_vec
-end
---]]
 

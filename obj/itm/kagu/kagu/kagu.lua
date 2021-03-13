@@ -6,7 +6,6 @@ Kagu = {
 	z = 0.1,
 }
 Kagu.cls = "kagu"
--- Kagu.fac = "kaguFac"
 Kagu.Fac = Obj.fac..Kagu.cls
 Cls.add(Kagu)
 

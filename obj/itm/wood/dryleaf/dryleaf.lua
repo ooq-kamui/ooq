@@ -5,7 +5,6 @@ Dryleaf = {
 	name_idx_max = 4,
 }
 Dryleaf.cls = "dryleaf"
--- Dryleaf.fac = Dryleaf.cls.."Fac"
 Dryleaf.Fac = Obj.fac..Dryleaf.cls
 Cls.add(Dryleaf)
 
@@ -50,3 +49,4 @@ end
 function Dryleaf.final(_s)
 	Sp.final(_s)
 end
+

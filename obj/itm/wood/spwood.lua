@@ -26,3 +26,4 @@ function Spwood.burn(_s)
 	-- log._("wpwood burn")
 	_s:trnsf(Fire)
 end
+

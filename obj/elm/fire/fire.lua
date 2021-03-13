@@ -31,19 +31,19 @@ function Fire.upd(_s, dt)
 	
 	_s:act_intrvl(dt)
 	
-	local pos = _s:pos()
-	local tile = _s:tile() -- map.tile(pos)
+	local t_tile = _s:tile()
 	
-	if not tile then log._("fire upd() tile", tile) end
+	if not t_tile then log._("fire upd() tile", t_tile) end
 	
-	local vec
-	-- if ar.in_(tile, Tile.wood) or ar.in_(tile, Tile.wood_burn) then
-	if Tile.is_wood(tile) or Tile.is_wood_burn(tile) then
-		vec = n.vec()
+	if Tile.is_wood(t_tile) or Tile.is_wood_burn(t_tile) then
+		vec.xy__clr(_s._vec_grv)
 	else
-		vec = _s:vec_grv(dt)
+		_s:vec_grv__(dt)
 	end
-	_s:pos__add(vec)
+
+	_s._vec_total = _s._vec_grv
+
+	_s:pos__add(_s._vec_total)
 
 	_s:upd_final()
 end

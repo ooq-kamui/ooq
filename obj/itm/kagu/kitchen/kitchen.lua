@@ -12,7 +12,8 @@ Kitchen = {
 	on_max = 2,
 }
 Kitchen.cls = "kitchen"
-Kitchen.fac = "kaguFac"
+-- Kitchen.fac = "kaguFac"
+Kitchen.Fac = Obj.fac..Kitchen.cls
 Cls.add(Kitchen)
 
 -- static

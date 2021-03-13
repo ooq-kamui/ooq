@@ -6,7 +6,8 @@ Pc = {
 	z = 0.1,
 }
 Pc.cls = "pc"
-Pc.fac = "kaguFac"
+-- Pc.fac = "kaguFac"
+Pc.Fac = Obj.fac..Pc.cls
 Cls.add(Pc)
 
 -- static
