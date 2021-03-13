@@ -9,7 +9,7 @@ Hrvst = {
 	weight = 2,
 }
 Hrvst.cls = "hrvst"
-Hrvst.fac = "kaguFac"
+-- Hrvst.fac = "kaguFac"
 Hrvst.Fac = Obj.fac..Hrvst.cls
 Cls.add(Hrvst)
 

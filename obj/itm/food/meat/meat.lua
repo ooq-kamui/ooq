@@ -6,7 +6,7 @@ Meat = {
 
 }
 Meat.cls = "meat"
-Meat.fac = Meat.cls.."Fac"
+-- Meat.fac = Meat.cls.."Fac"
 Meat.Fac = Obj.fac..Meat.cls
 Cls.add(Meat)
 

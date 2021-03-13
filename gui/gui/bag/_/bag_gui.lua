@@ -84,7 +84,8 @@ function g.Bag.base_clz(_s)
 end
 
 function g.Bag.l_opn(_s)
-	log._("bag l_opn")
+	-- log._("bag l_opn")
+
 	nd.anm.mv(_s._nd.l, - g.Bag.lr_pos_opn)
 	nd.anm.fade__i(_s._nd.l)
 	
@@ -169,7 +170,7 @@ function g.Bag.actv_prt(_s)
 end
 
 function g.Bag.focus__ch(_s)
-	log._("g.Bag focus__ch")
+	-- log._("g.Bag focus__ch")
 
 	local r_view_prt_lb
 	if #_s._actv_prt == 1 then

@@ -8,11 +8,6 @@ Serifu = {
 
 		{len =  2, txt = "うそ"},
 
-		{len =  4, txt = "わすれた"},
-		{len =  5, txt = "わすれない"},
-		
-		{len =  8, txt = "はずかしいですぅ"},
-		
 		{len =  3, txt = "まいご"},
 		{len =  4, txt = "さまよう"},
 		{len =  4, txt = "まよった"},
@@ -89,6 +84,14 @@ Serifu = {
 		{len =  8, txt = "じゅんび できた"},
 		{len =  7, txt = "じゅんび する"},
 
+		{len =  5, txt = "はずかしい"},
+		{len =  8, txt = "はずかしいですぅ"},
+		{len =  5, txt = "はじをしれ"},
+		
+		-- memory
+		{len =  4, txt = "わすれた"},
+		{len =  5, txt = "わすれない"},
+		
 		-- guess
 		{len =  3, txt = "かもね"},
 		-- console
@@ -263,6 +266,9 @@ Serifu = {
 		
 		{len =  4, txt = "きがする"},
 		{len =  8, txt = "そんなはず ない"},
+
+		{len =  4, txt = "しってる"},
+		{len =  5, txt = "しってる?"},
 
 		-- question
 		{len =  5, txt = "どうだろう"},

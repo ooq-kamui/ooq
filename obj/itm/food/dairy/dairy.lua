@@ -6,7 +6,7 @@ Dairy = {
 	name_idx_max = 8,
 }
 Dairy.cls = "dairy"
-Dairy.fac = Dairy.cls.."Fac"
+-- Dairy.fac = Dairy.cls.."Fac"
 Dairy.Fac = Obj.fac..Dairy.cls
 Cls.add(Dairy)
 

@@ -10,110 +10,115 @@ function Livingmove.init(_s)
 	_s._dir_v = ""
 	_s._is_moving = _.f
 	_s._speed  = _s:Cls().speed
-	_s._status = "live"
+
+	_s._status = "live" -- use not ?
+
 end
 
 --- method
 
 function Livingmove.upd_pos_movabl(_s, dt)
 	
-	-- move
-	local vec_mv = _s:vec_mv(dt)
+	_s:vec_mv__(dt)
 
-	-- tile
-	local vec_tile = _s:vec_tile(dt)
+	_s:vec_tile__(dt)
 
-	-- gravity
-	local vec_grv
-	if _s._status == "phantom" then
-		vec = n.vec()
-	else
-		vec_grv = _s:vec_grv(dt)
-	end
+	_s:vec_grv__(dt)
 
-	-- total
-	local vec_total = vec_mv + vec_tile + vec_grv
-	_s:pos__add(vec_total)
-end
+	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
 
-function Livingmove.vec_mv(_s, dt)
-	
-	local vec
-	if     _s._status == "live"    then
-		vec = _s:vec_mv_living(dt)
-		
-	elseif _s._status == "phantom" then
-		vec = n.vec(0, 1)
-	else
-		vec = n.vec()
-	end
-	return vec
-end
-
-function Livingmove.moving__(_s, val)
-	_s._is_moving = val
-end
-
-function Livingmove.moving__rnd(_s)
-	local moving_rate = 1 / 2
-	local val = rnd.by_f(moving_rate)
-	_s:moving__(val)
+	_s:pos__add(_s._vec_total)
 end
 
 function Livingmove.is_moving(_s)
 	return _s._is_moving
 end
 
-function Livingmove.speed__(_s, speed)
-	_s._speed = speed
+function Livingmove.is_moving__(_s, val)
+	_s._is_moving = val
+end
+
+function Livingmove.moving__rnd(_s)
+
+	_s:is_moving__( rnd.by_f( 1 / 2) )
+end
+
+function Livingmove.speed__(_s, p_speed)
+	_s._speed = p_speed
 end
 
 function Livingmove.speed__rnd(_s)
-	local speed = _s:Cls().speed * (rnd.int(0, 100) / 100)
-	_s:speed__(speed)
+
+	local t_speed = _s:Cls().speed * ( rnd.int(0, 100) / 100 )
+
+	_s:speed__(t_speed)
 end
 
 function Livingmove.moving_prp__rnd(_s)
+
 	_s:dir_h__rnd()
 	_s:dir_v__rnd()
 	_s:moving__rnd()
 	_s:speed__rnd()
 end
 
-function Livingmove.vec_mv_living(_s, dt)
+function Livingmove.vec_mv__(_s, dt)
 
-	local vec = n.vec()
+	if not u.eq(_s._status, "live") then _s:vec_mv__clr() return end
 
-	if not _s._is_moving
-	or     _s._hld_id
-	then return vec end
+	if     _s._hld_id    then _s:vec_mv__clr() return end
+
+	if not _s._is_moving then _s:vec_mv__clr() return end
+
+	_s:vec_mv_x__()
+
+	_s:vec_mv_y__()
+end
+
+function Livingmove.vec_mv__clr(_s)
+	vec.xy__(_s._vec_mv, 0, 0)
+end
+
+function Livingmove.vec_mv_x__(_s)
 
 	if (_s._dir_h == "l" and _s:side_is_block("l"))
-	or (_s._dir_h == "r" and _s:side_is_block("r")) then
-		-- not move
-	else
-		local diffx = _s._speed * dt
-		if ha.eq(_s._dir_h, "l") then diffx = - diffx end
-		vec.x = vec.x + diffx
+	or (_s._dir_h == "r" and _s:side_is_block("r"))
+	then
+		return
 	end
 
-	if _s._is_fly then
-		local diffy = _s._speed * dt
-		if     _s._dir_v == "u"   then
-			vec.y = vec.y + diffy
-		elseif _s._dir_v == "u/2" then
-			vec.y = vec.y + diffy / 2
-		elseif _s._dir_v == "d"   then
-			vec.y = vec.y - diffy
-		elseif _s._dir_v == "d/2" then
-			vec.y = vec.y - diffy / 2
-		end
-		
-		if _s:head_o_is_block() or _s:foot_o_is_block() then
-			vec.y = 0
-		end
+
+	local diffx = _s._speed
+
+	if ha.eq(_s._dir_h, "l") then diffx = - diffx end
+
+	-- _s._vec_mv.x = _s._vec_mv.x + diffx
+	_s._vec_mv.x = diffx
+end
+
+function Livingmove.vec_mv_y__(_s)
+
+	if not _s._is_fly then return end
+
+
+	-- local diffy = _s._speed * dt
+	local diffy = _s._speed
+
+	if     _s._dir_v == "u"   then
+		_s._vec_mv.y = diffy
+
+	elseif _s._dir_v == "u/2" then
+		_s._vec_mv.y = diffy / 2
+
+	elseif _s._dir_v == "d"   then
+		_s._vec_mv.y = diffy
+
+	elseif _s._dir_v == "d/2" then
+		_s._vec_mv.y = diffy / 2
 	end
 	
-	return vec
+	if _s:head_o_is_block() or _s:foot_o_is_block() then
+		_s._vec_mv.y = 0
+	end
 end
 

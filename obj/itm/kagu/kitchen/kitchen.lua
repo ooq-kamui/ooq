@@ -51,7 +51,7 @@ end
 
 function Kitchen.upd_cooking(_s)
 	if _s.complete == _.t then
-		_s:_cre_dish()
+		_s:cre_dish()
 		_s.complete = _.f
 	end
 end
@@ -159,7 +159,7 @@ function Kitchen.kitchen_x(_s, food_id)
 	-- log._("take_kitchen _s.on", unpack(_s.on))
 end
 
-function Kitchen._cre_dish(_s)
+function Kitchen.cre_dish(_s)
 	for idx, id in pairs(_s.on) do
 		pst.scrpt(id, "cook_to_dish")
 	end
@@ -167,16 +167,18 @@ function Kitchen._cre_dish(_s)
 		table.remove(_s.on)
 	end
 	
-	local wpos = _s:wpos() + n.vec(0, Map.sqh)
+	local pos_w = _s:pos_w() + n.vec(0, Map.sqh)
 	
-	local dish_id = Dish.cre(wpos)
+	local dish_id = Dish.cre(pos_w)
 	
 	local time = 0.7
-	local y = wpos.y + Map.sq
-	go.animate(dish_id, "position.y", go.PLAYBACK_ONCE_PINGPONG, y, go.EASING_OUTSINE, time)
+	local y = pos_w.y + Map.sq
+	go.animate(dish_id, "position.y", es.pinpon, y, es.sin_o, time)
+	-- go.animate(dish_id, "position.y", go.PLAYBACK_ONCE_PINGPONG, y, go.EASING_OUTSINE, time)
 	return dish_id
 end
 
 function Kitchen.log(_s)
 	log._("kitchen.self.on:", unpack(_s.on))
 end
+

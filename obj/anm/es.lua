@@ -9,4 +9,3 @@ es.bnd_o  = go.EASING_OUTBOUNCE
 es.pinpon = go.PLAYBACK_ONCE_PINGPONG
 es.fwd    = go.PLAYBACK_ONCE_FORWARD
 
-

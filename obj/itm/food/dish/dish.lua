@@ -5,7 +5,7 @@ Dish = {
 	name_idx_max = 188, -- 10,
 }
 Dish.cls = "dish"
-Dish.fac = Dish.cls.."Fac"
+-- Dish.fac = Dish.cls.."Fac"
 Dish.Fac = Obj.fac..Dish.cls
 Cls.add(Dish)
 

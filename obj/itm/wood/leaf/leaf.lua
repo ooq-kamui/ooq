@@ -6,7 +6,7 @@ Leaf = {
 
 }
 Leaf.cls = "leaf"
-Leaf.fac = Leaf.cls.."Fac"
+-- Leaf.fac = Leaf.cls.."Fac"
 Leaf.Fac = Obj.fac..Leaf.cls
 Cls.add(Leaf)
 

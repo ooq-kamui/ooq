@@ -28,16 +28,16 @@ Cls.add(Plychara)
 
 -- static
 
-function Plychara.cre(pos, dir)
+function Plychara.cre(p_pos, dir)
 	
-	pos = pos or Plychara.pos_game_new
-	dir = dir or Plychara.dir_h_dflt
+	p_pos = p_pos or Plychara.pos_game_new
+	dir   = dir   or Plychara.dir_h_dflt
 	
 	local name = "sanae"
 	local prm = {
 		nameHa = ha._(name),
 	}
-	local t_id = Sp.cre(Plychara, pos, prm)
+	local t_id = Sp.cre(Plychara, p_pos, prm)
 	-- log._("plychara cre id", t_id)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir})
@@ -66,8 +66,10 @@ function Plychara.init(_s)
 
 	_s._dive = _.f
 	
-	_s._accl = n.Accl()
+	_s._accl    = n.Accl()
 	_s._vec_grv = n.vec()
+
+	_s._vec_on_chara = n.vec()
 
 	_s._itm_selected = "wand001" -- name
 
@@ -88,7 +90,6 @@ function Plychara.init(_s)
 	}
 	_s._clsn_hldabl = {}
 
-	-- fairy
 	local fairy_id = _s:fairy_id()
 	-- log._("plychara.init fairy_id", fairy_id)
 
@@ -105,7 +106,8 @@ function Plychara.upd(_s, dt)
 	local foot_i_tile = _s:foot_i_tile()
 	
 	-- vec on_chara
-	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
+	local is_on_chara
+	is_on_chara, _s._vec_on_chara = _s:vec_on_clsn(dt)
 	
 	if _s._moving_h then
 		dir.x = 1
@@ -144,25 +146,22 @@ function Plychara.upd(_s, dt)
 	end
 	dir = _s:dir__crct_hyprspc(dir)
 	
-	local vec_mv = dir * _s._speed
-	if _s._is_jmping then vec_mv.y = vec_mv.y * Plychara.speed_jmp end
+	_s._vec_mv = dir * _s._speed
+	if _s._is_jmping then _s._vec_mv.y = _s._vec_mv.y * Plychara.speed_jmp end
 	
-	-- vec tile  -  tile crct ???
-	local vec_tile = _s:vec_tile(dt)
+	_s:vec_tile__(dt)
 
 	-- vec grv
-	-- local vec_grv
 	if is_on_chara then
-		_s._vec_grv = n.vec()
+		vec.xy__(_s._vec_grv, 0, 0)
 	else
 		_s:vec_grv__(dt)
-		-- _s._vec_grv = _s:vec_grv(dt)
 	end
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 	
-	-- total vec  -  refactoring
-	local vec_total = vec_mv + vec_tile + vec_on_chara + _s._vec_grv
-	_s:pos__add(vec_total)
+	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
+
+	_s:pos__add(_s._vec_total)
 	
 	_s:ox_dstrct__mv()
 	
@@ -176,6 +175,7 @@ function Plychara.upd(_s, dt)
 	-- log._("plychara upd end")
 end
 
+--[[
 function Plychara.vec_grv__(_s, dt)
 	-- log._("sp vec_grv__ speed", _s._accl._speed)
 
@@ -199,8 +199,8 @@ function Plychara.vec_grv__(_s, dt)
 		
 	elseif Tile.is_elv(  foot_i_tile)
 		or Tile.is_elv(  foot_o_tile)
-		or Tile.is_clmb(foot_i_tile)
-		or Tile.is_clmb(foot_o_tile)
+		or Tile.is_clmb( foot_i_tile)
+		or Tile.is_clmb( foot_o_tile)
 		or Tile.is_block(foot_o_tile) then
 
 		_s:vec_grv__clr()
@@ -209,10 +209,13 @@ function Plychara.vec_grv__(_s, dt)
 		_s._vec_grv = _s._accl:speed()
 	end
 end
+--]]
 
+--[[
 function Plychara.vec_grv__clr(_s)
 	vec.xy__clr(_s._vec_grv)
 end
+--]]
 
 -- jmp
 
@@ -222,7 +225,8 @@ function Plychara.is_jmpabl(_s)
 
 	local foot_o_tile = _s:foot_o_tile()
 	local foot_i_tile = _s:foot_i_tile()
-	local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
+	-- local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
+	local is_on_chara = _s:vec_on_clsn(dt)
 	
 	if Tile.is_block(foot_o_tile)
 	or is_on_chara
@@ -551,14 +555,14 @@ end
 
 function Plychara.pos_fw(_s, mlt)
 	
-	local pos = _s:pos()
+	local t_pos = _s:pos()
 	local df  = n.vec(Map.sq * mlt, 0)
 	if     ha.eq(_s._dir_h, "l") then
-		pos = pos - df
+		t_pos = t_pos - df
 	elseif ha.eq(_s._dir_h, "r") then
-		pos = pos + df
+		t_pos = t_pos + df
 	end
-	return pos
+	return t_pos
 end
 
 function Plychara.turn_time__add(_s, dt)
@@ -840,8 +844,8 @@ function Plychara.to_cloud(_s)
 end
 
 function Plychara.to_door(_s, door_id)
-	local pos = id.pos(door_id)
-	_s:pos__(pos)
+	local t_pos = id.pos(door_id)
+	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 

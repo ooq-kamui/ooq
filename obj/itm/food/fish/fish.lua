@@ -5,7 +5,7 @@ Fish = {
 	name_idx_max = 153,
 }
 Fish.cls = "fish"
-Fish.fac = Fish.cls.."Fac"
+-- Fish.fac = Fish.cls.."Fac"
 Fish.Fac = Obj.fac..Fish.cls
 Cls.add(Fish)
 

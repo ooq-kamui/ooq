@@ -54,16 +54,12 @@ function id.pos(id)
 	return t_pos
 end
 
-function id.wpos(p_id) -- old
-	return id.pos_w(p_id)
-end
-
 function id.pos_w(p_id)
 	
 	if not p_id then return end
 	
-	local pos = go.get_world_position(p_id)
-	return pos
+	local t_pos = go.get_world_position(p_id)
+	return t_pos
 end
 
 function id.pos__(p_id, pos)
@@ -135,4 +131,10 @@ function id.Cls_prp_weight(p_id)
 
 	return weight
 end
+
+--[[
+function id.wpos(p_id) -- old
+	return id.pos_w(p_id)
+end
+--]]
 

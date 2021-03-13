@@ -113,7 +113,8 @@ function Map.obj_cls(_s, clsHa)
 	for j, t_id in pairs(t_obj) do
 		-- log._("Map.obj_cls()", clsHa)
 
-		prm = {name = ha.de(id.name(t_id)), pos = id.wpos(t_id)}
+		prm = {name = ha.de(id.name(t_id)), pos = id.pos_w(t_id)}
+		-- prm = {name = ha.de(id.name(t_id)), pos = id.wpos(t_id)}
 
 		if     ar.inHa(clsHa, {"seed"}) then
 			prm.grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )

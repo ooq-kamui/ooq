@@ -11,11 +11,12 @@ Cls.add(Phantom)
 
 -- static
 
-function Phantom.cre(pos, prm)
+function Phantom.cre(p_pos, prm)
 	local Cls = Phantom
 	prm = prm or {}
-	if not prm.anim  then prm.anim  = ha._("stand") end
-	local id = Sp.cre(Cls, pos, prm)
+	prm.anim = prm.anim or ha._("stand")
+	-- if not prm.anim  then prm.anim  = ha._("stand") end
+	local id = Sp.cre(Cls, p_pos, prm)
 	return id
 end
 
@@ -25,15 +26,18 @@ function Phantom.init(_s)
 	
 	extend.init(_s, Sp)
 	extend._(_s, Phantom)
+
+	-- _s._vec_mv = n.vec(0, 0.5)
+	vec.xy__(_s._vec_mv, 0, 0.5)
 end
 
 function Phantom.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	local vec_mv = n.vec(0, 0.5)
-	local vec_total = vec_mv
-	_s:pos__add(vec_total)
+	_s._vec_total = _s._vec_mv
+
+	_s:pos__add(_s._vec_total)
 
 	_s:upd_final()
 end
@@ -56,3 +60,4 @@ end
 function Phantom.final(_s)
 	Sp.final(_s)
 end
+

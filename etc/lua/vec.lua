@@ -45,6 +45,12 @@ function vec.xy__clr(p_vec)
 	p_vec.y = 0
 end
 
+function vec.xy__(p_vec, p_x, p_y)
+
+	p_vec.x = p_x
+	p_vec.y = p_y
+end
+
 --[[
 function vec.clone(p_vec) -- old
 	return vec.cp(p_vec)

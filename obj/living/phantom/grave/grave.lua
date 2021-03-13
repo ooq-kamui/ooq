@@ -11,11 +11,12 @@ Cls.add(Grave)
 
 -- static
 
-function Grave.cre(pos, prm)
+function Grave.cre(p_pos, prm)
 	local Cls = Grave
 	prm = prm or {}
-	if not prm.anim  then prm.anim  = ha._("stand") end
-	local id = Sp.cre(Cls, pos, prm)
+	prm.animHa = prm.animHa or ha._("stand")
+	-- if not prm.animHa then prm.animHa = ha._("stand") end
+	local id = Sp.cre(Cls, p_pos, prm)
 	return id
 end
 
@@ -55,3 +56,4 @@ end
 function Grave.final(_s)
 	Sp.final(_s)
 end
+

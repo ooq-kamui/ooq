@@ -5,7 +5,7 @@ Fluff = {
 	name_idx_max = 1,
 
 	foot_dst_i = 20,
-	speed = 50,
+	speed = 2, -- 50,
 }
 Fluff.cls = "fluff"
 Fluff.Fac = Obj.fac..Fluff.cls
@@ -35,9 +35,10 @@ function Fluff.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	local vec = _s:vec_mv_living(dt)
-	-- log._("fluff vec", vec)
-	_s:pos__add(vec)
+	-- local vec = _s:vec_mv_living(dt)
+	_s:vec_mv__(dt)
+
+	_s:pos__add(_s._vec_mv)
 
 	_s:upd_final()
 end

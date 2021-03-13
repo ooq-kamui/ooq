@@ -33,10 +33,10 @@ function num.__pls_abs_stop(p_num, p_pls, p_max)
 
 	if     p_num >   p_max then
 		p_num =   p_max
-		log._("num.__pls_abs_stop max", p_num)
+		-- log._("num.__pls_abs_stop max", p_num)
 	elseif p_num < - p_max then
 		p_num = - p_max
-		log._("num.__pls_abs_stop max", p_num)
+		-- log._("num.__pls_abs_stop max", p_num)
 	end
 
 	return p_num

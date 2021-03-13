@@ -2,7 +2,7 @@ log.scrpt("anml.lua")
 
 Anml = {
 	act_intrvl_time = 10,
-	speed = 50,
+	speed = 2, -- 50,
 
 	weight = 2,
 

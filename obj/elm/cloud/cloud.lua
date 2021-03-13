@@ -3,7 +3,7 @@ log.scrpt("cloud.lua")
 Cloud = {
 	act_intrvl_time = 10,
 	name_idx_max = 1,
-	speed = 50,
+	speed = 2, -- 50,
 }
 Cloud.pos_init = n.vec(300, 300)
 
@@ -36,10 +36,9 @@ function Cloud.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	local vec = _s:vec_mv_living(dt)
-	-- log._("cloud.upd", vec)
+	_s:vec_mv__(dt)
 
-	_s:pos__add(vec)
+	_s:pos__add(_s._vec_mv)
 
 	_s:upd_final()
 end

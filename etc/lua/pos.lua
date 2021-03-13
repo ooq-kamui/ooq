@@ -10,14 +10,6 @@ function pos.new(x, y, z)
 	return n.vec(x, y, z)
 end
 
-function pos._(id)
-	return id.pos(id)
-end
-
-function pos.by_id(id)
-	return id.pos(id)
-end
-
 function pos.len(pos1, pos2)
 	
 	pos2 = pos2 or n.vec()
@@ -26,4 +18,18 @@ function pos.len(pos1, pos2)
 	local len = math.sqrt(d.x^2 + d.y^2)
 	return len
 end
+
+function pos.pos_w()
+	return go.get_world_position()
+end
+
+--[[
+function pos._(id)
+	return id.pos(id)
+end
+
+function pos.by_id(id)
+	return id.pos(id)
+end
+--]]
 

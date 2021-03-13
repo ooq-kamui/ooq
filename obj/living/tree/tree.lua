@@ -98,9 +98,9 @@ function Tree.bear(_s)
 		_s._bear_name = ha._(bear_Cls.cls..rnd.int_pad(bear_Cls.name_idx_max))
 	end
 	
-	local pos = _s:wpos() + n.vec(0, Map.sqh)
+	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
-	local id = bear_Cls.cre(pos, {name = _s._bear_name}, 0.2)
+	local id = bear_Cls.cre(t_pos, {name = _s._bear_name}, 0.2)
 	pst.scrpt(id, "bear_o", {tree_id = _s._id})
 	ar.add(_s._bear, id)
 end

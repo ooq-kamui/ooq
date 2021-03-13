@@ -5,7 +5,7 @@ Fruit = {
 	name_idx_max = 52,
 }
 Fruit.cls = "fruit"
-Fruit.fac = Fruit.cls.."Fac"
+-- Fruit.fac = Fruit.cls.."Fac"
 Fruit.Fac = Obj.fac..Fruit.cls
 Cls.add(Fruit)
 

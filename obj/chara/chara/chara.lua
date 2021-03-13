@@ -3,7 +3,7 @@ log.scrpt("chara.lua")
 Chara = {
 	
 	act_intrvl_time = 8,
-	speed = 50,
+	speed = 2, -- 50,
 	
 	chara = {
 		"sanae",
@@ -32,11 +32,12 @@ Cls.add(Chara, Chara.chara)
 
 -- static
 
-function Chara.cre(pos, name)
+function Chara.cre(p_pos, name)
 	
 	if Map.chara_is_appear_all() then return end
 	
-	pos  = pos  or go.get_world_position()
+	p_pos  = p_pos  or pos.pos_w()
+	-- p_pos  = p_pos  or go.get_world_position()
 	name = name or Chara.new_name()
 	
 	local prm = {}
@@ -56,7 +57,7 @@ function Chara.cre(pos, name)
 
 	-- log.pp("Chara cre prm", prm)
 	ar.key___(prm)
-	local t_id = factory.create("/objFac/"..Chara.Fac, pos, nil, prm)
+	local t_id = factory.create("/objFac/"..Chara.Fac, p_pos, nil, prm)
 	
 	Map.add_chara(name)
 	return t_id
