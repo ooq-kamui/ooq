@@ -5,8 +5,7 @@ Humus = {
 	name_idx_max = 1,
 }
 Humus.cls = "humus"
-Humus.fac = Humus.cls.."Fac"
-Humus.Fac = Obj.fac..Humus.cls
+Humus.fac = Obj.fac..Humus.cls
 Cls.add(Humus)
 
 -- static

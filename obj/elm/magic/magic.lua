@@ -6,8 +6,7 @@ Magic = {
 	z = 0.4,
 }
 Magic.cls = "magic"
--- Magic.fac = Magic.cls.."Fac" -- old
-Magic.Fac = Obj.fac..Magic.cls
+Magic.fac = Obj.fac..Magic.cls
 Cls.add(Magic)
 
 -- static

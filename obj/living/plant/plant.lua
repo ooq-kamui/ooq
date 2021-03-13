@@ -5,8 +5,7 @@ Plant = {
 	name_idx_max = 91,
 }
 Plant.cls = "plant"
-Plant.fac = Plant.cls.."Fac"
-Plant.Fac = Obj.fac..Plant.cls
+Plant.fac = Obj.fac..Plant.cls
 Cls.add(Plant)
 
 -- static

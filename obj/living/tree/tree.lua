@@ -7,8 +7,7 @@ Tree = {
 	z = 0.05,
 }
 Tree.cls = "tree"
-Tree.fac = Tree.cls.."Fac"
-Tree.Fac = Obj.fac..Tree.cls
+Tree.fac = Obj.fac..Tree.cls
 Cls.add(Tree)
 
 -- static

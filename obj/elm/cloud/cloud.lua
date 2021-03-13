@@ -8,8 +8,7 @@ Cloud = {
 Cloud.pos_init = n.vec(300, 300)
 
 Cloud.cls = "cloud"
-Cloud.fac = Cloud.cls.."Fac"
-Cloud.Fac = Obj.fac..Cloud.cls
+Cloud.fac = Obj.fac..Cloud.cls
 Cls.add(Cloud)
 
 -- static

@@ -9,7 +9,7 @@ Reizoko = {
 	weight = 2,
 }
 Reizoko.cls = "reizoko"
-Reizoko.Fac = Obj.fac..Reizoko.cls
+Reizoko.fac = Obj.fac..Reizoko.cls
 Cls.add(Reizoko)
 
 -- static

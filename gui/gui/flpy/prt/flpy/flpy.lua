@@ -37,7 +37,7 @@ end
 -- method
 
 function p.Flpy.opn(_s, prm)
-	log._("p.flpy.opn")
+	-- log._("p.flpy.opn")
 	
 	_s:cursor_pos__()
 	_s:itm__plt()

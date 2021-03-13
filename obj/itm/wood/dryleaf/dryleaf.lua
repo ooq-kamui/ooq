@@ -5,7 +5,7 @@ Dryleaf = {
 	name_idx_max = 4,
 }
 Dryleaf.cls = "dryleaf"
-Dryleaf.Fac = Obj.fac..Dryleaf.cls
+Dryleaf.fac = Obj.fac..Dryleaf.cls
 Cls.add(Dryleaf)
 
 -- ar.idx_2_ha(Dryleaf.gold, "dryleaf")

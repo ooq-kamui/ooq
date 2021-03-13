@@ -9,8 +9,7 @@ Shelf = {
 	weight = 2,
 }
 Shelf.cls = "shelf"
--- Shelf.fac = "kaguFac"
-Shelf.Fac = Obj.fac..Shelf.cls
+Shelf.fac = Obj.fac..Shelf.cls
 Cls.add(Shelf)
 
 -- static

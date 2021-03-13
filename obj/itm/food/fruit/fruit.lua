@@ -5,8 +5,7 @@ Fruit = {
 	name_idx_max = 52,
 }
 Fruit.cls = "fruit"
--- Fruit.fac = Fruit.cls.."Fac"
-Fruit.Fac = Obj.fac..Fruit.cls
+Fruit.fac = Obj.fac..Fruit.cls
 Cls.add(Fruit)
 
 -- ar.idx_2_ha(Fruit.gold, "fruit")

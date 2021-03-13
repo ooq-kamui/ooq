@@ -6,8 +6,7 @@ Meat = {
 
 }
 Meat.cls = "meat"
--- Meat.fac = Meat.cls.."Fac"
-Meat.Fac = Obj.fac..Meat.cls
+Meat.fac = Obj.fac..Meat.cls
 Cls.add(Meat)
 
 -- ar.idx_2_ha(Meat.gold, "meat")

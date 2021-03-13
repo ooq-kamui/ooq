@@ -5,8 +5,7 @@ Flower = {
 	name_idx_max = 159,
 }
 Flower.cls = "flower"
-Flower.fac = Flower.cls.."Fac"
-Flower.Fac = Obj.fac..Flower.cls
+Flower.fac = Obj.fac..Flower.cls
 Cls.add(Flower)
 
 -- ar.idx_2_ha(Flower.gold, "flower")

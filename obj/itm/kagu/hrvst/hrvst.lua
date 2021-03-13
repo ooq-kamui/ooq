@@ -9,7 +9,7 @@ Hrvst = {
 	weight = 2,
 }
 Hrvst.cls = "hrvst"
-Hrvst.Fac = Obj.fac..Hrvst.cls
+Hrvst.fac = Obj.fac..Hrvst.cls
 Cls.add(Hrvst)
 
 -- static

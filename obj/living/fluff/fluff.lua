@@ -8,7 +8,7 @@ Fluff = {
 	speed = 2, -- 50,
 }
 Fluff.cls = "fluff"
-Fluff.Fac = Obj.fac..Fluff.cls
+Fluff.fac = Obj.fac..Fluff.cls
 Cls.add(Fluff)
 
 -- ar.idx_2_ha(Fluff.gold, "fluff")

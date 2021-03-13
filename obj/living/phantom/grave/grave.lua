@@ -5,8 +5,7 @@ Grave = {
 	name_idx_max = 1,
 }
 Grave.cls = "grave"
-Grave.fac = "graveFac"
-Grave.Fac = Obj.fac..Grave.cls
+Grave.fac = Obj.fac..Grave.cls
 Cls.add(Grave)
 
 -- static

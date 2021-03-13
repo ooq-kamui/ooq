@@ -23,7 +23,7 @@ Plychara = {
 Plychara.pos_game_new = n.vec( 500, 200)
 
 Plychara.cls = "plychara"
-Plychara.Fac = Obj.fac..Plychara.cls
+Plychara.fac = Obj.fac..Plychara.cls
 Cls.add(Plychara)
 
 -- static

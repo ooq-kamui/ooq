@@ -5,8 +5,7 @@ Emtn = {
 	name_idx_max = 1, -- 28
 }
 Emtn.cls = "emtn"
-Emtn.fac = Emtn.cls.."Fac"
-Emtn.Fac = Obj.fac..Emtn.cls
+Emtn.fac = Obj.fac..Emtn.cls
 Cls.add(Emtn)
 
 -- static

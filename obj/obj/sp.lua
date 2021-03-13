@@ -10,12 +10,12 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	prm = prm or {}
 
 	local t_url
-	if Cls.Fac then
+	if Cls.fac then
 		-- log._("sp cre by Fac ( new )", Cls.cls)
-		t_url = "/objFac/"..Cls.Fac
+		t_url = "/objFac/"..Cls.fac
 	else
 		log._("sp cre by fac ( old )", Cls.cls)
-		t_url = url._("/objFac/"..Cls.fac, Cls.cls) -- old
+		-- t_url = url._("/objFac/"..Cls.fac, Cls.cls) -- old
 	end
 
 	-- name, anim
@@ -48,9 +48,10 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	-- log._("sp cre t_url", t_url)
 	ar.key___(prm)
 	ar.val_str_2_ha(prm)
-	local t_id = factory.create(t_url, p_pos, nil, prm, scl)
-	-- local id = factory.create(t_url, p_pos, nil, prm)
-	-- local id = factory.create(t_url, p_pos, nil, prm, nil)
+	local t_id = fac.cre(t_url, p_pos, nil, prm, scl)
+
+	-- local id = fac.cre(t_url, p_pos, nil, prm)
+	-- local id = fac.cre(t_url, p_pos, nil, prm, nil)
 	
 	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id

@@ -76,30 +76,8 @@ function u.eq(val1, val2)
 end
 
 --[[
-function u.inc_stop(val, max) -- old
-	return int.inc_stop(val, max)
-end
-
-function u.inc_loop(val, max, min) -- old
-	return int.inc_loop(val, max, min)
-end
-
-function u.dec_stop(val, max, min) -- old
-	return int.dec_stop(val, max, min)
-end
-
-function u.dec_loop(val, max, min) -- old
-	return int.dec_loop(val, max, min)
-end
-
-function u.pls_loop(val1, val2, max, min) -- old
-	return num.pls_loop(val1, val2, max, min)
-end
---]]
-
---[[
-function u.is_rng(idx, p_ar) -- ar: {min, max} -- old
-	return num.is_rng(idx, p_ar)
+function u.pos() -- old
+	return go.get_position()
 end
 --]]
 

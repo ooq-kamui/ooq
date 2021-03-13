@@ -7,7 +7,7 @@ Bush = {
 	z = 0.04,
 }
 Bush.cls = "bush"
-Bush.Fac = Obj.fac..Bush.cls
+Bush.fac = Obj.fac..Bush.cls
 Cls.add(Bush)
 
 -- static

@@ -5,7 +5,7 @@ Gold = {
 	name_idx_max = 1, -- 6,
 }
 Gold.cls = "gold"
-Gold.Fac = Obj.fac..Gold.cls
+Gold.fac = Obj.fac..Gold.cls
 Cls.add(Gold)
 
 -- static

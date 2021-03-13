@@ -6,7 +6,7 @@ Fairy = {
 	plychara_dst_max = 3,
 }
 Fairy.cls = "fairy"
-Fairy.Fac = Obj.fac..Fairy.cls
+Fairy.fac = Obj.fac..Fairy.cls
 Cls.add(Fairy)
 
 -- static

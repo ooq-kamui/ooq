@@ -9,16 +9,17 @@ Fuki = {
 	scrpt = nil,
 }
 Fuki.cls = "fuki"
-Fuki.fac = Fuki.cls.."Fac"
-Fuki.Fac = Obj.fac..Fuki.cls
+Fuki.fac = Obj.fac..Fuki.cls
 Cls.add(Fuki)
 
-function Fuki.cre(pos, prm, scl)
+function Fuki.cre(p_pos, prm, scl)
 	local Cls = Fuki
-	pos = pos or go.get_position() + n.vec(0, Map.sq * 3 / 2 + 3)
+
+	p_pos = p_pos or pos.pos() + n.vec(0, Map.sq * 3 / 2 + 3)
+
 	prm = prm or {}
-	local id = Sp.cre(Cls, pos, prm, scl)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm, scl)
+	return t_id
 end
 
 -- script method

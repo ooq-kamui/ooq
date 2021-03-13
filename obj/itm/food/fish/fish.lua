@@ -5,8 +5,7 @@ Fish = {
 	name_idx_max = 153,
 }
 Fish.cls = "fish"
--- Fish.fac = Fish.cls.."Fac"
-Fish.Fac = Obj.fac..Fish.cls
+Fish.fac = Obj.fac..Fish.cls
 Cls.add(Fish)
 
 -- ar.idx_2_ha(Fish.gold, "fish")

@@ -6,7 +6,7 @@ Wood = {
 
 }
 Wood.cls = "wood"
-Wood.Fac = Obj.fac..Wood.cls
+Wood.fac = Obj.fac..Wood.cls
 Cls.add(Wood)
 
 -- ar.idx_2_ha(Wood.gold, "wood")

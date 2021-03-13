@@ -24,9 +24,9 @@ ha.add_by_ar(Anml.animal)
 
 -- static
 
-function Anml.cre(pos, prm)
+function Anml.cre(p_pos, prm)
 	
-	pos = pos or go.get_position()
+	p_pos = p_pos or pos.pos()
 
 	prm = prm or {}
 	
@@ -46,7 +46,9 @@ function Anml.cre(pos, prm)
 	local t_url = url._(Anml.fac, prm.nameHa)
 	ar.key___(prm)
 	-- log.pp("animal cre" .. t_url, prm)
-	local t_id = factory.create(t_url, pos, nil, prm)
+	local t_id = fac.cre(t_url, p_pos, nil, prm)
+	-- local t_id = factory.create(t_url, p_pos, nil, prm)
+
 	return t_id
 end
 

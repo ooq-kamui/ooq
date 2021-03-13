@@ -6,8 +6,7 @@ Flpy ={
 	z = 0.1,
 }
 Flpy.cls = "flpy"
--- Flpy.fac = "kaguFac"
-Flpy.Fac = Obj.fac..Flpy.cls
+Flpy.fac = Obj.fac..Flpy.cls
 Cls.add(Flpy)
 
 -- static

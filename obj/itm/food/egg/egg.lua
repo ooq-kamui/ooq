@@ -5,7 +5,7 @@ Egg = {
 	name_idx_max = 3,
 }
 Egg.cls = "egg"
-Egg.Fac = Obj.fac..Egg.cls
+Egg.fac = Obj.fac..Egg.cls
 Cls.add(Egg)
 
 -- ar.idx_2_ha(Egg.gold, "egg")

@@ -7,7 +7,7 @@ Seed = {
 	foot_dst_i = 4,
 }
 Seed.cls = "seed"
-Seed.Fac = Obj.fac..Seed.cls
+Seed.fac = Obj.fac..Seed.cls
 Cls.add(Seed)
 
 -- ar.idx_2_ha(Seed.gold, "seed")

@@ -6,7 +6,7 @@ Mshrm = {
 	foot_dst_i = 30,
 }
 Mshrm.cls = "mshrm"
-Mshrm.Fac = Obj.fac..Mshrm.cls
+Mshrm.fac = Obj.fac..Mshrm.cls
 Cls.add(Mshrm)
 
 -- static

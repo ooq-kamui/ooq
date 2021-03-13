@@ -6,8 +6,7 @@ Fire = {
 	z = 0.4,
 }
 Fire.cls = "fire"
-Fire.fac = Fire.cls.."Fac"
-Fire.Fac = Obj.fac..Fire.cls
+Fire.fac = Obj.fac..Fire.cls
 Cls.add(Fire)
 
 -- static

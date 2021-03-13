@@ -6,7 +6,7 @@ Veget = {
 
 }
 Veget.cls = "veget"
-Veget.Fac = Obj.fac..Veget.cls
+Veget.fac = Obj.fac..Veget.cls
 Cls.add(Veget)
 
 -- ar.idx_2_ha(Veget.gold, "veget")

@@ -5,7 +5,7 @@ Warp = {
 	name_idx_max = 1,
 }
 Warp.cls = "warp"
-Warp.Fac = Obj.fac..Warp.cls
+Warp.fac = Obj.fac..Warp.cls
 Cls.add(Warp)
 
 function Warp.cre(pos, prm)

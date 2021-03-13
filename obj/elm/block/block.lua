@@ -7,8 +7,7 @@ Block = {
 Block.name_idx_max = #Block.tile
 
 Block.cls = "block"
-Block.fac = Block.cls.."Fac"
-Block.Fac = Obj.fac..Block.cls
+Block.fac = Obj.fac..Block.cls
 Cls.add(Block)
 
 Block.gold = {}

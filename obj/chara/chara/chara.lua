@@ -26,8 +26,7 @@ Chara = {
 	presentabl = {"flower","dish","fruit","dairy","egg","veget",}, -- cls
 }
 Chara.cls = "chara"
-Chara.fac = "/objFac#chara"
-Chara.Fac = Obj.fac..Chara.cls
+Chara.fac = Obj.fac..Chara.cls
 Cls.add(Chara, Chara.chara)
 
 -- static
@@ -57,7 +56,8 @@ function Chara.cre(p_pos, name)
 
 	-- log.pp("Chara cre prm", prm)
 	ar.key___(prm)
-	local t_id = factory.create("/objFac/"..Chara.Fac, p_pos, nil, prm)
+	local t_id = fac.cre("/objFac/"..Chara.fac, p_pos, nil, prm)
+	-- local t_id = factory.create("/objFac/"..Chara.Fac, p_pos, nil, prm)
 	
 	Map.add_chara(name)
 	return t_id

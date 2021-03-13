@@ -5,8 +5,7 @@ Phantom = {
 	name_idx_max = 1,
 }
 Phantom.cls = "phantom"
-Phantom.fac = Phantom.cls.."Fac"
-Phantom.Fac = Obj.fac..Phantom.cls
+Phantom.fac = Obj.fac..Phantom.cls
 Cls.add(Phantom)
 
 -- static

@@ -6,8 +6,7 @@ Dairy = {
 	name_idx_max = 8,
 }
 Dairy.cls = "dairy"
--- Dairy.fac = Dairy.cls.."Fac"
-Dairy.Fac = Obj.fac..Dairy.cls
+Dairy.fac = Obj.fac..Dairy.cls
 Cls.add(Dairy)
 
 -- ar.idx_2_ha(Dairy.gold, "dairy")
