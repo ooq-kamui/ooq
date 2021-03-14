@@ -183,7 +183,6 @@ end
 function Sp.pos_w(_s)
 
 	local pos = id.pos_w(_s._id)
-	-- local pos = go.get_world_position(_s._id)
 
 	return pos
 end
@@ -320,10 +319,10 @@ function Sp.crct_vec(_s, p_vec)
 	
 	p_vec = _s:crct_vec_block(p_vec) -- better -> crct_vec_tile_block
 	
-	-- crrct clmb
+	-- crct clmb
 	p_vec = _s:crct_clmb(p_vec)
 	
-	-- crrct inside map
+	-- crct inside map
 	p_vec = _s:crct_inside_map(p_vec)
 	
 	return p_vec
@@ -333,13 +332,13 @@ function Sp.crct_vec_block(_s, p_vec)
 	
 	if ha.eq(_s._clsHa, "fire") then return p_vec end
 	
-	-- crrct side block
+	-- crct side block
 	p_vec = _s:crct_side(p_vec)
 	
-	-- crrct foot block
+	-- crct foot block
 	p_vec = _s:crct_foot(p_vec)
 	
-	-- crrct head block
+	-- crct head block
 	p_vec = _s:crct_head(p_vec)
 	
 	return p_vec
@@ -347,11 +346,12 @@ end
 
 function Sp.crct_foot(_s, p_vec)
 	
-	local cf_pos_i    = _s:foot_i_pos()
-	local nf_pos_i    = cf_pos_i + p_vec
+	local nf_pos_i    = _s:foot_i_pos() + p_vec
 	local nf_pos_i_up = nf_pos_i + n.vec(0, Map.sq)
 	
-	if not (_s:is_block(nf_pos_i) and not _s:is_block(nf_pos_i_up)) then return p_vec end
+	if not (_s:is_block(nf_pos_i) and not _s:is_block(nf_pos_i_up)) then
+		return p_vec
+	end
 
 	p_vec.y = map.pos_by_pos(nf_pos_i).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
 	return p_vec
@@ -369,30 +369,87 @@ end
 
 function Sp.crct_side(_s, p_vec)
 	
-	local n_side_l_is_block = _s:side_is_block("l", p_vec)
-	local n_side_r_is_block = _s:side_is_block("r", p_vec)
+	local side_l_nxt_is_block = _s:side_is_block("l", p_vec)
+	local side_r_nxt_is_block = _s:side_is_block("r", p_vec)
 	
-	if (not n_side_l_is_block) and (not n_side_r_is_block) then return p_vec end
-	if (n_side_l_is_block) and (n_side_r_is_block) then return p_vec end
+	if (not side_l_nxt_is_block) and (not side_r_nxt_is_block) then return p_vec end
+	if (    side_l_nxt_is_block) and (    side_r_nxt_is_block) then return p_vec end
 
 	local crct_pos_x
 	local df_x = Map.sqh + _s._w / 2
-	if     n_side_l_is_block then
-		crct_pos_x = map.pos_by_pos(_s:side_pos("l", p_vec) + n.vec(-1,0)).x + df_x
+
+	if     side_l_nxt_is_block then
+		crct_pos_x = map.pos_by_pos(_s:side_l_pos(p_vec) + n.vec(-1,0)).x + df_x
 		
-	elseif n_side_r_is_block then
-		crct_pos_x = map.pos_by_pos(_s:side_pos("r", p_vec)).x - df_x
+	elseif side_r_nxt_is_block then
+		crct_pos_x = map.pos_by_pos(_s:side_r_pos(p_vec)              ).x - df_x
 	end
+
 	p_vec.x = crct_pos_x - _s:pos().x
 	return p_vec
 end
 
-function Sp.side_pos(_s, dir_h, p_vec)
-	p_vec = p_vec or n.vec()
-	local df_x = _s._w / 2
-	if dir_h == "l" then df_x = - df_x end
-	local side_pos = _s:pos() + p_vec + n.vec(df_x, 0)
-	return side_pos
+function Sp.side_l_pos(_s, p_vec)
+
+	if _s._side_l_pos_flg then
+		if p_vec then
+			return _s._side_l_pos + p_vec
+		else
+			return _s._side_l_pos
+		end
+	end
+
+	_s:side_l_pos__()
+	_s._side_l_pos_flg = _.t
+
+	if p_vec then
+		return _s._side_l_pos + p_vec
+	else
+		return _s._side_l_pos
+	end
+end
+
+function Sp.side_r_pos(_s, p_vec)
+
+	if _s._side_r_pos_flg then
+		if p_vec then
+			return _s._side_r_pos + p_vec
+		else
+			return _s._side_r_pos
+		end
+	end
+
+	_s:side_r_pos__()
+	_s._side_r_pos_flg = _.t
+
+	if p_vec then
+		return _s._side_r_pos + p_vec
+	else
+		return _s._side_r_pos
+	end
+end
+
+function Sp.side_l_pos__(_s)
+
+	local c_pos = _s:pos()
+	vec.xy__(_s._side_r_pos, c_pos.x - _s._w/2, c_pos.y)
+end
+
+function Sp.side_r_pos__(_s)
+
+	local c_pos = _s:pos()
+	vec.xy__(_s._side_r_pos, c_pos.x + _s._w/2, c_pos.y)
+end
+
+function Sp.side_pos(_s, dir_h)
+
+	if     dir_h == "l" then
+		return _s:side_l_pos()
+	elseif dir_h == "r" then
+		return _s:side_r_pos()
+	else
+		log._("sp side_pos dir_h..??", dir_h)
+	end
 end
 
 function Sp.crct_clmb(_s, p_vec)
@@ -471,8 +528,6 @@ end
 
 function Sp.vec_tile__(_s, dt)
 	
-	-- local foot_i_tile = _s:foot_i_tile()
-
 	if Tile.is_elv( _s:foot_i_tile() ) then
 		vec.xy__(_s._vec_tile, 0, 1)
 	else
@@ -489,16 +544,16 @@ function Sp.vec_grv__(_s, dt)
 	if     _s:is_on_obj_block() then
 		_s:vec_grv__clr()
 
-	elseif _s._is_fly then
+	elseif _s._is_fly       then -- flyable only
 		_s:vec_grv__clr()
 	
-	elseif _s._hld_id then
+	elseif _s._hld_id       then -- holdable only
 		_s:vec_grv__clr()
 	
-	elseif _s._kitchen_id then
+	elseif _s._kitchen_id   then -- food only
 		_s:vec_grv__clr()
 	
-	elseif _s._bear_tree_id then
+	elseif _s._bear_tree_id then -- fruit only
 		_s:vec_grv__clr()
 		
 	elseif Tile.is_elv(  foot_i_tile)
@@ -509,9 +564,14 @@ function Sp.vec_grv__(_s, dt)
 
 		_s:vec_grv__clr()
 	else
-		_s._accl:speed__add_accl()
-		_s._vec_grv = _s._accl:speed()
+		_s:vec_grv__grv()
 	end
+end
+
+function Sp.vec_grv__grv(_s)
+
+	_s._accl:speed__add_accl()
+	_s._vec_grv = _s._accl:speed()
 end
 
 function Sp.vec_grv__clr(_s)
@@ -549,6 +609,7 @@ end
 function Sp.side_is_block(_s, dir_h, p_vec)
 	
 	p_vec = p_vec or n.vec()
+
 	local t_pos = _s:side_pos(dir_h) + p_vec
 	if dir_h == "l" then t_pos.x = t_pos.x - 1 end
 	
@@ -666,8 +727,20 @@ function Sp.obj_arund(_s, clsHa)
 end
 
 function Sp.tilepos_d(_s)
-	local tilepos_d = _s:tilepos() + n.vec(0, -1)
-	return tilepos_d
+
+	if _s._tilepos_d_flg then return _s._tilepos_d end
+
+	_s:tilepos_d__()
+	_s._tilepos_d_flg = _.t
+
+	-- return tilepos_d
+	return _s._tilepos_d
+end
+
+function Sp.tilepos_d__(_s)
+
+	local t_tilepos = _s:tilepos()
+	vec.xy__(_s._tilepos_d, t_tilepos.x, t_tilepos.y - 1)
 end
 
 function Sp.obj_d(_s, clsHa)
@@ -678,16 +751,16 @@ end
 function Sp.mapobj__(_s)
 	-- log._("sp mapobj__")
 	
-	local tilepos = _s:tilepos()
+	local t_tilepos = _s:tilepos()
 	
-	Mapobj.__(tilepos, _s._clsHa, _s._id)
+	Mapobj.__(t_tilepos, _s._clsHa, _s._id)
 	
-	if _s.tilepos_pre
-	and ((tilepos.x ~= _s.tilepos_pre.x) or (tilepos.y ~= _s.tilepos_pre.y)) then
-		Mapobj.del(_s.tilepos_pre, _s._clsHa, _s._id)
+	if _s._tilepos_pre
+	and ((t_tilepos.x ~= _s._tilepos_pre.x) or (t_tilepos.y ~= _s._tilepos_pre.y)) then
+		Mapobj.del(_s._tilepos_pre, _s._clsHa, _s._id)
 	end
 	
-	_s.tilepos_pre = tilepos
+	_s._tilepos_pre = t_tilepos
 end
 
 function Sp.is_on_obj_block(_s)
@@ -730,19 +803,32 @@ function Sp.tile__(_s, p_tile, p_pos)
 end
 
 function Sp.tilepos(_s)
-	return map.pos_2_tilepos(_s:pos())
+
+	if _s._tilepos_flg then return _s._tilepos end
+
+	_s:tilepos__()
+	_s._tilepos_flg = _.t
+
+	return _s._tilepos
+end
+
+function Sp.tilepos__(_s)
+
+	_s._tilepos = map.pos_2_tilepos( _s:pos() )
 end
 
 function Sp.on_clsn(_s)
 	
 	local on_id, on_cls = nil, nil
-	local o_obj, o_pos
 	local t_clss = {"chara"} -- {"chara", "block"}
+	local clsn_pos
+	-- local o_obj, o_pos
 	
 	for i, t_cls in pairs(t_clss) do
 		for j, clsn_id in pairs(_s._clsn[t_cls]) do
 			clsn_pos = id.pos(clsn_id)
 			if t_cls == "block" and ar.inHa(clsn_id, _s._hld) then
+				-- nothing
 			else
 				if _s:pos().y > clsn_pos.y + Map.sq*3/4 then
 					on_id = clsn_id
@@ -881,7 +967,7 @@ end
 function Sp.dir_h__(_s, dir_h)
 	-- log._("Sp.dir_h__", dir_h)
 	
-	_s._dir_h = ha._(dir_h)
+	_s._dir_h_Ha = ha._(dir_h)
 	_s:flip_h__()
 end
 
@@ -913,9 +999,9 @@ function Sp.flip_h__(_s, dir_h)
 	if dir_h then _s:dir_h__(dir_h) end
 	
 	local val = _.f
-	if     ha.eq(_s._dir_h, "l") then
+	if     ha.eq(_s._dir_h_Ha, "l") then
 		val = _.f
-	elseif ha.eq(_s._dir_h, "r") then
+	elseif ha.eq(_s._dir_h_Ha, "r") then
 		val = _.t
 	end
 	sprite.set_hflip("#sprite", val)
@@ -960,6 +1046,12 @@ function Sp.pos__init(_s)
 	_s._foot_o_pos = n.vec()
 	_s._head_o_pos = n.vec()
 
+	_s._side_l_pos = n.vec()
+	_s._side_r_pos = n.vec()
+
+	_s._tilepos    = n.vec()
+	_s._tilepos_d  = n.vec()
+
 	_s:pos_flg__f()
 end
 
@@ -972,5 +1064,11 @@ function Sp.pos_flg__f(_s)
 	_s._foot_i_pos_flg = _.f
 	_s._foot_o_pos_flg = _.f
 	_s._head_o_pos_flg = _.f
+
+	_s._side_l_pos_flg = _.f
+	_s._side_r_pos_flg = _.f
+
+	_s._tilepos_flg    = _.f
+	_s._tilepos_d_flg  = _.f
 end
 

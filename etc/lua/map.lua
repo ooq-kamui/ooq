@@ -10,6 +10,7 @@ function map.pos_by_tilepos(tilepos)
 end
 
 function map.pos_2_tilepos(p_pos)
+
 	local x = math.floor((p_pos.x + Map.sq) / Map.sq)
 	local y = math.floor((p_pos.y + Map.sq) / Map.sq)
 	local tilepos = n.vec(x, y)

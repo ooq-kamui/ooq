@@ -6,7 +6,7 @@ Plychara = {
 	
 	speed     = 4.5,
 	speed_jmp = 1.5, -- vec.y * ?
-	jmp_h_max = Map.sq + 1,
+	jmp_h_max = Map.sq + 2, -- 1,
 
 	act_intrvl_time = 5,
 	w = 20,
@@ -54,20 +54,19 @@ function Plychara.init(_s)
 	extend._(_s, Plychara)
 	
 	_s._speed = Plychara.speed
-	_s._dir_h = ha._("l")
+	_s._dir_h_Ha = ha._("l")
 	_s._dir_v = ""
 	
-	_s._moving_h = _.f
-	_s._moving_v = _.f
-	_s._clmb_d   = _.f
-	_s._clmb_u   = _.f
-	_s._is_jmping = _.f
-	_s._jmp_h_t   = 0
+	_s._is_moving_h = _.f
+	_s._is_moving_v = _.f
+	_s._is_clmb_d   = _.f
+	_s._is_clmb_u   = _.f
 
-	_s._dive = _.f
+	_s._is_jmp_start = _.f
+
+	_s._is_dive_start = _.f
 	
-	_s._accl    = n.Accl()
-	_s._vec_grv = n.vec()
+	_s._vec_mv_dir = n.vec()
 
 	_s._vec_on_chara = n.vec()
 
@@ -101,55 +100,13 @@ end
 function Plychara.upd(_s, dt)
 	-- log._("plychara upd start")
 	
-	local dir = n.vec()
-	local foot_o_tile = _s:foot_o_tile()
-	local foot_i_tile = _s:foot_i_tile()
+	_s:vec_mv__(dt)
 	
+	_s:vec_tile__(dt)
+
 	-- vec on_chara
 	local is_on_chara
 	is_on_chara, _s._vec_on_chara = _s:vec_on_clsn(dt)
-	
-	if _s._moving_h then
-		dir.x = 1
-		if ha.eq(_s._dir_h, "l") then dir.x = - dir.x end
-	end
-	
-	-- v move
-	-- jmping
-	if     _s._is_jmping then
-
-		if     _s:head_o_is_block() then
-			_s:jmp__off()
-
-		elseif _s:is_jmp_h_t() then
-			_s:jmp__off()
-		else
-			dir.y = 1
-			-- dir.y = 1.5
-		end
-
-	elseif _s._moving_v then
-
-		if     _s._dir_v == "u" 
-		   and Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() then
-
-			dir.y =  1
-			_s._clmb_u = _.t
-
-		elseif _s._dir_v == "d"
-		   -- and not _s._is_jmping
-		   and (Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile)) then
-
-			dir.y = -1
-			_s._clmb_d = _.t
-		end
-	end
-	dir = _s:dir__crct_hyprspc(dir)
-	
-	_s._vec_mv = dir * _s._speed
-	if _s._is_jmping then _s._vec_mv.y = _s._vec_mv.y * Plychara.speed_jmp end
-	
-	_s:vec_tile__(dt)
 
 	-- vec grv
 	if is_on_chara then
@@ -175,47 +132,57 @@ function Plychara.upd(_s, dt)
 	-- log._("plychara upd end")
 end
 
---[[
-function Plychara.vec_grv__(_s, dt)
-	-- log._("sp vec_grv__ speed", _s._accl._speed)
+function Plychara.vec_mv__(_s, dt)
+
+	vec.xy__clr(_s._vec_mv_dir)
+	
+	-- move h
+
+	if _s._is_moving_h then
+
+		_s._vec_mv_dir.x = 1
+
+		if ha.eq(_s._dir_h_Ha, "l") then
+			_s._vec_mv_dir.x = - _s._vec_mv_dir.x
+		end
+	end
+	
+	-- move v
 
 	local foot_i_tile = _s:foot_i_tile()
-	local foot_o_tile = _s:foot_o_tile()
-	
-	if     _s:is_on_obj_block() then
-		_s:vec_grv__clr()
+	-- local foot_o_tile = _s:foot_o_tile()
 
-	elseif _s._is_fly then
-		_s:vec_grv__clr()
-	
-	elseif _s._hld_id then
-		_s:vec_grv__clr()
-	
-	elseif _s._kitchen_id then
-		_s:vec_grv__clr()
-	
-	elseif _s._bear_tree_id then
-		_s:vec_grv__clr()
-		
-	elseif Tile.is_elv(  foot_i_tile)
-		or Tile.is_elv(  foot_o_tile)
-		or Tile.is_clmb( foot_i_tile)
-		or Tile.is_clmb( foot_o_tile)
-		or Tile.is_block(foot_o_tile) then
+	if _s._is_moving_v then
 
-		_s:vec_grv__clr()
+		if     _s._dir_v == "u" 
+		and    ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() )
+		then
+			_s._vec_mv_dir.y =   1
+			_s._is_clmb_u    = _.t
+
+		elseif _s._dir_v == "d"
+		and    ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb( _s:foot_o_tile() ) )
+		then
+			_s._vec_mv_dir.y = - 1
+			_s._is_clmb_d    = _.t
+		end
+	end
+
+	_s._vec_mv_dir = _s:dir__crct_hyprspc(_s._vec_mv_dir)
+	_s._vec_mv = _s._vec_mv_dir * _s._speed
+end
+
+function Plychara.vec_grv__(_s, dt)
+	-- log._("plychara vec_grv", _s._is_jmp_start)
+
+	if _s._is_jmp_start then
+
+		_s:vec_grv__grv()
+		_s._is_jmp_start = _.f
 	else
-		_s._accl:speed__add_accl()
-		_s._vec_grv = _s._accl:speed()
+		Sp.vec_grv__(_s, dt)
 	end
 end
---]]
-
---[[
-function Plychara.vec_grv__clr(_s)
-	vec.xy__clr(_s._vec_grv)
-end
---]]
 
 -- jmp
 
@@ -225,12 +192,13 @@ function Plychara.is_jmpabl(_s)
 
 	local foot_o_tile = _s:foot_o_tile()
 	local foot_i_tile = _s:foot_i_tile()
+
 	-- local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
 	local is_on_chara = _s:vec_on_clsn(dt)
 	
 	if Tile.is_block(foot_o_tile)
 	or is_on_chara
-	or Tile.is_clmb(foot_o_tile)
+	or Tile.is_clmb( foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
 	or _s:is_on_obj_block()
 	-- or _s:on_by_mapobj()
@@ -243,33 +211,16 @@ end
 
 function Plychara.jmp__start(_s)
 
-	if _s._is_jmping then return end
-
 	if not _s:is_jmpabl() then return end
 
-	_s._is_jmping = _.t
-	_s._jmp_h_t   = _s:pos().y + Plychara.jmp_h_max
+	local dst_y = Plychara.jmp_h_max
+
+	local speed = accl.speed_by_dst(dst_y)
+
+	_s._accl:speed_y__(speed)
+	_s._is_jmp_start = _.t
 
 	Se.pst_ply("jmp001")
-	
-	-- Msg.s("jmp") -- msg debug
-end
-
-function Plychara.is_jmp_h_t(_s)
-
-	local ret = _.f
-
-	if _s:pos().y >= _s._jmp_h_t then
-		ret = _.t
-	end
-
-	return ret
-end
-
-function Plychara.jmp__off(_s)
-
-	_s._is_jmping = _.f
-	_s._jmp_h_t   = 0
 end
 
 function Plychara.dir__crct_hyprspc(_s, dir)
@@ -305,7 +256,7 @@ function Plychara.ox_dstrct__mv(_s)
 	
 	if not is_dstrct_mv then return is_dstrct_mv end
 	
-	pst.scrpt(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h})
+	pst.scrpt(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h_Ha})
 	
 	return is_dstrct_mv
 end
@@ -345,11 +296,9 @@ function Plychara.dstrct_mv_rng_pos(_s)
 	return _s._dstrct_mv_rng_pos
 end
 
-function Plychara.crct_inside_map(_s, vec)
-
-	-- nothing ???
-	
-	return vec
+function Plychara.crct_inside_map(_s, p_vec)
+	-- nothing
+	return p_vec
 end
 
 function Plychara.vec_on_clsn(_s, dt)
@@ -358,7 +307,8 @@ function Plychara.vec_on_clsn(_s, dt)
 	local on_pos
 	local on_id, o_cls = _s:on_clsn()
 	
-	if on_id and not _s._is_jmping and not _s._dive then
+	if on_id and not _s._is_dive_start then
+
 		if o_cls == ha._("chara") then
 			on_pos = id.pos(on_id) + n.vec(0, Map.sq)
 		end
@@ -442,10 +392,10 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 
 	if ar.in_(prm.dir, u.dir_h) then
 		
-		_s._moving_h = _.t
+		_s._is_moving_h = _.t
 		
 		-- turn
-		if not ha.eq(_s._dir_h, prm.dir) then
+		if not ha.eq(_s._dir_h_Ha, prm.dir) then
 			_s._turn_time = 0 
 
 			local val
@@ -456,16 +406,16 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 		end
 		
 		-- dive
-		if prm.dive then _s._dive = _.t end
+		if prm.dive then _s._is_dive_start = _.t end
 		
-		_s._dir_h = ha._(prm.dir) -- new
+		_s._dir_h_Ha = ha._(prm.dir) -- new
 
 	elseif prm.dir == "u" then
-		_s._moving_v = _.t
+		_s._is_moving_v = _.t
 		_s._dir_v = "u"
 
 	elseif prm.dir == "d" then
-		_s._moving_v = _.t
+		_s._is_moving_v = _.t
 		_s._dir_v = "d"
 	end
 end
@@ -557,9 +507,11 @@ function Plychara.pos_fw(_s, mlt)
 	
 	local t_pos = _s:pos()
 	local df  = n.vec(Map.sq * mlt, 0)
-	if     ha.eq(_s._dir_h, "l") then
+
+	if     ha.eq(_s._dir_h_Ha, "l") then
 		t_pos = t_pos - df
-	elseif ha.eq(_s._dir_h, "r") then
+
+	elseif ha.eq(_s._dir_h_Ha, "r") then
 		t_pos = t_pos + df
 	end
 	return t_pos
@@ -572,11 +524,11 @@ end
 
 function Plychara.act__clr(_s)
 
-	_s._moving_h = _.f
-	_s._moving_v = _.f
-	_s._clmb_d   = _.f
-	_s._clmb_u   = _.f
-	_s._dive     = _.f
+	_s._is_moving_h = _.f
+	_s._is_moving_v = _.f
+	_s._is_clmb_d   = _.f
+	_s._is_clmb_u   = _.f
+	_s._is_dive_start = _.f
 end
 
 -- clsn
@@ -646,9 +598,9 @@ function Plychara.is_hld(_s)
 
 	if cnt > 0 then ret = _.t end
 
-	local r_id = _s._hld[cnt]
+	local t_id = _s._hld[cnt]
 
-	return ret, r_id
+	return ret, t_id
 end
 
 function Plychara.hld_cnt(_s)
@@ -662,8 +614,8 @@ function Plychara.hld_id(_s)
 
 	if cnt <= 0 then return end
 	
-	local r_id = _s._hld[cnt]
-	return r_id
+	local t_id = _s._hld[cnt]
+	return t_id
 end
 
 function Plychara.hld__add(_s, id)
@@ -818,21 +770,21 @@ end
 
 function Plychara.hld_tile_side(_s)
 
-	local dir_h = ha.de(_s._dir_h)
-	local side_is_block, tile
-	side_is_block, tile = _s:side_is_block(dir_h)
-	-- log._("hld_tile_side ", side_is_block, tile)
+	local dir_h = ha.de(_s._dir_h_Ha)
+
+	local side_is_block, t_tile = _s:side_is_block(dir_h)
+	-- log._("hld_tile_side ", side_is_block, t_tile)
 	
-	if not side_is_block             then return end
-	if not Magic.is_magic_vnsh(tile) then return end
+	if not side_is_block               then return end
+	if not Magic.is_magic_vnsh(t_tile) then return end
 	
 	-- cre block obj
-	local t_id = Block.cre(nil, tile)
+	local t_id = Block.cre(nil, t_tile)
 	local hld_idx = _s:hld__o(t_id)
 
 	-- tile emp
 	local side_pos = _s:side_pos(dir_h)
-	if dir_h == "l" then side_pos = side_pos + n.vec(-1, 0) end
+	if dir_h == "l" then vec.xy__add(side_pos, -1, 0) end
 	_s:tile__(Tile.emp, side_pos)
 end
 
@@ -848,4 +800,25 @@ function Plychara.to_door(_s, door_id)
 	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
+
+--[[
+function Plychara.jmp__off(_s)
+
+	_s._is_jmping = _.f
+	_s._jmp_h_t   = 0
+end
+--]]
+
+--[[
+function Plychara.is_jmp_h_t(_s)
+
+	local ret = _.f
+
+	if _s:pos().y >= _s._jmp_h_t then
+		ret = _.t
+	end
+
+	return ret
+end
+--]]
 

@@ -61,7 +61,6 @@ function Cloud.act_intrvl(_s, dt)
 	end
 
 	_s:moving_prp__rnd()
-	-- log._("cloud _dir_h", _s._dir_h)
 end
 
 function Cloud.on_msg(_s, msg_id, prm, sender)

@@ -7,6 +7,8 @@ function n.vec(x, y, z)   -- alias
 end
 
 function vec.new(x, y, z)
+	log._("vec.new")
+
 	x = x or 0
 	y = y or 0
 	z = z or 0
@@ -51,9 +53,9 @@ function vec.xy__(p_vec, p_x, p_y)
 	p_vec.y = p_y
 end
 
---[[
-function vec.clone(p_vec) -- old
-	return vec.cp(p_vec)
+function vec.xy__add(p_vec, p_x, p_y)
+
+	p_vec.x = p_vec.x + p_x
+	p_vec.y = p_vec.y + p_y
 end
---]]
 

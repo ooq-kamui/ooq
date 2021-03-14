@@ -6,13 +6,12 @@ Livingmove = {}
 
 function Livingmove.init(_s)
 	
-	_s:dir_h__rnd()
+	_s:dir_h__rnd() -- init
 	_s._dir_v = ""
 	_s._is_moving = _.f
 	_s._speed  = _s:Cls().speed
 
 	_s._status = "live" -- use not ?
-
 end
 
 --- method
@@ -81,8 +80,8 @@ end
 
 function Livingmove.vec_mv_x__(_s)
 
-	if (_s._dir_h == "l" and _s:side_is_block("l"))
-	or (_s._dir_h == "r" and _s:side_is_block("r"))
+	if (_s._dir_h_Ha == "l" and _s:side_is_block("l"))
+	or (_s._dir_h_Ha == "r" and _s:side_is_block("r"))
 	then
 		return
 	end
@@ -90,7 +89,7 @@ function Livingmove.vec_mv_x__(_s)
 
 	local diffx = _s._speed
 
-	if ha.eq(_s._dir_h, "l") then diffx = - diffx end
+	if ha.eq(_s._dir_h_Ha, "l") then diffx = - diffx end
 
 	-- _s._vec_mv.x = _s._vec_mv.x + diffx
 	_s._vec_mv.x = diffx

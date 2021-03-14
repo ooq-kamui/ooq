@@ -59,6 +59,7 @@ require("assets/etc/sound/se/se")
 require("assets/obj/obj/sp")
 require("assets/obj/obj/hldabl")
 require("assets/obj/obj/obj")
+require("assets/obj/obj/accl")
 
 require("assets/obj/anm/anm")
 require("assets/obj/anm/es")

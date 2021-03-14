@@ -256,7 +256,7 @@ function Cmr.upd_target_pos_x_df(_s, dt, z)
 
 	if id.prp(_s:plychara_id(), "_turn_time") < 4 then return 0 end
 
-	if id.prp(_s:plychara_id(), "_dir_h") == ha._("l") then
+	if id.prp(_s:plychara_id(), "_dir_h_Ha") == ha._("l") then
 		x_df = - x_df
 	end
 	return x_df

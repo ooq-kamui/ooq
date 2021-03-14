@@ -13,7 +13,7 @@ go.property("_z", 0.2)
 go.property("_is_fly", false)
 
 -- use by camera
-go.property("_dir_h", hash("l"))
+go.property("_dir_h_Ha", hash("l"))
 go.property("_turn_time", 0)
 
 function init(_s)

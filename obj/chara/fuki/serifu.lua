@@ -32,6 +32,7 @@ Serifu = {
 		{len =  6, txt = "いいのかしら"},
 		{len =  5, txt = "おめでとう"},
 		
+		{len =  3, txt = "すごい"},
 		{len =  4, txt = "すっごい"},
 
 		{len =  6, txt = "かたじけない"},
@@ -111,6 +112,7 @@ Serifu = {
 		-- personal pronoun
 		{len =  5, txt = "あたしたち"},
 		{len =  3, txt = "わたし"},
+
 		-- interjection
 		{len =  4, txt = "ああん！"},
 		{len =  3, txt = "いやん"},
@@ -181,25 +183,31 @@ Serifu = {
 		{len =  7, txt = "むにゃ むにゃ"},
 		{len =  3, txt = "ねむい"},
 		{len =  5, txt = "りらっくす"},
+
 		-- like
 		{len =  4, txt = "なかよし"},
+
 		-- love
 		{len = 11, txt = "ずーっと いっしょだよ"},
 		{len =  4, txt = "だいすき"},
+
 		-- hate
 		{len =  3, txt = "じゃま"},
 		{len =  7, txt = "じゃましないで"},
+		{len =  3, txt = "のろい"},
 		{len =  8, txt = "のろいを かけた"},
 		{len =  8, txt = "のろいを かける"},
 		{len =  2, txt = "ばか"},
 		{len =  3, txt = "きらい"},
 		{len =  4, txt = "しつこい"},
+
 		-- fin
 		{len =  4, txt = "やめない"},
 		{len =  5, txt = "やめないよ"},
 		{len =  3, txt = "やめた"},
 		{len =  6, txt = "もう やめた"},
 		{len =  6, txt = "もう おわり"},
+
 		-- fight
 		{len =  7, txt = "あたし やるわ"},
 		{len =  5, txt = "まけないよ"},
@@ -223,6 +231,7 @@ Serifu = {
 		{len =  8, txt = "すきなようにして"},
 		{len =  5, txt = "これまでか"},
 		{len =  2, txt = "まけ"},
+
 		-- yes
 		{len =  3, txt = "いいよ"},
 		{len =  4, txt = "そうだよ"},
@@ -232,12 +241,14 @@ Serifu = {
 		{len =  2, txt = "やだ"},
 		{len =  3, txt = "いいえ"},
 		{len =  4, txt = "ちがうよ"},
+
 		-- weather
 		{len =  4, txt = "すずしい"},
 		{len =  2, txt = "あめ"},
 		{len =  3, txt = "やんだ"},
 		{len =  3, txt = "あつい"},
 		{len =  3, txt = "さむい"},
+
 		-- color
 		{len =  4, txt = "とうめい"},
 
@@ -264,17 +275,18 @@ Serifu = {
 		{len =  4, txt = "わからん"},
 		{len =  4, txt = "わからん"},
 		
-		{len =  4, txt = "きがする"},
-		{len =  8, txt = "そんなはず ない"},
-
 		{len =  4, txt = "しってる"},
 		{len =  5, txt = "しってる?"},
 
-		-- question
-		{len =  5, txt = "どうだろう"},
 		{len =  4, txt = "しらない"},
 		{len =  5, txt = "しらないよ"},
 		{len =  7, txt = "もう しらない"},
+
+		{len =  4, txt = "きがする"},
+		{len =  8, txt = "そんなはず ない"},
+
+		-- question
+		{len =  5, txt = "どうだろう"},
 		{len =  5, txt = "もしかして"},
 		{len =  6, txt = "もしかすると"},
 		{len =  6, txt = "もしかしたら"},
@@ -291,6 +303,7 @@ Serifu = {
 		{len =  4, txt = "なにゆえ"},
 		{len =  4, txt = "どうして"},
 		{len =  4, txt = "なるほど"},
+
 		-- story
 		{len =  4, txt = "おはなし"},
 
@@ -298,9 +311,10 @@ Serifu = {
 		{len =  3, txt = "あした"},
 		{len =  3, txt = "きのう"},
 
-		-- greeting 
+		-- greeting
 		{len =  6, txt = "はじめまして"},
-		-- greeting 
+
+		-- greeting bye
 		{len =  6, txt = "また あした"},
 		{len =  4, txt = "じゃあね"},
 

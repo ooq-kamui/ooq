@@ -71,7 +71,7 @@ function Sys.init(_s)
 	_s._cmr_id = Cmr.cre()
 
 	_s._inp_id = Inp.cre()
-	log._("sys init inp_id", _s._inp_id)
+	-- log._("sys init inp_id", _s._inp_id)
 	-- Inp_gui.cre()
 
 	_s:title()
