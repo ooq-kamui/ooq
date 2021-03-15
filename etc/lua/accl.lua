@@ -24,10 +24,10 @@ function accl.speed_by_dst(p_dst, p_accl)
 
 	if not p_dst then return end
 
-	p_accl  = p_accl or - Accl.grv_dflt.y
+	p_accl = p_accl or - Accl.grv_dflt.y
 
-	local t_speed = math.sqrt( 2 * p_dst * p_accl )
-	-- log._("accl.speed_by_dst", t_speed)
+	local t_speed = math.sqrt( 2 * p_accl  * p_dst )
+	-- log._("accl.speed_by_dst", p_dst, t_speed)
 
 	return t_speed
 end

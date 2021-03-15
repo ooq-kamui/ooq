@@ -11,7 +11,6 @@ function Sp.cre(Cls, p_pos, prm, scl)
 
 	local t_url
 	if Cls.fac then
-		-- log._("sp cre by Fac ( new )", Cls.cls)
 		t_url = "/objFac/"..Cls.fac
 	else
 		log._("sp cre by fac ( old )", Cls.cls)
@@ -137,6 +136,16 @@ end
 
 -- method
 
+function Sp.log(_s, ...)
+	log._(_s._clsHa, ...)
+end
+
+function Sp.log_only_cls(_s, cls, ...)
+	if _s._clsHa == ha._(cls) then
+		log._(cls, ...)
+	end
+end
+
 function Sp.__(_s, key, val)
 	_s[key] = val
 end
@@ -182,9 +191,8 @@ end
 
 function Sp.pos_w(_s)
 
-	local pos = id.pos_w(_s._id)
-
-	return pos
+	local t_pos = id.pos_w(_s._id)
+	return t_pos
 end
 
 function Sp.z(_s)
@@ -199,16 +207,6 @@ function Sp.z__(_s, z)
 	-- log._("sp z__", z)
 	go.set_position(t_pos)
 	_s._z = z
-end
-
-function Sp.log(_s, ...)
-	log._(_s._clsHa, ...)
-end
-
-function Sp.log_cls(_s, cls, ...)
-	if _s._clsHa == ha._(cls) then
-		log._(cls, ...)
-	end
 end
 
 function Sp.anim__(_s, anim) -- anim(hash())
@@ -317,47 +315,43 @@ function Sp.crct_vec(_s, p_vec)
 	
 	if not (_s._parent_id == _s._map_id) then return p_vec end
 	
-	p_vec = _s:crct_vec_block(p_vec) -- better -> crct_vec_tile_block
+	p_vec = _s:crct_block(p_vec)
 	
-	-- crct clmb
 	p_vec = _s:crct_clmb(p_vec)
 	
-	-- crct inside map
 	p_vec = _s:crct_inside_map(p_vec)
 	
 	return p_vec
 end
 
-function Sp.crct_vec_block(_s, p_vec)
+function Sp.crct_block(_s, p_vec)
 	
 	if ha.eq(_s._clsHa, "fire") then return p_vec end
 	
-	-- crct side block
-	p_vec = _s:crct_side(p_vec)
+	p_vec = _s:crct_block_side(p_vec)
 	
-	-- crct foot block
-	p_vec = _s:crct_foot(p_vec)
+	p_vec = _s:crct_block_foot(p_vec)
 	
-	-- crct head block
-	p_vec = _s:crct_head(p_vec)
+	p_vec = _s:crct_block_head(p_vec)
 	
 	return p_vec
 end
 
-function Sp.crct_foot(_s, p_vec)
+function Sp.crct_block_foot(_s, p_vec)
 	
-	local nf_pos_i    = _s:foot_i_pos() + p_vec
-	local nf_pos_i_up = nf_pos_i + n.vec(0, Map.sq)
+	local foot_i_pos        = _s:foot_i_pos()
+	local foot_i_pos_nxt    =    foot_i_pos     + p_vec
+	local foot_i_pos_nxt_up =    foot_i_pos_nxt + n.vec(0, Map.sq)
 	
-	if not (_s:is_block(nf_pos_i) and not _s:is_block(nf_pos_i_up)) then
-		return p_vec
-	end
+	local is_crct =         _s:is_block(foot_i_pos_nxt   )
+	                and not _s:is_block(foot_i_pos_nxt_up)
+	if not is_crct then return p_vec end
 
-	p_vec.y = map.pos_by_pos(nf_pos_i).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
+	p_vec.y = map.pos_by_pos(foot_i_pos_nxt).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
 	return p_vec
 end
 
-function Sp.crct_head(_s, p_vec)
+function Sp.crct_block_head(_s, p_vec)
 
 	local head_o_pos_nxt = _s:head_o_pos() + p_vec
 	
@@ -367,16 +361,16 @@ function Sp.crct_head(_s, p_vec)
 	return p_vec
 end
 
-function Sp.crct_side(_s, p_vec)
+function Sp.crct_block_side(_s, p_vec)
 	
 	local side_l_nxt_is_block = _s:side_is_block("l", p_vec)
 	local side_r_nxt_is_block = _s:side_is_block("r", p_vec)
 	
-	if (not side_l_nxt_is_block) and (not side_r_nxt_is_block) then return p_vec end
-	if (    side_l_nxt_is_block) and (    side_r_nxt_is_block) then return p_vec end
+	if not side_l_nxt_is_block and not side_r_nxt_is_block then return p_vec end
+	if     side_l_nxt_is_block and     side_r_nxt_is_block then return p_vec end
 
 	local crct_pos_x
-	local df_x = Map.sqh + _s._w / 2
+	local df_x = Map.sqh + _s._w/2
 
 	if     side_l_nxt_is_block then
 		crct_pos_x = map.pos_by_pos(_s:side_l_pos(p_vec) + n.vec(-1,0)).x + df_x
@@ -392,6 +386,7 @@ end
 function Sp.side_l_pos(_s, p_vec)
 
 	if _s._side_l_pos_flg then
+
 		if p_vec then
 			return _s._side_l_pos + p_vec
 		else
@@ -412,6 +407,7 @@ end
 function Sp.side_r_pos(_s, p_vec)
 
 	if _s._side_r_pos_flg then
+
 		if p_vec then
 			return _s._side_r_pos + p_vec
 		else
@@ -432,7 +428,7 @@ end
 function Sp.side_l_pos__(_s)
 
 	local c_pos = _s:pos()
-	vec.xy__(_s._side_r_pos, c_pos.x - _s._w/2, c_pos.y)
+	vec.xy__(_s._side_l_pos, c_pos.x - _s._w/2, c_pos.y)
 end
 
 function Sp.side_r_pos__(_s)
@@ -456,12 +452,13 @@ function Sp.crct_clmb(_s, p_vec)
 	
 	if not (_s._moving_v and _s._dir_v == "u") then return p_vec end
 
-	local cf_pos_i = _s:foot_i_pos()
-	local nf_pos_i = cf_pos_i + p_vec
+	local foot_i_pos     = _s:foot_i_pos()
+	local foot_i_pos_nxt = foot_i_pos + p_vec
 	
-	if not (_s:is_clmb(cf_pos_i) and not _s:is_clmb(nf_pos_i)) then return p_vec end
+	local is_crct = _s:is_clmb(foot_i_pos) and not _s:is_clmb(foot_i_pos_nxt)
+	if not is_crct then return p_vec end
 	
-	p_vec.y = map.pos_by_pos(cf_pos_i).y + Map.sq - _s:pos().y
+	p_vec.y = map.pos_by_pos(foot_i_pos).y + Map.sq - _s:pos().y
 	return p_vec
 end
 
@@ -492,7 +489,6 @@ function Sp.crct_inside_map(_s, p_vec)
 	if is_inside then return p_vec end
 
 	-- log._("crct_inside_map", dir)
-
 	
 	local inside_rng_pos = _s:map_inside_rng_pos()
 	
@@ -544,16 +540,16 @@ function Sp.vec_grv__(_s, dt)
 	if     _s:is_on_obj_block() then
 		_s:vec_grv__clr()
 
-	elseif _s._is_fly       then -- flyable only
+	elseif _s._is_fly       then -- only flyable
 		_s:vec_grv__clr()
 	
-	elseif _s._hld_id       then -- holdable only
+	elseif _s._hld_id       then -- only holdable
 		_s:vec_grv__clr()
 	
-	elseif _s._kitchen_id   then -- food only
+	elseif _s._kitchen_id   then -- only food
 		_s:vec_grv__clr()
 	
-	elseif _s._bear_tree_id then -- fruit only
+	elseif _s._bear_tree_id then -- only fruit
 		_s:vec_grv__clr()
 		
 	elseif Tile.is_elv(  foot_i_tile)

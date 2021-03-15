@@ -13,8 +13,7 @@ Cls.add(Phantom)
 function Phantom.cre(p_pos, prm)
 	local Cls = Phantom
 	prm = prm or {}
-	prm.anim = prm.anim or ha._("stand")
-	-- if not prm.anim  then prm.anim  = ha._("stand") end
+	prm.animHa = prm.animHa or ha._("stand")
 	local id = Sp.cre(Cls, p_pos, prm)
 	return id
 end
@@ -26,7 +25,6 @@ function Phantom.init(_s)
 	extend.init(_s, Sp)
 	extend._(_s, Phantom)
 
-	-- _s._vec_mv = n.vec(0, 0.5)
 	vec.xy__(_s._vec_mv, 0, 0.5)
 end
 

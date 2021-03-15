@@ -117,7 +117,7 @@ function map.is_inside_tilepos_cmpr(tilepos, rng_tilepos)
 	return ret, dir
 end
 
-function map.pos_by_pos(pos)
+function map.pos_by_pos(pos) -- center in tile
 	local tilepos = map.pos_2_tilepos(pos)
 	return map.pos_by_tilepos(tilepos)
 end

@@ -38,8 +38,9 @@ end
 
 function Accl.speed__add_accl(_s)
 
-	_s._speed.x = num.__pls_abs_stop(_s._speed.x, _s._accl.x, Accl.speed_max)
-	_s._speed.y = num.__pls_abs_stop(_s._speed.y, _s._accl.y, Accl.speed_max)
+	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max)
+
+	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - Accl.speed_max)
 end
 
 function Accl.speed(_s)

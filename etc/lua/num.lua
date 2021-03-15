@@ -27,16 +27,25 @@ function num._2_sign(p_num)
 	return sign
 end
 
-function num.__pls_abs_stop(p_num, p_pls, p_max)
+function num.__pls_stop_abs(p_num, p_pls, p_max)
 
 	p_num = p_num + p_pls
 
 	if     p_num >   p_max then
 		p_num =   p_max
-		-- log._("num.__pls_abs_stop max", p_num)
 	elseif p_num < - p_max then
 		p_num = - p_max
-		-- log._("num.__pls_abs_stop max", p_num)
+	end
+
+	return p_num
+end
+
+function num.__pls_stop_min(p_num, p_pls, p_min)
+
+	p_num = p_num + p_pls
+
+	if     p_num <   p_min then
+		p_num =   p_min
 	end
 
 	return p_num

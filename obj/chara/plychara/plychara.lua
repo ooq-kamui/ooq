@@ -5,8 +5,9 @@ Play_chara = {}
 Plychara = {
 	
 	speed     = 4.5,
-	speed_jmp = 1.5, -- vec.y * ?
-	jmp_h_max = Map.sq + 2, -- 1,
+	-- speed_jmp = 1.5, -- vec.y * ? -- use not
+	jmp_h_max  = Map.sq,
+	jmp_h_mrgn = 2, -- 1,
 
 	act_intrvl_time = 5,
 	w = 20,
@@ -104,18 +105,12 @@ function Plychara.upd(_s, dt)
 	
 	_s:vec_tile__(dt)
 
-	-- vec on_chara
-	local is_on_chara
-	is_on_chara, _s._vec_on_chara = _s:vec_on_clsn(dt)
-
-	-- vec grv
-	if is_on_chara then
-		vec.xy__(_s._vec_grv, 0, 0)
-	else
-		_s:vec_grv__(dt)
-	end
+	_s:vec_grv__(dt)
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
-	
+
+	local dmy
+	dmy, _s._vec_on_chara = _s:vec_on_clsn(dt)
+
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
 
 	_s:pos__add(_s._vec_total)
@@ -175,12 +170,20 @@ end
 function Plychara.vec_grv__(_s, dt)
 	-- log._("plychara vec_grv", _s._is_jmp_start)
 
+
 	if _s._is_jmp_start then
 
 		_s:vec_grv__grv()
 		_s._is_jmp_start = _.f
 	else
-		Sp.vec_grv__(_s, dt)
+
+		local on_chara_id, dmy = _s:vec_on_clsn(dt)
+
+		if on_chara_id then
+			vec.xy__clr(_s._vec_grv)
+		else
+			Sp.vec_grv__(_s, dt)
+		end
 	end
 end
 
@@ -192,14 +195,12 @@ function Plychara.is_jmpabl(_s)
 
 	local foot_o_tile = _s:foot_o_tile()
 	local foot_i_tile = _s:foot_i_tile()
-
-	-- local is_on_chara, vec_on_chara = _s:vec_on_clsn(dt)
-	local is_on_chara = _s:vec_on_clsn(dt)
+	local on_chara_id = _s:vec_on_clsn(dt)
 	
 	if Tile.is_block(foot_o_tile)
-	or is_on_chara
 	or Tile.is_clmb( foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
+	or on_chara_id
 	or _s:is_on_obj_block()
 	-- or _s:on_by_mapobj()
 	then
@@ -213,9 +214,14 @@ function Plychara.jmp__start(_s)
 
 	if not _s:is_jmpabl() then return end
 
-	local dst_y = Plychara.jmp_h_max
+	-- _s._jmp_lv = 1
+	-- _s._jmp_lv = 2
+	_s._jmp_lv = 3
+
+	local dst_y = Plychara.jmp_h_max * _s._jmp_lv + Plychara.jmp_h_mrgn
 
 	local speed = accl.speed_by_dst(dst_y)
+	-- log._("jmp__start", dst_y, speed)
 
 	_s._accl:speed_y__(speed)
 	_s._is_jmp_start = _.t
@@ -800,25 +806,4 @@ function Plychara.to_door(_s, door_id)
 	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
-
---[[
-function Plychara.jmp__off(_s)
-
-	_s._is_jmping = _.f
-	_s._jmp_h_t   = 0
-end
---]]
-
---[[
-function Plychara.is_jmp_h_t(_s)
-
-	local ret = _.f
-
-	if _s:pos().y >= _s._jmp_h_t then
-		ret = _.t
-	end
-
-	return ret
-end
---]]
 
