@@ -70,8 +70,8 @@ function Sp.init(_s)
 
 	_s:map_obj__add()
 
-	local anim = _s._animHa or _s._nameHa
-	_s:anim__(anim)
+	local animHa = _s._animHa or _s._nameHa
+	_s:anim__(animHa)
 
 	_s._act_intrvl = 0
 
@@ -209,13 +209,13 @@ function Sp.z__(_s, z)
 	_s._z = z
 end
 
-function Sp.anim__(_s, anim) -- anim(hash())
+function Sp.anim__(_s, animHa)
 	
-	if not anim then return end
+	if not animHa then return end
 
-	-- log._("anim", anim, _s._clsHa, _s._nameHa)
-	pst._("#sprite", "play_animation", {id = anim})
-	_s._animHa = anim
+	-- log._("animHa", animHa, _s._clsHa, _s._nameHa)
+	pst._("#sprite", "play_animation", {id = animHa})
+	_s._animHa = animHa
 end
 
 function Sp.foot_i_tile(_s)

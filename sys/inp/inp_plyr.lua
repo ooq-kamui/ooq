@@ -2,7 +2,7 @@ log.scrpt("inp_plyr.lua")
 
 Inp.plyr = {
 
-	msh_time_lmt = 0.5, -- msh lmt ( time )
+	msh_time_lmt = 0.5, -- msh lmt   ( time )
 	lng_fil_num  = 0.5, -- lng press ( time )
 }
 Inp.plyr.keys = {}
@@ -70,6 +70,7 @@ end
 
 function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 	-- log._("Inp on_inp_plyr")
+
 	local key = ha.de(keyHa)
 
 	_s:on_inp_plyr__(key, keyact)
@@ -80,7 +81,8 @@ function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 
 	_s:on_inp_fairy_pst()
 
-	_s:on_inp_plyr_ltst_keep__()
+	-- final
+	_s:on_inp_plyr_ltst_keep__(key)
 end
 
 function Inp.plyr.on_inp_plyr__(_s, key, keyact)
@@ -139,7 +141,7 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	
 	local plychara_id = Game.plychara_id()
 
-	-- mv
+	-- mv ( arw )
 	if     _s:k("arw_l") then
 		pst.scrpt(plychara_id, "mv", {dir = "l", dive = _s:is_lng("arw_l")})
 
@@ -153,10 +155,12 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 		pst.scrpt(plychara_id, "mv", {dir = "d"})
 
 	-- button
-	elseif _s:p("z") then -- jmp
-		pst.scrpt(plychara_id, "jmp")
+	elseif _s:p("z") then
+		 local high = _s:is_with("arw_d")
+		-- local high = _s:is_with_p("arw_d", "z")
+		pst.scrpt(plychara_id, "jmp", {high = high})
 
-	elseif _s:p("a") then -- itm
+	elseif _s:p("a") then
 		pst.scrpt(plychara_id, "itm_use")
 
 	elseif _s:p("x") then
@@ -190,7 +194,7 @@ function Inp.plyr.on_inp_plyr_msh__(_s)
 	end
 end
 
-function Inp.plyr.on_inp_plyr_ltst_keep__(_s)
+function Inp.plyr.on_inp_plyr_ltst_keep__(_s, key)
 
 	if     _s:k(key) then
 		_s._plyr._ltst_keep = key
@@ -293,6 +297,7 @@ function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt, use not, bu
 end
 
 function Inp.plyr.is_with(_s, key) -- keep, use not, but rest
+	-- log._("plyr is_with", key, _s._plyr._ltst_keep)
 
 	local ret
 	if _s._plyr._ltst_keep == key then
@@ -326,43 +331,4 @@ function Inp.plyr.is_with_k(_s, key1, key2) -- use not, but rest
 	end
 	return ret
 end
-
---[[[
-function Inp.plyr.msh_fairy_pos(_s) -- use not
-
-	local msh_pos = _s:msh_tilepos() * Map.sq
-	return msh_pos
-end
-
-function Inp.plyr.msh_tilepos(_s)  -- use not
-
-	local x = _s:msh_tilepos_x()
-	local y = _s:msh_tilepos_y()
-	local msh_tilepos = n.vec(x, y)
-	return msh_tilepos
-end
-
-function Inp.plyr.msh_tilepos_x(_s)  -- use not
-	
-	local x = 0
-	local l_cnt = _s._plyr._msh["arw_l"].cnt
-	local r_cnt = _s._plyr._msh["arw_r"].cnt
-
-	if     l_cnt > 0 then x = - l_cnt
-	elseif r_cnt > 0 then x =   r_cnt
-	end
-	return x
-end
-
-function Inp.plyr.msh_tilepos_y(_s)  -- use not
-
-	local y = 0
-	local u_cnt = _s._plyr._msh["arw_u"].cnt
-	local d_cnt = _s._plyr._msh["arw_d"].cnt
-	if     u_cnt > 0 then y =   u_cnt
-	elseif d_cnt > 0 then y = - d_cnt
-	end
-	return y
-end
---]]
 

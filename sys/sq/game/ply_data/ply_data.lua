@@ -38,6 +38,8 @@ function Ply_data.save(ply_slt_idx)
 
 	if not ply_slt_idx then return end
 
+	Msg.s("saving...")
+
 	local data = Ply_data._()
 
 	file.ts__()

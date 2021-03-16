@@ -1,13 +1,14 @@
 log.scrpt("plychara.lua")
 
-Play_chara = {}
-
 Plychara = {
 	
 	speed     = 4.5,
-	-- speed_jmp = 1.5, -- vec.y * ? -- use not
-	jmp_h_max  = Map.sq,
-	jmp_h_mrgn = 2, -- 1,
+
+	jmp_h_max   = Map.sq,
+	jmp_h_mrgn  = 2, -- 1,
+
+	jmp_lv_dflt = 1,
+	-- jmp_lv_dflt = 2,
 
 	act_intrvl_time = 5,
 	w = 20,
@@ -73,6 +74,8 @@ function Plychara.init(_s)
 
 	_s._itm_selected = "wand001" -- name
 
+	_s._jmp_lv = Plychara.jmp_lv_dflt
+
 	_s._hld  = {}
 	_s._clsn = {
 		hld     = {},
@@ -132,7 +135,6 @@ function Plychara.vec_mv__(_s, dt)
 	vec.xy__clr(_s._vec_mv_dir)
 	
 	-- move h
-
 	if _s._is_moving_h then
 
 		_s._vec_mv_dir.x = 1
@@ -140,14 +142,14 @@ function Plychara.vec_mv__(_s, dt)
 		if ha.eq(_s._dir_h_Ha, "l") then
 			_s._vec_mv_dir.x = - _s._vec_mv_dir.x
 		end
+
+		_s:anim__(ha._("sanae"))
 	end
 	
 	-- move v
-
-	local foot_i_tile = _s:foot_i_tile()
-	-- local foot_o_tile = _s:foot_o_tile()
-
 	if _s._is_moving_v then
+
+		local foot_i_tile = _s:foot_i_tile()
 
 		if     _s._dir_v == "u" 
 		and    ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() )
@@ -161,15 +163,16 @@ function Plychara.vec_mv__(_s, dt)
 			_s._vec_mv_dir.y = - 1
 			_s._is_clmb_d    = _.t
 		end
+
+		_s:anim__(ha._("sanae-back"))
 	end
 
 	_s._vec_mv_dir = _s:dir__crct_hyprspc(_s._vec_mv_dir)
+
 	_s._vec_mv = _s._vec_mv_dir * _s._speed
 end
 
 function Plychara.vec_grv__(_s, dt)
-	-- log._("plychara vec_grv", _s._is_jmp_start)
-
 
 	if _s._is_jmp_start then
 
@@ -210,18 +213,18 @@ function Plychara.is_jmpabl(_s)
 	return ret
 end
 
-function Plychara.jmp__start(_s)
+function Plychara.jmp(_s, high)
+	-- log._("plychara jmp", high)
 
 	if not _s:is_jmpabl() then return end
 
-	-- _s._jmp_lv = 1
-	-- _s._jmp_lv = 2
-	_s._jmp_lv = 3
+	local jmp_lv = _s._jmp_lv
+	if high then jmp_lv = jmp_lv + 1 end
 
-	local dst_y = Plychara.jmp_h_max * _s._jmp_lv + Plychara.jmp_h_mrgn
+	local dst_y = Plychara.jmp_h_max * jmp_lv
+	dst_y = dst_y + Plychara.jmp_h_mrgn
 
 	local speed = accl.speed_by_dst(dst_y)
-	-- log._("jmp__start", dst_y, speed)
 
 	_s._accl:speed_y__(speed)
 	_s._is_jmp_start = _.t
@@ -430,7 +433,7 @@ function Plychara.on_msg_act(_s, msg_id, prm, sender)
 	-- log._("plychara on_msg_act", msg_id)
 	
 	if     ha.eq(msg_id, "jmp") then
-		_s:jmp__start()
+		_s:jmp(prm.high)
 	
 	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
 		_s:itm_use()
