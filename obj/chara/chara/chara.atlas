@@ -1,15 +1,11 @@
 animations {
-  id: "sanae"
+  id: "sanae-walk"
   images {
     image: "/assets/obj/chara/chara/img/01.sanae/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/assets/obj/chara/chara/img/01.sanae/pixel/002.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/assets/obj/chara/chara/img/01.sanae/pixel/003.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -29,7 +25,29 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "marin"
+  id: "sanae-cruch"
+  images {
+    image: "/assets/obj/chara/chara/img/01.sanae/pixel/003.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "sanae-jmp"
+  images {
+    image: "/assets/obj/chara/chara/img/01.sanae/pixel/001.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "marin-walk"
   images {
     image: "/assets/obj/chara/chara/img/02.marin/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -44,7 +62,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "katia"
+  id: "katia-walk"
   images {
     image: "/assets/obj/chara/chara/img/03.katia/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -59,7 +77,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "sayaka"
+  id: "sayaka-walk"
   images {
     image: "/assets/obj/chara/chara/img/04.sayaka/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -74,7 +92,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "yuki"
+  id: "yuki-walk"
   images {
     image: "/assets/obj/chara/chara/img/05.yuki/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -89,7 +107,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "kurumi"
+  id: "kurumi-walk"
   images {
     image: "/assets/obj/chara/chara/img/06.kurumi/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -104,7 +122,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "matilda"
+  id: "matilda-walk"
   images {
     image: "/assets/obj/chara/chara/img/07.matilda/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -119,7 +137,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "lily"
+  id: "lily-walk"
   images {
     image: "/assets/obj/chara/chara/img/08.lily/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -134,7 +152,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "sofia"
+  id: "sofia-walk"
   images {
     image: "/assets/obj/chara/chara/img/09.sofia/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -149,7 +167,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "shiki"
+  id: "shiki-walk"
   images {
     image: "/assets/obj/chara/chara/img/10.shiki/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -164,7 +182,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "kageri"
+  id: "kageri-walk"
   images {
     image: "/assets/obj/chara/chara/img/11.kageri/pixel/001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF

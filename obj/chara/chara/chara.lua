@@ -29,21 +29,23 @@ Chara.cls = "chara"
 Chara.fac = Obj.fac..Chara.cls
 Cls.add(Chara, Chara.chara)
 
+ha.add_by_ar(Chara.chara)
+
 -- static
 
-function Chara.cre(p_pos, name)
+function Chara.cre(p_pos, p_name)
 	
 	if Map.chara_is_appear_all() then return end
 	
 	p_pos  = p_pos  or pos.pos_w()
-	-- p_pos  = p_pos  or go.get_world_position()
-	name = name or Chara.new_name()
+	p_name = p_name or Chara.new_name()
 	
 	local prm = {}
 	prm.clsHa  = ha._("chara")
-	prm.nameHa = ha._(name)
-	prm.animHa = ha._(name)
-	prm.is_fly = Chara.is_flyabl(name)
+	prm.nameHa = ha._(p_name)
+	-- prm.animHa = ha._(p_name.."-".."walk")
+
+	prm.is_fly = Chara.is_flyabl(p_name) -- to init
 	
 	-- game_id, map_id, parent_id
 	local map_id, game_id = Game.map_id()
@@ -59,16 +61,18 @@ function Chara.cre(p_pos, name)
 	local t_id = fac.cre("/objFac/"..Chara.fac, p_pos, nil, prm)
 	-- local t_id = factory.create("/objFac/"..Chara.Fac, p_pos, nil, prm)
 	
-	Map.add_chara(name)
+	Map.add_chara(p_name)
 	return t_id
 end
 
 function Chara.is_flyabl(chara)
+
 	local ret = ar.in_(chara, Chara.flyabl)
 	return ret
 end
 
 function Chara.new_name()
+
 	local not_appear_chara = Map.not_appear_chara()
 	local new_name = ar.rnd(not_appear_chara)
 	return new_name
@@ -81,6 +85,9 @@ function Chara.init(_s, dt)
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
 	extend._(_s, Chara)
+
+	_s._name = ha.de(_s._nameHa)
+	_s:anim__("walk")
 	
 	_s:say()
 	_s:act_intrvl_time__()
@@ -144,7 +151,13 @@ end
 -- function Chara.final(_s)
 -- end
 
--- --
+--
+
+function Chara.anim__(_s, p_anim)
+
+	local t_anim = _s._name.."-"..p_anim
+	Sp.anim__(_s, t_anim)
+end
 
 function Chara.act_intrvl__(_s, dt)
 	local is_loop
@@ -155,3 +168,4 @@ end
 function Chara.act_intrvl_time__(_s)
 	_s._act_intrvl_time = _s:Cls().act_intrvl_time + rnd.int(0, 3)
 end
+

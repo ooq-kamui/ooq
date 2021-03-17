@@ -87,3 +87,4 @@ end
 function ha.emp()
 	return ha._emp
 end
+

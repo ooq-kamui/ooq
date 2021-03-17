@@ -112,3 +112,4 @@ Mstr.chara["kageri"] = {
 		},
 	},
 }
+

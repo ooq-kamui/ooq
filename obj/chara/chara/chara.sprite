@@ -1,4 +1,4 @@
 tile_set: "/assets/obj/chara/chara/chara.atlas"
-default_animation: "sanae"
+default_animation: "sanae-walk"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

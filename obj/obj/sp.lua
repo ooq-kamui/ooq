@@ -70,8 +70,11 @@ function Sp.init(_s)
 
 	_s:map_obj__add()
 
-	local animHa = _s._animHa or _s._nameHa
-	_s:anim__(animHa)
+	if not ar.inHa(_s._clsHa, {"plychara", "chara"}) then
+
+		local animHa = _s._animHa or _s._nameHa
+		_s:anim__(animHa)
+	end
 
 	_s._act_intrvl = 0
 
@@ -201,21 +204,37 @@ function Sp.z(_s)
 end
 
 function Sp.z__(_s, z)
+
 	z = z or 0
+
 	local t_pos = _s:pos()
 	t_pos.z = z
 	-- log._("sp z__", z)
-	go.set_position(t_pos)
+
+	-- go.set_position(t_pos)
+	pos.pos__(t_pos)
 	_s._z = z
 end
 
-function Sp.anim__(_s, animHa)
+function Sp.animHa__(_s, animHa)
 	
-	if not animHa then return end
+	if ha.is_emp(animHa) then return end
 
-	-- log._("animHa", animHa, _s._clsHa, _s._nameHa)
 	pst._("#sprite", "play_animation", {id = animHa})
+
 	_s._animHa = animHa
+end
+
+function Sp.anim__(_s, p_anim)
+	
+	if not p_anim         then return end
+	if p_anim == _s._anim then return end
+
+	local p_animHa = ha._(p_anim)
+	pst._("#sprite", "play_animation", {id = p_animHa})
+
+	_s._anim   = p_anim
+	_s._animHa = p_animHa
 end
 
 function Sp.foot_i_tile(_s)
@@ -228,8 +247,6 @@ end
 function Sp.foot_o_tile(_s)
 	
 	local t_pos  = _s:foot_o_pos()
-	-- log._("sp foot_o_tile t_pos", t_pos)
-
 	local t_tile = _s:tile(t_pos)
 	return t_tile
 end
@@ -964,7 +981,7 @@ function Sp.dir_h__(_s, dir_h)
 	-- log._("Sp.dir_h__", dir_h)
 	
 	_s._dir_h_Ha = ha._(dir_h)
-	_s:flip_h__()
+	_s:flip_h__dir()
 end
 
 function Sp.dir_h__rnd(_s)
@@ -990,7 +1007,7 @@ function Sp.dir_v__rnd(_s)
 	_s:dir_v__(dir_v)
 end
 
-function Sp.flip_h__(_s, dir_h)
+function Sp.flip_h__dir(_s, dir_h)
 
 	if dir_h then _s:dir_h__(dir_h) end
 	
@@ -1000,7 +1017,7 @@ function Sp.flip_h__(_s, dir_h)
 	elseif ha.eq(_s._dir_h_Ha, "r") then
 		val = _.t
 	end
-	sprite.set_hflip("#sprite", val)
+	_s:flip_h__(val)
 end
 
 -- mv
@@ -1066,5 +1083,9 @@ function Sp.pos_flg__f(_s)
 
 	_s._tilepos_flg    = _.f
 	_s._tilepos_d_flg  = _.f
+end
+
+function Sp.flip_h__(_s, val)
+	sprite.set_hflip("#sprite", val)
 end
 

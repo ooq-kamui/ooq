@@ -75,9 +75,3 @@ function u.eq(val1, val2)
 	return ret
 end
 
---[[
-function u.pos() -- old
-	return go.get_position()
-end
---]]
-

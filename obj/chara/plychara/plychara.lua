@@ -54,6 +54,9 @@ function Plychara.init(_s)
 	
 	extend.init(_s, Sp)
 	extend._(_s, Plychara)
+
+	_s._name = ha.de(_s._nameHa)
+	_s:anim__("walk")
 	
 	_s._speed = Plychara.speed
 	_s._dir_h_Ha = ha._("l")
@@ -142,34 +145,47 @@ function Plychara.vec_mv__(_s, dt)
 		if ha.eq(_s._dir_h_Ha, "l") then
 			_s._vec_mv_dir.x = - _s._vec_mv_dir.x
 		end
-
-		_s:anim__(ha._("sanae"))
+		_s:anim__("walk")
 	end
 	
 	-- move v
 	if _s._is_moving_v then
 
 		local foot_i_tile = _s:foot_i_tile()
+		local foot_o_tile = _s:foot_o_tile()
 
-		if     _s._dir_v == "u" 
-		and    ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() )
-		then
-			_s._vec_mv_dir.y =   1
-			_s._is_clmb_u    = _.t
+		if     _s._dir_v == "u" then
 
-		elseif _s._dir_v == "d"
-		and    ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb( _s:foot_o_tile() ) )
-		then
-			_s._vec_mv_dir.y = - 1
-			_s._is_clmb_d    = _.t
+			if ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() ) then
+
+				_s._vec_mv_dir.y =   1
+				_s._is_clmb_u    = _.t
+				_s:anim__("back")
+			end
+
+		elseif _s._dir_v == "d" then
+
+			if     ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile) ) then
+
+				_s._vec_mv_dir.y = - 1
+				_s._is_clmb_d    = _.t
+				_s:anim__("back")
+
+			elseif Tile.is_block(foot_o_tile) then
+				_s._is_cruch = _.t
+				_s:anim__("cruch")
+			end
 		end
-
-		_s:anim__(ha._("sanae-back"))
 	end
 
 	_s._vec_mv_dir = _s:dir__crct_hyprspc(_s._vec_mv_dir)
 
 	_s._vec_mv = _s._vec_mv_dir * _s._speed
+end
+
+function Plychara.anim__(_s, p_anim)
+
+	Chara.anim__(_s, p_anim)
 end
 
 function Plychara.vec_grv__(_s, dt)
@@ -213,8 +229,8 @@ function Plychara.is_jmpabl(_s)
 	return ret
 end
 
-function Plychara.jmp(_s, high)
-	-- log._("plychara jmp", high)
+-- function Plychara.jmp(_s, high)
+function Plychara.jmp(_s)
 
 	if not _s:is_jmpabl() then return end
 
@@ -337,7 +353,8 @@ function Plychara.on_msg(_s, msg_id, prm, sender)
 	st = _s:on_msg_clsn(msg_id, prm, sender)
 	if st then return end
 
-	_s:on_msg_mv(msg_id, prm, sender)
+	st = _s:on_msg_mv(msg_id, prm, sender)
+	if st then return end
 
 	_s:on_msg_act(msg_id, prm, sender)
 end
@@ -399,76 +416,57 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 	
 	if not ha.eq(msg_id, "mv") then return end
 
-	if ar.in_(prm.dir, u.dir_h) then
+	if     ar.in_(prm.dir, u.dir_h) then
 		
 		_s._is_moving_h = _.t
 		
 		-- turn
 		if not ha.eq(_s._dir_h_Ha, prm.dir) then
 			_s._turn_time = 0 
-
-			local val
-			if     prm.dir == "l" then val = _.f
-			elseif prm.dir == "r" then val = _.t
-			end
-			sprite.set_hflip("#sprite", val)
+			_s:flip_h__dir(prm.dir)
 		end
 		
 		-- dive
 		if prm.dive then _s._is_dive_start = _.t end
 		
-		_s._dir_h_Ha = ha._(prm.dir) -- new
+		_s._dir_h_Ha = ha._(prm.dir)
 
-	elseif prm.dir == "u" then
-		_s._is_moving_v = _.t
-		_s._dir_v = "u"
+	elseif ar.in_(prm.dir, u.dir_v) then
 
-	elseif prm.dir == "d" then
 		_s._is_moving_v = _.t
-		_s._dir_v = "d"
+
+		if     prm.dir == "u" then _s._dir_v = "u"
+		elseif prm.dir == "d" then _s._dir_v = "d"
+		end
 	end
+
+	return _.t
 end
 
 function Plychara.on_msg_act(_s, msg_id, prm, sender)
 	-- log._("plychara on_msg_act", msg_id)
 	
-	if     ha.eq(msg_id, "jmp") then
-		_s:jmp(prm.high)
+	if     ha.eq(msg_id, "jmp")      then
+		-- _s:jmp(prm.high)
+		_s:jmp()
 	
-	elseif ha.eq(msg_id, "itm_use") then -- wand(itm)
+	elseif ha.eq(msg_id, "itm_use")  then
 		_s:itm_use()
 		
-	elseif ha.eq(msg_id, "hld__ox") then -- input hld switch
+	elseif ha.eq(msg_id, "hld__ox")  then -- hld switch
 		_s:hld__ox()
 	
 	elseif ha.eq(msg_id, "hld__del") then
 		_s:hld__del(prm.id)
 	
-	elseif ha.eq(msg_id, "to_door") then
+	elseif ha.eq(msg_id, "to_door")  then
 		_s:to_door(prm.door_id)
 
 	elseif ha.eq(msg_id, "itm_selected__") then
 		_s:itm_selected__(prm.itm_selected)	
 
 	elseif ha.eq(msg_id, "menu_opn") then
-
-		local is_icn_opn
-		local t_clss = {"reizoko", "pc", "shelf", "door"}
-		for idx, t_cls in pairs(t_clss) do
-			if     #_s._clsn[t_cls] >= 1 then
-				pst.scrpt(_s._clsn[t_cls][1], "opn")
-				is_icn_opn = _.t
-				break
-			end
-		end
-		if not is_icn_opn and #_s._clsn.flpy >= 1 then
-			pst.scrpt(_s._clsn.flpy[1], "opn")
-			is_icn_opn = _.t
-		end
-		
-		if not is_icn_opn then
-			pst.scrpt(Game.id(), "bag_opn")
-		end
+		_s:menu_opn()
 	end
 end
 
@@ -476,6 +474,29 @@ function Plychara.final(_s)
 end
 
 -- method
+
+function Plychara.menu_opn(_s)
+
+	local is_icn_opn
+
+	local t_clss = {"reizoko", "pc", "shelf", "door"}
+
+	for idx, t_cls in pairs(t_clss) do
+		if     #_s._clsn[t_cls] >= 1 then
+			pst.scrpt(_s._clsn[t_cls][1], "opn")
+			is_icn_opn = _.t
+			break
+		end
+	end
+
+	if not is_icn_opn and #_s._clsn.flpy >= 1 then
+		pst.scrpt(_s._clsn.flpy[1], "opn")
+		is_icn_opn = _.t
+	end
+	if not is_icn_opn then
+		pst.scrpt(Game.id(), "bag_opn")
+	end
+end
 
 function Plychara.itm_use(_s)
 	
@@ -538,6 +559,8 @@ function Plychara.act__clr(_s)
 	_s._is_clmb_d   = _.f
 	_s._is_clmb_u   = _.f
 	_s._is_dive_start = _.f
+
+	-- _s._is_cruch = _.f
 end
 
 -- clsn

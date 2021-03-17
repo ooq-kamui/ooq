@@ -27,3 +27,8 @@ function pos.pos_w()
 	return go.get_world_position()
 end
 
+function pos.pos__(p_pos)
+
+	go.set_position(p_pos)
+end
+
