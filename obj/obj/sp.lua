@@ -114,7 +114,6 @@ function Sp.on_msg(_s, msg_id, prm, sndr)
 		_s:parent__map(prm.z)
 	
 	elseif ha.eq(msg_id, "to_cloud") then
-		-- log._("to_cloud")
 		_s:to_cloud()
 
 	elseif ha.eq(msg_id, "mv__pos") then
@@ -211,7 +210,6 @@ function Sp.z__(_s, z)
 	t_pos.z = z
 	-- log._("sp z__", z)
 
-	-- go.set_position(t_pos)
 	pos.pos__(t_pos)
 	_s._z = z
 end
@@ -551,34 +549,54 @@ end
 function Sp.vec_grv__(_s, dt)
 	-- log._("sp vec_grv__ speed", _s._accl._speed)
 
-	local foot_i_tile = _s:foot_i_tile()
-	local foot_o_tile = _s:foot_o_tile()
-	
-	if     _s:is_on_obj_block() then
+	if     _s:is_on_obj_block()    then
 		_s:vec_grv__clr()
 
-	elseif _s._is_fly       then -- only flyable
+	elseif _s._is_fly              then -- only flyable
 		_s:vec_grv__clr()
 	
-	elseif _s._hld_id       then -- only holdable
+	elseif _s._hld_id              then -- only holdable
 		_s:vec_grv__clr()
 	
-	elseif _s._kitchen_id   then -- only food
+	elseif _s._kitchen_id          then -- only food
 		_s:vec_grv__clr()
 	
-	elseif _s._bear_tree_id then -- only fruit
+	elseif _s._bear_tree_id        then -- only fruit
 		_s:vec_grv__clr()
 		
-	elseif Tile.is_elv(  foot_i_tile)
-		or Tile.is_elv(  foot_o_tile)
-		or Tile.is_clmb( foot_i_tile)
-		or Tile.is_clmb( foot_o_tile)
-		or Tile.is_block(foot_o_tile) then
+	elseif _s:is_tile_grounding() then
 
-		_s:vec_grv__clr()
+		if _s._accl._speed.y > 0 then
+			_s:vec_grv__grv()
+		else
+			_s:vec_grv__clr()
+		end
 	else
 		_s:vec_grv__grv()
 	end
+end
+
+function Sp.is_tile_grounding(_s)
+
+	local ret = _.f
+
+	local foot_i_tile = _s:foot_i_tile()
+	local foot_o_tile = _s:foot_o_tile()
+	
+	if Tile.is_elv(  foot_i_tile)
+	or Tile.is_elv(  foot_o_tile)
+	or Tile.is_clmb( foot_i_tile)
+	or Tile.is_clmb( foot_o_tile)
+	or Tile.is_block(foot_o_tile) then
+		ret = _.t
+	end
+
+	return ret
+end
+
+function Sp.accl_speed__clr(_s)
+
+	_s._accl:speed__clr()
 end
 
 function Sp.vec_grv__grv(_s)
@@ -588,7 +606,9 @@ function Sp.vec_grv__grv(_s)
 end
 
 function Sp.vec_grv__clr(_s)
+
 	vec.xy__clr(_s._vec_grv)
+	_s:accl_speed__clr()
 end
 
 function Sp.head_o_pos(_s)

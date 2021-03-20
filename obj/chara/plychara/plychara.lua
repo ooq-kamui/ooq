@@ -375,9 +375,9 @@ end
 
 function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 
-	if ha.eq(msg_id, "collision_response") then return _.t end
+	if     ha.eq(msg_id, "collision_response")     then return _.t end
 		
-	if not ha.eq(msg_id, "contact_point_response") then return end
+	if not ha.eq(msg_id, "contact_point_response") then return     end
 	
 	-- local o_pos = prm.other_position
 	local t_id  = prm.other_id
@@ -386,9 +386,7 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		_s:clsn_add("chara", t_id)
 
 	elseif ha.eq(prm.group, "hld"   ) then
-		if not ar.in_(t_id, _s._hld) then
-			_s:clsn_add("hld", t_id)
-		end
+		if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
 
 	elseif ha.eq(prm.group, "animal") then
 		_s:clsn_add("animal", t_id)
