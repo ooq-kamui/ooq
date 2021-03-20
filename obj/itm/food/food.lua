@@ -18,10 +18,10 @@ function Food.init(_s)
 	_s._kitchen_id = nil
 end
 
-function Food.on_msg(_s, msg_id, prm, sender)
+function Food.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "on_kitchen") then -- old
 		_s:kitchen_o(prm.id)
@@ -120,3 +120,4 @@ end
 function Food.take_reizoko(_s)
 end
 --]]
+

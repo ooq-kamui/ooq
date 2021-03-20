@@ -13,7 +13,7 @@ function g.Gui.init(_s)
 	_s._hndl = {}
 end
 
-function g.Gui.on_msg(_s, msg_id, prm, sender)
+function g.Gui.on_msg(_s, msg_id, prm, sndr)
 	-- log._("g.gui on_msg", msg_id)
 
 	if     ha.eq(msg_id, "gui:opn") then

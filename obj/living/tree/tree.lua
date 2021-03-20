@@ -60,9 +60,9 @@ function Tree.act_intrvl(_s, dt)
 	end
 end
 
-function Tree.on_msg(_s, msg_id, prm, sender)
+function Tree.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "trnsf_wood") then
 		_s:trnsf_wood()
@@ -121,3 +121,4 @@ function Tree.trnsf_wood(_s, num)
 	
 	_s:del()
 end
+

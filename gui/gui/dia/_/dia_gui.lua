@@ -28,10 +28,10 @@ function g.Dia.init(_s)
 	_s:opn("dia")
 end
 
-function g.Dia.on_msg(_s, msg_id, prm, sender)
+function g.Dia.on_msg(_s, msg_id, prm, sndr)
 	-- log._("g.dia on_msg", msg_id)
 
-	g.Gui.on_msg(_s, msg_id, prm, sender)
+	g.Gui.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "chara__") then
 		_s:chara__(prm.chara)

@@ -66,9 +66,9 @@ function Plychara.init(_s)
 	_s._is_moving_v = _.f
 	_s._is_clmb_d   = _.f
 	_s._is_clmb_u   = _.f
+	_s._is_cruch    = _.f
 
-	_s._is_jmp_start = _.f
-
+	_s._is_jmp_start  = _.f
 	_s._is_dive_start = _.f
 	
 	_s._vec_mv_dir = n.vec()
@@ -235,7 +235,8 @@ function Plychara.jmp(_s)
 	if not _s:is_jmpabl() then return end
 
 	local jmp_lv = _s._jmp_lv
-	if high then jmp_lv = jmp_lv + 1 end
+
+	if _s._is_cruch then jmp_lv = jmp_lv + 1 end
 
 	local dst_y = Plychara.jmp_h_max * jmp_lv
 	dst_y = dst_y + Plychara.jmp_h_mrgn
@@ -246,6 +247,19 @@ function Plychara.jmp(_s)
 	_s._is_jmp_start = _.t
 
 	Se.pst_ply("jmp001")
+end
+
+function Plychara.arw_d_f(_s)
+
+	_s:cruch__f()
+end
+
+function Plychara.cruch__f(_s)
+
+	if not _s._is_cruch then return end
+
+	_s._is_cruch = _.f
+	_s:anim__("walk")
 end
 
 function Plychara.dir__crct_hyprspc(_s, dir)
@@ -344,75 +358,75 @@ function Plychara.vec_on_clsn(_s, dt)
 	return on_id, vec_on_obj
 end
 
-function Plychara.on_msg(_s, msg_id, prm, sender)
+function Plychara.on_msg(_s, msg_id, prm, sndr)
 
 	local st
 
-	Sp.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 	
-	st = _s:on_msg_clsn(msg_id, prm, sender)
+	st = _s:on_msg_clsn(msg_id, prm, sndr)
 	if st then return end
 
-	st = _s:on_msg_mv(msg_id, prm, sender)
+	st = _s:on_msg_mv(msg_id, prm, sndr)
 	if st then return end
 
-	_s:on_msg_act(msg_id, prm, sender)
+	_s:on_msg_act(msg_id, prm, sndr)
 end
 
-function Plychara.on_msg_clsn(_s, msg_id, prm, sender)
+function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 
 	if ha.eq(msg_id, "collision_response") then return _.t end
 		
 	if not ha.eq(msg_id, "contact_point_response") then return end
 	
-	local o_pos = prm.other_position
-	local o_id  = prm.other_id
-	local o_name = id.prp(o_id, "_nameHa")
+	-- local o_pos = prm.other_position
+	local t_id  = prm.other_id
+	local t_name = id.prp(t_id, "_nameHa")
 		
-	if     ha.eq(prm.group, "chara") then
-		_s:clsn_add("chara", o_id)
+	if     ha.eq(prm.group, "chara" ) then
+		_s:clsn_add("chara", t_id)
 
-	elseif ha.eq(prm.group, "hld") then
-		if not ar.in_(o_id, _s._hld) then
-			_s:clsn_add("hld", o_id)
+	elseif ha.eq(prm.group, "hld"   ) then
+		if not ar.in_(t_id, _s._hld) then
+			_s:clsn_add("hld", t_id)
 		end
 
 	elseif ha.eq(prm.group, "animal") then
-		_s:clsn_add("animal", o_id)
+		_s:clsn_add("animal", t_id)
 
-	elseif ha.eq(prm.group, "tree") then
-		_s:clsn_add("tree", o_id)
+	elseif ha.eq(prm.group, "tree"  ) then
+		_s:clsn_add("tree", t_id)
 		
-	elseif ha.eq(prm.group, "box") then
+	elseif ha.eq(prm.group, "box"   ) then
 		
-		if     ha.eq(o_name, "hrvst001") then
-			_s:clsn_add("hrvst"  , o_id)
+		if     ha.eq(t_name, "hrvst001"  ) then
+			_s:clsn_add("hrvst"  , t_id)
 		
-		elseif ha.eq(o_name, "reizoko001") then
-			_s:clsn_add("reizoko", o_id)
+		elseif ha.eq(t_name, "reizoko001") then
+			_s:clsn_add("reizoko", t_id)
 		
-		elseif ha.eq(o_name, "kitchen001") then
-			_s:clsn_add("kitchen", o_id)
+		elseif ha.eq(t_name, "kitchen001") then
+			_s:clsn_add("kitchen", t_id)
 		
-		elseif ha.eq(o_name, "flpy001") then
-			_s:clsn_add("flpy", o_id)
+		elseif ha.eq(t_name, "flpy001"   ) then
+			_s:clsn_add("flpy",    t_id)
 		
-		elseif ha.eq(o_name, "pc001") then
-			_s:clsn_add("pc", o_id)
+		elseif ha.eq(t_name, "pc001"     ) then
+			_s:clsn_add("pc",      t_id)
 		
-		elseif ha.eq(o_name, "shelf001") then
-			_s:clsn_add("shelf", o_id)
+		elseif ha.eq(t_name, "shelf001"  ) then
+			_s:clsn_add("shelf", t_id)
 		end
-	elseif ha.eq(prm.group, "door") then
-		_s:clsn_add("door", o_id)
+	elseif ha.eq(prm.group, "door"  ) then
+		_s:clsn_add("door", t_id)
 		
-	elseif ha.eq(prm.group, "block") then
-		_s:clsn_add("block", o_id)
+	elseif ha.eq(prm.group, "block" ) then
+		_s:clsn_add("block", t_id)
 	end
 	return _.t
 end
 
-function Plychara.on_msg_mv(_s, msg_id, prm, sender)
+function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 	
 	if not ha.eq(msg_id, "mv") then return end
 
@@ -443,13 +457,16 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sender)
 	return _.t
 end
 
-function Plychara.on_msg_act(_s, msg_id, prm, sender)
+function Plychara.on_msg_act(_s, msg_id, prm, sndr)
 	-- log._("plychara on_msg_act", msg_id)
 	
 	if     ha.eq(msg_id, "jmp")      then
 		-- _s:jmp(prm.high)
 		_s:jmp()
 	
+	elseif ha.eq(msg_id, "arw_d_f")  then
+		_s:arw_d_f()
+
 	elseif ha.eq(msg_id, "itm_use")  then
 		_s:itm_use()
 		

@@ -182,9 +182,9 @@ function Cmr.upd_vec_near(_s, dt)
 	end
 end
 
-function Cmr.on_msg(_s, msg_id, prm, sender)
+function Cmr.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "zoom__dflt") then
 		_s:zoom__dflt()
@@ -437,3 +437,4 @@ function Cmr.z__far(_s)
 	_s._z_idx = Cmr.far.z_idx
 	_s:z__(Cmr.far.z)
 end
+

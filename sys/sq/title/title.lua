@@ -27,7 +27,7 @@ function Title.init(_s)
 	Bgm.ply_rnd()
 end
 
-function Title.on_msg(_s, msg_id, prm, sender)
+function Title.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "del") then
 		_s:del()
@@ -44,3 +44,4 @@ function Title.del(_s)
 	go.delete(_s._id, _.t)
 	-- log._("title del")
 end
+

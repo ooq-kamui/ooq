@@ -299,7 +299,7 @@ end
 
 --
 
-function Sky.on_msg(_s, msg_id, prm, sender)
+function Sky.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "dsp__o") then
 		_s:dsp__o()
@@ -343,3 +343,4 @@ end
 function Sky.upd_tile__raindrop(_s, dt)
 
 end
+

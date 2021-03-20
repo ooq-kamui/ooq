@@ -82,7 +82,7 @@ function Sp.init(_s)
 	_s:pos__init()
 end
 
-function Sp.on_msg(_s, msg_id, prm, sender)
+function Sp.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "pos__") then
 		_s:pos__(prm.pos)

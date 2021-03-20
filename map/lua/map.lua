@@ -148,7 +148,7 @@ function Map.act_intrvl__(_s, dt)
 	return is_loop
 end
 
-function Map.on_msg(_s, msg_id, prm, sender)
+function Map.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "del") then
 		_s:del()
@@ -435,3 +435,4 @@ function Map.tilepos_arund(p_tilepos)
 	}
 	return tilepos_arund
 end
+

@@ -48,12 +48,13 @@ function Flower.act_intrvl(_s, dt)
 	if _s:per_trnsf(10, Fluff) then return end
 end
 
-function Flower.on_msg(_s, msg_id, prm, sender)
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+function Flower.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Flower.final(_s)
 	Sp.final(_s)
 	Hldabl.final(_s)
 end
+

@@ -71,12 +71,13 @@ function Seed.act_intrvl(_s, dt)
 	end
 end
 
-function Seed.on_msg(_s, msg_id, prm, sender)
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+function Seed.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Seed.final(_s)
 	Sp.final(_s)
 	Hldabl.final(_s)
 end
+

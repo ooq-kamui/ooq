@@ -47,7 +47,7 @@ end
 function Fairy.upd(_s, dt)
 end
 
-function Fairy.on_msg(_s, msg_id, prm, sender)
+function Fairy.on_msg(_s, msg_id, prm, sndr)
 	-- log._("fairy on_msg", msg_id)
 	-- log.pp("msg_id", prm)
 
@@ -60,7 +60,7 @@ function Fairy.on_msg(_s, msg_id, prm, sender)
 	elseif ha.eq(msg_id, "mv__plychara_v") then
 		_s:mv__plychara_v(prm.dir)
 	else
-		Sp.on_msg(_s, msg_id, prm, sender)
+		Sp.on_msg(_s, msg_id, prm, sndr)
 	end
 end
 

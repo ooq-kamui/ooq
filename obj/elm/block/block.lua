@@ -75,10 +75,10 @@ function Block.trnsf_tile(_s)
 	_s:del()
 end
 
-function Block.on_msg(_s, msg_id, prm, sender)
+function Block.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Block.final(_s)
@@ -91,3 +91,4 @@ function Block.final(_s)
 		_s:tile__(_s._tile)
 	end
 end
+

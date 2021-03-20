@@ -51,7 +51,7 @@ function Phantom.act_intrvl(_s, dt)
 
 end
 
-function Phantom.on_msg(_s, msg_id, prm, sender)
+function Phantom.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Phantom.final(_s)

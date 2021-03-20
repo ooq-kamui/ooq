@@ -31,7 +31,7 @@ function Wa.upd(_s, dt)
 	if _s.sec < 0 then _s:wa_fin() end
 end
 
-function Wa.on_msg(_s, msg_id, prm, sender)
+function Wa.on_msg(_s, msg_id, prm, sndr)
 	if     ha.eq(msg_id, "wa") then
 		_s:wa(prm.sec)
 	
@@ -52,3 +52,4 @@ function Wa.wa_fin(_s)
 	pst.scrpt(Ev.id, "wa_sec_fin")
 	go.delete()
 end
+

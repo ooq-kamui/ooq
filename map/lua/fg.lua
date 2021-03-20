@@ -28,5 +28,6 @@ function Fg.upd(_s, dt)
 	-- id.pos__(go.get_id(), pos)
 end
 
-function Fg.on_msg(_s, msg_id, prm, sender)
+function Fg.on_msg(_s, msg_id, prm, sndr)
 end
+

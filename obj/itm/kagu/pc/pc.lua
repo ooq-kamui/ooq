@@ -42,10 +42,10 @@ function Pc.act_intrvl(_s, dt)
 	
 end
 
-function Pc.on_msg(_s, msg_id, prm, sender)
+function Pc.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "opn") then
 		_s:opn()

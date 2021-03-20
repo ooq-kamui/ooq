@@ -42,10 +42,10 @@ function Door.act_intrvl(_s, dt)
 	
 end
 
-function Door.on_msg(_s, msg_id, prm, sender)
+function Door.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "opn") then
 		_s:opn()
@@ -63,3 +63,4 @@ function Door.opn(_s)
 	-- Door_gui.cre_open()
 	fac.cre("#fac_door_gui")
 end
+

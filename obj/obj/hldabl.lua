@@ -9,7 +9,7 @@ function Hldabl.init(_s)
 	_s._hld_idx = nil
 end
 
-function Hldabl.on_msg(_s, msg_id, prm, sender)
+function Hldabl.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "hld__o") then
 		_s:hld__o(prm)

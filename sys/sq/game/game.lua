@@ -215,7 +215,7 @@ function Game.bgm_ply_nxt_rnd(_s)
 	Bgm.fade_o_ply_rnd()
 end
 
-function Game.on_msg(_s, msg_id, prm, sender)
+function Game.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "del") then
 		_s:del()

@@ -65,10 +65,10 @@ function Kitchen.upd_cooking_timer(_s, dt) -- dec
 	end
 end
 
-function Kitchen.on_msg(_s, msg_id, prm, sender)
+function Kitchen.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "on_kitchen") then -- old
 		_s:kitchen_o(prm.id)

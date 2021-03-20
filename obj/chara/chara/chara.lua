@@ -121,9 +121,9 @@ function Chara.act_intrvl(_s, dt)
 	_s:act_intrvl_time__()
 end
 
-function Chara.on_msg(_s, msg_id, prm, sender)
+function Chara.on_msg(_s, msg_id, prm, sndr)
 
-	Sp.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "present") then
 		

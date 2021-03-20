@@ -45,10 +45,10 @@ function Reizoko.act_intrvl(_s, dt)
 	
 end
 
-function Reizoko.on_msg(_s, msg_id, prm, sender)
+function Reizoko.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "opn") then
 		_s:opn()

@@ -22,14 +22,14 @@ function Warp.init(_s)
 	extend._(_s, Warp)
 end
 
-function Warp.on_msg(_s, msg_id, prm, sender)
+function Warp.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 	
-	_s:on_msg_clsn(msg_id, prm, sender)
+	_s:on_msg_clsn(msg_id, prm, sndr)
 end
 
-function Warp.on_msg_clsn(_s, msg_id, prm, sender)
+function Warp.on_msg_clsn(_s, msg_id, prm, sndr)
 	
 	if not ha.eq(msg_id, "contact_point_response") then return end
 	
@@ -39,3 +39,4 @@ function Warp.on_msg_clsn(_s, msg_id, prm, sender)
 		pst.scrpt(o_id, "to_cloud")
 	end
 end
+

@@ -19,6 +19,7 @@ function init(_s)
 	-- log._("sys _crnt_id", go.get_id(), _s._crnt_id, go.get("#script", "_crnt_id"))
 end
 
-function on_message(_s, msg_id, prm, sender)
-	_s:on_msg(msg_id, prm, sender)
+function on_message(_s, msg_id, prm, sndr)
+	_s:on_msg(msg_id, prm, sndr)
 end
+

@@ -15,10 +15,10 @@ function g.Msg.init(_s)
 	_s:opn("msg")
 end
 
-function g.Msg.on_msg(_s, msg_id, prm, sender)
+function g.Msg.on_msg(_s, msg_id, prm, sndr)
 	-- log._("g msg on_msg", msg_id)
 
-	g.Gui.on_msg(_s, msg_id, prm, sender)
+	g.Gui.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "itm__add") then
 		_s:itm__add(prm.itm)

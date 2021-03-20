@@ -77,11 +77,11 @@ function Sys.init(_s)
 	_s:title()
 end
 
-function Sys.on_msg(_s, msg_id, prm, sender)
+function Sys.on_msg(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "proxy_loaded") then -- camera ???
-		pst._(sender, "init")
-		pst._(sender, "enable")
+		pst._(sndr, "init")
+		pst._(sndr, "enable")
 
 	elseif ha.eq(msg_id, "title") then
 		_s:title()

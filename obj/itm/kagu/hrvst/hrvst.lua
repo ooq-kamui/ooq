@@ -48,10 +48,10 @@ function Hrvst.act_intrvl(_s, dt)
 	
 end
 
-function Hrvst.on_msg(_s, msg_id, prm, sender)
+function Hrvst.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "in") then
 		_s:box_in(prm)

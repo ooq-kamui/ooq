@@ -154,6 +154,10 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	elseif _s:k("arw_d") then
 		pst.scrpt(plychara_id, "mv", {dir = "d"})
 
+	-- arw free
+	elseif _s:f("arw_d") then
+		pst.scrpt(plychara_id, "arw_d_f")
+
 	-- button
 	elseif _s:p("z") then
 		-- local high = _s:is_with("arw_d")

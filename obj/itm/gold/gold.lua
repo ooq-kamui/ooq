@@ -45,8 +45,8 @@ end
 function Gold.upd(_s, dt)
 end
 
-function Gold.on_msg(_s, msg_id, prm, sender)
-	Sp.on_msg(_s, msg_id, prm, sender)
+function Gold.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Gold.final(_s)

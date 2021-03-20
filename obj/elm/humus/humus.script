@@ -19,9 +19,10 @@ function update(_s, dt)
 	_s:upd(dt)
 end
 
-function on_message(_s, msg_id, prm, sender)
+function on_message(_s, msg_id, prm, sndr)
 end
 
 function final(_s)
 	_s:final()
 end
+

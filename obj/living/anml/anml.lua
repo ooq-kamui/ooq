@@ -96,10 +96,10 @@ function Anml.act_intrvl(_s, dt)
 	_s:moving_prp__rnd()
 end
 
-function Anml.on_msg(_s, msg_id, prm, sender)
+function Anml.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if ha.eq(msg_id, "present") then
 		_s:present(prm.id)

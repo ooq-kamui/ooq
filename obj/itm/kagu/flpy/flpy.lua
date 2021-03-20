@@ -42,10 +42,10 @@ function Flpy.act_intrvl(_s, dt)
 	
 end
 
-function Flpy.on_msg(_s, msg_id, prm, sender)
+function Flpy.on_msg(_s, msg_id, prm, sndr)
 	
-	Sp.on_msg(_s, msg_id, prm, sender)
-	Hldabl.on_msg(_s, msg_id, prm, sender)
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ar.inHa(msg_id, {"opn"}) then
 		_s:opn()
@@ -66,3 +66,4 @@ function Flpy.opn(_s)
 	local ply_slt_idx = _s:ply_slt_idx()
 	pst.gui(gui_id, "gui:prp__", {ply_slt_idx = ply_slt_idx})
 end
+

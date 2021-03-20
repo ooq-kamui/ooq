@@ -14,7 +14,7 @@ function update(_s, dt)
 	end
 end
 
-function on_message(_s, msg_id, prm, sender)
+function on_message(_s, msg_id, prm, sndr)
 	if ha.eq(msg_id, "play_gate_sound") then
 		if _s.se[prm.se] == nil then
 			_s.se[prm.se] = _s.gate_time
@@ -26,3 +26,4 @@ function on_message(_s, msg_id, prm, sender)
 		end
 	end
 end
+

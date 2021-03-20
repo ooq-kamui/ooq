@@ -47,7 +47,7 @@ function Grave.act_intrvl(_s, dt)
 	
 end
 
-function Grave.on_msg(_s, msg_id, prm, sender)
+function Grave.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Grave.final(_s)
