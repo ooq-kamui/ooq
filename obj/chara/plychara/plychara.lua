@@ -381,7 +381,6 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	
 	-- local o_pos = prm.other_position
 	local t_id  = prm.other_id
-	local t_name = id.prp(t_id, "_nameHa")
 		
 	if     ha.eq(prm.group, "chara" ) then
 		_s:clsn_add("chara", t_id)
@@ -398,25 +397,8 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		_s:clsn_add("tree", t_id)
 		
 	elseif ha.eq(prm.group, "box"   ) then
+		_s:on_msg_clsn_box(t_id)
 		
-		if     ha.eq(t_name, "hrvst001"  ) then
-			_s:clsn_add("hrvst"  , t_id)
-		
-		elseif ha.eq(t_name, "reizoko001") then
-			_s:clsn_add("reizoko", t_id)
-		
-		elseif ha.eq(t_name, "kitchen001") then
-			_s:clsn_add("kitchen", t_id)
-		
-		elseif ha.eq(t_name, "flpy001"   ) then
-			_s:clsn_add("flpy",    t_id)
-		
-		elseif ha.eq(t_name, "pc001"     ) then
-			_s:clsn_add("pc",      t_id)
-		
-		elseif ha.eq(t_name, "shelf001"  ) then
-			_s:clsn_add("shelf", t_id)
-		end
 	elseif ha.eq(prm.group, "door"  ) then
 		_s:clsn_add("door", t_id)
 		
@@ -424,6 +406,19 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		_s:clsn_add("block", t_id)
 	end
 	return _.t
+end
+
+function Plychara.on_msg_clsn_box(_s, t_id)
+
+	local t_nameHa = id.prp(t_id, "_nameHa")
+
+	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn_add("hrvst"  , t_id)
+	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn_add("reizoko", t_id)
+	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn_add("kitchen", t_id)
+	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy",    t_id)
+	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc",      t_id)
+	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf",   t_id)
+	end
 end
 
 function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
