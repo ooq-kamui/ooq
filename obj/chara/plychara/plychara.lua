@@ -106,7 +106,10 @@ function Plychara.init(_s)
 end
 
 function Plychara.upd(_s, dt)
-	-- log._("plychara upd start")
+	log._("plychara upd start")
+
+	-- upd init
+	_s:on_chara__clr()
 	
 	_s:vec_mv__(dt)
 	
@@ -128,7 +131,6 @@ function Plychara.upd(_s, dt)
 	-- upd final
 	_s:act__clr()
 	_s:clsn__clr()
-	_s:on_chara__clr()
 	_s:upd_final() -- sp
 end
 
@@ -148,44 +150,45 @@ function Plychara.vec_mv__(_s, dt)
 	end
 	
 	-- move v
-	if _s._is_moving_v then
-
-		local foot_i_tile = _s:foot_i_tile()
-		local foot_o_tile = _s:foot_o_tile()
-
-		if     _s._dir_v == "u" then
-
-			if ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() ) then
-
-				_s._vec_mv_dir.y =   1
-				_s._is_clmb_u    = _.t
-				_s:anim__("back")
-			end
-
-		elseif _s._dir_v == "d" then
-
-			if     ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile) ) then
-
-				_s._vec_mv_dir.y = - 1
-				_s._is_clmb_d    = _.t
-				_s:anim__("back")
-
-			elseif Tile.is_block(foot_o_tile) 
-			or     _s._is_on_chara then
-				_s._is_cruch = _.t
-				_s:anim__("cruch")
-			end
-		end
-	end
+	_s:vec_mv_v__()
 
 	_s._vec_mv_dir = _s:dir__crct_hyprspc(_s._vec_mv_dir)
 
 	_s._vec_mv = _s._vec_mv_dir * _s._speed
 end
 
-function Plychara.anim__(_s, p_anim)
+function Plychara.vec_mv_v__(_s)
 
-	Chara.anim__(_s, p_anim)
+	if not _s._is_moving_v then return end
+
+	local foot_i_tile = _s:foot_i_tile()
+	local foot_o_tile = _s:foot_o_tile()
+
+	if     _s._dir_v == "u" then
+
+		if ( Tile.is_clmb(foot_i_tile) and not _s:head_o_is_block() ) then
+
+			_s._vec_mv_dir.y =   1
+			_s._is_clmb_u    = _.t
+			_s:anim__("back")
+		end
+
+	elseif _s._dir_v == "d" then
+		log._("vec_mv__", _s._is_on_chara)
+		_s:vec_on_chara__(dt)
+
+		if     ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile) ) then
+
+			_s._vec_mv_dir.y = - 1
+			_s._is_clmb_d    = _.t
+			_s:anim__("back")
+
+		elseif Tile.is_block(foot_o_tile) 
+		or     _s._is_on_chara then
+			_s._is_cruch = _.t
+			_s:anim__("cruch")
+		end
+	end
 end
 
 function Plychara.vec_grv__(_s, dt)
@@ -364,6 +367,7 @@ function Plychara.vec_on_chara__(_s, dt)
 	_s._is_on_chara     = _.t
 	_s._is_on_chara_flg = _.t
 
+	log._("vec_on_chara__", _s._is_on_chara)
 	-- return on_id, vec_on_chara -- old
 end
 
@@ -597,6 +601,7 @@ function Plychara.clsn__clr(_s)
 end
 
 function Plychara.on_chara__clr(_s)
+	log._("on_chara__clr")
 
 	_s._is_on_chara_flg = _.f
 	_s._is_on_chara     = _.f
@@ -881,5 +886,10 @@ function Plychara.to_door(_s, door_id)
 	local t_pos = id.pos(door_id)
 	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
+end
+
+function Plychara.anim__(_s, p_anim)
+
+	Chara.anim__(_s, p_anim)
 end
 
