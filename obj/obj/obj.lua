@@ -107,3 +107,4 @@ function Obj.fall._(p_Cls)
 		pos.y = pos.y + Map.sq * y
 	end
 end
+

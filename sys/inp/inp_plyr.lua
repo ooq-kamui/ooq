@@ -160,8 +160,6 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 
 	-- button
 	elseif _s:p("z") then
-		-- local high = _s:is_with("arw_d")
-		-- pst.scrpt(plychara_id, "jmp", {high = high})
 		pst.scrpt(plychara_id, "jmp")
 
 	elseif _s:p("a") then

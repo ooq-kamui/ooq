@@ -229,7 +229,6 @@ function Plychara.is_jmpabl(_s)
 	return ret
 end
 
--- function Plychara.jmp(_s, high)
 function Plychara.jmp(_s)
 
 	if not _s:is_jmpabl() then return end
@@ -241,9 +240,8 @@ function Plychara.jmp(_s)
 	local dst_y = Plychara.jmp_h_max * jmp_lv
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
-	local speed = accl.speed_by_dst(dst_y)
-
-	_s._accl:speed_y__(speed)
+	local speed_y = accl.speed_by_dst(dst_y)
+	_s._accl:speed_y__(speed_y)
 	_s._is_jmp_start = _.t
 
 	Se.pst_ply("jmp001")
@@ -454,7 +452,6 @@ function Plychara.on_msg_act(_s, msg_id, prm, sndr)
 	-- log._("plychara on_msg_act", msg_id)
 	
 	if     ha.eq(msg_id, "jmp")      then
-		-- _s:jmp(prm.high)
 		_s:jmp()
 	
 	elseif ha.eq(msg_id, "arw_d_f")  then
@@ -480,7 +477,7 @@ function Plychara.on_msg_act(_s, msg_id, prm, sndr)
 	end
 end
 
-function Plychara.final(_s)
+function Plychara.final(_s) -- use not
 end
 
 -- method
@@ -741,7 +738,7 @@ function Plychara.hld__ox(_s)
 
 	local is_hld, hld_id = _s:is_hld()
 
-	local clsn_is_psting = _s:clsn_is_psting_cls()
+	local clsn_is_psting = _s:clsn_is_psting_cls() -- use not ?
 
 	if is_hld and clsn_is_psting then
 		log._("clsn_is_psting")
@@ -760,7 +757,7 @@ function Plychara.hld__ox(_s)
 	end
 end
 
-function Plychara.clsn_is_psting_cls(_s)
+function Plychara.clsn_is_psting_cls(_s) -- use not ?
 
 	local psting_cls = {"chara", "animal", "hrvst", "kitchen", "reizoko", }
 
@@ -790,24 +787,46 @@ function Plychara.hld__x(_s)
 
 	pst.scrpt(t_id, "hld__x")
 
-	--
-	-- other effect
-	--
-	if     #_s._clsn.chara   >= 1 then
-		pst.scrpt(_s._clsn.chara[1], "present", {id = t_id})
+	-- hld__x_thrw
+	if _s._vec_mv.x ~= 0 then
 
-	elseif #_s._clsn.animal  >= 1 then
-		pst.scrpt(_s._clsn.animal[1], "present", {id = t_id})
+		local dir_h
+		if     _s._vec_mv.x > 0 then dir_h = "r"
+		elseif _s._vec_mv.x < 0 then dir_h = "l"
+		end
 
-	elseif #_s._clsn.hrvst   >= 1 then
-		pst.scrpt(_s._clsn.hrvst[1], "in", {id = t_id})
+		pst.scrpt(t_id, "hld__x_thrwd", {dir_h = dir_h})
 
-	elseif #_s._clsn.kitchen >= 1 then
-		pst.scrpt(_s._clsn.kitchen[1], "kitchen_o", {id = t_id})
+	-- hld__x_rlas
+	else
 
-	elseif #_s._clsn.reizoko >= 1 then
-		pst.scrpt(_s._clsn.reizoko[1], "into_reizoko", {food_id = t_id})
+		-- target action
+		if     #_s._clsn.chara   >= 1 then
+			pst.scrpt(_s._clsn.chara[1]  , "present"  , {id = t_id})
+
+		elseif #_s._clsn.animal  >= 1 then
+			pst.scrpt(_s._clsn.animal[1] , "present"  , {id = t_id})
+
+		elseif #_s._clsn.hrvst   >= 1 then
+			pst.scrpt(_s._clsn.hrvst[1]  , "in"       , {id = t_id})
+
+		elseif #_s._clsn.kitchen >= 1 then
+			pst.scrpt(_s._clsn.kitchen[1], "kitchen_o", {id = t_id})
+
+		elseif #_s._clsn.reizoko >= 1 then
+			pst.scrpt(_s._clsn.reizoko[1], "into_reizoko", {food_id = t_id})
+		end
 	end
+end
+
+function Plychara.hld__x_rlas(_s)
+
+
+end
+
+function Plychara.hld__x_thrw(_s)
+
+
 end
 
 function Plychara.hld_tile_side(_s)

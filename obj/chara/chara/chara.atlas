@@ -8,6 +8,10 @@ animations {
     image: "/assets/obj/chara/chara/img/01.sanae/pixel/002.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
+  images {
+    image: "/assets/obj/chara/chara/img/01.sanae/pixel/003.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 1
   flip_horizontal: 0
@@ -27,7 +31,7 @@ animations {
 animations {
   id: "sanae-cruch"
   images {
-    image: "/assets/obj/chara/chara/img/01.sanae/pixel/003.png"
+    image: "/assets/obj/chara/chara/img/01.sanae/pixel/cruch001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

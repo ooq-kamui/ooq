@@ -29,7 +29,7 @@ function on_message(_s, msg_id, prm, sndr)
 end
 
 --[[
-function final(_s)
+function final(_s) -- use not
 	_s:final()
 end
 --]]

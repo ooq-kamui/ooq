@@ -8,8 +8,8 @@ Accl = {
 
 	-- grv_cnst = n.vec(0, - 1), -- old
 
-	speed_max = 4,
-	-- speed_max = 3,
+	speed_max_x = 8,
+	speed_max_y = 4,
 }
 
 -- static
@@ -38,9 +38,8 @@ end
 
 function Accl.speed__add_accl(_s)
 
-	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max)
-
-	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - Accl.speed_max)
+	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max_x)
+	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - Accl.speed_max_y)
 end
 
 function Accl.speed(_s)
