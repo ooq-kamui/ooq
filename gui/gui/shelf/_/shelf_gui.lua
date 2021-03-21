@@ -8,7 +8,7 @@ function g.Shelf.init(_s)
 
 	_s._prt.shelf = p.Shelf.cre(_s)
 
-	_s._prt.zu_animal = p.Zu_animal.cre(_s)
+	_s._prt.zu_anml   = p.Zu_anml.cre(_s)
 	_s._prt.zu_dish   = p.Zu_dish.cre(_s)
 	_s._prt.zu_flower = p.Zu_flower.cre(_s)
 

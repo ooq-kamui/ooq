@@ -1,42 +1,42 @@
-log.scrpt("p.zu_animal.lua")
+log.scrpt("p.zu_anml.lua")
 
-p.Zu_animal = {}
+p.Zu_anml = {}
 
 -- static
 
-function p.Zu_animal.cre(parent_gui)
-	local p_Prt = p.Zu_animal
+function p.Zu_anml.cre(parent_gui)
+	local p_Prt = p.Zu_anml
 	local gui_prt = p.Prt.cre(p_Prt, parent_gui)
 	return gui_prt
 end
 
-function p.Zu_animal.is_favo(name, o_cls, o_name)
+function p.Zu_anml.is_favo(name, o_cls, o_name)
 	local ret = _.f
-	local favo = p.Zu_animal.favo[name]
+	local favo = p.Zu_anml.favo[name]
 	if not favo[o_cls] then return ret end
 	ret = ar.in_(o_name, favo[o_cls])
 	return ret
 end
 
-function p.Zu_animal.animal__o(name)
-	Ply_data._zu.animal[name] = _.t
+function p.Zu_anml.anml__o(name)
+	Ply_data._zu.anml[name] = _.t
 end
 
 -- script method
 
-function p.Zu_animal.init(_s, parent_gui)
+function p.Zu_anml.init(_s, parent_gui)
 
-	_s._lb = "zu_animal"
+	_s._lb = "zu_anml"
 	
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Zu_animal)
+	extend._(_s, p.Zu_anml)
 	
 	_s._itm_pitch = 51
 	_s._dsp_idx_max = 8
 	
-	_s:itm__by_ar(Anml.animal)
+	_s:itm__by_ar(Anml.anml)
 	
 	local node
 	for idx, name in pairs(_s._itm) do
@@ -47,7 +47,7 @@ end
 
 -- method
 
-function p.Zu_animal.opn(_s, prm)
+function p.Zu_anml.opn(_s, prm)
 	
 	_s:itm_icn__()
 	_s:itm__plt()
@@ -56,24 +56,23 @@ function p.Zu_animal.opn(_s, prm)
 	_s:focus__(_.t)
 end
 
-function p.Zu_animal.itm_icn__(_s)
+function p.Zu_anml.itm_icn__(_s)
 	
 	local icn, nameHa
 	for idx, name in pairs(_s._itm) do
-		log._("p.Zu_animal.itm_icn__", name)
+		log._("p.Zu_anml.itm_icn__", name)
 		icn = _s._nd.itm[idx][_s:lb("icn")]
 		nameHa = ha._(name)
-		if Ply_data._zu.animal[nameHa] then
+		if Ply_data._zu.anml[nameHa] then
 			nd.txtr__(icn, nameHa)
-			-- gui.play_flipbook(icn, "walk")
 			nd.anm__( icn, "walk")
 		else
 			nd.txtr__(icn, "noimg")
-			-- gui.play_flipbook(icn, "noimg")
 			nd.anm__( icn, "noimg")
 		end
 	end
 end
 
-function p.Zu_animal.decide(_s)
+function p.Zu_anml.decide(_s)
 end
+

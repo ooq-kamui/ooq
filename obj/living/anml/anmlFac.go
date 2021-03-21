@@ -269,7 +269,7 @@ components {
   }
 }
 components {
-  id: "animal"
+  id: "anml"
   component: "/assets/obj/living/anml/anml.factory"
   position {
     x: 0.0

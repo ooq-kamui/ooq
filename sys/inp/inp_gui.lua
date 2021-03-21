@@ -16,7 +16,7 @@ Inp.gui = {
 		"pc", "cfg", "kzn",
 		"snn_lst", "snn_dtl",
 		"shop", "shop_flower", "shop_tree", "shop_kagu", "shop_kagu_itm", "shop_block",
-		"shelf", "zu_animal", "zu_flower", "zu_dish",
+		"shelf", "zu_anml", "zu_flower", "zu_dish",
 		"door",
 		"dia",
 		"reizoko",

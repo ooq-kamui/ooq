@@ -87,7 +87,7 @@ function Plychara.init(_s)
 		kitchen = {},
 		reizoko = {},
 		chara   = {},
-		animal  = {},
+		anml  = {},
 		flpy    = {},
 		pc      = {},
 		shelf   = {},
@@ -396,17 +396,17 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	elseif ha.eq(prm.group, "hld"   ) then
 		if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
 
-	elseif ha.eq(prm.group, "animal") then
-		_s:clsn_add("animal", t_id)
+	elseif ha.eq(prm.group, "anml"  ) then
+		_s:clsn_add("anml" , t_id)
 
 	elseif ha.eq(prm.group, "tree"  ) then
-		_s:clsn_add("tree", t_id)
+		_s:clsn_add("tree" , t_id)
 		
 	elseif ha.eq(prm.group, "box"   ) then
 		_s:on_msg_clsn_box(t_id)
 		
 	elseif ha.eq(prm.group, "door"  ) then
-		_s:clsn_add("door", t_id)
+		_s:clsn_add("door" , t_id)
 		
 	elseif ha.eq(prm.group, "block" ) then
 		_s:clsn_add("block", t_id)
@@ -612,7 +612,7 @@ function Plychara.clsn_hldabl__(_s)
 
 	local cls = {
 		"hld", "kitchen", "reizoko", "hrvst", "flpy",
-		"pc", "shelf", "door", "animal", "block",
+		"pc", "shelf", "door", "anml", "block",
 	}
 	
 	ar.clr(_s._clsn_hldabl)
@@ -780,7 +780,7 @@ end
 
 function Plychara.clsn_is_psting_cls(_s) -- use not ?
 
-	local psting_cls = {"chara", "animal", "hrvst", "kitchen", "reizoko", }
+	local psting_cls = {"chara", "anml", "hrvst", "kitchen", "reizoko", }
 
 	local ret = _.f
 
@@ -826,8 +826,8 @@ function Plychara.hld__x(_s)
 		if     #_s._clsn.chara   >= 1 then
 			pst.scrpt(_s._clsn.chara[1]  , "present"  , {id = t_id})
 
-		elseif #_s._clsn.animal  >= 1 then
-			pst.scrpt(_s._clsn.animal[1] , "present"  , {id = t_id})
+		elseif #_s._clsn.anml  >= 1 then
+			pst.scrpt(_s._clsn.anml[1]   , "present"  , {id = t_id})
 
 		elseif #_s._clsn.hrvst   >= 1 then
 			pst.scrpt(_s._clsn.hrvst[1]  , "in"       , {id = t_id})

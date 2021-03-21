@@ -25,7 +25,7 @@ function p.Shelf.init(_s, parent_gui)
 	_s._dsp_idx_max = 3
 	_s._itm_scrl_dir = "h"
 
-	_s:itm__by_ar({"animal", "flower", "dish"})
+	_s:itm__by_ar({"anml", "flower", "dish"})
 	
 	local node
 	for idx, title in pairs(_s._itm) do

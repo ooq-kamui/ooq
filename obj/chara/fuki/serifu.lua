@@ -332,7 +332,7 @@ Serifu = {
 		-- plant, flower
 		{len =  2, txt = "はな"},
 
-		-- animal
+		-- anml
 		{len =  3, txt = "さかな"},
 
 

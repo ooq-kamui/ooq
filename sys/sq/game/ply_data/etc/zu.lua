@@ -2,13 +2,13 @@ log.scrpt("zu.lua")
 
 Ply_data._zu = {
 	
-	animal = {},
+	anml   = {},
 	flower = {},
 	dish   = {},
 }
 Ply_data.zu = {
 	cls = {
-		"animal",
+		"anml",
 		"flower",
 		"dish",
 	},

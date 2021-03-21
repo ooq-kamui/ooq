@@ -6,8 +6,8 @@ Anml = {
 
 	weight = 2,
 
-	-- animal all
-	animal = {
+	-- anml all
+	anml = {
 		"cat" , "pig"   , "dog"  , "fox"   , "sheep" , "duck",
 		"owl" , "rat"   , "goat" , "piyoco", "wolf"  , "coco",
 		"bird", "rabbit", "horse", "cow"   , "badger",
@@ -17,10 +17,10 @@ Anml = {
 	put_dairy = {"sheep", "cow", "goat"},
 	-- enemy = {"cow", "ant",},
 }
-Anml.cls = "animal"
+Anml.cls = "anml"
 Anml.fac = "/objFac/"..Anml.cls.."Fac"
 Cls.add(Anml)
-ha.add_by_ar(Anml.animal)
+ha.add_by_ar(Anml.anml)
 
 -- static
 
@@ -32,7 +32,7 @@ function Anml.cre(p_pos, prm)
 	
 	prm.clsHa  = ha._(Anml.cls)
 	if not prm.nameHa then
-		prm.nameHa = ha._(rnd.ar(Anml.animal))
+		prm.nameHa = ha._(rnd.ar(Anml.anml))
 	end
 	prm.animHa = ha._("walk")
 
@@ -45,7 +45,7 @@ function Anml.cre(p_pos, prm)
 	
 	local t_url = url._(Anml.fac, prm.nameHa)
 	ar.key___(prm)
-	-- log.pp("animal cre" .. t_url, prm)
+	-- log.pp("anml cre" .. t_url, prm)
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	-- local t_id = factory.create(t_url, p_pos, nil, prm)
 
@@ -75,7 +75,7 @@ function Anml.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- log._("animal z", _s:z())
+	-- log._("anml z", _s:z())
 	
 	if not rnd.by_f(1/3) then return end
 	
@@ -116,22 +116,22 @@ function Anml.present(_s, o_id)
 	id.del(o_id)
 	Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
 
-	-- Zu_animal_gui.animal__o(_s._nameHa)
-	Ply_data._zu.animal[_s:name()] = _.t
+	-- Zu_anml_gui.anml__o(_s._nameHa)
+	Ply_data._zu.anml[_s:name()] = _.t
 end
 
 function Anml.is_favo(_s, o_clsHa, o_nameHa)
-	-- log.pp("animal is_favo", Mstr.animal)
-	-- log._("animal is_favo", o_clsHa, o_nameHa)
+	-- log.pp("anml is_favo", Mstr.anml)
+	-- log._("anml is_favo", o_clsHa, o_nameHa)
 	
 	local ret = _.f
 	
 	local s_name = ha.de(_s:name())
-	-- log._("animal is_favo", s_name)
-	local favo = Mstr.animal[s_name].favo
+	-- log._("anml is_favo", s_name)
+	local favo = Mstr.anml[s_name].favo
 
 	local o_cls = ha.de(o_clsHa)
-	-- log._("animal is_favo", o_cls)
+	-- log._("anml is_favo", o_cls)
 	if not favo[o_cls] then return ret end
 
 	local o_name = ha.de(o_nameHa)

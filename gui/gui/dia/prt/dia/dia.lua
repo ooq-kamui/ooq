@@ -101,7 +101,7 @@ function p.Dia.nxt(_s)
 end
 
 function p.Dia.chara__(_s, chara)
-	nd.anm__(_s._nd.chara, chara)
+	nd.anm__(_s._nd.chara, chara.."-walk")
 end
 
 function p.Dia.txt__(_s, txt)

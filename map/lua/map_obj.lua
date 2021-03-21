@@ -81,7 +81,7 @@ end
 
 function Map.obj_living(_s)
 	local cls = {
-		"animal", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
+		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
 	}
 	return _s:obj_grp(cls)
 end

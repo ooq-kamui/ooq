@@ -1,4 +1,4 @@
-log.scrpt("animal.script")
+log.scrpt("anml.script")
 ---[[
 go.property("_clsHa",  hash(""))
 go.property("_nameHa", hash(""))

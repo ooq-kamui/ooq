@@ -308,7 +308,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "zu_animal"
+  id: "zu_anml"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -349,12 +349,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "base/base350x450_bl"
-  id: "zu_animal/base"
+  id: "zu_anml/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "zu_animal"
+  parent: "zu_anml"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -404,12 +404,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "itm/itm250x50_bl"
-  id: "zu_animal/itm"
+  id: "zu_anml/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "zu_animal/base"
+  parent: "zu_anml/base"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -459,12 +459,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "badger/walk"
-  id: "zu_animal/icn"
+  id: "zu_anml/icn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "zu_animal/itm"
+  parent: "zu_anml/itm"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -515,7 +515,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\343\201\202"
   font: "x8y12pxTheStrongGamer"
-  id: "zu_animal/txt"
+  id: "zu_anml/txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -533,7 +533,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "zu_animal/itm"
+  parent: "zu_anml/itm"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -577,12 +577,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "cursor/stand"
-  id: "zu_animal/cursor"
+  id: "zu_anml/cursor"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "zu_animal/base"
+  parent: "zu_anml/base"
   layer: ""
   inherit_alpha: true
   slice9 {

@@ -1,8 +1,8 @@
-log.scrpt("mstr animal.lua")
+log.scrpt("mstr anml.lua")
 
-Mstr.animal = {}
+Mstr.anml = {}
 
-Mstr.animal["cat"] = {
+Mstr.anml["cat"] = {
 
 	gold = 1000,
 
@@ -22,7 +22,7 @@ Mstr.animal["cat"] = {
 	},
 }
 
-Mstr.animal["pig"] = {
+Mstr.anml["pig"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -34,7 +34,7 @@ Mstr.animal["pig"] = {
 	},
 }
 
-Mstr.animal["dog"] = {
+Mstr.anml["dog"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -46,7 +46,7 @@ Mstr.animal["dog"] = {
 	},
 }
 
-Mstr.animal["fox"] = {
+Mstr.anml["fox"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -58,7 +58,7 @@ Mstr.animal["fox"] = {
 	},
 }
 
-Mstr.animal["sheep"] = {
+Mstr.anml["sheep"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -70,7 +70,7 @@ Mstr.animal["sheep"] = {
 	},
 }
 
-Mstr.animal["duck"] = {
+Mstr.anml["duck"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -82,7 +82,7 @@ Mstr.animal["duck"] = {
 	},
 }
 
-Mstr.animal["owl"] = {
+Mstr.anml["owl"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -94,7 +94,7 @@ Mstr.animal["owl"] = {
 	},
 }
 
-Mstr.animal["rat"] = {
+Mstr.anml["rat"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -106,7 +106,7 @@ Mstr.animal["rat"] = {
 	},
 }
 
-Mstr.animal["goat"] = {
+Mstr.anml["goat"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -118,7 +118,7 @@ Mstr.animal["goat"] = {
 	},
 }
 
-Mstr.animal["piyoco"] = {
+Mstr.anml["piyoco"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -130,7 +130,7 @@ Mstr.animal["piyoco"] = {
 	},
 }
 
-Mstr.animal["wolf"] = {
+Mstr.anml["wolf"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -142,7 +142,7 @@ Mstr.animal["wolf"] = {
 	},
 }
 
-Mstr.animal["coco"] = {
+Mstr.anml["coco"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -154,7 +154,7 @@ Mstr.animal["coco"] = {
 	},
 }
 
-Mstr.animal["bird"] = {
+Mstr.anml["bird"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -166,7 +166,7 @@ Mstr.animal["bird"] = {
 	},
 }
 
-Mstr.animal["rabbit"] = {
+Mstr.anml["rabbit"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -178,7 +178,7 @@ Mstr.animal["rabbit"] = {
 	},
 }
 
-Mstr.animal["horse"] = {
+Mstr.anml["horse"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -190,7 +190,7 @@ Mstr.animal["horse"] = {
 	},
 }
 
-Mstr.animal["cow"] = {
+Mstr.anml["cow"] = {
 	gold = 1000,
 	favo = {
 		dish = {
@@ -202,7 +202,7 @@ Mstr.animal["cow"] = {
 	},
 }
 
-Mstr.animal["badger"] = {
+Mstr.anml["badger"] = {
 	gold = 1000,
 	favo = {
 		dish = {
