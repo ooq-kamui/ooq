@@ -106,7 +106,7 @@ function Plychara.init(_s)
 end
 
 function Plychara.upd(_s, dt)
-	log._("plychara upd start")
+	-- log._("plychara upd start")
 
 	-- upd init
 	_s:on_chara__clr()
@@ -174,7 +174,6 @@ function Plychara.vec_mv_v__(_s)
 		end
 
 	elseif _s._dir_v == "d" then
-		log._("vec_mv__", _s._is_on_chara)
 		_s:vec_on_chara__(dt)
 
 		if     ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile) ) then
@@ -350,7 +349,6 @@ function Plychara.vec_on_chara__(_s, dt)
 		return
 	end
 
-	-- local on_id, o_cls = _s:on_clsn()
 	local o_cls
 	_s._on_chara_id, o_cls = _s:on_clsn()
 
@@ -366,9 +364,6 @@ function Plychara.vec_on_chara__(_s, dt)
 
 	_s._is_on_chara     = _.t
 	_s._is_on_chara_flg = _.t
-
-	log._("vec_on_chara__", _s._is_on_chara)
-	-- return on_id, vec_on_chara -- old
 end
 
 function Plychara.on_msg(_s, msg_id, prm, sndr)
@@ -601,7 +596,7 @@ function Plychara.clsn__clr(_s)
 end
 
 function Plychara.on_chara__clr(_s)
-	log._("on_chara__clr")
+	-- log._("on_chara__clr")
 
 	_s._is_on_chara_flg = _.f
 	_s._is_on_chara     = _.f
@@ -822,6 +817,7 @@ function Plychara.hld__x(_s)
 		end
 
 		pst.scrpt(t_id, "hld__x_thrwd", {dir_h = dir_h})
+		Se.pst_ply("thrw001")
 
 	-- hld__x_rlas
 	else
