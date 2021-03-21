@@ -74,6 +74,7 @@ function Plychara.init(_s)
 	_s._vec_mv_dir = n.vec()
 
 	_s._vec_on_chara = n.vec()
+	_s._on_pos       = n.vec()
 
 	_s._itm_selected = "wand001" -- name
 
@@ -114,8 +115,7 @@ function Plychara.upd(_s, dt)
 	_s:vec_grv__(dt)
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
-	local dmy
-	dmy, _s._vec_on_chara = _s:vec_on_clsn(dt)
+	_s:vec_on_chara__(dt)
 
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
 
@@ -128,9 +128,8 @@ function Plychara.upd(_s, dt)
 	-- upd final
 	_s:act__clr()
 	_s:clsn__clr()
-
-	_s:upd_final()
-	-- log._("plychara upd end")
+	_s:on_chara__clr()
+	_s:upd_final() -- sp
 end
 
 function Plychara.vec_mv__(_s, dt)
@@ -171,7 +170,8 @@ function Plychara.vec_mv__(_s, dt)
 				_s._is_clmb_d    = _.t
 				_s:anim__("back")
 
-			elseif Tile.is_block(foot_o_tile) then
+			elseif Tile.is_block(foot_o_tile) 
+			or     _s._is_on_chara then
 				_s._is_cruch = _.t
 				_s:anim__("cruch")
 			end
@@ -195,10 +195,9 @@ function Plychara.vec_grv__(_s, dt)
 		_s:vec_grv__grv()
 		_s._is_jmp_start = _.f
 	else
+		_s:vec_on_chara__(dt)
 
-		local on_chara_id, dmy = _s:vec_on_clsn(dt)
-
-		if on_chara_id then
+		if _s._is_on_chara then
 			vec.xy__clr(_s._vec_grv)
 		else
 			Sp.vec_grv__(_s, dt)
@@ -214,12 +213,12 @@ function Plychara.is_jmpabl(_s)
 
 	local foot_o_tile = _s:foot_o_tile()
 	local foot_i_tile = _s:foot_i_tile()
-	local on_chara_id = _s:vec_on_clsn(dt)
+	_s:vec_on_chara__(dt)
 	
 	if Tile.is_block(foot_o_tile)
 	or Tile.is_clmb( foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
-	or on_chara_id
+	or _s._is_on_chara
 	or _s:is_on_obj_block()
 	-- or _s:on_by_mapobj()
 	then
@@ -338,22 +337,34 @@ function Plychara.crct_inside_map(_s, p_vec)
 	return p_vec
 end
 
-function Plychara.vec_on_clsn(_s, dt)
+function Plychara.vec_on_chara__(_s, dt)
 	
-	local vec_on_obj
-	local on_pos
-	local on_id, o_cls = _s:on_clsn()
-	
-	if on_id and not _s._is_dive_start then
+	if _s._is_on_chara_flg then return end
 
-		if o_cls == ha._("chara") then
-			on_pos = id.pos(on_id) + n.vec(0, Map.sq)
-		end
-		vec_on_obj = on_pos - _s:pos()
-	else
-		vec_on_obj = n.vec()
+	if _s._is_dive_start then
+		vec.xy__add(_s._vec_on_chara, 0, 0)
+		_s._is_on_chara_flg = _.t
+		return
 	end
-	return on_id, vec_on_obj
+
+	-- local on_id, o_cls = _s:on_clsn()
+	local o_cls
+	_s._on_chara_id, o_cls = _s:on_clsn()
+
+	if not _s._on_chara_id or o_cls ~= ha._("chara") then
+		_s._is_on_chara_flg = _.t
+		return
+	end
+
+	_s._on_pos = id.pos(_s._on_chara_id)
+	vec.xy__add(_s._on_pos, 0, Map.sq)
+
+	_s._vec_on_chara = _s._on_pos - _s:pos()
+
+	_s._is_on_chara     = _.t
+	_s._is_on_chara_flg = _.t
+
+	-- return on_id, vec_on_chara -- old
 end
 
 function Plychara.on_msg(_s, msg_id, prm, sndr)
@@ -583,6 +594,16 @@ function Plychara.clsn__clr(_s)
 	for key, clsn in pairs(_s._clsn) do
 		ar.clr(_s._clsn[key])
 	end
+end
+
+function Plychara.on_chara__clr(_s)
+
+	_s._is_on_chara_flg = _.f
+	_s._is_on_chara     = _.f
+	_s._on_chara_id     = nil
+
+	vec.xy__clr(_s._vec_on_chara)
+	vec.xy__clr(_s._on_pos)
 end
 
 -- clsn_hldabl

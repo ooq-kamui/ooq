@@ -2,9 +2,13 @@ log.scrpt("obj.lua")
 
 Obj = {}
 Obj.fac = "objFac#"
-Obj.fall = {}
 
-function Obj.fall.tst()
+-- tst
+
+Obj.tst = {}
+-- Obj.fall = {}
+
+function Obj.tst.tst()
 	local Cls = {
 		Chara,
 		Block,
@@ -18,19 +22,19 @@ function Obj.fall.tst()
 		Flower, Flower,
 		Dish, Dish, Dish, Dish, Dish, Dish,
 	}
-	Obj.fall._(Cls)
+	Obj.tst._(Cls)
 end
 
-function Obj.fall.chara()
+function Obj.tst.chara()
 	local Cls = {
 		Chara,Chara,Chara,Chara,Chara,Chara,
 		Chara,Chara,Chara,Chara,Chara,Chara,
 		Seed,Seed,Seed,Seed,
 	}
-	Obj.fall._(Cls)
+	Obj.tst._(Cls)
 end
 
-function Obj.fall.fire()
+function Obj.tst.fire()
 	local Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
 		Fire,Fire,Fire,Fire, -- Fire,Fire,
@@ -39,10 +43,10 @@ function Obj.fall.fire()
 		Leaf,Leaf,Leaf,
 		Dryleaf,Dryleaf,Dryleaf,Dryleaf,Dryleaf,
 	}
-	Obj.fall._(Cls)
+	Obj.tst._(Cls)
 end
 
-function Obj.fall.tree()
+function Obj.tst.tree()
 	local Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
@@ -52,10 +56,10 @@ function Obj.fall.tree()
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 	}
-	Obj.fall._(Cls)
+	Obj.tst._(Cls)
 end
 
-function Obj.fall.game_start()
+function Obj.tst.game_start()
 	
 	local Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
@@ -84,10 +88,10 @@ function Obj.fall.game_start()
 		-- Block,Block,Block,Block,Block,
 		--]]
 	}
-	Obj.fall._(Cls)
+	Obj.tst._(Cls)
 end
 
-function Obj.fall._(p_Cls)
+function Obj.tst._(p_Cls)
 	
 	local pos = n.vec(-800, 200)
 	local y, idx

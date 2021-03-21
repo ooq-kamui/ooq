@@ -2,12 +2,13 @@ log.scrpt("vec.lua")
 
 vec = {}
 
-function n.vec(x, y, z)   -- alias
+function n.vec(x, y, z, note) -- alias
+	-- log._("n.vec", x, y, z, note)
+	log._("n.vec", note)
 	return vec.new(x, y, z)
 end
 
 function vec.new(x, y, z)
-	log._("vec.new")
 
 	x = x or 0
 	y = y or 0

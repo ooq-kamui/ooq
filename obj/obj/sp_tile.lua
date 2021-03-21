@@ -1,5 +1,9 @@
 log.scrpt("sp_tile.lua")
 
+--
+-- pos, tile, etc
+--
+
 function Sp.pos(_s)
 	local t_pos = id.pos(_s._id)
 	return t_pos
