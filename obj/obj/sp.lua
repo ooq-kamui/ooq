@@ -10,15 +10,9 @@ Sp = {
 function Sp.cre(Cls, p_pos, prm, scl)
 	
 	p_pos = p_pos or pos.pos_w()
-	prm = prm or {}
+	prm   = prm   or {}
 
-	local t_url
-	if Cls.fac then
-		t_url = "/objFac/"..Cls.fac
-	else
-		log._("sp cre by fac ( old )", Cls.cls)
-		-- t_url = url._("/objFac/"..Cls.fac, Cls.cls) -- old
-	end
+	local t_url = "/objFac/"..Cls.fac
 
 	-- name, anim
 	prm.clsHa  = ha._(Cls.cls)
@@ -171,6 +165,20 @@ function Sp.is_pause(_s)
 	return ret
 end
 
+function Sp.parent__(_s, parent_id, z, p_pos)
+
+	z = z or 0.2
+
+	pst.parent__(_s._id, parent_id, z, p_pos)
+end
+
+function Sp.parent__map(_s)
+	
+	local z = _s:Cls().z or 0.2
+	
+	pst.parent__(_s._id, _s:map_id(), z)
+end
+
 -- id
 
 function Sp.id(_s)
@@ -205,20 +213,6 @@ function Sp.cloud_pos(_s)
 	return t_pos
 end
 
-function Sp.parent__(_s, parent_id, z, p_pos)
-
-	z = z or 0.2
-
-	pst.parent__(_s._id, parent_id, z, p_pos)
-end
-
-function Sp.parent__map(_s)
-	
-	local z = _s:Cls().z or 0.2
-	
-	pst.parent__(_s._id, _s:map_id(), z)
-end
-
 function Sp.cls(_s)
 	return _s._clsHa
 end
@@ -242,11 +236,11 @@ function Sp.Cls(_s, p_prp)
 	end
 end
 
--- obj
-
 function Sp.is_food(_s)
 	return ar.inHa(_s._clsHa, Food.cls)
 end
+
+-- obj
 
 function Sp.cls_is_mapobj(_s)
 	

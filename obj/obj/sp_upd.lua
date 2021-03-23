@@ -67,20 +67,6 @@ function Sp.upd_pos_static(_s, dt)
 	end
 end
 
-function Sp.crct_clmb(_s, p_vec)
-	
-	if not (_s._moving_v and _s._dir_v == "u") then return p_vec end
-
-	local foot_i_pos     = _s:foot_i_pos()
-	local foot_i_pos_nxt = foot_i_pos + p_vec
-	
-	local is_crct = _s:is_clmb(foot_i_pos) and not _s:is_clmb(foot_i_pos_nxt)
-	if not is_crct then return p_vec end
-	
-	p_vec.y = map.pos_by_pos(foot_i_pos).y + Map.sq - _s:pos().y
-	return p_vec
-end
-
 function Sp.map_is_inside(_s, pos)
 
 	pos = pos or _s:pos()
@@ -97,36 +83,6 @@ function Sp.map_inside_rng_pos(_s)
 	_s._map_inside_rng_pos = map.inside_rng_pos(_s._map_id, "ground", tilesize)
 	
 	return _s._map_inside_rng_pos
-end
-
-function Sp.crct_inside_map(_s, p_vec)
-	
-	local pos_nxt = _s:pos() + p_vec
-
-	local is_inside, dir = _s:map_is_inside(pos_nxt)
-	
-	if is_inside then return p_vec end
-
-	-- log._("crct_inside_map", dir)
-	
-	local inside_rng_pos = _s:map_inside_rng_pos()
-	
-	if     dir == "l" then
-		pos_nxt.x = inside_rng_pos.min.x
-
-	elseif dir == "r" then
-		pos_nxt.x = inside_rng_pos.max.x
-
-	elseif dir == "d" then
-		pos_nxt.y = inside_rng_pos.min.y
-
-	elseif dir == "u" then
-		pos_nxt.y = inside_rng_pos.max.y
-	end
-	
-	p_vec = pos_nxt - _s:pos()
-	
-	return p_vec
 end
 
 function Sp.map_rng_pos(_s)

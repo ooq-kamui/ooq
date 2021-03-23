@@ -46,11 +46,11 @@ function id.name(p_id)
 	return id.prp(p_id, "_nameHa")
 end
 
-function id.pos(id)
+function id.pos(p_id)
 	
-	if not id then return end
+	if not p_id then return end
 	
-	local t_pos = go.get_position(id)
+	local t_pos = go.get_position(p_id)
 	return t_pos
 end
 

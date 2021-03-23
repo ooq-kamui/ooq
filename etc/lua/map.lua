@@ -13,7 +13,7 @@ function map.pos_2_tilepos(p_pos)
 
 	local x = math.floor((p_pos.x + Map.sq) / Map.sq)
 	local y = math.floor((p_pos.y + Map.sq) / Map.sq)
-	local tilepos = n.vec(x, y)
+	local tilepos = n.vec(x, y, nil, "map.pos_2_tilepos")
 	return tilepos
 end
 
@@ -118,6 +118,7 @@ function map.is_inside_tilepos_cmpr(tilepos, rng_tilepos)
 end
 
 function map.pos_by_pos(pos) -- center in tile
+
 	local tilepos = map.pos_2_tilepos(pos)
 	return map.pos_by_tilepos(tilepos)
 end

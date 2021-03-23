@@ -1,7 +1,5 @@
 log.scrpt("sp_on_msg.lua")
 
-
-
 function Sp.on_msg(_s, msg_id, prm, sndr)
 	
 	if     ha.eq(msg_id, "pos__") then
