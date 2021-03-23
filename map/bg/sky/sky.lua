@@ -293,7 +293,8 @@ function Sky.tile__by_pos(_s, tile, p_pos)
 	for i = 1, _s._x_once do
 		map.tile__by_tilepos(t_pos                        , tile, _s._id, "sky", "sky")
 		map.tile__by_tilepos(n.vec(- t_pos.x + 1, t_pos.y), tile, _s._id, "sky", "sky")
-		t_pos = t_pos + n.vec(1, 0)
+		-- t_pos = t_pos + n.vec(1, 0)
+		vec.xy__add(t_pos, 1, 0)
 	end
 end
 

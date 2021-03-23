@@ -118,7 +118,7 @@ function Plychara.upd(_s, dt)
 	_s:vec_grv__(dt)
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
-	_s:vec_on_chara__(dt)
+	-- _s:vec_on_chara__(dt)
 
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
 
@@ -174,7 +174,6 @@ function Plychara.vec_mv_v__(_s)
 		end
 
 	elseif _s._dir_v == "d" then
-		_s:vec_on_chara__(dt)
 
 		if     ( Tile.is_clmb(foot_i_tile) or Tile.is_clmb(foot_o_tile) ) then
 
@@ -183,7 +182,8 @@ function Plychara.vec_mv_v__(_s)
 			_s:anim__("back")
 
 		elseif Tile.is_block(foot_o_tile) 
-		or     _s._is_on_chara then
+		-- or     _s._is_on_chara then
+		or     _s:is_on_chara() then
 			_s._is_cruch = _.t
 			_s:anim__("cruch")
 		end
@@ -197,9 +197,7 @@ function Plychara.vec_grv__(_s, dt)
 		_s:vec_grv__grv()
 		_s._is_jmp_start = _.f
 	else
-		_s:vec_on_chara__(dt)
-
-		if _s._is_on_chara then
+		if _s:is_on_chara() then
 			vec.xy__clr(_s._vec_grv)
 		else
 			Sp.vec_grv__(_s, dt)
@@ -215,12 +213,11 @@ function Plychara.is_jmpabl(_s)
 
 	local foot_o_tile = _s:foot_o_tile()
 	local foot_i_tile = _s:foot_i_tile()
-	_s:vec_on_chara__(dt)
 	
 	if Tile.is_block(foot_o_tile)
 	or Tile.is_clmb( foot_o_tile)
 	or Tile.is_elv(  foot_o_tile)
-	or _s._is_on_chara
+	or _s:is_on_chara()
 	or _s:is_on_obj_block()
 	-- or _s:on_by_mapobj()
 	then
@@ -339,9 +336,16 @@ function Plychara.crct_inside_map(_s, p_vec)
 	return p_vec
 end
 
-function Plychara.vec_on_chara__(_s, dt)
-	
-	if _s._is_on_chara_flg then return end
+function Plychara.is_on_chara(_s)
+
+	if _s._is_on_chara_flg then return _s._is_on_chara end
+
+	_s:is_on_chara__()
+
+	return _s._is_on_chara
+end
+
+function Plychara.is_on_chara__(_s)
 
 	if _s._is_dive_start then
 		vec.xy__add(_s._vec_on_chara, 0, 0)
