@@ -7,8 +7,7 @@ Plychara = {
 	jmp_h_max   = Map.sq,
 	jmp_h_mrgn  = 2, -- 1,
 
-	jmp_lv_dflt = 1,
-	-- jmp_lv_dflt = 2,
+	jmp_lv_dflt = 1, -- 2,
 
 	act_intrvl_time = 5,
 	w = 20,
@@ -194,8 +193,8 @@ function Plychara.vec_grv__(_s, dt)
 
 	if _s._is_jmp_start then
 
-		_s:vec_grv__grv()
 		_s._is_jmp_start = _.f
+
 	else
 		if _s:is_on_chara() then
 			vec.xy__clr(_s._vec_grv)
@@ -239,6 +238,8 @@ function Plychara.jmp(_s)
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
 	local speed_y = accl.speed_by_dst(dst_y)
+	-- log._("jmp", dst_y, speed_y)
+
 	_s._accl:speed_y__(speed_y)
 	_s._is_jmp_start = _.t
 
