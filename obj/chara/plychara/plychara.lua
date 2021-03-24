@@ -392,43 +392,41 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		
 	if not ha.eq(msg_id, "contact_point_response") then return     end
 	
-	-- local o_pos = prm.other_position
 	local t_id  = prm.other_id
 		
-	if     ha.eq(prm.group, "chara" ) then
+	if     ha.eq(prm.group, "chara"   ) then
 		_s:clsn_add("chara", t_id)
 
-	elseif ha.eq(prm.group, "hld"   ) then
+	elseif ha.eq(prm.group, "hld"     ) then
 		if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
 
-	elseif ha.eq(prm.group, "anml"  ) then
+	elseif ha.eq(prm.group, "anml"    ) then
 		_s:clsn_add("anml" , t_id)
 
-	elseif ha.eq(prm.group, "tree"  ) then
+	elseif ha.eq(prm.group, "tree"    ) then
 		_s:clsn_add("tree" , t_id)
 		
-	elseif ha.eq(prm.group, "box"   ) then
-		_s:on_msg_clsn_box(t_id)
+	elseif ha.eq(prm.group, "kagu_itm") then
+		_s:on_msg_clsn_kagu_itm(t_id)
 		
-	elseif ha.eq(prm.group, "door"  ) then
-		_s:clsn_add("door" , t_id)
-		
-	elseif ha.eq(prm.group, "block" ) then
+	elseif ha.eq(prm.group, "block"   ) then
 		_s:clsn_add("block", t_id)
 	end
 	return _.t
 end
 
-function Plychara.on_msg_clsn_box(_s, t_id)
+-- function Plychara.on_msg_clsn_box(_s, t_id)
+function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 
 	local t_nameHa = id.prp(t_id, "_nameHa")
 
 	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn_add("hrvst"  , t_id)
 	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn_add("reizoko", t_id)
 	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn_add("kitchen", t_id)
-	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy",    t_id)
-	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc",      t_id)
-	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf",   t_id)
+	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy"   , t_id)
+	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
+	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
+	elseif ha.eq(t_nameHa, "door001"   ) then _s:clsn_add("door"   , t_id)
 	end
 end
 

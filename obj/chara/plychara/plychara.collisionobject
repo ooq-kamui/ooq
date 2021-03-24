@@ -7,11 +7,10 @@ group: "player"
 mask: "chara"
 mask: "warp"
 mask: "hld"
-mask: "box"
 mask: "anml"
 mask: "block"
 mask: "tree"
-mask: "door"
+mask: "kagu_itm"
 embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX
