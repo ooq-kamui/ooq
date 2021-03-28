@@ -14,10 +14,10 @@ Cls.add(Hrvst)
 
 -- static
 
-function Hrvst.cre(pos)
+function Hrvst.cre(p_pos)
 	local Cls = Hrvst
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

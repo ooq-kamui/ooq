@@ -70,7 +70,7 @@ function Sp.say(_s, str)
 		len = Serifu._[idx].len
 	end
 	
-	local id = Fuki.cre(nil, {parent_id = _s._id})
-	pst.scrpt(id, "s", {str = str, len = len})
+	local t_id = Fuki.cre(nil, {parent_id = _s._id})
+	pst.scrpt(t_id, "s", {str = str, len = len})
 end
 

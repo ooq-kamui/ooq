@@ -1,6 +1,10 @@
 log.scrpt("vec.lua")
 
-vec = {}
+vec = {
+	-- const
+	_0 = vmath.vector3(0, 0, 0),
+	_1 = vmath.vector3(1, 1, 0),
+}
 
 function n.vec(x, y, z, note) -- alias
 	log._("n.vec", note)

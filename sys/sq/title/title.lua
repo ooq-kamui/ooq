@@ -7,8 +7,8 @@ Title = {
 
 function Title.cre()
 	local t_url = "/sys#title"
-	local id = fac.cre(t_url)
-	return id
+	local t_id = fac.cre(t_url)
+	return t_id
 end
 
 -- script method

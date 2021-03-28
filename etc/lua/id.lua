@@ -62,13 +62,13 @@ function id.pos_w(p_id)
 	return t_pos
 end
 
-function id.pos__(p_id, pos)
+function id.pos__(p_id, p_pos)
 	
-	if not p_id then return end
-	if not pos  then return end
+	if not p_id  then return end
+	if not p_pos then return end
 	
-	pos.z = id.pos(p_id).z
-	go.set_position(pos, p_id)
+	p_pos.z = id.pos(p_id).z
+	go.set_position(p_pos, p_id)
 end
 
 function id.z__(p_id, z)
@@ -77,9 +77,9 @@ function id.z__(p_id, z)
 	
 	z = z or 0
 	
-	local pos = id.pos(p_id)
-	pos.z = z
-	go.set_position(pos, p_id)
+	local t_pos = id.pos(p_id)
+	t_pos.z = z
+	go.set_position(t_pos, p_id)
 end
 
 function id.pst(id, msg_id, prm)

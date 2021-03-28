@@ -14,8 +14,8 @@ function Grave.cre(p_pos, prm)
 	local Cls = Grave
 	prm = prm or {}
 	prm.animHa = prm.animHa or ha._("stand")
-	local id = Sp.cre(Cls, p_pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

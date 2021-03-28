@@ -12,10 +12,10 @@ Cls.add(Flower)
 
 -- static
 
-function Flower.cre(pos, prm)
+function Flower.cre(p_pos, prm)
 	local Cls = Flower
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

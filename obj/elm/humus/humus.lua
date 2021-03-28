@@ -10,10 +10,10 @@ Cls.add(Humus)
 
 -- static
 
-function Humus.cre(pos)
+function Humus.cre(p_pos)
 	local Cls = Humus
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

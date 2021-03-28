@@ -8,10 +8,10 @@ Warp.cls = "warp"
 Warp.fac = Obj.fac..Warp.cls
 Cls.add(Warp)
 
-function Warp.cre(pos, prm)
+function Warp.cre(p_pos, prm)
 	local Cls = Warp
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

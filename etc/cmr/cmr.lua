@@ -26,9 +26,9 @@ Cmr.far.pos    = n.vec(0, 0, Cmr.far.z)
 Cmr.cls = "cmr"
 Cls.add(Cmr)
 
-function Cmr.cre(pos)
+function Cmr.cre(p_pos)
 	
-	pos = pos or Cmr.dflt.pos
+	p_pos = p_pos or Cmr.dflt.pos
 
 	local name = "cmr"
 	-- local t_url = url._(Cmr.fac, name)
@@ -37,8 +37,8 @@ function Cmr.cre(pos)
 	prm.cls  = ha._(Cmr.cls)
 	prm.name = ha._(name)
 	ar.key___(prm)
-	local id = fac.cre(t_url, pos, nil, prm)
-	return id
+	local t_id = fac.cre(t_url, p_pos, nil, prm)
+	return t_id
 end
 
 -- script method

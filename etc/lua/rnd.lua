@@ -2,12 +2,12 @@ log.scrpt("rnd.lua")
 
 rnd = {}
 
-function rnd.ar(ar)
+function rnd.ar(p_ar)
 	
-	if #ar <= 0 then return nil end
+	if #p_ar <= 0 then return nil end
 
-	local idx = math.random(1, #ar)
-	local val = ar[idx]
+	local idx = math.random(1, #p_ar)
+	local val = p_ar[idx]
 	return val
 end
 
@@ -27,8 +27,8 @@ end
 
 function rnd.by_p(i)
 	local ret = _.f
-	local rnd = math.random(1, 100)
-	if rnd <= i then
+	local t_rnd = math.random(1, 100)
+	if t_rnd <= i then
 		ret = _.t
 	end
 	return ret

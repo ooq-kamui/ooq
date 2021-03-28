@@ -13,10 +13,10 @@ Cls.add(Veget)
 
 -- static
 
-function Veget.cre(pos, prm)
+function Veget.cre(p_pos, prm)
 	local Cls = Veget
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

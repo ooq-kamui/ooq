@@ -17,7 +17,7 @@ end
 
 -- static
 
-function Block.cre(pos, p_tile)
+function Block.cre(p_pos, p_tile)
 	-- log._("block.cre p_tile", p_tile)
 	
 	p_tile = p_tile or rnd.ar(Tile.magic_block)
@@ -31,8 +31,8 @@ function Block.cre(pos, p_tile)
 	prm = {}
 	prm.name = ha._(Block.cls..int.pad(p_tile))
 	prm.tile = p_tile
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

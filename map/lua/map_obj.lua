@@ -138,23 +138,23 @@ end
 
 function Map.cloud__cre(_s, prm)
 
-	local pos
+	local t_pos
 	if prm and prm.pos then
-		pos = prm.pos
+		t_pos = prm.pos
 	else
-		pos = Cloud.pos_init
+		t_pos = Cloud.pos_init
 	end
 	
-	_s._cloud_id = Cloud.cre(pos, prm)
+	_s._cloud_id = Cloud.cre(t_pos, prm)
 end
 
-function Map.plychara__cre(_s, pos, dir)
-	-- log._("Map.plychara__cre", pos, dir)
-	_s._plychara_id = Plychara.cre(pos, dir)
+function Map.plychara__cre(_s, p_pos, dir)
+	-- log._("Map.plychara__cre", p_pos, dir)
+	_s._plychara_id = Plychara.cre(p_pos, dir)
 end
 
-function Map.fairy__cre(_s, pos, prm)
-	_s._fairy_id = Fairy.cre(pos, prm)
+function Map.fairy__cre(_s, p_pos, prm)
+	_s._fairy_id = Fairy.cre(p_pos, prm)
 end
 
 function Map.obj__cre_dflt() -- not use
@@ -211,12 +211,13 @@ function Map.obj__new_kagu(_s)
 	local pos_init = Cloud.pos_init -- refactoring
 
 	-- box create
-	local pos = pos_init + n.vec(- Map.sq * 1, 0)
-	Hrvst.cre(pos)
+	local t_pos
+	t_pos = pos_init + n.vec(- Map.sq * 1, 0)
+	Hrvst.cre(t_pos)
 
 	-- reizoko create
-	pos = pos_init + n.vec(- Map.sq * 4, Map.sq * 5)
-	Reizoko.cre(pos)
+	t_pos = pos_init + n.vec(- Map.sq * 4, Map.sq * 5)
+	Reizoko.cre(t_pos)
 
 	-- kitchen create
 	local init_x = Map.sq * 4
@@ -225,19 +226,20 @@ function Map.obj__new_kagu(_s)
 	local cnt = 2
 	for i = 1, cnt do
 		x = init_x + Map.sq * w * i
-		pos = pos_init + n.vec(- x, Map.sq * 5)
-		Kitchen.cre(pos)
+		t_pos = pos_init + n.vec(- x, Map.sq * 5)
+		Kitchen.cre(t_pos)
 	end
 
 	-- Save create
-	pos = pos_init + n.vec(Map.sq * 1, 0)
-	Flpy.cre(pos)
+	t_pos = pos_init + n.vec(Map.sq * 1, 0)
+	Flpy.cre(t_pos)
 
 	-- Pc create
-	pos = pos_init + n.vec(Map.sq * 2, Map.sq * 1) -- 10)
-	Pc.cre(pos)
+	t_pos = pos_init + n.vec(Map.sq * 2, Map.sq * 1) -- 10)
+	Pc.cre(t_pos)
 
 	-- Shelf create
-	pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
-	Shelf.cre(pos)
+	t_pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
+	Shelf.cre(t_pos)
 end
+

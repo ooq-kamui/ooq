@@ -18,7 +18,7 @@ Anml = {
 	-- enemy = {"cow", "ant",},
 }
 Anml.cls = "anml"
-Anml.fac = "/objFac/"..Anml.cls.."Fac"
+Anml.fac = "/obj-fac/"..Anml.cls.."Fac"
 Cls.add(Anml)
 ha.add_by_ar(Anml.anml)
 

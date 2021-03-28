@@ -12,7 +12,7 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	p_pos = p_pos or pos.pos_w()
 	prm   = prm   or {}
 
-	local t_url = "/objFac/"..Cls.fac
+	local t_url = "/obj-fac/"..Cls.fac
 
 	-- name, anim
 	prm.clsHa  = ha._(Cls.cls)
@@ -46,8 +46,8 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	ar.val_str_2_ha(prm)
 	local t_id = fac.cre(t_url, p_pos, nil, prm, scl)
 
-	-- local id = fac.cre(t_url, p_pos, nil, prm)
-	-- local id = fac.cre(t_url, p_pos, nil, prm, nil)
+	-- local t_id = fac.cre(t_url, p_pos, nil, prm)
+	-- local t_id = fac.cre(t_url, p_pos, nil, prm, nil)
 	
 	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id

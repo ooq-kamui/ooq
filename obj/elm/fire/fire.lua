@@ -11,9 +11,9 @@ Cls.add(Fire)
 
 -- static
 
-function Fire.cre(pos)
-	local id = Sp.cre(Fire, pos)
-	return id
+function Fire.cre(p_pos)
+	local t_id = Sp.cre(Fire, p_pos)
+	return t_id
 end
 
 -- script method

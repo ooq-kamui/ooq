@@ -17,10 +17,10 @@ Cls.add(Kitchen)
 
 -- static
 
-function Kitchen.cre(pos, prm)
+function Kitchen.cre(p_pos, prm)
 	local Cls = Kitchen
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method
@@ -135,11 +135,11 @@ function Kitchen.cooking_start(_s)
 	_s._cooking_timer = Kitchen.timer
 	Se.pst_ply("cooking")
 	
-	local pos, delay
+	local t_pos, delay
 	for idx, food_id in ipairs(_s.on) do
 		delay = (idx - 1) * 0.5
-		pos = id.pos(food_id)
-		go.animate(food_id, "position.y", es.pinpon, pos.y + Map.sq, es.bnd_i, Kitchen.timer - delay, delay)
+		t_pos = id.pos(food_id)
+		go.animate(food_id, "position.y", es.pinpon, t_pos.y + Map.sq, es.bnd_i, Kitchen.timer - delay, delay)
 	end
 end
 

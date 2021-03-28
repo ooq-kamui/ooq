@@ -11,10 +11,10 @@ Cls.add(Fairy)
 
 -- static
 
-function Fairy.cre(pos, prm)
+function Fairy.cre(p_pos, prm)
 	-- log._("Fairy.cre")
 	local Cls = Fairy
-	local t_id = Sp.cre(Cls, pos, prm)
+	local t_id = Sp.cre(Cls, p_pos, prm)
 	return t_id
 end
 
@@ -67,6 +67,9 @@ end
 function Fairy.magic(_s)
 
 	Magic.cre(_s:pos_w())
+
+	-- Efct.cre(_s:pos_w())
+	Efct.cre()
 end
 
 -- mv

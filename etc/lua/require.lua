@@ -136,6 +136,9 @@ require("assets/obj/itm/kagu/pc/pc")
 require("assets/obj/itm/kagu/door/door")
 require("assets/obj/itm/kagu/flpy/flpy")
 
+-- efct
+require("assets/efct/efct")
+
 -- gui
 require("assets/gui/gui/gui/gui")
 

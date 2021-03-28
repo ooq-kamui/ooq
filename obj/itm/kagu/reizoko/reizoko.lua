@@ -14,10 +14,10 @@ Cls.add(Reizoko)
 
 -- static
 
-function Reizoko.cre(pos)
+function Reizoko.cre(p_pos)
 	local Cls = Reizoko
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

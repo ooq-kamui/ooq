@@ -11,9 +11,9 @@ Cls.add(Pc)
 
 -- static
 
-function Pc.cre(pos, prm)
+function Pc.cre(p_pos, prm)
 	local Cls = Pc
-	local t_id = Sp.cre(Cls, pos)
+	local t_id = Sp.cre(Cls, p_pos)
 	return t_id
 end
 

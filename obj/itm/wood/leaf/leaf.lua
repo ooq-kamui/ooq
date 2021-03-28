@@ -11,10 +11,10 @@ Cls.add(Leaf)
 
 -- ar.idx_2_ha(Leaf.gold, "leaf")
 
-function Leaf.cre(pos)
+function Leaf.cre(p_pos)
 	local Cls = Leaf
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

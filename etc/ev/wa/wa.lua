@@ -10,10 +10,9 @@ end
 
 function Wa.cre(sec)
 	local url = "/sys#wa"
-	-- local id = factory.create(url)
-	local id = fac.cre(url)
-	pst.scrpt(id, "wa", {sec = sec})
-	return id
+	local t_id = fac.cre(url)
+	pst.scrpt(t_id, "wa", {sec = sec})
+	return t_id
 end
 
 -- script method

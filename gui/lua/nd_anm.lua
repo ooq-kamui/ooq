@@ -72,19 +72,6 @@ end
 -- function nd.anm.dsp__(val, p_nd, pos, fin, time) -- old. pos -> del
 
 function nd.anm.dsp__(p_nd, val, time, fin)
-
-	--[[
-	local 
-	local pos
-	local prm = {...}
-
-	if     #prm == 4 then -- new
-		p_nd, val, time, fin = ...
-
-	elseif #prm == 5 then -- old
-		val, p_nd, pos, fin, time = ...
-	end
-	--]]
 	
 	time = time or nd.anm.dsp_time
 	

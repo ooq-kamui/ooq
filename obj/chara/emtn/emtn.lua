@@ -10,10 +10,10 @@ Cls.add(Emtn)
 
 -- static
 
-function Emtn.cre(pos, emtnnum)
+function Emtn.cre(p_pos, emtnnum)
 	emtnnum = emtnnum or 1
-	local id = Sp.cre(Emtn, pos, {emtnnum = emtnnum})
-	return id
+	local t_id = Sp.cre(Emtn, p_pos, {emtnnum = emtnnum})
+	return t_id
 end
 
 -- script method

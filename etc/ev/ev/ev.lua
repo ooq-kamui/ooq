@@ -14,10 +14,9 @@ end
 
 function Ev.cre()
 	local url = "/sys#ev"
-	-- local id = factory.create(url)
-	local id = fac.cre(url)
-	Ev.id = id
-	return id
+	local t_id = fac.cre(url)
+	Ev.id = t_id
+	return t_id
 end
 
 function Ev.fin()

@@ -11,10 +11,10 @@ Cls.add(Door)
 
 -- static
 
-function Door.cre(pos, prm)
+function Door.cre(p_pos, prm)
 	local Cls = Door
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

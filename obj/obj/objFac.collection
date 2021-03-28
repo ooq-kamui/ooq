@@ -20,7 +20,7 @@ instances {
   }
 }
 instances {
-  id: "objFac"
+  id: "obj-fac"
   prototype: "/assets/obj/obj/objFac.go"
   position {
     x: 0.0

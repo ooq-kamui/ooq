@@ -4,7 +4,7 @@ mass: 0.0
 friction: 0.1
 restitution: 0.5
 group: "anml"
-mask: "player"
+mask: "plychara"
 embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX

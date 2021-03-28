@@ -58,8 +58,7 @@ function Chara.cre(p_pos, p_name)
 
 	-- log.pp("Chara cre prm", prm)
 	ar.key___(prm)
-	local t_id = fac.cre("/objFac/"..Chara.fac, p_pos, nil, prm)
-	-- local t_id = factory.create("/objFac/"..Chara.Fac, p_pos, nil, prm)
+	local t_id = fac.cre("/obj-fac/"..Chara.fac, p_pos, nil, prm)
 	
 	Map.add_chara(p_name)
 	return t_id

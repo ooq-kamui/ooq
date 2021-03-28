@@ -13,8 +13,9 @@ function map.pos_2_tilepos(p_pos)
 
 	local x = math.floor((p_pos.x + Map.sq) / Map.sq)
 	local y = math.floor((p_pos.y + Map.sq) / Map.sq)
-	local tilepos = n.vec(x, y, nil, "map.pos_2_tilepos")
-	return tilepos
+	-- local t_tilepos = n.vec(x, y, nil, "map.pos_2_tilepos")
+	local t_tilepos = n.vec(x, y)
+	return t_tilepos
 end
 
 function map.tile(p_pos, p_id, p_tilemap, layer)
@@ -22,13 +23,13 @@ function map.tile(p_pos, p_id, p_tilemap, layer)
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer     = layer or p_tilemap
 
-	local tilepos = map.pos_2_tilepos(p_pos)
+	local t_tilepos = map.pos_2_tilepos(p_pos)
 
 	-- log._("map.tile")
-	local is_inside, dir = map.is_inside_tilepos(tilepos, p_id, p_tilemap)
+	local is_inside, dir = map.is_inside_tilepos(t_tilepos, p_id, p_tilemap)
 	if not is_inside then return end
 	
-	return map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
+	return map.tile_by_tilepos(t_tilepos, p_id, p_tilemap, layer)
 end
 
 function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
@@ -47,12 +48,12 @@ function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
 	return tile
 end
 
-function map.tile__(pos, tile, p_id, p_tilemap, layer)
+function map.tile__(p_pos, p_tile, p_id, p_tilemap, layer)
 
 	layer = layer or p_tilemap
 	
-	local tilepos = map.pos_2_tilepos(pos)
-	map.tile__by_tilepos(tilepos, tile, p_id, p_tilemap, layer)
+	local t_tilepos = map.pos_2_tilepos(p_pos)
+	map.tile__by_tilepos(t_tilepos, p_tile, p_id, p_tilemap, layer)
 end
 
 function map.tile__by_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer)
@@ -117,10 +118,10 @@ function map.is_inside_tilepos_cmpr(tilepos, rng_tilepos)
 	return ret, dir
 end
 
-function map.pos_by_pos(pos) -- center in tile
+function map.pos_by_pos(p_pos) -- center in tile
 
-	local tilepos = map.pos_2_tilepos(pos)
-	return map.pos_by_tilepos(tilepos)
+	local t_tilepos = map.pos_2_tilepos(p_pos)
+	return map.pos_by_tilepos(t_tilepos)
 end
 
 function map.tile_bound(p_id, p_tilemap)

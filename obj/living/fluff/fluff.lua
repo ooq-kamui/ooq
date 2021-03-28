@@ -15,10 +15,10 @@ Cls.add(Fluff)
 
 -- static
 
-function Fluff.cre(pos, prm)
+function Fluff.cre(t_pos, prm)
 	local Cls = Fluff
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, t_pos, prm)
+	return t_id
 end
 
 function Fluff.init(_s)

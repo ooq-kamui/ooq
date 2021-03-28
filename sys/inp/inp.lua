@@ -39,8 +39,8 @@ Inp.dir_2_arw["r"] = "arw_r"
 function Inp.cre()
 
 	local t_url = url._("/sys", "fac_inp")
-	local id = fac.cre(t_url)
-	return id
+	local t_id = fac.cre(t_url)
+	return t_id
 end
 
 -- script method

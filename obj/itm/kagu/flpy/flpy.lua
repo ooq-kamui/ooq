@@ -11,10 +11,10 @@ Cls.add(Flpy)
 
 -- static
 
-function Flpy.cre(pos, prm)
+function Flpy.cre(p_pos, prm)
 	local Cls = Flpy
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

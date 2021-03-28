@@ -14,10 +14,10 @@ Cls.add(Seed)
 
 -- static
 
-function Seed.cre(pos, prm)
+function Seed.cre(p_pos, prm)
 	local Cls = Seed
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 function Seed.init(_s)
@@ -60,8 +60,8 @@ function Seed.act_intrvl(_s, dt)
 				bear_cls  = _s._bear_cls,
 				bear_name = _s._bear_name,
 			}
-			local id = _s:trnsf(grw_Cls, prm)
-			-- pst.scrpt(id, "anm_scl__1")
+			local t_id = _s:trnsf(grw_Cls, prm)
+			-- pst.scrpt(t_id, "anm_scl__1")
 		end
 	else
 		dice100.throw()

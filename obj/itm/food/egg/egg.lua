@@ -10,10 +10,10 @@ Cls.add(Egg)
 
 -- ar.idx_2_ha(Egg.gold, "egg")
 
-function Egg.cre(pos, prm)
+function Egg.cre(p_pos, prm)
 	local Cls = Egg
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

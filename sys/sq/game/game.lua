@@ -497,10 +497,10 @@ function Game.map_dstrct__ch_map_cre(_s)
 	-- log._("Map._final_fnc", _s._game_id, map_id)
 
 	_s:map_cloud__cre()
-	local pos = _s._map_dstrct__ch_plychara.pos
+	local p_pos = _s._map_dstrct__ch_plychara.pos
 	local dir = ha.eq(_s._map_dstrct__ch_plychara.dir, "l") and "l" or "r"
 	-- log._("map_dstrct__ch_map_cre", prm.pos, prm.dir)
-	_s:map_plychara__cre(pos, dir)
+	_s:map_plychara__cre(p_pos, dir)
 	_s:map_fairy__cre()
 	
 	_s:map_dstrct__ch_tmp__clr()

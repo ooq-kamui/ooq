@@ -11,10 +11,10 @@ Cls.add(Dairy)
 
 -- ar.idx_2_ha(Dairy.gold, "dairy")
 
-function Dairy.cre(pos, prm)
+function Dairy.cre(p_pos, prm)
 	local Cls = Dairy
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

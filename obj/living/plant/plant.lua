@@ -10,10 +10,10 @@ Cls.add(Plant)
 
 -- static
 
-function Plant.cre(pos)
+function Plant.cre(p_pos)
 	local Cls = Plant
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

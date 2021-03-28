@@ -10,10 +10,10 @@ Cls.add(Dish)
 
 -- ar.idx_2_ha(Dish.gold, "dish")
 
-function Dish.cre(pos, prm)
+function Dish.cre(p_pos, prm)
 	local Cls = Dish
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

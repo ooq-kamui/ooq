@@ -10,10 +10,10 @@ Cls.add(Fish)
 
 -- ar.idx_2_ha(Fish.gold, "fish")
 
-function Fish.cre(pos, prm)
+function Fish.cre(p_pos, prm)
 	local Cls = Fish
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 function Fish.init(_s)

@@ -27,7 +27,7 @@ end
 function Fuki.init(_s)
 	
 	extend.init(_s, Sp)
-	extend._(_s, Fuki)
+	extend._(   _s, Fuki)
 end
 
 function Fuki.upd(_s, dt)
@@ -54,6 +54,7 @@ function Fuki.act_intrvl(_s, dt)
 end
 
 function Fuki.on_msg(_s, msg_id, prm, sndr)
+
 	if ha.eq(msg_id, "s") then
 		_s:_s(prm.str, prm.len)
 	end

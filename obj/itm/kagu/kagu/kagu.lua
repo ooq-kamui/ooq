@@ -11,10 +11,10 @@ Cls.add(Kagu)
 
 -- static
 
-function Kagu.cre(pos, prm)
+function Kagu.cre(p_pos, prm)
 	local Cls = Kagu
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

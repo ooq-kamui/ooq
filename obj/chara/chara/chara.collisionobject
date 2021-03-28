@@ -4,7 +4,7 @@ mass: 0.0
 friction: 0.1
 restitution: 0.5
 group: "chara"
-mask: "player"
+mask: "plychara"
 mask: "warp"
 embedded_collision_shape {
   shapes {

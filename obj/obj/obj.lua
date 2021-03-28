@@ -1,7 +1,7 @@
 log.scrpt("obj.lua")
 
 Obj = {}
-Obj.fac = "objFac#"
+Obj.fac = "obj-fac#"
 
 -- tst
 
@@ -93,22 +93,22 @@ end
 
 function Obj.tst._(p_Cls)
 	
-	local pos = n.vec(-800, 200)
+	local t_pos = n.vec(-800, 200)
 	local y, idx
 	local cnt = 1
-	local pos_ini = n.vec(pos.x, pos.y)
+	local t_pos_ini = n.vec(t_pos.x, t_pos.y)
 	local rng = Game.map_rng_pos()
 	while #p_Cls > 0 do
 		idx = rnd.int(1, #p_Cls)
-		p_Cls[idx].cre(pos, nil)
+		p_Cls[idx].cre(t_pos, nil)
 		ar.del_by_idx(p_Cls, idx)
-		pos.x = pos.x + Map.sq
-		if pos.x > rng.max.x - Map.verge then
-			pos.x = pos_ini.x + cnt * 10
+		t_pos.x = t_pos.x + Map.sq
+		if t_pos.x > rng.max.x - Map.verge then
+			t_pos.x = t_pos_ini.x + cnt * 10
 			cnt = cnt + 1
 		end
 		y = rnd.int(0, 1)
-		pos.y = pos.y + Map.sq * y
+		t_pos.y = t_pos.y + Map.sq * y
 	end
 end
 

@@ -19,3 +19,4 @@ function xy._2_idx(p_xy, xy_size)
 	idx = (p_xy.y - 1) * xy_size.y + p_xy.x
 	return idx
 end
+

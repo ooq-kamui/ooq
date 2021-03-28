@@ -20,7 +20,7 @@ function p.Msg.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm)
 	extend.init(_s, p.Prt_itm_lst)
-	extend._(_s, p.Msg)
+	extend._(   _s, p.Msg)
 
 	_s._itm_pitch   = 75
 	_s._dsp_idx_max =  5

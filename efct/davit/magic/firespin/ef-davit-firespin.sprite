@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/davit/magic/firespin/ef-davit-firespin.tilesource"
+default_animation: "001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

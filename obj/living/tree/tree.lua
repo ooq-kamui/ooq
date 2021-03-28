@@ -12,10 +12,10 @@ Cls.add(Tree)
 
 -- static
 
-function Tree.cre(pos, prm, scl)
+function Tree.cre(p_pos, prm, p_scl)
 	local Cls = Tree
-	local id = Sp.cre(Cls, pos, prm, scl)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm, p_scl)
+	return t_id
 end
 
 -- script method
@@ -99,9 +99,9 @@ function Tree.bear(_s)
 	
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
-	local id = bear_Cls.cre(t_pos, {name = _s._bear_name}, 0.2)
-	pst.scrpt(id, "bear_o", {tree_id = _s._id})
-	ar.add(_s._bear, id)
+	local t_id = bear_Cls.cre(t_pos, {name = _s._bear_name}, 0.2)
+	pst.scrpt(t_id, "bear_o", {tree_id = _s._id})
+	ar.add(_s._bear, t_id)
 end
 
 function Tree.bear_x(_s, bear_id)
@@ -111,11 +111,11 @@ end
 function Tree.trnsf_wood(_s, num)
 
 	num = num or 3
-	local pos, x
+	local t_pos, x
 	for i = 1, num do
 		x = u.x_by_all_w(i, num, Map.sq)
-		pos = _s:pos() + n.vec(x, Map.sqh)
-		Wood.cre(pos)
+		t_pos = _s:pos() + n.vec(x, Map.sqh)
+		Wood.cre(t_pos)
 	end
 	Se.pst_ply("tree_break")
 	

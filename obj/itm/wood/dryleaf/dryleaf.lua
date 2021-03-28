@@ -12,10 +12,10 @@ Cls.add(Dryleaf)
 
 -- static
 
-function Dryleaf.cre(pos)
+function Dryleaf.cre(p_pos)
 	local Cls = Dryleaf
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

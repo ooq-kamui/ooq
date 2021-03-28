@@ -11,10 +11,10 @@ Cls.add(Wood)
 
 -- ar.idx_2_ha(Wood.gold, "wood")
 
-function Wood.cre(pos)
+function Wood.cre(p_pos)
 	local Cls = Wood
-	local id = Sp.cre(Cls, pos)
-	return id
+	local t_id = Sp.cre(Cls, p_pos)
+	return t_id
 end
 
 -- script method

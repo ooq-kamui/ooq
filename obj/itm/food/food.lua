@@ -5,11 +5,11 @@ Food = {
 	cookabl = {"dairy","dish","egg","fish","fruit","meat","veget",},
 }
 
-function Food.cre_by_cls(pos, prm)
+function Food.cre_by_cls(p_pos, prm)
 	
-	pos = pos or Game.plychara_pos()
+	p_pos = p_pos or Game.plychara_pos()
 	-- log.pp("food cre_by_cls", prm)
-	Cls._(prm.cls).cre(pos, prm)
+	Cls._(prm.cls).cre(p_pos, prm)
 end
 
 -- script method

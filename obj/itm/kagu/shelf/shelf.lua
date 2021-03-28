@@ -14,10 +14,10 @@ Cls.add(Shelf)
 
 -- static
 
-function Shelf.cre(pos, prm)
+function Shelf.cre(p_pos, prm)
 	local Cls = Shelf
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

@@ -11,10 +11,10 @@ Cls.add(Mshrm)
 
 -- static
 
-function Mshrm.cre(pos, prm)
+function Mshrm.cre(p_pos, prm)
 	local Cls = Mshrm
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

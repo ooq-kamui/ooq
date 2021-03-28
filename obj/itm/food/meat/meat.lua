@@ -11,10 +11,10 @@ Cls.add(Meat)
 
 -- ar.idx_2_ha(Meat.gold, "meat")
 
-function Meat.cre(pos, prm)
+function Meat.cre(p_pos, prm)
 	local Cls = Meat
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

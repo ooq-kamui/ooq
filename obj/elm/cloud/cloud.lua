@@ -13,10 +13,10 @@ Cls.add(Cloud)
 
 -- static
 
-function Cloud.cre(pos, prm)
+function Cloud.cre(p_pos, prm)
 	local Cls = Cloud
-	local id = Sp.cre(Cls, pos, prm)
-	return id
+	local t_id = Sp.cre(Cls, p_pos, prm)
+	return t_id
 end
 
 -- script method

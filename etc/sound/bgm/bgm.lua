@@ -112,3 +112,4 @@ function Bgm.fade_o_ply(bgm_idx)
 	end
 	local hndl = timer.delay(Bgm.cfg.fade_o_intrvl, _.t, fnc)
 end
+
