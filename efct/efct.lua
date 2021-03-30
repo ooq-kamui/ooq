@@ -59,8 +59,15 @@ function Efct.cre_4(p_efct, p_pos, prm, p_scl)
 	local t_pos2 = vec.cp(p_pos, nil,   y_df)
 
 	local t_id1, t_id2 = Efct.cre_2(p_efct, t_pos1, prm, p_scl, x_df)
-	local t_id3, t_id4 = Efct.cre_2(p_efct, t_pos2, prm, p_scl, x_df)
-	return t_id1, t_id2, t_id3, t_id4
+
+	local t_id3, t_id4
+	local fnc = function (slf, hndl, elpsd)
+		Efct.cre_2(p_efct, t_pos2, prm, p_scl, x_df)
+	end
+	local delay_time = 0.3
+	local hndl = timer.delay(delay_time, _.f, fnc)
+
+	return t_id1, t_id2
 end
 
 function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
@@ -74,8 +81,15 @@ function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
 	local t_pos2 = vec.cp(p_pos,   x_df, nil)
 
 	local t_id1 = Efct.cre(p_efct, t_pos1, prm, p_scl)
-	local t_id2 = Efct.cre(p_efct, t_pos2, prm, p_scl)
-	return t_id1, t_id2
+
+	local t_id2
+	local fnc = function (slf, hndl, elpsd)
+		Efct.cre(p_efct, t_pos2, prm, p_scl)
+	end
+	local delay_time = 0.2
+	local hndl = timer.delay(delay_time, _.f, fnc)
+
+	return t_id1
 end
 
 function Efct.cre(p_efct, p_pos, prm, p_scl)
