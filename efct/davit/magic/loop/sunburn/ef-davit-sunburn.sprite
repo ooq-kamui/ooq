@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/davit/magic/loop/sunburn/ef-davit-sunburn.tilesource"
+default_animation: "loop"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

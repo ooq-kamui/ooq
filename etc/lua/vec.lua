@@ -33,8 +33,13 @@ function vec.len(vec1, vec2)
 	return len
 end
 
-function vec.cp(p_vec)
+function vec.cp(p_vec, p_x, p_y)
+
 	local t_vec = n.vec(p_vec.x, p_vec.y, p_vec.z)
+
+	if p_x then t_vec.x = t_vec.x + p_x end
+	if p_y then t_vec.y = t_vec.y + p_y end
+
 	return t_vec
 end
 

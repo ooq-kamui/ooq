@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "davit-casting"
-  component: "/assets/efct/davit/magic/casting/ef-davit-casting.factory"
+  component: "/assets/efct/davit/magic/once/casting/ef-davit-casting.factory"
   position {
     x: 0.0
     y: 0.0
@@ -45,7 +45,7 @@ components {
 }
 components {
   id: "davit-felspell"
-  component: "/assets/efct/davit/magic/felspell/ef-davit-felspell.factory"
+  component: "/assets/efct/davit/magic/loop/felspell/ef-davit-felspell.factory"
   position {
     x: 0.0
     y: 0.0
@@ -75,7 +75,7 @@ components {
 }
 components {
   id: "davit-firespin"
-  component: "/assets/efct/davit/magic/firespin/ef-davit-firespin.factory"
+  component: "/assets/efct/davit/magic/loop/firespin/ef-davit-firespin.factory"
   position {
     x: 0.0
     y: 0.0
@@ -90,7 +90,7 @@ components {
 }
 components {
   id: "davit-flamelash"
-  component: "/assets/efct/davit/magic/flamelash/ef-davit-flamelash.factory"
+  component: "/assets/efct/davit/magic/once/flamelash/ef-davit-flamelash.factory"
   position {
     x: 0.0
     y: 0.0
@@ -105,7 +105,7 @@ components {
 }
 components {
   id: "davit-freezing"
-  component: "/assets/efct/davit/magic/freezing/ef-davit-freezing.factory"
+  component: "/assets/efct/davit/magic/loop/freezing/ef-davit-freezing.factory"
   position {
     x: 0.0
     y: 0.0
@@ -135,7 +135,7 @@ components {
 }
 components {
   id: "davit-magicbubbles"
-  component: "/assets/efct/davit/magic/magicbubbles/ef-davit-magicbubbles.factory"
+  component: "/assets/efct/davit/magic/loop/magicbubbles/ef-davit-magicbubbles.factory"
   position {
     x: 0.0
     y: 0.0
@@ -165,7 +165,7 @@ components {
 }
 components {
   id: "davit-magicspell"
-  component: "/assets/efct/davit/magic/magicspell/ef-davit-magicspell.factory"
+  component: "/assets/efct/davit/magic/once/magicspell/ef-davit-magicspell.factory"
   position {
     x: 0.0
     y: 0.0
@@ -180,7 +180,7 @@ components {
 }
 components {
   id: "davit-midnight"
-  component: "/assets/efct/davit/magic/midnight/ef-davit-midnight.factory"
+  component: "/assets/efct/davit/magic/loop/midnight/ef-davit-midnight.factory"
   position {
     x: 0.0
     y: 0.0
@@ -195,7 +195,7 @@ components {
 }
 components {
   id: "davit-nebula"
-  component: "/assets/efct/davit/magic/nebula/ef-davit-nebula.factory"
+  component: "/assets/efct/davit/magic/loop/nebula/ef-davit-nebula.factory"
   position {
     x: 0.0
     y: 0.0
@@ -210,7 +210,7 @@ components {
 }
 components {
   id: "davit-phantom"
-  component: "/assets/efct/davit/magic/phantom/ef-davit-phantom.factory"
+  component: "/assets/efct/davit/magic/loop/phantom/ef-davit-phantom.factory"
   position {
     x: 0.0
     y: 0.0
@@ -225,7 +225,7 @@ components {
 }
 components {
   id: "davit-protectioncircle"
-  component: "/assets/efct/davit/magic/protectioncircle/ef-davit-protectioncircle.factory"
+  component: "/assets/efct/davit/magic/loop/protectioncircle/ef-davit-protectioncircle.factory"
   position {
     x: 0.0
     y: 0.0
@@ -240,7 +240,7 @@ components {
 }
 components {
   id: "davit-sunburn"
-  component: "/assets/efct/davit/magic/sunburn/ef-davit-sunburn.factory"
+  component: "/assets/efct/davit/magic/loop/sunburn/ef-davit-sunburn.factory"
   position {
     x: 0.0
     y: 0.0
@@ -255,7 +255,7 @@ components {
 }
 components {
   id: "davit-vortex"
-  component: "/assets/efct/davit/magic/vortex/ef-davit-vortex.factory"
+  component: "/assets/efct/davit/magic/loop/vortex/ef-davit-vortex.factory"
   position {
     x: 0.0
     y: 0.0
@@ -270,7 +270,7 @@ components {
 }
 components {
   id: "davit-weaponhit"
-  component: "/assets/efct/davit/magic/weaponhit/ef-davit-weaponhit.factory"
+  component: "/assets/efct/davit/magic/once/weaponhit/ef-davit-weaponhit.factory"
   position {
     x: 0.0
     y: 0.0

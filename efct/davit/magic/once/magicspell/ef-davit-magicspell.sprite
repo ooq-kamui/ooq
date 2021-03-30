@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/davit/magic/once/magicspell/ef-davit-magicspell.tilesource"
+default_animation: "once"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

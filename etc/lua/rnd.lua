@@ -39,3 +39,4 @@ function rnd.by_f(f) -- f: 0 - 1
 	ret = rnd.by_p(i)
 	return ret
 end
+

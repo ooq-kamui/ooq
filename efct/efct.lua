@@ -12,33 +12,75 @@ Efct = {
 			"davit-magickahit",
 		},
 		magic = {
-			"davit-casting",
-			"davit-felspell",
-			"davit-firespin",
-			"davit-flamelash",
-			"davit-freezing",
-			"davit-magicbubbles",
-			"davit-magicspell",
-			"davit-midnight",
-			"davit-nebula",
-			"davit-phantom",
-			"davit-protectioncircle",
-			"davit-sunburn",
-			"davit-vortex",
-			"davit-weaponhit",
+			once = {
+				"davit-casting",
+				"davit-flamelash",
+				"davit-magicspell",
+			},
+			loop = {
+				"davit-felspell",
+				"davit-firespin",
+				"davit-freezing",
+				"davit-magicbubbles",
+				"davit-midnight",
+				"davit-nebula",
+				"davit-phantom",
+				"davit-protectioncircle",
+				"davit-sunburn",
+				"davit-vortex",
+			},
 		},
 		etc = {
 			"davit-magic8",
 			"davit-loading",
+			"davit-weaponhit",
 		},
 	},
 }
 
 -- static
 
+function Efct.df()
+	local mlt = rnd.int(1, 3)
+	local df = Map.sqh / 2 * mlt
+	return df
+end
+
+function Efct.cre_4(p_efct, p_pos, prm, p_scl)
+
+	p_efct = p_efct or rnd.ar(Efct.davit.magic.once)
+	p_pos  = p_pos  or pos.pos_w()
+	p_scl  = p_scl  or 2
+
+	local x_df = Efct.df()
+	local y_df = Efct.df()
+
+	local t_pos1 = vec.cp(p_pos, nil, - y_df)
+	local t_pos2 = vec.cp(p_pos, nil,   y_df)
+
+	local t_id1, t_id2 = Efct.cre_2(p_efct, t_pos1, prm, p_scl, x_df)
+	local t_id3, t_id4 = Efct.cre_2(p_efct, t_pos2, prm, p_scl, x_df)
+	return t_id1, t_id2, t_id3, t_id4
+end
+
+function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
+
+	p_efct = p_efct or rnd.ar(Efct.davit.magic.once)
+	p_pos  = p_pos  or pos.pos_w()
+	p_scl  = p_scl  or 2
+	x_df   = x_df   or Efct.df()
+
+	local t_pos1 = vec.cp(p_pos, - x_df, nil)
+	local t_pos2 = vec.cp(p_pos,   x_df, nil)
+
+	local t_id1 = Efct.cre(p_efct, t_pos1, prm, p_scl)
+	local t_id2 = Efct.cre(p_efct, t_pos2, prm, p_scl)
+	return t_id1, t_id2
+end
+
 function Efct.cre(p_efct, p_pos, prm, p_scl)
 
-	p_efct = p_efct or rnd.ar(Efct.davit.magic)
+	p_efct = p_efct or rnd.ar(Efct.davit.magic.once)
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
 

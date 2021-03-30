@@ -1,5 +1,0 @@
-tile_set: "/assets/efct/davit/magic/midnight/ef-davit-midnight.tilesource"
-default_animation: "loop"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA
-
