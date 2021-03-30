@@ -1,4 +1,0 @@
-tile_set: "/assets/obj/itm/kagu/kitchen/kitchen.atlas"
-default_animation: "kitchen001"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

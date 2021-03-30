@@ -3,13 +3,13 @@ log.scrpt("nd.lua")
 nd = {}
 
 function nd._(name)
-	local r_nd = gui.get_node(name)
-	return r_nd
+	local t_nd = gui.get_node(name)
+	return t_nd
 end
 
 function nd.clone(p_nd)
-	local r_nd = gui.clone_tree(p_nd)
-	return r_nd
+	local t_nd = gui.clone_tree(p_nd)
+	return t_nd
 end
 
 function nd.del(p_nd)

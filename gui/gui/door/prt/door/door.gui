@@ -9,7 +9,7 @@ fonts {
 }
 textures {
   name: "door"
-  texture: "/assets/obj/itm/kagu/door/door.tilesource"
+  texture: "/assets/obj/itm/kagu-s/door/door.tilesource"
 }
 textures {
   name: "base"

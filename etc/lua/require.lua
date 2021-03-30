@@ -90,9 +90,15 @@ require("assets/obj/elm/cloud/cloud")
 require("assets/obj/elm/magic/magic")
 require("assets/obj/elm/fairy/fairy")
 require("assets/obj/elm/warp/warp")
+require("assets/obj/elm/shtngstr/shtngstr")
 
 require("assets/obj/itm/itm/wand/wand")
 require("assets/obj/itm/itm/wand/wall")
+
+require("assets/obj/itm/itm/balloon/balloon")
+require("assets/obj/itm/itm/shrkn/shrkn")
+require("assets/obj/itm/itm/broom/broom")
+require("assets/obj/itm/itm/parasol/parasol")
 
 require("assets/obj/itm/gold/gold")
 require("assets/obj/itm/food/dairy/dairy")
@@ -127,14 +133,17 @@ require("assets/obj/living/tree/tree")
 require("assets/obj/living/phantom/phantom/phantom")
 require("assets/obj/living/phantom/grave/grave")
 
-require("assets/obj/itm/kagu/kagu/kagu")
-require("assets/obj/itm/kagu/reizoko/reizoko")
-require("assets/obj/itm/kagu/kitchen/kitchen")
-require("assets/obj/itm/kagu/shelf/shelf")
-require("assets/obj/itm/kagu/hrvst/hrvst")
-require("assets/obj/itm/kagu/pc/pc")
-require("assets/obj/itm/kagu/door/door")
-require("assets/obj/itm/kagu/flpy/flpy")
+require("assets/obj/itm/kagu-n/kagu/kagu")
+
+require("assets/obj/itm/kagu-s/reizoko/reizoko")
+require("assets/obj/itm/kagu-s/kitchen/kitchen")
+require("assets/obj/itm/kagu-s/shelf/shelf")
+require("assets/obj/itm/kagu-s/hrvst/hrvst")
+require("assets/obj/itm/kagu-s/pc/pc")
+require("assets/obj/itm/kagu-s/door/door")
+require("assets/obj/itm/kagu-s/flpy/flpy")
+
+require("assets/obj/itm/kagu-e/trmpln/trmpln")
 
 -- efct
 require("assets/efct/efct")

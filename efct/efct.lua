@@ -17,8 +17,6 @@ Efct = {
 			"davit-firespin",
 			"davit-flamelash",
 			"davit-freezing",
-			"davit-loading",
-			"davit-magic8",
 			"davit-magicbubbles",
 			"davit-magicspell",
 			"davit-midnight",
@@ -28,6 +26,10 @@ Efct = {
 			"davit-sunburn",
 			"davit-vortex",
 			"davit-weaponhit",
+		},
+		etc = {
+			"davit-magic8",
+			"davit-loading",
 		},
 	},
 }
@@ -41,7 +43,7 @@ function Efct.cre(p_efct, p_pos, prm, p_scl)
 	p_scl  = p_scl  or 2
 
 	local t_url = "/ef-fac#" .. p_efct
-	log._("efct cre", t_url)
+	-- log._("efct cre", t_url)
 
 	local t_id = fac.cre(t_url, p_pos, nil, prm, p_scl)
 	return t_id

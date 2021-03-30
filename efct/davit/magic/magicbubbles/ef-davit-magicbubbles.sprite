@@ -1,4 +1,5 @@
 tile_set: "/assets/efct/davit/magic/magicbubbles/ef-davit-magicbubbles.tilesource"
-default_animation: "001"
+default_animation: "loop"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA
+

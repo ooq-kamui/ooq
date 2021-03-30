@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/davit/etc/magic8/ef-davit-magic8.tilesource"
+default_animation: "loop"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

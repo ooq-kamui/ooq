@@ -120,7 +120,7 @@ components {
 }
 components {
   id: "davit-magic8"
-  component: "/assets/efct/davit/magic/magic8/ef-davit-magic8.factory"
+  component: "/assets/efct/davit/etc/magic8/ef-davit-magic8.factory"
   position {
     x: 0.0
     y: 0.0

@@ -1,0 +1,11 @@
+log.scrpt("balloon.script")
+
+function init(_s)
+end
+
+function update(_s, dt)
+end
+
+function on_message(_s, msg_id, prm, sndr)
+end
+

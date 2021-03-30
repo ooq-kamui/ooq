@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/kagu-s/shelf/shelf.atlas"
+default_animation: "shelf001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
