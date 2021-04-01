@@ -143,10 +143,18 @@ function Efct.init(_s)
 
 	-- _s._hndl = {}
 
+	_s:w__0()
+	_s:fade__i()
+
+	-- del
 	_s:life__()
 end
 
 -- method
+
+function Efct.w__0(_s, fnc)
+	go.set("#sprite", "tint.w", 0)
+end
 
 function Efct.life__(_s)
 
@@ -162,6 +170,10 @@ function Efct.fade__o__del(_s)
 		_s:del()
 	end
 	_s:fade__o(fnc)
+end
+
+function Efct.fade__i(_s, fnc)
+	anm.fade__i(_s._id, nil, fnc)
 end
 
 function Efct.fade__o(_s, fnc)

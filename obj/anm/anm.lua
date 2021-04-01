@@ -2,9 +2,10 @@ log.scrpt("anm.lua")
 
 anm = {}
 anm.time = {}
-anm.time.scl = 1
-anm.time.pos = 0.2
-anm.time.color = 1
+anm.time.scl  = 1
+anm.time.pos  = 0.2
+anm.time.tint = 1
+anm.time.color = anm.time.tint -- old
 
 -- scl
 
@@ -54,17 +55,14 @@ function anm.fade__(p_id, p_w, time, fnc)
 	anm.w__(p_id, p_w, time, fnc)
 end
 
-function anm.w__(p_id, p_w, time, fnc) -- prp color non
+function anm.w__(p_id, p_w, time, fnc)
 
 	if not p_w then return end
 
 	time = time or anm.time.color
 
 	local t_url = url._(p_id, "sprite")
-
 	anm._(t_url, "tint.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
-
-	-- anm._(p_id, "color.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
 end
 
 -- pos

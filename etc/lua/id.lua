@@ -132,9 +132,3 @@ function id.Cls_prp_weight(p_id)
 	return weight
 end
 
---[[
-function id.wpos(p_id) -- old
-	return id.pos_w(p_id)
-end
---]]
-
