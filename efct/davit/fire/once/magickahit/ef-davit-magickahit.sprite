@@ -1,4 +1,4 @@
-tile_set: "/assets/efct/davit/fire/brightfire/ef-davit-brightfire.tilesource"
+tile_set: "/assets/efct/davit/fire/once/magickahit/ef-davit-magickahit.tilesource"
 default_animation: "001"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

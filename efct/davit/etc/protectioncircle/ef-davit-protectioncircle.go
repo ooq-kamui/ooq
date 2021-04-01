@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/assets/efct/davit/magic/once/weaponhit/ef-davit-weaponhit.sprite"
+  component: "/assets/efct/davit/etc/protectioncircle/ef-davit-protectioncircle.sprite"
   position {
     x: 0.0
     y: 0.0

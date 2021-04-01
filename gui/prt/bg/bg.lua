@@ -48,13 +48,11 @@ function p.Bg.bg__(_s, p_anm)
 	
 	local anm = {}
 	anm[1] = function ()
-		-- nd.anm.fade_o(_s._nd.img, anm[2], fade_o_time)
 		nd.anm.fade__o(_s:nd("img"), fade_o_time, anm[2])
 	end
 	anm[2] = function ()
 		nd.txtr__(_s:nd("img"), p_anm)
 		nd.anm__( _s:nd("img"), p_anm)
-		-- nd.anm.fade_i(_s._nd.img,    nil, fade_i_time)
 		nd.anm.fade__i(_s:nd("img"), fade_i_time)
 	end
 	anm[1]()

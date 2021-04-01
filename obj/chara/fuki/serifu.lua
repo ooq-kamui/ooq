@@ -144,6 +144,7 @@ Serifu = {
 		{len =  2, txt = "その"},
 		{len =  6, txt = "これは..."},
 		{len =  2, txt = "それ"},
+		{len =  2, txt = "これ"},
 		{len =  3, txt = "こっち"},
 		{len =  7, txt = "こっち こっち"},
 
@@ -200,6 +201,7 @@ Serifu = {
 		{len =  2, txt = "ばか"},
 		{len =  3, txt = "きらい"},
 		{len =  4, txt = "しつこい"},
+		{len =  2, txt = "こら"},
 
 		-- fin
 		{len =  4, txt = "やめない"},
@@ -216,7 +218,8 @@ Serifu = {
 		{len =  6, txt = "やりましょう"},
 		{len =  2, txt = "いざ"},
 		{len =  6, txt = "やっちゃうよ"},
-		{len = 10, txt = "おしおき しちゃうよ"},
+		{len =  4, txt = "おしおき"},
+		{len =  5, txt = "しちゃうよ"},
 		-- fight win
 		{len =  3, txt = "かった"},
 		{len =  6, txt = "どっこいしょ"},

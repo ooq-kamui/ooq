@@ -8,24 +8,12 @@ function url._(p_id, cmp)
 
 	cmp = cmp or "script"
 
-	local url = msg.url(nil, p_id, cmp)
+	local t_url = msg.url(nil, p_id, cmp)
 	-- log._("url._", url)
-	return url
+	return t_url
 end
 
 function url.slf()
 	return msg.url()
 end
-
---[[
-function url.main(id, cmp)
-
-	if not id then return end
-
-	cmp = cmp or "script"
-
-	local url = msg.url("main", id, cmp)
-	return url
-end
---]]
 

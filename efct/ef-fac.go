@@ -1,6 +1,6 @@
 components {
   id: "davit-bluefire"
-  component: "/assets/efct/davit/fire/bluefire/ef-davit-bluefire.factory"
+  component: "/assets/efct/davit/fire/loop/bluefire/ef-davit-bluefire.factory"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "davit-brightfire"
-  component: "/assets/efct/davit/fire/brightfire/ef-davit-brightfire.factory"
+  component: "/assets/efct/davit/fire/loop/brightfire/ef-davit-brightfire.factory"
   position {
     x: 0.0
     y: 0.0
@@ -60,7 +60,7 @@ components {
 }
 components {
   id: "davit-fire"
-  component: "/assets/efct/davit/fire/fire/ef-davit-fire.factory"
+  component: "/assets/efct/davit/fire/loop/fire/ef-davit-fire.factory"
   position {
     x: 0.0
     y: 0.0
@@ -150,7 +150,7 @@ components {
 }
 components {
   id: "davit-magickahit"
-  component: "/assets/efct/davit/fire/magickahit/ef-davit-magickahit.factory"
+  component: "/assets/efct/davit/fire/once/magickahit/ef-davit-magickahit.factory"
   position {
     x: 0.0
     y: 0.0
@@ -210,7 +210,7 @@ components {
 }
 components {
   id: "davit-phantom"
-  component: "/assets/efct/davit/magic/loop/phantom/ef-davit-phantom.factory"
+  component: "/assets/efct/davit/etc/phantom/ef-davit-phantom.factory"
   position {
     x: 0.0
     y: 0.0
@@ -225,7 +225,7 @@ components {
 }
 components {
   id: "davit-protectioncircle"
-  component: "/assets/efct/davit/magic/loop/protectioncircle/ef-davit-protectioncircle.factory"
+  component: "/assets/efct/davit/etc/protectioncircle/ef-davit-protectioncircle.factory"
   position {
     x: 0.0
     y: 0.0
@@ -270,7 +270,7 @@ components {
 }
 components {
   id: "davit-weaponhit"
-  component: "/assets/efct/davit/magic/once/weaponhit/ef-davit-weaponhit.factory"
+  component: "/assets/efct/davit/etc/weaponhit/ef-davit-weaponhit.factory"
   position {
     x: 0.0
     y: 0.0

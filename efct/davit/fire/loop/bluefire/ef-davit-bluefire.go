@@ -1,6 +1,6 @@
 components {
   id: "sprite"
-  component: "/assets/efct/davit/fire/bluefire/ef-davit-bluefire.sprite"
+  component: "/assets/efct/davit/fire/loop/bluefire/ef-davit-bluefire.sprite"
   position {
     x: 0.0
     y: 0.0

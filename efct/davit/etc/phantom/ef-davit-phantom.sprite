@@ -1,4 +1,4 @@
-tile_set: "/assets/efct/davit/magic/loop/phantom/ef-davit-phantom.tilesource"
+tile_set: "/assets/efct/davit/etc/phantom/ef-davit-phantom.tilesource"
 default_animation: "loop"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

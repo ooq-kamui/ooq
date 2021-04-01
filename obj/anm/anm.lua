@@ -33,26 +33,25 @@ end
 
 -- fade
 
-function anm.fade_o(p_id, time, fnc)
+function anm.fade__o(p_id, time, fnc)
 
 	time = time or anm.time.color
 
 	local w = 0
-	anm.fade(p_id, w, time, fnc)
+	anm.fade__(p_id, w, time, fnc)
 end
 
-function anm.fade_i(p_id, time, fnc)
+function anm.fade__i(p_id, time, fnc)
 
 	time = time or anm.time.color
 
 	local w = 1
-	anm.fade(p_id, w, time, fnc)
+	anm.fade__(p_id, w, time, fnc)
 end
 
-function anm.fade(p_id, p_w, time, fnc) -- alias ?
+function anm.fade__(p_id, p_w, time, fnc)
 
-	anm.scl__0(p_id, time, fnc)
-	-- anm.w__(p_id, p_w, time, fnc)
+	anm.w__(p_id, p_w, time, fnc)
 end
 
 function anm.w__(p_id, p_w, time, fnc) -- prp color non
@@ -61,7 +60,11 @@ function anm.w__(p_id, p_w, time, fnc) -- prp color non
 
 	time = time or anm.time.color
 
-	anm._(p_id, "color.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
+	local t_url = url._(p_id, "sprite")
+
+	anm._(t_url, "tint.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
+
+	-- anm._(p_id, "color.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
 end
 
 -- pos
@@ -77,6 +80,7 @@ function anm.pos__(p_id, p_pos, time)
 end
 
 function anm._(p_id, prp, plymode, val, esing, time, delay, fnc) -- alias
+
 	go.animate(p_id, prp, plymode, val, esing, time, delay, fnc)
 end
 
