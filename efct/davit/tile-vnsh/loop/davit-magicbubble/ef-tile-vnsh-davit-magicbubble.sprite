@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/davit/etc/loop/magicbubbles/ef-davit-magicbubbles.tilesource"
+default_animation: "loop"
+material: "/assets/efct/davit/tile-vnsh/loop/davit-magicbubble/ef-tile-vnsh-davit-magicbubble.material"
+blend_mode: BLEND_MODE_ALPHA

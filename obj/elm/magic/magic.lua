@@ -56,6 +56,7 @@ function Magic.tile__(_s)
 
 	elseif Magic.is_magic_vnsh(c_tile) then
 		t_tile = Tile.emp
+		Efct.cre_tile_vnsh()
 	end
 
 	map.tile__(_s:pos(), t_tile, Game.map_id(), "ground")

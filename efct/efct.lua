@@ -4,45 +4,43 @@ Efct = {
 
 	lifetime = 3,
 
-	davit = {
-		etc = {
-			"davit-magic8",
-			"davit-loading",
-			"davit-weaponhit",
-			"davit-phantom",
-			"davit-protectioncircle",
-			"davit-magicbubbles",
-		},
-		fire = {
-			once = {
-				"davit-magickahit",
-			},
-			loop = {
-				"davit-bluefire",
-				"davit-brightfire",
-				"davit-fire",
-			},
-		},
-		tile_magic = {
-			once = {
-				"davit-casting",
-				"davit-flamelash",
-				"davit-magicspell",
-			},
-			loop = {
-				"davit-felspell",
-				"davit-firespin",
-				"davit-freezing",
-				"davit-midnight",
-				"davit-nebula",
-				"davit-sunburn",
-				"davit-vortex",
-			},
-		},
+	etc = {
+		"davit-magic8",
+		"davit-loading",
+		"davit-weaponhit",
+		"davit-phantom",
+		"davit-protectioncircle",
+		"davit-magicbubbles",
+		"davit-sunburn",
+		"davit-vortex",
+		"davit-nebula",
+		"davit-midnight",
+	},
+	fire = {
+		-- once
+		"davit-magickahit",
+		-- loop
+		"davit-bluefire",
+		"davit-brightfire",
+		"davit-fire",
+	},
+	tile_magic = {
+		-- once
+		"davit-casting",
+		"davit-flamelash",
+		"davit-magicspell",
+		-- loop
+		"davit-felspell",
+		"davit-firespin",
+		"davit-freezing",
+	},
+	tile_vnsh = {
+		"tile-vnsh-davit-magicbubble",
 	},
 }
-Efct.tile_magic_dflt = Efct.davit.tile_magic.loop -- once
-Efct.fire_dflt       = Efct.davit.fire.loop
+Efct.tile_magic_dflt = Efct.tile_magic
+Efct.fire_dflt       = Efct.fire
+Efct.tile_vnsh_dflt  = Efct.tile_vnsh
 
 -- static
 
@@ -121,9 +119,15 @@ end
 
 function Efct.cre_fire(p_efct, p_pos, prm, p_scl)
 
-	-- log._("efct fire cre")
-
 	p_efct = p_efct or rnd.ar(Efct.fire_dflt)
+
+	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
+	return t_id
+end
+
+function Efct.cre_tile_vnsh(p_efct, p_pos, prm, p_scl)
+
+	p_efct = p_efct or rnd.ar(Efct.tile_vnsh_dflt)
 
 	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
 	return t_id
@@ -133,19 +137,13 @@ function Efct.cre_magic(p_efct, p_pos, prm, p_scl)
 
 	p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
 
-	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
-
-	-- local t_id = Efct.cre_3(p_efct, p_pos, prm, p_scl)
-	-- local t_id = Efct.cre_2(p_efct, p_pos, prm, p_scl)
-	-- local t_id = Efct.cre_4(p_efct, p_pos, prm, p_scl)
-
+	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl) -- cre_2, cre_3, cre_4
 	return t_id
 end
 
 function Efct.cre(p_efct, p_pos, prm, p_scl)
 
 	if not p_efct then log._("efct cre p_efct is nil") return end
-	-- p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
 
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
@@ -165,7 +163,6 @@ function Efct.init(_s)
 	extend._(_s, Efct)
 
 	_s:id__()
-
 	-- _s._hndl = {}
 
 	_s:w__0()
