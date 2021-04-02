@@ -45,15 +45,23 @@ end
 
 function Hldabl.hld_pos(_s)
 	
-	local x = u.x_by_all_w(_s._hld_idx, Plychara.hld_idx_max, Map.sqh)
+	local x
+	local weight = id.Cls_prp_weight(_s._id)
+	if weight == 1 then
+		x = u.x_by_all_w(_s._hld_idx, Plychara.hld_idx_max, Map.sqh)
+	else
+		x = 0
+	end
+
 	local y
 	if ar.inHa(_s:cls(), {"kagu"}) then
 		y = _s:foot_dst_i()
 	else
 		y = Map.sqh
 	end
-	local pos = n.vec(x, y)
-	return pos
+
+	local t_pos = n.vec(x, y)
+	return t_pos
 end
 
 function Hldabl.hld__x(_s)

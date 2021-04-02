@@ -11,6 +11,7 @@ Efct = {
 			"davit-weaponhit",
 			"davit-phantom",
 			"davit-protectioncircle",
+			"davit-magicbubbles",
 		},
 		fire = {
 			once = {
@@ -32,7 +33,6 @@ Efct = {
 				"davit-felspell",
 				"davit-firespin",
 				"davit-freezing",
-				"davit-magicbubbles",
 				"davit-midnight",
 				"davit-nebula",
 				"davit-sunburn",
@@ -41,14 +41,14 @@ Efct = {
 		},
 	},
 }
--- Efct.tile_magic_dflt = Efct.davit.tile_magic.once
-Efct.tile_magic_dflt = Efct.davit.tile_magic.loop
+Efct.tile_magic_dflt = Efct.davit.tile_magic.loop -- once
+Efct.fire_dflt       = Efct.davit.fire.loop
 
 -- static
 
 function Efct.df()
 	local mlt = rnd.int(1, 3)
-	local df = Map.sqh / 2 * mlt
+	local df  = Map.sqh / 2 * mlt
 	return df
 end
 
@@ -119,9 +119,34 @@ function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
 	return t_id1
 end
 
-function Efct.cre(p_efct, p_pos, prm, p_scl)
+function Efct.cre_fire(p_efct, p_pos, prm, p_scl)
+
+	-- log._("efct fire cre")
+
+	p_efct = p_efct or rnd.ar(Efct.fire_dflt)
+
+	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
+	return t_id
+end
+
+function Efct.cre_magic(p_efct, p_pos, prm, p_scl)
 
 	p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
+
+	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
+
+	-- local t_id = Efct.cre_3(p_efct, p_pos, prm, p_scl)
+	-- local t_id = Efct.cre_2(p_efct, p_pos, prm, p_scl)
+	-- local t_id = Efct.cre_4(p_efct, p_pos, prm, p_scl)
+
+	return t_id
+end
+
+function Efct.cre(p_efct, p_pos, prm, p_scl)
+
+	if not p_efct then log._("efct cre p_efct is nil") return end
+	-- p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
+
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
 

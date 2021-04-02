@@ -534,8 +534,10 @@ function Plychara.itm_use(_s)
 			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
 	elseif itm == "wand004" then
-		Fire.cre(_s:pos_fw(2/3))
-		
+		local t_pos = _s:pos_fw(2/3)
+		Fire.cre(t_pos)
+		Efct.cre_fire(nil, t_pos)
+
 	elseif itm == "wand005" then
 		-- Warp.cre(_s:pos_fw(2/3))
 		-- Block.cre()
@@ -714,14 +716,11 @@ end
 function Plychara.hld_weight(_s)
 
 	local r_weight = 0
-	local c_weight
 
 	for idx, hld_id in pairs(_s._hld) do
 
-		c_weight = id.Cls_prp_weight(hld_id)
-		r_weight = r_weight + c_weight
+		r_weight = r_weight + id.Cls_prp_weight(hld_id)
 	end
-
 	return r_weight
 end
 
@@ -771,9 +770,7 @@ function Plychara.hld__ox(_s)
 	end
 
 	local is_clsn_hldabl = _s:is_clsn_hldabl()
-
 	local is_hld_addabl  = _s:is_hld_addabl()
-
 	if is_clsn_hldabl and is_hld_addabl then
 		_s:hld__o()
 	else
