@@ -4,6 +4,8 @@ Pc = {
 	act_intrvl_time = 7,
 	name_idx_max = 1,
 	z = 0.1,
+
+	weight = 2,
 }
 Pc.cls = "pc"
 Pc.fac = Obj.fac..Pc.cls

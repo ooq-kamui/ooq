@@ -48,7 +48,7 @@ Efct.fire_dflt       = Efct.davit.fire.loop
 
 function Efct.df()
 	local mlt = rnd.int(1, 3)
-	local df  = Map.sqh / 2 * mlt
+	local df  = Map.sqq * mlt
 	return df
 end
 

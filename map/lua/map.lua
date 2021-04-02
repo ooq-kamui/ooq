@@ -27,8 +27,8 @@ Map.tilemap_dflt = Map.tilemap[1]
 Map.layer        = Map.tilemap
 Map.layer_dflt   = Map.layer[1]
 
-Map.sqh   = Map.sq / 2
-Map.sqq   = Map.sq / 4
+Map.sqh   = Map.sq / 2 -- half
+Map.sqq   = Map.sq / 4 -- quarter
 Map.verge = Map.sq * 4 -- use scroll
 
 Map.maptip = n.vec(Map.sq, Map.sq)

@@ -4,6 +4,8 @@ Door = {
 	act_intrvl_time = 60,
 	name_idx_max = 1,
 	z = 0.1,
+
+	weight = 2,
 }
 Door.cls = "door"
 Door.fac = Obj.fac..Door.cls

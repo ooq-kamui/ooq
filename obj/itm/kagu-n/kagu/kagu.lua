@@ -4,6 +4,8 @@ Kagu = {
 	act_intrvl_time = 10,
 	name_idx_max = 104,
 	z = 0.1,
+
+	weight = 2,
 }
 Kagu.cls = "kagu"
 Kagu.fac = Obj.fac..Kagu.cls
