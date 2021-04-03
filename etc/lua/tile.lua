@@ -2,29 +2,37 @@ log.scrpt("tile.lua")
 
 Tile = { -- tile num
 	emp = 0,
-	magic_block = {
-		-- 1,2,3,4,5,6,7,8,9,10,11,12,13,14, -- block x1x1
+	magic_block = { -- wand block
+
+		1, 2, 3, -- clmb, elv
+		-- 15,16, -- clmb
+		-- 17,    -- elv
+
 		-- block x1x1
-		2,3,4,5,6,7,8,9,10,14,
-		15,16, -- clmb
-		17,    -- elv
+		-- 2,3,4,5,6,7,8,9,10,14,
+		4,5,6,7,8,9,10,14,15,16,17,
 		-- block 5 x 5
 		101, 106,      116,
 		201, 206,      216,
 		301, 306, 311, 316,
 	}, -- enum
-	wall = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, -- enum
-	soil = {1, 13, 123, 223, 228,}, -- enum
+	-- wall = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, -- enum
+	wall = {4, 5, 6, 7, 8, 9, 10}, -- enum
+	-- soil = {1, 13, 123, 223, 228,}, -- enum
+	soil = {13, 123, 223, 228,}, -- enum
 	wood      = {311,}, -- enum
 	wood_burn = {316,}, -- enum
-	block = {
+	block = { -- use ??
 		1, 400, -- min, max
 	},
 	block_excld = {
-		15, 16, 17,
+		1, 2, 3,
+		-- 15, 16, 17,
 	},
-	clmb = {15, 16}, -- enum
-	elv_u = {17}, -- enum
+	-- clmb = {15, 16}, -- enum
+	clmb = {1, 3}, -- enum
+	-- elv_u = {17}, -- enum
+	elv_u = {2}, -- enum
 	magic_vnsh_impsbl = {45, 65,}, -- enum
 
 	col_idx_max = 20,
