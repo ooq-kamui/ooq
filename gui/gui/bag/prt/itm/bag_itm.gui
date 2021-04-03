@@ -1,11 +1,23 @@
 script: ""
 textures {
-  name: "itm"
-  texture: "/assets/obj/itm/itm/itm.tilesource"
+  name: "wand_block"
+  texture: "/assets/obj/eqip/hand/wand_block/wand_block.atlas"
 }
 textures {
   name: "bag"
   texture: "/assets/gui/txtr/atlas/bag/bag.atlas"
+}
+textures {
+  name: "wand_fire"
+  texture: "/assets/obj/eqip/hand/wand_fire/wand_fire.atlas"
+}
+textures {
+  name: "wand_wall"
+  texture: "/assets/obj/eqip/hand/wand_wall/wand_wall.atlas"
+}
+textures {
+  name: "nokogiri"
+  texture: "/assets/obj/eqip/hand/nokogiri/nokogiri.atlas"
 }
 background_color {
   x: 0.0
@@ -100,7 +112,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/wand002"
+  texture: "wand_block/001"
   id: "itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

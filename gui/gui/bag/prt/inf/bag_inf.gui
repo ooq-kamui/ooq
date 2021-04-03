@@ -5,7 +5,7 @@ fonts {
 }
 textures {
   name: "gold"
-  texture: "/assets/obj/itm/gold/gold.atlas"
+  texture: "/assets/efct/gold/gold.atlas"
 }
 background_color {
   x: 0.0

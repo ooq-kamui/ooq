@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/eqip/prjctl/shrkn/shrkn.tilesource"
+default_animation: "shrkn001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

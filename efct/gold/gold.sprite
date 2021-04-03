@@ -1,0 +1,4 @@
+tile_set: "/assets/efct/gold/gold.atlas"
+default_animation: "gold001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -23,7 +23,7 @@ animations {
 animations {
   id: "shelf001"
   images {
-    image: "/assets/obj/itm/kagu-s/shelf/img/shelf.png"
+    image: "/assets/obj/itm/kagu/kagu-s/shelf/img/shelf.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

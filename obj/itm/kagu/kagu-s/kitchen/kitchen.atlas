@@ -1,0 +1,14 @@
+animations {
+  id: "kitchen001"
+  images {
+    image: "/assets/obj/itm/kagu/kagu-s/kitchen/img/kitchen.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

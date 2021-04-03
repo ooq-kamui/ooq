@@ -75,7 +75,8 @@ function Plychara.init(_s)
 	_s._vec_on_chara = n.vec()
 	_s._on_pos       = n.vec()
 
-	_s._itm_selected = "wand001" -- name
+	-- _s._itm_selected = "wand001" -- name
+	_s._itm_selected = "wand_block" -- name
 
 	_s._jmp_lv = Plychara.jmp_lv_dflt
 
@@ -523,22 +524,27 @@ function Plychara.itm_use(_s)
 	local itm = _s._itm_selected -- name
 	-- log._("plychara itm_use", itm)
 	
-	if     itm == "wand001" then
+	-- if     itm == "wand001" then
+	if     itm == "wand_block" then
 		pst.scrpt(_s:fairy_id(), "magic")
 		
-	elseif itm == "wand002" then
-		Wall.__(_s:tilepos(), Wand.wand002.tile_idx)
+	-- elseif itm == "wand002" then
+	elseif itm == "wand_wall" then
+		-- Wall.__(_s:tilepos(), Wand.wand002.tile_idx)
+		Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
 
-	elseif itm == "wand003" then
+	-- elseif itm == "wand003" then
+	elseif itm == "nokogiri" then
 		if #_s._clsn.tree > 0 then
 			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
-	elseif itm == "wand004" then
+	-- elseif itm == "wand004" then
+	elseif itm == "wand_fire" then
 		local t_pos = _s:pos_fw(2/3)
 		Fire.cre(t_pos)
 		Efct.cre_fire(nil, t_pos)
 
-	elseif itm == "wand005" then
+	-- elseif itm == "wand005" then
 		-- Warp.cre(_s:pos_fw(2/3))
 		-- Block.cre()
 	else

@@ -49,7 +49,9 @@ function p.Bag_block.decide(_s)
 	if _s:is_selected_eq_cursor() then return end
 
 	p.Prt_selected.selected__cursor_itm(_s)
-	Wand.wand001.block_idx = _s:selected_itm_idx()
+	-- Wand.wand001.block_idx = _s:selected_itm_idx()
+	Wand.wand_block.block_idx = _s:selected_itm_idx()
 	
 	Se.pst_ply("forward")
 end
+

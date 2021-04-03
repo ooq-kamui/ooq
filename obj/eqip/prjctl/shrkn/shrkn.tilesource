@@ -1,0 +1,91 @@
+image: "/assets/obj/eqip/prjctl/shrkn/img/shrkn.png"
+tile_width: 54
+tile_height: 42
+tile_margin: 0
+tile_spacing: 0
+collision: ""
+material_tag: "tile"
+animations {
+  id: "shrkn001"
+  start_tile: 1
+  end_tile: 1
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn002"
+  start_tile: 2
+  end_tile: 2
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn003"
+  start_tile: 3
+  end_tile: 3
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn004"
+  start_tile: 4
+  end_tile: 4
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn005"
+  start_tile: 5
+  end_tile: 5
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn006"
+  start_tile: 6
+  end_tile: 6
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn007"
+  start_tile: 7
+  end_tile: 7
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn008"
+  start_tile: 8
+  end_tile: 8
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "shrkn009"
+  start_tile: 9
+  end_tile: 9
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+extrude_borders: 0
+inner_padding: 0
+sprite_trim_mode: SPRITE_TRIM_MODE_OFF

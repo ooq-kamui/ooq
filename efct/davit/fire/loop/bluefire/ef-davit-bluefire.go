@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/assets/efct/efct.script"
+  component: "/assets/efct/efct/efct.script"
   position {
     x: 0.0
     y: 0.0

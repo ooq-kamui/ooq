@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/eqip/hand/wand_wall/wand_wall.atlas"
+default_animation: "001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

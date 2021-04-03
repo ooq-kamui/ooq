@@ -250,7 +250,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/wand002"
+  texture: "wand_block/001"
   id: "bag_itm/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -9,19 +9,19 @@ textures {
 }
 textures {
   name: "pc"
-  texture: "/assets/obj/itm/kagu-s/pc/pc.atlas"
+  texture: "/assets/obj/itm/kagu/kagu-s/pc/pc.atlas"
 }
 textures {
   name: "flpy"
-  texture: "/assets/obj/itm/kagu-s/flpy/flpy.tilesource"
+  texture: "/assets/obj/itm/kagu/kagu-s/flpy/flpy.tilesource"
 }
 textures {
   name: "kitchen"
-  texture: "/assets/obj/itm/kagu-s/kitchen/kitchen.atlas"
+  texture: "/assets/obj/itm/kagu/kagu-s/kitchen/kitchen.atlas"
 }
 textures {
   name: "reizoko"
-  texture: "/assets/obj/itm/kagu-s/reizoko/reizoko.atlas"
+  texture: "/assets/obj/itm/kagu/kagu-s/reizoko/reizoko.atlas"
 }
 textures {
   name: "cursor"
@@ -29,7 +29,7 @@ textures {
 }
 textures {
   name: "hrvst"
-  texture: "/assets/obj/itm/kagu-s/hrvst/hrvst.atlas"
+  texture: "/assets/obj/itm/kagu/kagu-s/hrvst/hrvst.atlas"
 }
 textures {
   name: "warp"
@@ -41,7 +41,7 @@ textures {
 }
 textures {
   name: "door"
-  texture: "/assets/obj/itm/kagu-s/door/door.tilesource"
+  texture: "/assets/obj/itm/kagu/kagu-s/door/door.tilesource"
 }
 textures {
   name: "base"

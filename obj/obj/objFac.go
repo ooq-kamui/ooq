@@ -180,7 +180,7 @@ components {
 }
 components {
   id: "kagu"
-  component: "/assets/obj/itm/kagu-n/kagu/kagu.factory"
+  component: "/assets/obj/itm/kagu/kagu-n/kagu/kagu.factory"
   position {
     x: 0.0
     y: 0.0
@@ -210,7 +210,7 @@ components {
 }
 components {
   id: "gold"
-  component: "/assets/obj/itm/gold/gold.factory"
+  component: "/assets/efct/gold/gold.factory"
   position {
     x: 0.0
     y: 0.0
@@ -435,7 +435,7 @@ components {
 }
 components {
   id: "hrvst"
-  component: "/assets/obj/itm/kagu-s/hrvst/hrvst.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/hrvst/hrvst.factory"
   position {
     x: 0.0
     y: 0.0
@@ -450,7 +450,7 @@ components {
 }
 components {
   id: "reizoko"
-  component: "/assets/obj/itm/kagu-s/reizoko/reizoko.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/reizoko/reizoko.factory"
   position {
     x: 0.0
     y: 0.0
@@ -465,7 +465,7 @@ components {
 }
 components {
   id: "door"
-  component: "/assets/obj/itm/kagu-s/door/door.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/door/door.factory"
   position {
     x: 0.0
     y: 0.0
@@ -480,7 +480,7 @@ components {
 }
 components {
   id: "flpy"
-  component: "/assets/obj/itm/kagu-s/flpy/flpy.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/flpy/flpy.factory"
   position {
     x: 0.0
     y: 0.0
@@ -495,7 +495,7 @@ components {
 }
 components {
   id: "kitchen"
-  component: "/assets/obj/itm/kagu-s/kitchen/kitchen.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/kitchen/kitchen.factory"
   position {
     x: 0.0
     y: 0.0
@@ -510,7 +510,7 @@ components {
 }
 components {
   id: "pc"
-  component: "/assets/obj/itm/kagu-s/pc/pc.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/pc/pc.factory"
   position {
     x: 0.0
     y: 0.0
@@ -525,7 +525,7 @@ components {
 }
 components {
   id: "shelf"
-  component: "/assets/obj/itm/kagu-s/shelf/shelf.factory"
+  component: "/assets/obj/itm/kagu/kagu-s/shelf/shelf.factory"
   position {
     x: 0.0
     y: 0.0

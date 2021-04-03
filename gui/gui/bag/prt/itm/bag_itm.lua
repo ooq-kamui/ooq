@@ -2,8 +2,10 @@ log.scrpt("p.bag_itm.lua")
 
 p.Bag_itm = {}
 p.Bag_itm.itm_lb_2_r_view_prt_lb = {
-	wand001 = "bag_block",
-	wand002 = "bag_wall",
+	-- wand001 = "bag_block",
+	wand_block = "bag_block",
+	-- wand002 = "bag_wall",
+	wand_wall = "bag_wall",
 	wand003 = nil,
 	wand004 = nil,
 }
@@ -33,13 +35,20 @@ function p.Bag_itm.init(_s, parent_gui)
 
 	_s._dsp_idx_max = 3
 
-	_s:itm__by_ar({"wand001", "wand002", "wand003", "wand004"})
+	-- local itm_hand = {"wand001", "wand002", "wand003", "wand004"}
+	local itm_hand = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
+	-- local itm_hand_txtr = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
+
+	_s:itm__by_ar(itm_hand)
 	
 	local node, anim
 	for idx, name in pairs(_s._itm) do
 		node = _s:itm_clone()
-		anim = name
-		nd.anm__(node[_s:lb("itm")], anim)
+		-- anim = name
+		-- nd.txtr__(node[_s:lb("itm")], itm_hand_txtr[idx])
+		nd.txtr__(node[_s:lb("itm")], itm_hand[idx])
+		nd.anm__(node[_s:lb("itm")], "001")
+		-- nd.anm__(node[_s:lb("itm")], anim)
 	end
 
 	_s:selected__cursor_itm()

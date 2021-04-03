@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/eqip/hand/itm.tilesource"
+default_animation: "bow001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

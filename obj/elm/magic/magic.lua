@@ -93,7 +93,8 @@ function Magic.tilepos_by_inp_prm(dir_h, prm) -- return tilepos diff
 end
 
 function Magic.magic_tile()
-	local t_tile = Tile.magic_block[Wand.wand001.block_idx]
+	-- local t_tile = Tile.magic_block[Wand.wand001.block_idx]
+	local t_tile = Tile.magic_block[Wand.wand_block.block_idx]
 	return t_tile
 end
 

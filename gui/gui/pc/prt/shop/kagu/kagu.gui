@@ -13,7 +13,7 @@ textures {
 }
 textures {
   name: "kagu"
-  texture: "/assets/obj/itm/kagu-n/kagu/kagu.atlas"
+  texture: "/assets/obj/itm/kagu/kagu-n/kagu/kagu.atlas"
 }
 background_color {
   x: 0.0
