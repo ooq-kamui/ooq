@@ -1,8 +1,8 @@
 log.scrpt("kagu.lua")
 
 Kagu = {
-	act_intrvl_time = 10,
-	name_idx_max = 104,
+	act_intrvl_time =  10,
+	name_idx_max    = 104,
 	z = 0.1,
 
 	weight = 2,

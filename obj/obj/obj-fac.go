@@ -613,3 +613,33 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "trmpln"
+  component: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "parasail"
+  component: "/assets/obj/itm/parasail/parasail.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.script"
+  component: "/assets/obj/itm/parasail/parasail.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.sprite"
+  component: "/assets/obj/itm/parasail/parasail.sprite"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "clsn"
-  component: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.collisionobject"
+  component: "/assets/obj/itm/parasail/parasail.collisionobject"
   position {
     x: 0.0
     y: 0.0

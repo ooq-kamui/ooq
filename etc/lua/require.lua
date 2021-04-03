@@ -98,7 +98,7 @@ require("assets/obj/eqip/hand/shrkn/shrkn")
 require("assets/obj/eqip/ride/broom/broom")
 
 require("assets/obj/itm/balloon/balloon")
-require("assets/obj/itm/parasol/parasol")
+require("assets/obj/itm/parasail/parasail")
 
 require("assets/obj/itm/food/dairy/dairy")
 require("assets/obj/itm/food/dish/dish")

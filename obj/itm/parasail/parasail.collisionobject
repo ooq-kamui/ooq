@@ -22,8 +22,8 @@ embedded_collision_shape {
     index: 0
     count: 3
   }
-  data: 48.0
   data: 24.0
+  data: 12.0
   data: 10.0
 }
 linear_damping: 0.0

@@ -22,7 +22,7 @@ function Flower.init(_s)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Hldabl)
-	extend._(_s, Flower)
+	extend._(   _s, Flower)
 end
 
 function Flower.upd(_s, dt)

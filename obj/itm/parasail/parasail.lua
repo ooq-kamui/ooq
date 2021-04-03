@@ -1,19 +1,19 @@
-log.scrpt("trmpln.lua")
+log.scrpt("parasail.lua")
 
-Trmpln = {
+Parasail = {
 	act_intrvl_time = 10,
 	name_idx_max    =  1,
 
 	weight = 2,
 }
-Trmpln.cls = "trmpln"
-Trmpln.fac = Obj.fac..Trmpln.cls
-Cls.add(Trmpln)
+Parasail.cls = "parasail"
+Parasail.fac = Obj.fac..Parasail.cls
+Cls.add(Parasail)
 
 -- static
 
-function Trmpln.cre(p_pos, prm)
-	local Cls = Trmpln
+function Parasail.cre(p_pos, prm)
+	local Cls = Parasail
 	prm = prm or {}
 	if not prm.animHa then prm.animHa = ha._("stand") end
 	local t_id = Sp.cre(Cls, p_pos, prm)
@@ -22,14 +22,14 @@ end
 
 -- script method
 
-function Trmpln.init(_s)
+function Parasail.init(_s)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Hldabl)
-	extend._(   _s, Trmpln)
+	extend._(   _s, Parasail)
 end
 
-function Trmpln.upd(_s, dt)
+function Parasail.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
@@ -38,20 +38,20 @@ function Trmpln.upd(_s, dt)
 	_s:upd_final()
 end
 
-function Trmpln.act_intrvl(_s, dt)
+function Parasail.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
-
+	
 end
 
-function Trmpln.on_msg(_s, msg_id, prm, sndr)
+function Parasail.on_msg(_s, msg_id, prm, sndr)
 	Sp.on_msg(_s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
-function Trmpln.final(_s)
+function Parasail.final(_s)
 	Sp.final(_s)
 	Hldabl.final(_s)
 end

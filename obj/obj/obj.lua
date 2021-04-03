@@ -23,6 +23,8 @@ function Obj.tst.tst()
 		Dish, Dish, Dish, Dish, Dish, Dish,
 		Shtngstr, Shtngstr, Shtngstr, Shtngstr,
 		Balloon, Balloon, Balloon, Balloon,
+		Trmpln, Trmpln,
+		Parasail, Parasail,
 	}
 	Obj.tst._(Cls)
 end

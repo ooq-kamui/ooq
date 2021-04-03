@@ -1,7 +1,7 @@
 animations {
   id: "stand"
   images {
-    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln.png"
+    image: "/assets/obj/itm/parasail/img/parasail.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

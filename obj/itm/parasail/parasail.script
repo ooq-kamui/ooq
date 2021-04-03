@@ -1,4 +1,4 @@
-log.scrpt("trmpln.script")
+log.scrpt("parasail.script")
 ---[[
 go.property("_clsHa",  hash(""))
 go.property("_nameHa", hash(""))
@@ -12,7 +12,7 @@ go.property("_z", 0.2)
 --]]
 
 function init(_s)
-	Trmpln.init(_s)
+	Parasail.init(_s)
 end
 
 function update(_s, dt)
