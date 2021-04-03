@@ -21,7 +21,7 @@ instances {
 }
 instances {
   id: "obj-fac"
-  prototype: "/assets/obj/obj/objFac.go"
+  prototype: "/assets/obj/obj/obj-fac.go"
   position {
     x: 0.0
     y: 0.0

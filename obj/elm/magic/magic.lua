@@ -53,6 +53,7 @@ function Magic.tile__(_s)
 
 	if     c_tile == 0                 then
 		t_tile = Magic.magic_tile()
+		Efct.cre_magic()
 
 	elseif Magic.is_magic_vnsh(c_tile) then
 		t_tile = Tile.emp

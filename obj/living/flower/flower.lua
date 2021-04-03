@@ -8,8 +8,6 @@ Flower.cls = "flower"
 Flower.fac = Obj.fac..Flower.cls
 Cls.add(Flower)
 
--- ar.idx_2_ha(Flower.gold, "flower")
-
 -- static
 
 function Flower.cre(p_pos, prm)

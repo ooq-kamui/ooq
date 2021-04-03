@@ -21,6 +21,8 @@ function Obj.tst.tst()
 		Fluff, Fluff,
 		Flower, Flower,
 		Dish, Dish, Dish, Dish, Dish, Dish,
+		Shtngstr, Shtngstr, Shtngstr, Shtngstr,
+		Balloon, Balloon, Balloon, Balloon,
 	}
 	Obj.tst._(Cls)
 end

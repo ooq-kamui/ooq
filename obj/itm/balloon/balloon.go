@@ -28,3 +28,18 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "clsn"
+  component: "/assets/obj/itm/balloon/balloon.collisionobject"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

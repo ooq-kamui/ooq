@@ -68,7 +68,7 @@ function Fairy.magic(_s)
 
 	Magic.cre(_s:pos_w())
 
-	Efct.cre_magic()
+	-- Efct.cre_magic()
 end
 
 -- mv

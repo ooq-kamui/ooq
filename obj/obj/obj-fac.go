@@ -583,3 +583,33 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "shtngstr"
+  component: "/assets/obj/elm/shtngstr/shtngstr.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "balloon"
+  component: "/assets/obj/itm/balloon/balloon.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
