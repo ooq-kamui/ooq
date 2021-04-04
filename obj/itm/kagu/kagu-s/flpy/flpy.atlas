@@ -1,6 +1,17 @@
 animations {
   id: "flpy001"
   images {
+    image: "/assets/obj/itm/kagu/kagu-s/flpy/img/crystl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "flpy002.bk"
+  images {
     image: "/assets/obj/itm/kagu/kagu-s/flpy/img/save.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }

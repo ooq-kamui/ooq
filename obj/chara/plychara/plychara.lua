@@ -875,7 +875,7 @@ function Plychara.hld__x(_s)
 		pst.scrpt(t_id, "hld__x_thrwd", {dir_h = dir_h})
 		Se.pst_ply("thrw001")
 		_s:anim__("thrw")
-		log._("anim thrw")
+		-- log._("anim thrw")
 
 	-- hld__x_rls -- < old rlas
 	else

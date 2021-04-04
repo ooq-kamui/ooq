@@ -1,7 +1,7 @@
 animations {
   id: "book001"
   images {
-    image: "/assets/gui/txtr/atlas/shelf/img/book.png"
+    image: "/assets/gui/txtr/atlas/shelf/img/book001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -24,6 +24,83 @@ animations {
   id: "shelf001"
   images {
     image: "/assets/obj/itm/kagu/kagu-s/shelf/img/shelf.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book002"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book002.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book003"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book003.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book004"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book004.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book005"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book005.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book006"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book006.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book007"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book007.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "book008"
+  images {
+    image: "/assets/gui/txtr/atlas/shelf/img/book008.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

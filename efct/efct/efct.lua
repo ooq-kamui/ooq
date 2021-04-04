@@ -158,7 +158,7 @@ end
 -- script method
 
 function Efct.init(_s)
-	log._("efct init")
+	-- log._("efct init")
 
 	extend._(_s, Efct)
 

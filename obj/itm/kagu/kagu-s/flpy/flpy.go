@@ -18,7 +18,7 @@ components {
   component: "/assets/obj/itm/kagu/kagu-s/flpy/flpy.sprite"
   position {
     x: 0.0
-    y: 0.0
+    y: 2.0
     z: 0.0
   }
   rotation {
