@@ -1,8 +1,10 @@
 log.scrpt("sp.lua")
 
 Sp = {
-	thrwd_speed_x = 6,
-	thrwd_speed_y = 4,
+	thrwd_speed_x  = 6,
+	thrwd_speed_y  = 4,
+
+	airflw_u_vec_y = 3, -- 4,
 }
 
 -- static

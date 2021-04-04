@@ -2,14 +2,11 @@ log.scrpt("accl.lua")
 
 Accl = {
 
-	grv_dflt = n.vec(0, - 0.15),
-	-- grv_dflt = n.vec(0, - 0.2),
-	-- grv_dflt = n.vec(0, - 0.1),
-
-	-- grv_cnst = n.vec(0, - 1), -- old
+	grv_dflt = n.vec(0, - 0.15), -- - 0.2, - 0.1
 
 	speed_max_x = 8,
 	speed_max_y = 4,
+	speed_max_y_parasail = 1,
 }
 
 -- static
@@ -36,10 +33,15 @@ end
 
 -- _speed
 
-function Accl.speed__add_accl(_s)
+function Accl.speed__add_accl(_s, is_parasail)
 
 	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max_x)
-	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - Accl.speed_max_y)
+
+	local speed_y
+	if is_parasail then speed_y = Accl.speed_max_y_parasail
+	else                speed_y = Accl.speed_max_y
+	end
+	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - speed_y)
 end
 
 function Accl.speed(_s)

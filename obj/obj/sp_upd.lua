@@ -22,9 +22,11 @@ end
 -- dir
 
 function Sp.dir_h__(_s, dir_h)
-	-- log._("Sp.dir_h__", dir_h)
+	log._("sp dir_h__", dir_h)
 	
 	_s._dir_h_Ha = ha._(dir_h)
+
+	-- _s:flip_h__dir(dir_h)
 	_s:flip_h__dir()
 end
 
@@ -32,6 +34,21 @@ function Sp.dir_h__rnd(_s)
 	
 	local dir_h = rnd.ar(u.dir_h)
 	_s:dir_h__(dir_h)
+end
+
+function Sp.flip_h__dir(_s)
+	
+	local val = _.f
+	if     ha.eq(_s._dir_h_Ha, "l") then
+		val = _.f
+	elseif ha.eq(_s._dir_h_Ha, "r") then
+		val = _.t
+	end
+	_s:flip_h__(val)
+end
+
+function Sp.flip_h__(_s, val)
+	sprite.set_hflip("#sprite", val)
 end
 
 function Sp.dir_v__(_s, dir_v)
@@ -114,8 +131,17 @@ end
 
 function Sp.vec_tile__(_s, dt)
 	
-	if Tile.is_elv( _s:foot_i_tile() ) then
+	if     _s:is_elv_u( _s:foot_i_pos() ) then
+	-- if Tile.is_elv( _s:foot_i_tile() ) then
 		vec.xy__(_s._vec_tile, 0, 1)
+
+	elseif _s:is_airflw_u() then
+
+		local y = Sp.airflw_u_vec_y
+		-- if _s._is_parasail then y = y * 2 end
+
+		vec.xy__(_s._vec_tile, 0, y)
+		-- log._("is_airflw_u")
 	else
 		vec.xy__(_s._vec_tile, 0, 0)
 	end
@@ -153,7 +179,7 @@ end
 
 function Sp.vec_grv__grv(_s)
 
-	_s._accl:speed__add_accl()
+	_s._accl:speed__add_accl(_s._is_parasail)
 	_s._vec_grv = _s._accl:speed()
 end
 

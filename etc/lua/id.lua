@@ -11,7 +11,6 @@ end
 function id.prp(p_id, key)
 	-- log._("id.prp", p_id, key)
 
-	-- if not p_id then return end
 	if ha.is_emp(p_id) then return end
 	
 	local t_url = url._(p_id)
@@ -38,11 +37,19 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
-function id.cls(p_id)
+function id.cls(p_id) -- old
+	return id.clsHa(p_id)
+end
+
+function id.clsHa(p_id)
 	return id.prp(p_id, "_clsHa")
 end
 
-function id.name(p_id)
+function id.name(p_id) -- old
+	return id.nameHa(p_id)
+end
+
+function id.nameHa(p_id)
 	return id.prp(p_id, "_nameHa")
 end
 

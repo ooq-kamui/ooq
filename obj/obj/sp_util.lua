@@ -57,20 +57,3 @@ function Sp.anm_pos__(_s, p_pos, time)
 	anm.pos__(_s:id(), p_pos, time)
 end
 
-function Sp.flip_h__(_s, val)
-	sprite.set_hflip("#sprite", val)
-end
-
-function Sp.flip_h__dir(_s, dir_h)
-
-	if dir_h then _s:dir_h__(dir_h) end
-	
-	local val = _.f
-	if     ha.eq(_s._dir_h_Ha, "l") then
-		val = _.f
-	elseif ha.eq(_s._dir_h_Ha, "r") then
-		val = _.t
-	end
-	_s:flip_h__(val)
-end
-

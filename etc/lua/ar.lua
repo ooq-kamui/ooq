@@ -25,11 +25,11 @@ function ar.in_(val, p_ar)
 	return ret
 end
 
-function ar.inHa(val, p_ar)
+function ar.inHa(valHa, p_ar)
 	local ret = _.f
-	local i
-	for i = 1, #p_ar do
-		if val == ha._(p_ar[i]) then
+	local idx
+	for idx = 1, #p_ar do
+		if valHa == ha._(p_ar[idx]) then
 			ret = _.t
 			break
 		end

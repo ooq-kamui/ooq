@@ -19,6 +19,10 @@ Plychara = {
 
 	hld_idx_max    = 2,
 	hld_weight_max = 2,
+
+	hld_dir_sync_cls = {
+		"parasail",
+	},
 }
 
 Plychara.pos_game_new = n.vec( 500, 200)
@@ -103,6 +107,9 @@ function Plychara.init(_s)
 	local z = 0.01
 	local t_pos = n.vec(0, Map.sq)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
+
+	-- skil
+	_s._is_parasail = _.f
 end
 
 function Plychara.upd(_s, dt)
@@ -431,6 +438,18 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	end
 end
 
+function Plychara.hld_dir_h__sync(_s, dir_h)
+
+	local t_clsHa, t_id = _s:hld_clsHa()
+
+	if not ar.inHa(t_clsHa, Plychara.hld_dir_sync_cls) then return end
+
+	log._("plychara hld_dir_h__sync")
+	dir_h = dir_h or ha.de(_s._dir_h_Ha)
+
+	pst.scrpt(t_id, "dir_h__", {dir_h = dir_h})
+end
+
 function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 	
 	if not ha.eq(msg_id, "mv") then return end
@@ -442,7 +461,9 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		-- turn
 		if not ha.eq(_s._dir_h_Ha, prm.dir) then
 			_s._turn_time = 0 
-			_s:flip_h__dir(prm.dir)
+			-- _s:flip_h__dir(prm.dir)
+			_s:dir_h__(prm.dir)
+			_s:hld_dir_h__sync()
 		end
 		
 		-- dive
@@ -522,31 +543,22 @@ end
 function Plychara.itm_use(_s)
 	
 	local itm = _s._itm_selected -- name
-	-- log._("plychara itm_use", itm)
 	
-	-- if     itm == "wand001" then
 	if     itm == "wand_block" then
 		pst.scrpt(_s:fairy_id(), "magic")
 		
-	-- elseif itm == "wand002" then
 	elseif itm == "wand_wall" then
-		-- Wall.__(_s:tilepos(), Wand.wand002.tile_idx)
 		Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
 
-	-- elseif itm == "wand003" then
 	elseif itm == "nokogiri" then
 		if #_s._clsn.tree > 0 then
 			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
-	-- elseif itm == "wand004" then
 	elseif itm == "wand_fire" then
 		local t_pos = _s:pos_fw(2/3)
 		Fire.cre(t_pos)
 		Efct.cre_fire(nil, t_pos)
 
-	-- elseif itm == "wand005" then
-		-- Warp.cre(_s:pos_fw(2/3))
-		-- Block.cre()
 	else
 		log._("not use itm")
 	end
@@ -679,14 +691,29 @@ function Plychara.hld_cnt(_s)
 	return cnt
 end
 
-function Plychara.hld_id(_s)
+function Plychara.hld_id(_s, idx)
 	
 	local cnt = _s:hld_cnt()
-
 	if cnt <= 0 then return end
+
+	idx = idx or cnt
+	if idx > cnt then return end
 	
-	local t_id = _s._hld[cnt]
+	-- local t_id = _s._hld[cnt]
+	local t_id = _s._hld[idx]
 	return t_id
+end
+
+function Plychara.hld_clsHa(_s, idx)
+
+	idx = idx or 1
+	
+	local t_id = _s:hld_id()
+	if not t_id then return end
+	
+	local t_clsHa = id.clsHa(t_id)
+
+	return t_clsHa, t_id
 end
 
 function Plychara.hld__add(_s, id)
@@ -802,8 +829,16 @@ function Plychara.hld__o(_s)
 	local hld_idx = _s:hld__add(t_id)
 
 	pst.scrpt(t_id, "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
+	-- > pst.scrpt(t_id, "hldd__o", {hld_id = _s._id, hld_idx = hld_idx})
+
+	-- local dir_h = ha.de(_s._dir_h_Ha)
+	_s:hld_dir_h__sync()
 
 	Se.pst_ply("hld")
+
+	-- atch skil
+	local t_clsHa = id.clsHa(t_id)
+	if ha.eq(t_clsHa, "parasail") then _s._is_parasail = _.t end
 end
 
 function Plychara.hld__x(_s)
@@ -813,6 +848,10 @@ function Plychara.hld__x(_s)
 	local t_id = _s:hld__del()
 
 	pst.scrpt(t_id, "hld__x")
+
+	-- dtch skil
+	local t_clsHa = id.clsHa(t_id)
+	if ha.eq(t_clsHa, "parasail") then _s._is_parasail = _.f end
 
 	-- hld__x_thrw
 	if _s._vec_mv.x ~= 0 then

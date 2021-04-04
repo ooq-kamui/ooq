@@ -89,7 +89,7 @@ function Sp.tilepos_arund(_s)
 	return tilepos_arund
 end
 
--- foot
+-- pos foot
 
 function Sp.foot_i_pos(_s)
 
@@ -161,7 +161,7 @@ function Sp.tilepos_d__(_s)
 	vec.xy__(_s._tilepos_d, t_tilepos.x, t_tilepos.y - 1)
 end
 
--- head
+-- pos head
 
 function Sp.head_o_pos(_s)
 	-- log._("sp head_o_pos ", _s._head_o_pos_flg)
@@ -185,7 +185,7 @@ function Sp.head_o_tile(_s)
 	return t_tile
 end
 
--- side
+-- pos side
 
 function Sp.side_l_pos(_s, p_vec)
 
@@ -252,31 +252,6 @@ end
 
 -- is tile
 
-function Sp.foot_o_is_block(_s)
-
-	local ret = _.f
-
-	local foot_o_tile = _s:foot_o_tile()
-	if Tile.is_block(foot_o_tile) then ret = _.t end
-
-	return ret
-end
-
-function Sp.head_o_is_block(_s)
-
-	local t_pos = _s:head_o_pos()
-	local ret = _s:is_block(t_pos)
-	return ret
-end
-
-function Sp.side_is_block(_s, dir_h, p_vec)
-	
-	p_vec = p_vec or n.vec(nil, nil, nil, "sp.side_is_block")
-
-	local t_pos = _s:side_pos(dir_h) + p_vec
-	return _s:is_block(t_pos)
-end
-
 function Sp.is_block(_s, p_pos)
 
 	local ret = _.f
@@ -292,22 +267,61 @@ end
 
 function Sp.is_clmb(_s, p_pos)
 	
-	local ret = _.f
-
 	local t_tile = _s:tile(p_pos)
-	if Tile.is_clmb(t_tile) then ret = _.t end
+	local ret = Tile.is_clmb(t_tile)
+	return ret
+end
 
+function Sp.is_elv_u(_s, p_pos)
+	
+	local t_tile = _s:tile(p_pos)
+	local ret = Tile.is_elv(t_tile)
+	return ret
+end
+
+function Sp.is_airflw_u(_s, p_pos)
+	
+	local t_tile = _s:tile(p_pos)
+	local ret = Tile.is_airflw_u(t_tile)
 	return ret
 end
 
 function Sp.is_soil(_s, p_pos)
 	
+	local t_tile = _s:tile(p_pos)
+	local ret = Tile.is_soil(t_tile)
+	return ret
+end
+
+-- is tile foot
+
+function Sp.foot_o_is_block(_s)
+
 	local ret = _.f
 
-	local t_tile = _s:tile(p_pos)
-	if ar.in_(t_tile, Tile.soil) then ret = _.t end
+	local foot_o_tile = _s:foot_o_tile()
+	if Tile.is_block(foot_o_tile) then ret = _.t end
 
 	return ret
+end
+
+-- is tile head
+
+function Sp.head_o_is_block(_s)
+
+	local t_pos = _s:head_o_pos()
+	local ret = _s:is_block(t_pos)
+	return ret
+end
+
+-- is tile side
+
+function Sp.side_is_block(_s, dir_h, p_vec)
+	
+	p_vec = p_vec or n.vec(nil, nil, nil, "sp.side_is_block")
+
+	local t_pos = _s:side_pos(dir_h) + p_vec
+	return _s:is_block(t_pos)
 end
 
 function Sp.is_tile_grounding(_s)

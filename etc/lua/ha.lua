@@ -58,15 +58,6 @@ end
 
 -- 
 
-function ha.idx2ha(idx_ar)
-	local ha_ar = {}
-	for idx, val in pairs(idx_ar) do
-		-- ha_ar[hash(val)] = val
-		ha_ar[ha._(val)] = val
-	end
-	return ha_ar
-end
-
 function ha.is_emp(val)
 
 	local ret
@@ -87,4 +78,14 @@ end
 function ha.emp()
 	return ha._emp
 end
+
+--[[
+function ha.idx2ha(idx_ar) -- use not
+	local ha_ar = {}
+	for idx, val in pairs(idx_ar) do
+		ha_ar[ha._(val)] = val
+	end
+	return ha_ar
+end
+--]]
 

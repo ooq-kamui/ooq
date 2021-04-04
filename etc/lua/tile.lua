@@ -5,41 +5,45 @@ Tile = { -- tile num
 	magic_block = { -- wand block
 
 		1, 2, 3, -- clmb, elv
-		-- 15,16, -- clmb
-		-- 17,    -- elv
 
 		-- block x1x1
-		-- 2,3,4,5,6,7,8,9,10,14,
 		4,5,6,7,8,9,10,14,15,16,17,
 		-- block 5 x 5
 		101, 106,      116,
 		201, 206,      216,
 		301, 306, 311, 316,
 	}, -- enum
-	-- wall = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, -- enum
 	wall = {4, 5, 6, 7, 8, 9, 10}, -- enum
-	-- soil = {1, 13, 123, 223, 228,}, -- enum
-	soil = {13, 123, 223, 228,}, -- enum
+	soil = {13, 123, 223, 228,},   -- enum
 	wood      = {311,}, -- enum
 	wood_burn = {316,}, -- enum
 	block = { -- use ??
 		1, 400, -- min, max
 	},
 	block_excld = {
-		1, 2, 3,
-		-- 15, 16, 17,
+		1, 2, 3, 18,
 	},
-	-- clmb = {15, 16}, -- enum
-	clmb = {1, 3}, -- enum
-	-- elv_u = {17}, -- enum
-	elv_u = {2}, -- enum
+	clmb     = {1, 3}, -- enum
+	elv_u    = {2},    -- enum
+	airflw_u = {18},   -- enum
+
 	magic_vnsh_impsbl = {45, 65,}, -- enum
 
 	col_idx_max = 20,
 }
 
-function Tile.is_clmb(tile)
-	local ret = ar.in_(tile, Tile.clmb)
+function Tile.is_clmb(p_tile)
+	local ret = ar.in_(p_tile, Tile.clmb)
+	return ret
+end
+
+function Tile.is_soil(p_tile)
+	local ret = ar.in_(p_tile, Tile.soil)
+	return ret
+end
+
+function Tile.is_airflw_u(p_tile)
+	local ret = ar.in_(p_tile, Tile.airflw_u)
 	return ret
 end
 
@@ -48,50 +52,50 @@ function Tile.is_elv(p_tile, dir)
 	dir = dir or "u"
 	
 	local ret = _.f
-	local tile
-	if dir == "u" then tile = Tile.elv_u end
-	ret = ar.in_(p_tile, tile)
+	local t_tile
+	if dir == "u" then t_tile = Tile.elv_u end
+	ret = ar.in_(p_tile, t_tile)
 	return ret
 end
 
-function Tile.is_block(tile)
+function Tile.is_block(p_tile)
 	
-	if tile == nil then return _.f end
+	if p_tile == nil then return _.f end
 	
 	local ret = _.f
-	if int.is_rng(tile, Tile.block) and not ar.in_(tile, Tile.block_excld) then 
+	if int.is_rng(p_tile, Tile.block) and not ar.in_(p_tile, Tile.block_excld) then 
 		-- ^ Tile.block is min max
 		ret = _.t
 	end
 	return ret
 end
 
-function Tile.is_wood(tile)
+function Tile.is_wood(p_tile)
 
-	if tile == 0 then return _.f end
+	if p_tile == 0 then return _.f end
 	
-	-- log._("Tile.is_wood", tile)
+	-- log._("Tile.is_wood", p_tile)
 
 	local ret = _.f
 
-	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(tile)
-	if is_tile_bndl then tile = base_tile end
+	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(p_tile)
+	if is_tile_bndl then p_tile = base_tile end
 
-	ret = ar.in_(tile, Tile.wood)
-	-- log._("Tile.is_wood", ret, is_tile_bndl, base_tile, tile)
+	ret = ar.in_(p_tile, Tile.wood)
+	-- log._("Tile.is_wood", ret, is_tile_bndl, base_tile, p_tile)
 	return ret
 end
 
-function Tile.is_wood_burn(tile)
+function Tile.is_wood_burn(p_tile)
 
-	if tile == 0 then return _.f end
+	if p_tile == 0 then return _.f end
 	
 	local ret = _.f
 
-	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(tile)
-	if is_tile_bndl then tile = base_tile end
+	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(p_tile)
+	if is_tile_bndl then p_tile = base_tile end
 
-	ret = ar.in_(tile, Tile.wood_burn)
+	ret = ar.in_(p_tile, Tile.wood_burn)
 	return ret
 end
 
@@ -372,3 +376,4 @@ function tile.__(tilemap_url, t_layer, x, y, p_tile)
 	
 	return tilemap.set_tile(tilemap_url, t_layer, x, y, p_tile)
 end
+
