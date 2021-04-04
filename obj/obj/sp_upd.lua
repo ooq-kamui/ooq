@@ -22,7 +22,7 @@ end
 -- dir
 
 function Sp.dir_h__(_s, dir_h)
-	log._("sp dir_h__", dir_h)
+	-- log._("sp dir_h__", dir_h)
 	
 	_s._dir_h_Ha = ha._(dir_h)
 

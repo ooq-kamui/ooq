@@ -153,7 +153,8 @@ function Plychara.vec_mv__(_s, dt)
 		if ha.eq(_s._dir_h_Ha, "l") then
 			_s._vec_mv_dir.x = - _s._vec_mv_dir.x
 		end
-		_s:anim__("walk")
+		-- _s:anim__("walk")
+		-- log._("anim__ vec_mv__")
 	end
 	
 	-- move v
@@ -392,6 +393,15 @@ function Plychara.on_msg(_s, msg_id, prm, sndr)
 	if st then return end
 
 	_s:on_msg_act(msg_id, prm, sndr)
+
+	if ha.eq(msg_id, "animation_done") then
+		-- log._("animation_done")
+		-- log.pp("animation_done", prm)
+		if ha.eq(prm.id, _s._name.."-thrw") then
+			-- log._("anim__ walk")
+			_s:anim__("walk")
+		end
+	end
 end
 
 function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
@@ -444,7 +454,7 @@ function Plychara.hld_dir_h__sync(_s, dir_h)
 
 	if not ar.inHa(t_clsHa, Plychara.hld_dir_sync_cls) then return end
 
-	log._("plychara hld_dir_h__sync")
+	-- log._("plychara hld_dir_h__sync")
 	dir_h = dir_h or ha.de(_s._dir_h_Ha)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir_h})
@@ -464,6 +474,7 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 			-- _s:flip_h__dir(prm.dir)
 			_s:dir_h__(prm.dir)
 			_s:hld_dir_h__sync()
+			_s:anim__("walk")
 		end
 		
 		-- dive
@@ -863,10 +874,11 @@ function Plychara.hld__x(_s)
 
 		pst.scrpt(t_id, "hld__x_thrwd", {dir_h = dir_h})
 		Se.pst_ply("thrw001")
+		_s:anim__("thrw")
+		log._("anim thrw")
 
-	-- hld__x_rlas
+	-- hld__x_rls -- < old rlas
 	else
-
 		-- target action
 		if     #_s._clsn.chara   >= 1 then
 			pst.scrpt(_s._clsn.chara[1]  , "present"  , {id = t_id})
@@ -930,6 +942,7 @@ function Plychara.to_door(_s, door_id)
 end
 
 function Plychara.anim__(_s, p_anim)
+	-- log._("anim__")
 
 	Chara.anim__(_s, p_anim)
 end

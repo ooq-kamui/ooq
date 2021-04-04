@@ -62,6 +62,17 @@ animations {
   flip_vertical: 0
 }
 animations {
+  id: "sanae-thrw"
+  images {
+    image: "/assets/obj/chara/chara/img/01.sanae/pixel/thrw001.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
   id: "marin-walk"
   images {
     image: "/assets/obj/chara/chara/img/02.marin/pixel/001.png"
