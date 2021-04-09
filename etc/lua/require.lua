@@ -70,9 +70,11 @@ require("assets/obj/obj/accl")
 require("assets/obj/anm/anm")
 require("assets/obj/anm/es")
 
-require("assets/etc/lua/tile")
 require("assets/etc/lua/dice100")
 require("assets/etc/cmr/cmr")
+
+require("assets/etc/lua/tile")
+require("assets/etc/lua/tile_bndl")
 
 require("assets/map/lua/map")
 require("assets/map/lua/map_tile")

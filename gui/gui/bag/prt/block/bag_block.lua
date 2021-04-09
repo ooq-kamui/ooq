@@ -33,7 +33,7 @@ function p.Bag_block.init(_s, parent_gui)
 	for idx, t_tile in pairs(_s._itm) do
 		node = _s:itm_clone()
 		anim = "block"..int.pad(t_tile, 3)
-		log._("anim", anim)
+		-- log._("anim", anim)
 		nd.anm__(node[_s:lb("itm")], ha._(anim))
 		nd.order__by_blw(node[_s:lb("itm")], _s:selected_nd())
 	end
