@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/elm/fire/fire.tilesource"
+tile_set: "/assets/obj/elm/fire/burning.tilesource"
 default_animation: "fire001"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

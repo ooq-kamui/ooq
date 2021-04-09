@@ -464,8 +464,8 @@ components {
   }
 }
 components {
-  id: "door"
-  component: "/assets/obj/itm/kagu/kagu-s/door/door.factory"
+  id: "doorwrp"
+  component: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.factory"
   position {
     x: 0.0
     y: 0.0

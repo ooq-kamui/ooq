@@ -38,8 +38,8 @@ Mstr.kagu_itm["shelf"] = {
 	},
 }
 
-Mstr.kagu_itm["door"] = {
-	door001 = {
+Mstr.kagu_itm["doorwrp"] = {
+	doorwrp001 = {
 		price = 18000,
 	},
 }

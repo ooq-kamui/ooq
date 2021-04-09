@@ -3,36 +3,40 @@ log.scrpt("efct.lua")
 Efct = {
 
 	lifetime = 3,
+	lifetime_tile_vnsh = 1,
 
 	etc = {
-		"davit-magic8",
-		"davit-loading",
-		"davit-weaponhit",
-		"davit-phantom",
-		"davit-protectioncircle",
-		"davit-magicbubbles",
-		"davit-sunburn",
-		"davit-vortex",
-		"davit-nebula",
-		"davit-midnight",
-	},
-	fire = {
-		-- once
-		"davit-magickahit",
-		-- loop
-		"davit-bluefire",
-		"davit-brightfire",
-		"davit-fire",
-	},
-	tile_magic = {
-		-- once
-		"davit-casting",
-		"davit-flamelash",
-		"davit-magicspell",
 		-- loop
 		"davit-felspell",
 		"davit-firespin",
 		"davit-freezing",
+		"davit-loading",
+		"davit-magic8",
+		"davit-magicbubbles",
+		"davit-midnight",
+		"davit-nebula",
+		"davit-phantom",
+		"davit-protectioncircle",
+		"davit-sunburn",
+		"davit-vortex",
+		-- once
+		"davit-weaponhit",
+	},
+	fire = {
+		-- loop
+		"davit-bluefire",
+		"davit-brightfire",
+		"davit-fire",
+		-- once
+		"davit-magickahit",
+	},
+	tile_magic = {
+		-- loop
+		--
+		-- once
+		"davit-casting",
+		"davit-flamelash",
+		"davit-magicspell",
 	},
 	tile_vnsh = {
 		"tile-vnsh-davit-magicbubble",
@@ -128,6 +132,8 @@ end
 function Efct.cre_tile_vnsh(p_efct, p_pos, prm, p_scl)
 
 	p_efct = p_efct or rnd.ar(Efct.tile_vnsh_dflt)
+	prm = prm or {}
+	prm._lifetime = prm._lifetime or Efct.lifetime_tile_vnsh
 
 	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
 	return t_id
@@ -147,6 +153,8 @@ function Efct.cre(p_efct, p_pos, prm, p_scl)
 
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
+	prm = prm or {}
+	prm._lifetime = prm._lifetime or Efct.lifetime
 
 	local t_url = "/ef-fac#" .. p_efct
 	-- log._("efct cre", t_url)
@@ -183,7 +191,7 @@ function Efct.life__(_s)
 	local fnc = function (slf, hndl, elpsd)
 		_s:fade__o__del()
 	end
-	local hndl = timer.delay(Efct.lifetime, _.f, fnc)
+	local hndl = timer.delay(_s._lifetime, _.f, fnc)
 end
 
 function Efct.fade__o__del(_s)

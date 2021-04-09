@@ -134,6 +134,7 @@ end
 
 function g.Gui.actv_prt_opn(_s, prm)
 	local actv_prt = _s:actv_prt()
+	-- log.pp("activ_prt", actv_prt)
 	actv_prt:opn(prm)
 end
 

@@ -95,7 +95,7 @@ function Plychara.init(_s)
 		flpy    = {},
 		pc      = {},
 		shelf   = {},
-		door    = {},
+		doorwrp = {},
 		tree    = {},
 		block   = {},
 	}
@@ -444,7 +444,7 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy"   , t_id)
 	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
 	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
-	elseif ha.eq(t_nameHa, "door001"   ) then _s:clsn_add("door"   , t_id)
+	elseif ha.eq(t_nameHa, "doorwrp001"   ) then _s:clsn_add("doorwrp"   , t_id)
 	end
 end
 
@@ -512,8 +512,8 @@ function Plychara.on_msg_act(_s, msg_id, prm, sndr)
 	elseif ha.eq(msg_id, "hld__del") then
 		_s:hld__del(prm.id)
 	
-	elseif ha.eq(msg_id, "to_door")  then
-		_s:to_door(prm.door_id)
+	elseif ha.eq(msg_id, "to_doorwrp")  then
+		_s:to_doorwrp(prm.doorwrp_id)
 
 	elseif ha.eq(msg_id, "itm_selected__") then
 		_s:itm_selected__(prm.itm_selected)	
@@ -532,7 +532,7 @@ function Plychara.menu_opn(_s)
 
 	local is_icn_opn
 
-	local t_clss = {"reizoko", "pc", "shelf", "door"}
+	local t_clss = {"reizoko", "pc", "shelf", "doorwrp"}
 
 	for idx, t_cls in pairs(t_clss) do
 		if     #_s._clsn[t_cls] >= 1 then
@@ -568,7 +568,7 @@ function Plychara.itm_use(_s)
 	elseif itm == "wand_fire" then
 		local t_pos = _s:pos_fw(2/3)
 		Fire.cre(t_pos)
-		Efct.cre_fire(nil, t_pos)
+		-- Efct.cre_fire(nil, t_pos)
 
 	else
 		log._("not use itm")
@@ -646,7 +646,7 @@ function Plychara.clsn_hldabl__(_s)
 
 	local cls = {
 		"hld", "kitchen", "reizoko", "hrvst", "flpy",
-		"pc", "shelf", "door", "anml", "block",
+		"pc", "shelf", "doorwrp", "anml", "block",
 	}
 	
 	ar.clr(_s._clsn_hldabl)
@@ -935,8 +935,8 @@ function Plychara.to_cloud(_s)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
-function Plychara.to_door(_s, door_id)
-	local t_pos = id.pos(door_id)
+function Plychara.to_doorwrp(_s, doorwrp_id)
+	local t_pos = id.pos(doorwrp_id)
 	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end

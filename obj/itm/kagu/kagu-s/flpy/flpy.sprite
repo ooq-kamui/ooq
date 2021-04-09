@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/itm/kagu/kagu-s/flpy/flpy.atlas"
+tile_set: "/assets/obj/itm/kagu/kagu-s/flpy/crystl.atlas"
 default_animation: "flpy001"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

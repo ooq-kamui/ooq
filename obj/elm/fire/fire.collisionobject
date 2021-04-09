@@ -9,7 +9,7 @@ embedded_collision_shape {
     shape_type: TYPE_BOX
     position {
       x: 0.0
-      y: 0.0
+      y: -12.0
       z: 0.0
     }
     rotation {
@@ -21,8 +21,8 @@ embedded_collision_shape {
     index: 0
     count: 3
   }
-  data: 10.0
-  data: 10.0
+  data: 11.0
+  data: 12.0
   data: 10.0
 }
 linear_damping: 0.0

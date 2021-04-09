@@ -2,34 +2,52 @@ log.scrpt("tile.lua")
 
 Tile = { -- tile num
 	emp = 0,
-	magic_block = { -- wand block
+	magic_block = { -- wand block, enum
 
-		1, 2, 3, -- clmb, elv
+		-- 1, 2, 3, -- clmb, elv
+		1, 2, 3, 4, 5, -- clmb
+		6,             -- elv
+		7,             -- airflw
 
 		-- block x1x1
-		4,5,6,7,8,9,10,14,15,16,17,
+		-- 4,5,6,7,8,9,10,14,15,16,17,
+		26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
+		-- 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+		-- 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88,
+
 		-- block 5 x 5
+		--[[
 		101, 106,      116,
 		201, 206,      216,
 		301, 306, 311, 316,
+		--]]
+		126,      136, 141, 146,
+		251, 256, 261, 266, 271,
+		-- 376, 381, 386, 391, 396,
+		-- 501, 506, 511, 516, 521,
 	}, -- enum
-	wall = {4, 5, 6, 7, 8, 9, 10}, -- enum
-	soil = {13, 123, 223, 228,},   -- enum
-	wood      = {311,}, -- enum
-	wood_burn = {316,}, -- enum
-	block = { -- use ??
-		1, 400, -- min, max
+	-- soil = {13, 123, 223, 228,},   -- enum
+	soil = {},   -- enum
+	wood      = {280,}, -- enum
+	wood_burn = {220,}, -- enum -- tmp
+	block = { -- use
+		-- 1, 400, -- min, max
+		26, 625, -- min, max
 	},
 	block_excld = {
-		1, 2, 3, 18,
+		-- 1, 2, 3, 18,
 	},
-	clmb     = {1, 3}, -- enum
-	elv_u    = {2},    -- enum
-	airflw_u = {18},   -- enum
+	clmb     = {1, 2, 3, 4, 5,}, -- enum
+	elv_u    = {6,},    -- enum
+	airflw_u = {7,},   -- enum
 
-	magic_vnsh_impsbl = {45, 65,}, -- enum
+	-- magic_vnsh_impsbl = {45, 65,}, -- enum
+	magic_vnsh_impsbl = {84, }, -- enum -- tmp
 
-	col_idx_max = 20,
+	wall = {4, 5, 6, 7, 8, 9, 10}, -- enum use ?
+
+	-- col_idx_max = 20,
+	col_idx_max = 25,
 }
 
 function Tile.is_clmb(p_tile)

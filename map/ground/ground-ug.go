@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "ground"
-  component: "/assets/map/ground/ground/ug.tilemap"
+  component: "/assets/map/ground/ground/ug_neo.tilemap"
   position {
     x: 0.0
     y: 0.0

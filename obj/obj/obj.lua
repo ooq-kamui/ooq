@@ -25,6 +25,7 @@ function Obj.tst.tst()
 		Balloon, Balloon, Balloon, Balloon,
 		Trmpln, Trmpln,
 		Parasail, Parasail,
+		Doorwrp, Doorwrp,
 	}
 	Obj.tst._(Cls)
 end
@@ -88,7 +89,7 @@ function Obj.tst.game_start()
 		Grave,
 		Phantom,
 		Fire,
-		Door,Door,
+		Doorwrp,Doorwrp,
 		-- Block,Block,Block,Block,Block,
 		--]]
 	}

@@ -1,7 +1,7 @@
 script: ""
 textures {
   name: "map"
-  texture: "/assets/map/ground/ground/ground.tilesource"
+  texture: "/assets/map/ground/ground/ground_neo.tilesource"
 }
 textures {
   name: "bag"
@@ -100,7 +100,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "map/block011"
+  texture: "map/block001"
   id: "itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -141,7 +141,7 @@ require("assets/obj/itm/kagu/kagu-s/kitchen/kitchen")
 require("assets/obj/itm/kagu/kagu-s/shelf/shelf")
 require("assets/obj/itm/kagu/kagu-s/hrvst/hrvst")
 require("assets/obj/itm/kagu/kagu-s/pc/pc")
-require("assets/obj/itm/kagu/kagu-s/door/door")
+require("assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp")
 require("assets/obj/itm/kagu/kagu-s/flpy/flpy")
 
 -- efct
@@ -193,9 +193,9 @@ require("assets/gui/gui/title/prt/ply_slt/ply_slt")
 require("assets/gui/gui/flpy/_/flpy_gui")
 require("assets/gui/gui/flpy/prt/flpy/flpy")
 
--- door
-require("assets/gui/gui/door/_/door_gui")
-require("assets/gui/gui/door/prt/door/door")
+-- doorwrp
+require("assets/gui/gui/doorwrp/_/doorwrp_gui")
+require("assets/gui/gui/doorwrp/prt/doorwrp/doorwrp")
 
 -- pc
 require("assets/gui/gui/pc/_/pc_gui")

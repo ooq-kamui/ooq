@@ -30,9 +30,10 @@ function p.Bag_block.init(_s, parent_gui)
 	_s:itm__by_ar(Tile.magic_block)
 	
 	local node, anim
-	for idx, tile in pairs(_s._itm) do
+	for idx, t_tile in pairs(_s._itm) do
 		node = _s:itm_clone()
-		anim = "block"..int.pad(tile, 3)
+		anim = "block"..int.pad(t_tile, 3)
+		log._("anim", anim)
 		nd.anm__(node[_s:lb("itm")], ha._(anim))
 		nd.order__by_blw(node[_s:lb("itm")], _s:selected_nd())
 	end
@@ -49,7 +50,6 @@ function p.Bag_block.decide(_s)
 	if _s:is_selected_eq_cursor() then return end
 
 	p.Prt_selected.selected__cursor_itm(_s)
-	-- Wand.wand001.block_idx = _s:selected_itm_idx()
 	Wand.wand_block.block_idx = _s:selected_itm_idx()
 	
 	Se.pst_ply("forward")

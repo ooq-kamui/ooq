@@ -17,7 +17,7 @@ Inp.gui = {
 		"snn_lst", "snn_dtl",
 		"shop", "shop_flower", "shop_tree", "shop_kagu", "shop_kagu_itm", "shop_block",
 		"shelf", "zu_anml", "zu_flower", "zu_dish",
-		"door",
+		"doorwrp",
 		"dia",
 		"reizoko",
 	}, -- lb

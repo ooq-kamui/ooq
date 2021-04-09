@@ -15,9 +15,9 @@ function on_message(_s, msg_id, prm, sndr)
 		local t_pos = Game.cloud_pos()
 		Cls._(prm.cls).cre(t_pos, prm)
 		
-	elseif ha.eq(msg_id, "to_door") then
+	elseif ha.eq(msg_id, "to_doorwrp") then
 		local plychara_id = Game.plychara_id()
-		pst.scrpt(plychara_id, "to_door", prm)
+		pst.scrpt(plychara_id, "to_doorwrp", prm)
 		
 	elseif ha.eq(msg_id, "plychara_itm_selected__") then
 		local plychara_id = Game.plychara_id()

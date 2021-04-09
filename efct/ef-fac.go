@@ -45,7 +45,7 @@ components {
 }
 components {
   id: "davit-felspell"
-  component: "/assets/efct/davit/magic/loop/felspell/ef-davit-felspell.factory"
+  component: "/assets/efct/davit/etc/loop/felspell/ef-davit-felspell.factory"
   position {
     x: 0.0
     y: 0.0
@@ -75,7 +75,7 @@ components {
 }
 components {
   id: "davit-firespin"
-  component: "/assets/efct/davit/magic/loop/firespin/ef-davit-firespin.factory"
+  component: "/assets/efct/davit/etc/loop/firespin/ef-davit-firespin.factory"
   position {
     x: 0.0
     y: 0.0
@@ -105,7 +105,7 @@ components {
 }
 components {
   id: "davit-freezing"
-  component: "/assets/efct/davit/magic/loop/freezing/ef-davit-freezing.factory"
+  component: "/assets/efct/davit/etc/loop/freezing/ef-davit-freezing.factory"
   position {
     x: 0.0
     y: 0.0
@@ -286,6 +286,21 @@ components {
 components {
   id: "tile-vnsh-davit-magicbubble"
   component: "/assets/efct/davit/tile-vnsh/loop/davit-magicbubble/ef-tile-vnsh-davit-magicbubble.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "sand-smoke"
+  component: "/assets/efct/sand-smoke/sand-smoke.factory"
   position {
     x: 0.0
     y: 0.0

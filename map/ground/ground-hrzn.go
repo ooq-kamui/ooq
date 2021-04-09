@@ -45,7 +45,7 @@ components {
 }
 components {
   id: "ground"
-  component: "/assets/map/ground/ground/hrzn.tilemap"
+  component: "/assets/map/ground/ground/hrzn_neo.tilemap"
   position {
     x: 0.0
     y: 0.0

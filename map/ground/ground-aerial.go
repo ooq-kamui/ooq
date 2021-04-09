@@ -1,6 +1,6 @@
 components {
   id: "ground"
-  component: "/assets/map/ground/ground/aerial.tilemap"
+  component: "/assets/map/ground/ground/aerial_neo.tilemap"
   position {
     x: 0.0
     y: 0.0

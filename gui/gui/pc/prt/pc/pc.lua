@@ -49,3 +49,4 @@ function p.Pc.decide(_s)
 	_s:behind(fin)
 	_s._parent_gui:opn(_s:cursor_itm())
 end
+

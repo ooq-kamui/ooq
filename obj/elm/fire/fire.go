@@ -3,7 +3,7 @@ components {
   component: "/assets/obj/elm/fire/fire.sprite"
   position {
     x: 0.0
-    y: 5.0
+    y: 8.0
     z: 0.0
   }
   rotation {
@@ -14,7 +14,7 @@ components {
   }
 }
 components {
-  id: "collision"
+  id: "clsn"
   component: "/assets/obj/elm/fire/fire.collisionobject"
   position {
     x: 0.0

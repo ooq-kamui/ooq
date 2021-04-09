@@ -1,0 +1,10 @@
+log.scrpt("doorwrp.gui_script")
+
+function init(_s)
+	g.Doorwrp.init(_s)
+end
+
+function on_message(_s, msg_id, prm, sndr)
+	_s:on_msg(msg_id, prm, sndr)
+end
+
