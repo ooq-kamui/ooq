@@ -7,7 +7,7 @@ vec = {
 }
 
 function n.vec(x, y, z, note) -- alias
-	log._("n.vec", note)
+	-- log._("n.vec", note)
 	return vec.new(x, y, z)
 end
 

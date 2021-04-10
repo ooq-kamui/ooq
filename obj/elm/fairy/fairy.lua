@@ -54,6 +54,9 @@ function Fairy.on_msg(_s, msg_id, prm, sndr)
 	if     ha.eq(msg_id, "magic") then
 		_s:magic()
 
+	elseif ha.eq(msg_id, "fire") then
+		_s:fire()
+
 	elseif ha.eq(msg_id, "mv__dir") then
 		_s:mv__dir(prm.dir)
 
@@ -67,6 +70,13 @@ end
 function Fairy.magic(_s)
 
 	Magic.cre(_s:pos_w())
+
+	-- Efct.cre_magic()
+end
+
+function Fairy.fire(_s)
+
+	Fire.cre(_s:pos_w())
 
 	-- Efct.cre_magic()
 end

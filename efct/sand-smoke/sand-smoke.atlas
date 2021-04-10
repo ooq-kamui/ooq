@@ -20,6 +20,10 @@ animations {
     image: "/assets/efct/sand-smoke/img/fx001_05.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
+  images {
+    image: "/assets/efct/sand-smoke/img/fx001_06.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 6
   flip_horizontal: 0

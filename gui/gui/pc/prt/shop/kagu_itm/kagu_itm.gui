@@ -40,7 +40,7 @@ textures {
   texture: "/assets/obj/living/seed/seed.tilesource"
 }
 textures {
-  name: "door"
+  name: "doorwrp"
   texture: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.tilesource"
 }
 textures {

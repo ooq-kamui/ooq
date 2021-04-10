@@ -195,7 +195,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "door/door001"
+  texture: "doorwrp/doorwrp001"
   id: "doorwrp/img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

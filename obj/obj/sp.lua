@@ -5,6 +5,8 @@ Sp = {
 	thrwd_speed_y  = 4,
 
 	airflw_u_vec_y = 3, -- 4,
+
+	sand_smoke_speed_y = - 4
 }
 
 -- static

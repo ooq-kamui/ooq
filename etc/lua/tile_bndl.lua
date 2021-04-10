@@ -39,7 +39,7 @@ function Tile_bndl.is_tile_bndl_x5x5(p_tile)
 end
 
 function Tile_bndl.is_base_tile_bndl(p_tile, p_base_tile)
-	log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
+	-- log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
 	if not p_tile then return end
 
 	local ret = _.f
@@ -48,15 +48,15 @@ function Tile_bndl.is_base_tile_bndl(p_tile, p_base_tile)
 	local t_tile
 	for idx = 1, 5 do
 		t_tile = p_base_tile + Tile.col_idx_max * (idx - 1)
-		log._("is_base_tile_bndl", t_tile, p_tile, t_tile + (5 - 1))
+		-- log._("is_base_tile_bndl", t_tile, p_tile, t_tile + (5 - 1))
 		if t_tile <= p_tile and p_tile <= t_tile + (5 - 1) then
 			ret = _.t
 			base_tile = p_base_tile
-			log._(ret, base_tile)
+			-- log._("is_base_tile_bndl", ret, base_tile)
 			break
 		end
 	end
-	log._("is_base_tile_bndl end", ret, base_tile)
+	-- log._("is_base_tile_bndl end", ret, base_tile)
 	return ret, base_tile
 end
 

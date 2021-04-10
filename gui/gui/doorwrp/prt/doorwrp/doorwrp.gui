@@ -8,7 +8,7 @@ fonts {
   font: "/builtins/fonts/system_font.font"
 }
 textures {
-  name: "door"
+  name: "doorwrp"
   texture: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.tilesource"
 }
 textures {
@@ -163,7 +163,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "door/door001"
+  texture: "doorwrp/doorwrp001"
   id: "img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

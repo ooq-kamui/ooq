@@ -12,6 +12,7 @@ Map._obj.grp = {
 	"living",
 	"kagu",
 	"elm",
+	"itm",
 }
 Map._obj._ = {} -- < Map.cnt
 
@@ -70,7 +71,9 @@ function Map.obj(_s)
 end
 
 function Map.obj_kagu(_s)
-	local cls = {"kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "doorwrp", "kagu", }
+	local cls = {
+		"kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "doorwrp", "kagu",
+	}
 	return _s:obj_grp(cls)
 end
 
@@ -81,13 +84,20 @@ end
 
 function Map.obj_living(_s)
 	local cls = {
-		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree", 
+		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree",
 	}
 	return _s:obj_grp(cls)
 end
 
 function Map.obj_elm(_s)
 	local cls = {"warp"}
+	return _s:obj_grp(cls)
+end
+
+function Map.obj_itm(_s)
+	local cls = {
+		"parasail",
+	}
 	return _s:obj_grp(cls)
 end
 

@@ -86,34 +86,28 @@ function Livingmove.vec_mv_x__(_s)
 		return
 	end
 
+	local df_x = _s._speed
 
-	local diffx = _s._speed
+	if ha.eq(_s._dir_h_Ha, "l") then df_x = - df_x end
 
-	if ha.eq(_s._dir_h_Ha, "l") then diffx = - diffx end
-
-	-- _s._vec_mv.x = _s._vec_mv.x + diffx
-	_s._vec_mv.x = diffx
+	_s._vec_mv.x = df_x
 end
 
 function Livingmove.vec_mv_y__(_s)
 
 	if not _s._is_fly then return end
 
-
-	-- local diffy = _s._speed * dt
-	local diffy = _s._speed
-
 	if     _s._dir_v == "u"   then
-		_s._vec_mv.y = diffy
+		_s._vec_mv.y = _s._speed
 
 	elseif _s._dir_v == "u/2" then
-		_s._vec_mv.y = diffy / 2
+		_s._vec_mv.y = _s._speed / 2
 
 	elseif _s._dir_v == "d"   then
-		_s._vec_mv.y = diffy
+		_s._vec_mv.y = _s._speed
 
 	elseif _s._dir_v == "d/2" then
-		_s._vec_mv.y = diffy / 2
+		_s._vec_mv.y = _s._speed / 2
 	end
 	
 	if _s:head_o_is_block() or _s:foot_o_is_block() then

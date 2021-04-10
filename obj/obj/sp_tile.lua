@@ -238,6 +238,7 @@ end
 function Sp.side_r_pos__(_s)
 
 	local c_pos = _s:pos()
+
 	vec.xy__(_s._side_r_pos, c_pos.x + _s._w/2    , c_pos.y)
 end
 
@@ -401,6 +402,9 @@ function Sp.crct_block_side(_s, p_vec)
 	local side_r_nxt_is_block = _s:side_is_block("r", p_vec)
 	
 	if not side_l_nxt_is_block and not side_r_nxt_is_block then return p_vec end
+
+	_s._accl:speed_x__clr()
+
 	if     side_l_nxt_is_block and     side_r_nxt_is_block then return p_vec end
 
 	local crct_pos_x
@@ -412,7 +416,6 @@ function Sp.crct_block_side(_s, p_vec)
 	elseif side_r_nxt_is_block then
 		crct_pos_x = map.pos_by_pos(_s:side_r_pos(p_vec)).x - df_x
 	end
-
 	p_vec.x = crct_pos_x - _s:pos().x
 	return p_vec
 end

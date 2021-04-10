@@ -24,6 +24,7 @@ require("assets/etc/lua/fac")
 require("assets/etc/lua/xy")
 require("assets/etc/lua/page")
 require("assets/etc/lua/accl")
+require("assets/etc/lua/tint")
 
 require("assets/sys/etc/disp")
 require("assets/sys/sys/sys")

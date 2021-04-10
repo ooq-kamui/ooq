@@ -33,19 +33,24 @@ function map.tile(p_pos, p_id, p_tilemap, layer)
 end
 
 function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
+	-- log._("map tile_by_tilepos", p_tilemap)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer = layer or p_tilemap
 
-	-- log._("map.tile_by_tilepos")
 	local is_inside, dir = map.is_inside_tilepos(tilepos, p_id, p_tilemap)
 	if not is_inside then return end
 	
-	local t_url = url._(p_id, p_tilemap)
-	-- log._("map.tile_by_tilepos", t_url)
+	-- log._("map tile_by_tilepos", p_tilemap)
 
-	local tile = tilemap.get_tile(t_url, layer, tilepos.x, tilepos.y)
-	return tile
+	local t_url = url._(p_id, p_tilemap)
+
+	if not ( p_tilemap == "sky" ) then
+		-- log._("map.tile_by_tilepos", t_url, p_id, p_tilemap)
+	end
+
+	local t_tile = tilemap.get_tile(t_url, layer, tilepos.x, tilepos.y)
+	return t_tile
 end
 
 function map.tile__(p_pos, p_tile, p_id, p_tilemap, layer)
@@ -218,3 +223,4 @@ function map.is_inside_cmpr(p_pos, inside_rng_pos)
 	end
 	return ret, dir
 end
+

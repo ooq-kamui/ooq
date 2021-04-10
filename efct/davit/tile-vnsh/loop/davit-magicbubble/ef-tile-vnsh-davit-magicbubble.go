@@ -18,7 +18,7 @@ components {
   component: "/assets/efct/davit/tile-vnsh/loop/davit-magicbubble/ef-tile-vnsh-davit-magicbubble.sprite"
   position {
     x: 0.0
-    y: 0.0
+    y: -12.0
     z: 0.0
   }
   rotation {

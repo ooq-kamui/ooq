@@ -62,11 +62,21 @@ function Accl.speed_x__(_s, p_x)
 	_s._speed.x = p_x
 end
 
+function Accl.speed_x__clr(_s)
+
+	_s:speed_x__(0)
+end
+
 function Accl.speed_y__(_s, p_y)
 
 	if not p_y then return end
 
 	_s._speed.y = p_y
+end
+
+function Accl.speed_y__clr(_s)
+
+	_s:speed_y__(0)
 end
 
 function Accl.speed__clr(_s)

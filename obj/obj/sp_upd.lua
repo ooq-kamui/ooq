@@ -132,16 +132,11 @@ end
 function Sp.vec_tile__(_s, dt)
 	
 	if     _s:is_elv_u( _s:foot_i_pos() ) then
-	-- if Tile.is_elv( _s:foot_i_tile() ) then
 		vec.xy__(_s._vec_tile, 0, 1)
 
 	elseif _s:is_airflw_u() then
 
-		local y = Sp.airflw_u_vec_y
-		-- if _s._is_parasail then y = y * 2 end
-
-		vec.xy__(_s._vec_tile, 0, y)
-		-- log._("is_airflw_u")
+		vec.xy__(_s._vec_tile, 0, Sp.airflw_u_vec_y)
 	else
 		vec.xy__(_s._vec_tile, 0, 0)
 	end
@@ -170,7 +165,12 @@ function Sp.vec_grv__(_s, dt)
 		if _s._accl._speed.y > 0 then
 			_s:vec_grv__grv()
 		else
+			if _s._accl._speed.y <= Sp.sand_smoke_speed_y then
+				-- log._("speed y", _s._accl._speed.y)
+				Efct.cre_sand_smoke(nil, _s:foot_i_pos())
+			end
 			_s:vec_grv__clr()
+
 		end
 	else
 		_s:vec_grv__grv()

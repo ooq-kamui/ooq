@@ -41,6 +41,9 @@ Efct = {
 	tile_vnsh = {
 		"tile-vnsh-davit-magicbubble",
 	},
+	sand_smoke = {
+		"sand-smoke",
+	},
 }
 Efct.tile_magic_dflt = Efct.tile_magic
 Efct.fire_dflt       = Efct.fire
@@ -48,11 +51,13 @@ Efct.tile_vnsh_dflt  = Efct.tile_vnsh
 
 -- static
 
-function Efct.df()
+function Efct.df_rnd()
 	local mlt = rnd.int(1, 3)
 	local df  = Map.sqq * mlt
 	return df
 end
+
+-- cre x ..
 
 function Efct.cre_3(p_efct, p_pos, prm, p_scl)
 
@@ -60,8 +65,8 @@ function Efct.cre_3(p_efct, p_pos, prm, p_scl)
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
 
-	local x_df = Efct.df()
-	local y_df = Efct.df()
+	local x_df = Efct.df_rnd()
+	local y_df = Efct.df_rnd()
 
 	local t_pos1 = vec.cp(p_pos, nil, - y_df)
 	local t_pos2 = vec.cp(p_pos, nil,   y_df)
@@ -83,8 +88,8 @@ function Efct.cre_4(p_efct, p_pos, prm, p_scl)
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
 
-	local x_df = Efct.df()
-	local y_df = Efct.df()
+	local x_df = Efct.df_rnd()
+	local y_df = Efct.df_rnd()
 
 	local t_pos1 = vec.cp(p_pos, nil, - y_df)
 	local t_pos2 = vec.cp(p_pos, nil,   y_df)
@@ -105,7 +110,7 @@ function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
 	p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
 	p_pos  = p_pos  or pos.pos_w()
 	p_scl  = p_scl  or 2
-	x_df   = x_df   or Efct.df()
+	x_df   = x_df   or Efct.df_rnd()
 
 	local t_pos1 = vec.cp(p_pos, - x_df, nil)
 	local t_pos2 = vec.cp(p_pos,   x_df, nil)
@@ -115,11 +120,14 @@ function Efct.cre_2(p_efct, p_pos, prm, p_scl, x_df)
 	local fnc = function (slf, hndl, elpsd)
 		Efct.cre(p_efct, t_pos2, prm, p_scl)
 	end
-	local delay_time = 0.2
+	-- local delay_time = 0.2
+	local delay_time = 0
 	local hndl = timer.delay(delay_time, _.f, fnc)
 
 	return t_id1
 end
+
+-- cre
 
 function Efct.cre_fire(p_efct, p_pos, prm, p_scl)
 
@@ -144,6 +152,15 @@ function Efct.cre_magic(p_efct, p_pos, prm, p_scl)
 	p_efct = p_efct or rnd.ar(Efct.tile_magic_dflt)
 
 	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl) -- cre_2, cre_3, cre_4
+	return t_id
+end
+
+function Efct.cre_sand_smoke(p_efct, p_pos, prm, p_scl)
+
+	p_efct = p_efct or rnd.ar(Efct.sand_smoke)
+
+	-- local t_id = Efct.cre_2(p_efct, p_pos, prm, p_scl)
+	local t_id = Efct.cre(p_efct, p_pos, prm, p_scl)
 	return t_id
 end
 
@@ -178,6 +195,9 @@ function Efct.init(_s)
 
 	-- del
 	_s:life__()
+
+	_s:z__()
+	-- log._("efct init z", _s:z())
 end
 
 -- method
@@ -223,5 +243,18 @@ end
 function Efct.del(_s)
 	-- log._("efct del")
 	go.delete(_.t)
+end
+
+function Efct.z(_s)
+
+	local z = id.z(_s._id)
+	return z
+end
+
+function Efct.z__(_s, p_z)
+
+	p_z = p_z or _s._z
+
+	id.z__(_s._id, p_z)
 end
 

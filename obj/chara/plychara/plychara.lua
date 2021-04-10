@@ -566,8 +566,9 @@ function Plychara.itm_use(_s)
 			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
 	elseif itm == "wand_fire" then
-		local t_pos = _s:pos_fw(2/3)
-		Fire.cre(t_pos)
+		-- local t_pos = _s:pos_fw(2/3)
+		-- Fire.cre(t_pos)
+		pst.scrpt(_s:fairy_id(), "fire")
 		-- Efct.cre_fire(nil, t_pos)
 
 	else

@@ -26,11 +26,13 @@ function p.Shelf.init(_s, parent_gui)
 	_s._itm_scrl_dir = "h"
 
 	_s:itm__by_ar({"anml", "flower", "dish"})
+	_s._itm_txt = {"どうぶつ", "おはな", "りょうり", }
 	
 	local node
 	for idx, title in pairs(_s._itm) do
 		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("title")], title)
+		-- nd.txt__(node[_s:lb("title")], title)
+		nd.txt__(node[_s:lb("title")], _s._itm_txt[idx])
 	end
 end
 

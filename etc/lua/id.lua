@@ -61,6 +61,15 @@ function id.pos(p_id)
 	return t_pos
 end
 
+function id.z(p_id)
+	
+	if not p_id then return end
+	
+	local t_pos = id.pos(p_id)
+	local z = t_pos.z
+	return z
+end
+
 function id.pos_w(p_id)
 	
 	if not p_id then return end

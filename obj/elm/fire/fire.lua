@@ -70,21 +70,17 @@ end
 function Fire.burn_tile(_s)
 	log._("fire.burn_tile")
 	
-	-- local tilepos = _s:tilepos()
-	
 	local tileposs = _s:tilepos_arund()
-	local tile
+	local t_tile
 	for idx, tilepos in pairs(tileposs) do
-		tile = map.tile_by_tilepos(tilepos)
+		t_tile = map.tile_by_tilepos(tilepos, _s:map_id())
 
-		-- if ar.in_(tile, Tile.wood) then
-		if Tile.is_wood(tile) then
+		if Tile.is_wood(t_tile) then
 			map.tile__by_tilepos(tilepos, ar.rnd(Tile.wood_burn))
 			Fire.cre(map.pos_by_tilepos(tilepos))
 		end
 	end
 
-	-- if ar.in_(_s:tile(), Tile.wood_burn)
 	if Tile.is_wood_burn(_s:tile())
 	and rnd.by_p(50)
 	then
