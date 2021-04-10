@@ -17,3 +17,4 @@ end
 function Ply_data.gold__sub(gold)
 	Ply_data._gold = Ply_data._gold - gold
 end
+

@@ -2,9 +2,24 @@ log.scrpt("vec.lua")
 
 vec = {
 	-- const
-	_0 = vmath.vector3(0, 0, 0),
-	_1 = vmath.vector3(1, 1, 0),
+	_0   = vmath.vector3(0, 0, 0),
+	_1   = vmath.vector3(1, 1, 0),
+	_tmp = vmath.vector3(0, 0, 0),
 }
+
+t = {}
+function t.vec(x, y, z) -- alias
+	-- log._("t.vec", note)
+	return vec.tmp(x, y, z)
+end
+
+function vec.tmp(x, y, z) -- tmp
+	-- log._("vec.tmp", note)
+	vec._tmp.x = x or 0
+	vec._tmp.y = y or 0
+	vec._tmp.z = z or 0
+	return vec._tmp
+end
 
 function n.vec(x, y, z, note) -- alias
 	-- log._("n.vec", note)

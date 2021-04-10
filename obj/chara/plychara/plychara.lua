@@ -190,7 +190,7 @@ function Plychara.vec_mv_v__(_s)
 			_s:anim__("back")
 
 		elseif Tile.is_block(foot_o_tile) 
-		-- or     _s._is_on_chara then
+		or     Tile.is_elv(  foot_o_tile)
 		or     _s:is_on_chara() then
 			_s._is_cruch = _.t
 			_s:anim__("cruch")
@@ -840,10 +840,8 @@ function Plychara.hld__o(_s)
 
 	local hld_idx = _s:hld__add(t_id)
 
-	pst.scrpt(t_id, "hld__o", {hld_id = _s._id, hld_idx = hld_idx})
-	-- > pst.scrpt(t_id, "hldd__o", {hld_id = _s._id, hld_idx = hld_idx})
+	pst.scrpt(t_id, "hldd__o", {hldd_id = _s._id, hldd_idx = hld_idx})
 
-	-- local dir_h = ha.de(_s._dir_h_Ha)
 	_s:hld_dir_h__sync()
 
 	Se.pst_ply("hld")
@@ -859,7 +857,7 @@ function Plychara.hld__x(_s)
 
 	local t_id = _s:hld__del()
 
-	pst.scrpt(t_id, "hld__x")
+	pst.scrpt(t_id, "hldd__x")
 
 	-- dtch skil
 	local t_clsHa = id.clsHa(t_id)

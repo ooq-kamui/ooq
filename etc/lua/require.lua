@@ -149,8 +149,8 @@ require("assets/obj/itm/kagu/kagu-s/flpy/flpy")
 
 -- efct
 require("assets/efct/efct/efct")
-require("assets/efct/gold/gold")
-
+require("assets/efct/efct/efct-sprite")
+require("assets/efct/efct/efct-label")
 
 -- gui
 require("assets/gui/gui/gui/gui")
@@ -233,14 +233,36 @@ require("assets/gui/gui/reizoko/prt/reizoko/reizoko")
 -- mstr
 require("assets/sys/mstr/mstr")
 require("assets/sys/mstr/anml")
+require("assets/sys/mstr/block")
+require("assets/sys/mstr/chara")
+require("assets/sys/mstr/dairy")
+require("assets/sys/mstr/dish")
+require("assets/sys/mstr/dryleaf")
+require("assets/sys/mstr/egg")
+require("assets/sys/mstr/fish")
+require("assets/sys/mstr/flower")
+require("assets/sys/mstr/fluff")
+require("assets/sys/mstr/fruit")
+require("assets/sys/mstr/kagu")
+require("assets/sys/mstr/kagu_itm")
+require("assets/sys/mstr/kzn")
+require("assets/sys/mstr/leaf")
+require("assets/sys/mstr/meat")
+require("assets/sys/mstr/seed")
+require("assets/sys/mstr/tree")
+require("assets/sys/mstr/veget")
+require("assets/sys/mstr/wood")
+--[[
+require("assets/sys/mstr/mstr")
+require("assets/sys/mstr/anml")
 require("assets/sys/mstr/chara")
 require("assets/sys/mstr/kzn")
-
--- require("assets/sys/mstr/price/price")
 require("assets/sys/mstr/flower")
 require("assets/sys/mstr/tree")
 require("assets/sys/mstr/kagu_itm")
 require("assets/sys/mstr/kagu")
+--]]
+-- require("assets/sys/mstr/price/price")
 
 -- cfg
 require("assets/sys/cfg/cfg")

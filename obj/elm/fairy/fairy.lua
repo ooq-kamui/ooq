@@ -145,7 +145,6 @@ end
 function Fairy.mv__by_tilepos(_s)
 
 	local t_pos = _s:pos_by_tilepos()
-	-- log._("fairy mv__by_tilepos", t_pos)
 	_s:mv__pos(t_pos)
 end
 

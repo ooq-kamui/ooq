@@ -60,6 +60,7 @@ function Sp.to_cloud(_s)
 	_s:pos__(t_pos)
 end
 
+--[[
 function Sp.say(_s, str)
 	
 	local idx, len
@@ -73,4 +74,5 @@ function Sp.say(_s, str)
 	local t_id = Fuki.cre(nil, {parent_id = _s._id})
 	pst.scrpt(t_id, "s", {str = str, len = len})
 end
+--]]
 

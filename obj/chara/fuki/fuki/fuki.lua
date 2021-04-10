@@ -56,13 +56,13 @@ end
 function Fuki.on_msg(_s, msg_id, prm, sndr)
 
 	if ha.eq(msg_id, "s") then
-		_s:_s(prm.str, prm.len)
+		_s:s(prm.str, prm.len)
 	end
 end
 
 -- method
 
-function Fuki._s(_s, str, len)
+function Fuki.s(_s, str, len)
 	
 	label.set_text("#label", str)
 	

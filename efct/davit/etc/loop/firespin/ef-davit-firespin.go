@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/assets/efct/efct/efct.script"
+  component: "/assets/efct/efct/efct-sprite.script"
   position {
     x: 0.0
     y: 0.0

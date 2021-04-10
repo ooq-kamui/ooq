@@ -313,3 +313,33 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "label"
+  component: "/assets/efct/label/label.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "gold"
+  component: "/assets/efct/gold/gold.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

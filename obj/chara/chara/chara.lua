@@ -168,3 +168,17 @@ function Chara.act_intrvl_time__(_s)
 	_s._act_intrvl_time = _s:Cls().act_intrvl_time + rnd.int(0, 3)
 end
 
+function Chara.say(_s, str)
+	
+	local idx, len
+	if not str then
+		idx = rnd.int(1, #Serifu._)
+		-- log._("say", idx)
+		str = Serifu._[idx].txt
+		len = Serifu._[idx].len
+	end
+	
+	local t_id = Fuki.cre(nil, {parent_id = _s._id})
+	pst.scrpt(t_id, "s", {str = str, len = len})
+end
+

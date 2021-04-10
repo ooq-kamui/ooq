@@ -34,51 +34,60 @@ end
 
 -- fade
 
-function anm.fade__o(p_id, time, fnc)
+function anm.fade__o(p_id, p_cmp, time, delay, fnc)
 
 	time = time or anm.time.color
 
 	local w = 0
-	anm.fade__(p_id, w, time, fnc)
+	anm.fade__(p_id, p_cmp, w, time, delay, fnc)
 end
 
-function anm.fade__i(p_id, time, fnc)
+function anm.fade__i(p_id, p_cmp, time, delay, fnc)
 
 	time = time or anm.time.color
 
 	local w = 1
-	anm.fade__(p_id, w, time, fnc)
+	anm.fade__(p_id, p_cmp, w, time, delay, fnc)
 end
 
-function anm.fade__(p_id, p_w, time, fnc)
+function anm.fade__(p_id, p_cmp, p_w, time, delay, fnc)
 
-	anm.w__(p_id, p_w, time, fnc)
+	anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 end
 
-function anm.w__(p_id, p_w, time, fnc)
+-- function anm.w__(p_id, p_w, time, fnc)
+function anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 
-	if not p_w then return end
+	if not p_id  then return end
+	if not p_cmp then return end
+	if not p_w   then return end
 
-	time = time or anm.time.color
+	time  = time  or anm.time.color
+	delay = delay or 0
 
-	local t_url = url._(p_id, "sprite")
-	anm._(t_url, "tint.w", apm.fwd, p_w, es.sin_o, time, 0, fnc)
+	local t_url = url._(p_id, p_cmp)
+	anm._(t_url, "tint.w", apm.fwd, p_w, es.sin_o, time, delay, fnc)
 end
 
 -- pos
 
-function anm.pos__(p_id, p_pos, time)
+function anm.pos__(p_id, p_pos, time, delay)
 
 	p_pos = p_pos or n.vec()
 	time  = time  or anm.time.pos
+	delay = delay or 0
 
 	p_pos.z = id.pos(p_id).z
 
-	anm._(p_id, "position", apm.fwd, p_pos, es.sin_o, time, 0)
+	anm._(p_id, "position", apm.fwd, p_pos, es.sin_o, time, delay)
 end
 
-function anm._(p_id, prp, plymode, val, esing, time, delay, fnc) -- alias
+function anm.pos_y__anm(p_id, p_y, time)
 
-	go.animate(p_id, prp, plymode, val, esing, time, delay, fnc)
+	anm._(p_id, "position.y", apm.fwd, p_y, es.sin_o, time, 0)
+end
+
+function anm._(t_url, prp, plymode, val, esing, time, delay, fnc) -- alias
+	go.animate(t_url, prp, plymode, val, esing, time, delay, fnc)
 end
 

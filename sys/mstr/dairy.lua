@@ -24,5 +24,5 @@ Mstr.dairy["dairy007"] = {}
 Mstr.dairy["dairy007"].gold = 500
 
 Mstr.dairy["dairy008"] = {}
-Mstr.dairy["dairy009"].gold = 500
+Mstr.dairy["dairy008"].gold = 500
 

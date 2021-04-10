@@ -75,21 +75,25 @@ function Hrvst.box_in(_s, prm)
 	
 	if ar.inHa(t_clsHa, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
 	and Map.st.obj_cnt(t_clsHa) <= 1 then
-		Msg.s("さいごの１つだよ")
+		-- Msg.s("さいごの１つだよ")
+		Msg.s("last one.., can not release")
 		return
 	end
 
-	local t_cls = Cls._(t_clsHa)
-	local gold
-	if t_Cls and t_Cls.gold then
-		gold = t_Cls.gold[t_nameHa]
-	else
-		gold = 10
-	end
+	local gold = Mstr.gold(t_clsHa, t_nameHa)
 	-- log._("in box", t_cls, t_nameHa, gold)
+
 	Ply_data.gold__add(gold)
 	Se.pst_ply("coin")
-	Gold.cre(_s:plychara_pos(), {price = gold})
+
+	-- Gold.cre(_s:plychara_pos(), {price = gold})
+	local plychara_pos = _s:plychara_pos()
+	-- Efct.cre_gold( plychara_pos + t.vec( 0, Map.sq * 2))
+	Efct.cre_gold( plychara_pos )
+
+	local t_prm = {txt = "x "..gold}
+	-- log._("gold prm", t_prm.txt)
+	Efct.cre_label(plychara_pos + t.vec( 0, Map.sq), t_prm)
 
 	id.del(t_id)
 

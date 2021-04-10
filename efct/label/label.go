@@ -1,6 +1,6 @@
 components {
-  id: "script"
-  component: "/assets/efct/efct/efct-sprite.script"
+  id: "label"
+  component: "/assets/efct/label/label.label"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "sprite"
-  component: "/assets/efct/davit/etc/loop/magicbubbles/ef-davit-magicbubbles.sprite"
+  id: "script"
+  component: "/assets/efct/efct/efct-label.script"
   position {
     x: 0.0
     y: 0.0
@@ -24,7 +24,7 @@ components {
   rotation {
     x: 0.0
     y: 0.0
-    z: 1.0
-    w: 6.123234E-17
+    z: 0.0
+    w: 1.0
   }
 }
