@@ -110,6 +110,7 @@ require("assets/obj/itm/food/fish/fish")
 require("assets/obj/itm/food/fruit/fruit")
 require("assets/obj/itm/food/meat/meat")
 require("assets/obj/itm/food/veget/veget")
+require("assets/obj/itm/food/tohokuf/tohokuf")
 require("assets/obj/itm/food/food")
 
 require("assets/obj/itm/wood/spwood")
@@ -138,6 +139,7 @@ require("assets/obj/living/phantom/grave/grave")
 require("assets/obj/itm/kagu/kagu-n/kagu/kagu")
 
 require("assets/obj/itm/kagu/kagu-e/trmpln/trmpln")
+require("assets/obj/itm/kagu/kagu-e/douzou/douzou")
 
 require("assets/obj/itm/kagu/kagu-s/reizoko/reizoko")
 require("assets/obj/itm/kagu/kagu-s/kitchen/kitchen")

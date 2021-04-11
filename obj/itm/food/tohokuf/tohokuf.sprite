@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/food/tohokuf/tohokuf.tilesource"
+default_animation: "hokokuf001"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -5,6 +5,8 @@ Trmpln = {
 	name_idx_max    =  1,
 
 	weight = 2,
+
+	jmp_lv = 7,
 }
 Trmpln.cls = "trmpln"
 Trmpln.fac = Obj.fac..Trmpln.cls

@@ -643,3 +643,33 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "douzou"
+  component: "/assets/obj/itm/kagu/kagu-e/douzou/douzou.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "tohokuf"
+  component: "/assets/obj/itm/food/tohokuf/tohokuf.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

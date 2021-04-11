@@ -235,15 +235,15 @@ function Plychara.is_jmpabl(_s)
 	return ret
 end
 
-function Plychara.jmp(_s)
+function Plychara.jmp(_s, p_jmp_lv)
 
 	if not _s:is_jmpabl() then return end
 
-	local jmp_lv = _s._jmp_lv
+	p_jmp_lv = p_jmp_lv or _s._jmp_lv
 
-	if _s._is_cruch then jmp_lv = jmp_lv + 1 end
+	if _s._is_cruch then p_jmp_lv = p_jmp_lv + 1 end
 
-	local dst_y = Plychara.jmp_h_max * jmp_lv
+	local dst_y = Plychara.jmp_h_max * p_jmp_lv
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
 	local speed_y = accl.speed_by_dst(dst_y)
@@ -433,10 +433,10 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	return _.t
 end
 
--- function Plychara.on_msg_clsn_box(_s, t_id)
 function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 
 	local t_nameHa = id.prp(t_id, "_nameHa")
+	-- log._("on_msg_clsn_kagu_itm", t_nameHa)
 
 	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn_add("hrvst"  , t_id)
 	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn_add("reizoko", t_id)
@@ -444,7 +444,11 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy"   , t_id)
 	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
 	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
-	elseif ha.eq(t_nameHa, "doorwrp001"   ) then _s:clsn_add("doorwrp"   , t_id)
+	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn_add("doorwrp", t_id)
+	end
+
+	if     ha.eq(t_nameHa, "trmpln001") then
+		_s:jmp(Trmpln.jmp_lv)
 	end
 end
 

@@ -72,7 +72,10 @@ end
 
 function Map.obj_kagu(_s)
 	local cls = {
-		"kitchen", "reizoko", "hrvst", "flpy", "pc", "shelf", "doorwrp", "kagu",
+		"hrvst", "trmpln",
+		"kitchen", "reizoko",
+		"flpy", "pc", "shelf", "doorwrp",
+		"kagu",
 	}
 	return _s:obj_grp(cls)
 end

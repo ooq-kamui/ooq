@@ -1,0 +1,4 @@
+tile_set: "/assets/obj/itm/kagu/kagu-e/douzou/douzou.tilesource"
+default_animation: "zunko-n"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
