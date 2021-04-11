@@ -91,13 +91,14 @@ function Plychara.init(_s)
 		kitchen = {},
 		reizoko = {},
 		chara   = {},
-		anml  = {},
+		anml    = {},
 		flpy    = {},
 		pc      = {},
 		shelf   = {},
 		doorwrp = {},
 		tree    = {},
 		block   = {},
+		trmpln  = {},
 	}
 	_s._clsn_hldabl = {}
 
@@ -122,13 +123,12 @@ function Plychara.upd(_s, dt)
 	
 	_s:vec_tile__(dt)
 
+	-- _s:vec_on_chara__(dt)
+
 	_s:vec_grv__(dt)
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
-	-- _s:vec_on_chara__(dt)
-
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
-
 	_s:pos__add(_s._vec_total)
 	
 	_s:ox_dstrct__mv()
@@ -395,10 +395,7 @@ function Plychara.on_msg(_s, msg_id, prm, sndr)
 	_s:on_msg_act(msg_id, prm, sndr)
 
 	if ha.eq(msg_id, "animation_done") then
-		-- log._("animation_done")
-		-- log.pp("animation_done", prm)
 		if ha.eq(prm.id, _s._name.."-thrw") then
-			-- log._("anim__ walk")
 			_s:anim__("walk")
 		end
 	end
@@ -407,7 +404,6 @@ end
 function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 
 	if     ha.eq(msg_id, "collision_response")     then return _.t end
-		
 	if not ha.eq(msg_id, "contact_point_response") then return     end
 	
 	local t_id  = prm.other_id
@@ -416,7 +412,8 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		_s:clsn_add("chara", t_id)
 
 	elseif ha.eq(prm.group, "hld"     ) then
-		if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
+		-- if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
+		_s:clsn_add("hld"  , t_id)
 
 	elseif ha.eq(prm.group, "anml"    ) then
 		_s:clsn_add("anml" , t_id)
@@ -445,10 +442,12 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
 	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
 	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn_add("doorwrp", t_id)
-	end
+	elseif ha.eq(t_nameHa, "trmpln001" ) then _s:clsn_add("trmpln" , t_id)
 
-	if     ha.eq(t_nameHa, "trmpln001") then
-		_s:jmp(Trmpln.jmp_lv)
+		if _s._accl:speed_y() < 0 and _s._clsn.trmpln[1] then
+			_s:jmp(Trmpln.jmp_lv)
+			pst.scrpt(_s._clsn.trmpln[1], "leapup_anim")
+		end
 	end
 end
 
@@ -475,7 +474,6 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		-- turn
 		if not ha.eq(_s._dir_h_Ha, prm.dir) then
 			_s._turn_time = 0 
-			-- _s:flip_h__dir(prm.dir)
 			_s:dir_h__(prm.dir)
 			_s:hld_dir_h__sync()
 			_s:anim__("walk")
@@ -562,19 +560,15 @@ function Plychara.itm_use(_s)
 	if     itm == "wand_block" then
 		pst.scrpt(_s:fairy_id(), "magic")
 		
-	elseif itm == "wand_wall" then
+	elseif itm == "wand_wall"  then
 		Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
 
-	elseif itm == "nokogiri" then
+	elseif itm == "nokogiri"   then
 		if #_s._clsn.tree > 0 then
 			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
 		end
-	elseif itm == "wand_fire" then
-		-- local t_pos = _s:pos_fw(2/3)
-		-- Fire.cre(t_pos)
+	elseif itm == "wand_fire"  then
 		pst.scrpt(_s:fairy_id(), "fire")
-		-- Efct.cre_fire(nil, t_pos)
-
 	else
 		log._("not use itm")
 	end
@@ -621,11 +615,11 @@ end
 
 -- clsn
 
-function Plychara.clsn_add(_s, target, id)
+function Plychara.clsn_add(_s, target, p_id)
 	
-	if ar.in_(id, _s._hld) then return end
+	if ar.in_(p_id, _s._hld) then return end
 
-	ar.add(_s._clsn[target], id)
+	ar.add(_s._clsn[target], p_id)
 end
 
 function Plychara.clsn__clr(_s)
@@ -651,7 +645,7 @@ function Plychara.clsn_hldabl__(_s)
 
 	local cls = {
 		"hld", "kitchen", "reizoko", "hrvst", "flpy",
-		"pc", "shelf", "doorwrp", "anml", "block",
+		"pc", "shelf", "doorwrp", "anml", "block", "trmpln",
 	}
 	
 	ar.clr(_s._clsn_hldabl)
@@ -661,7 +655,8 @@ function Plychara.clsn_hldabl__(_s)
 			ar.add(_s._clsn_hldabl, id)
 		end
 	end
-	ar.exclude(_s._clsn_hldabl , _s._hld)
+
+	ar.exclude(_s._clsn_hldabl , _s._hld) -- no need ?
 end
 
 function Plychara.is_clsn_hldabl(_s)
@@ -810,13 +805,14 @@ function Plychara.hld__ox(_s)
 
 	local is_hld, hld_id = _s:is_hld()
 
+	--[[
 	local clsn_is_psting = _s:clsn_is_psting_cls() -- use not ?
-
 	if is_hld and clsn_is_psting then
 		log._("clsn_is_psting")
 		_s:hld__x()
 		return
 	end
+	--]]
 
 	local is_clsn_hldabl = _s:is_clsn_hldabl()
 	local is_hld_addabl  = _s:is_hld_addabl()
@@ -825,15 +821,6 @@ function Plychara.hld__ox(_s)
 	else
 		_s:hld__x()
 	end
-end
-
-function Plychara.clsn_is_psting_cls(_s) -- use not ?
-
-	local psting_cls = {"chara", "anml", "hrvst", "kitchen", "reizoko", }
-
-	local ret = _.f
-
-	return ret
 end
 
 function Plychara.hld__o(_s)
@@ -902,13 +889,9 @@ function Plychara.hld__x(_s)
 end
 
 function Plychara.hld__x_rlas(_s)
-
-
 end
 
 function Plychara.hld__x_thrw(_s)
-
-
 end
 
 function Plychara.hld_tile_side(_s)
@@ -949,4 +932,13 @@ function Plychara.anim__(_s, p_anim)
 
 	Chara.anim__(_s, p_anim)
 end
+
+--[[
+function Plychara.clsn_is_psting_cls(_s) -- use not ?
+
+	local psting_cls = {"chara", "anml", "hrvst", "kitchen", "reizoko", }
+	local ret = _.f
+	return ret
+end
+--]]
 

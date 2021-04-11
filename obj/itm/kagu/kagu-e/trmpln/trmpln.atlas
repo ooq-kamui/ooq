@@ -1,11 +1,26 @@
 animations {
   id: "stand"
   images {
-    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln.png"
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
   fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "leanup"
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln002.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln003.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 2
   flip_horizontal: 0
   flip_vertical: 0
 }

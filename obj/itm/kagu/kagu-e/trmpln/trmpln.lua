@@ -49,12 +49,29 @@ function Trmpln.act_intrvl(_s, dt)
 end
 
 function Trmpln.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
+
+	if     ha.eq(msg_id, "leapup_anim") then
+		_s:leapup_anim()
+
+	elseif ha.eq(msg_id, "animation_done") then
+
+		if ha.eq(prm.id, "leanup") then
+			_s:anim__("stand")
+		end
+	end
+end
+
+function Trmpln.leapup_anim(_s)
+
+	_s:anim__( "leanup")
+	Se.pst_ply("leanup")
 end
 
 function Trmpln.final(_s)
-	Sp.final(_s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

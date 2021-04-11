@@ -49,6 +49,11 @@ function Accl.speed(_s)
 	return _s._speed
 end
 
+function Accl.speed_y(_s)
+
+	return _s._speed.y
+end
+
 function Accl.speed__(_s, p_x, p_y)
 
 	_s:speed_x__(p_x)
