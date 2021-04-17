@@ -65,6 +65,7 @@ function Trmpln.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Trmpln.leapup_anim(_s)
+	log._("trmpln leapup_anim")
 
 	_s:anim__( "leanup")
 	Se.pst_ply("leanup")

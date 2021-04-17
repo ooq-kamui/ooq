@@ -66,7 +66,9 @@ require("assets/obj/obj/sp_on_msg")
 require("assets/obj/obj/sp_util")
 
 require("assets/obj/obj/hldabl")
+
 require("assets/obj/obj/obj")
+require("assets/obj/obj/tst")
 require("assets/obj/obj/accl")
 
 require("assets/obj/anm/anm")
@@ -103,9 +105,9 @@ require("assets/obj/eqip/ride/broom/broom")
 
 require("assets/obj/itm/balloon/balloon")
 
-require("assets/obj/itm/para/para/para")
-require("assets/obj/itm/para/parasail/parasail")
-require("assets/obj/itm/para/parasol/parasol")
+require("assets/obj/itm/airride/airride/airride")
+require("assets/obj/itm/airride/parasail/parasail")
+require("assets/obj/itm/airride/parasol/parasol")
 
 require("assets/obj/itm/food/dairy/dairy")
 require("assets/obj/itm/food/dish/dish")

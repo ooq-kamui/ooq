@@ -112,7 +112,7 @@ function Plychara.init(_s)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
 
 	-- skil
-	_s._is_para = _.f
+	_s._is_airride = _.f
 end
 
 function Plychara.upd(_s, dt)
@@ -446,7 +446,8 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn_add("doorwrp", t_id)
 	elseif ha.eq(t_nameHa, "trmpln001" ) then _s:clsn_add("trmpln" , t_id)
 
-		if _s._accl:speed_y() < 0 and _s._clsn.trmpln[1] then
+		if  _s._accl:speed_y() < 0 and _s._clsn.trmpln[1]
+		and _s:is_jmpabl() then
 			_s:jmp(Trmpln.jmp_lv)
 			pst.scrpt(_s._clsn.trmpln[1], "leapup_anim")
 		end
@@ -843,7 +844,7 @@ function Plychara.hld__o(_s)
 
 	-- atch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Plychara.para) then _s._is_para = _.t end
+	if ar.inHa(t_clsHa, Plychara.para) then _s._is_airride = _.t end
 
 	-- if ha.eq(t_clsHa, "balloon") then _s._is_balloon = _.t end
 end
@@ -858,7 +859,7 @@ function Plychara.hld__x(_s)
 
 	-- dtch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Plychara.para) then _s._is_para = _.f end
+	if ar.inHa(t_clsHa, Plychara.para) then _s._is_airride = _.f end
 
 	-- hld__x_thrw
 	if _s._vec_mv.x ~= 0 then

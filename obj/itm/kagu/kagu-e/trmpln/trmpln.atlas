@@ -19,8 +19,32 @@ animations {
     image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln003.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln002.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln001.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln004.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln005.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln004.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln001.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
   playback: PLAYBACK_ONCE_FORWARD
-  fps: 2
+  fps: 6
   flip_horizontal: 0
   flip_vertical: 0
 }

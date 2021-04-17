@@ -1,6 +1,6 @@
 components {
-  id: "sprite"
-  component: "/assets/obj/itm/para/parasol/parasol.sprite"
+  id: "script"
+  component: "/assets/obj/itm/airride/parasail/parasail.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "script"
-  component: "/assets/obj/itm/para/parasol/parasol.script"
+  id: "sprite"
+  component: "/assets/obj/itm/airride/parasail/parasail.sprite"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "clsn"
-  component: "/assets/obj/itm/para/parasol/parasol.collisionobject"
+  component: "/assets/obj/itm/airride/parasail/parasail.collisionobject"
   position {
     x: 0.0
     y: 0.0

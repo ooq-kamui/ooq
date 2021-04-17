@@ -1,6 +1,6 @@
-log.scrpt("para.lua")
+log.scrpt("airride.lua")
 
-Para = {
+ Airride = {
 	act_intrvl_time = 10,
 	name_idx_max    =  1,
 
@@ -9,14 +9,14 @@ Para = {
 
 -- script method
 
-function Para.init(_s)
+function Airride.init(_s)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Hldabl)
-	extend._(   _s, Para)
+	extend._(   _s, Airride)
 end
 
-function Para.upd(_s, dt)
+function Airride.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
@@ -25,7 +25,7 @@ function Para.upd(_s, dt)
 	_s:upd_final()
 end
 
-function Para.act_intrvl(_s, dt)
+function Airride.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
@@ -33,12 +33,12 @@ function Para.act_intrvl(_s, dt)
 	
 end
 
-function Para.on_msg(_s, msg_id, prm, sndr)
+function Airride.on_msg(_s, msg_id, prm, sndr)
 	Sp.on_msg(_s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
-function Para.final(_s)
+function Airride.final(_s)
 	Sp.final(_s)
 	Hldabl.final(_s)
 end

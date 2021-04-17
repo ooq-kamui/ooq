@@ -4,24 +4,22 @@ Scnro = {}
 
 Scnro.tst = {
 	function ()
-		Obj.tst.tst()
+		Tst.obj.tst()
 		D.c("sanae")
 		---[[
 		D.v("わーい")
 		D._("こんかいは")
-		D.v("fairy ちゃん をつくりました")
-		D._("わたしの まわりを とんでいるのが")
-		D.v("fairy ちゃん だよ")
-		D._("fairy ちゃん は")
-		D._("block を つくる いち の")
-		D.x("めじるし に なるよ")
+		D.v("いろいろ つくりました")
+		D._("いろいろ ありすぎるので")
+		D._("くわしくは どうがの がいようらんを")
+		D.x("よんでください ></")
 		--]]
 	end,
 }
 
 Scnro.chara_fall = {
 	function ()
-		Obj.tst.chara()
+		Tst.obj.chara()
 		D.c("sanae")
 		D.x("わー")
 	end,
@@ -41,7 +39,7 @@ Scnro.chara_fall = {
 
 Scnro.fire_fall = {
 	function ()
-		Obj.tst.fire()
+		Tst.obj.fire()
 		D.c("sanae")
 		D.x("わー")
 	end,
@@ -63,7 +61,7 @@ Scnro.fire_fall = {
 
 Scnro.tree_fall = {
 	function ()
-		Obj.tst.tree()
+		Tst.obj.tree()
 		D.c("sanae")
 		D.x("わー")
 	end,
@@ -87,7 +85,7 @@ Scnro.tree_fall = {
 
 Scnro.game_start = {
 	function ()
-		Obj.tst.game_start()
+		Tst.obj.game_start()
 		D.c("sanae")
 		D.x("わー")
 	end,

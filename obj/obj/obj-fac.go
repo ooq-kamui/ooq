@@ -630,7 +630,7 @@ components {
 }
 components {
   id: "parasail"
-  component: "/assets/obj/itm/para/parasail/parasail.factory"
+  component: "/assets/obj/itm/airride/parasail/parasail.factory"
   position {
     x: 0.0
     y: 0.0
@@ -675,7 +675,7 @@ components {
 }
 components {
   id: "parasol"
-  component: "/assets/obj/itm/para/parasol/parasol.factory"
+  component: "/assets/obj/itm/airride/parasol/parasol.factory"
   position {
     x: 0.0
     y: 0.0

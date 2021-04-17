@@ -1,7 +1,7 @@
 animations {
   id: "stand"
   images {
-    image: "/assets/obj/itm/para/parasail/img/parasail.png"
+    image: "/assets/obj/itm/airride/parasail/img/parasail.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

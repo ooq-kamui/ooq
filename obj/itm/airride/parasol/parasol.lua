@@ -24,22 +24,22 @@ end
 
 function Parasol.init(_s)
 	
-	extend.init(_s, Para)
+	extend.init(_s, Airride)
 	extend._(   _s, Parasol)
 end
 
 function Parasol.upd(_s, dt)
 
-	Para.upd(_s, dt)
+	Airride.upd(_s, dt)
 end
 
 function Parasol.on_msg(_s, msg_id, prm, sndr)
 
-	Para.on_msg(_s, msg_id, prm, sndr)
+	Airride.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Parasol.final(_s)
 
-	Para.final(_s)
+	Airride.final(_s)
 end
 

@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/itm/para/parasol/parasol.atlas"
+tile_set: "/assets/obj/itm/airride/parasail/parasail.atlas"
 default_animation: "stand"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA
