@@ -53,9 +53,10 @@ require("assets/etc/ev/ev/ev")
 require("assets/etc/ev/wa/wa")
 require("assets/etc/ev/scnro/scnro")
 require("assets/etc/dia/dia")
-require("assets/etc/sound/bgm/bgm")
-require("assets/etc/sound/bgm/bgm_bgm")
-require("assets/etc/sound/se/se")
+
+require("assets/sound/bgm/bgm")
+require("assets/sound/bgm/bgm_bgm")
+require("assets/sound/se/se")
 
 require("assets/obj/obj/sp")
 require("assets/obj/obj/sp_prmtv")
@@ -101,7 +102,10 @@ require("assets/obj/eqip/hand/shrkn/shrkn")
 require("assets/obj/eqip/ride/broom/broom")
 
 require("assets/obj/itm/balloon/balloon")
-require("assets/obj/itm/parasail/parasail")
+
+require("assets/obj/itm/para/para/para")
+require("assets/obj/itm/para/parasail/parasail")
+require("assets/obj/itm/para/parasol/parasol")
 
 require("assets/obj/itm/food/dairy/dairy")
 require("assets/obj/itm/food/dish/dish")

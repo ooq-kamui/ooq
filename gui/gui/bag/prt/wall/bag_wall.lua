@@ -25,7 +25,8 @@ function p.Bag_wall.init(_s, parent_gui)
 	extend.init(_s, p.Bag_prt_itm)
 	extend._(_s, p.Bag_wall)
 
-	_s._dsp_idx_max = 7
+	-- _s._dsp_idx_max = 7
+	_s._dsp_idx_max = 6
 	
 	_s:itm__by_ar(Tile.wall)
 	
@@ -50,7 +51,10 @@ function p.Bag_wall.decide(_s)
 	if _s:is_selected_eq_cursor() then return end
 
 	p.Prt_selected.selected__cursor_itm(_s)
-	Wand.wand002.tile_idx = _s._selected_itm_idx
+
+	-- Wand.wand002.tile_idx = _s._selected_itm_idx
+	Wand.wand_wall.tile_idx = _s._selected_itm_idx
 
 	Se.pst_ply("forward")
 end
+

@@ -34,7 +34,8 @@ Tile = { -- tile num
 	-- magic_vnsh_impsbl = {45, 65,}, -- enum
 	magic_vnsh_impsbl = {84, }, -- enum -- tmp
 
-	wall = {4, 5, 6, 7, 8, 9, 10}, -- enum use ?
+	-- wall = {4, 5, 6, 7, 8, 9, 10}, -- enum use ?
+	wall = {1, 2, 11, 12, 21, 22}, -- enum use ?
 
 	-- col_idx_max = 20,
 	col_idx_max = 25,

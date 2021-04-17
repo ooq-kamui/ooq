@@ -630,7 +630,7 @@ components {
 }
 components {
   id: "parasail"
-  component: "/assets/obj/itm/parasail/parasail.factory"
+  component: "/assets/obj/itm/para/parasail/parasail.factory"
   position {
     x: 0.0
     y: 0.0
@@ -661,6 +661,21 @@ components {
 components {
   id: "tohokuf"
   component: "/assets/obj/itm/food/tohokuf/tohokuf.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "parasol"
+  component: "/assets/obj/itm/para/parasol/parasol.factory"
   position {
     x: 0.0
     y: 0.0

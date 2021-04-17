@@ -2,7 +2,7 @@ log.scrpt("wall.lua")
 
 Wall = {}
 
-function Wall.__(tilepos, wall_idx)
+function Wall.__(p_tilepos, wall_idx)
 
 	wall_idx = wall_idx or rnd.ar(Tile.wall)
 	
@@ -11,14 +11,17 @@ function Wall.__(tilepos, wall_idx)
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
 
-	local tile
-	local tile_crnt = map.tile_by_tilepos(tilepos, map_id, "wall", layer)
+	local t_tile
+	local tile_crnt = map.tile_by_tilepos(p_tilepos, map_id, "wall", layer)
 	if     tile_crnt == 0 then
-		tile = Tile.wall[wall_idx]
+		t_tile = Tile.wall[wall_idx]
+		Efct.cre_magic()
 	else
-		tile = 0
+		t_tile = 0
+		Efct.cre_tile_vnsh()
 	end
 	
-	-- log._("wall __", tile)
-	map.tile__by_tilepos(tilepos, tile, map_id, "wall", layer)
+	-- log._("wall __", t_tile)
+	map.tile__by_tilepos(p_tilepos, t_tile, map_id, "wall", layer)
 end
+

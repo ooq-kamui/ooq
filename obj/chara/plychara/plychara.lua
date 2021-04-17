@@ -23,6 +23,8 @@ Plychara = {
 	hld_dir_sync_cls = {
 		"parasail",
 	},
+
+	para = {"parasail", "parasol"},
 }
 
 Plychara.pos_game_new = n.vec( 500, 200)
@@ -110,7 +112,7 @@ function Plychara.init(_s)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
 
 	-- skil
-	_s._is_parasail = _.f
+	_s._is_para = _.f
 end
 
 function Plychara.upd(_s, dt)
@@ -561,7 +563,9 @@ function Plychara.itm_use(_s)
 		pst.scrpt(_s:fairy_id(), "magic")
 		
 	elseif itm == "wand_wall"  then
-		Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
+		-- Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
+		pst.scrpt(_s:fairy_id(), "magic_wall")
+		-- Wall.__(_s:fairy_tilepos(), Wand.wand_wall.tile_idx)
 
 	elseif itm == "nokogiri"   then
 		if #_s._clsn.tree > 0 then
@@ -839,7 +843,9 @@ function Plychara.hld__o(_s)
 
 	-- atch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ha.eq(t_clsHa, "parasail") then _s._is_parasail = _.t end
+	if ar.inHa(t_clsHa, Plychara.para) then _s._is_para = _.t end
+
+	-- if ha.eq(t_clsHa, "balloon") then _s._is_balloon = _.t end
 end
 
 function Plychara.hld__x(_s)
@@ -852,7 +858,7 @@ function Plychara.hld__x(_s)
 
 	-- dtch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ha.eq(t_clsHa, "parasail") then _s._is_parasail = _.f end
+	if ar.inHa(t_clsHa, Plychara.para) then _s._is_para = _.f end
 
 	-- hld__x_thrw
 	if _s._vec_mv.x ~= 0 then

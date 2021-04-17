@@ -6,7 +6,7 @@ Accl = {
 
 	speed_max_x = 8,
 	speed_max_y = 4,
-	speed_max_y_parasail = 1,
+	speed_max_y_para = 1,
 }
 
 -- static
@@ -33,12 +33,12 @@ end
 
 -- _speed
 
-function Accl.speed__add_accl(_s, is_parasail)
+function Accl.speed__add_accl(_s, is_para)
 
 	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max_x)
 
 	local speed_y
-	if is_parasail then speed_y = Accl.speed_max_y_parasail
+	if is_para then speed_y = Accl.speed_max_y_para
 	else                speed_y = Accl.speed_max_y
 	end
 	_s._speed.y = num.__pls_stop_min(_s._speed.y, _s._accl.y, - speed_y)

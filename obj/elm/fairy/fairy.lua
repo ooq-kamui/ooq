@@ -54,6 +54,9 @@ function Fairy.on_msg(_s, msg_id, prm, sndr)
 	if     ha.eq(msg_id, "magic") then
 		_s:magic()
 
+	elseif ha.eq(msg_id, "magic_wall") then
+		_s:magic_wall()
+
 	elseif ha.eq(msg_id, "fire") then
 		_s:fire()
 
@@ -72,6 +75,12 @@ function Fairy.magic(_s)
 	Magic.cre(_s:pos_w())
 
 	-- Efct.cre_magic()
+end
+
+function Fairy.magic_wall(_s)
+
+	local t_tilepos = map.pos_2_tilepos( _s:pos_w() )
+	Wall.__(t_tilepos, Wand.wand_wall.tile_idx)
 end
 
 function Fairy.fire(_s)

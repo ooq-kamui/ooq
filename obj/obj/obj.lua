@@ -25,6 +25,7 @@ function Obj.tst.tst()
 		Balloon, Balloon, Balloon, Balloon,
 		Trmpln, Trmpln,
 		Parasail, Parasail,
+		Parasol, Parasol,
 		Doorwrp, Doorwrp,
 	}
 	Obj.tst._(Cls)

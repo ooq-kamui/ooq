@@ -179,7 +179,7 @@ end
 
 function Sp.vec_grv__grv(_s)
 
-	_s._accl:speed__add_accl(_s._is_parasail)
+	_s._accl:speed__add_accl(_s._is_para)
 	_s._vec_grv = _s._accl:speed()
 end
 

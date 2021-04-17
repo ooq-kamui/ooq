@@ -100,6 +100,7 @@ end
 function Map.obj_itm(_s)
 	local cls = {
 		"parasail",
+		"parasol",
 	}
 	return _s:obj_grp(cls)
 end
