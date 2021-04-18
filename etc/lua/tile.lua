@@ -4,13 +4,14 @@ Tile = { -- tile num
 	emp = 0,
 	magic_block = { -- wand block, enum
 
-		1, 2, 3, 4, 5, -- clmb
-		6,             -- elv
-		7,             -- airflw
+		1, 2, 3, 4, 5, 8, -- clmb
+		6,                -- elv
+		7,                -- airflw
+		9,                -- 
 
 		-- block x1x1
 		26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
-		-- 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+		-- 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
 		-- 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88,
 
 		-- block 5 x 5
@@ -27,14 +28,14 @@ Tile = { -- tile num
 		26, 625, -- min, max
 	},
 	block_excld = {}, -- 1, 2, 3, 18,
-	clmb     = {1, 2, 3, 4, 5,}, -- enum
+	clmb     = {1, 2, 3, 4, 5, 8,}, -- enum
 	elv_u    = {6,}, -- enum
 	airflw_u = {7,}, -- enum
 
-	-- magic_vnsh_impsbl = {45, 65,}, -- enum
+	warp     = {9,}, -- enum
+
 	magic_vnsh_impsbl = {84, }, -- enum -- tmp
 
-	-- wall = {4, 5, 6, 7, 8, 9, 10}, -- enum use ?
 	wall = {1, 2, 11, 12, 21, 22}, -- enum use ?
 
 	-- col_idx_max = 20,

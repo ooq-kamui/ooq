@@ -62,7 +62,6 @@ end
 -- method
 
 function Doorwrp.opn(_s)
-	-- Doorwrp_gui.cre_open()
 	fac.cre("#fac_doorwrp_gui")
 end
 

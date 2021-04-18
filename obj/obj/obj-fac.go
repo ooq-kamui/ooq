@@ -29,8 +29,8 @@ components {
   }
 }
 components {
-  id: "warp"
-  component: "/assets/obj/elm/warp/warp.factory"
+  id: "mgccrcl"
+  component: "/assets/obj/elm/warp/mgccrcl/mgccrcl.factory"
   position {
     x: 0.0
     y: 0.0
@@ -600,7 +600,7 @@ components {
 }
 components {
   id: "balloon"
-  component: "/assets/obj/itm/balloon/balloon.factory"
+  component: "/assets/obj/itm/airfloat/balloon/balloon.factory"
   position {
     x: 0.0
     y: 0.0
@@ -676,6 +676,36 @@ components {
 components {
   id: "parasol"
   component: "/assets/obj/itm/airride/parasol/parasol.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "broom"
+  component: "/assets/obj/eqip/ride/broom/broom.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "mgcpot"
+  component: "/assets/obj/elm/warp/mgcpot/mgcpot.factory"
   position {
     x: 0.0
     y: 0.0

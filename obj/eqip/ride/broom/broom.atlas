@@ -1,7 +1,11 @@
 animations {
-  id: "001"
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 60
+  id: "stand"
+  images {
+    image: "/assets/obj/eqip/ride/broom/img/broom.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 0
   flip_horizontal: 0
   flip_vertical: 0
 }

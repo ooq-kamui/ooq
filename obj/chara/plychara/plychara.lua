@@ -24,7 +24,15 @@ Plychara = {
 		"parasail",
 	},
 
-	para = {"parasail", "parasol"},
+	-- airride = {"parasail", "parasol"},
+
+	hldabl_cls = { -- clsn group
+		"hld",
+		"kitchen", "reizoko", "hrvst", "flpy", "pc",
+		"shelf", "doorwrp", "anml", "block", "trmpln",
+		"warp",
+		-- "mgccrcl", "mgcpot",
+	},
 }
 
 Plychara.pos_game_new = n.vec( 500, 200)
@@ -58,7 +66,7 @@ end
 function Plychara.init(_s)
 	
 	extend.init(_s, Sp)
-	extend._(_s, Plychara)
+	extend._(   _s, Plychara)
 
 	_s._name = ha.de(_s._nameHa)
 	_s:anim__("walk")
@@ -81,13 +89,12 @@ function Plychara.init(_s)
 	_s._vec_on_chara = n.vec()
 	_s._on_pos       = n.vec()
 
-	-- _s._itm_selected = "wand001" -- name
 	_s._itm_selected = "wand_block" -- name
 
 	_s._jmp_lv = Plychara.jmp_lv_dflt
 
-	_s._hld  = {}
-	_s._clsn = {
+	_s._hld  = {} -- id
+	_s._clsn = { -- clsn group
 		hld     = {},
 		hrvst   = {},
 		kitchen = {},
@@ -101,6 +108,7 @@ function Plychara.init(_s)
 		tree    = {},
 		block   = {},
 		trmpln  = {},
+		warp    = {},
 	}
 	_s._clsn_hldabl = {}
 
@@ -414,7 +422,6 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 		_s:clsn_add("chara", t_id)
 
 	elseif ha.eq(prm.group, "hld"     ) then
-		-- if not ar.in_(t_id, _s._hld) then _s:clsn_add("hld", t_id) end
 		_s:clsn_add("hld"  , t_id)
 
 	elseif ha.eq(prm.group, "anml"    ) then
@@ -426,6 +433,9 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	elseif ha.eq(prm.group, "kagu_itm") then
 		_s:on_msg_clsn_kagu_itm(t_id)
 		
+	elseif ha.eq(prm.group, "warp"    ) then
+		_s:clsn_add("warp" , t_id)
+
 	elseif ha.eq(prm.group, "block"   ) then
 		_s:clsn_add("block", t_id)
 	end
@@ -551,6 +561,7 @@ function Plychara.menu_opn(_s)
 		pst.scrpt(_s._clsn.flpy[1], "opn")
 		is_icn_opn = _.t
 	end
+
 	if not is_icn_opn then
 		pst.scrpt(Game.id(), "bag_opn")
 	end
@@ -648,14 +659,9 @@ end
 
 function Plychara.clsn_hldabl__(_s)
 
-	local cls = {
-		"hld", "kitchen", "reizoko", "hrvst", "flpy",
-		"pc", "shelf", "doorwrp", "anml", "block", "trmpln",
-	}
-	
 	ar.clr(_s._clsn_hldabl)
 
-	for idx, cls in pairs(cls) do
+	for idx, cls in pairs(Plychara.hldabl_cls) do
 		for idx, id in pairs(_s._clsn[cls]) do
 			ar.add(_s._clsn_hldabl, id)
 		end
@@ -810,15 +816,6 @@ function Plychara.hld__ox(_s)
 
 	local is_hld, hld_id = _s:is_hld()
 
-	--[[
-	local clsn_is_psting = _s:clsn_is_psting_cls() -- use not ?
-	if is_hld and clsn_is_psting then
-		log._("clsn_is_psting")
-		_s:hld__x()
-		return
-	end
-	--]]
-
 	local is_clsn_hldabl = _s:is_clsn_hldabl()
 	local is_hld_addabl  = _s:is_hld_addabl()
 	if is_clsn_hldabl and is_hld_addabl then
@@ -844,7 +841,7 @@ function Plychara.hld__o(_s)
 
 	-- atch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Plychara.para) then _s._is_airride = _.t end
+	if ar.inHa(t_clsHa, Airride.cls) then _s._is_airride = _.t end
 
 	-- if ha.eq(t_clsHa, "balloon") then _s._is_balloon = _.t end
 end
@@ -859,7 +856,7 @@ function Plychara.hld__x(_s)
 
 	-- dtch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Plychara.para) then _s._is_airride = _.f end
+	if ar.inHa(t_clsHa, Airride.cls) then _s._is_airride = _.f end
 
 	-- hld__x_thrw
 	if _s._vec_mv.x ~= 0 then
@@ -924,11 +921,13 @@ end
 -- to xxx
 
 function Plychara.to_cloud(_s)
+
 	Sp.to_cloud(_s)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
 function Plychara.to_doorwrp(_s, doorwrp_id)
+
 	local t_pos = id.pos(doorwrp_id)
 	_s:pos__(t_pos)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
@@ -939,13 +938,4 @@ function Plychara.anim__(_s, p_anim)
 
 	Chara.anim__(_s, p_anim)
 end
-
---[[
-function Plychara.clsn_is_psting_cls(_s) -- use not ?
-
-	local psting_cls = {"chara", "anml", "hrvst", "kitchen", "reizoko", }
-	local ret = _.f
-	return ret
-end
---]]
 

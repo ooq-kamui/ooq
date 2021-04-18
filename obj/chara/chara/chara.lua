@@ -27,9 +27,9 @@ Chara = {
 }
 Chara.cls = "chara"
 Chara.fac = Obj.fac..Chara.cls
-Cls.add(Chara, Chara.chara)
+Cls.add(Chara, Chara.chara) -- ??
 
-ha.add_by_ar(Chara.chara)
+ha.add_by_ar(Chara.chara) -- ??
 
 -- static
 
@@ -41,7 +41,7 @@ function Chara.cre(p_pos, p_name)
 	p_name = p_name or Chara.new_name()
 	
 	local prm = {}
-	prm.clsHa  = ha._("chara")
+	prm.clsHa  = ha._(Chara.cls)
 	prm.nameHa = ha._(p_name)
 	-- prm.animHa = ha._(p_name.."-".."walk")
 
@@ -83,7 +83,7 @@ function Chara.init(_s, dt)
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
-	extend._(_s, Chara)
+	extend._(   _s, Chara)
 
 	_s._name = ha.de(_s._nameHa)
 	_s:anim__("walk")

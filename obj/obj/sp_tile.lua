@@ -468,6 +468,8 @@ function Sp.vec__init(_s)
 	_s._vec_tile  = n.vec()
 
 	_s._vec_total = n.vec()
+
+	_s._accl_speed = _s._accl._speed -- alias
 end
 
 function Sp.pos__init(_s)

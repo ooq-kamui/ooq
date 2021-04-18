@@ -1,4 +1,0 @@
-tile_set: "/assets/obj/itm/balloon/balloon.tilesource"
-default_animation: "stand"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

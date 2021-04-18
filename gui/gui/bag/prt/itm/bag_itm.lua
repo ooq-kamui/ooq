@@ -2,12 +2,10 @@ log.scrpt("p.bag_itm.lua")
 
 p.Bag_itm = {}
 p.Bag_itm.itm_lb_2_r_view_prt_lb = {
-	-- wand001 = "bag_block",
 	wand_block = "bag_block",
-	-- wand002 = "bag_wall",
-	wand_wall = "bag_wall",
-	wand003 = nil,
-	wand004 = nil,
+	wand_wall  = "bag_wall",
+	nokogiri   = nil,
+	wand_fire  = nil,
 }
 
 -- static
@@ -31,11 +29,10 @@ function p.Bag_itm.init(_s, parent_gui)
 	extend.init(_s, p.Prt_cursor)
 	extend.init(_s, p.Prt_selected)
 	extend.init(_s, p.Bag_prt_itm)
-	extend._(_s, p.Bag_itm)
+	extend._(   _s, p.Bag_itm)
 
 	_s._dsp_idx_max = 3
 
-	-- local itm_hand = {"wand001", "wand002", "wand003", "wand004"}
 	local itm_hand = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
 	-- local itm_hand_txtr = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
 
@@ -100,3 +97,4 @@ end
 function p.Bag_itm.cursor_mv_exe(_s)
 	_s:decide()
 end
+

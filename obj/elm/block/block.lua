@@ -62,7 +62,7 @@ end
 
 function Block.trnsf_tile(_s)
 	
-	if _s._hld_id then return end
+	if _s._hldd_id then return end
 
 	local foot_o_tile = _s:foot_o_tile()
 	if not (

@@ -95,15 +95,18 @@ require("assets/obj/elm/fire/fire")
 require("assets/obj/elm/cloud/cloud")
 require("assets/obj/elm/magic/magic")
 require("assets/obj/elm/fairy/fairy")
-require("assets/obj/elm/warp/warp")
 require("assets/obj/elm/shtngstr/shtngstr")
+
+require("assets/obj/elm/warp/warp/warp")
+require("assets/obj/elm/warp/mgccrcl/mgccrcl")
+require("assets/obj/elm/warp/mgcpot/mgcpot")
 
 require("assets/obj/eqip/hand/wand_block/wand")
 require("assets/obj/eqip/hand/wand_wall/wall")
 require("assets/obj/eqip/hand/shrkn/shrkn")
 require("assets/obj/eqip/ride/broom/broom")
 
-require("assets/obj/itm/balloon/balloon")
+require("assets/obj/itm/airfloat/balloon/balloon")
 
 require("assets/obj/itm/airride/airride/airride")
 require("assets/obj/itm/airride/parasail/parasail")
@@ -129,6 +132,10 @@ require("assets/obj/chara/plychara/plychara")
 require("assets/obj/chara/emtn/emtn")
 require("assets/obj/chara/fuki/fuki/fuki")
 require("assets/obj/chara/fuki/serifu")
+
+require("assets/obj/chara/chara_clb/chara_clb/chara_clb")
+require("assets/obj/chara/chara_clb/chara_clb_fe/chara_clb_fe")
+require("assets/obj/chara/chara_clb/chara_clb_tohoku/chara_clb_tohoku")
 
 require("assets/obj/living/livingmove")
 require("assets/obj/living/anml/anml")
@@ -260,17 +267,6 @@ require("assets/sys/mstr/seed")
 require("assets/sys/mstr/tree")
 require("assets/sys/mstr/veget")
 require("assets/sys/mstr/wood")
---[[
-require("assets/sys/mstr/mstr")
-require("assets/sys/mstr/anml")
-require("assets/sys/mstr/chara")
-require("assets/sys/mstr/kzn")
-require("assets/sys/mstr/flower")
-require("assets/sys/mstr/tree")
-require("assets/sys/mstr/kagu_itm")
-require("assets/sys/mstr/kagu")
---]]
--- require("assets/sys/mstr/price/price")
 
 -- cfg
 require("assets/sys/cfg/cfg")

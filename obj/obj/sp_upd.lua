@@ -151,7 +151,7 @@ function Sp.vec_grv__(_s, dt)
 	elseif _s._is_fly              then -- only flyable
 		_s:vec_grv__clr()
 	
-	elseif _s._hld_id              then -- only holdable
+	elseif _s._hldd_id              then -- only holdable
 		_s:vec_grv__clr()
 	
 	elseif _s._kitchen_id          then -- only food

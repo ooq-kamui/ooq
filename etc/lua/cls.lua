@@ -23,18 +23,3 @@ function Cls._(p_cls) -- get
 	return Cls.Cls[clsHa]
 end
 
---[[
-function Cls.prp(p_clsHa, p_prp) -- old
-
-	local t_Cls = Cls._(p_clsHa)
-	
-	if not t_Cls then return end
-	
-	local ret = t_Cls[p_prp]
-
-	if not ret then return end
-
-	return ret
-end
---]]
-

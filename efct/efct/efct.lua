@@ -214,7 +214,7 @@ function Efct.cre(p_efct, p_pos, prm, p_scl)
 	prm._lifetime = prm._lifetime or Efct.lifetime
 
 	local t_url = "/ef-fac#" .. p_efct
-	log._("efct cre", t_url)
+	-- log._("efct cre", t_url)
 
 	local t_id = fac.cre(t_url, p_pos, nil, prm, p_scl)
 	return t_id

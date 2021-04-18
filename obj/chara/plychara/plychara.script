@@ -11,6 +11,7 @@ go.property("_parent_id", hash(""))
 go.property("_z", 0.2)
 --]]
 go.property("_is_fly", false)
+go.property("_accl_speed", vmath.vector3(0, 0, 0))
 
 -- use by camera
 go.property("_dir_h_Ha", hash("l"))

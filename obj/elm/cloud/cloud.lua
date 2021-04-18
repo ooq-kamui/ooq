@@ -26,7 +26,8 @@ function Cloud.init(_s)
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
 	extend.init(_s, Hldabl)
-	extend._(_s, Cloud)
+
+	extend._(_s,    Cloud)
 end
 
 -- script method

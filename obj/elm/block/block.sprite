@@ -1,4 +1,4 @@
-tile_set: "/assets/map/ground/ground/ground.tilesource"
-default_animation: "block011"
+tile_set: "/assets/map/ground/ground/ground_neo.tilesource"
+default_animation: "block026"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

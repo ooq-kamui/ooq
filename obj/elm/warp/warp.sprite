@@ -1,4 +1,0 @@
-tile_set: "/assets/obj/elm/warp/warp.atlas"
-default_animation: "warp001"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

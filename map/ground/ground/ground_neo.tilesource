@@ -5,7 +5,6 @@ tile_margin: 0
 tile_spacing: 0
 collision: ""
 material_tag: "tile"
-
 animations {
   id: "block001"
   start_tile: 1
@@ -64,6 +63,24 @@ animations {
   id: "block007"
   start_tile: 7
   end_tile: 7
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block008"
+  start_tile: 8
+  end_tile: 8
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block009"
+  start_tile: 9
+  end_tile: 9
   playback: PLAYBACK_NONE
   fps: 0
   flip_horizontal: 0

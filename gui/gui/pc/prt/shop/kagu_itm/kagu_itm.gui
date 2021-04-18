@@ -33,7 +33,7 @@ textures {
 }
 textures {
   name: "warp"
-  texture: "/assets/obj/elm/warp/warp.atlas"
+  texture: "/assets/obj/elm/warp/mgccrcl/mgccrcl.atlas"
 }
 textures {
   name: "seed"

@@ -2,7 +2,7 @@ log.scrpt("flower.lua")
 
 Flower = {
 	act_intrvl_time = 100,
-	name_idx_max = 159,
+	name_idx_max    = 159,
 }
 Flower.cls = "flower"
 Flower.fac = Obj.fac..Flower.cls
@@ -47,12 +47,14 @@ function Flower.act_intrvl(_s, dt)
 end
 
 function Flower.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
+
+	Sp.on_msg(    _s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Flower.final(_s)
-	Sp.final(_s)
+
+	Sp.final(    _s)
 	Hldabl.final(_s)
 end
 

@@ -65,7 +65,7 @@ function Livingmove.vec_mv__(_s, dt)
 
 	if not u.eq(_s._status, "live") then _s:vec_mv__clr() return end
 
-	if     _s._hld_id    then _s:vec_mv__clr() return end
+	if     _s._hldd_id    then _s:vec_mv__clr() return end
 
 	if not _s._is_moving then _s:vec_mv__clr() return end
 

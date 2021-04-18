@@ -93,15 +93,13 @@ function Map.obj_living(_s)
 end
 
 function Map.obj_elm(_s)
-	local cls = {"warp"}
+	-- local cls = {"warp"}
+	local cls = {"mgccrcl", "mgcpot",}
 	return _s:obj_grp(cls)
 end
 
 function Map.obj_itm(_s)
-	local cls = {
-		"parasail",
-		"parasol",
-	}
+	local cls = {"parasail", "parasol",}
 	return _s:obj_grp(cls)
 end
 
@@ -178,8 +176,8 @@ function Map.obj__new(_s)
 
 	_s:obj__new_kagu()
 
-	Warp.cre(n.vec(-936, -1464))
-	Warp.cre(n.vec( 936, -1464))
+	Mgccrcl.cre(n.vec(-936, -1464))
+	Mgccrcl.cre(n.vec( 936, -1464))
 end
 
 function Map.obj__(_s, data)

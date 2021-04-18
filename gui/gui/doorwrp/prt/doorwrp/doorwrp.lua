@@ -19,12 +19,13 @@ function p.Doorwrp.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Doorwrp)
+	extend._(   _s, p.Doorwrp)
 	
 	_s._itm_pitch = 100
 	_s._itm_scrl_dir = "h"
 
 	_s._dsp_idx_max = Map.st.obj_cnt("doorwrp")
+
 	_s:itm__by_ar(Map.st.obj("doorwrp"))
 	
 	_s._itm_txt = Map.st.obj("doorwrp") -- {}
