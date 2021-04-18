@@ -1,4 +1,0 @@
-tile_set: "/assets/obj/chara/chara_clb/chara_clb_fe/chara_clb_fe.atlas"
-default_animation: "aqua"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

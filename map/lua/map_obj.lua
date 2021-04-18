@@ -1,7 +1,13 @@
 log.scrpt("map_obj.lua")
 
 function Map.add_chara(chara)
-	ar.add_unq(chara, Map.chara)
+
+	ar.add_unq(Map.chara, chara)
+end
+
+function Map.add_chara_clb_fe(chara)
+
+	ar.add_unq(Map.chara_clb.fe, chara)
 end
 
 -- obj

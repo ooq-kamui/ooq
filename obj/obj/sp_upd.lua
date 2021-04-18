@@ -9,6 +9,7 @@ function Sp.is_loop__act_intrvl__(_s, dt)
 end
 
 function Sp.act_intrvl__(_s, dt)
+
 	local act_intrvl_time = _s:Cls().act_intrvl_time
 	local is_loop
 	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, act_intrvl_time)

@@ -260,7 +260,7 @@ function Sp.map_obj__add(_s)
 
 	if not Map.st.obj(clsDe) then Map.st.obj__init(clsDe) end
 	
-	ar.add_unq(_s._id, Map.st.obj(clsDe))
+	ar.add_unq(Map.st.obj(clsDe), _s._id)
 end
 
 function Sp.map_obj__del(_s)

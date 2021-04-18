@@ -8,13 +8,6 @@ Chara_clb = {
 
 -- static
 
-function Chara_clb.new_name(clb_grp)
-
-	local not_appear_chara = Map.not_appear_chara(clb_grp)
-	local new_name = ar.rnd(not_appear_chara)
-	return new_name
-end
-
 -- script method
 
 Chara_clb.init       = Chara.init
@@ -26,4 +19,12 @@ Chara_clb.act_intrvl = Chara.act_intrvl
 Chara_clb.on_msg     = Chara.on_msg
 
 -- method
+
+Chara_clb.anim__            = Chara.anim__
+
+Chara_clb.act_intrvl__      = Chara.act_intrvl__
+
+Chara_clb.act_intrvl_time__ = Chara.act_intrvl_time__
+
+Chara_clb.say               = Chara.say
 

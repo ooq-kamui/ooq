@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/chara/chara_clb/chara_clb_tohoku/chara_clb_tohoku.atlas"
+tile_set: "/assets/obj/chara/chara_clb/tohoku/chara_clb_tohoku.atlas"
 default_animation: "zunko-stand"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

@@ -165,20 +165,25 @@ function ar.key_mrg(ar_org, ar_add)
 	return ar_org
 end
 
-function ar.add_unq(val, p_ar)
-	if ar.srch_idx(val, p_ar) then
-		return
-	end
+-- function ar.add_unq(val, p_ar) -- old
+function ar.add_unq(p_ar, val)
+
+	if ar.srch_idx(val, p_ar) then return end
+
 	ar.add(p_ar, val)
 end
 
 function ar.add(p_ar, val)
+
 	if not p_ar then return end
+
 	table.insert(p_ar, val)
 end
 
 function ar.psh(p_ar, val)
+
 	if not p_ar then return end
+
 	table.insert(p_ar, val)
 end
 

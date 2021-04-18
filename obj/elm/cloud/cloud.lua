@@ -49,14 +49,23 @@ function Cloud.act_intrvl(_s, dt)
 	if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	dice100.throw()
-	if not Map.chara_is_appear_all() and dice100.chk(30) then
+	if     not Map.chara_is_appear_all()
+	and    dice100.chk(30) then
 		Chara.cre()
+
+	elseif not Map.chara_clb_fe_is_appear_all()
+	and    dice100.chk(30) then
+		Chara_clb_fe.cre()
+
 	elseif dice100.chk(4) then
 		Anml.cre()
+
 	elseif dice100.chk(1) then
 		Veget.cre()
+
 	elseif dice100.chk(1) then
 		Seed.cre()
+
 	elseif dice100.chk(1) then
 		Fish.cre()
 	end

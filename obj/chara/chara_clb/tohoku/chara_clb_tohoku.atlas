@@ -1,19 +1,19 @@
 animations {
   id: "zunko-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -24,19 +24,19 @@ animations {
 animations {
   id: "zunko-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -47,19 +47,19 @@ animations {
 animations {
   id: "zunko-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -70,19 +70,19 @@ animations {
 animations {
   id: "zunko-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -93,11 +93,11 @@ animations {
 animations {
   id: "zunko-gaan"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-gaan01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-gaan01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-gaan02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-gaan02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -108,7 +108,7 @@ animations {
 animations {
   id: "zunko-kime"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-kime01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-kime01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -119,7 +119,7 @@ animations {
 animations {
   id: "zunko-koke"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/zunko/zunko-koke01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/zunko/zunko-koke01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -130,19 +130,19 @@ animations {
 animations {
   id: "kiritan-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -153,19 +153,19 @@ animations {
 animations {
   id: "kiritan-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -176,19 +176,19 @@ animations {
 animations {
   id: "kiritan-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -199,19 +199,19 @@ animations {
 animations {
   id: "kiritan-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -222,7 +222,7 @@ animations {
 animations {
   id: "kiritan-gaan"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-gaan01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-gaan01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -233,7 +233,7 @@ animations {
 animations {
   id: "kiritan-kime"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-kime01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-kime01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -244,7 +244,7 @@ animations {
 animations {
   id: "kiritan-koke"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/kiritan/kiritan-koke01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/kiritan/kiritan-koke01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -255,19 +255,19 @@ animations {
 animations {
   id: "itako-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -278,19 +278,19 @@ animations {
 animations {
   id: "itako-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -301,19 +301,19 @@ animations {
 animations {
   id: "itako-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -324,19 +324,19 @@ animations {
 animations {
   id: "itako-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -347,11 +347,11 @@ animations {
 animations {
   id: "itako-gaan"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-gaan01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-gaan01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-gaan02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-gaan02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -362,7 +362,7 @@ animations {
 animations {
   id: "itako-kime"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-kime01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-kime01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -373,7 +373,7 @@ animations {
 animations {
   id: "itako-koke"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/itako/itako-koke01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/itako/itako-koke01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -384,19 +384,19 @@ animations {
 animations {
   id: "metan-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -407,19 +407,19 @@ animations {
 animations {
   id: "metan-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -430,19 +430,19 @@ animations {
 animations {
   id: "metan-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -453,19 +453,19 @@ animations {
 animations {
   id: "metan-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/metan/metan-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/metan/metan-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -476,19 +476,19 @@ animations {
 animations {
   id: "sora-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -499,19 +499,19 @@ animations {
 animations {
   id: "sora-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -522,19 +522,19 @@ animations {
 animations {
   id: "sora-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -545,19 +545,19 @@ animations {
 animations {
   id: "sora-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/sora/sora-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/sora/sora-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -568,19 +568,19 @@ animations {
 animations {
   id: "usagi-stand"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-stand02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-stand02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-stand01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-stand01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-stand03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-stand03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -591,19 +591,19 @@ animations {
 animations {
   id: "usagi-walk-l"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-l02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-l02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-l01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-l01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-l03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-l03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -614,19 +614,19 @@ animations {
 animations {
   id: "usagi-walk-r"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-r02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-r02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-r01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-r01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-walk-r03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-walk-r03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
@@ -637,19 +637,19 @@ animations {
 animations {
   id: "usagi-clmb"
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-clmb02.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-clmb02.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-clmb01.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-clmb01.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/obj/chara/chara_clb/chara_clb_tohoku/img/usagi/usagi-clmb03.png"
+    image: "/assets/obj/chara/chara_clb/tohoku/img/usagi/usagi-clmb03.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD

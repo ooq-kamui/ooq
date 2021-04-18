@@ -1,6 +1,6 @@
 components {
-  id: "script"
-  component: "/assets/obj/chara/chara_clb/chara_clb_tohoku/chara_clb_tohoku.script"
+  id: "sprite"
+  component: "/assets/obj/chara/chara_clb/fe/chara_clb_fe.sprite"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "sprite"
-  component: "/assets/obj/chara/chara_clb/chara_clb_tohoku/chara_clb_tohoku.sprite"
+  id: "script"
+  component: "/assets/obj/chara/chara_clb/fe/chara_clb_fe.script"
   position {
     x: 0.0
     y: 0.0

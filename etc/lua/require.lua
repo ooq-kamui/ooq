@@ -134,8 +134,8 @@ require("assets/obj/chara/fuki/fuki/fuki")
 require("assets/obj/chara/fuki/serifu")
 
 require("assets/obj/chara/chara_clb/chara_clb/chara_clb")
-require("assets/obj/chara/chara_clb/chara_clb_fe/chara_clb_fe")
-require("assets/obj/chara/chara_clb/chara_clb_tohoku/chara_clb_tohoku")
+require("assets/obj/chara/chara_clb/fe/chara_clb_fe")
+require("assets/obj/chara/chara_clb/tohoku/chara_clb_tohoku")
 
 require("assets/obj/living/livingmove")
 require("assets/obj/living/anml/anml")

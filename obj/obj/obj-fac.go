@@ -718,3 +718,33 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "chara_clb_fe"
+  component: "/assets/obj/chara/chara_clb/fe/chara_clb_fe.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "chara_clb_tohoku"
+  component: "/assets/obj/chara/chara_clb/tohoku/chara_clb_tohoku.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

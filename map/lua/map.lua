@@ -12,12 +12,16 @@ Map = {
 	
 	act_intrvl_time = 15, -- 45, -- 5,
 
+	-- cnt = {}, -- hash("flower") = {}, -- id ar -- old ?
+
 	-- obj
 	chara = {
 		-- {name = "", id = hash}
 	},
-	
-	-- cnt = {}, -- hash("flower") = {}, -- id ar -- old ?
+	chara_clb = {
+		fe     = {},
+		tohoku = {},
+	},
 
 	dstrct_max = n.vec(1, 1),
 	
@@ -342,12 +346,29 @@ function Map.chara_is_appear_all()
 	if #Map.chara >= #Chara.chara then
 		ret = _.t
 	end
-	-- log._("chara_is_apper_all", ret, #Map.chara, #Chara.chara)
 	return ret
 end
 
 function Map.not_appear_chara()
+
 	local not_appear = ar.exclude_cp(Chara.chara, Map.chara)
+	return not_appear
+end
+
+function Map.chara_clb_fe_is_appear_all()
+
+	local ret = _.f
+
+	if #Map.chara_clb.fe >= #Chara_clb_fe.chara then
+		ret = _.t
+	end
+	log._("chara_clb_fe_is_appear_all", ret, #Map.chara_clb.fe, #Chara_clb_fe.chara)
+	return ret
+end
+
+function Map.not_appear_chara_clb_fe()
+
+	local not_appear = ar.exclude_cp(Chara_clb_fe.chara, Map.chara_clb.fe)
 	return not_appear
 end
 

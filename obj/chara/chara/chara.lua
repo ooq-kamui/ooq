@@ -7,21 +7,13 @@ Chara = {
 	
 	chara = {
 		"sanae",
-		"marin",
-		"katia",
-		"sayaka",
-		"yuki",
-		"kurumi",
-		"matilda",
-		"lily",
-		"sofia",
-		"shiki",
-		"kageri",
+		"marin", "katia", "matilda",
+		"sayaka", "yuki", "kurumi",
+		"lily", "sofia",
+		"shiki", "kageri",
 	},
 	flyabl = {
-		"katia",
-		"lily",
-		"sofia",
+		"katia", "lily", "sofia",
 	},
 	presentabl = {"flower","dish","fruit","dairy","egg","veget",}, -- cls
 }
@@ -43,18 +35,16 @@ function Chara.cre(p_pos, p_name)
 	local prm = {}
 	prm.clsHa  = ha._(Chara.cls)
 	prm.nameHa = ha._(p_name)
-	-- prm.animHa = ha._(p_name.."-".."walk")
 
 	prm.is_fly = Chara.is_flyabl(p_name) -- to init
 	
-	-- game_id, map_id, parent_id
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
 	
 	prm.game_id   = game_id
 	prm.map_id    = map_id
 	prm.parent_id = map_id
-	prm.z = Chara.z
+	-- prm.z = Chara.z
 
 	-- log.pp("Chara cre prm", prm)
 	ar.key___(prm)
@@ -147,10 +137,7 @@ function Chara.kzn__pls(_s, point)
 	Ply_data._kzn[_s:name()] = Ply_data._kzn[_s:name()] + point
 end
 
--- function Chara.final(_s)
--- end
-
---
+-- method
 
 function Chara.anim__(_s, p_anim)
 
@@ -159,12 +146,14 @@ function Chara.anim__(_s, p_anim)
 end
 
 function Chara.act_intrvl__(_s, dt)
+
 	local is_loop
 	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, _s._act_intrvl_time)
 	return is_loop
 end
 
 function Chara.act_intrvl_time__(_s)
+
 	_s._act_intrvl_time = _s:Cls().act_intrvl_time + rnd.int(0, 3)
 end
 
