@@ -10,6 +10,11 @@ function Map.add_chara_clb_fe(chara)
 	ar.add_unq(Map.chara_clb.fe, chara)
 end
 
+function Map.add_chara_clb_tohoku(chara)
+
+	ar.add_unq(Map.chara_clb.tohoku, chara)
+end
+
 -- obj
 
 Map._obj = {}

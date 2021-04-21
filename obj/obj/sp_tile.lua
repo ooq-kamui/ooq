@@ -21,7 +21,11 @@ function Sp.pos_w(_s)
 	return t_pos
 end
 
-function Sp.pos__add(_s, p_vec)
+function Sp.pos__add(_s, p_vec) -- old
+	_s:pos__pls(p_vec)
+end
+
+function Sp.pos__pls(_s, p_vec)
 	
 	if _s:is_pause() then return end
 	

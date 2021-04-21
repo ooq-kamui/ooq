@@ -31,12 +31,6 @@ function Sp.dir_h__(_s, dir_h)
 	_s:flip_h__dir()
 end
 
-function Sp.dir_h__rnd(_s)
-	
-	local dir_h = rnd.ar(u.dir_h)
-	_s:dir_h__(dir_h)
-end
-
 function Sp.flip_h__dir(_s)
 	
 	local val = _.f
@@ -55,18 +49,6 @@ end
 function Sp.dir_v__(_s, dir_v)
 	
 	_s._dir_v = dir_v
-end
-
-function Sp.dir_v__rnd(_s)
-	
-	local dir_v = ""
-	if rnd.by_f(2/3) then
-		dir_v = rnd.ar(u.dir_v)
-		if rnd.by_f(1/2) then -- / 2
-			dir_v = dir_v .. "/2"
-		end
-	end
-	_s:dir_v__(dir_v)
 end
 
 function Sp.upd_pos_static(_s, dt)
@@ -146,19 +128,19 @@ end
 function Sp.vec_grv__(_s, dt)
 	-- log._("sp vec_grv__ speed", _s._accl._speed)
 
-	if     _s:is_on_obj_block()    then
+	if     _s:is_on_obj_block()   then
 		_s:vec_grv__clr()
 
-	elseif _s._is_fly              then -- only flyable
+	elseif _s._is_flying          then -- only flyable
 		_s:vec_grv__clr()
 	
-	elseif _s._hldd_id              then -- only holdable
+	elseif _s._hldd_id            then -- only holdable
 		_s:vec_grv__clr()
 	
-	elseif _s._kitchen_id          then -- only food
+	elseif _s._kitchen_id         then -- only food
 		_s:vec_grv__clr()
 	
-	elseif _s._bear_tree_id        then -- only fruit
+	elseif _s._bear_tree_id       then -- only fruit
 		_s:vec_grv__clr()
 		
 	elseif _s:is_tile_grounding() then

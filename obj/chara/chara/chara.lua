@@ -3,7 +3,7 @@ log.scrpt("chara.lua")
 Chara = {
 	
 	act_intrvl_time = 8,
-	speed = 2, -- 50,
+	speed           = 2, -- 50,
 	
 	chara = {
 		"sanae",
@@ -33,31 +33,23 @@ function Chara.cre(p_pos, p_name)
 	p_name = p_name or Chara.new_name()
 	
 	local prm = {}
-	prm.clsHa  = ha._(Chara.cls)
-	prm.nameHa = ha._(p_name)
+	prm._clsHa  = ha._(Chara.cls)
+	prm._nameHa = ha._(p_name)
 
-	prm.is_fly = Chara.is_flyabl(p_name) -- to init
+	prm._is_flyabl = ar.in_(p_name, Chara.flyabl) -- to init
 	
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
 	
-	prm.game_id   = game_id
-	prm.map_id    = map_id
-	prm.parent_id = map_id
-	-- prm.z = Chara.z
+	prm._game_id   = game_id
+	prm._map_id    = map_id
+	prm._parent_id = map_id
 
-	-- log.pp("Chara cre prm", prm)
-	ar.key___(prm)
+	-- ar.key___(prm)
 	local t_id = fac.cre("/obj-fac/"..Chara.fac, p_pos, nil, prm)
 	
 	Map.add_chara(p_name)
 	return t_id
-end
-
-function Chara.is_flyabl(chara)
-
-	local ret = ar.in_(chara, Chara.flyabl)
-	return ret
 end
 
 function Chara.new_name()
@@ -69,15 +61,17 @@ end
 
 -- script method
 
-function Chara.init(_s, dt)
+function Chara.init(_s)
+	
+	_s._name   = ha.de(_s._nameHa)
+	_s._animHa = _s._name.."-walk"
+
+	-- _s:anim__("walk")
 	
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
 	extend._(   _s, Chara)
 
-	_s._name = ha.de(_s._nameHa)
-	_s:anim__("walk")
-	
 	_s:say()
 	_s:act_intrvl_time__()
 end

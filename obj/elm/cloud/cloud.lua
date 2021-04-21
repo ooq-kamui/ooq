@@ -2,7 +2,7 @@ log.scrpt("cloud.lua")
 
 Cloud = {
 	act_intrvl_time = 10,
-	name_idx_max = 1,
+	name_idx_max    = 1,
 	speed = 2, -- 50,
 }
 Cloud.pos_init = n.vec(300, 300)
@@ -26,8 +26,7 @@ function Cloud.init(_s)
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
 	extend.init(_s, Hldabl)
-
-	extend._(_s,    Cloud)
+	extend._(   _s, Cloud)
 end
 
 -- script method
@@ -36,9 +35,9 @@ function Cloud.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	_s:vec_mv__(dt)
-
-	_s:pos__add(_s._vec_mv)
+	_s:upd_pos_movabl(dt)
+	-- _s:vec_mv__(dt)
+	-- _s:pos__pls(_s._vec_mv)
 
 	_s:upd_final()
 end
@@ -50,23 +49,27 @@ function Cloud.act_intrvl(_s, dt)
 	
 	dice100.throw()
 	if     not Map.chara_is_appear_all()
-	and    dice100.chk(30) then
+	and    dice100.chk(20) then
 		Chara.cre()
 
 	elseif not Map.chara_clb_fe_is_appear_all()
-	and    dice100.chk(30) then
+	and    dice100.chk(20) then
 		Chara_clb_fe.cre()
+
+	elseif not Map.chara_clb_tohoku_is_appear_all()
+	and    dice100.chk(20) then
+		Chara_clb_tohoku.cre()
 
 	elseif dice100.chk(4) then
 		Anml.cre()
 
-	elseif dice100.chk(1) then
-		Veget.cre()
-
-	elseif dice100.chk(1) then
+	elseif dice100.chk(3) then
 		Seed.cre()
 
-	elseif dice100.chk(1) then
+	elseif dice100.chk(2) then
+		Veget.cre()
+
+	elseif dice100.chk(2) then
 		Fish.cre()
 	end
 

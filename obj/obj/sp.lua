@@ -19,12 +19,12 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	local t_url = "/obj-fac/"..Cls.fac
 
 	-- name, anim
-	prm.clsHa  = ha._(Cls.cls)
-	if ha.is_emp(prm.nameHa) then
-		prm.nameHa = ha._(Cls.cls..rnd.int_pad(Cls.name_idx_max))
+	prm._clsHa  = ha._(Cls.cls)
+	if ha.is_emp(prm._nameHa) then
+		prm._nameHa = ha._(Cls.cls..rnd.int_pad(Cls.name_idx_max))
 	end
-	if ha.is_emp(prm.animHa) then
-		prm.animHa = prm.nameHa
+	if ha.is_emp(prm._animHa) then
+		prm._animHa = prm._nameHa
 	end
 
 	-- game_id, map_id
@@ -32,12 +32,12 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	-- log._("sp cre game_id", game_id, "map_id", map_id)
 	if ha.is_emp(map_id) then log._("Sp.cre map_id is_emp") return end
 	
-	prm.game_id   = game_id
-	prm.map_id    = map_id
-	prm.parent_id = map_id
+	prm._game_id   = game_id
+	prm._map_id    = map_id
+	prm._parent_id = map_id
 
 	-- z
-	prm.z   = Cls.z or 0.2
+	prm._z  = Cls.z or 0.2
 	p_pos.z = Cls.z or 0.2
 	
 	-- scl
@@ -46,7 +46,7 @@ function Sp.cre(Cls, p_pos, prm, scl)
 	
 	-- log._("scl", scl, Cls.cls)
 	-- log._("sp cre t_url", t_url)
-	ar.key___(prm)
+	-- ar.key___(prm)
 	ar.val_str_2_ha(prm)
 	local t_id = fac.cre(t_url, p_pos, nil, prm, scl)
 
@@ -71,8 +71,10 @@ function Sp.init(_s)
 
 	_s:map_obj__add()
 
-	if not ar.inHa(_s._clsHa, {"plychara", "chara"}) then
-
+	-- if ar.inHa(_s._clsHa, {"plychara", "chara"}) then
+	if ar.inHa(_s._clsHa, {"plychara", }) then
+		-- excld
+	else
 		local animHa = _s._animHa or _s._nameHa
 		_s:anim__(animHa)
 	end
@@ -217,8 +219,16 @@ function Sp.cloud_pos(_s)
 	return t_pos
 end
 
+function Sp.clsHa(_s)
+	return _s._clsHa
+end
+
 function Sp.cls(_s)
 	return _s._clsHa
+end
+
+function Sp.nameHa(_s)
+	return _s._nameHa
 end
 
 function Sp.name(_s)

@@ -30,21 +30,21 @@ function Anml.cre(p_pos, prm)
 
 	prm = prm or {}
 	
-	prm.clsHa  = ha._(Anml.cls)
-	if not prm.nameHa then
-		prm.nameHa = ha._(rnd.ar(Anml.anml))
+	prm._clsHa  = ha._(Anml.cls)
+	if not prm._nameHa then
+		prm._nameHa = ha._(rnd.ar(Anml.anml))
 	end
-	prm.animHa = ha._("walk")
+	prm._animHa = ha._("walk")
 
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
 	
-	prm.game_id   = game_id
-	prm.map_id    = map_id
-	prm.parent_id = map_id
+	prm._game_id   = game_id
+	prm._map_id    = map_id
+	prm._parent_id = map_id
 	
-	local t_url = url._(Anml.fac, prm.nameHa)
-	ar.key___(prm)
+	local t_url = url._(Anml.fac, prm._nameHa)
+	-- ar.key___(prm)
 	-- log.pp("anml cre" .. t_url, prm)
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	-- local t_id = factory.create(t_url, p_pos, nil, prm)

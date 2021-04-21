@@ -2,10 +2,10 @@ log.scrpt("fluff.lua")
 
 Fluff = {
 	act_intrvl_time = 14,
-	name_idx_max = 1,
+	name_idx_max    = 1,
 
 	foot_dst_i = 20,
-	speed = 2, -- 50,
+	speed      = 2, -- 50,
 }
 Fluff.cls = "fluff"
 Fluff.fac = Obj.fac..Fluff.cls
@@ -26,7 +26,7 @@ function Fluff.init(_s)
 	extend.init(_s, Sp)
 	extend.init(_s, Livingmove)
 	extend.init(_s, Hldabl)
-	extend._(_s, Fluff)
+	extend._(   _s, Fluff)
 end
 
 -- script method
@@ -35,10 +35,9 @@ function Fluff.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	-- local vec = _s:vec_mv_living(dt)
-	_s:vec_mv__(dt)
-
-	_s:pos__add(_s._vec_mv)
+	_s:upd_pos_movabl(dt)
+	-- _s:vec_mv__(dt)
+	-- _s:pos__add(_s._vec_mv)
 
 	_s:upd_final()
 end

@@ -1,6 +1,7 @@
 log.scrpt("serifu.lua")
 
 Serifu = {
+
 	_ = {
 		{len =  3, txt = "ここに"},
 		{len =  2, txt = "ここ"},
@@ -39,12 +40,15 @@ Serifu = {
 		
 		{len =  6, txt = "ひとりぼっち"},
 		{len =  4, txt = "ようやく"},
-		{len =  5, txt = "しましょう"},
 		{len =  3, txt = "へんだ"},
+		{len =  2, txt = "へん"},
 		{len =  5, txt = "たいへんだ"},
 		{len =  2, txt = "ある"},
 		{len =  4, txt = "いつから"},
 		{len =  4, txt = "おもいで"},
+
+		{len =  5, txt = "しましょう"},
+		{len =  4, txt = "おすきに"},
 
 		{len =  7, txt = "どうでもいいわ"},
 		{len =  3, txt = "かえる"},
@@ -187,6 +191,7 @@ Serifu = {
 
 		-- like
 		{len =  4, txt = "なかよし"},
+		{len =  4, txt = "だきしめ"},
 
 		-- love
 		{len = 11, txt = "ずーっと いっしょだよ"},

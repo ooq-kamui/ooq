@@ -13,7 +13,7 @@ Cls.add(Phantom)
 function Phantom.cre(p_pos, prm)
 	local Cls = Phantom
 	prm = prm or {}
-	prm.animHa = prm.animHa or ha._("stand")
+	prm._animHa = prm._animHa or ha._("stand")
 	local t_id = Sp.cre(Cls, p_pos, prm)
 	return t_id
 end

@@ -49,9 +49,10 @@ function Plychara.cre(p_pos, dir)
 	dir   = dir   or Plychara.dir_h_dflt
 	
 	local name = "sanae"
-	local prm = {
-		nameHa = ha._(name),
-	}
+
+	local prm = {}
+	prm._nameHa = ha._(name)
+
 	local t_id = Sp.cre(Plychara, p_pos, prm)
 	-- log._("plychara cre id", t_id)
 

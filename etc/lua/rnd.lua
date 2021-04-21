@@ -25,18 +25,18 @@ function rnd.int_pad(p_max)
 	return int.pad(rnd.int(1, p_max))
 end
 
-function rnd.by_p(i)
+function rnd.by_p(per) -- %
+
 	local ret = _.f
 	local t_rnd = math.random(1, 100)
-	if t_rnd <= i then
-		ret = _.t
-	end
+	if t_rnd <= per then ret = _.t end
 	return ret
 end
 
 function rnd.by_f(f) -- f: 0 - 1
+
 	local i = math.floor(f * 100)
-	ret = rnd.by_p(i)
+	local ret = rnd.by_p(i)
 	return ret
 end
 

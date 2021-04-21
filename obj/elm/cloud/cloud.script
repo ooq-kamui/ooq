@@ -10,7 +10,8 @@ go.property("_map_id", hash(""))
 go.property("_parent_id", hash(""))
 go.property("_z", 0.2)
 --]]
-go.property("_is_fly", true)
+-- go.property("_is_fly", true)
+go.property("_is_flyabl", true)
 
 function init(_s)
 	Cloud.init(_s)

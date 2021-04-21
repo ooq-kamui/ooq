@@ -372,6 +372,23 @@ function Map.not_appear_chara_clb_fe()
 	return not_appear
 end
 
+function Map.chara_clb_tohoku_is_appear_all()
+
+	local ret = _.f
+
+	if #Map.chara_clb.tohoku >= #Chara_clb_tohoku.chara then
+		ret = _.t
+	end
+	log._("chara_clb_tohoku_is_appear_all", ret, #Map.chara_clb.tohoku, #Chara_clb_tohoku.chara)
+	return ret
+end
+
+function Map.not_appear_chara_clb_tohoku()
+
+	local not_appear = ar.exclude_cp(Chara_clb_tohoku.chara, Map.chara_clb.tohoku)
+	return not_appear
+end
+
 --
 
 function Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)

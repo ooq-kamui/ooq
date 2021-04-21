@@ -30,31 +30,22 @@ function Chara_clb_fe.cre(p_pos, p_name)
 	p_name = p_name or Chara_clb_fe.new_name()
 	
 	local prm = {}
-	prm.clsHa  = ha._(Chara_clb_fe.cls)
-	prm.nameHa = ha._(p_name)
+	prm._clsHa  = ha._(Chara_clb_fe.cls)
+	prm._nameHa = ha._(p_name)
 
-	prm.is_fly = Chara_clb_fe.is_flyabl(p_name) -- to init
+	prm._is_flyabl = ar.in_(p_name, Chara_clb_fe.flyabl)
 	
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then return end
 	
-	prm.game_id   = game_id
-	prm.map_id    = map_id
-	prm.parent_id = map_id
-	-- prm.z = Chara_clb_fe.z
+	prm._game_id   = game_id
+	prm._map_id    = map_id
+	prm._parent_id = map_id
 
-	-- log.pp("Chara_clb_fe cre prm", prm)
-	ar.key___(prm)
 	local t_id = fac.cre("/obj-fac/"..Chara_clb_fe.fac, p_pos, nil, prm)
 	
 	Map.add_chara_clb_fe(p_name)
 	return t_id
-end
-
-function Chara_clb_fe.is_flyabl(chara)
-
-	local ret = ar.in_(chara, Chara_clb_fe.flyabl)
-	return ret
 end
 
 function Chara_clb_fe.new_name(clb_grp)
@@ -66,8 +57,8 @@ end
 
 -- script method
 
-function Chara_clb_fe.init(_s, dt)
-	
+function Chara_clb_fe.init(_s)
+
 	extend.init(_s, Chara_clb)
 	extend._(   _s, Chara_clb_fe)
 end

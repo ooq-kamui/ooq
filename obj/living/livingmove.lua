@@ -7,11 +7,14 @@ Livingmove = {}
 function Livingmove.init(_s)
 	
 	_s:dir_h__rnd() -- init
+
 	_s._dir_v = ""
-	_s._is_moving = _.f
+	_s._is_flying = _.f
+	_s._is_moving = _.t -- _.f
+
 	_s._speed  = _s:Cls().speed
 
-	_s._status = "live" -- use not ?
+	-- _s._status = "live" -- use not ?
 end
 
 --- method
@@ -30,10 +33,12 @@ function Livingmove.upd_pos_movabl(_s, dt)
 end
 
 function Livingmove.is_moving(_s)
+
 	return _s._is_moving
 end
 
 function Livingmove.is_moving__(_s, val)
+
 	_s._is_moving = val
 end
 
@@ -43,6 +48,7 @@ function Livingmove.moving__rnd(_s)
 end
 
 function Livingmove.speed__(_s, p_speed)
+
 	_s._speed = p_speed
 end
 
@@ -56,16 +62,68 @@ end
 function Livingmove.moving_prp__rnd(_s)
 
 	_s:dir_h__rnd()
+
+	if _s:is_flyabl() then _s:is_flying__rnd() end
 	_s:dir_v__rnd()
+
 	_s:moving__rnd()
 	_s:speed__rnd()
 end
 
+function Livingmove.is_flyabl(_s)
+
+	return _s._is_flyabl
+end
+
+function Livingmove.is_flying(_s)
+
+	return _s._is_flying
+end
+
+function Livingmove.is_flying__(_s, val)
+
+	_s._is_flying = val
+
+	if not val then _s:dir_v__("") end
+end
+
+function Livingmove.dir_h__rnd(_s)
+	
+	local dir_h = rnd.ar(u.dir_h)
+	_s:dir_h__(dir_h)
+end
+
+function Livingmove.is_flying__rnd(_s)
+
+	if not _s:is_flyabl() then return end
+	
+	local rate = 4 / 5
+	local val = rnd.by_f(rate)
+	_s:is_flying__(val)
+
+	log._("Livingmove is_flying__rnd _is_flying", _s._is_flying, _s:clsHa(), _s:nameHa())
+end
+
+function Livingmove.dir_v__rnd(_s)
+	
+	if not _s:is_flyabl() or not _s:is_flying() then return end
+
+	local dir_v = ""
+	if rnd.by_f(2/3) then
+		dir_v = rnd.ar(u.dir_v)
+		if rnd.by_f(1/2) then -- / 2
+			dir_v = dir_v .. "/2"
+		end
+	end
+	log._("Livingmove dir_v__rnd", dir_v, _s:clsHa(), _s:nameHa())
+	_s:dir_v__(dir_v)
+end
+
 function Livingmove.vec_mv__(_s, dt)
 
-	if not u.eq(_s._status, "live") then _s:vec_mv__clr() return end
+	-- if not u.eq(_s._status, "live") then _s:vec_mv__clr() return end
 
-	if     _s._hldd_id    then _s:vec_mv__clr() return end
+	if     _s._hldd_id   then _s:vec_mv__clr() return end
 
 	if not _s._is_moving then _s:vec_mv__clr() return end
 
@@ -95,23 +153,33 @@ end
 
 function Livingmove.vec_mv_y__(_s)
 
-	if not _s._is_fly then return end
+	-- log._("Livingmove vec_mv_y__ start", _s._vec_mv.y, _s:clsHa(), _s:nameHa())
+
+	if not _s:is_flying() then return end
 
 	if     _s._dir_v == "u"   then
-		_s._vec_mv.y = _s._speed
 
+		if _s:head_o_is_block() then _s._vec_mv.y =   0
+		else                         _s._vec_mv.y =   _s._speed
+		end
 	elseif _s._dir_v == "u/2" then
-		_s._vec_mv.y = _s._speed / 2
 
+		if _s:head_o_is_block() then _s._vec_mv.y =   0
+		else                         _s._vec_mv.y =   _s._speed / 2
+		end
 	elseif _s._dir_v == "d"   then
-		_s._vec_mv.y = _s._speed
 
+		if _s:foot_o_is_block() then _s._vec_mv.y =   0
+		else                         _s._vec_mv.y = - _s._speed
+		end
 	elseif _s._dir_v == "d/2" then
-		_s._vec_mv.y = _s._speed / 2
-	end
-	
-	if _s:head_o_is_block() or _s:foot_o_is_block() then
+
+		if _s:foot_o_is_block() then _s._vec_mv.y =   0
+		else                         _s._vec_mv.y = - _s._speed / 2
+		end
+	elseif _s._dir_v == "" then
 		_s._vec_mv.y = 0
 	end
+	-- log._("Livingmove vec_mv_y__ end", _s._vec_mv.y, _s:clsHa(), _s:nameHa())
 end
 

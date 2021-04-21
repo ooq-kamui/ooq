@@ -34,9 +34,9 @@ function Cmr.cre(p_pos)
 	-- local t_url = url._(Cmr.fac, name)
 	local t_url = "/sys#fac_cmr"
 	if not prm then prm = {} end
-	prm.cls  = ha._(Cmr.cls)
-	prm.name = ha._(name)
-	ar.key___(prm)
+	prm._clsHa  = ha._(Cmr.cls)
+	prm._nameHa = ha._(name)
+	-- ar.key___(prm)
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	return t_id
 end
