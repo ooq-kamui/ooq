@@ -101,21 +101,24 @@ function Livingmove.is_flying__rnd(_s)
 	local val = rnd.by_f(rate)
 	_s:is_flying__(val)
 
-	log._("Livingmove is_flying__rnd _is_flying", _s._is_flying, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove is_flying__rnd _is_flying", _s._is_flying, _s:clsHa(), _s:nameHa())
 end
 
 function Livingmove.dir_v__rnd(_s)
 	
 	if not _s:is_flyabl() or not _s:is_flying() then return end
 
-	local dir_v = ""
+	local dir_v
+
 	if rnd.by_f(2/3) then
+
 		dir_v = rnd.ar(u.dir_v)
-		if rnd.by_f(1/2) then -- / 2
-			dir_v = dir_v .. "/2"
-		end
+
+		if rnd.by_f(1/2) then dir_v = dir_v .. "/2" end
+	else
+		dir_v = ""
 	end
-	log._("Livingmove dir_v__rnd", dir_v, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove dir_v__rnd", dir_v, _s:clsHa(), _s:nameHa())
 	_s:dir_v__(dir_v)
 end
 

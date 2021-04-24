@@ -34,6 +34,9 @@ function Sp.on_msg(_s, msg_id, prm, sndr)
 	elseif ha.eq(msg_id, "to_cloud"    ) then
 		_s:to_cloud()
 
+	elseif ha.eq(msg_id, "leapup"      ) then
+		_s:leapup(prm.leapup_lv)
+
 	elseif ha.eq(msg_id, "mv__pos"     ) then
 		_s:mv__pos(prm.pos)
 
@@ -56,23 +59,24 @@ function Sp.hld__x_thrwd(_s, p_dir_h)
 end
 
 function Sp.to_cloud(_s)
+
 	local t_pos = _s:cloud_pos()
 	_s:pos__(t_pos)
 end
 
---[[
-function Sp.say(_s, str)
-	
-	local idx, len
-	if not str then
-		idx = rnd.int(1, #Serifu._)
-		-- log._("say", idx)
-		str = Serifu._[idx].txt
-		len = Serifu._[idx].len
-	end
-	
-	local t_id = Fuki.cre(nil, {parent_id = _s._id})
-	pst.scrpt(t_id, "s", {str = str, len = len})
+function Sp.leapup(_s , p_leapup_lv)
+
+	if not _s:is_leapupabl() then return end
+
+	local dst_y = Plychara.jmp_h_max * p_leapup_lv
+	dst_y = dst_y + Plychara.jmp_h_mrgn
+
+	local speed_y = accl.speed_by_dst(dst_y)
+	-- log._("jmp", dst_y, speed_y)
+
+	_s._accl:speed_y__(speed_y)
+	-- _s._is_jmp_start = _.t
+
+	-- Se.pst_ply("jmp001")
 end
---]]
 

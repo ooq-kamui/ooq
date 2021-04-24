@@ -1,4 +1,4 @@
 tile_set: "/assets/obj/elm/warp/mgcpot/mgcpot.atlas"
-default_animation: "stand"
+default_animation: "mgcpot001-stand"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

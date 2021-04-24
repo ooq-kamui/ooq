@@ -11,6 +11,8 @@ go.property("_parent_id", hash(""))
 go.property("_z", 0.2)
 --]]
 
+go.property("_accl_speed", vmath.vector3(0, 0, 0))
+
 function init(_s)
 	Chara_clb_tohoku.init(_s)
 end

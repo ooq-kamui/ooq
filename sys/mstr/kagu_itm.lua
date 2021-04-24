@@ -44,8 +44,14 @@ Mstr.kagu_itm["doorwrp"] = {
 	},
 }
 
-Mstr.kagu_itm["warp"] = {
-	warp001 = {
+Mstr.kagu_itm["trmpln"] = {
+	trmpln001 = {
+		price = 12000,
+	},
+}
+
+Mstr.kagu_itm["mgcpot"] = {
+	mgcpot001 = {
 		price = 15000,
 	},
 }

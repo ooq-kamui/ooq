@@ -361,8 +361,8 @@ function Map.chara_clb_fe_is_appear_all()
 
 	if #Map.chara_clb.fe >= #Chara_clb_fe.chara then
 		ret = _.t
+		log._("chara_clb_fe_is_appear_all", ret, #Map.chara_clb.fe, #Chara_clb_fe.chara)
 	end
-	log._("chara_clb_fe_is_appear_all", ret, #Map.chara_clb.fe, #Chara_clb_fe.chara)
 	return ret
 end
 
@@ -378,8 +378,8 @@ function Map.chara_clb_tohoku_is_appear_all()
 
 	if #Map.chara_clb.tohoku >= #Chara_clb_tohoku.chara then
 		ret = _.t
+		log._("chara_clb_tohoku_is_appear_all", ret, #Map.chara_clb.tohoku, #Chara_clb_tohoku.chara)
 	end
-	log._("chara_clb_tohoku_is_appear_all", ret, #Map.chara_clb.tohoku, #Chara_clb_tohoku.chara)
 	return ret
 end
 

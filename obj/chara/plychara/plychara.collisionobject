@@ -11,6 +11,7 @@ mask: "anml"
 mask: "block"
 mask: "tree"
 mask: "kagu_itm"
+mask: "trmpln"
 embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX

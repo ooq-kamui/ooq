@@ -6,7 +6,15 @@ Trmpln = {
 
 	weight = 2,
 
-	jmp_lv = 7,
+	jmp_lv    = 7,
+	leapup_lv = 7,
+
+	t_cls = {
+		"plychara",
+		"chara",
+		"chara_clb_fe",
+		"chara_clb_tohoku",
+	},
 }
 Trmpln.cls = "trmpln"
 Trmpln.fac = Obj.fac..Trmpln.cls
@@ -17,7 +25,7 @@ Cls.add(Trmpln)
 function Trmpln.cre(p_pos, prm)
 	local Cls = Trmpln
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._("stand") end
+	if not prm._animHa then prm._animHa = ha._("trmpln001-stand") end
 	local t_id = Sp.cre(Cls, p_pos, prm)
 	return t_id
 end
@@ -52,23 +60,47 @@ function Trmpln.on_msg(_s, msg_id, prm, sndr)
 
 	Sp    .on_msg(_s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	_s:on_msg_clsn(   msg_id, prm, sndr)
 
-	if     ha.eq(msg_id, "leapup_anim") then
+	if     ha.eq(msg_id, "leapup_anim")    then
 		_s:leapup_anim()
 
 	elseif ha.eq(msg_id, "animation_done") then
 
-		if ha.eq(prm.id, "leanup") then
-			_s:anim__("stand")
+		if ha.eq(prm.id, "trmpln001-leapup") then
+			_s:anim__("trmpln001-stand")
+		end
+	end
+end
+
+function Trmpln.on_msg_clsn(_s, msg_id, prm, sndr)
+	
+	-- log._("trmpln on_msg_clsn", msg_id, prm.group)
+
+	if not ha.eq(msg_id, "contact_point_response") then return end
+	
+	if _s._hldd_id then return end
+
+	local o_pos = prm.other_position
+	local o_id  = prm.other_id
+
+	-- log._("trmpln on_msg_clsn", prm.group)
+
+	if ar.inHa(prm.group, Trmpln.t_cls) then
+
+		local accl_speed = id.prp(o_id, "_accl_speed")
+		if accl_speed.y < 0 then
+			pst.scrpt(o_id, "leapup", {leapup_lv = Trmpln.leapup_lv})
+			_s:leapup_anim()
 		end
 	end
 end
 
 function Trmpln.leapup_anim(_s)
-	log._("trmpln leapup_anim")
+	-- log._("trmpln leapup_anim")
 
-	_s:anim__( "leanup")
-	Se.pst_ply("leanup")
+	_s:anim__("trmpln001-leapup")
+	Se.pst_ply("leapup")
 end
 
 function Trmpln.final(_s)

@@ -1,5 +1,5 @@
 animations {
-  id: "stand"
+  id: "trmpln001-stand"
   images {
     image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -10,7 +10,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "leanup"
+  id: "trmpln001-leapup"
   images {
     image: "/assets/obj/itm/kagu/kagu-e/trmpln/img/trmpln002.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF

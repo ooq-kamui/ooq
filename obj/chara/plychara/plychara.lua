@@ -24,8 +24,6 @@ Plychara = {
 		"parasail",
 	},
 
-	-- airride = {"parasail", "parasol"},
-
 	hldabl_cls = { -- clsn group
 		"hld",
 		"kitchen", "reizoko", "hrvst", "flpy", "pc",
@@ -33,6 +31,8 @@ Plychara = {
 		"warp",
 		-- "mgccrcl", "mgcpot",
 	},
+
+	-- airride = {"parasail", "parasol"},
 }
 
 Plychara.pos_game_new = n.vec( 500, 200)
@@ -120,8 +120,9 @@ function Plychara.init(_s)
 	local t_pos = n.vec(0, Map.sq)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
 
-	-- skil
-	_s._is_airride = _.f
+	-- skl
+	_s:skl__dtch_airride()
+	-- _s._is_airride = _.f
 end
 
 function Plychara.upd(_s, dt)
@@ -229,20 +230,9 @@ end
 function Plychara.is_jmpabl(_s)
 
 	local ret = _.f
-
-	local foot_o_tile = _s:foot_o_tile()
-	local foot_i_tile = _s:foot_i_tile()
-	
-	if Tile.is_block(foot_o_tile)
-	or Tile.is_clmb( foot_o_tile)
-	or Tile.is_elv(  foot_o_tile)
-	or _s:is_on_chara()
-	or _s:is_on_obj_block()
-	-- or _s:on_by_mapobj()
-	then
+	if Sp.is_jmpabl(_s) or _s:is_on_chara() then
 		ret = _.t
 	end
-
 	return ret
 end
 
@@ -420,25 +410,28 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	local t_id  = prm.other_id
 		
 	if     ha.eq(prm.group, "chara"   ) then
-		_s:clsn_add("chara", t_id)
+		_s:clsn_add("chara" , t_id)
 
 	elseif ha.eq(prm.group, "hld"     ) then
-		_s:clsn_add("hld"  , t_id)
+		_s:clsn_add("hld"   , t_id)
 
 	elseif ha.eq(prm.group, "anml"    ) then
-		_s:clsn_add("anml" , t_id)
+		_s:clsn_add("anml"  , t_id)
 
 	elseif ha.eq(prm.group, "tree"    ) then
-		_s:clsn_add("tree" , t_id)
+		_s:clsn_add("tree"  , t_id)
 		
 	elseif ha.eq(prm.group, "kagu_itm") then
 		_s:on_msg_clsn_kagu_itm(t_id)
 		
 	elseif ha.eq(prm.group, "warp"    ) then
-		_s:clsn_add("warp" , t_id)
+		_s:clsn_add("warp"  , t_id)
+
+	elseif ha.eq(prm.group, "trmpln"  ) then
+		_s:clsn_add("trmpln", t_id)
 
 	elseif ha.eq(prm.group, "block"   ) then
-		_s:clsn_add("block", t_id)
+		_s:clsn_add("block" , t_id)
 	end
 	return _.t
 end
@@ -455,13 +448,6 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
 	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
 	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn_add("doorwrp", t_id)
-	elseif ha.eq(t_nameHa, "trmpln001" ) then _s:clsn_add("trmpln" , t_id)
-
-		if  _s._accl:speed_y() < 0 and _s._clsn.trmpln[1]
-		and _s:is_jmpabl() then
-			_s:jmp(Trmpln.jmp_lv)
-			pst.scrpt(_s._clsn.trmpln[1], "leapup_anim")
-		end
 	end
 end
 
@@ -840,11 +826,8 @@ function Plychara.hld__o(_s)
 
 	Se.pst_ply("hld")
 
-	-- atch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Airride.cls) then _s._is_airride = _.t end
-
-	-- if ha.eq(t_clsHa, "balloon") then _s._is_balloon = _.t end
+	_s:skl__atch(t_clsHa)
 end
 
 function Plychara.hld__x(_s)
@@ -855,9 +838,8 @@ function Plychara.hld__x(_s)
 
 	pst.scrpt(t_id, "hldd__x")
 
-	-- dtch skil
 	local t_clsHa = id.clsHa(t_id)
-	if ar.inHa(t_clsHa, Airride.cls) then _s._is_airride = _.f end
+	_s:skl__dtch(t_clsHa)
 
 	-- hld__x_thrw
 	if _s._vec_mv.x ~= 0 then
@@ -938,5 +920,36 @@ function Plychara.anim__(_s, p_anim)
 	-- log._("anim__")
 
 	Chara.anim__(_s, p_anim)
+end
+
+-- skl
+-- skl atch
+
+function Plychara.skl__atch(_s, p_clsHa)
+
+	if ar.inHa(p_clsHa, Airride.cls) then
+		_s:skl__atch_airride()
+	end
+
+	-- if ha.eq(t_clsHa, "balloon") then _s._is_balloon = _.t end
+end
+
+function Plychara.skl__atch_airride(_s)
+
+	_s._is_airride = _.t
+end
+
+-- skl dtch
+
+function Plychara.skl__dtch(_s, p_clsHa)
+
+	if ar.inHa(p_clsHa, Airride.cls) then
+		_s:skl__dtch_airride()
+	end
+end
+
+function Plychara.skl__dtch_airride(_s)
+
+	_s._is_airride = _.f
 end
 

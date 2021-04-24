@@ -235,7 +235,10 @@ function Map.obj__new_kagu(_s)
 
 	-- box create
 	local t_pos
-	t_pos = pos_init + n.vec(- Map.sq * 1, 0)
+	t_pos = pos_init + n.vec(- Map.sq * 1, 0) -- > t.vec()
+	Hrvst.cre(t_pos)
+
+	t_pos = pos_init + n.vec(- Map.sq * 5, 0)
 	Hrvst.cre(t_pos)
 
 	-- reizoko create

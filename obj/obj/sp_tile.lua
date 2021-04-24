@@ -512,3 +512,28 @@ function Sp.pos_flg__f(_s)
 	_s._tilepos_d_flg  = _.f
 end
 
+function Sp.is_leapupabl(_s) -- alias
+
+	return _s:is_jmpabl()
+end
+
+function Sp.is_jmpabl(_s)
+
+	local ret = _.f
+
+	local foot_o_tile = _s:foot_o_tile()
+	local foot_i_tile = _s:foot_i_tile()
+	
+	if Tile.is_block(foot_o_tile)
+	or Tile.is_clmb( foot_o_tile)
+	or Tile.is_elv(  foot_o_tile)
+	-- or _s:is_on_chara()
+	-- or _s:is_on_obj_block()
+	-- or _s:on_by_mapobj()
+	then
+		ret = _.t
+	end
+
+	return ret
+end
+

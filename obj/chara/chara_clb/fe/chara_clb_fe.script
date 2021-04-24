@@ -13,6 +13,8 @@ go.property("_z", 0.2)
 -- go.property("_is_fly", false)
 go.property("_is_flyabl", false)
 
+go.property("_accl_speed", vmath.vector3(0, 0, 0))
+
 function init(_s)
 	Chara_clb_fe.init(_s)
 end

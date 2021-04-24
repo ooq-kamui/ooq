@@ -314,8 +314,8 @@ components {
   }
 }
 components {
-  id: "leanup"
-  component: "/assets/sound/se/kisei/leanup.sound"
+  id: "leapup"
+  component: "/assets/sound/se/kisei/leapup.sound"
   position {
     x: 0.0
     y: 0.0

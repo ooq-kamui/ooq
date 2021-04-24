@@ -37,7 +37,7 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
-function id.cls(p_id) -- old
+function id.cls(p_id) -- old > rpl
 	return id.clsHa(p_id)
 end
 
@@ -45,7 +45,7 @@ function id.clsHa(p_id)
 	return id.prp(p_id, "_clsHa")
 end
 
-function id.name(p_id) -- old
+function id.name(p_id) -- old > rpl
 	return id.nameHa(p_id)
 end
 

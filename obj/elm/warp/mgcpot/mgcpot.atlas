@@ -1,5 +1,5 @@
 animations {
-  id: "stand"
+  id: "mgcpot001-stand"
   images {
     image: "/assets/obj/elm/warp/mgcpot/img/mgcpot.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF

@@ -21,16 +21,17 @@ function Block.cre(p_pos, p_tile)
 	-- log._("block.cre p_tile", p_tile)
 	
 	p_tile = p_tile or rnd.ar(Tile.magic_block)
+	log._("block.cre p_tile", p_tile)
 
 	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(p_tile)
 	if is_tile_bndl then p_tile = base_tile end
 	
-	-- log._("block.cre p_tile", p_tile)
+	log._("block.cre p_tile", p_tile)
 	
 	local Cls = Block
 	prm = {}
-	prm.name = ha._(Block.cls..int.pad(p_tile))
-	prm.tile = p_tile
+	prm._nameHa = ha._(Block.cls..int.pad(p_tile))
+	prm._tile   = p_tile
 	local t_id = Sp.cre(Cls, p_pos, prm)
 	return t_id
 end

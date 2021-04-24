@@ -6,6 +6,8 @@ restitution: 0.5
 group: "chara"
 mask: "plychara"
 mask: "warp"
+mask: "kagu_itm"
+mask: "trmpln"
 embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX

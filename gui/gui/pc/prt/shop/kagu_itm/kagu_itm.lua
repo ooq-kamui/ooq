@@ -19,9 +19,9 @@ function p.Shop_kagu_itm.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Shop_kagu_itm)
+	extend._(   _s, p.Shop_kagu_itm)
 	
-	_s._itm_pitch = 75
+	_s._itm_pitch   = 75
 	_s._dsp_idx_max = 5
 
 	local kagu_itm = ar.key(Mstr.kagu_itm)
@@ -29,15 +29,22 @@ function p.Shop_kagu_itm.init(_s, parent_gui)
 	
 	_s:nd__("ply_data_gold")
 	
-	local node, name, price
+	local node, name, anim, price
 	for idx, cls in pairs(_s._itm) do
 		
 		name = cls.."001"
+
+		if ar.in_(cls, {"mgcpot", "mgccrcl", "trmpln"}) then
+			anim = name.."-stand"
+		else
+			anim = name
+		end
+
 		node = _s:itm_clone()
-		nd.txtr__(node[_s:lb("icn")], cls)
-		nd.anm__(node[_s:lb("icn")], name)
+		nd.txtr__(node[_s:lb("icn")  ], cls)
+		nd.anm__( node[_s:lb("icn")  ], anim)
 		-- price
-		nd.txt__(node[_s:lb("price")], _s:price(cls, name))
+		nd.txt__( node[_s:lb("price")], _s:price(cls, name))
 	end
 end
 
@@ -83,6 +90,7 @@ end
 
 function p.Shop_kagu_itm.price(_s, cls, name)
 	
+	-- log._("p.Shop_kagu_itm.price", cls, name)
 	local price = Mstr.kagu_itm[cls][name].price
 	price = price / 100 -- < test
 	return price

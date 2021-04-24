@@ -3,10 +3,9 @@ log.scrpt("tst.lua")
 Tst = {}
 Tst.obj = {}
 
--- function Obj.tst.tst()
 function Tst.obj.tst()
 	local Cls = {
-		Chara,
+		-- Chara,
 		Anml, Anml, Anml,
 		Seed, Seed, Seed, Seed, Seed, Seed,
 		Kagu, Kagu, Kagu,
@@ -17,14 +16,16 @@ function Tst.obj.tst()
 		Flower, Flower,
 		Dish, Dish,
 		Shtngstr, Shtngstr,
-		Balloon, Balloon,
-		Trmpln,
+		Broom,
+		Trmpln, Trmpln, Trmpln,
 		Parasail,
 		Parasol,
-		Broom,
 		Doorwrp, Doorwrp,
 		Mgccrcl,
 		Mgcpot,
+		Balloon, Balloon,
+		--[[
+		--]]
 		Block,
 	}
 	Tst.obj._(Cls)
@@ -54,10 +55,6 @@ end
 function Tst.obj.tree()
 	local Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
-		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
-		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
-		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
-		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 	}

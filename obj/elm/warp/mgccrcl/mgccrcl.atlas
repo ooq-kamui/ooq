@@ -1,5 +1,5 @@
 animations {
-  id: "stand"
+  id: "mgccrcl001-stand"
   images {
     image: "/assets/obj/elm/warp/mgccrcl/img/mgccrcl001.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF

@@ -216,28 +216,32 @@ Serifu = {
 		{len =  6, txt = "もう おわり"},
 
 		-- fight
-		{len =  7, txt = "あたし やるわ"},
 		{len =  5, txt = "まけないよ"},
 		{len =  2, txt = "やる"},
 		{len =  3, txt = "やるわ"},
+		{len =  6, txt = "あたし やる"},
 		{len =  6, txt = "やりましょう"},
-		{len =  2, txt = "いざ"},
 		{len =  6, txt = "やっちゃうよ"},
-		{len =  4, txt = "おしおき"},
 		{len =  5, txt = "しちゃうよ"},
+		{len =  2, txt = "いざ"},
+		{len =  3, txt = "かくご"},
+		{len =  5, txt = "かくごしろ"},
+		{len =  4, txt = "おしおき"},
 		-- fight win
 		{len =  3, txt = "かった"},
-		{len =  6, txt = "どっこいしょ"},
-		{len =  8, txt = "わたしが まもる"},
-		{len =  4, txt = "たすける"},
-		{len =  3, txt = "つるぎ"},
-		{len =  5, txt = "かくごしろ"},
 		{len =  4, txt = "わざあり"},
+		{len =  6, txt = "どっこいしょ"},
+		{len =  4, txt = "たすける"},
+		{len =  3, txt = "まもる"},
+		{len =  8, txt = "わたしが まもる"},
+		{len =  3, txt = "つるぎ"},
 		-- fight lose
 		{len =  4, txt = "たすけて"},
 		{len =  5, txt = "たすかった"},
 		{len =  8, txt = "すきなようにして"},
 		{len =  5, txt = "これまでか"},
+		{len =  4, txt = "これまで"},
+		{len =  3, txt = "まけた"},
 		{len =  2, txt = "まけ"},
 
 		-- yes
@@ -256,6 +260,13 @@ Serifu = {
 		{len =  3, txt = "やんだ"},
 		{len =  3, txt = "あつい"},
 		{len =  3, txt = "さむい"},
+
+		{len =  4, txt = "うるおう"},
+		{len =  4, txt = "うるおい"},
+
+		{len =  4, txt = "やまない"},
+		{len =  3, txt = "やまい"},
+		{len =  4, txt = "しかるに"},
 
 		-- color
 		{len =  4, txt = "とうめい"},

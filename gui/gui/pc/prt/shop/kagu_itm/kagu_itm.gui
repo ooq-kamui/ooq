@@ -32,7 +32,7 @@ textures {
   texture: "/assets/obj/itm/kagu/kagu-s/hrvst/hrvst.atlas"
 }
 textures {
-  name: "warp"
+  name: "mgccrcl"
   texture: "/assets/obj/elm/warp/mgccrcl/mgccrcl.atlas"
 }
 textures {
@@ -46,6 +46,14 @@ textures {
 textures {
   name: "base"
   texture: "/assets/gui/txtr/atlas/base/base.atlas"
+}
+textures {
+  name: "mgcpot"
+  texture: "/assets/obj/elm/warp/mgcpot/mgcpot.atlas"
+}
+textures {
+  name: "trmpln"
+  texture: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.atlas"
 }
 background_color {
   x: 0.0
