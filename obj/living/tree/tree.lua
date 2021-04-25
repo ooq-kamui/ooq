@@ -48,6 +48,8 @@ function Tree.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
+	log._("Tree.act_intrvl", _s._bear_clsHa, _s._bear_nameHa)
+
 	dice100.throw()
 	if     dice100.chk(1) then
 		_s:trnsf(Wood)
@@ -89,8 +91,9 @@ function Tree.bear(_s)
 	
 	if ha.is_emp(_s._bear_clsHa) then
 		_s._bear_clsHa  = ha._("fruit")
-		_s._bear_nameHa = ha._("") -- nil
+		_s._bear_nameHa = ha._("fruit007") -- nil
 	end
+
 	local bear_Cls = Cls._(_s._bear_clsHa)
 	
 	if ha.is_emp(_s._bear_nameHa) then
@@ -99,7 +102,7 @@ function Tree.bear(_s)
 	
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
-	local t_id = bear_Cls.cre(t_pos, {name = _s._bear_nameHa}, 0.2)
+	local t_id = bear_Cls.cre(t_pos, {_nameHa = _s._bear_nameHa}, 0.2)
 	pst.scrpt(t_id, "bear_o", {tree_id = _s._id})
 	ar.add(_s._bear, t_id)
 end

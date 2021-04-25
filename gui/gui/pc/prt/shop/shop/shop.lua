@@ -1,6 +1,9 @@
 log.scrpt("p.shop.lua")
 
-p.Shop = {}
+p.Shop = {
+
+	buy_time = 1,
+}
 
 -- static
 

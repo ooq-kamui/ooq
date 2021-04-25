@@ -470,10 +470,10 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		
 		_s._is_moving_h = _.t
 		
-		log._("plychara on_msg_mv", prm.facing)
+		-- log._("plychara on_msg_mv", prm.facing)
 		-- turn
 		if not ha.eq(_s._dir_h_Ha, prm.dir) and not prm.facing then
-			log._("plychara on_msg_mv", prm.facing)
+			-- log._("plychara on_msg_mv", prm.facing)
 
 			_s:dir_h__(prm.dir)
 

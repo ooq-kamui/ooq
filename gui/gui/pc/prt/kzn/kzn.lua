@@ -55,7 +55,7 @@ end
 
 function p.Kzn.itm_icn__(_s)
 	
-	local charaHa, node
+	local charaHa, node, anim
 	-- log.pp("n.item", _s._nd.itm)
 	for idx, chara in pairs(_s._itm) do
 		charaHa = ha._(chara)
@@ -63,7 +63,11 @@ function p.Kzn.itm_icn__(_s)
 		if Ply_data._kzn[charaHa] then
 			nd.txtr__(node[_s:lb("img")], "chara")
 			-- gui.play_flipbook(node[_s:lb("img")], charaHa)
-			nd.anm__(node[_s:lb("img")], charaHa)
+
+			anim  = chara .. "-stand"
+			nd.anm__(node[_s:lb("img")], anim)
+			-- nd.anm__(node[_s:lb("img")], charaHa)
+
 		else
 			nd.txtr__(node[_s:lb("img")], "noimg")
 			-- gui.play_flipbook(node[_s:lb("img")], "noimg")
@@ -89,3 +93,4 @@ end
 
 function p.Kzn.decide(_s)
 end
+

@@ -104,7 +104,7 @@ end
 
 function p.Shop_kagu_itm.exe(_s)
 
-	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, nil, 2)
+	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, p.Shop.buy_time, 2)
 
 	local cls, name = _s:cursor_itm_cls_name()
 	pst._("#script", "buy", {_clsHa = cls, _nameHa = name})

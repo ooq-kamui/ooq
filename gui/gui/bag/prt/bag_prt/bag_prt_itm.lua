@@ -56,5 +56,7 @@ function p.Bag_prt_itm.arw_act_othr(_s, inc_dir, keyact)
 
 	if keyact ~= "p" then return end
 
-	_s._parent_gui:focus__ch(inc_dir, keyact)
+	_s._parent_gui:focus__ch()
+	-- _s._parent_gui:focus__ch(inc_dir, keyact)
 end
+

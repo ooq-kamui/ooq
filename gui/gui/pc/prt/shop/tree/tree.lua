@@ -20,10 +20,10 @@ function p.Shop_tree.init(_s, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
 	extend.init(_s, p.Prt_itm_opt)
-	extend._(_s, p.Shop_tree)
+	extend._(   _s, p.Shop_tree)
 	
-	_s._itm_pitch = 75
-	_s._dsp_idx_max = 5
+	_s._itm_pitch   = 75
+	_s._dsp_idx_max =  5
 
 	local tree = ar.key(Mstr.tree)
 	_s:itm__by_ar_lim(tree)
@@ -117,7 +117,7 @@ end
 
 function p.Shop_tree.exe(_s)
 
-	nd.anm.poyon(_s:cursor_itm_nd("seed"), nil, nil, 2)
+	nd.anm.poyon(_s:cursor_itm_nd("seed"), nil, p.Shop.buy_time, 2)
 	
 	local prm = _s:cursor_itm_prm()
 	pst._("#script", "buy", prm)

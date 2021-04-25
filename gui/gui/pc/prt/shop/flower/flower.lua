@@ -19,10 +19,10 @@ function p.Shop_flower.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Shop_flower)
+	extend._(   _s, p.Shop_flower)
 	
-	_s._itm_pitch = 75
-	_s._dsp_idx_max = 5
+	_s._itm_pitch   = 75
+	_s._dsp_idx_max =  5
 
 	local flower = ar.key(Mstr.flower)
 	-- log.pp("shop_flower", flower)
@@ -95,7 +95,7 @@ end
 
 function p.Shop_flower.exe(_s)
 
-	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, nil, 2)
+	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, p.Shop.buy_time, 2)
 	
 	local flower_name = _s:cursor_itm()
 	local prm = {

@@ -37,6 +37,7 @@ function g.Bag.init(_s)
 	_s:dsp__(_.f)
 
 	_s:actv_prt__psh("bag_itm")
+	_s:focus__ch()
 end
 
 -- method
@@ -183,3 +184,4 @@ function g.Bag.focus__ch(_s)
 	end
 	Se.pst_ply("cursor_mv")
 end
+

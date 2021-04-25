@@ -42,6 +42,10 @@ function Seed.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 	
+	log._("Seed.act_intrvl",
+		_s._grw_clsHa, _s._grw_nameHa, _s._bear_clsHa, _s._bear_nameHa
+	)
+
 	-- death
 	if _s:per_trnsf(1, Humus) then return end
 
@@ -64,12 +68,11 @@ function Seed.act_intrvl(_s, dt)
 				_bear_nameHa = _s._bear_nameHa,
 			}
 			local t_id = _s:trnsf(grw_Cls, prm)
-			-- pst.scrpt(t_id, "anm_scl__1")
 		end
 	else
 		dice100.throw()
 		if dice100.chk(20) then
-			_s:trnsf(Plant)
+			local t_id = _s:trnsf(Plant)
 		end
 	end
 end
