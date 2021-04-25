@@ -9,15 +9,15 @@ nd.anm = {
 G_anim = {} -- old
 
 nd.prp = {
-	pos = gui.PROP_POSITION,
-	pos_x = "position.x",
-	pos_y = "position.y",
-	scl = gui.PROP_SCALE,
-	color = gui.PROP_COLOR,
+	pos     = gui.PROP_POSITION,
+	pos_x   = "position.x",
+	pos_y   = "position.y",
+	scl     = gui.PROP_SCALE,
+	color   = gui.PROP_COLOR,
 	color_w = "color.w",
-	clr = gui.PROP_COLOR,
-	clr_w = "color.w",
-	a     = "color.w", -- alpha
+	clr     = gui.PROP_COLOR,
+	clr_w   = "color.w",
+	a       = "color.w", -- alpha
 }
 
 nd.anm.es = {
@@ -26,9 +26,9 @@ nd.anm.es = {
 	sin_i  = gui.EASING_INSINE,
 	sin_o  = gui.EASING_OUTSINE,
 
-	els_o = gui.EASING_OUTELASTIC,
+	els_o  = gui.EASING_OUTELASTIC,
 
-	bnd_o = gui.EASING_OUTBOUNCE,
+	bnd_o  = gui.EASING_OUTBOUNCE,
 }
 
 nd.anm.ply = { -- plyopt
@@ -58,18 +58,16 @@ function nd.anm.fade__(p_nd, w, time, fin) -- alias nd.anm.w__()
 end
 
 function nd.anm.dsp__o(p_nd, fin, time)
+
 	local val = _.t
-	-- nd.anm.dsp__(val, p_nd, nil, fin, time)
 	nd.anm.dsp__(p_nd, val, time, fin)
 end
 
 function nd.anm.dsp__x(p_nd, fin, time)
+
 	local val = _.f
-	-- nd.anm.dsp__(val, p_nd, nil, fin, time)
 	nd.anm.dsp__(p_nd, val, time, fin)
 end
-
--- function nd.anm.dsp__(val, p_nd, pos, fin, time) -- old. pos -> del
 
 function nd.anm.dsp__(p_nd, val, time, fin)
 	
@@ -92,14 +90,14 @@ function nd.anm.color__(p_nd, p_color, time, fin)
 	gui.animate(p_nd, nd.prp.color, p_color, nd.anm.es.sin_o, time, 0, fin)
 end
 
-function nd.anm.mv(p_nd, pos, fin, time)
+function nd.anm.mv(p_nd, p_pos, fin, time)
 
 	time = time or nd.anm.time
 
 	local anim = {}
 	anim[1] = function ()
 		-- log._("g_anim mv", time)
-		gui.animate(p_nd, nd.prp.pos, pos, nd.anm.es.sin_io, time, 0, fin)
+		gui.animate(p_nd, nd.prp.pos, p_pos, nd.anm.es.sin_io, time, 0, fin)
 	end
 	anim[1]()
 end

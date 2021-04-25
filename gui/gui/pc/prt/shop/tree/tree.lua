@@ -98,12 +98,12 @@ end
 
 function p.Shop_tree.cursor_itm_prm(_s)
 	local prm = {
-		cls  = ha._("seed"),
-		name = ha._("seed005"),
-		grw_cls   = ha._("tree"),
-		grw_name  = ha._(_s:cursor_itm()),
-		bear_cls  = ha._("fruit"),
-		bear_name = ha._("fruit"..int.pad(_s:cursor_itm_opt())),
+		_clsHa       = ha._("seed"),
+		_nameHa      = ha._("seed005"),
+		_grw_clsHa   = ha._("tree"),
+		_grw_nameHa  = ha._(_s:cursor_itm()),
+		_bear_clsHa  = ha._("fruit"),
+		_bear_nameHa = ha._("fruit"..int.pad(_s:cursor_itm_opt())),
 	}
 	return prm
 end
@@ -126,3 +126,4 @@ function p.Shop_tree.exe(_s)
 	_s:ply_data_gold__()
 	Se.pst_ply("exe")
 end
+

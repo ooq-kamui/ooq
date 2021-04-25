@@ -19,7 +19,7 @@ function p.Shop_kagu.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Shop_kagu)
+	extend._(   _s, p.Shop_kagu)
 	
 	_s._itm_pitch = 105
 	_s._dsp_idx_max = 4
@@ -91,10 +91,14 @@ function p.Shop_kagu.cursor_itm_price(_s)
 end
 
 function p.Shop_kagu.exe(_s)
+
+	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, nil, 2)
+
 	local cls, name = _s:cursor_itm_cls_name()
-	pst._("#script", "buy", {cls = cls, name = name})
+	pst._("#script", "buy", {_clsHa = cls, _nameHa = name})
 
 	Ply_data.gold__sub(_s:cursor_itm_price())
 	_s:ply_data_gold__()
 	Se.pst_ply("exe")
 end
+

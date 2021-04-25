@@ -66,7 +66,11 @@ function p.Msg.itm__add(_s, itm)
 end
 
 function p.Msg.itm__plt_anm(_s)
-	_s:itm__plt()
+
+	for itm_idx, dmy in pairs(_s._nd.itm) do
+		_s:itm__plt_anm_by_idx(itm_idx)
+	end
+	-- _s:itm__plt()
 end
 
 function p.Msg.base_pos__(_s, p_pos)

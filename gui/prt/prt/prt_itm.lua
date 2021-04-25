@@ -132,7 +132,13 @@ end
 -- itm  plt
 
 function p.Prt_itm.itm__plt_anm(_s)
+
 	_s:itm__plt()
+	--[[
+	for itm_idx, dmy in pairs(_s._nd.itm) do
+		_s:itm__plt_anm_by_idx(itm_idx)
+	end
+	--]]
 end
 
 function p.Prt_itm.itm__plt(_s)
@@ -154,12 +160,35 @@ function p.Prt_itm.itm__plt_by_idx(_s, itm_idx)
 	end
 end
 
+function p.Prt_itm.itm__plt_anm_by_idx(_s, itm_idx)
+	
+	if _s:is_itm_dsp_by_idx(itm_idx) then
+		
+		_s:itm_pos__anm_by_idx(itm_idx)
+		nd.enbl__(_s:itm_nd(itm_idx), _.t)
+	else
+		nd.enbl__(_s:itm_nd(itm_idx), _.f)
+		_s:itm_pos__tpl_by_idx(itm_idx)
+	end
+end
+
 function p.Prt_itm.itm_pos__by_idx(_s, itm_idx)
 
 	local dsp_idx = _s:itm_idx_2_dsp_idx(itm_idx)
 	
 	local t_pos   = _s:itm_pos_by_dsp_idx(dsp_idx)
 	nd.pos__(_s:itm_nd(itm_idx), t_pos)
+end
+
+function p.Prt_itm.itm_pos__anm_by_idx(_s, itm_idx)
+
+	local dsp_idx = _s:itm_idx_2_dsp_idx(itm_idx)
+	
+	local t_pos   = _s:itm_pos_by_dsp_idx(dsp_idx)
+
+	local time = 0.7
+	nd.anm.mv(_s:itm_nd(itm_idx), t_pos, nil, time)
+	-- nd.pos__anm(_s:itm_nd(itm_idx), t_pos)
 end
 
 function p.Prt_itm.itm_pos__tpl_by_idx(_s, itm_idx)

@@ -48,17 +48,20 @@ function Seed.act_intrvl(_s, dt)
 	if     ar.inHa(_s._nameHa, {"seed001"}) then
 		dice100.throw()
 		if dice100.chk(20) then
-			local grw_cls  = Cls._(_s._grw_cls) or Flower
-			_s:trnsf(grw_cls, {name = _s._grw_name})
+			local grw_Cls  = Cls._(_s._grw_clsHa) or Flower
+			local prm = {
+				_nameHa      = _s._grw_nameHa,
+			}
+			local t_id = _s:trnsf(grw_Cls, prm)
 		end
 	elseif ar.inHa(_s._nameHa, {"seed005"}) then
 		dice100.throw()
 		if dice100.chk(20) then
-			local grw_Cls  = Cls._(_s._grw_cls) or Tree
+			local grw_Cls  = Cls._(_s._grw_clsHa) or Tree
 			local prm = {
-				name      = _s._grw_name,
-				bear_cls  = _s._bear_cls,
-				bear_name = _s._bear_name,
+				_nameHa      = _s._grw_nameHa,
+				_bear_clsHa  = _s._bear_clsHa,
+				_bear_nameHa = _s._bear_nameHa,
 			}
 			local t_id = _s:trnsf(grw_Cls, prm)
 			-- pst.scrpt(t_id, "anm_scl__1")

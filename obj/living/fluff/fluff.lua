@@ -52,7 +52,7 @@ function Fluff.act_intrvl(_s, dt)
 	if _s:per_trnsf(1, Humus) then return end
 
 	-- trnsf
-	if _s:per_trnsf(5, Seed) then return end
+	if _s:per_trnsf(5, Seed ) then return end
 
 	-- obj cre
 	dice100.throw()

@@ -20,7 +20,7 @@ function p.Reizoko.init(_s, parent_gui)
 	extend.init(_s, p.Prt_itm_mtrx)
 	extend.init(_s, p.Prt_cursor)
 	extend.init(_s, p.Prt_cursor_mtrx)
-	extend._(_s, p.Reizoko)
+	extend._(   _s, p.Reizoko)
 
 	_s._base_x_diff = Map.sq * 4 -- use ?
 	
@@ -77,7 +77,7 @@ function p.Reizoko.decide(_s)
 
 	-- food cre
 	Se.pst_ply("pop")
-	pst.scrpt(p.Reizoko.id, "food_cre", {cls = txtr, name = anim})
+	pst.scrpt(p.Reizoko.id, "food_cre", {_clsHa = txtr, _nameHa = anim})
 	
 	nd.anm.poyon(_s._nd.cursor)
 	nd.anm.poyon(_s._nd.itm[idx][_s:lb("itm")])
@@ -132,3 +132,4 @@ function p.Reizoko.food__del(_s)
 	end
 	-- log.pp("reizoko gui food_del", _s._nd.itm)
 end
+

@@ -19,7 +19,7 @@ end
 
 function Efct_label.on_msg(_s, msg_id, prm, sndr)
 
-	log._("Efct_label.on_msg", msg_id, prm.txt)
+	-- log._("Efct_label.on_msg", msg_id, prm.txt)
 
 	if ha.eq(msg_id, "__txt") then
 		_s:__txt(prm.txt)

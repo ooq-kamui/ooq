@@ -9,7 +9,7 @@ function Food.cre_by_cls(p_pos, prm)
 	
 	p_pos = p_pos or Game.plychara_pos()
 	-- log.pp("food cre_by_cls", prm)
-	Cls._(prm.cls).cre(p_pos, prm)
+	Cls._(prm._clsHa).cre(p_pos, prm)
 end
 
 -- script method

@@ -160,13 +160,12 @@ function Plychara.vec_mv__(_s, dt)
 	-- move h
 	if _s._is_moving_h then
 
-		_s._vec_mv_dir.x = 1
-
 		if ha.eq(_s._dir_h_Ha, "l") then
-			_s._vec_mv_dir.x = - _s._vec_mv_dir.x
+			_s._vec_mv_dir.x = - 1
+			-- _s._vec_mv_dir.x = - _s._vec_mv_dir.x
+		else
+			_s._vec_mv_dir.x =   1
 		end
-		-- _s:anim__("walk")
-		-- log._("anim__ vec_mv__")
 	end
 	
 	-- move v
@@ -471,10 +470,14 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		
 		_s._is_moving_h = _.t
 		
+		log._("plychara on_msg_mv", prm.facing)
 		-- turn
-		if not ha.eq(_s._dir_h_Ha, prm.dir) then
-			_s._turn_time = 0 
+		if not ha.eq(_s._dir_h_Ha, prm.dir) and not prm.facing then
+			log._("plychara on_msg_mv", prm.facing)
+
 			_s:dir_h__(prm.dir)
+
+			_s._turn_time = 0 
 			_s:hld_dir_h__sync()
 			_s:anim__("walk")
 		end

@@ -17,9 +17,14 @@ end
 
 function Cls._(p_cls) -- get
 
-	local clsHa = ha._2_ha(p_cls)
-	-- local clsHa = ha._2_ha(p_cls)
+	local p_clsHa
 
-	return Cls.Cls[clsHa]
+	if type(p_cls) == "string" then
+		p_clsHa = ha._2_ha(p_cls)
+	else
+		p_clsHa = p_cls
+	end
+	-- log._("Cls._", p_cls, p_clsHa)
+	return Cls.Cls[p_clsHa]
 end
 

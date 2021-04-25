@@ -27,7 +27,6 @@ function Sp.dir_h__(_s, dir_h)
 	
 	_s._dir_h_Ha = ha._(dir_h)
 
-	-- _s:flip_h__dir(dir_h)
 	_s:flip_h__dir()
 end
 

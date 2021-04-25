@@ -98,7 +98,12 @@ function p.Shop_flower.exe(_s)
 	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, nil, 2)
 	
 	local flower_name = _s:cursor_itm()
-	local prm = {cls = "seed", name = "seed001", grw_cls = "flower", grw_name = flower_name}
+	local prm = {
+		_clsHa      = ha._("seed"),
+		_nameHa     = ha._("seed001"),
+		_grw_clsHa  = ha._("flower"),
+		_grw_nameHa = ha._(flower_name),
+	}
 	pst._("#script", "buy", prm)
 
 	Ply_data.gold__sub(_s:cursor_itm_price())
@@ -106,3 +111,4 @@ function p.Shop_flower.exe(_s)
 	
 	Se.pst_ply("exe")
 end
+

@@ -95,7 +95,7 @@ function nd.txtr__(p_nd, txtr)
 end
 
 function nd.anim(p_nd)
-	log._("nd.anim", p_nd)
+	-- log._("nd.anim", p_nd)
 	local anim = gui.get_flipbook(p_nd)
 	return anim
 end
@@ -115,3 +115,4 @@ end
 function nd.parent__(p_nd, p_parent_nd)
 	gui.set_parent(p_nd, p_parent_nd)
 end
+

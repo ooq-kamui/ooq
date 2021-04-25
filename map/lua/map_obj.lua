@@ -83,10 +83,11 @@ end
 
 function Map.obj_kagu(_s)
 	local cls = {
-		"hrvst", "trmpln",
 		"kitchen", "reizoko",
-		"flpy", "pc", "shelf", "doorwrp",
+		"flpy", "pc", "shelf",
 		"kagu",
+		"doorwrp",
+		"hrvst", "trmpln",
 	}
 	return _s:obj_grp(cls)
 end
@@ -100,11 +101,12 @@ function Map.obj_living(_s)
 	local cls = {
 		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree",
 	}
-	return _s:obj_grp(cls)
+	local data = _s:obj_grp(cls)
+	-- log.pp("obj_living", data)
+	return data
 end
 
 function Map.obj_elm(_s)
-	-- local cls = {"warp"}
 	local cls = {"mgccrcl", "mgcpot",}
 	return _s:obj_grp(cls)
 end
@@ -123,7 +125,7 @@ function Map.obj_grp(_s, p_cls)
 end
 
 function Map.obj_cls(_s, clsHa)
-	-- log._("Ply_data.data_obj_cls", clsHa)
+	-- log._("Map.obj_cls", clsHa)
 
 	local data_cls = {}
 
@@ -136,24 +138,28 @@ function Map.obj_cls(_s, clsHa)
 	for j, t_id in pairs(t_obj) do
 		-- log._("Map.obj_cls()", clsHa)
 
-		prm = {name = ha.de(id.name(t_id)), pos = id.pos_w(t_id)}
-		-- prm = {name = ha.de(id.name(t_id)), pos = id.wpos(t_id)}
+		prm = {}
+		prm._name = ha.de(id.name(t_id))
+		prm._pos  = id.pos_w(t_id)
 
-		if     ar.inHa(clsHa, {"seed"}) then
-			prm.grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )
-			prm.grw_name  = id.prp_de(t_id, "_grw_nameHa" )
-			prm.bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
-			prm.bear_name = id.prp_de(t_id, "_bear_nameHa")
+		if     ar.inHa(clsHa, {"seed" }) then
+			prm._grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )
+			prm._grw_name  = id.prp_de(t_id, "_grw_nameHa" )
+			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
+			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
+			-- log.pp("Map.obj_cls ( save )", prm)
 
-		elseif ar.inHa(clsHa, {"tree"}) then
-			prm.bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
-			prm.bear_name = id.prp_de(t_id, "_bear_nameHa")
+		elseif ar.inHa(clsHa, {"tree" }) then
+			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
+			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
+			-- log.pp("Map.obj_cls ( save )", prm)
 
 		elseif ar.inHa(clsHa, {"mshrm"}) then
 			-- log.pp("Map.obj_cls mshrm", prm)
 		end
 		ar.add(data_cls, prm)
 	end
+	-- log.pp("Map.obj_cls", data_cls)
 	return data_cls
 end
 
@@ -213,18 +219,25 @@ function Map.obj_grp__load(_s, data, grp) -- -> func name rename
 		for idx, tb in pairs(ar) do
 		-- log._("name", tb["name"])
 			
-			prm = {name = ha._(tb["name"])}
+			prm = {_nameHa = ha._(tb["_name"])}
+
 			if     cls == "seed" then
-				prm.grw_cls   = ha._(tb["grw_cls"])
-				prm.grw_name  = ha._(tb["grw_name"])
-				prm.bear_cls  = ha._(tb["bear_cls"])
-				prm.bear_name = ha._(tb["bear_name"])
+				prm._grw_clsHa   = ha._(tb["_grw_cls"  ])
+				prm._grw_nameHa  = ha._(tb["_grw_name" ])
+				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
+				prm._bear_nameHa = ha._(tb["_bear_name"])
+				-- log.pp("Map.obj_grp__load", tb )
+				-- log.pp("Map.obj_grp__load", prm)
+
 			elseif cls == "tree" then
-				prm.bear_cls  = ha._(tb["bear_cls"])
-				prm.bear_name = ha._(tb["bear_name"])
+				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
+				prm._bear_nameHa = ha._(tb["_bear_name"])
+				-- log.pp("Map.obj_grp__load", tb )
+				-- log.pp("Map.obj_grp__load", prm)
 			end
-			tCls.cre(tb["pos"], prm)
-			-- log._("load obj cre", tb["name"], tb["pos"])
+			-- log._("Map.obj_grp__load", tb["_name"], tb["_pos"])
+
+			tCls.cre(tb["_pos"], prm)
 		end
 	end
 end

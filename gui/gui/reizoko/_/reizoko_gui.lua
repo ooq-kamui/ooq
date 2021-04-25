@@ -10,3 +10,4 @@ function g.Reizoko.init(_s)
 
 	_s:opn("reizoko")
 end
+

@@ -53,7 +53,7 @@ function Reizoko.on_msg(_s, msg_id, prm, sndr)
 	if     ha.eq(msg_id, "opn") then
 		_s:opn()
 		
-	elseif ha.eq(msg_id, "clz") or ha.eq(msg_id, "colse") then
+	elseif ha.eq(msg_id, "clz") then
 		_s:clz()
 		
 	elseif ha.eq(msg_id, "into_reizoko") then

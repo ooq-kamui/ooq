@@ -28,10 +28,11 @@ function Inp.plyr.init_plyr(_s)
 
 	_s._plyr._lng_fil = {}  -- keep time
 
-	_s._plyr._ltst_keep = nil
-
 	_s._plyr._key     = nil
 	_s._plyr._keyact  = nil
+
+	_s._plyr._keep_ltst = nil
+	_s._plyr._keep = {}
 end
 
 -- upd
@@ -82,7 +83,8 @@ function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 	_s:on_inp_fairy_pst()
 
 	-- final
-	_s:on_inp_plyr_ltst_keep__(key)
+	_s:on_inp_plyr_keep__(key)
+	-- _s:on_inp_plyr_keep_ltst__(key)
 end
 
 function Inp.plyr.on_inp_plyr__(_s, key, keyact)
@@ -110,7 +112,10 @@ function Inp.plyr.on_inp_fairy_pst(_s)
 
 	if     _s:p() then
 
-		pst.scrpt(fairy_id, "mv__dir", prm)
+		if     _s:is_arw_v()
+		or not _s:with("a") then
+			pst.scrpt(fairy_id, "mv__dir"       , prm)
+		end
 
 	elseif _s:k() and _s:is_arw_v() and _s:is_lng() then
 
@@ -143,10 +148,16 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 
 	-- mv ( arw )
 	if     _s:k("arw_l") then
-		pst.scrpt(plychara_id, "mv", {dir = "l", dive = _s:is_lng("arw_l")})
+		pst.scrpt(
+			plychara_id, "mv",
+			{dir = "l", dive = _s:is_lng("arw_l"), facing = _s:with("a")}
+		)
 
 	elseif _s:k("arw_r") then
-		pst.scrpt(plychara_id, "mv", {dir = "r", dive = _s:is_lng("arw_r")})
+		pst.scrpt(
+			plychara_id, "mv",
+			{dir = "r", dive = _s:is_lng("arw_r"), facing = _s:with("a")}
+		)
 
 	elseif _s:k("arw_u") then
 		pst.scrpt(plychara_id, "mv", {dir = "u"})
@@ -156,26 +167,27 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 
 	-- arw free
 	elseif _s:f("arw_d") then
-		pst.scrpt(plychara_id, "arw_d_f")
+		pst.scrpt(plychara_id , "arw_d_f" )
 
 	-- button
 	elseif _s:p("z") then
-		pst.scrpt(plychara_id, "jmp")
+		pst.scrpt(plychara_id , "jmp"     )
 
-	elseif _s:p("a") then
-		pst.scrpt(plychara_id, "itm_use")
+	-- elseif _s:p("a") then
+	elseif _s:f("a") then
+		pst.scrpt(plychara_id , "itm_use" )
 
 	elseif _s:p("x") then
-		pst.scrpt(plychara_id, "hld__ox")
+		pst.scrpt(plychara_id , "hld__ox" )
 
 	elseif _s:p("s") then
-		pst.scrpt(plychara_id, "menu_opn")
+		pst.scrpt(plychara_id , "menu_opn")
 
 	elseif _s:p("q") then
-		pst.scrpt(Sys.cmr_id(), "zoom__o")
+		pst.scrpt(Sys.cmr_id(), "zoom__o" )
 
 	elseif _s:p("w") then
-		pst.scrpt(Sys.cmr_id(), "zoom__i")
+		pst.scrpt(Sys.cmr_id(), "zoom__i" )
 	end
 end
 
@@ -196,14 +208,30 @@ function Inp.plyr.on_inp_plyr_msh__(_s)
 	end
 end
 
-function Inp.plyr.on_inp_plyr_ltst_keep__(_s, key)
+function Inp.plyr.on_inp_plyr_keep__(_s, key)
 
 	if     _s:k(key) then
-		_s._plyr._ltst_keep = key
+		_s._plyr._keep[key] = _.t
+		_s._plyr._keep_ltst = key
+
 	elseif _s:f(key) then
-		_s._plyr._ltst_keep = nil
+		_s._plyr._keep[key] = nil
+		_s._plyr._keep_ltst = nil
+	end
+
+	-- _s:on_inp_plyr_keep_ltst__(key)
+end
+
+--[[
+function Inp.plyr.on_inp_plyr_keep_ltst__(_s, key)
+
+	if     _s:k(key) then
+		_s._plyr._keep_ltst = key
+	elseif _s:f(key) then
+		_s._plyr._keep_ltst = nil
 	end
 end
+--]]
 
 function Inp.plyr.p(_s, key) -- press
 
@@ -298,11 +326,11 @@ function Inp.plyr.is_msh_cnt_ovr(_s, key, p_cnt) -- msh success cnt, use not, bu
 	return ret
 end
 
-function Inp.plyr.is_with(_s, key) -- keep, use not, but rest
-	-- log._("plyr is_with", key, _s._plyr._ltst_keep)
+function Inp.plyr.with(_s, key) -- keep, use not, but rest
+	-- log._("plyr is_with", key, _s._plyr._keep_ltst)
 
 	local ret
-	if _s._plyr._ltst_keep == key then
+	if _s._plyr._keep_ltst == key then
 		ret = _.t
 	else
 		ret = _.f
@@ -311,10 +339,10 @@ function Inp.plyr.is_with(_s, key) -- keep, use not, but rest
 end
 
 -- key1 keep and key2 press
-function Inp.plyr.is_with_p(_s, key1, key2) -- use not, but rest
+function Inp.plyr.p_with(_s, key1, key2) -- use not, but rest
 
 	local ret
-	if _s._plyr._ltst_keep == key1 and _s:p(key2) then
+	if _s:p(key1) and _s._plyr._keep_ltst == key2 then
 		ret = _.t
 	else
 		ret = _.f
@@ -323,10 +351,10 @@ function Inp.plyr.is_with_p(_s, key1, key2) -- use not, but rest
 end
 
 -- key1 keep and key2 keep
-function Inp.plyr.is_with_k(_s, key1, key2) -- use not, but rest
+function Inp.plyr.k_with(_s, key1, key2) -- use not, but rest
 
 	local ret
-	if _s._plyr._ltst_keep == key1 and _s:k(key2) then
+	if _s:k(key1) and _s._plyr._keep_ltst == key2 then
 		ret = _.t
 	else
 		ret = _.f

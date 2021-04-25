@@ -23,15 +23,15 @@ end
 function Tree.init(_s)
 	
 	extend.init(_s, Sp)
-	extend._(_s, Tree)
+	extend._(   _s, Tree)
 
 	-- scale
-	local size = 1.5
+	local size  = 1.5
 	local t_url = url._(_s._id, "sprite")
 	local scale = go.get(t_url, "scale")
 	go.set(t_url, "scale", scale * size)
 
-	-- log._("tree init", _s._nameHa, _s._bear_cls, _s._bear_name)
+	-- log._("tree init", _s._nameHa, _s._bear_clsHa, _s._bear_nameHa)
 	_s._bear = {}
 end
 
@@ -87,19 +87,19 @@ function Tree.bear(_s)
 	
 	if #_s._bear >= 1 then return end
 	
-	if ha.is_emp(_s._bear_cls) then
-		_s._bear_cls = ha._("fruit")
-		_s._bear_name = nil
+	if ha.is_emp(_s._bear_clsHa) then
+		_s._bear_clsHa  = ha._("fruit")
+		_s._bear_nameHa = ha._("") -- nil
 	end
-	local bear_Cls = Cls._(_s._bear_cls)
+	local bear_Cls = Cls._(_s._bear_clsHa)
 	
-	if ha.is_emp(_s._bear_name) then
-		_s._bear_name = ha._(bear_Cls.cls..rnd.int_pad(bear_Cls.name_idx_max))
+	if ha.is_emp(_s._bear_nameHa) then
+		_s._bear_nameHa = ha._(bear_Cls.cls..rnd.int_pad(bear_Cls.name_idx_max))
 	end
 	
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
-	local t_id = bear_Cls.cre(t_pos, {name = _s._bear_name}, 0.2)
+	local t_id = bear_Cls.cre(t_pos, {name = _s._bear_nameHa}, 0.2)
 	pst.scrpt(t_id, "bear_o", {tree_id = _s._id})
 	ar.add(_s._bear, t_id)
 end

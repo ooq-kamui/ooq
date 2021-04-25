@@ -67,3 +67,4 @@ function Ply_data.reizoko.__(data)
 	-- pprint(data["reizoko"])
 	-- pprint(Ply_data._reizoko)
 end
+

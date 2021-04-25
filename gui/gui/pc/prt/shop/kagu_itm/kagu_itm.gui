@@ -12,7 +12,7 @@ textures {
   texture: "/assets/obj/itm/kagu/kagu-s/pc/pc.atlas"
 }
 textures {
-  name: "flpy"
+  name: "flpy.bk"
   texture: "/assets/obj/itm/kagu/kagu-s/flpy/flpy.tilesource"
 }
 textures {
@@ -54,6 +54,10 @@ textures {
 textures {
   name: "trmpln"
   texture: "/assets/obj/itm/kagu/kagu-e/trmpln/trmpln.atlas"
+}
+textures {
+  name: "flpy"
+  texture: "/assets/obj/itm/kagu/kagu-s/flpy/crystl.atlas"
 }
 background_color {
   x: 0.0

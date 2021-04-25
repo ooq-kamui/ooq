@@ -31,7 +31,8 @@ end
 function p.Bag_inf.opn(_s)
 	-- log._("bag_inf.opn")
 
-	nd.txt__(_s:nd("gold"), Ply_data.gold())
+	nd.txt__(_s:nd("gold"), "x"..Ply_data.gold())
 
 	p.Bag_prt.opn(_s)
 end
+
