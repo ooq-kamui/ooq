@@ -23,9 +23,23 @@ end
 -- dir
 
 function Sp.dir_h__(_s, dir_h)
-	-- log._("sp dir_h__", dir_h)
 	
-	_s._dir_h_Ha = ha._(dir_h)
+	_s:  mv_dir_h__(dir_h)
+	_s:face_dir_h__(dir_h)
+end
+
+function Sp.mv_dir_h__(_s, dir_h)
+	-- log._("sp mv_dir_h__", dir_h)
+	
+	_s._mv_dir_h_Ha = ha._(dir_h)
+
+	-- _s:flip_h__dir()
+end
+
+function Sp.face_dir_h__(_s, dir_h)
+	-- log._("sp face_dir_h__", dir_h)
+	
+	_s._face_dir_h_Ha = ha._(dir_h)
 
 	_s:flip_h__dir()
 end
@@ -33,17 +47,19 @@ end
 function Sp.flip_h__dir(_s)
 	
 	local val = _.f
-	if     ha.eq(_s._dir_h_Ha, "l") then
+	if     ha.eq(_s._face_dir_h_Ha, "l") then
 		val = _.f
-	elseif ha.eq(_s._dir_h_Ha, "r") then
+	elseif ha.eq(_s._face_dir_h_Ha, "r") then
 		val = _.t
 	end
-	_s:flip_h__(val)
+	sprite.set_hflip("#sprite", val)
+	-- _s:flip_h__(val)
 end
 
+--[[
 function Sp.flip_h__(_s, val)
-	sprite.set_hflip("#sprite", val)
 end
+--]]
 
 function Sp.dir_v__(_s, dir_v)
 	

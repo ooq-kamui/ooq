@@ -22,6 +22,8 @@ end
 
 function Tree.init(_s)
 	
+	Tree.bear__init(_s)
+
 	extend.init(_s, Sp)
 	extend._(   _s, Tree)
 
@@ -44,11 +46,34 @@ function Tree.upd(_s, dt)
 	_s:upd_final()
 end
 
+function Tree.on_msg(_s, msg_id, prm, sndr)
+	
+	Sp.on_msg(_s, msg_id, prm, sndr)
+	
+	if     ha.eq(msg_id, "trnsf_wood") then
+		_s:trnsf_wood()
+		
+	elseif ha.eq(msg_id, "bear__x") then
+		_s:bear__x(prm.bear_id)
+	end
+end
+
+function Tree.final(_s)
+	
+	Sp.final(_s)
+	
+	for idx, bear_id in pairs(_s._bear) do
+		pst.scrpt(bear_id, "bear__x")
+	end
+end
+
+-- method
+
 function Tree.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	log._("Tree.act_intrvl", _s._bear_clsHa, _s._bear_nameHa)
+	-- log._("Tree.act_intrvl", _s._bear_clsHa, _s._bear_nameHa)
 
 	dice100.throw()
 	if     dice100.chk(1) then
@@ -62,37 +87,11 @@ function Tree.act_intrvl(_s, dt)
 	end
 end
 
-function Tree.on_msg(_s, msg_id, prm, sndr)
-	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	
-	if     ha.eq(msg_id, "trnsf_wood") then
-		_s:trnsf_wood()
-		
-	elseif ha.eq(msg_id, "bear_x") then
-		_s:bear_x(prm.bear_id)
-	end
-end
-
-function Tree.final(_s)
-	
-	Sp.final(_s)
-	
-	for idx, bear_id in pairs(_s._bear) do
-		pst.scrpt(bear_id, "bear_x")
-	end
-end
-
--- method
-
 function Tree.bear(_s)
 	
 	if #_s._bear >= 1 then return end
 	
-	if ha.is_emp(_s._bear_clsHa) then
-		_s._bear_clsHa  = ha._("fruit")
-		_s._bear_nameHa = ha._("fruit007") -- nil
-	end
+	if ha.is_emp(_s._bear_clsHa) then _s:bear__init() end
 
 	local bear_Cls = Cls._(_s._bear_clsHa)
 	
@@ -103,11 +102,11 @@ function Tree.bear(_s)
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
 	local t_id = bear_Cls.cre(t_pos, {_nameHa = _s._bear_nameHa}, 0.2)
-	pst.scrpt(t_id, "bear_o", {tree_id = _s._id})
+	pst.scrpt(t_id, "bear__o", {tree_id = _s._id})
 	ar.add(_s._bear, t_id)
 end
 
-function Tree.bear_x(_s, bear_id)
+function Tree.bear__x(_s, bear_id)
 	ar.del_by_val(bear_id, _s._bear)
 end
 
@@ -123,5 +122,11 @@ function Tree.trnsf_wood(_s, num)
 	Se.pst_ply("tree_break")
 	
 	_s:del()
+end
+
+function Tree.bear__init(_s)
+
+	ha.is_emp__(_s._bear_clsHa , "fruit"   )
+	ha.is_emp__(_s._bear_nameHa, "fruit007")
 end
 

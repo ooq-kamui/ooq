@@ -6,7 +6,9 @@ ha = {
 }
 
 function ha._(val)
+
 	if not val then return hash("") end
+
 	return hash(val)
 end
 
@@ -69,6 +71,16 @@ function ha.is_emp(val)
 	return ret
 end
 
+function ha.is_emp__(ref, p_val)
+
+	if not ha.is_emp(ref) then return end
+
+	if type(p_val) == "string" then
+		p_val = ha._(p_val)
+	end
+	ref = p_val
+end
+
 function ha.eq(val, key)
 	if val == ha._(key) then return _.t
 	else                     return _.f
@@ -78,14 +90,4 @@ end
 function ha.emp()
 	return ha._emp
 end
-
---[[
-function ha.idx2ha(idx_ar) -- use not
-	local ha_ar = {}
-	for idx, val in pairs(idx_ar) do
-		ha_ar[ha._(val)] = val
-	end
-	return ha_ar
-end
---]]
 

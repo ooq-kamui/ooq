@@ -93,7 +93,6 @@ function Map.init(_s)
 	extend._(_s, Map)
 
 	_s._id          = id._()
-	-- _s._id          = go.get_id()
 	_s._game_id     = Game.id()
 	_s._ply_slt_idx = Game.ply_slt_idx()
 	_s._dstrct      = id.prp(_s._game_id, "_dstrct")
@@ -119,7 +118,6 @@ function Map.new_or_load(_s)
 		prm.file_idx = file_idx_ltst
 		pst._(".", "load", prm)
 	end
-	
 	-- log._("Map.new_or_load()", _s._dstrct)
 end
 
@@ -131,17 +129,16 @@ function Map.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 	
-	
 end
 
 function Map.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 	
-	-- log._("map act_intrvl", _s._dstrct)
 end
 
 function Map.is_loop__act_intrvl__(_s, dt)
+
 	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
 end
@@ -154,44 +151,39 @@ end
 
 function Map.on_msg(_s, msg_id, prm, sndr)
 	
-	if     ha.eq(msg_id, "del") then
+	if     ha.eq(msg_id, "del"          ) then
 		_s:del()
 
-	elseif ha.eq(msg_id, "new") then
+	elseif ha.eq(msg_id, "new"          ) then
 		_s:new(prm.plychara_pos)
 
-	elseif ha.eq(msg_id, "load") then
+	elseif ha.eq(msg_id, "load"         ) then
 		_s:load(prm.file_idx, prm.plychara_pos)
 
-	elseif ha.eq(msg_id, "save") then
+	elseif ha.eq(msg_id, "save"         ) then
 		_s:save()
 
-	elseif ha.eq(msg_id, "save_del") then
+	elseif ha.eq(msg_id, "save_del"     ) then
 		_s:save_del()
 
-	elseif ha.eq(msg_id, "dstrct__ch") then
-		-- _s:dstrct__ch(prm.dstrct, prm.plychara)
+	elseif ha.eq(msg_id, "dstrct__ch"   ) then
 		_s:dstrct__ch(prm.plychara)
 		
-	elseif ha.eq(msg_id, "pause__") then
-		-- log._("map.pause__ val", prm.val)
+	elseif ha.eq(msg_id, "pause__"      ) then
 		_s:pause__(prm.val)
-
 		
-	elseif ha.eq(msg_id, "cloud__cre") then
+	elseif ha.eq(msg_id, "cloud__cre"   ) then
 		_s:cloud__cre()
 		
 	elseif ha.eq(msg_id, "plychara__cre") then
-		-- log._("plychara__cre", prm.pos, prm.dir)
 		_s:plychara__cre(prm.pos, prm.dir)
 
-	elseif ha.eq(msg_id, "fairy__cre") then
+	elseif ha.eq(msg_id, "fairy__cre"   ) then
 		_s:fairy__cre(prm.pos, prm)
 	end
 end
 
 function Map.final(_s)
-	-- log._("Map.final()")
 
 	if _s._final_fnc then
 		_s._final_fnc()
@@ -201,15 +193,12 @@ end
 function Map.new(_s, plychara_pos)
 	
 	_s:obj__new()
-	
-	-- log._("map.new dstrct", _s._dstrct)
 end
 
 function Map.load(_s, file_idx)
 
 	if not _s._ply_slt_idx then return end
 	if not _s._dstrct      then return end
-	-- log._("map load", _s._game_id, _s._ply_slt_idx, _s._dstrct, file_idx)
 	
 	local data = file.map.load(_s._ply_slt_idx, _s._dstrct, file_idx)
 
@@ -220,7 +209,6 @@ function Map.load(_s, file_idx)
 	
 	-- Se.pst_ply("exe")
 	Msg.s("load complete")
-	-- log._("map.load dstrct", _s._dstrct)
 end
 
 function Map.save(_s)
@@ -289,8 +277,6 @@ function Map.tilemap_url(_s, p_tilemap)
 	if not _s._id then return end
 	
 	local tilemap_url = url._(_s._id, p_tilemap)
-	-- log._("tilemap_url", tilemap_url, t_id, p_tilemap, _s._id)
-	
 	return tilemap_url
 end
 
@@ -358,11 +344,7 @@ end
 function Map.chara_clb_fe_is_appear_all()
 
 	local ret = _.f
-
-	if #Map.chara_clb.fe >= #Chara_clb_fe.chara then
-		ret = _.t
-		log._("chara_clb_fe_is_appear_all", ret, #Map.chara_clb.fe, #Chara_clb_fe.chara)
-	end
+	if #Map.chara_clb.fe >= #Chara_clb_fe.chara then ret = _.t end
 	return ret
 end
 
@@ -375,11 +357,7 @@ end
 function Map.chara_clb_tohoku_is_appear_all()
 
 	local ret = _.f
-
-	if #Map.chara_clb.tohoku >= #Chara_clb_tohoku.chara then
-		ret = _.t
-		log._("chara_clb_tohoku_is_appear_all", ret, #Map.chara_clb.tohoku, #Chara_clb_tohoku.chara)
-	end
+	if #Map.chara_clb.tohoku >= #Chara_clb_tohoku.chara then ret = _.t end
 	return ret
 end
 
@@ -450,7 +428,6 @@ function Map.tile_bndl_arund_val(p_tilepos)
 	local center_tile = map.tile_by_tilepos(p_tilepos, Game.map_id(), "ground")
 	local base_tile = Tile_bndl.base_tile(center_tile)
 	if not base_tile then return end
-
 
 	local tile_bndl_arund_ar  = Map.arund_tile_bndl_ar(p_tilepos)
 	local tile_bndl_arund_val = Tile_bndl.arund_ar_2_arund_val(tile_bndl_arund_ar)

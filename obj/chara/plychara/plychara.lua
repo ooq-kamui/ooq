@@ -54,7 +54,6 @@ function Plychara.cre(p_pos, dir)
 	prm._nameHa = ha._(name)
 
 	local t_id = Sp.cre(Plychara, p_pos, prm)
-	-- log._("plychara cre id", t_id)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir})
 	
@@ -73,7 +72,9 @@ function Plychara.init(_s)
 	_s:anim__("walk")
 	
 	_s._speed = Plychara.speed
-	_s._dir_h_Ha = ha._("l")
+	-- _s._dir_h_Ha = ha._("l")
+	_s._mv_dir_h_Ha   = ha._("l")
+	_s._face_dir_h_Ha = ha._("l")
 	_s._dir_v = ""
 	
 	_s._is_moving_h = _.f
@@ -114,15 +115,12 @@ function Plychara.init(_s)
 	_s._clsn_hldabl = {}
 
 	local fairy_id = _s:fairy_id()
-	-- log._("plychara.init fairy_id", fairy_id)
 
 	local z = 0.01
 	local t_pos = n.vec(0, Map.sq)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
 
-	-- skl
 	_s:skl__dtch_airride()
-	-- _s._is_airride = _.f
 end
 
 function Plychara.upd(_s, dt)
@@ -160,9 +158,8 @@ function Plychara.vec_mv__(_s, dt)
 	-- move h
 	if _s._is_moving_h then
 
-		if ha.eq(_s._dir_h_Ha, "l") then
+		if ha.eq(_s._mv_dir_h_Ha, "l") then
 			_s._vec_mv_dir.x = - 1
-			-- _s._vec_mv_dir.x = - _s._vec_mv_dir.x
 		else
 			_s._vec_mv_dir.x =   1
 		end
@@ -301,7 +298,7 @@ function Plychara.ox_dstrct__mv(_s)
 	
 	if not is_dstrct_mv then return is_dstrct_mv end
 	
-	pst.scrpt(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._dir_h_Ha})
+	pst.scrpt(_s._game_id, "map_dstrct__mv", {dir = dstrct_mv_dir, plychara_dir = _s._mv_dir_h_Ha})
 	
 	return is_dstrct_mv
 end
@@ -457,7 +454,7 @@ function Plychara.hld_dir_h__sync(_s, dir_h)
 	if not ar.inHa(t_clsHa, Plychara.hld_dir_sync_cls) then return end
 
 	-- log._("plychara hld_dir_h__sync")
-	dir_h = dir_h or ha.de(_s._dir_h_Ha)
+	dir_h = dir_h or ha.de(_s._mv_dir_h_Ha)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir_h})
 end
@@ -470,13 +467,9 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		
 		_s._is_moving_h = _.t
 		
-		-- log._("plychara on_msg_mv", prm.facing)
-		-- turn
-		if not ha.eq(_s._dir_h_Ha, prm.dir) and not prm.facing then
-			-- log._("plychara on_msg_mv", prm.facing)
+		if not prm.face_dir_keep then -- turn
 
 			_s:dir_h__(prm.dir)
-
 			_s._turn_time = 0 
 			_s:hld_dir_h__sync()
 			_s:anim__("walk")
@@ -485,7 +478,7 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 		-- dive
 		if prm.dive then _s._is_dive_start = _.t end
 		
-		_s._dir_h_Ha = ha._(prm.dir)
+		_s._mv_dir_h_Ha = ha._(prm.dir)
 
 	elseif ar.in_(prm.dir, u.dir_v) then
 
@@ -502,28 +495,28 @@ end
 function Plychara.on_msg_act(_s, msg_id, prm, sndr)
 	-- log._("plychara on_msg_act", msg_id)
 	
-	if     ha.eq(msg_id, "jmp")      then
+	if     ha.eq(msg_id, "jmp")            then
 		_s:jmp()
 	
-	elseif ha.eq(msg_id, "arw_d_f")  then
+	elseif ha.eq(msg_id, "arw_d_f")        then
 		_s:arw_d_f()
 
-	elseif ha.eq(msg_id, "itm_use")  then
+	elseif ha.eq(msg_id, "itm_use")        then
 		_s:itm_use()
 		
-	elseif ha.eq(msg_id, "hld__ox")  then -- hld switch
+	elseif ha.eq(msg_id, "hld__ox")        then -- hld switch
 		_s:hld__ox()
 	
-	elseif ha.eq(msg_id, "hld__del") then
+	elseif ha.eq(msg_id, "hld__del")       then
 		_s:hld__del(prm.id)
 	
-	elseif ha.eq(msg_id, "to_doorwrp")  then
+	elseif ha.eq(msg_id, "to_doorwrp")     then
 		_s:to_doorwrp(prm.doorwrp_id)
 
 	elseif ha.eq(msg_id, "itm_selected__") then
 		_s:itm_selected__(prm.itm_selected)	
 
-	elseif ha.eq(msg_id, "menu_opn") then
+	elseif ha.eq(msg_id, "menu_opn")       then
 		_s:menu_opn()
 	end
 end
@@ -594,10 +587,10 @@ function Plychara.pos_fw(_s, mlt)
 	local t_pos = _s:pos()
 	local df  = n.vec(Map.sq * mlt, 0)
 
-	if     ha.eq(_s._dir_h_Ha, "l") then
+	if     ha.eq(_s._face_dir_h_Ha, "l") then
 		t_pos = t_pos - df
 
-	elseif ha.eq(_s._dir_h_Ha, "r") then
+	elseif ha.eq(_s._face_dir_h_Ha, "r") then
 		t_pos = t_pos + df
 	end
 	return t_pos
@@ -861,16 +854,16 @@ function Plychara.hld__x(_s)
 	else
 		-- target action
 		if     #_s._clsn.chara   >= 1 then
-			pst.scrpt(_s._clsn.chara[1]  , "present"  , {id = t_id})
+			pst.scrpt(_s._clsn.chara[1]  , "present"     , {id = t_id})
 
 		elseif #_s._clsn.anml  >= 1 then
-			pst.scrpt(_s._clsn.anml[1]   , "present"  , {id = t_id})
+			pst.scrpt(_s._clsn.anml[1]   , "present"     , {id = t_id})
 
 		elseif #_s._clsn.hrvst   >= 1 then
-			pst.scrpt(_s._clsn.hrvst[1]  , "in"       , {id = t_id})
+			pst.scrpt(_s._clsn.hrvst[1]  , "in"          , {id = t_id})
 
 		elseif #_s._clsn.kitchen >= 1 then
-			pst.scrpt(_s._clsn.kitchen[1], "kitchen_o", {id = t_id})
+			pst.scrpt(_s._clsn.kitchen[1], "kitchen__o"  , {id = t_id})
 
 		elseif #_s._clsn.reizoko >= 1 then
 			pst.scrpt(_s._clsn.reizoko[1], "into_reizoko", {food_id = t_id})
@@ -886,7 +879,7 @@ end
 
 function Plychara.hld_tile_side(_s)
 
-	local dir_h = ha.de(_s._dir_h_Ha)
+	local dir_h = ha.de(_s._mv_dir_h_Ha)
 
 	local side_is_block, t_tile = _s:side_is_block(dir_h)
 	-- log._("hld_tile_side ", side_is_block, t_tile)

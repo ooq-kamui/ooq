@@ -15,7 +15,7 @@ Cls.add(Parasail)
 function Parasail.cre(p_pos, prm)
 	local Cls = Parasail
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._("stand") end
+	if not prm._animHa then prm._animHa = ha._("parasail001-stand") end
 	local t_id = Sp.cre(Cls, p_pos, prm)
 	return t_id
 end

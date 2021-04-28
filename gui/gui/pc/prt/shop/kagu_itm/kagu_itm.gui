@@ -59,6 +59,10 @@ textures {
   name: "flpy"
   texture: "/assets/obj/itm/kagu/kagu-s/flpy/crystl.atlas"
 }
+textures {
+  name: "parasail"
+  texture: "/assets/obj/itm/airride/parasail/parasail.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0

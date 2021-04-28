@@ -70,18 +70,11 @@ function Kitchen.on_msg(_s, msg_id, prm, sndr)
 	Sp.on_msg(_s, msg_id, prm, sndr)
 	Hldabl.on_msg(_s, msg_id, prm, sndr)
 	
-	if     ha.eq(msg_id, "on_kitchen") then -- old
-		_s:kitchen_o(prm.id)
+	if     ha.eq(msg_id, "kitchen__o") then
+		_s:kitchen__o(prm.id)
 	
-	elseif ha.eq(msg_id, "kitchen_o") then
-		_s:kitchen_o(prm.id)
-	
-	elseif ha.eq(msg_id, "take_kitchen") then -- old
-		-- _s:take_kitchen(prm.id)
-		_s:kitchen_x(prm.id)
-	
-	elseif ha.eq(msg_id, "kitchen_x") then
-		_s:kitchen_x(prm.id)
+	elseif ha.eq(msg_id, "kitchen__x") then
+		_s:kitchen__x(prm.id)
 	end
 end
 
@@ -91,26 +84,20 @@ function Kitchen.final(_s)
 	Hldabl.final(_s)
 	
 	for idx, food_id in pairs(_s.on) do
-		pst.scrpt(food_id, "kitchen_x")
+		pst.scrpt(food_id, "kitchen__x")
 	end
 end
 
 -- method
 
-function Kitchen.on_kitchen(_s, food_id) -- old
-	_s:kitchen_o(food_id)
-end
-
-function Kitchen.kitchen_o(_s, food_id)
-	
-	-- local cls = u.get(food_id, "cls")
+function Kitchen.kitchen__o(_s, food_id)
 	
 	if not ar.inHa(id.cls(food_id), Food.cookabl) then return end
 	
 	if #_s.on >= Kitchen.on_max then return end
 	
 	ar.add(_s.on, food_id)
-	pst.scrpt(food_id, "kitchen_o", {id = _s._id})
+	pst.scrpt(food_id, "kitchen__o", {id = _s._id})
 	
 	_s:_food_pos__()
 	
@@ -120,6 +107,7 @@ function Kitchen.kitchen_o(_s, food_id)
 end
 
 function Kitchen._food_pos__(_s)
+
 	local x, pos
 	for idx, food_id in ipairs(_s.on) do
 		x = u.x_by_all_w(idx, Kitchen.on_max, Map.sq)
@@ -143,12 +131,8 @@ function Kitchen.cooking_start(_s)
 	end
 end
 
-function Kitchen.take_kitchen(_s, food_id) -- old
-	_s:kitchen_x(food_id)
-end
-
-function Kitchen.kitchen_x(_s, food_id)
-	-- log._("kitchen take_kitchen")
+function Kitchen.kitchen__x(_s, food_id)
+	-- log._("kitchen kitchen__x")
 	
 	if not (#_s.on > 0) then return end
 
@@ -156,10 +140,11 @@ function Kitchen.kitchen_x(_s, food_id)
 	
 	_s._cooking_timer = 0
 
-	-- log._("take_kitchen _s.on", unpack(_s.on))
+	-- log._("kitchen__x _s.on", unpack(_s.on))
 end
 
 function Kitchen.cre_dish(_s)
+
 	for idx, id in pairs(_s.on) do
 		pst.scrpt(id, "cook_to_dish")
 	end

@@ -51,16 +51,16 @@ function Fairy.on_msg(_s, msg_id, prm, sndr)
 	-- log._("fairy on_msg", msg_id)
 	-- log.pp("msg_id", prm)
 
-	if     ha.eq(msg_id, "magic") then
+	if     ha.eq(msg_id, "magic")          then
 		_s:magic()
 
-	elseif ha.eq(msg_id, "magic_wall") then
+	elseif ha.eq(msg_id, "magic_wall")     then
 		_s:magic_wall()
 
-	elseif ha.eq(msg_id, "fire") then
+	elseif ha.eq(msg_id, "fire")           then
 		_s:fire()
 
-	elseif ha.eq(msg_id, "mv__dir") then
+	elseif ha.eq(msg_id, "mv__dir")        then
 		_s:mv__dir(prm.dir)
 
 	elseif ha.eq(msg_id, "mv__plychara_v") then

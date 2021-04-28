@@ -29,12 +29,12 @@ function Hldabl.hldd__o(_s, prm)
 	_s:anm_cancel_pos()
 	
 	if _s:is_food() and _s._kitchen_id then
-		pst.scrpt(_s._kitchen_id, "kitchen_x", {id = _s._id})
-		_s:kitchen_x()
+		pst.scrpt(_s._kitchen_id, "kitchen__x", {id = _s._id})
+		_s:kitchen__x()
 	end
 	
 	if _s._bear_tree_id then
-		pst.scrpt(_s._bear_tree_id, "bear_x", {bear_id = _s._id})
+		pst.scrpt(_s._bear_tree_id, "bear__x", {bear_id = _s._id})
 		_s._bear_tree_id = nil
 	end
 

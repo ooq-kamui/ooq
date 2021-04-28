@@ -56,3 +56,9 @@ Mstr.kagu_itm["mgcpot"] = {
 	},
 }
 
+Mstr.kagu_itm["parasail"] = {
+	parasail001 = {
+		price = 19000,
+	},
+}
+

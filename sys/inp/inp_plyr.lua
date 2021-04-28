@@ -84,7 +84,6 @@ function Inp.plyr.on_inp_plyr(_s, keyHa, keyact)
 
 	-- final
 	_s:on_inp_plyr_keep__(key)
-	-- _s:on_inp_plyr_keep_ltst__(key)
 end
 
 function Inp.plyr.on_inp_plyr__(_s, key, keyact)
@@ -103,26 +102,28 @@ end
 
 function Inp.plyr.on_inp_fairy_pst(_s)
 
-	if not _s:is_arw() then return end
-
 	local fairy_id = Game.fairy_id()
 
-	local prm = {}
-	prm.dir = Inp.arw_2_dir[_s._plyr._key]
+	if     _s:is_arw() then
+		local prm = {}
+		prm.dir = Inp.arw_2_dir[_s._plyr._key]
 
-	if     _s:p() then
+		if     _s:p() then
 
-		if     _s:is_arw_v()
-		or not _s:with("a") then
-			pst.scrpt(fairy_id, "mv__dir"       , prm)
+			if     _s:is_arw_v() or not _s:with("a") then
+				pst.scrpt(fairy_id, "mv__dir", prm)
+			end
+
+		elseif _s:k() and _s:is_arw_v() and _s:is_lng() then
+
+			pst.scrpt(fairy_id, "mv__plychara_v", prm)
 		end
 
-	elseif _s:k() and _s:is_arw_v() and _s:is_lng() then
+	elseif _s:f("a") then
+		local prm = {}
+		prm.dir = Inp.arw_2_dir[_s._plyr._keep_ltst]
 
-		pst.scrpt(fairy_id, "mv__plychara_v", prm)
-
-	elseif _s:f() then
-		
+		pst.scrpt(fairy_id, "mv__dir", prm)
 	end
 end
 
@@ -147,17 +148,15 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 	local plychara_id = Game.plychara_id()
 
 	-- mv ( arw )
-	if     _s:k("arw_l") then
-		pst.scrpt(
-			plychara_id, "mv",
-			{dir = "l", dive = _s:is_lng("arw_l"), facing = _s:with("a")}
-		)
+	if     _s:k("arw_l") or _s:k("arw_r") then
 
-	elseif _s:k("arw_r") then
-		pst.scrpt(
-			plychara_id, "mv",
-			{dir = "r", dive = _s:is_lng("arw_r"), facing = _s:with("a")}
-		)
+		local keyHa = _s._plyr._key -- alias
+		local prm = {
+			dir  = Inp.arw_2_dir[keyHa],
+			dive = _s:is_lng(keyHa),
+			face_dir_keep = _s:with("a"),
+		}
+		pst.scrpt(plychara_id, "mv", prm)
 
 	elseif _s:k("arw_u") then
 		pst.scrpt(plychara_id, "mv", {dir = "u"})
@@ -167,27 +166,26 @@ function Inp.plyr.on_inp_plyr_pst(_s)
 
 	-- arw free
 	elseif _s:f("arw_d") then
-		pst.scrpt(plychara_id , "arw_d_f" )
+		pst.scrpt(plychara_id, "arw_d_f" )
 
 	-- button
 	elseif _s:p("z") then
-		pst.scrpt(plychara_id , "jmp"     )
+		pst.scrpt(plychara_id, "jmp"     )
 
-	-- elseif _s:p("a") then
 	elseif _s:f("a") then
-		pst.scrpt(plychara_id , "itm_use" )
+		pst.scrpt(plychara_id, "itm_use" )
 
 	elseif _s:p("x") then
-		pst.scrpt(plychara_id , "hld__ox" )
+		pst.scrpt(plychara_id, "hld__ox" )
 
 	elseif _s:p("s") then
-		pst.scrpt(plychara_id , "menu_opn")
+		pst.scrpt(plychara_id, "menu_opn")
 
 	elseif _s:p("q") then
-		pst.scrpt(Sys.cmr_id(), "zoom__o" )
+		pst.scrpt(Sys.cmr_id(), "zoom__o")
 
 	elseif _s:p("w") then
-		pst.scrpt(Sys.cmr_id(), "zoom__i" )
+		pst.scrpt(Sys.cmr_id(), "zoom__i")
 	end
 end
 
@@ -218,20 +216,8 @@ function Inp.plyr.on_inp_plyr_keep__(_s, key)
 		_s._plyr._keep[key] = nil
 		_s._plyr._keep_ltst = nil
 	end
-
-	-- _s:on_inp_plyr_keep_ltst__(key)
 end
 
---[[
-function Inp.plyr.on_inp_plyr_keep_ltst__(_s, key)
-
-	if     _s:k(key) then
-		_s._plyr._keep_ltst = key
-	elseif _s:f(key) then
-		_s._plyr._keep_ltst = nil
-	end
-end
---]]
 
 function Inp.plyr.p(_s, key) -- press
 
@@ -240,7 +226,7 @@ function Inp.plyr.p(_s, key) -- press
 	if key then
 		if not u.eq(_s._plyr._key, key) then return ret end
 	else
-		key = _s._plyr._key
+		-- key = _s._plyr._key -- use not ?
 	end
 
 	if _s._plyr._keyact.pressed then
@@ -256,7 +242,7 @@ function Inp.plyr.f(_s, key) -- free ( released )
 	if key then
 		if not u.eq(_s._plyr._key, key) then return ret end
 	else
-		key = _s._plyr._key
+		-- key = _s._plyr._key -- use not ?
 	end
 
 	if _s._plyr._keyact.released then
@@ -272,7 +258,7 @@ function Inp.plyr.k(_s, key) -- press keep
 	if key then
 		if not u.eq(_s._plyr._key, key) then return ret end
 	else
-		key = _s._plyr._key
+		-- key = _s._plyr._key -- use not ?
 	end
 
 	if not _s._plyr._keyact.released then

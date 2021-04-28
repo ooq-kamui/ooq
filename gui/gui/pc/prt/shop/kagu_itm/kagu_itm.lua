@@ -22,7 +22,7 @@ function p.Shop_kagu_itm.init(_s, parent_gui)
 	extend._(   _s, p.Shop_kagu_itm)
 	
 	_s._itm_pitch   = 75
-	_s._dsp_idx_max = 5
+	_s._dsp_idx_max =  5
 
 	local kagu_itm = ar.key(Mstr.kagu_itm)
 	_s:itm__by_ar(kagu_itm)
@@ -30,11 +30,12 @@ function p.Shop_kagu_itm.init(_s, parent_gui)
 	_s:nd__("ply_data_gold")
 	
 	local node, name, anim, price
+	local stand = {"mgcpot", "mgccrcl", "trmpln", "parasail"}
 	for idx, cls in pairs(_s._itm) do
 		
 		name = cls.."001"
 
-		if ar.in_(cls, {"mgcpot", "mgccrcl", "trmpln"}) then
+		if ar.in_(cls, stand) then
 			anim = name.."-stand"
 		else
 			anim = name

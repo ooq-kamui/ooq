@@ -84,14 +84,16 @@ function Game.plychara_pos()
 	return plychara_pos
 end
 
-function Game.plychara_dir()
+--[[
+function Game.plychara_dir() -- use not ?
 
 	local plychara_id = Game.plychara_id()
 	if u.is_emp(plychara_id) then return end
 
-	local plychara_dir = id.prp(plychara_id, "_dir_h_Ha")
+	-- local plychara_dir = id.prp(plychara_id, "_dir_h_Ha")
 	return plychara_dir
 end
+--]]
 
 function Game.fairy_id()
 

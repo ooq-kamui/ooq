@@ -8,10 +8,6 @@ textures {
   texture: "/assets/gui/txtr/atlas/pc/pc.atlas"
 }
 textures {
-  name: "face.bk"
-  texture: "/assets/gui/txtr/atlas/face/face.atlas"
-}
-textures {
   name: "base"
   texture: "/assets/gui/txtr/atlas/base/base.atlas"
 }

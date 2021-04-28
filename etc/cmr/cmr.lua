@@ -31,12 +31,11 @@ function Cmr.cre(p_pos)
 	p_pos = p_pos or Cmr.dflt.pos
 
 	local name = "cmr"
-	-- local t_url = url._(Cmr.fac, name)
 	local t_url = "/sys#fac_cmr"
 	if not prm then prm = {} end
 	prm._clsHa  = ha._(Cmr.cls)
 	prm._nameHa = ha._(name)
-	-- ar.key___(prm)
+
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	return t_id
 end
@@ -46,23 +45,21 @@ end
 function Cmr.init(_s)
 	
 	extend._(_s, Cmr)
+
 	_s._id = id._()
-	-- _s._id = go.get_id()
 	
 	local prm = {
 		aspect_ratio = Disp.x / Disp.y,
 		fov    = math.pi * (45 / 180),
 		near_z = 1,
-		far_z  = Cmr.far.z + 1 -- Disp.xh + Disp.xh/2*3 + 1,
+		far_z  = Cmr.far.z + 1
 	}
 	pst._("#cmr", "set_camera", prm)
 	pst._("#cmr", "acquire_camera_focus")
-	-- log._("cmr init acquire_camera_focus")
 
 	_s:pos__dflt()
 	_s._z_idx = Cmr.dflt.z_idx
 	
-	-- _s._zoom_dir = ""
 	if not ha.is_emp(_s:plychara_id()) then
 		_s._target_pos = _s:plychara_pos()
 	end
@@ -77,7 +74,7 @@ end
 
 function Cmr.upd(_s, dt)
 
-	if ha.is_emp(_s:game_id())     then return end
+	if ha.is_emp(_s:game_id()    ) then return end
 	if ha.is_emp(_s:plychara_id()) then return end
 
 	_s._pos = _s:pos()
@@ -87,17 +84,12 @@ function Cmr.upd(_s, dt)
 	_s:upd_vec(dt)
 	
 	_s:upd_pos(dt)
-
-	-- log._("cmr.upd() pos", _s._pos)
 end
 
 function Cmr.upd_pos(_s, dt)
 	
-	local pos = _s._pos + _s._vec
-	
-	-- pos = _s:pos_crct(pos)
-	
-	_s:pos__(pos)
+	local t_pos = _s._pos + _s._vec
+	_s:pos__(t_pos)
 end
 
 function Cmr.upd_vec(_s, dt)
@@ -118,8 +110,6 @@ function Cmr.upd_vec(_s, dt)
 	else
 		_s:upd_vec_far(dt)
 	end
-	
-	-- u.log(_s._log_func, "speed", f(_s._speed), "vec", _s._vec)
 end
 
 function Cmr.upd_vec_far(_s, dt)
@@ -132,7 +122,7 @@ function Cmr.upd_vec_far(_s, dt)
 end
 
 function Cmr.upd_vec_far_frnt(_s, dt)
-	-- u.log("_nml_nml()")
+
 	_s._log_func = "far_frnt"
 	
 	-- accl
@@ -148,7 +138,7 @@ function Cmr.upd_vec_far_frnt(_s, dt)
 end
 
 function Cmr.upd_vec_far_out(_s, dt)
-	-- u.log("_nml_dcl()")
+
 	_s._log_func = "far_out"
 	
 	-- accl
@@ -164,7 +154,7 @@ function Cmr.upd_vec_far_out(_s, dt)
 end
 
 function Cmr.upd_vec_near(_s, dt)
-	-- u.log("_upd_vec_slw()")
+
 	_s._log_func = "near"
 	
 	-- accl
@@ -186,34 +176,37 @@ function Cmr.on_msg(_s, msg_id, prm, sndr)
 	
 	Sp.on_msg(_s, msg_id, prm, sndr)
 
-	if     ha.eq(msg_id, "zoom__dflt") then
+	if     ha.eq(msg_id, "zoom__dflt"   ) then
 		_s:zoom__dflt()
 	
-	elseif ha.eq(msg_id, "zoom__i") then
+	elseif ha.eq(msg_id, "zoom__i"      ) then
 		_s:zoom__i()
 		
-	elseif ha.eq(msg_id, "zoom__o") then
+	elseif ha.eq(msg_id, "zoom__o"      ) then
 		_s:zoom__o()
 
-	elseif ha.eq(msg_id, "zoom__far") then
+	elseif ha.eq(msg_id, "zoom__far"    ) then
 		_s:zoom__far()
 
-	elseif ha.eq(msg_id, "pos__dflt") then
+	elseif ha.eq(msg_id, "pos__dflt"    ) then
 		_s:pos__dlft()
 		
 	elseif ha.eq(msg_id, "pos__plychara") then
 		_s:pos__plychara()
 
-	elseif ha.eq(msg_id, "z__far") then
+	elseif ha.eq(msg_id, "pos__chara_rnd"   ) then
+		_s:pos__chara_rnd()
+
+	elseif ha.eq(msg_id, "z__far"       ) then
 		_s:z__far()
 
-	elseif ha.eq(msg_id, "target_pos__") then
+	elseif ha.eq(msg_id, "target_pos__" ) then
 		_s:target_pos__(prm.pos)
 
-	elseif ha.eq(msg_id, "__game_start") then
+	elseif ha.eq(msg_id, "__game_start" ) then
 		_s:__game_start()
 
-	elseif ha.eq(msg_id, "__dstrct_ch") then
+	elseif ha.eq(msg_id, "__dstrct_ch"  ) then
 		_s:__dstrct_ch()
 	end
 end
@@ -227,15 +220,17 @@ end
 -- target
 
 function Cmr.target_pos(_s)
-	-- ?
+
 	return _s._target_pos
 end
 
 function Cmr.target_pos__(_s, pos)
+
 	_s._target_pos = pos
 end
 
 function Cmr.target_z(_s)
+
 	local target_z = Cmr.z_lst[_s._z_idx]
 	return target_z
 end
@@ -256,7 +251,7 @@ function Cmr.upd_target_pos_x_df(_s, dt, z)
 
 	if id.prp(_s:plychara_id(), "_turn_time") < 4 then return 0 end
 
-	if id.prp(_s:plychara_id(), "_dir_h_Ha") == ha._("l") then
+	if id.prp(_s:plychara_id(), "_face_dir_h_Ha") == ha._("l") then
 		x_df = - x_df
 	end
 	return x_df
@@ -266,7 +261,6 @@ end
 
 function Cmr.pos__dflt(_s)
 
-	-- _s._z_idx = Cmr.dflt.z_idx
 	_s:pos__(Cmr.dflt.pos)
 end
 
@@ -274,10 +268,17 @@ function Cmr.pos__plychara(_s)
 	
 	if ha.is_emp(_s:plychara_id()) then return end
 	
-	local pos = _s:plychara_pos()
-	_s:pos__(pos)
+	local t_pos = _s:plychara_pos()
+	_s:pos__(t_pos)
+end
 
-	-- log._("Cmr.pos__plychara()", pos, _s:pos())
+function Cmr.pos__chara_rnd(_s)
+	
+	local t_pos = _s:chara_rnd_pos()
+
+	if ha.is_emp(t_pos) then return end
+
+	_s:pos__(t_pos)
 end
 
 function Cmr.pos_crct(_s, pos)
@@ -285,13 +286,6 @@ function Cmr.pos_crct(_s, pos)
 	local z = _s:pos().z
 
 	local df = _s:pos_crct_x_df(z)
-
-	-- local xl_lim = (Map.x[1] + z) + df
-	-- local xr_lim = (Map.x[2] - z) - df
-	-- log.pp("map rng", Map.rng)
-	
-	-- local xl_lim = (Map.rng.pos.min.x + z) + df
-	-- local xr_lim = (Map.rng.pos.max.x - z) - df
 
 	local map_rng_pos = _s:map_rng_pos()
 	local xl_lim = (map_rng_pos.min.x + z) -- + df
@@ -307,7 +301,7 @@ end
 
 function Cmr.map_rng_pos(_s)
 	
-	local map_rng_pos = Game.map_rng_pos() -- id.prp(Game.map_id(), "_rng_pos")
+	local map_rng_pos = Game.map_rng_pos()
 	return map_rng_pos
 end
 
@@ -320,20 +314,21 @@ function Cmr.pos_crct_x_df(_s, z)
 
 	local d  = (x_crct.max.x - x_crct.min.x) / (x_crct.max.z - x_crct.min.z)
 	local df = ((z - x_crct.min.z) * d + (x_crct.min.x)) * Map.sq
-	-- log._("df", df)
 	return df
 end
 
 function Cmr.pos(_s)
+
 	return Sp.pos(_s)
 end
 
 function Cmr.pos__(_s, pos)
+
 	Sp.pos__(_s, pos)
 end
 
 function Cmr.pos__far(_s)
-	-- log._("cmr.pos__far")
+
 	_s:pos__(Cmr.far.pos)
 end
 
@@ -341,14 +336,12 @@ end
 
 function Cmr.zoom__i(_s)
 	
-	-- _s._zoom_dir = "i"
 	_s._z_idx = int.dec_stop(_s._z_idx, #Cmr.z_lst)
 	_s:zoom__anm()
 end
 
 function Cmr.zoom__o(_s)
 	
-	-- _s._zoom_dir = "o"
 	_s._z_idx = int.inc_stop(_s._z_idx, #Cmr.z_lst)
 	_s:zoom__anm()
 end
@@ -356,7 +349,6 @@ end
 function Cmr.zoom__far(_s, time)
 	
 	_s._z_idx = #Cmr.z_lst
-	-- _s:zoom__anm(0)
 	_s:zoom__anm()
 end
 
@@ -367,6 +359,7 @@ function Cmr.zoom__dflt(_s)
 end
 
 function Cmr.zoom__anm(_s, time)
+
 	time = time or 2
 	go.animate(_s._id, "position.z", es.fwd, _s:target_z(), es.sin_o, time, 0)
 end
@@ -374,19 +367,19 @@ end
 -- plychara
 
 function Cmr.plychara_id(_s)
+
 	local plychara_id = Game.plychara_id()
-	-- log._("Cmr.plychara_id()", plychara_id)
 	return plychara_id
 end
 
 function Cmr.plychara_pos(_s)
+
 	local plychara_id = _s:plychara_id()
-	local pos = id.pos(plychara_id)
-	return pos
+	local r_pos = id.pos(plychara_id)
+	return r_pos
 end
 
 function Cmr.__game_start(_s)
-	-- log._("Cmr.__game_start")
 
 	_s:pos__plychara()
 	_s:z__far()
@@ -394,17 +387,13 @@ function Cmr.__game_start(_s)
 end
 
 function Cmr.__dstrct_ch(_s)
-	-- log._("Cmr.__dstrct_ch")
 
-	-- _s:__stp()
 	_s:accl__(0)
 	_s:pos__plychara()
-	
-	-- _s:z__far()
-	-- _s:zoom__dflt()
 end
 
 function Cmr.__stp(_s)
+
 	_s:accl__(0)
 	_s:speed__(0)
 end

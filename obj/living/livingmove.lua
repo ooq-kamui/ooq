@@ -141,15 +141,15 @@ end
 
 function Livingmove.vec_mv_x__(_s)
 
-	if (_s._dir_h_Ha == "l" and _s:side_is_block("l"))
-	or (_s._dir_h_Ha == "r" and _s:side_is_block("r"))
+	if (_s._mv_dir_h_Ha == "l" and _s:side_is_block("l"))
+	or (_s._mv_dir_h_Ha == "r" and _s:side_is_block("r"))
 	then
 		return
 	end
 
 	local df_x = _s._speed
 
-	if ha.eq(_s._dir_h_Ha, "l") then df_x = - df_x end
+	if ha.eq(_s._mv_dir_h_Ha, "l") then df_x = - df_x end
 
 	_s._vec_mv.x = df_x
 end

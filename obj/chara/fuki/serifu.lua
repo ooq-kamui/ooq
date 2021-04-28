@@ -8,16 +8,19 @@ Serifu = {
 		{len =  3, txt = "いたか"},
 
 		{len =  2, txt = "うそ"},
+		{len =  2, txt = "ねる"},
+		{len =  5, txt = "ねむらない"},
+		{len =  3, txt = "たべる"},
 
 		{len =  3, txt = "まいご"},
 		{len =  4, txt = "さまよう"},
 		{len =  4, txt = "まよった"},
-
 		{len =  4, txt = "やっぱり"},
 		{len =  3, txt = "まって"},
 
 		{len =  6, txt = "いんびじぶる"},
 		{len =  4, txt = "みえない"},
+		{len =  4, txt = "はかない"},
 
 		{len =  6, txt = "あたしだって"},
 		{len =  3, txt = "もっと"},
