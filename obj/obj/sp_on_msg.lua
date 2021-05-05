@@ -2,16 +2,20 @@ log.scrpt("sp_on_msg.lua")
 
 function Sp.on_msg(_s, msg_id, prm, sndr)
 	
-	if     ha.eq(msg_id, "pos__") then
+	if     ha.eq(msg_id, "__init") then
+		_s:__init(prm)
+
+	elseif ha.eq(msg_id, "pos__") then
 		_s:pos__(prm.pos)
 		
 	elseif ha.eq(msg_id, "z__"  ) then
 		_s:z__(prm.z)
 	
-	elseif ha.eq(msg_id, "__"   ) then
+	elseif ha.eq(msg_id, "prp__") then -- use ?
 		for key, val in pairs(prm) do
-			_s:__(key, val)
+			_s:prp__(key, val)
 		end
+		-- log.pp("sp.on_msg prp__", prm)
 		
 	elseif ha.eq(msg_id, "anim__"  ) then
 		_s:anim__(prm.anim)

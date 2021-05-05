@@ -13,8 +13,8 @@ Cls.add(Fairy)
 
 function Fairy.cre(p_pos, prm)
 	-- log._("Fairy.cre")
-	local Cls = Fairy
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Fairy
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
@@ -22,8 +22,13 @@ end
 
 function Fairy.init(_s)
 
-	extend.init(_s, Sp)
+	extend._(_s, Sp)
 	extend._(_s, Fairy)
+end
+
+function Fairy.__init(_s, prm)
+
+	Sp.__init(_s, prm)
 
 	local plychara_id = Game.plychara_id()
 	_s:parent__(plychara_id, 0.1, n.vec(0, Map.sqh))

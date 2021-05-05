@@ -1,5 +1,5 @@
 log.scrpt("plant.script")
----[[
+
 go.property("_clsHa",  hash(""))
 go.property("_nameHa", hash(""))
 go.property("_animHa", hash(""))
@@ -9,7 +9,6 @@ go.property("_map_id",  hash(""))
 
 go.property("_parent_id", hash(""))
 go.property("_z", 0.2)
---]]
 
 function init(_s)
 	Plant.init(_s)
@@ -20,6 +19,7 @@ function update(_s, dt)
 end
 
 function on_message(_s, msg_id, prm, sndr)
+	_s:on_msg(msg_id, prm, sndr)
 end
 
 function final(_s)

@@ -4,7 +4,8 @@ Tst = {}
 Tst.obj = {}
 
 function Tst.obj.tst()
-	local Cls = {
+
+	local t_Cls = {
 		-- Chara,
 		Anml, Anml, Anml,
 		Seed, Seed, Seed, Seed, Seed, Seed,
@@ -28,20 +29,22 @@ function Tst.obj.tst()
 		--]]
 		Block,
 	}
-	Tst.obj._(Cls)
+	Tst.obj._(t_Cls)
 end
 
 function Tst.obj.chara()
-	local Cls = {
+
+	local t_Cls = {
 		Chara,Chara,Chara,Chara,Chara,Chara,
 		Chara,Chara,Chara,Chara,Chara,Chara,
 		Seed,Seed,Seed,Seed,
 	}
-	Tst.obj._(Cls)
+	Tst.obj._(t_Cls)
 end
 
 function Tst.obj.fire()
-	local Cls = {
+
+	local t_Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
 		Fire,Fire,Fire,Fire, -- Fire,Fire,
 		Seed, -- Seed,Seed,Seed,Seed,
@@ -49,21 +52,22 @@ function Tst.obj.fire()
 		Leaf,Leaf,Leaf,
 		Dryleaf,Dryleaf,Dryleaf,Dryleaf,Dryleaf,
 	}
-	Tst.obj._(Cls)
+	Tst.obj._(t_Cls)
 end
 
 function Tst.obj.tree()
-	local Cls = {
+
+	local t_Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 		Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,Tree,
 	}
-	Tst.obj._(Cls)
+	Tst.obj._(t_Cls)
 end
 
 function Tst.obj.game_start()
 	
-	local Cls = {
+	local t_Cls = {
 		Chara, -- Chara,Chara,Chara,Chara,
 		Anml,Anml,Anml,Anml,Anml,Anml,Anml,Anml,
 		---[[
@@ -90,10 +94,11 @@ function Tst.obj.game_start()
 		-- Block,Block,Block,Block,Block,
 		--]]
 	}
-	Tst.obj._(Cls)
+	Tst.obj._(t_Cls)
 end
 
 function Tst.obj._(p_Cls)
+	log._("Tst.obj._")
 	
 	local t_pos = n.vec(-800, 200)
 	local y, idx

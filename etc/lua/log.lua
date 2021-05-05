@@ -21,8 +21,7 @@ end
 
 function log.fltr_cls(cls, ...)
 	
-	if not ha.eq(id.cls(id._()), cls) then return end
-	-- if not ha.eq(id.cls(go.get_id()), cls) then return end
+	if not ha.eq(id.clsHa(id._()), cls) then return end
 
 	log._(cls, ...)
 end

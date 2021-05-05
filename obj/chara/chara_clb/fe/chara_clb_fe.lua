@@ -16,9 +16,8 @@ Chara_clb_fe = {
 }
 Chara_clb_fe.cls = "chara_clb_fe"
 Chara_clb_fe.fac = Obj.fac..Chara_clb_fe.cls
-Cls.add(Chara_clb_fe, Chara_clb_fe.chara) -- ??
-
-ha.add_by_ar(Chara_clb_fe.chara) -- ??
+Cls.add(Chara_clb_fe)
+ha.add_by_ar(Chara_clb_fe.chara)
 
 -- static
 
@@ -35,14 +34,8 @@ function Chara_clb_fe.cre(p_pos, p_name)
 
 	prm._is_flyabl = ar.in_(p_name, Chara_clb_fe.flyabl)
 	
-	local map_id, game_id = Game.map_id()
-	if ha.is_emp(map_id) then return end
-	
-	prm._game_id   = game_id
-	prm._map_id    = map_id
-	prm._parent_id = map_id
-
-	local t_id = fac.cre("/obj-fac/"..Chara_clb_fe.fac, p_pos, nil, prm)
+	local t_Cls = Chara_clb_fe
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	
 	Map.add_chara_clb_fe(p_name)
 	return t_id

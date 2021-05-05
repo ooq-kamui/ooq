@@ -18,7 +18,8 @@ Anml = {
 	-- enemy = {"cow", "ant",},
 }
 Anml.cls = "anml"
-Anml.fac = "/obj-fac/"..Anml.cls.."Fac"
+Anml.fac = Obj.fac..Anml.cls
+-- Anml.fac = "/obj-fac/"..Anml.cls.."Fac"
 Cls.add(Anml)
 ha.add_by_ar(Anml.anml)
 
@@ -31,35 +32,32 @@ function Anml.cre(p_pos, prm)
 	prm = prm or {}
 	
 	prm._clsHa  = ha._(Anml.cls)
+
 	if not prm._nameHa then
 		prm._nameHa = ha._(rnd.ar(Anml.anml))
 	end
 	prm._animHa = ha._("walk")
 
-	local map_id, game_id = Game.map_id()
-	if ha.is_emp(map_id) then return end
-	
-	prm._game_id   = game_id
-	prm._map_id    = map_id
-	prm._parent_id = map_id
-	
-	local t_url = url._(Anml.fac, prm._nameHa)
-	-- ar.key___(prm)
-	-- log.pp("anml cre" .. t_url, prm)
-	local t_id = fac.cre(t_url, p_pos, nil, prm)
-	-- local t_id = factory.create(t_url, p_pos, nil, prm)
-
+	local t_Cls = Anml
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Anml.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Livingmove)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Livingmove)
+	extend._(_s, Hldabl)
 	extend._(_s, Anml)
+end
+
+function Anml.__init(_s, prm)
+	
+	Sp        .__init(_s, prm)
+	Livingmove.__init(_s)
+	Hldabl    .__init(_s)
 end
 
 function Anml.upd(_s, dt)
@@ -108,10 +106,10 @@ end
 
 function Anml.present(_s, o_id)
 	
-	local o_cls  = id.cls( o_id)
-	local o_name = id.name(o_id)
+	local o_clsHa  = id.clsHa( o_id)
+	local o_nameHa = id.nameHa(o_id)
 	
-	if not _s:is_favo(o_cls, o_name) then return end
+	if not _s:is_favo(o_clsHa, o_nameHa) then return end
 	
 	id.del(o_id)
 	Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))

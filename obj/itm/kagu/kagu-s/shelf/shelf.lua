@@ -15,18 +15,24 @@ Cls.add(Shelf)
 -- static
 
 function Shelf.cre(p_pos, prm)
-	local Cls = Shelf
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Shelf
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Shelf.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
 	extend._(_s, Shelf)
+end
+
+function Shelf.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Shelf.upd(_s, dt)

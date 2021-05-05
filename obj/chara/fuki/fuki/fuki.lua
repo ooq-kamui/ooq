@@ -13,21 +13,27 @@ Fuki.fac = Obj.fac..Fuki.cls
 Cls.add(Fuki)
 
 function Fuki.cre(p_pos, prm, scl)
-	local Cls = Fuki
+
+	local t_Cls = Fuki
 
 	p_pos = p_pos or pos.pos() + n.vec(0, Map.sq * 3 / 2 + 3)
 
 	prm = prm or {}
-	local t_id = Sp.cre(Cls, p_pos, prm, scl)
+	local t_id = Sp.cre(t_Cls, p_pos, prm, scl)
 	return t_id
 end
 
 -- script method
 
 function Fuki.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Fuki)
+end
+
+function Fuki.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend._(   _s, Fuki)
+	Sp.__init(_s, prm)
 end
 
 function Fuki.upd(_s, dt)

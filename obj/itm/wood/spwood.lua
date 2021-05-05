@@ -4,7 +4,7 @@ Spwood = {}
 
 -- script method
 
-function Spwood.init(_s)
+function Spwood.__init(_s)
 end
 
 function Spwood.on_msg(_s, msg_id, prm, sndr)

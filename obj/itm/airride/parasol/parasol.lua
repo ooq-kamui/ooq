@@ -13,21 +13,29 @@ Cls.add(Parasol)
 -- static
 
 function Parasol.cre(p_pos, prm)
-	local Cls = Parasol
+	local t_Cls = Parasol
 	prm = prm or {}
 	if not prm._animHa then prm._animHa = ha._("stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	-- if not prm._anim   then prm._anim   =      "stand"  end
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Parasol.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Airride)
+	extend._(_s, Parasol)
+end
+
+function Parasol.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Airride)
-	extend._(   _s, Parasol)
+	Sp     .__init(_s, prm)
+	Hldabl .__init(_s)
+	Airride.__init(_s)
 end
 
 function Parasol.upd(_s, dt)

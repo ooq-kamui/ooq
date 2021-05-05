@@ -11,17 +11,22 @@ Cls.add(Plant)
 -- static
 
 function Plant.cre(p_pos)
-	local Cls = Plant
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_Cls = Plant
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Plant.init(_s)
-	
-	extend.init(_s, Sp)
+
+	extend._(_s, Sp)
 	extend._(_s, Plant)
+end
+
+function Plant.__init(_s, prm)
+	
+	Sp.__init(_s, prm)
 end
 
 function Plant.upd(_s, dt)
@@ -54,3 +59,4 @@ end
 function Plant.final(_s)
 	Sp.final(_s)
 end
+

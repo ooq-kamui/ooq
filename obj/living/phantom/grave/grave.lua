@@ -11,19 +11,25 @@ Cls.add(Grave)
 -- static
 
 function Grave.cre(p_pos, prm)
-	local Cls = Grave
+	local t_Cls = Grave
 	prm = prm or {}
 	prm._animHa = prm._animHa or ha._("stand")
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	-- prm._anim   = prm._anim   or      "stand"
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Grave.init(_s)
-	
-	extend.init(_s, Sp)
+
+	extend._(_s, Sp)
 	extend._(_s, Grave)
+end
+
+function Grave.__init(_s, prm)
+	
+	Sp.__init(_s, prm)
 end
 
 function Grave.upd(_s, dt)

@@ -13,19 +13,24 @@ Cls.add(Tree)
 -- static
 
 function Tree.cre(p_pos, prm, p_scl)
-	local Cls = Tree
-	local t_id = Sp.cre(Cls, p_pos, prm, p_scl)
+	local t_Cls = Tree
+	local t_id = Sp.cre(t_Cls, p_pos, prm, p_scl)
 	return t_id
 end
 
 -- script method
 
 function Tree.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Tree)
+end
+
+function Tree.__init(_s, prm)
 	
 	Tree.bear__init(_s)
 
-	extend.init(_s, Sp)
-	extend._(   _s, Tree)
+	Sp.__init(_s, prm)
 
 	-- scale
 	local size  = 1.5
@@ -107,7 +112,7 @@ function Tree.bear(_s)
 end
 
 function Tree.bear__x(_s, bear_id)
-	ar.del_by_val(bear_id, _s._bear)
+	ar.del_by_val(_s._bear, bear_id)
 end
 
 function Tree.trnsf_wood(_s, num)

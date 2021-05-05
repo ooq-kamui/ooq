@@ -19,9 +19,8 @@ Chara = {
 }
 Chara.cls = "chara"
 Chara.fac = Obj.fac..Chara.cls
-Cls.add(Chara, Chara.chara) -- ??
-
-ha.add_by_ar(Chara.chara) -- ??
+Cls.add(Chara)
+ha.add_by_ar(Chara.chara)
 
 -- static
 
@@ -33,21 +32,15 @@ function Chara.cre(p_pos, p_name)
 	p_name = p_name or Chara.new_name()
 	
 	local prm = {}
+
 	prm._clsHa  = ha._(Chara.cls)
 	prm._nameHa = ha._(p_name)
 
 	prm._is_flyabl = ar.in_(p_name, Chara.flyabl) -- to init
 	
-	local map_id, game_id = Game.map_id()
-	if ha.is_emp(map_id) then return end
-	
-	prm._game_id   = game_id
-	prm._map_id    = map_id
-	prm._parent_id = map_id
+	local t_Cls = Chara
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 
-	-- ar.key___(prm)
-	local t_id = fac.cre("/obj-fac/"..Chara.fac, p_pos, nil, prm)
-	
 	Map.add_chara(p_name)
 	return t_id
 end
@@ -62,15 +55,19 @@ end
 -- script method
 
 function Chara.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Livingmove)
+	extend._(_s, Chara)
+end
+
+function Chara.__init(_s, prm)
 	
 	_s._name   = ha.de(_s._nameHa)
 	_s._animHa = _s._name.."-walk"
 
-	-- _s:anim__("walk")
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Livingmove)
-	extend._(   _s, Chara)
+	Sp        .__init(_s, prm)
+	Livingmove.__init(_s)
 
 	_s:say()
 	_s:act_intrvl_time__()
@@ -111,8 +108,8 @@ function Chara.on_msg(_s, msg_id, prm, sndr)
 	if ha.eq(msg_id, "present") then
 		
 		local t_id = prm.id
-		local t_cls  = id.cls(t_id)
-		if not ar.inHa(t_cls, Chara.presentabl) then return end
+		local t_clsHa  = id.clsHa(t_id)
+		if not ar.inHa(t_clsHa, Chara.presentabl) then return end
 		
 		id.del(t_id)
 		Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))

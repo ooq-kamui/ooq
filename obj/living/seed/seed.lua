@@ -13,20 +13,26 @@ Cls.add(Seed)
 -- static
 
 function Seed.cre(p_pos, prm)
-	local Cls = Seed
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Seed
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Seed.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Seed)
+end
+
+function Seed.__init(_s, prm)
 	
 	Seed.grw_bear__init(_s)
 
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend._(   _s, Seed)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Seed.upd(_s, dt)

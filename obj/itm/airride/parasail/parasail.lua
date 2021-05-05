@@ -13,21 +13,29 @@ Cls.add(Parasail)
 -- static
 
 function Parasail.cre(p_pos, prm)
-	local Cls = Parasail
+	local t_Cls = Parasail
 	prm = prm or {}
 	if not prm._animHa then prm._animHa = ha._("parasail001-stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	-- if not prm._anim   then prm._anim   =      "parasail001-stand"  end
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Parasail.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Airride)
+	extend._(_s, Parasail)
+end
+
+function Parasail.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Airride)
-	extend._(   _s, Parasail)
+	Sp     .__init(_s, prm)
+	Hldabl .__init(_s)
+	Airride.__init(_s)
 end
 
 function Parasail.upd(_s, dt)

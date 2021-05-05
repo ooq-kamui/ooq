@@ -1,30 +1,41 @@
 log.scrpt("cls.lua")
 
 Cls = {
-	Cls = {},
+	_Cls = {},
 }
 
-function Cls.add(p_Cls, ha_add_by)
+function Cls.add(p_Cls)
 	
-	Cls.Cls[ha._(p_Cls.cls)] = p_Cls
+	Cls._Cls[ha._(p_Cls.cls)] = p_Cls
+	Cls._Cls[     p_Cls.cls ] = p_Cls
 
-	if not ha_add_by then
-		ha.add_by_Cls(p_Cls)
-	else
-		ha.add_by_ar(ha_add_by)
-	end
+	ha.add_by_Cls(p_Cls)
 end
 
-function Cls._(p_cls) -- get
+function Cls._(p_cls) -- alias old
+
+	return Cls.Cls(p_cls)
+end
+
+function Cls.Cls(p_cls)
 
 	local p_clsHa
+	local r_Cls
 
 	if type(p_cls) == "string" then
-		p_clsHa = ha._2_ha(p_cls)
+		-- p_clsHa = ha._2_ha(p_cls)
+		r_Cls = Cls._Cls[p_cls]
 	else
 		p_clsHa = p_cls
+		r_Cls = Cls._Cls[p_clsHa]
 	end
 	-- log._("Cls._", p_cls, p_clsHa)
-	return Cls.Cls[p_clsHa]
+	return r_Cls
+end
+
+function Cls.Cls_by_Ha(p_clsHa)
+
+	local r_Cls = Cls._Cls[p_clsHa]
+	return r_Cls
 end
 

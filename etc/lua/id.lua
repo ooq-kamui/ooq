@@ -22,8 +22,11 @@ function id.prp(p_id, key)
 end
 
 function id.prp_de(p_id, key)
+
 	local valHa = id.prp(p_id, key)
+
 	if ha.is_emp(valHa) then return nil end
+
 	local val = ha.de(valHa)
 	return val
 end
@@ -37,20 +40,34 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
-function id.cls(p_id) -- old > rpl
-	return id.clsHa(p_id)
+function id.cls(p_id)
+
+	-- return id.clsHa(p_id)
 end
 
 function id.clsHa(p_id)
+
 	return id.prp(p_id, "_clsHa")
 end
 
-function id.name(p_id) -- old > rpl
-	return id.nameHa(p_id)
+function id.name(p_id)
+
+	-- return id.nameHa(p_id)
 end
 
 function id.nameHa(p_id)
+
 	return id.prp(p_id, "_nameHa")
+end
+
+function id.anim(p_id)
+
+	-- return id.animHa(p_id)
+end
+
+function id.animHa(p_id)
+
+	return id.prp(p_id, "_animHa")
 end
 
 function id.pos(p_id)
@@ -103,6 +120,9 @@ function id.pst(id, msg_id, prm)
 end
 
 function id.del(p_id, val)
+
+	if not p_id then go.delete() end
+
 	if val then
 		go.delete(p_id, val)
 	else
@@ -114,9 +134,9 @@ function id.Cls(p_id)
 
 	if not p_id then return end
 
-	local t_cls = id.cls(p_id)
+	local t_clsHa = id.clsHa(p_id)
 
-	local t_Cls = Cls._(t_cls)
+	local t_Cls = Cls._(t_clsHa)
 
 	return t_Cls
 end

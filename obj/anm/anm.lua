@@ -88,6 +88,9 @@ function anm.pos_y__anm(p_id, p_y, time)
 end
 
 function anm._(t_url, prp, plymode, val, esing, time, delay, fnc) -- alias
+
+	delay = delay or 0
+
 	go.animate(t_url, prp, plymode, val, esing, time, delay, fnc)
 end
 

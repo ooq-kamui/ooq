@@ -1,28 +1,31 @@
 log.scrpt("pst.lua")
 
 pst = {}
-post = pst -- old
 
-function pst._(url, msg_id, prm)
+function pst._(p_url, msg_id, prm)
+
 	if prm then
-		msg.post(url, msg_id, prm)
+		msg.post(p_url, msg_id, prm)
 	else
-		msg.post(url, msg_id)
+		msg.post(p_url, msg_id)
 	end
 end
 
-function pst.scrpt(id, msg_id, prm)
-	local url = msg.url(nil, id, "script")
-	pst._(url, msg_id, prm)
-end
+function pst.scrpt(t_id, msg_id, prm)
 
-function pst.gui(id, msg_id, prm)
-	local t_url = url._(id, "gui")
+	local t_url = msg.url(nil, t_id, "script")
 	pst._(t_url, msg_id, prm)
 end
 
-function pst.sprite(id, msg_id, prm)
-	local t_url = url._(id, "sprite")
+function pst.gui(t_id, msg_id, prm)
+
+	local t_url = url._(t_id, "gui")
+	pst._(t_url, msg_id, prm)
+end
+
+function pst.sprite(t_id, msg_id, prm)
+
+	local t_url = url._(t_id, "sprite")
 	pst._(t_url, msg_id, prm)
 end
 

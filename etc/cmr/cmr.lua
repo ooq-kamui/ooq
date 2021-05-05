@@ -30,11 +30,11 @@ function Cmr.cre(p_pos)
 	
 	p_pos = p_pos or Cmr.dflt.pos
 
-	local name = "cmr"
 	local t_url = "/sys#fac_cmr"
-	if not prm then prm = {} end
-	prm._clsHa  = ha._(Cmr.cls)
-	prm._nameHa = ha._(name)
+
+	local prm = {}
+	-- prm._clsHa  = ha._(Cmr.cls)
+	-- prm._nameHa = ha._(Cmr.cls)
 
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	return t_id
@@ -45,8 +45,10 @@ end
 function Cmr.init(_s)
 	
 	extend._(_s, Cmr)
+	-- log._("Cmr.init 1")
 
 	_s._id = id._()
+	-- log._("Cmr.init 2")
 	
 	local prm = {
 		aspect_ratio = Disp.x / Disp.y,
@@ -56,13 +58,16 @@ function Cmr.init(_s)
 	}
 	pst._("#cmr", "set_camera", prm)
 	pst._("#cmr", "acquire_camera_focus")
+	-- log._("Cmr.init 3")
 
 	_s:pos__dflt()
 	_s._z_idx = Cmr.dflt.z_idx
+	-- log._("Cmr.init 4")
 	
 	if not ha.is_emp(_s:plychara_id()) then
 		_s._target_pos = _s:plychara_pos()
 	end
+	-- log._("Cmr.init 5")
 	
 	_s._speed = 0
 	_s._speed_max = 6.5

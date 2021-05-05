@@ -28,11 +28,13 @@ function file.map.load(ply_slt_idx, dstrct, file_idx)
 end
 
 function file.map.del(ply_slt_idx, dstrct, file_idx)
+
 	local file_name_fl = file.map.file_name_fl(ply_slt_idx, dstrct, file_idx)
 	file.d(file_name_fl)
 end
 
 function file.map.file_idx_ltst(ply_slt_idx, dstrct)
+
 	local file_idx_ltst = file.map.ltst.file_idx(ply_slt_idx, dstrct)
 	return file_idx_ltst
 end
@@ -93,6 +95,7 @@ function file.map.ltst.load(ply_slt_idx, dstrct)
 end
 
 function file.map.ltst.del(ply_slt_idx, dstrct, file_idx)
+
 	local file_name_fl = file.map.ltst.file_name_fl(ply_slt_idx, dstrct)
 	file.d(file_name_fl)
 end
@@ -139,3 +142,4 @@ function file.map.is_exst(ply_slt_idx, dstrct)
 	
 	return ret, file_idx_ltst
 end
+

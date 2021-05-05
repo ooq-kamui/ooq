@@ -12,18 +12,24 @@ Cls.add(Flpy)
 -- static
 
 function Flpy.cre(p_pos, prm)
-	local Cls = Flpy
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Flpy
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Flpy.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
 	extend._(_s, Flpy)
+end
+
+function Flpy.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Flpy.upd(_s, dt)

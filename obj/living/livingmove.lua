@@ -4,17 +4,15 @@ Livingmove = {}
 
 -- script method
 
-function Livingmove.init(_s)
+function Livingmove.__init(_s)
 	
 	_s:dir_h__rnd() -- init
 
 	_s._dir_v = ""
 	_s._is_flying = _.f
-	_s._is_moving = _.t -- _.f
+	_s._is_moving = _.t
 
 	_s._speed  = _s:Cls().speed
-
-	-- _s._status = "live" -- use not ?
 end
 
 --- method
@@ -29,7 +27,7 @@ function Livingmove.upd_pos_movabl(_s, dt)
 
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
 
-	_s:pos__add(_s._vec_total)
+	_s:pos__pls(_s._vec_total)
 end
 
 function Livingmove.is_moving(_s)
@@ -101,7 +99,7 @@ function Livingmove.is_flying__rnd(_s)
 	local val = rnd.by_f(rate)
 	_s:is_flying__(val)
 
-	-- log._("Livingmove is_flying__rnd _is_flying", _s._is_flying, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove is_flying__rnd", _s._is_flying, _s:clsHa(), _s:nameHa())
 end
 
 function Livingmove.dir_v__rnd(_s)
@@ -123,8 +121,6 @@ function Livingmove.dir_v__rnd(_s)
 end
 
 function Livingmove.vec_mv__(_s, dt)
-
-	-- if not u.eq(_s._status, "live") then _s:vec_mv__clr() return end
 
 	if     _s._hldd_id   then _s:vec_mv__clr() return end
 

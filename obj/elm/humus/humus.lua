@@ -11,17 +11,22 @@ Cls.add(Humus)
 -- static
 
 function Humus.cre(p_pos)
-	local Cls = Humus
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_Cls = Humus
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Humus.init(_s)
-	
-	extend.init(_s, Sp)
+
+	extend._(_s, Sp)
 	extend._(_s, Humus)
+end
+
+function Humus.__init(_s, prm)
+	
+	Sp.__init(_s, prm)
 end
 
 function Humus.upd(_s, dt)

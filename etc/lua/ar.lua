@@ -45,7 +45,7 @@ function ar.pop(p_ar)
 	table.remove(p_ar)
 end
 
-function ar.del_by_val(val, p_ar)
+function ar.del_by_val(p_ar, val)
 	
 	local idx = ar.srch_idx(val, p_ar)
 	
@@ -214,11 +214,13 @@ function ar.key___(p_ar)
 	-- log.pp("ar.key ret", p_ar)
 end
 
-function ar.val_str_2_ha(p_ar)
+--[[
+function ar.val_str_2_ha(p_ar) -- use not ?
 	for key, val in pairs(p_ar) do
 		if type(val) == "string" then
 			p_ar[key] = ha._(val)
 		end
 	end
 end
+--]]
 

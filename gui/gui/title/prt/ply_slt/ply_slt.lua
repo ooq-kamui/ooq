@@ -168,3 +168,4 @@ function p.Ply_slt.clr(_s, ply_slt_idx) -- todo refactoring fnc locale, loop log
 	
 	Se.pst_ply("exe")
 end
+

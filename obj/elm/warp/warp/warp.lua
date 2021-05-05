@@ -6,7 +6,7 @@ Warp = {
 
 -- script method
 
-function Warp.init(_s)
+function Warp.__init(_s)
 end
 
 function Warp.on_msg_clsn(_s, msg_id, prm, sndr)

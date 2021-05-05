@@ -4,7 +4,7 @@ Hldabl = {}
 
 -- script method
 
-function Hldabl.init(_s)
+function Hldabl.__init(_s)
 
 	_s._hldd_id  = nil
 	_s._hldd_idx = nil

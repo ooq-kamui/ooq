@@ -15,21 +15,24 @@ Cls.add(Hrvst)
 -- static
 
 function Hrvst.cre(p_pos)
-	local Cls = Hrvst
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_Cls = Hrvst
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Hrvst.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
 	extend._(_s, Hrvst)
+end
+
+function Hrvst.__init(_s, prm)
 	
-	-- _s.speed = 0
-	-- _s.held = _.f
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Hrvst.upd(_s, dt)
@@ -75,7 +78,7 @@ function Hrvst.box_in(_s, prm)
 	
 	if ar.inHa(t_clsHa, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
 	and Map.st.obj_cnt(t_clsHa) <= 1 then
-		-- Msg.s("さいごの１つだよ")
+
 		Msg.s("last one.., can not release")
 		return
 	end

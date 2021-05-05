@@ -9,21 +9,35 @@ Mgccrcl.fac = Obj.fac..Mgccrcl.cls
 Cls.add(Mgccrcl)
 
 function Mgccrcl.cre(p_pos, prm)
-	local Cls = Mgccrcl
+
+	local t_Cls = Mgccrcl
+
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._(Cls.cls.."001-stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+
+	if not prm._animHa then prm._animHa = ha._(t_Cls.cls.."001-stand") end
+
+	-- if not prm._anim   then prm._anim   =      t_Cls.cls.."001-stand"  end
+
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
+
 	return t_id
 end
 
 -- script method
 
 function Mgccrcl.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Warp)
+	extend._(_s, Mgccrcl)
+end
+
+function Mgccrcl.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Warp)
-	extend._(   _s, Mgccrcl)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
+	Warp  .__init(_s)
 end
 
 function Mgccrcl.upd(_s, dt)

@@ -1,7 +1,7 @@
 log.scrpt("cmr.script")
 
-go.property("_clsHa",  hash(""))
-go.property("_nameHa", hash(""))
+-- go.property("_clsHa",  hash(""))
+-- go.property("_nameHa", hash(""))
 
 function init(_s)
 	Cmr.init(_s)

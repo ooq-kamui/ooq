@@ -11,20 +11,27 @@ Cls.add(Broom)
 -- static
 
 function Broom.cre(p_pos, prm)
-	local Cls = Broom
+	local t_Cls = Broom
 	prm = prm or {}
 	if not prm._animHa then prm._animHa = ha._("stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	-- if not prm._anim   then prm._anim   =      "stand"  end
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Broom.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Broom)
+end
+
+function Broom.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend._(   _s, Broom)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Broom.upd(_s, dt)

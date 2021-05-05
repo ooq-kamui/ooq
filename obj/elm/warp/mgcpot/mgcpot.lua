@@ -9,21 +9,29 @@ Mgcpot.fac = Obj.fac..Mgcpot.cls
 Cls.add(Mgcpot)
 
 function Mgcpot.cre(p_pos, prm)
-	local Cls = Mgcpot
+	local t_Cls = Mgcpot
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._(Cls.cls.."001-stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	if not prm._animHa then prm._animHa = ha._(t_Cls.cls.."001-stand") end
+	-- if not prm._anim   then prm._anim   =      t_Cls.cls.."001-stand"  end
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Mgcpot.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Warp)
+	extend._(_s, Mgcpot)
+end
+
+function Mgcpot.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Warp)
-	extend._(   _s, Mgcpot)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
+	Warp  .__init(_s)
 end
 
 function Mgcpot.upd(_s, dt)

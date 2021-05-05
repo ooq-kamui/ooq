@@ -5,6 +5,9 @@ function Sp.is_loop__act_intrvl__(_s, dt)
 	if _s:is_pause() then return end
 
 	local is_loop = _s:act_intrvl__(dt)
+
+	-- log._("Sp.is_loop__act_intrvl__", _s._cls, _s._name, _s._anim)
+
 	return is_loop
 end
 
@@ -74,7 +77,7 @@ function Sp.upd_pos_static(_s, dt)
 
 	_s._vec_total = _s._vec_tile + _s._vec_grv
 
-	_s:pos__add(_s._vec_total)
+	_s:pos__pls(_s._vec_total)
 
 	-- mapobj
 	if _s:cls_is_mapobj() then

@@ -31,8 +31,8 @@ end
 function Ply_data.reizoko.__add(prm)
 	-- u.log("reizoko add()", food_id)
 
-	local txtr = prm.cls
-	local anim = prm.name
+	local txtr = prm.clsHa
+	local anim = prm.nameHa
 	local reizoko = Ply_data._reizoko
 
 	if not reizoko[txtr]       then reizoko[txtr]       = {} end
@@ -48,7 +48,7 @@ function Ply_data.reizoko.__new()
 	local anim
 	for idx = 1, 50 do
 		anim = "veget"..int.pad(idx)
-		Ply_data.reizoko.__add({cls = ha._("veget"), name = ha._(anim)})
+		Ply_data.reizoko.__add({clsHa = ha._("veget"), nameHa = ha._(anim)})
 	end
 end
 
@@ -58,7 +58,7 @@ function Ply_data.reizoko.__(data)
 	for cls, names in pairs(data["reizoko"]) do
 		for name, cnt in pairs(names) do
 			for i = 1, cnt do
-				Ply_data.reizoko.__add({cls = ha._(cls), name = ha._(name)})
+				Ply_data.reizoko.__add({clsHa = ha._(cls), nameHa = ha._(name)})
 			end
 		end
 	end

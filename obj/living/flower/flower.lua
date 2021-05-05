@@ -11,18 +11,24 @@ Cls.add(Flower)
 -- static
 
 function Flower.cre(p_pos, prm)
-	local Cls = Flower
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Flower
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Flower.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Flower)
+end
+
+function Flower.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend._(   _s, Flower)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Flower.upd(_s, dt)

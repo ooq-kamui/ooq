@@ -14,19 +14,26 @@ Cls.add(Cloud)
 -- static
 
 function Cloud.cre(p_pos, prm)
-	local Cls = Cloud
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Cloud
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Cloud.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Livingmove)
+	extend._(_s, Hldabl)
+	extend._(_s, Cloud)
+end
+
+function Cloud.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Livingmove)
-	extend.init(_s, Hldabl)
-	extend._(   _s, Cloud)
+	Sp        .__init(_s, prm)
+	Livingmove.__init(_s)
+	Hldabl    .__init(_s)
 end
 
 -- script method

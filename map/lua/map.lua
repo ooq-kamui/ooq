@@ -2,7 +2,6 @@ log.scrpt("map.lua")
 
 Map = {
 	sq = 48,
-	-- rng = {}, -- old, not use ???
 
 	area = {
 		"grassy",
@@ -11,8 +10,6 @@ Map = {
 	tilemap = {"ground", "wall", "underground", },
 	
 	act_intrvl_time = 15, -- 45, -- 5,
-
-	-- cnt = {}, -- hash("flower") = {}, -- id ar -- old ?
 
 	-- obj
 	chara = {
@@ -66,12 +63,12 @@ function Map.cre(p_clct)
 	local area = "grassy"
 
 	local clct_url = "/mapClctFac#"..area.."_fac_"..p_clct
-	local pos = n.vec()
+	local t_pos = n.vec()
 	local prm = {}
 	prm[ha._("/ground")] = {
 		_areaHa = ha._(area),
 	}
-	local clct_id = clct.cre(clct_url, pos, prm)
+	local clct_id = clct.cre(clct_url, t_pos, prm)
 	local map_id  = clct_id["/ground"]
 	
 	Map.chara__clr()
@@ -81,12 +78,13 @@ function Map.cre(p_clct)
 end
 
 function Map.chara__clr()
-	ar.clr(Map.chara)
+
+	ar.clr(Map.chara           )
+	ar.clr(Map.chara_clb.fe    )
+	ar.clr(Map.chara_clb.tohoku)
 end
 
---
 -- script method
---
 
 function Map.init(_s)
 
@@ -144,6 +142,7 @@ function Map.is_loop__act_intrvl__(_s, dt)
 end
 
 function Map.act_intrvl__(_s, dt)
+
 	local is_loop
 	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
 	return is_loop
@@ -212,6 +211,7 @@ function Map.load(_s, file_idx)
 end
 
 function Map.save(_s)
+
 	local data = _s:save_data()
 	file.map.save(_s._ply_slt_idx, _s._dstrct, data)
 end
@@ -263,7 +263,9 @@ function Map.plychara_id(_s)
 end
 
 function Map.plychara_pos(_s)
+
 	if not _s._plychara_id then return end
+
 	local plychara_pos = id.pos(_s._plychara_id)
 	return plychara_pos
 end
@@ -320,6 +322,7 @@ end
 -- static
 
 function Map.obj__clr()
+
 	for clsHa, ids in pairs(Map._obj._) do
 		ar.clr(ids)
 	end

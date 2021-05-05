@@ -11,78 +11,114 @@ Sp = {
 
 -- static
 
-function Sp.cre(Cls, p_pos, prm, scl)
+function Sp.cre(p_Cls, p_pos, prm, p_scl)
 	
 	p_pos = p_pos or pos.pos_w()
 	prm   = prm   or {}
 
-	local t_url = "/obj-fac/"..Cls.fac
-
-	-- name, anim
-	prm._clsHa  = ha._(Cls.cls)
-	if ha.is_emp(prm._nameHa) then
-		prm._nameHa = ha._(Cls.cls..rnd.int_pad(Cls.name_idx_max))
+	local t_url
+	if p_Cls.cls == "anml" then
+		t_url = url._("/obj-fac/"..Anml.cls.."-fac", prm._nameHa)
+	else
+		t_url = "/obj-fac/"..p_Cls.fac
 	end
+	-- log._("Sp.cre 1", t_url, p_Cls.cls)
+
+	prm._clsHa  = ha._(p_Cls.cls)
+
+	if ha.is_emp(prm._nameHa) then
+		prm._nameHa = ha._(p_Cls.cls..rnd.int_pad(p_Cls.name_idx_max))
+	end
+
 	if ha.is_emp(prm._animHa) then
 		prm._animHa = prm._nameHa
 	end
 
-	-- game_id, map_id
 	local map_id, game_id = Game.map_id()
-	-- log._("sp cre game_id", game_id, "map_id", map_id)
+	-- log._("Sp.cre 2 game_id", game_id, "map_id", map_id)
+
 	if ha.is_emp(map_id) then log._("Sp.cre map_id is_emp") return end
 	
 	prm._game_id   = game_id
 	prm._map_id    = map_id
 	prm._parent_id = map_id
 
-	-- z
-	prm._z  = Cls.z or 0.2
-	p_pos.z = Cls.z or 0.2
+	local z_dflt = 0.2
+	prm._z  = p_Cls.z or z_dflt
+	p_pos.z = p_Cls.z or z_dflt
 	
-	-- scl
-	scl = scl or nil -- 1 -- 0.2
-	if scl == 0 then scl = 0.2 end
+	if p_scl == 0 then p_scl = 0.2 end -- 1 -- 0.2
 	
-	-- log._("scl", scl, Cls.cls)
-	-- log._("sp cre t_url", t_url)
-	-- ar.key___(prm)
-	ar.val_str_2_ha(prm)
-	local t_id = fac.cre(t_url, p_pos, nil, prm, scl)
+	local t_id = fac.cre(t_url, p_pos, nil, prm, p_scl)
 
-	-- local t_id = fac.cre(t_url, p_pos, nil, prm)
-	-- local t_id = fac.cre(t_url, p_pos, nil, prm, nil)
-	
+	prm._cls  = prm._cls  or ha.de(prm._clsHa )
+	prm._name = prm._name or ha.de(prm._nameHa)
+	prm._anim = prm._anim or ha.de(prm._animHa)
+
+	prm._clsHa  = nil
+	prm._nameHa = nil
+	prm._animHa = nil
+	-- log._("Sp.cre 3")
+
+	pst.scrpt(t_id, "__init", prm)
+	-- log._("Sp.cre 4")
+
 	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id
 end
 
 -- script method
 
-function Sp.init(_s)
-	
+function Sp.__init(_s, prm)
+	-- log._("Sp.__init 1")
+
+	for key, val in pairs(prm) do
+		_s:prp__(key, val)
+	end
+	-- log._("Sp.__init 2")
+
 	_s._id = id._()
+	-- log._("Sp.__init 3", _s._id, _s._cls)
 	
 	_s._foot_dst_i = _s:Cls().foot_dst_i or Map.sqh
-
 	_s._w = _s:Cls().w or Map.sq
+	-- log._("Sp.__init 4")
 
-	_s:parent__map(_s._parent)
+	_s:parent__map()
+	-- log._("Sp.__init 5")
 
 	_s:map_obj__add()
+	-- log._("Sp.__init 6")
 
-	-- if ar.inHa(_s._clsHa, {"plychara", "chara"}) then
-	if ar.inHa(_s._clsHa, {"plychara", }) then
+	-- if ar.inHa(_s._clsHa, {"plychara", }) then
+	if ar.in_(_s._cls, {"plychara", }) then
 		-- excld
 	else
-		local animHa = _s._animHa or _s._nameHa
+		-- fr anim
+		--[[
+		local anim
+		if _s._anim then anim = _s._anim
+		else             anim = _s._name
+		end
+		_s:anim__(anim)
+		--]]
+
+		-- fr animHa -- old > del
+		local animHa
+		if not ha.is_emp(_s._animHa) then animHa = _s._animHa
+		else                              animHa = _s._nameHa
+		end
 		_s:anim__(animHa)
 	end
+	-- log._("Sp.__init 7")
 
 	_s._act_intrvl = 0
 
 	_s:vec__init()
+	-- log._("Sp.__init 8")
+
 	_s:pos__init()
+	-- log._("Sp.__init 9")
 end
 
 function Sp.final(_s)
@@ -96,7 +132,12 @@ end
 
 -- method
 
-function Sp.__(_s, key, val)
+function Sp.__(_s, key, val) -- alial
+	_s:prp__(key, val)
+end
+
+function Sp.prp__(_s, key, val)
+	-- log._("Sp.prp__", key, val)
 	_s[key] = val
 end
 
@@ -266,15 +307,20 @@ function Sp.map_obj__add(_s)
 	
 	if ha.is_emp(_s._clsHa) then return end
 	
-	local clsDe = ha.de(_s._clsHa)
+	local t_cls = ha.de(_s._clsHa)
+	-- log._("map_obj__add", t_cls)
 
-	if not Map.st.obj(clsDe) then Map.st.obj__init(clsDe) end
+	if not Map.st.obj(t_cls) then Map.st.obj__init(t_cls) end
 	
-	ar.add_unq(Map.st.obj(clsDe), _s._id)
+	ar.add_unq(Map.st.obj(t_cls), _s._id)
 end
 
 function Sp.map_obj__del(_s)
-	ar.del_by_val(_s._id, Map.st.obj_by_ha(_s._clsHa))
+
+	local t_cls = ha.de(_s._clsHa)
+	-- log._("map_obj__del", t_cls)
+	local t_ar  = Map.st.obj(t_cls)
+	ar.del_by_val(t_ar, _s._id)
 end
 
 function Sp.mapobj_del(_s)

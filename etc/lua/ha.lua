@@ -1,7 +1,7 @@
 log.scrpt("ha.lua")
 
 ha = {
-	ha = {}, -- hash key list
+	_ha = {}, -- hash key list
 	_emp = hash("")
 }
 
@@ -23,20 +23,22 @@ function ha._2_ha(p_str)
 end
 
 function ha.de(keyHa)
-	local val = ha.ha[keyHa]
+	local val = ha._ha[keyHa]
 	if not val then --[[ log._("ha.de() nil", keyHa) --]] end
 	return val
 end
 
 function ha.add(val)
-	ha.ha[ha._(val)] = val
+	-- log._("ha.add", val)
+
+	ha._ha[ha._(val)] = val
 end
 
 function ha.add_by_ar(p_ar)
 	local valHa
 	for idx, val in pairs(p_ar) do
 		valHa = ha._(val)
-		ha.ha[valHa] = val
+		ha._ha[valHa] = val
 	end
 end
 
@@ -45,7 +47,7 @@ function ha.add_by_key_num(key, num)
 	for idx = 1, num do
 		val   = key .. int.pad(idx)
 		keyHa = ha._(val)
-		ha.ha[keyHa] = val
+		ha._ha[keyHa] = val
 	end
 end
 

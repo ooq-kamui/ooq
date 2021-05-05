@@ -19,9 +19,14 @@ end
 -- script method
 
 function Fire.init(_s)
-	
-	extend.init(_s, Sp)
+
+	extend._(_s, Sp)
 	extend._(_s, Fire)
+end
+
+function Fire.__init(_s, prm)
+	
+	Sp.__init(_s, prm)
 
 	Se.pst_ply("fire")
 end
@@ -42,7 +47,7 @@ function Fire.upd(_s, dt)
 
 	_s._vec_total = _s._vec_grv
 
-	_s:pos__add(_s._vec_total)
+	_s:pos__pls(_s._vec_total)
 
 	_s:upd_final()
 end

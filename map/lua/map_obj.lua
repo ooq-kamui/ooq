@@ -27,38 +27,32 @@ Map._obj.grp = {
 }
 Map._obj._ = {} -- < Map.cnt
 
-
 -- static
 
 Map.st = {}
 
 function Map.st.obj__init(p_cls)
+	-- log._("obj__init", p_cls)
 
-	local clsHa = ha._(p_cls)
-	Map._obj._[clsHa] = {}
+	Map._obj._[p_cls] = {}
 end
 
 function Map.st.obj(p_cls)
 
-	local clsHa = ha._(p_cls)
+	if not Map._obj._[p_cls] then return end
 
-	return Map.st.obj_by_ha(clsHa)
-end
-
-function Map.st.obj_by_ha(p_clsHa)
-
-	if not Map._obj._[p_clsHa] then return end
-
-	return Map._obj._[p_clsHa]
+	return Map._obj._[p_cls]
 end
 
 function Map.st.obj_cnt(p_cls)
 
 	local obj = Map.st.obj(p_cls)
+	log.pp("obj_cnt "..p_cls, obj)
 
 	if not obj then return end
 
 	local cnt = #obj
+	log._("obj_cnt", cnt)
 	return cnt
 end
 
@@ -117,21 +111,30 @@ function Map.obj_itm(_s)
 end
 
 function Map.obj_grp(_s, p_cls)
+
 	local data = {}
-	for idx, cls in pairs(p_cls) do
-		data[cls] = _s:obj_cls(ha._(cls))
+	for idx, t_cls in pairs(p_cls) do
+		-- data[t_cls] = _s:obj_cls(ha._(t_cls))
+		data[t_cls] = _s:obj_cls(t_cls)
 	end
 	return data
 end
 
-function Map.obj_cls(_s, clsHa)
+-- function Map.obj_cls(_s, clsHa)
+function Map.obj_cls(_s, p_cls)
 	-- log._("Map.obj_cls", clsHa)
 
 	local data_cls = {}
 
-	local t_obj = Map.st.obj_by_ha(clsHa)
+	-- local t_cls = ha.de(clsHa)
 
-	if not t_obj then return data_cls end
+	-- local t_obj = Map.st.obj_by_ha(clsHa)
+	local t_obj = Map.st.obj(p_cls)
+
+	if not t_obj then
+		log._("Map.obj_cls nil :", p_cls)
+		return data_cls
+	end
 
 	local prm
 
@@ -139,22 +142,25 @@ function Map.obj_cls(_s, clsHa)
 		-- log._("Map.obj_cls()", clsHa)
 
 		prm = {}
-		prm._name = ha.de(id.name(t_id))
+		prm._name = ha.de(id.nameHa(t_id)) -- todo refactoring
 		prm._pos  = id.pos_w(t_id)
 
-		if     ar.inHa(clsHa, {"seed" }) then
+		-- if     ar.inHa(clsHa, {"seed" }) then
+		if     ar.in_(p_cls, {"seed" }) then
 			prm._grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )
 			prm._grw_name  = id.prp_de(t_id, "_grw_nameHa" )
 			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
 			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
 			-- log.pp("Map.obj_cls ( save )", prm)
 
-		elseif ar.inHa(clsHa, {"tree" }) then
+		-- elseif ar.inHa(clsHa, {"tree" }) then
+		elseif ar.in_(p_cls, {"tree" }) then
 			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
 			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
 			-- log.pp("Map.obj_cls ( save )", prm)
 
-		elseif ar.inHa(clsHa, {"mshrm"}) then
+		-- elseif ar.inHa(clsHa, {"mshrm"}) then
+		elseif ar.in_(p_cls, {"mshrm"}) then
 			-- log.pp("Map.obj_cls mshrm", prm)
 		end
 		ar.add(data_cls, prm)
@@ -246,7 +252,7 @@ function Map.obj__new_kagu(_s)
 
 	local pos_init = Cloud.pos_init -- refactoring
 
-	-- box create
+	-- box
 	local t_pos
 	t_pos = pos_init + n.vec(- Map.sq * 1, 0) -- > t.vec()
 	Hrvst.cre(t_pos)
@@ -254,11 +260,11 @@ function Map.obj__new_kagu(_s)
 	t_pos = pos_init + n.vec(- Map.sq * 5, 0)
 	Hrvst.cre(t_pos)
 
-	-- reizoko create
+	-- reizoko
 	t_pos = pos_init + n.vec(- Map.sq * 4, Map.sq * 5)
 	Reizoko.cre(t_pos)
 
-	-- kitchen create
+	-- kitchen
 	local init_x = Map.sq * 4
 	local w = 2 -- Map.sq * w
 	local x
@@ -269,15 +275,15 @@ function Map.obj__new_kagu(_s)
 		Kitchen.cre(t_pos)
 	end
 
-	-- Save create
+	-- flpy
 	t_pos = pos_init + n.vec(Map.sq * 1, 0)
 	Flpy.cre(t_pos)
 
-	-- Pc create
+	-- pc
 	t_pos = pos_init + n.vec(Map.sq * 2, Map.sq * 1) -- 10)
 	Pc.cre(t_pos)
 
-	-- Shelf create
+	-- shelf
 	t_pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
 	Shelf.cre(t_pos)
 end

@@ -12,19 +12,26 @@ Cls.add(Wood)
 -- ar.idx_2_ha(Wood.gold, "wood")
 
 function Wood.cre(p_pos)
-	local Cls = Wood
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_Cls = Wood
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Wood.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Spwood)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Spwood)
 	extend._(_s, Wood)
+end
+
+function Wood.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
+	Spwood.__init(_s)
 end
 
 function Wood.upd(_s, dt)

@@ -14,20 +14,25 @@ Cls.add(Magic)
 
 function Magic.cre(p_pos, p_tilepos)
 
-	local Cls = Magic
+	local t_Cls = Magic
 
 	if p_tilepos then p_pos = p_pos + p_tilepos * Map.sq end
 
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Magic.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Magic)
+end
+
+function Magic.__init(_s, prm)
 	
-	extend.init(_s, Sp   )
-	extend._(   _s, Magic)
+	Sp.__init(_s, prm)
 end
 
 function Magic.upd(_s, dt)

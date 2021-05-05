@@ -1,7 +1,7 @@
 name: "default"
 instances {
-  id: "anmlFac"
-  prototype: "/assets/obj/living/anml/anmlFac.go"
+  id: "anml-fac"
+  prototype: "/assets/obj/living/anml/anml-fac.go"
   position {
     x: 0.0
     y: 0.0

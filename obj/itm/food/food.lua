@@ -14,7 +14,7 @@ end
 
 -- script method
 
-function Food.init(_s)
+function Food.__init(_s)
 	_s._kitchen_id = nil
 end
 

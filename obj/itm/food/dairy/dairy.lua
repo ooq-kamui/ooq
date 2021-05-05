@@ -12,19 +12,26 @@ Cls.add(Dairy)
 -- ar.idx_2_ha(Dairy.gold, "dairy")
 
 function Dairy.cre(p_pos, prm)
-	local Cls = Dairy
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Dairy
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Dairy.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend.init(_s, Food)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Food)
 	extend._(_s, Dairy)
+end
+
+function Dairy.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
+	Food  .__init(_s)
 end
 
 function Dairy.upd(_s, dt)

@@ -32,6 +32,7 @@ end
 
 function Sys.game_id()
 	local game_id = Sys.prp("_game_id")
+	-- log._("Sys.game_id", game_id)
 	return game_id
 end
 
@@ -67,12 +68,13 @@ function Sys.init(_s)
 	extend._(_s, Sys)
 	
 	Sys.id = id._()
+	-- log._("Sys.init 1")
 
 	_s._cmr_id = Cmr.cre()
+	-- log._("Sys.init 2")
 
 	_s._inp_id = Inp.cre()
-	-- log._("sys init inp_id", _s._inp_id)
-	-- Inp_gui.cre()
+	-- log._("Sys.init 3")
 
 	_s:title()
 end

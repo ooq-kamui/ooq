@@ -11,6 +11,6 @@ Airride = {
 
 -- script method
 
-function Airride.init(_s)
+function Airride.__init(_s)
 end
 

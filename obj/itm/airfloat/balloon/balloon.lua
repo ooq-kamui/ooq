@@ -11,20 +11,27 @@ Cls.add(Balloon)
 -- static
 
 function Balloon.cre(p_pos, prm)
-	local Cls = Balloon
+	local t_Cls = Balloon
 	prm = prm or {}
 	if not prm._animHa then prm._animHa = ha._("stand") end
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	-- if not prm._anim   then prm._anim   =      "stand"  end
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Balloon.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
+	extend._(_s, Balloon)
+end
+
+function Balloon.__init(_s, prm)
 	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
-	extend._(   _s, Balloon)
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Balloon.upd(_s, dt)

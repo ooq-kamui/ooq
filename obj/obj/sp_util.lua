@@ -38,6 +38,7 @@ function Sp.anim__(_s, p_anim)
 
 	local p_animHa = ha._(p_anim)
 	-- log._("sp anim__", p_animHa)
+
 	pst._("#sprite", "play_animation", {id = p_animHa})
 
 	_s._anim   = p_anim

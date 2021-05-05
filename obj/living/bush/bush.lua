@@ -13,8 +13,8 @@ Cls.add(Bush)
 -- static
 
 function Bush.cre(p_pos, prm)
-	local Cls = Bush
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_Cls = Bush
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
@@ -22,8 +22,13 @@ end
 
 function Bush.init(_s)
 
-	extend.init(_s, Sp)
+	extend._(_s, Sp)
 	extend._(_s, Bush)
+end
+
+function Bush.__init(_s, prm)
+
+	Sp.__init(_s, prm)
 end
 
 function Bush.upd(_s, dt)

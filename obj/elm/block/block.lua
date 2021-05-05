@@ -28,21 +28,28 @@ function Block.cre(p_pos, p_tile)
 	
 	log._("block.cre p_tile", p_tile)
 	
-	local Cls = Block
+	local t_Cls = Block
 	prm = {}
 	prm._nameHa = ha._(Block.cls..int.pad(p_tile))
+	-- prm._name   =      Block.cls..int.pad(p_tile)
 	prm._tile   = p_tile
-	local t_id = Sp.cre(Cls, p_pos, prm)
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
 
 -- script method
 
 function Block.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
 	extend._(_s, Block)
+end
+
+function Block.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Block.upd(_s, dt)

@@ -10,11 +10,9 @@ Chara_clb_tohoku = {
 	},
 	flyabl = {},
 }
-
 Chara_clb_tohoku.cls = "chara_clb_tohoku"
 Chara_clb_tohoku.fac = Obj.fac..Chara_clb_tohoku.cls
-Cls.add(Chara_clb_tohoku, Chara_clb_tohoku.chara)
-
+Cls.add(Chara_clb_tohoku)
 ha.add_by_ar(Chara_clb_tohoku.chara)
 
 -- static
@@ -32,16 +30,9 @@ function Chara_clb_tohoku.cre(p_pos, p_name)
 
 	prm._is_flyabl = ar.in_(p_name, Chara_clb_tohoku.flyabl)
 	
-	local map_id, game_id = Game.map_id()
-	if ha.is_emp(map_id) then return end
-	
-	prm._game_id   = game_id
-	prm._map_id    = map_id
-	prm._parent_id = map_id
+	local t_Cls = Chara_clb_tohoku
+	local t_id = Sp.cre(t_Cls, p_pos, prm)
 
-	-- ar.key___(prm)
-	local t_id = fac.cre("/obj-fac/"..Chara_clb_tohoku.fac, p_pos, nil, prm)
-	
 	Map.add_chara_clb_tohoku(p_name)
 	return t_id
 end

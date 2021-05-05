@@ -6,21 +6,34 @@ Serifu = {
 		{len =  3, txt = "ここに"},
 		{len =  2, txt = "ここ"},
 		{len =  3, txt = "いたか"},
+		{len =  2, txt = "でた"},
 
 		{len =  2, txt = "うそ"},
 		{len =  2, txt = "ねる"},
 		{len =  5, txt = "ねむらない"},
+
 		{len =  3, txt = "たべる"},
+		{len =  2, txt = "にく"},
+		{len =  3, txt = "やさい"},
+		{len =  3, txt = "けーき"},
 
 		{len =  3, txt = "まいご"},
 		{len =  4, txt = "さまよう"},
 		{len =  4, txt = "まよった"},
+		{len =  2, txt = "みち"},
+
 		{len =  4, txt = "やっぱり"},
 		{len =  3, txt = "まって"},
+		{len =  3, txt = "であい"},
 
 		{len =  6, txt = "いんびじぶる"},
 		{len =  4, txt = "みえない"},
 		{len =  4, txt = "はかない"},
+		{len =  4, txt = "たりない"},
+		{len =  4, txt = "はじまる"},
+
+		{len =  3, txt = "みえた"},
+		{len =  4, txt = "じゃない"},
 
 		{len =  6, txt = "あたしだって"},
 		{len =  3, txt = "もっと"},

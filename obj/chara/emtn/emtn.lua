@@ -20,8 +20,13 @@ end
 
 function Emtn.init(_s)
 
-	extend.init(_s, Sp)
+	extend._(_s, Sp)
 	extend._(_s, Emtn)
+end
+
+function Emtn.__init(_s, prm)
+
+	Sp.__init(_s, prm)
 	
 	_s._speed = 7
 
@@ -37,8 +42,8 @@ function Emtn.upd(_s, dt)
 	
 	_s:act_intrvl(dt)
 	
-	local vec = n.vec(0, 1) * _s._speed * dt
-	_s:pos__add(vec)
+	local t_vec = n.vec(0, 1) * _s._speed * dt
+	_s:pos__pls(t_vec)
 end
 
 function Emtn.act_intrvl(_s, dt)

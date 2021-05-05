@@ -12,7 +12,6 @@ go.property("_z", 0.2)
 --]]
 
 function init(_s)
-	extend.init(_s, Sp)
 end
 
 function update(_s, dt)

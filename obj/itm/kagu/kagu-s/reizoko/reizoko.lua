@@ -15,18 +15,24 @@ Cls.add(Reizoko)
 -- static
 
 function Reizoko.cre(p_pos)
-	local Cls = Reizoko
-	local t_id = Sp.cre(Cls, p_pos)
+	local t_Cls = Reizoko
+	local t_id = Sp.cre(t_Cls, p_pos)
 	return t_id
 end
 
 -- script method
 
 function Reizoko.init(_s)
-	
-	extend.init(_s, Sp)
-	extend.init(_s, Hldabl)
+
+	extend._(_s, Sp)
+	extend._(_s, Hldabl)
 	extend._(_s, Reizoko)
+end
+
+function Reizoko.__init(_s, prm)
+	
+	Sp    .__init(_s, prm)
+	Hldabl.__init(_s)
 end
 
 function Reizoko.upd(_s, dt)
@@ -79,11 +85,11 @@ end
 
 function Reizoko.into_reizoko(_s, food_id)
 
-	local cls = id.cls(food_id)
+	local clsHa = id.clsHa(food_id)
 	
-	if not ar.inHa(cls, Food.cls) then return end
+	if not ar.inHa(clsHa, Food.cls) then return end
 	
-	Ply_data.reizoko.__add({cls = cls, name = id.name(food_id)})
+	Ply_data.reizoko.__add({clsHa = clsHa, nameHa = id.nameHa(food_id)})
 	
 	pst.scrpt(food_id, "into_reizoko")
 end

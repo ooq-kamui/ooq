@@ -66,11 +66,10 @@ function Game.plychara_id()
 	local map_id = id.prp(game_id, "_map_id")
 	if u.is_emp(map_id) then return end
 
-	-- log._("Game.plychara_id()", map_id)
+	-- log._("Game.plychara_id", map_id)
 	
 	local plychara_id = id.prp(map_id, "_plychara_id")
 	if ha.is_emp(plychara_id) then return end
-	-- if u.is_emp(plychara_id) then return end
 	
 	return plychara_id
 end
@@ -83,17 +82,6 @@ function Game.plychara_pos()
 	local plychara_pos = id.pos(plychara_id)
 	return plychara_pos
 end
-
---[[
-function Game.plychara_dir() -- use not ?
-
-	local plychara_id = Game.plychara_id()
-	if u.is_emp(plychara_id) then return end
-
-	-- local plychara_dir = id.prp(plychara_id, "_dir_h_Ha")
-	return plychara_dir
-end
---]]
 
 function Game.fairy_id()
 
@@ -159,23 +147,23 @@ function Game.init(_s)
 	extend._(_s, Game)
 
 	_s._id = id._()
-	-- _s._id = go.get_id()
-	-- log._("game init", _s._map_id)
+	-- log._("Game.init 1")
 
 	-- gui
 	_s._bag_id = fac.cre("#fac_bag_gui")
+	-- log._("Game.init 2")
 	
 	Ev.cre()
-
-	-- log._("game init _ply_slt_idx", _s._ply_slt_idx)
+	-- log._("Game.init 3")
 
 	_s._ply_start_ts = ts.now()
+	-- log._("Game.init 4")
 
 	_s._act_intrvl = 0
+	-- log._("Game.init 5")
 
 	_s:bgm_ply_rnd()
-
-	-- pst.scrpt(Sys.cmr_id(), "pos__dflt")
+	-- log._("Game.init 6")
 end
 
 function Game.upd(_s, dt)
@@ -260,9 +248,12 @@ function Game.del(_s)
 	Ply_data.clr()
 
 	-- gui del
-	go.delete(_s._bag_id)
+	-- go.delete(_s._bag_id)
+	id.del(_s._bag_id)
 	
-	go.delete()
+	-- go.delete()
+	id.del()
+
 	log._("game del fin")
 end
 
@@ -307,7 +298,7 @@ function Game.continue(_s, ply_data_file_idx)
 end
 
 function Game.save(_s)
-	log._("game save")
+	-- log._("game save")
 
 	if not _s._ply_slt_idx then return end
 
@@ -325,11 +316,6 @@ end
 function Game.ply_data__load(_s, ply_data_file_idx)
 	
 	local data = Ply_data.load(_s._ply_slt_idx, ply_data_file_idx)
-
-	--[[
-	_s._dstrct       = data["plyr"]["dstrct"]
-	_s._plychara_pos = data["plyr"]["pos"]
-	--]]
 	return data
 end
 
@@ -514,9 +500,11 @@ end
 
 -- sky
 
-function Game.sky_idx(_s)
+--[[
+function Game.sky_idx(_s) -- use not ?
 	return _s._sky_idx
 end
+--]]
 
 function Game.sky_id(_s)
 	return _s._sky_id
@@ -524,7 +512,8 @@ end
 
 function Game.sky__cre(_s)
 	
-	_s._sky_id = Sky.cre(_s._sky_idx)
+	-- _s._sky_id = Sky.cre(_s._sky_idx)
+	_s._sky_id = Sky.cre()
 end
 
 function Game.sky__del(_s)
@@ -562,6 +551,7 @@ function Game.dia__opn(_s)
 	-- log._("game dia__opn")
 
 	if ha.is_emp(_s._dia_id) then _s:dia__cre() end
+	log._("Game.dia__opn", _s._dia_id)
 
 	pst.gui(_s._dia_id, "chara__", {chara = Dia.chara})
 end

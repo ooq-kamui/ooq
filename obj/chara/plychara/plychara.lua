@@ -64,15 +64,22 @@ end
 -- script method
 
 function Plychara.init(_s)
+
+	extend._(_s, Sp)
+	extend._(_s, Plychara)
+end
+
+function Plychara.__init(_s, prm)
+	-- log._("Plychara.__init 1")
 	
-	extend.init(_s, Sp)
-	extend._(   _s, Plychara)
+	Sp.__init(_s, prm)
+	-- log._("Plychara.__init 2")
 
 	_s._name = ha.de(_s._nameHa)
 	_s:anim__("walk")
+	-- log._("Plychara.__init 3")
 	
 	_s._speed = Plychara.speed
-	-- _s._dir_h_Ha = ha._("l")
 	_s._mv_dir_h_Ha   = ha._("l")
 	_s._face_dir_h_Ha = ha._("l")
 	_s._dir_v = ""
@@ -115,12 +122,15 @@ function Plychara.init(_s)
 	_s._clsn_hldabl = {}
 
 	local fairy_id = _s:fairy_id()
+	-- log._("Plychara.__init 4")
 
 	local z = 0.01
 	local t_pos = n.vec(0, Map.sq)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
+	-- log._("Plychara.__init 5")
 
 	_s:skl__dtch_airride()
+	-- log._("Plychara.__init 6")
 end
 
 function Plychara.upd(_s, dt)
@@ -139,7 +149,7 @@ function Plychara.upd(_s, dt)
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
-	_s:pos__add(_s._vec_total)
+	_s:pos__pls(_s._vec_total)
 	
 	_s:ox_dstrct__mv()
 	
@@ -250,6 +260,10 @@ function Plychara.jmp(_s, p_jmp_lv)
 	_s._is_jmp_start = _.t
 
 	Se.pst_ply("jmp001")
+
+	-- tst
+	-- log.pp("food cnt", Map._obj._)
+	-- log._("food cnt", Map.st.obj_cnt("food"))
 end
 
 function Plychara.arw_d_f(_s)
@@ -406,28 +420,28 @@ function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
 	local t_id  = prm.other_id
 		
 	if     ha.eq(prm.group, "chara"   ) then
-		_s:clsn_add("chara" , t_id)
+		_s:clsn__add("chara" , t_id)
 
 	elseif ha.eq(prm.group, "hld"     ) then
-		_s:clsn_add("hld"   , t_id)
+		_s:clsn__add("hld"   , t_id)
 
 	elseif ha.eq(prm.group, "anml"    ) then
-		_s:clsn_add("anml"  , t_id)
+		_s:clsn__add("anml"  , t_id)
 
 	elseif ha.eq(prm.group, "tree"    ) then
-		_s:clsn_add("tree"  , t_id)
+		_s:clsn__add("tree"  , t_id)
 		
 	elseif ha.eq(prm.group, "kagu_itm") then
 		_s:on_msg_clsn_kagu_itm(t_id)
 		
 	elseif ha.eq(prm.group, "warp"    ) then
-		_s:clsn_add("warp"  , t_id)
+		_s:clsn__add("warp"  , t_id)
 
 	elseif ha.eq(prm.group, "trmpln"  ) then
-		_s:clsn_add("trmpln", t_id)
+		_s:clsn__add("trmpln", t_id)
 
 	elseif ha.eq(prm.group, "block"   ) then
-		_s:clsn_add("block" , t_id)
+		_s:clsn__add("block" , t_id)
 	end
 	return _.t
 end
@@ -437,13 +451,13 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	local t_nameHa = id.prp(t_id, "_nameHa")
 	-- log._("on_msg_clsn_kagu_itm", t_nameHa)
 
-	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn_add("hrvst"  , t_id)
-	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn_add("reizoko", t_id)
-	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn_add("kitchen", t_id)
-	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn_add("flpy"   , t_id)
-	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn_add("pc"     , t_id)
-	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn_add("shelf"  , t_id)
-	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn_add("doorwrp", t_id)
+	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn__add("hrvst"  , t_id)
+	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn__add("reizoko", t_id)
+	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn__add("kitchen", t_id)
+	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn__add("flpy"   , t_id)
+	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn__add("pc"     , t_id)
+	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn__add("shelf"  , t_id)
+	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn__add("doorwrp", t_id)
 	end
 end
 
@@ -614,7 +628,7 @@ end
 
 -- clsn
 
-function Plychara.clsn_add(_s, target, p_id)
+function Plychara.clsn__add(_s, target, p_id)
 	
 	if ar.in_(p_id, _s._hld) then return end
 
@@ -733,10 +747,10 @@ function Plychara.hld__del(_s)
 
 	local p_id = _s._hld[#_s._hld]
 
-	ar.del_by_val(p_id, _s._hld)
+	ar.del_by_val(_s._hld, p_id)
 
-	if ha.eq(id.cls(p_id), "block") then -- use ??
-		ar.del_by_val(p_id, _s._clsn.block)
+	if ha.eq(id.clsHa(p_id), "block") then -- use ??
+		ar.del_by_val(_s._clsn.block, p_id)
 	end
 
 	return p_id
