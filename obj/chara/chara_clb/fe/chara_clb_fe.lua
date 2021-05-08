@@ -29,8 +29,8 @@ function Chara_clb_fe.cre(p_pos, p_name)
 	p_name = p_name or Chara_clb_fe.new_name()
 	
 	local prm = {}
-	prm._clsHa  = ha._(Chara_clb_fe.cls)
-	prm._nameHa = ha._(p_name)
+
+	prm._name = p_name
 
 	prm._is_flyabl = ar.in_(p_name, Chara_clb_fe.flyabl)
 	

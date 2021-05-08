@@ -64,6 +64,13 @@ function Fire.act_intrvl(_s, dt)
 	_s:burn()
 end
 
+function Fire.final(_s)
+
+	Sp.final(_s)
+end
+
+-- method
+
 function Fire.burn(_s)
 	
 	if not rnd.by_p(60) then return end
@@ -110,6 +117,3 @@ function Fire.burn_obj(_s)
 	end
 end
 
-function Fire.final(_s)
-	Sp.final(_s)
-end

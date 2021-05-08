@@ -57,6 +57,7 @@ function Plant.act_intrvl(_s, dt)
 end
 
 function Plant.final(_s)
+
 	Sp.final(_s)
 end
 

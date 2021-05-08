@@ -13,19 +13,19 @@ function g.Gui.init(_s)
 	_s._hndl = {}
 end
 
-function g.Gui.on_msg(_s, msg_id, prm, sndr)
+function g.Gui.on_msg(_s, msg_id, prm, sndr_url)
 	-- log._("g.gui on_msg", msg_id)
 
-	if     ha.eq(msg_id, "gui:opn") then
+	if     ha.eq(msg_id, "gui:opn"  ) then
 		_s:opn(nil, prm)
 		
-	elseif ha.eq(msg_id, "gui:del") then
+	elseif ha.eq(msg_id, "gui:del"  ) then
 		_s:del(prm)
 
 	elseif ha.eq(msg_id, "gui:prp__") then
 		_s:prp__(prm)
 		
-	elseif ha.eq(msg_id, "key") then
+	elseif ha.eq(msg_id, "key"      ) then
 		-- log.pp("g.gui on_msg key", prm)
 		_s:actv_prt_key_2_act(prm)
 	end

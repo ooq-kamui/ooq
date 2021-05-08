@@ -51,14 +51,14 @@ function Tree.upd(_s, dt)
 	_s:upd_final()
 end
 
-function Tree.on_msg(_s, msg_id, prm, sndr)
+function Tree.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "trnsf_wood") then
 		_s:trnsf_wood()
 		
-	elseif ha.eq(msg_id, "bear__x") then
+	elseif ha.eq(msg_id, "bear__x"   ) then
 		_s:bear__x(prm.bear_id)
 	end
 end
@@ -133,5 +133,19 @@ function Tree.bear__init(_s)
 
 	ha.is_emp__(_s._bear_clsHa , "fruit"   )
 	ha.is_emp__(_s._bear_nameHa, "fruit007")
+end
+
+function Tree.pb__save_data(_s, map_url)
+
+	local prm = {}
+
+	prm._cls  = _s._cls
+	prm._name = _s._name
+	prm._pos  = _s:pos()
+
+	prm._bear_cls  = _s._bear_cls
+	prm._bear_name = _s._bear_name
+
+	pst._(map_url, "save_data_obj__", prm)
 end
 

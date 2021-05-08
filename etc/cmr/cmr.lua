@@ -177,9 +177,9 @@ function Cmr.upd_vec_near(_s, dt)
 	end
 end
 
-function Cmr.on_msg(_s, msg_id, prm, sndr)
+function Cmr.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "zoom__dflt"   ) then
 		_s:zoom__dflt()
@@ -199,7 +199,7 @@ function Cmr.on_msg(_s, msg_id, prm, sndr)
 	elseif ha.eq(msg_id, "pos__plychara") then
 		_s:pos__plychara()
 
-	elseif ha.eq(msg_id, "pos__chara_rnd"   ) then
+	elseif ha.eq(msg_id, "pos__chara_rnd") then
 		_s:pos__chara_rnd()
 
 	elseif ha.eq(msg_id, "z__far"       ) then

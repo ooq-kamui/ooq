@@ -67,29 +67,31 @@ function Cloud.act_intrvl(_s, dt)
 	and    dice100.chk(20) then
 		Chara_clb_tohoku.cre()
 
-	elseif dice100.chk(4) then
+	elseif dice100.chk( 4) then
 		Anml.cre()
 
-	elseif dice100.chk(3) then
+	elseif dice100.chk( 3) then
 		Seed.cre()
 
-	elseif dice100.chk(2) then
+	elseif dice100.chk( 2) then
 		Veget.cre()
 
-	elseif dice100.chk(2) then
+	elseif dice100.chk( 2) then
 		Fish.cre()
 	end
 
 	_s:moving_prp__rnd()
 end
 
-function Cloud.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Cloud.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Cloud.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

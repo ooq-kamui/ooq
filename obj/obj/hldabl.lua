@@ -10,7 +10,7 @@ function Hldabl.__init(_s)
 	_s._hldd_idx = nil
 end
 
-function Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "hldd__o") then
 		_s:hldd__o(prm)
@@ -47,8 +47,10 @@ end
 function Hldabl.hldd_pos(_s)
 	
 	local x
-	local weight = id.Cls_prp_weight(_s._id)
-	if weight == 1 then
+
+	-- local weight = id.Cls_prp_weight(_s._id)
+
+	if _s._weight == 1 then
 		x = u.x_by_all_w(_s._hldd_idx, Plychara.hld_idx_max, Map.sqh)
 	else
 		x = 0

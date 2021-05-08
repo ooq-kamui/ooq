@@ -65,10 +65,10 @@ function Kitchen.upd_cooking_timer__dec(_s, dt)
 	-- _s._cmplt = _.t
 end
 
-function Kitchen.on_msg(_s, msg_id, prm, sndr)
+function Kitchen.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "kitchen__o") then
 		_s:kitchen__o(prm.id)
@@ -80,7 +80,7 @@ end
 
 function Kitchen.final(_s)
 	
-	Sp.final(_s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 	
 	for idx, food_id in pairs(_s._on) do

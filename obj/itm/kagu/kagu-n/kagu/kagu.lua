@@ -47,16 +47,18 @@ function Kagu.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	
+
 end
 
-function Kagu.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Kagu.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Kagu.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

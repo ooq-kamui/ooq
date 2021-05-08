@@ -51,10 +51,10 @@ function Reizoko.act_intrvl(_s, dt)
 	
 end
 
-function Reizoko.on_msg(_s, msg_id, prm, sndr)
+function Reizoko.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "opn") then
 		_s:opn()
@@ -64,16 +64,12 @@ function Reizoko.on_msg(_s, msg_id, prm, sndr)
 		
 	elseif ha.eq(msg_id, "into_reizoko") then
 		_s:into_reizoko(prm.food_id)
-
-		--[[
-	elseif ha.eq(msg_id, "take_reizoko") then
-		_s:take_reizoko(prm.item_idx)
-		--]]
 	end
 end
 
 function Reizoko.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

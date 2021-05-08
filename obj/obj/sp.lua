@@ -4,8 +4,7 @@ Sp = {
 	thrwd_speed_x  = 6,
 	thrwd_speed_y  = 4,
 
-	airflw_u_vec_y = 3, -- 4,
-
+	airflw_u_vec_y = 3,
 	sand_smoke_speed_y = - 4
 }
 
@@ -16,27 +15,22 @@ function Sp.cre(p_Cls, p_pos, prm, p_scl)
 	p_pos = p_pos or pos.pos_w()
 	prm   = prm   or {}
 
+	local name
+	if prm._name then
+		name = prm._name
+		prm._name = nil
+	else
+		name = p_Cls.cls..rnd.int_pad(p_Cls.name_idx_max)
+	end
+
 	local t_url
 	if p_Cls.cls == "anml" then
-		t_url = url._("/obj-fac/"..Anml.cls.."-fac", prm._nameHa)
+		t_url = "/obj-fac/"..Anml.cls.."-fac#"..name
 	else
 		t_url = "/obj-fac/"..p_Cls.fac
 	end
-	-- log._("Sp.cre 1", t_url, p_Cls.cls)
-
-	prm._clsHa  = ha._(p_Cls.cls)
-
-	if ha.is_emp(prm._nameHa) then
-		prm._nameHa = ha._(p_Cls.cls..rnd.int_pad(p_Cls.name_idx_max))
-	end
-
-	if ha.is_emp(prm._animHa) then
-		prm._animHa = prm._nameHa
-	end
 
 	local map_id, game_id = Game.map_id()
-	-- log._("Sp.cre 2 game_id", game_id, "map_id", map_id)
-
 	if ha.is_emp(map_id) then log._("Sp.cre map_id is_emp") return end
 	
 	prm._game_id   = game_id
@@ -47,21 +41,14 @@ function Sp.cre(p_Cls, p_pos, prm, p_scl)
 	prm._z  = p_Cls.z or z_dflt
 	p_pos.z = p_Cls.z or z_dflt
 	
-	if p_scl == 0 then p_scl = 0.2 end -- 1 -- 0.2
+	if p_scl == 0 then p_scl = 0.2 end
 	
 	local t_id = fac.cre(t_url, p_pos, nil, prm, p_scl)
 
-	prm._cls  = prm._cls  or ha.de(prm._clsHa )
-	prm._name = prm._name or ha.de(prm._nameHa)
-	prm._anim = prm._anim or ha.de(prm._animHa)
-
-	prm._clsHa  = nil
-	prm._nameHa = nil
-	prm._animHa = nil
-	-- log._("Sp.cre 3")
+	prm._cls  = p_Cls.cls
+	prm._name = name
 
 	pst.scrpt(t_id, "__init", prm)
-	-- log._("Sp.cre 4")
 
 	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id
@@ -70,62 +57,41 @@ end
 -- script method
 
 function Sp.__init(_s, prm)
-	-- log._("Sp.__init 1")
 
 	for key, val in pairs(prm) do
 		_s:prp__(key, val)
 	end
-	-- log._("Sp.__init 2")
+	_s._clsHa = ha._(prm._cls)
 
 	_s._id = id._()
-	-- log._("Sp.__init 3", _s._id, _s._cls)
 	
 	_s._foot_dst_i = _s:Cls().foot_dst_i or Map.sqh
-	_s._w = _s:Cls().w or Map.sq
-	-- log._("Sp.__init 4")
+	_s._w          = _s:Cls().w          or Map.sq
+	_s._weight     = _s:Cls().weight     or 1
 
 	_s:parent__map()
-	-- log._("Sp.__init 5")
-
 	_s:map_obj__add()
-	-- log._("Sp.__init 6")
 
-	-- if ar.inHa(_s._clsHa, {"plychara", }) then
-	if ar.in_(_s._cls, {"plychara", }) then
+	if     ar.in_(_s._cls, {"plychara", }) then
 		-- excld
+	-- elseif ar.in_(_s._cls, {"chara", "chara_clb_fe", "chara_clb_tohoku", }) then
+		-- _s:anim__()
 	else
-		-- fr anim
-		--[[
-		local anim
-		if _s._anim then anim = _s._anim
-		else             anim = _s._name
-		end
-		_s:anim__(anim)
-		--]]
-
-		-- fr animHa -- old > del
-		local animHa
-		if not ha.is_emp(_s._animHa) then animHa = _s._animHa
-		else                              animHa = _s._nameHa
-		end
-		_s:anim__(animHa)
+		prm._anim = prm._anim or prm._name
+		_s:anim__(prm._anim)
 	end
-	-- log._("Sp.__init 7")
 
 	_s._act_intrvl = 0
-
 	_s:vec__init()
-	-- log._("Sp.__init 8")
-
 	_s:pos__init()
-	-- log._("Sp.__init 9")
 end
 
 function Sp.final(_s)
 	
 	_s:map_obj__del()
 	
-	if _s:cls_is_mapobj() then
+	if _s:
+		cls_is_mapobj() then
 		_s:mapobj_del()
 	end
 end
@@ -199,7 +165,6 @@ function Sp.per_del(_s, per)
 	
 	if flg then _s:del() end
 
-	-- log._("per del", flg)
 	return flg
 end
 
@@ -260,29 +225,37 @@ function Sp.cloud_pos(_s)
 	return t_pos
 end
 
-function Sp.clsHa(_s)
-	return _s._clsHa
-end
-
 function Sp.cls(_s)
-	return _s._clsHa
+
+	return _s._cls
 end
 
-function Sp.nameHa(_s)
-	return _s._nameHa
+function Sp.clsHa(_s)
+
+	return _s._clsHa
 end
 
 function Sp.name(_s)
+
+	return _s._name
+end
+
+function Sp.nameHa(_s)
+
 	return _s._nameHa
 end
 
 function Sp.Cls(_s, p_prp)
 
-	if ha.is_emp(_s._clsHa) then log._("sp cls is_emp") return end
+	local t_Cls
 
-	local t_Cls = Cls._(_s._clsHa)
-	
-	if not t_Cls then log._("sp cls Cls[_s._clsHa] is nil") return end
+	if     _s._cls then
+		t_Cls = Cls.Cls(_s._cls  )
+
+	else
+		log._("Sp.Cls _s._cls is nil") return
+	end
+	if not t_Cls then log._("Sp.Cls is nil") return end
 	
 	if not p_prp then
 		return t_Cls
@@ -292,38 +265,40 @@ function Sp.Cls(_s, p_prp)
 end
 
 function Sp.is_food(_s)
-	return ar.inHa(_s._clsHa, Food.cls)
+
+	return ar.in_(_s._cls, Food.cls)
 end
 
 -- obj
 
 function Sp.cls_is_mapobj(_s)
 	
-	local ret = ar.inHa(_s._clsHa, Mapobj.cls)
+	local ret = ar.in_(_s._cls, Mapobj.cls)
 	return ret
 end
 
 function Sp.map_obj__add(_s)
 	
-	if ha.is_emp(_s._clsHa) then return end
+	if not _s._cls then return end
 	
-	local t_cls = ha.de(_s._clsHa)
-	-- log._("map_obj__add", t_cls)
-
-	if not Map.st.obj(t_cls) then Map.st.obj__init(t_cls) end
-	
-	ar.add_unq(Map.st.obj(t_cls), _s._id)
+	local prm = {
+		id  = _s._id,
+		cls = _s._cls,
+	}
+	pst.scrpt(_s:map_id(), "obj__add", prm)
 end
 
 function Sp.map_obj__del(_s)
 
-	local t_cls = ha.de(_s._clsHa)
-	-- log._("map_obj__del", t_cls)
-	local t_ar  = Map.st.obj(t_cls)
-	ar.del_by_val(t_ar, _s._id)
+	local prm = {
+		id  = _s._id,
+		cls = _s._cls,
+	}
+	pst.scrpt(_s:map_id(), "obj__del", prm)
 end
 
 function Sp.mapobj_del(_s)
+
 	Mapobj.del(_s:tilepos(), _s._clsHa, _s._id)
 end
 
@@ -334,6 +309,7 @@ function Sp.obj_arund(_s, clsHa)
 end
 
 function Sp.obj_d(_s, clsHa)
+
 	local obj = Mapobj.obj(_s:tilepos_d(), clsHa)
 	return obj
 end
@@ -375,5 +351,16 @@ function Sp.is_on_obj_block(_s)
 		return ret, nil
 	end
 	return ret, block_id
+end
+
+function Sp.pb__save_data(_s, map_url)
+
+	local prm = {}
+
+	prm._cls  = _s._cls
+	prm._name = _s._name
+	prm._pos  = _s:pos()
+
+	pst._(map_url, "save_data_obj__", prm)
 end
 

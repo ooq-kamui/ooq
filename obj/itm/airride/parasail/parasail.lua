@@ -13,10 +13,11 @@ Cls.add(Parasail)
 -- static
 
 function Parasail.cre(p_pos, prm)
+
 	local t_Cls = Parasail
+
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._("parasail001-stand") end
-	-- if not prm._anim   then prm._anim   =      "parasail001-stand"  end
+
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
@@ -33,6 +34,8 @@ end
 
 function Parasail.__init(_s, prm)
 	
+	if not prm._anim then prm._anim = prm._cls.."001-stand" end
+
 	Sp     .__init(_s, prm)
 	Hldabl .__init(_s)
 	Airride.__init(_s)
@@ -54,15 +57,15 @@ function Parasail.act_intrvl(_s, dt)
 	-- death
 end
 
-function Parasail.on_msg(_s, msg_id, prm, sndr)
+function Parasail.on_msg(_s, msg_id, prm, sndr_url)
 
-	Sp.on_msg(    _s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Parasail.final(_s)
 
-	Sp.final(    _s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

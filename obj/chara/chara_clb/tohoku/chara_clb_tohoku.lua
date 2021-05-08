@@ -13,6 +13,7 @@ Chara_clb_tohoku = {
 Chara_clb_tohoku.cls = "chara_clb_tohoku"
 Chara_clb_tohoku.fac = Obj.fac..Chara_clb_tohoku.cls
 Cls.add(Chara_clb_tohoku)
+
 ha.add_by_ar(Chara_clb_tohoku.chara)
 
 -- static
@@ -25,8 +26,8 @@ function Chara_clb_tohoku.cre(p_pos, p_name)
 	p_name = p_name or Chara_clb_tohoku.new_name()
 	
 	local prm = {}
-	prm._clsHa  = ha._(Chara_clb_tohoku.cls)
-	prm._nameHa = ha._(p_name)
+
+	prm._name = p_name
 
 	prm._is_flyabl = ar.in_(p_name, Chara_clb_tohoku.flyabl)
 	

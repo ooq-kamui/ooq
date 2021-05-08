@@ -22,8 +22,8 @@ function Efct_sprite.init(_s)
 	-- log._("efct init z", _s:z())
 end
 
-function Efct_sprite.on_msg(_s, msg_id, prm, sndr)
+function Efct_sprite.on_msg(_s, msg_id, prm, sndr_url)
 
-	Efct.on_msg(_s, msg_id, prm, sndr)
+	Efct.on_msg(_s, msg_id, prm, sndr_url)
 end
 

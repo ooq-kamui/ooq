@@ -68,7 +68,7 @@ function Inp.upd(_s, dt)
 	end
 end
 
-function Inp.on_msg(_s, msg_id, prm, sndr)
+function Inp.on_msg(_s, msg_id, prm, sndr_url)
 	-- log._("Inp on_msg")
 
 	if     ha.eq(msg_id, "focus__t" ) then

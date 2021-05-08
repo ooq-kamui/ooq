@@ -53,5 +53,7 @@ function Bush.act_intrvl(_s, dt)
 end
 
 function Bush.final(_s)
+
 	Sp.final(_s)
 end
+

@@ -50,10 +50,10 @@ function Pc.act_intrvl(_s, dt)
 	
 end
 
-function Pc.on_msg(_s, msg_id, prm, sndr)
+function Pc.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if ha.eq(msg_id, "opn") then
 		_s:opn()
@@ -61,7 +61,8 @@ function Pc.on_msg(_s, msg_id, prm, sndr)
 end
 
 function Pc.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

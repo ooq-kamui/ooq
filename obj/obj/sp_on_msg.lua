@@ -1,6 +1,6 @@
 log.scrpt("sp_on_msg.lua")
 
-function Sp.on_msg(_s, msg_id, prm, sndr)
+function Sp.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "__init") then
 		_s:__init(prm)
@@ -52,6 +52,10 @@ function Sp.on_msg(_s, msg_id, prm, sndr)
 
 	elseif ha.eq(msg_id, "anm_pos__"   ) then
 		_s:anm_pos__(prm.pos, prm.time)
+
+	elseif ha.eq(msg_id, "pi__save_data") then
+		log._("Sp.on_msg pi__save_data", sndr_url)
+		_s:pb__save_data(sndr_url)
 	end
 end
 
@@ -76,11 +80,7 @@ function Sp.leapup(_s , p_leapup_lv)
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
 	local speed_y = accl.speed_by_dst(dst_y)
-	-- log._("jmp", dst_y, speed_y)
 
 	_s._accl:speed_y__(speed_y)
-	-- _s._is_jmp_start = _.t
-
-	-- Se.pst_ply("jmp001")
 end
 

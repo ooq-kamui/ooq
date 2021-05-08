@@ -52,6 +52,7 @@ function Wood.act_intrvl(_s, dt)
 end
 
 function Wood.final(_s)
+
 	Sp.final(_s)
 end
 

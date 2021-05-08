@@ -222,12 +222,12 @@ end
 
 -- scrpt method
 
-function Efct.on_msg(_s, msg_id, prm, sndr)
+function Efct.on_msg(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "pos_y__anm") then
 		_s:pos_y__anm(prm.y, prm.time)
 
-	elseif ha.eq(msg_id, "sckd__") then
+	elseif ha.eq(msg_id, "sckd__"    ) then
 		_s:sckd__(prm.time, prm.delay)
 	end
 end

@@ -83,16 +83,16 @@ function Block.trnsf_tile(_s)
 	_s:del()
 end
 
-function Block.on_msg(_s, msg_id, prm, sndr)
+function Block.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Block.final(_s)
 	-- u.log("Block.final()")
 	
-	Sp.final(_s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 
 	if _s._is_trnsf_tile then

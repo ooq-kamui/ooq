@@ -16,18 +16,15 @@ end
 function Title.init(_s)
 
 	_s._id = id._()
-	-- _s._id = go.get_id()
-	-- log._("title init", _s._id)
 	
 	extend._(_s, Title)
 	
-	local title_gui_id = fac.cre("#fac_title_gui")
-	-- log._("title init title_gui_id", title_gui_id)
+	local t_id = fac.cre("#fac_title_gui")
 
 	Bgm.ply_rnd()
 end
 
-function Title.on_msg(_s, msg_id, prm, sndr)
+function Title.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if ha.eq(msg_id, "del") then
 		_s:del()

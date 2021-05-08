@@ -37,12 +37,11 @@ function Sp.anim__(_s, p_anim)
 	if p_anim == _s._anim then return end
 
 	local p_animHa = ha._(p_anim)
+	pst._("#sprite", "play_animation", {id = p_animHa})
 	-- log._("sp anim__", p_animHa)
 
-	pst._("#sprite", "play_animation", {id = p_animHa})
-
 	_s._anim   = p_anim
-	_s._animHa = p_animHa
+	-- _s._animHa = p_animHa
 end
 
 function Sp.anm_cancel_pos(_s)

@@ -1,12 +1,15 @@
 log.scrpt("se.script")
 
 function init(_s)
+
 	_s.gate_time = 0.3
 	_s.se = {}
 end
 
 function update(_s, dt)
+
 	for k, _ in pairs(_s.se) do
+
 		_s.se[k] = _s.se[k] - dt
 		if _s.se[k] < 0 then
 			_s.se[k] = nil
@@ -14,9 +17,12 @@ function update(_s, dt)
 	end
 end
 
-function on_message(_s, msg_id, prm, sndr)
+function on_message(_s, msg_id, prm, sndr_url)
+
 	if ha.eq(msg_id, "play_gate_sound") then
+
 		if _s.se[prm.se] == nil then
+
 			_s.se[prm.se] = _s.gate_time
 			local se_url = url._(id._(), prm.se)
 			-- local se_url = url._(go.get_id(), prm.se)

@@ -84,7 +84,7 @@ function Map.chara__clr()
 	ar.clr(Map.chara_clb.tohoku)
 end
 
--- script method
+-- scrpt method
 
 function Map.init(_s)
 
@@ -100,6 +100,9 @@ function Map.init(_s)
 	_s:rng_pos__init()
 	_s:dstrct_mv_rng_pos__init()
 	
+	_s._obj = {}
+	_s:save_data__init()
+
 	Mapobj.init(_s._id)
 
 	_s:new_or_load()
@@ -148,18 +151,18 @@ function Map.act_intrvl__(_s, dt)
 	return is_loop
 end
 
-function Map.on_msg(_s, msg_id, prm, sndr)
+function Map.on_msg(_s, msg_id, prm, sndr_url)
 	
-	if     ha.eq(msg_id, "del"          ) then
+	if     ha.eq(msg_id, "del" ) then
 		_s:del()
 
-	elseif ha.eq(msg_id, "new"          ) then
+	elseif ha.eq(msg_id, "new" ) then
 		_s:new(prm.plychara_pos)
 
-	elseif ha.eq(msg_id, "load"         ) then
+	elseif ha.eq(msg_id, "load") then
 		_s:load(prm.file_idx, prm.plychara_pos)
 
-	elseif ha.eq(msg_id, "save"         ) then
+	elseif ha.eq(msg_id, "save") then
 		_s:save()
 
 	elseif ha.eq(msg_id, "save_del"     ) then
@@ -179,6 +182,21 @@ function Map.on_msg(_s, msg_id, prm, sndr)
 
 	elseif ha.eq(msg_id, "fairy__cre"   ) then
 		_s:fairy__cre(prm.pos, prm)
+
+	elseif ha.eq(msg_id, "save_data_obj__"   ) then
+		_s:save_data_obj__(prm)
+
+	elseif ha.eq(msg_id, "pi__save_data__fin") then
+		_s:pb__save_data__fin(sndr_url)
+
+	elseif ha.eq(msg_id, "file__save") then
+		_s:file__save()
+
+	elseif ha.eq(msg_id, "obj__add"  ) then
+		_s:obj__add(prm.id, prm.cls)
+
+	elseif ha.eq(msg_id, "obj__del"  ) then
+		_s:obj__del(prm.id, prm.cls)
 	end
 end
 
@@ -188,6 +206,8 @@ function Map.final(_s)
 		_s._final_fnc()
 	end
 end
+
+-- method
 
 function Map.new(_s, plychara_pos)
 	
@@ -199,30 +219,55 @@ function Map.load(_s, file_idx)
 	if not _s._ply_slt_idx then return end
 	if not _s._dstrct      then return end
 	
-	local data = file.map.load(_s._ply_slt_idx, _s._dstrct, file_idx)
+	local save_data = file.map.load(_s._ply_slt_idx, _s._dstrct, file_idx)
 
-	if not data then return end
+	if not save_data then return end
 	
-	_s:tile__(data["tile"])
-	_s:obj__( data["obj"] )
+	_s:tile__(save_data["tile"])
+	_s:obj__save_data_objs( save_data["obj"] )
 	
 	-- Se.pst_ply("exe")
 	Msg.s("load complete")
 end
 
-function Map.save(_s)
+function Map.save_data__init(_s)
 
-	local data = _s:save_data()
-	file.map.save(_s._ply_slt_idx, _s._dstrct, data)
+	_s._save_data = {}
 end
 
-function Map.save_data(_s)
-	-- log._("Map.save_data()")
-	
-	local data = {}
-	data["tile"] = _s:tile_2_save_data()
-	data["obj"]  = _s:obj_2_save_data()
-	return data
+function Map.save_data__clr(_s)
+
+	ar.clr(_s._save_data)
+end
+
+function Map.save(_s)
+
+	_s:pi__save_data__()
+
+	pst.scrpt(_s._id, "pi__save_data__fin")
+end
+
+function Map.pi__save_data__(_s)
+
+	_s:save_data__clr()
+
+	_s._save_data.tile = _s:tile_2_save_data()
+
+	_s:pi__save_data_obj__()
+
+	log.pp("Map.pi__save_data__", _s._save_data.obj)
+end
+
+function Map.pb__save_data__fin(_s, sndr_url)
+	log._("Map.pb__save_data__fin")
+
+	pst._(sndr_url, "file__save")
+end
+
+function Map.file__save(_s)
+	-- log.pp("Map.file__save", _s._save_data.obj)
+
+	file.map.save(_s._ply_slt_idx, _s._dstrct, _s._save_data)
 end
 
 function Map.del(_s)

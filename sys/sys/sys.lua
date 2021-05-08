@@ -79,22 +79,22 @@ function Sys.init(_s)
 	_s:title()
 end
 
-function Sys.on_msg(_s, msg_id, prm, sndr)
+function Sys.on_msg(_s, msg_id, prm, sndr_url)
 
-	if     ha.eq(msg_id, "proxy_loaded") then -- camera ???
-		pst._(sndr, "init")
-		pst._(sndr, "enable")
+	if     ha.eq(msg_id, "proxy_loaded" ) then -- camera ???
+		pst._(sndr_url, "init")
+		pst._(sndr_url, "enable")
 
-	elseif ha.eq(msg_id, "title") then
+	elseif ha.eq(msg_id, "title"        ) then
 		_s:title()
 		
-	elseif ha.eq(msg_id, "game_new") then
+	elseif ha.eq(msg_id, "game_new"     ) then
 		_s:game_new(prm.ply_slt_idx)
 
 	elseif ha.eq(msg_id, "game_continue") then
 		_s:game_continue(prm.ply_slt_idx, prm.ply_data_file_idx)
 
-	elseif ha.eq(msg_id, "msg_id__del") then
+	elseif ha.eq(msg_id, "msg_id__del"  ) then
 		_s:msg_id__del()
 	end
 end

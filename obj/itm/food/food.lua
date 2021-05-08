@@ -1,9 +1,12 @@
 log.scrpt("food.lua")
 
 Food = {
+
 	cls = {"dairy","dish","egg","fish","fruit","meat","veget",},
+
 	cookabl = {"dairy","dish","egg","fish","fruit","meat","veget",},
 }
+Map._obj.grp_cls.food = Food.cls
 
 function Food.cre_by_cls(p_pos, prm)
 	
@@ -18,15 +21,15 @@ function Food.__init(_s)
 	_s._kitchen_id = nil
 end
 
-function Food.on_msg(_s, msg_id, prm, sndr)
+function Food.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 
-	if     ha.eq(msg_id, "kitchen__o")    then
+	if     ha.eq(msg_id, "kitchen__o")   then
 		_s:kitchen__o(prm.id)
 	
-	elseif ha.eq(msg_id, "kitchen__x")    then
+	elseif ha.eq(msg_id, "kitchen__x")   then
 		_s:kitchen__x()
 	
 	elseif ha.eq(msg_id, "into_reizoko") then
@@ -45,7 +48,7 @@ end
 
 function Food.final(_s)
 
-	Sp.final(_s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 
 	if     _s._kitchen_id then

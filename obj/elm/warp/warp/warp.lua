@@ -9,7 +9,7 @@ Warp = {
 function Warp.__init(_s)
 end
 
-function Warp.on_msg_clsn(_s, msg_id, prm, sndr)
+function Warp.on_msg_clsn(_s, msg_id, prm, sndr_url)
 	
 	if not ha.eq(msg_id, "contact_point_response") then return end
 	

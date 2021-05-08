@@ -1,8 +1,6 @@
 log.scrpt("gui.script")
 
--- go.property("_inp_id", hash(""))
-
-function on_message(_s, msg_id, prm, sndr)
+function on_message(_s, msg_id, prm, sndr_url)
 	-- log._("gui on_message", msg_id)
 	
 	if     ha.eq(msg_id, "del"            ) then

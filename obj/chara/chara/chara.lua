@@ -24,18 +24,15 @@ ha.add_by_ar(Chara.chara)
 
 -- static
 
-function Chara.cre(p_pos, p_name)
+function Chara.cre(p_name, p_pos)
 	
 	if Map.chara_is_appear_all() then return end
 	
-	p_pos  = p_pos  or pos.pos_w()
 	p_name = p_name or Chara.new_name()
+	p_pos  = p_pos  or pos.pos_w()
 	
 	local prm = {}
-
-	prm._clsHa  = ha._(Chara.cls)
-	prm._nameHa = ha._(p_name)
-
+	prm._name      = p_name
 	prm._is_flyabl = ar.in_(p_name, Chara.flyabl) -- to init
 	
 	local t_Cls = Chara
@@ -63,8 +60,7 @@ end
 
 function Chara.__init(_s, prm)
 	
-	_s._name   = ha.de(_s._nameHa)
-	_s._animHa = _s._name.."-walk"
+	prm._anim = "walk"
 
 	Sp        .__init(_s, prm)
 	Livingmove.__init(_s)
@@ -101,9 +97,9 @@ function Chara.act_intrvl(_s, dt)
 	_s:act_intrvl_time__()
 end
 
-function Chara.on_msg(_s, msg_id, prm, sndr)
+function Chara.on_msg(_s, msg_id, prm, sndr_url)
 
-	Sp.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if ha.eq(msg_id, "present") then
 		
@@ -132,7 +128,10 @@ end
 
 function Chara.anim__(_s, p_anim)
 
+	p_anim = p_anim or "walk"
+
 	local t_anim = _s._name.."-"..p_anim
+
 	Sp.anim__(_s, t_anim)
 end
 

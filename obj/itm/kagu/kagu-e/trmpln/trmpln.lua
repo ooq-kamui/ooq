@@ -23,10 +23,11 @@ Cls.add(Trmpln)
 -- static
 
 function Trmpln.cre(p_pos, prm)
+
 	local t_Cls = Trmpln
+
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._("trmpln001-stand") end
-	-- if not prm._anim   then prm._anim   =      "trmpln001-stand"  end
+
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
@@ -42,6 +43,8 @@ end
 
 function Trmpln.__init(_s, prm)
 	
+	if not prm._anim then prm._anim = prm._cls.."001-stand" end
+
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 end
@@ -63,11 +66,11 @@ function Trmpln.act_intrvl(_s, dt)
 
 end
 
-function Trmpln.on_msg(_s, msg_id, prm, sndr)
+function Trmpln.on_msg(_s, msg_id, prm, sndr_url)
 
-	Sp    .on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
-	_s:on_msg_clsn(   msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
+	_s:on_msg_clsn(   msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "leapup_anim")    then
 		_s:leapup_anim()
@@ -80,7 +83,7 @@ function Trmpln.on_msg(_s, msg_id, prm, sndr)
 	end
 end
 
-function Trmpln.on_msg_clsn(_s, msg_id, prm, sndr)
+function Trmpln.on_msg_clsn(_s, msg_id, prm, sndr_url)
 	
 	-- log._("trmpln on_msg_clsn", msg_id, prm.group)
 

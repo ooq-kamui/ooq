@@ -1,8 +1,8 @@
 log.scrpt("map.script")
 
-go.property("_tilesize", vmath.vector3(48, 48, 0))
-go.property("_rng_pos_min", vmath.vector3( 0, 0, 0))
-go.property("_rng_pos_max", vmath.vector3( 0, 0, 0))
+go.property("_tilesize",    vmath.vector3(48, 48, 0))
+go.property("_rng_pos_min", vmath.vector3( 0,  0, 0))
+go.property("_rng_pos_max", vmath.vector3( 0,  0, 0))
 go.property("_dstrct_mv_rng_pos_min", vmath.vector3( 0, 0, 0))
 go.property("_dstrct_mv_rng_pos_max", vmath.vector3( 0, 0, 0))
 
@@ -15,7 +15,6 @@ go.property("_areaHa", hash(""))
 go.property("_cloud_id", hash(""))
 go.property("_fairy_id", hash(""))
 go.property("_plychara_id", hash(""))
--- go.property("_plychara_pos_init", vmath.vector3(0, 0, 0))
 
 go.property("_sky_id", hash(""))
 
@@ -29,8 +28,8 @@ function update(_s, dt)
 	_s:upd(dt)
 end
 
-function on_message(_s, msg_id, prm, sndr)
-	_s:on_msg(msg_id, prm, sndr)
+function on_message(_s, msg_id, prm, sndr_url)
+	_s:on_msg(msg_id, prm, sndr_url)
 end
 
 function final(_s)

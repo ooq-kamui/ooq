@@ -11,10 +11,11 @@ Cls.add(Phantom)
 -- static
 
 function Phantom.cre(p_pos, prm)
+
 	local t_Cls = Phantom
+
 	prm = prm or {}
-	prm._animHa = prm._animHa or ha._("stand")
-	-- prm._anim   = prm._anim   or      "stand"
+
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
@@ -29,6 +30,8 @@ end
 
 function Phantom.__init(_s, prm)
 	
+	prm._anim = prm._anim or "stand"
+
 	Sp.__init(_s, prm)
 
 	vec.xy__(_s._vec_mv, 0, 0.5)
@@ -57,10 +60,13 @@ function Phantom.act_intrvl(_s, dt)
 
 end
 
-function Phantom.on_msg(_s, msg_id, prm, sndr)
+function Phantom.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Phantom.final(_s)
+
 	Sp.final(_s)
 end
 

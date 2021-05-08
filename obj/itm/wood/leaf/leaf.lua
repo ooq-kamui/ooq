@@ -54,6 +54,7 @@ function Leaf.act_intrvl(_s, dt)
 end
 
 function Leaf.final(_s)
+
 	Sp.final(_s)
 end
 

@@ -30,8 +30,9 @@ function Wa.upd(_s, dt)
 	if _s.sec < 0 then _s:wa_fin() end
 end
 
-function Wa.on_msg(_s, msg_id, prm, sndr)
-	if     ha.eq(msg_id, "wa") then
+function Wa.on_msg(_s, msg_id, prm, sndr_url)
+
+	if     ha.eq(msg_id, "wa"    ) then
 		_s:wa(prm.sec)
 	
 	elseif ha.eq(msg_id, "wa_fin") then

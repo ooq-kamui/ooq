@@ -29,6 +29,6 @@ function Arw.act_intrvl(_s, dt)
 	_s:del()
 end
 
-function Arw.on_msg(_s, msg_id, prm, sndr)
+function Arw.on_msg(_s, msg_id, prm, sndr_url)
 end
 

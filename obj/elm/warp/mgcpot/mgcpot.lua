@@ -9,10 +9,11 @@ Mgcpot.fac = Obj.fac..Mgcpot.cls
 Cls.add(Mgcpot)
 
 function Mgcpot.cre(p_pos, prm)
+
 	local t_Cls = Mgcpot
+
 	prm = prm or {}
-	if not prm._animHa then prm._animHa = ha._(t_Cls.cls.."001-stand") end
-	-- if not prm._anim   then prm._anim   =      t_Cls.cls.."001-stand"  end
+
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id
 end
@@ -29,6 +30,8 @@ end
 
 function Mgcpot.__init(_s, prm)
 	
+	if not prm._anim then prm._anim = prm._cls.."001-stand" end
+
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Warp  .__init(_s)
@@ -50,16 +53,16 @@ function Mgcpot.act_intrvl(_s, dt)
 	-- death
 end
 
-function Mgcpot.on_msg(_s, msg_id, prm, sndr)
+function Mgcpot.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(    _s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
-	_s:on_msg_clsn(   msg_id, prm, sndr) -- warp
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
+	_s:on_msg_clsn(   msg_id, prm, sndr_url) -- warp
 end
 
 function Mgcpot.final(_s)
 
-	Sp.final(    _s)
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

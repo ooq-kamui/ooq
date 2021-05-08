@@ -310,7 +310,7 @@ end
 
 --
 
-function Sky.on_msg(_s, msg_id, prm, sndr)
+function Sky.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "dsp__o") then
 		_s:dsp__o()

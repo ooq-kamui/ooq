@@ -19,7 +19,6 @@ Anml = {
 }
 Anml.cls = "anml"
 Anml.fac = Obj.fac..Anml.cls
--- Anml.fac = "/obj-fac/"..Anml.cls.."Fac"
 Cls.add(Anml)
 ha.add_by_ar(Anml.anml)
 
@@ -31,12 +30,8 @@ function Anml.cre(p_pos, prm)
 
 	prm = prm or {}
 	
-	prm._clsHa  = ha._(Anml.cls)
-
-	if not prm._nameHa then
-		prm._nameHa = ha._(rnd.ar(Anml.anml))
-	end
-	prm._animHa = ha._("walk")
+	prm._name = prm._name or rnd.ar(Anml.anml)
+	-- prm._anim = "walk"
 
 	local t_Cls = Anml
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
@@ -55,6 +50,8 @@ end
 
 function Anml.__init(_s, prm)
 	
+	prm._anim = "-walk"
+
 	Sp        .__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
@@ -94,10 +91,10 @@ function Anml.act_intrvl(_s, dt)
 	_s:moving_prp__rnd()
 end
 
-function Anml.on_msg(_s, msg_id, prm, sndr)
+function Anml.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if ha.eq(msg_id, "present") then
 		_s:present(prm.id)
@@ -139,7 +136,8 @@ function Anml.is_favo(_s, o_clsHa, o_nameHa)
 end
 
 function Anml.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

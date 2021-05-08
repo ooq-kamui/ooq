@@ -40,14 +40,15 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
+function id.clsHa(p_id) -- old
+
+	return id.prp(p_id, "_clsHa")
+end
+
+--[[
 function id.cls(p_id)
 
 	-- return id.clsHa(p_id)
-end
-
-function id.clsHa(p_id)
-
-	return id.prp(p_id, "_clsHa")
 end
 
 function id.name(p_id)
@@ -69,6 +70,7 @@ function id.animHa(p_id)
 
 	return id.prp(p_id, "_animHa")
 end
+--]]
 
 function id.pos(p_id)
 	
@@ -130,17 +132,20 @@ function id.del(p_id, val)
 	end
 end
 
+--[[
 function id.Cls(p_id)
 
 	if not p_id then return end
 
 	local t_clsHa = id.clsHa(p_id)
 
-	local t_Cls = Cls._(t_clsHa)
+	local t_Cls = Cls.Cls(t_clsHa)
 
 	return t_Cls
 end
+--]]
 
+--[[
 function id.Cls_prp(p_id, p_prp)
 
 	if not p_id  then return end
@@ -156,7 +161,9 @@ function id.Cls_prp(p_id, p_prp)
 
 	return t_prp
 end
+--]]
 
+--[[
 function id.Cls_prp_weight(p_id)
 
 	if not p_id  then return end
@@ -167,4 +174,5 @@ function id.Cls_prp_weight(p_id)
 
 	return weight
 end
+--]]
 

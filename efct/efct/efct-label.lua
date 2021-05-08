@@ -17,7 +17,7 @@ function Efct_label.init(_s)
 	-- log._("efct init z", _s:z())
 end
 
-function Efct_label.on_msg(_s, msg_id, prm, sndr)
+function Efct_label.on_msg(_s, msg_id, prm, sndr_url)
 
 	-- log._("Efct_label.on_msg", msg_id, prm.txt)
 
@@ -25,7 +25,7 @@ function Efct_label.on_msg(_s, msg_id, prm, sndr)
 		_s:__txt(prm.txt)
 	end
 
-	Efct.on_msg(_s, msg_id, prm, sndr)
+	Efct.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 -- method

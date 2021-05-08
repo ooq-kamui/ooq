@@ -18,155 +18,102 @@ end
 -- obj
 
 Map._obj = {}
+
+Map._obj.grp_cls = {
+
+	-- food = Food.cls, -- def at Food
+
+	living = {
+		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree",
+	},
+	kagu = {
+		"kagu",
+		"kitchen", "reizoko",
+		"flpy", "pc", "shelf",
+		"doorwrp",
+		"hrvst", "trmpln",
+	},
+	elm = {
+		"mgccrcl", "mgcpot",
+	},
+	itm = {
+		"parasail", "parasol",
+	},
+}
+
+--[[
 Map._obj.grp = {
+
 	"food",
 	"living",
 	"kagu",
 	"elm",
 	"itm",
 }
+--]]
+
 Map._obj._ = {} -- < Map.cnt
 
 -- static
 
 Map.st = {}
 
-function Map.st.obj__init(p_cls)
-	-- log._("obj__init", p_cls)
-
-	Map._obj._[p_cls] = {}
-end
-
-function Map.st.obj(p_cls)
-
-	if not Map._obj._[p_cls] then return end
-
-	return Map._obj._[p_cls]
-end
-
-function Map.st.obj_cnt(p_cls)
-
-	local obj = Map.st.obj(p_cls)
-	log.pp("obj_cnt "..p_cls, obj)
-
-	if not obj then return end
-
-	local cnt = #obj
-	log._("obj_cnt", cnt)
-	return cnt
-end
-
 -- method
 
-function Map.obj_2_save_data(_s)
-	local obj = _s:obj()
-	return obj
+function Map.obj__add(_s, p_id, p_cls)
+
+	if not _s._obj[p_cls] then _s._obj[p_cls] = {} end
+	
+	ar.add_unq(_s._obj[p_cls], p_id)
 end
 
-function Map.obj(_s)
+function Map.obj__del(_s, p_id, p_cls)
 
-	local data = {}
-	for idx, grp in pairs(Map._obj.grp) do
-		-- log._("Map.obj", grp)
-		data[grp] = _s["obj_"..grp](_s)
-	end
+	if not _s._obj[p_cls] then return end
 
-	-- log.pp("data obj kagu", data["kagu"])
-	return data
+	ar.del_by_val(_s._obj[p_cls], p_id)
+
+	--[[
+	if not _s._obj[p_cls] then _s._obj[p_cls] = {} end
+	
+	ar.add_unq(_s._obj[p_cls], p_id)
+	--]]
 end
 
-function Map.obj_kagu(_s)
-	local cls = {
-		"kitchen", "reizoko",
-		"flpy", "pc", "shelf",
-		"kagu",
-		"doorwrp",
-		"hrvst", "trmpln",
-	}
-	return _s:obj_grp(cls)
-end
+function Map.pi__save_data_obj__(_s)
 
-function Map.obj_food(_s)
-	local cls = Food.cls
-	return _s:obj_grp(cls)
-end
+	for grp, t_cls_ar in pairs(Map._obj.grp_cls) do
 
-function Map.obj_living(_s)
-	local cls = {
-		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree",
-	}
-	local data = _s:obj_grp(cls)
-	-- log.pp("obj_living", data)
-	return data
-end
-
-function Map.obj_elm(_s)
-	local cls = {"mgccrcl", "mgcpot",}
-	return _s:obj_grp(cls)
-end
-
-function Map.obj_itm(_s)
-	local cls = {"parasail", "parasol",}
-	return _s:obj_grp(cls)
-end
-
-function Map.obj_grp(_s, p_cls)
-
-	local data = {}
-	for idx, t_cls in pairs(p_cls) do
-		-- data[t_cls] = _s:obj_cls(ha._(t_cls))
-		data[t_cls] = _s:obj_cls(t_cls)
-	end
-	return data
-end
-
--- function Map.obj_cls(_s, clsHa)
-function Map.obj_cls(_s, p_cls)
-	-- log._("Map.obj_cls", clsHa)
-
-	local data_cls = {}
-
-	-- local t_cls = ha.de(clsHa)
-
-	-- local t_obj = Map.st.obj_by_ha(clsHa)
-	local t_obj = Map.st.obj(p_cls)
-
-	if not t_obj then
-		log._("Map.obj_cls nil :", p_cls)
-		return data_cls
-	end
-
-	local prm
-
-	for j, t_id in pairs(t_obj) do
-		-- log._("Map.obj_cls()", clsHa)
-
-		prm = {}
-		prm._name = ha.de(id.nameHa(t_id)) -- todo refactoring
-		prm._pos  = id.pos_w(t_id)
-
-		-- if     ar.inHa(clsHa, {"seed" }) then
-		if     ar.in_(p_cls, {"seed" }) then
-			prm._grw_cls   = id.prp_de(t_id, "_grw_clsHa"  )
-			prm._grw_name  = id.prp_de(t_id, "_grw_nameHa" )
-			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
-			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
-			-- log.pp("Map.obj_cls ( save )", prm)
-
-		-- elseif ar.inHa(clsHa, {"tree" }) then
-		elseif ar.in_(p_cls, {"tree" }) then
-			prm._bear_cls  = id.prp_de(t_id, "_bear_clsHa" )
-			prm._bear_name = id.prp_de(t_id, "_bear_nameHa")
-			-- log.pp("Map.obj_cls ( save )", prm)
-
-		-- elseif ar.inHa(clsHa, {"mshrm"}) then
-		elseif ar.in_(p_cls, {"mshrm"}) then
-			-- log.pp("Map.obj_cls mshrm", prm)
+		for idx, t_cls in pairs(t_cls_ar) do
+			_s:pi__obj_grp_cls(t_cls)
 		end
-		ar.add(data_cls, prm)
 	end
-	-- log.pp("Map.obj_cls", data_cls)
-	return data_cls
+end
+
+function Map.pi__obj_grp_cls(_s, p_cls)
+
+	local t_obj = _s._obj[p_cls]
+
+	if not t_obj then log._("Map.obj_cls nil :", p_cls) return end
+
+	for idx, t_id in pairs(t_obj) do
+
+		pst.scrpt(t_id, "pi__save_data")
+	end
+end
+
+function Map.save_data_obj__clr(_s)
+
+	ar.clr(_s._save_data.obj)
+end
+
+function Map.save_data_obj__(_s, prm)
+	-- log.pp("Map.save_data_obj__", prm)
+
+	if not _s._save_data.obj           then _s._save_data.obj           = {} end
+	if not _s._save_data.obj[prm._cls] then _s._save_data.obj[prm._cls] = {} end
+
+	ar.add(_s._save_data.obj[prm._cls], prm)
 end
 
 -- cre
@@ -199,54 +146,117 @@ function Map.obj__new(_s)
 
 	_s:obj__new_kagu()
 
-	Mgccrcl.cre(n.vec(-936, -1464))
-	Mgccrcl.cre(n.vec( 936, -1464))
+	local t_pos = n.vec( 936, -1464)
+	Mgccrcl.cre(t_pos)
+	t_pos.x = - t_pos.x
+	Mgccrcl.cre(t_pos)
 end
 
-function Map.obj__(_s, data)
+function Map.obj__save_data_objs(_s, p_sd_obj_tb)
 
-	-- log.pp("obj__", data)
+	for grp, t_cls_ar in pairs(Map._obj.grp_cls) do
 
-	for idx, grp in pairs(Map._obj.grp) do
-		_s:obj_grp__load(data, grp)
+		log.pp("Map.obj__save_data_objs grp:", grp)
+
+		for t_cls_idx, t_cls in pairs(t_cls_ar) do
+
+			log._("Map.obj__save_data_objs cls", t_cls)
+
+			if not p_sd_obj_tb[t_cls] then
+			else
+				for t_obj_idx, t_obj in pairs(p_sd_obj_tb[t_cls]) do
+
+					log._("Map.obj__save_data_objs obj", t_obj._name, t_obj._cls)
+
+					_s:obj__save_data_obj(t_obj)	
+				end
+			end
+		end
 	end
 end
 
-function Map.obj_grp__load(_s, data, grp) -- -> func name rename
+function Map.obj__save_data_obj(_s, p_obj)
+
+	local t_cls = p_obj._cls
+	local t_Cls = Cls.Cls(t_cls)
+	local prm = {}
+	prm._name = p_obj._name
+
+	if     t_cls == "seed" then
+		prm._grw_cls   = p_obj._grw_cls
+		prm._grw_name  = p_obj._grw_name
+		prm._bear_cls  = p_obj._bear_cls
+		prm._bear_name = p_obj._bear_name
+
+	elseif t_cls == "tree" then
+		prm._bear_cls  = p_obj._bear_cls
+		prm._bear_name = p_obj._bear_name
+	end
+
+	t_Cls.cre(p_obj["_pos"], prm)
+end
+
+--[[
+function Map.obj__save_data(_s, data, grp)
 
 	if not data[grp] then return end
-	-- log.pp("obj_grp__load:"..grp, data[grp])
 
-	local tCls, prm
-	for cls, ar in pairs(data[grp]) do
-		-- log._("cls", cls, "grp", grp)
-		tCls = Cls._(cls)
+	log.pp("obj__save_data:"..grp, data[grp])
+
+	local t_Cls, prm
+
+	for t_cls, ar in pairs(data[grp]) do
+
+		log._("cls", t_cls, "grp", grp)
+
+		t_Cls = Cls._(t_cls)
+
+		for idx, t_obj in pairs(ar) do
+			-- log._(t_obj._cls, t_obj._name)
+			_s:obj__save_data_obj(t_obj)	
+		end
+	end
+end
+--]]
+
+--[[
+function Map.obj__save_data(_s, data, grp)
+
+	if not data[grp] then return end
+
+	log.pp("obj__save_data:"..grp, data[grp])
+
+	local t_Cls, prm
+
+	for t_cls, ar in pairs(data[grp]) do
+
+		log._("cls", t_cls, "grp", grp)
+
+		t_Cls = Cls._(t_cls)
 
 		for idx, tb in pairs(ar) do
 		-- log._("name", tb["name"])
 			
 			prm = {_nameHa = ha._(tb["_name"])}
 
-			if     cls == "seed" then
+			if     t_cls == "seed" then
 				prm._grw_clsHa   = ha._(tb["_grw_cls"  ])
 				prm._grw_nameHa  = ha._(tb["_grw_name" ])
 				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
 				prm._bear_nameHa = ha._(tb["_bear_name"])
-				-- log.pp("Map.obj_grp__load", tb )
-				-- log.pp("Map.obj_grp__load", prm)
 
-			elseif cls == "tree" then
+			elseif t_cls == "tree" then
 				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
 				prm._bear_nameHa = ha._(tb["_bear_name"])
-				-- log.pp("Map.obj_grp__load", tb )
-				-- log.pp("Map.obj_grp__load", prm)
 			end
-			-- log._("Map.obj_grp__load", tb["_name"], tb["_pos"])
 
-			tCls.cre(tb["_pos"], prm)
+			t_Cls.cre(tb["_pos"], prm)
 		end
 	end
 end
+--]]
+
+-- game start / map new
 
 function Map.obj__new_kagu(_s)
 
@@ -287,4 +297,31 @@ function Map.obj__new_kagu(_s)
 	t_pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
 	Shelf.cre(t_pos)
 end
+
+--[[
+function Map.st.obj__init(p_cls) -- old
+	-- log._("obj__init", p_cls)
+
+	Map._obj._[p_cls] = {}
+end
+
+function Map.st.obj(p_cls) -- old
+
+	if not Map._obj._[p_cls] then return end
+
+	return Map._obj._[p_cls]
+end
+
+function Map.st.obj_cnt(p_cls) -- old
+
+	local obj = Map.st.obj(p_cls)
+	log.pp("obj_cnt "..p_cls, obj)
+
+	if not obj then return end
+
+	local cnt = #obj
+	log._("obj_cnt", cnt)
+	return cnt
+end
+--]]
 

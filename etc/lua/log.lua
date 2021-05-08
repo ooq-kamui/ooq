@@ -15,6 +15,13 @@ function log.pp(txt, data)
 	pprint(data)
 end
 
+function log.if_(cnd, ...)
+
+	if not cnd then return end
+
+	log._(...)
+end
+
 function log.asrt(txt, data)
 	assert(data, txt)
 end
@@ -26,7 +33,6 @@ function log.fltr_cls(cls, ...)
 	log._(cls, ...)
 end
 
--- function log.float_truncation(val, num) -- old
 function log.f(txt, val, dgt)
 	dgt = dgt or "2"
 	local str = string.format("%."..dgt.."f", val)
@@ -42,3 +48,4 @@ function log.save_data_tile(tile, y_fr, y_to, x_fr, x_to) -- tile["y_idx_str"]["
 		end
 	end
 end
+

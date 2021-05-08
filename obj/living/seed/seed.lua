@@ -44,12 +44,14 @@ function Seed.upd(_s, dt)
 	_s:upd_final()
 end
 
-function Seed.on_msg(_s, msg_id, prm, sndr)
-	Sp    .on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Seed.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Seed.final(_s)
+
 	Sp    .final(_s)
 	Hldabl.final(_s)
 end
@@ -101,5 +103,21 @@ function Seed.grw_bear__init(_s)
 	ha.is_emp__(_s._grw_nameHa , "tree005" )
 	ha.is_emp__(_s._bear_clsHa , "fruit"   )
 	ha.is_emp__(_s._bear_nameHa, "fruit007")
+end
+
+function Seed.pb__save_data(_s, map_url)
+
+	local prm = {}
+
+	prm._cls  = _s._cls
+	prm._name = _s._name
+	prm._pos  = _s:pos()
+
+	prm._grw_cls   = _s._grw_cls
+	prm._grw_name  = _s._grw_name
+	prm._bear_cls  = _s._bear_cls
+	prm._bear_name = _s._bear_name
+
+	pst._(map_url, "save_data_obj__", prm)
 end
 

@@ -1,12 +1,16 @@
 log.scrpt("Fuki.lua")
 
 Fuki = {
+
 	act_intrvl_time = 5,
-	name_idx_max = 1,
+	name_idx_max    = 1,
 	z = 0.4,
 
 	id = nil,
 	scrpt = nil,
+
+	pos_df = n.vec(0, Map.sq * 3 / 2 + 3),
+	mv_vec = n.vec(0, 0.5),
 }
 Fuki.cls = "fuki"
 Fuki.fac = Obj.fac..Fuki.cls
@@ -16,7 +20,7 @@ function Fuki.cre(p_pos, prm, scl)
 
 	local t_Cls = Fuki
 
-	p_pos = p_pos or pos.pos() + n.vec(0, Map.sq * 3 / 2 + 3)
+	p_pos = p_pos or pos.pos() + Fuki.pos_df
 
 	prm = prm or {}
 	local t_id = Sp.cre(t_Cls, p_pos, prm, scl)
@@ -40,7 +44,7 @@ function Fuki.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 	
-	_s:pos__(_s:pos() + n.vec(0, 0.5))
+	_s:pos__(_s:pos() + Fuki.mv_vec)
 end
 
 function Fuki.act_intrvl(_s, dt)
@@ -59,9 +63,12 @@ function Fuki.act_intrvl(_s, dt)
 	anim[1]()
 end
 
-function Fuki.on_msg(_s, msg_id, prm, sndr)
+function Fuki.on_msg(_s, msg_id, prm, sndr_url)
 
-	if ha.eq(msg_id, "s") then
+	if     ha.eq(msg_id, "__init") then
+		_s:__init(prm)
+
+	elseif ha.eq(msg_id, "s"     ) then
 		_s:s(prm.str, prm.len)
 	end
 end

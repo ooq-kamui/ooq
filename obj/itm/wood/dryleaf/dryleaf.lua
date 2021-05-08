@@ -54,6 +54,7 @@ function Dryleaf.act_intrvl(_s, dt)
 end
 
 function Dryleaf.final(_s)
+
 	Sp.final(_s)
 end
 

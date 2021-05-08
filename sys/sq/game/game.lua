@@ -1,7 +1,9 @@
 log.scrpt("game.lua")
 
 Game = {
-	act_intrvl_time = 60, -- 30, 15, 10, 5,
+
+	act_intrvl_time = 60,
+	-- act_intrvl_time = 10, -- tst
 }
 
 -- static
@@ -205,7 +207,7 @@ function Game.bgm_ply_nxt_rnd(_s)
 	Bgm.fade_o_ply_rnd()
 end
 
-function Game.on_msg(_s, msg_id, prm, sndr)
+function Game.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "del") then
 		_s:del()
@@ -216,10 +218,10 @@ function Game.on_msg(_s, msg_id, prm, sndr)
 	elseif ha.eq(msg_id, "continue") then
 		_s:continue(prm.ply_data_file_idx)
 
-	elseif ha.eq(msg_id, "bag_opn") then
+	elseif ha.eq(msg_id, "bag_opn" ) then
 		_s:bag_opn()
 
-	elseif ha.eq(msg_id, "save") then
+	elseif ha.eq(msg_id, "save"    ) then
 		_s:save()
 
 	elseif ha.eq(msg_id, "dia__opn") then

@@ -48,10 +48,10 @@ function Plychara.cre(p_pos, dir)
 	p_pos = p_pos or Plychara.pos_game_new
 	dir   = dir   or Plychara.dir_h_dflt
 	
-	local name = "sanae"
-
 	local prm = {}
-	prm._nameHa = ha._(name)
+
+	local name = "sanae"
+	prm._name = name
 
 	local t_id = Sp.cre(Plychara, p_pos, prm)
 
@@ -75,7 +75,7 @@ function Plychara.__init(_s, prm)
 	Sp.__init(_s, prm)
 	-- log._("Plychara.__init 2")
 
-	_s._name = ha.de(_s._nameHa)
+	_s._name = prm._name
 	_s:anim__("walk")
 	-- log._("Plychara.__init 3")
 	
@@ -391,19 +391,19 @@ function Plychara.is_on_chara__(_s)
 	_s._is_on_chara_flg = _.t
 end
 
-function Plychara.on_msg(_s, msg_id, prm, sndr)
+function Plychara.on_msg(_s, msg_id, prm, sndr_url)
 
 	local st
 
-	Sp.on_msg(_s, msg_id, prm, sndr)
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
 	
-	st = _s:on_msg_clsn(msg_id, prm, sndr)
+	st = _s:on_msg_clsn(msg_id, prm, sndr_url)
 	if st then return end
 
-	st = _s:on_msg_mv(msg_id, prm, sndr)
+	st = _s:on_msg_mv(  msg_id, prm, sndr_url)
 	if st then return end
 
-	_s:on_msg_act(msg_id, prm, sndr)
+	_s:on_msg_act(msg_id, prm, sndr_url)
 
 	if ha.eq(msg_id, "animation_done") then
 		if ha.eq(prm.id, _s._name.."-thrw") then
@@ -412,12 +412,13 @@ function Plychara.on_msg(_s, msg_id, prm, sndr)
 	end
 end
 
-function Plychara.on_msg_clsn(_s, msg_id, prm, sndr)
+function Plychara.on_msg_clsn(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "collision_response")     then return _.t end
 	if not ha.eq(msg_id, "contact_point_response") then return     end
 	
 	local t_id  = prm.other_id
+	-- log.pp("Plychara.on_msg_clsn", prm)
 		
 	if     ha.eq(prm.group, "chara"   ) then
 		_s:clsn__add("chara" , t_id)
@@ -448,7 +449,9 @@ end
 
 function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 
-	local t_nameHa = id.prp(t_id, "_nameHa")
+	-- local t_nameHa = id.prp(t_id, "_nameHa")
+	-- local t_nameHa = id.prp(t_id, "_name")
+
 	-- log._("on_msg_clsn_kagu_itm", t_nameHa)
 
 	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn__add("hrvst"  , t_id)
@@ -473,7 +476,7 @@ function Plychara.hld_dir_h__sync(_s, dir_h)
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir_h})
 end
 
-function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
+function Plychara.on_msg_mv(_s, msg_id, prm, sndr_url)
 	
 	if not ha.eq(msg_id, "mv") then return end
 
@@ -506,7 +509,7 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr)
 	return _.t
 end
 
-function Plychara.on_msg_act(_s, msg_id, prm, sndr)
+function Plychara.on_msg_act(_s, msg_id, prm, sndr_url)
 	-- log._("plychara on_msg_act", msg_id)
 	
 	if     ha.eq(msg_id, "jmp")            then
@@ -718,7 +721,6 @@ function Plychara.hld_id(_s, idx)
 	idx = idx or cnt
 	if idx > cnt then return end
 	
-	-- local t_id = _s._hld[cnt]
 	local t_id = _s._hld[idx]
 	return t_id
 end
@@ -771,7 +773,7 @@ function Plychara.hld_weight(_s)
 
 	for idx, hld_id in pairs(_s._hld) do
 
-		r_weight = r_weight + id.Cls_prp_weight(hld_id)
+		r_weight = r_weight + id.prp(hld_id, "_weight")
 	end
 	return r_weight
 end
@@ -782,7 +784,7 @@ function Plychara.is_hld_addabl_weight(_s)
 
 	if not t_id then return _.f end
 
-	local t_weight = id.Cls_prp_weight(t_id, "weight")
+	local t_weight = id.prp(t_id, "_weight")
 
 	local hld_weight = _s:hld_weight()
 

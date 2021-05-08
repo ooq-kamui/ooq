@@ -29,20 +29,21 @@ function Ev.init(_s)
 	_s.idx = 0
 end
 
-function Ev.on_msg(_s, msg_id, prm, sndr)
-	if     ha.eq(msg_id, "start") then
+function Ev.on_msg(_s, msg_id, prm, sndr_url)
+
+	if     ha.eq(msg_id, "start"     ) then
 		_s:_start()
 	
-	elseif ha.eq(msg_id, "do") then
+	elseif ha.eq(msg_id, "do"        ) then
 		_s:_do(prm.idx)
 
-	elseif ha.eq(msg_id, "wa_inp") then
+	elseif ha.eq(msg_id, "wa_inp"    ) then
 		_s:_wa_inp()
 	
 	elseif ha.eq(msg_id, "wa_inp_fin") then
 		_s:_wa_inp_fin()
 
-	elseif ha.eq(msg_id, "wa_sec") then
+	elseif ha.eq(msg_id, "wa_sec"    ) then
 		_s:_wa_sec()
 	
 	elseif ha.eq(msg_id, "wa_sec_fin") then

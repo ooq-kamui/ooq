@@ -53,13 +53,15 @@ function Mshrm.act_intrvl(_s, dt)
 	end
 end
 
-function Mshrm.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Mshrm.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Mshrm.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

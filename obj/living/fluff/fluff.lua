@@ -68,13 +68,15 @@ function Fluff.act_intrvl(_s, dt)
 	_s:moving_prp__rnd()
 end
 
-function Fluff.on_msg(_s, msg_id, prm, sndr)
-	Sp.on_msg(_s, msg_id, prm, sndr)
-	Hldabl.on_msg(_s, msg_id, prm, sndr)
+function Fluff.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Fluff.final(_s)
-	Sp.final(_s)
+
+	Sp    .final(_s)
 	Hldabl.final(_s)
 end
 

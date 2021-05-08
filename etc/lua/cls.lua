@@ -13,7 +13,6 @@ function Cls.add(p_Cls)
 end
 
 function Cls._(p_cls) -- alias old
-
 	return Cls.Cls(p_cls)
 end
 
@@ -23,7 +22,6 @@ function Cls.Cls(p_cls)
 	local r_Cls
 
 	if type(p_cls) == "string" then
-		-- p_clsHa = ha._2_ha(p_cls)
 		r_Cls = Cls._Cls[p_cls]
 	else
 		p_clsHa = p_cls

@@ -6,10 +6,6 @@ go.property("_dia_id", hash(""))
 go.property("_dstrct", vmath.vector3(0, 0, 0))
 
 go.property("_sky_id" , hash(""))
--- go.property("_sky_idx", 1)
-
--- go.property("_plychara_pos_ltst", vmath.vector3(0, 0, 0))
--- go.property("_dia_id", hash(""))
 
 function init(_s)
 	Game.init(_s)
@@ -19,8 +15,8 @@ function update(_s, dt)
 	_s:upd(dt)
 end
 
-function on_message(_s, msg_id, prm, sndr)
-	_s:on_msg(msg_id, prm, sndr)
+function on_message(_s, msg_id, prm, sndr_url)
+	_s:on_msg(msg_id, prm, sndr_url)
 end
 
 function final(_s)

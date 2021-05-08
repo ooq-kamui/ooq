@@ -15,15 +15,15 @@ function g.Msg.init(_s)
 	_s:opn("msg")
 end
 
-function g.Msg.on_msg(_s, msg_id, prm, sndr)
+function g.Msg.on_msg(_s, msg_id, prm, sndr_url)
 	-- log._("g msg on_msg", msg_id)
 
-	g.Gui.on_msg(_s, msg_id, prm, sndr)
+	g.Gui.on_msg(_s, msg_id, prm, sndr_url)
 
-	if     ha.eq(msg_id, "itm__add") then
+	if     ha.eq(msg_id, "itm__add"   ) then
 		_s:itm__add(prm.itm)
 
-	elseif ha.eq(msg_id, "base_pos__") then
+	elseif ha.eq(msg_id, "base_pos__" ) then
 		_s:base_pos__()
 
 	elseif ha.eq(msg_id, "base_pos__d") then

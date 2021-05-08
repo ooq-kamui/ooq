@@ -38,6 +38,11 @@ function Humus.upd(_s, dt)
 	_s:upd_final()
 end
 
+function Humus.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
+end
+
 function Humus.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
@@ -45,12 +50,10 @@ function Humus.act_intrvl(_s, dt)
 	-- death
 	if _s:per_del(1 / 5 * 100) then return end
 
-
-
-
-	
 end
 
 function Humus.final(_s)
+
 	Sp.final(_s)
 end
+

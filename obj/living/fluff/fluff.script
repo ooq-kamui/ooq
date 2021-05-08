@@ -1,22 +1,20 @@
 log.scrpt("fluff.script")
----[[
-go.property("_clsHa",  hash(""))
-go.property("_nameHa", hash(""))
-go.property("_animHa", hash(""))
 
 go.property("_game_id", hash(""))
 go.property("_map_id",  hash(""))
 
 go.property("_parent_id", hash(""))
 go.property("_z", 0.2)
---]]
+go.property("_weight",  1)
+
+go.property("_is_flyabl", true)
+
+go.property("_clsHa",   hash(""))
+
 go.property("_grw_clsHa",   hash(""))
 go.property("_grw_nameHa",  hash(""))
 go.property("_bear_clsHa",  hash(""))
 go.property("_bear_nameHa", hash(""))
-
--- go.property("_is_fly", true)
-go.property("_is_flyabl", true)
 
 function init(_s)
 	Fluff.init(_s)
@@ -26,8 +24,8 @@ function update(_s, dt)
 	_s:upd(dt)
 end
 
-function on_message(_s, msg_id, prm, sndr)
-	_s:on_msg(msg_id, prm, sndr)
+function on_message(_s, msg_id, prm, sndr_url)
+	_s:on_msg(msg_id, prm, sndr_url)
 end
 
 function final(_s)
