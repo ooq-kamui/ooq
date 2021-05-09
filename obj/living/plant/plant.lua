@@ -56,6 +56,11 @@ function Plant.act_intrvl(_s, dt)
 	end
 end
 
+function Plant.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
+end
+
 function Plant.final(_s)
 
 	Sp.final(_s)

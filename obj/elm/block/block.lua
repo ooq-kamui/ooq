@@ -30,8 +30,7 @@ function Block.cre(p_pos, p_tile)
 	
 	local t_Cls = Block
 	prm = {}
-	prm._nameHa = ha._(Block.cls..int.pad(p_tile))
-	-- prm._name   =      Block.cls..int.pad(p_tile)
+	prm._name   = Block.cls..int.pad(p_tile)
 	prm._tile   = p_tile
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
 	return t_id

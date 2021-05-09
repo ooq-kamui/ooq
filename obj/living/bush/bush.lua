@@ -52,6 +52,11 @@ function Bush.act_intrvl(_s, dt)
 	end
 end
 
+function Bush.on_msg(_s, msg_id, prm, sndr_url)
+
+	Sp.on_msg(_s, msg_id, prm, sndr_url)
+end
+
 function Bush.final(_s)
 
 	Sp.final(_s)

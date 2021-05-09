@@ -260,10 +260,6 @@ function Plychara.jmp(_s, p_jmp_lv)
 	_s._is_jmp_start = _.t
 
 	Se.pst_ply("jmp001")
-
-	-- tst
-	-- log.pp("food cnt", Map._obj._)
-	-- log._("food cnt", Map.st.obj_cnt("food"))
 end
 
 function Plychara.arw_d_f(_s)
@@ -395,7 +391,8 @@ function Plychara.on_msg(_s, msg_id, prm, sndr_url)
 
 	local st
 
-	Sp.on_msg(_s, msg_id, prm, sndr_url)
+	st = Sp.on_msg( _s, msg_id, prm, sndr_url)
+	if st then return end
 	
 	st = _s:on_msg_clsn(msg_id, prm, sndr_url)
 	if st then return end
@@ -449,11 +446,18 @@ end
 
 function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 
-	-- local t_nameHa = id.prp(t_id, "_nameHa")
-	-- local t_nameHa = id.prp(t_id, "_name")
+	local t_clsHa = id.prp(t_id, "_clsHa")
 
-	-- log._("on_msg_clsn_kagu_itm", t_nameHa)
+	if     ha.eq(t_clsHa, "hrvst"  ) then _s:clsn__add("hrvst"  , t_id)
+	elseif ha.eq(t_clsHa, "reizoko") then _s:clsn__add("reizoko", t_id)
+	elseif ha.eq(t_clsHa, "kitchen") then _s:clsn__add("kitchen", t_id)
+	elseif ha.eq(t_clsHa, "flpy"   ) then _s:clsn__add("flpy"   , t_id)
+	elseif ha.eq(t_clsHa, "pc"     ) then _s:clsn__add("pc"     , t_id)
+	elseif ha.eq(t_clsHa, "shelf"  ) then _s:clsn__add("shelf"  , t_id)
+	elseif ha.eq(t_clsHa, "doorwrp") then _s:clsn__add("doorwrp", t_id)
+	end
 
+	--[[
 	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn__add("hrvst"  , t_id)
 	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn__add("reizoko", t_id)
 	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn__add("kitchen", t_id)
@@ -462,6 +466,7 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn__add("shelf"  , t_id)
 	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn__add("doorwrp", t_id)
 	end
+	--]]
 end
 
 function Plychara.hld_dir_h__sync(_s, dir_h)

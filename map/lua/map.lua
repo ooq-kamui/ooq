@@ -183,11 +183,11 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "fairy__cre"   ) then
 		_s:fairy__cre(prm.pos, prm)
 
-	elseif ha.eq(msg_id, "save_data_obj__"   ) then
+	elseif ha.eq(msg_id, "save_data_obj__") then
 		_s:save_data_obj__(prm)
 
-	elseif ha.eq(msg_id, "pi__save_data__fin") then
-		_s:pb__save_data__fin(sndr_url)
+	elseif ha.eq(msg_id, "pf__file__save" ) then
+		_s:pf__file__save(sndr_url)
 
 	elseif ha.eq(msg_id, "file__save") then
 		_s:file__save()
@@ -197,14 +197,15 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "obj__del"  ) then
 		_s:obj__del(prm.id, prm.cls)
+
+	elseif ha.eq(msg_id, "obj_cnt_all"  ) then
+		_s:obj_cnt_all()
 	end
 end
 
 function Map.final(_s)
 
-	if _s._final_fnc then
-		_s._final_fnc()
-	end
+	if _s._final_fnc then _s._final_fnc() end
 end
 
 -- method
@@ -233,33 +234,46 @@ end
 function Map.save_data__init(_s)
 
 	_s._save_data = {}
+	_s._save_data.tile = {}
+	_s._save_data.obj  = {}
 end
 
 function Map.save_data__clr(_s)
 
-	ar.clr(_s._save_data)
+	ar.clr(_s._save_data.tile)
+
+	for t_cls, obj_ar in pairs(_s._save_data.obj) do
+		ar.clr(obj_ar)
+	end
 end
 
 function Map.save(_s)
 
-	_s:pi__save_data__()
+	_s:pf__save_data__()
 
-	pst.scrpt(_s._id, "pi__save_data__fin")
+	pst.scrpt(_s._id, "pf__file__save")
 end
 
-function Map.pi__save_data__(_s)
+function Map.pf__save_data__(_s)
 
 	_s:save_data__clr()
+	-- log.pp("Map.pf__save_data__ 1", _s._save_data.obj)
 
 	_s._save_data.tile = _s:tile_2_save_data()
 
-	_s:pi__save_data_obj__()
+	_s:pf__save_data_obj__()
 
-	log.pp("Map.pi__save_data__", _s._save_data.obj)
+	-- log.pp("Map.pf__save_data__ 2", _s._save_data.obj)
 end
 
-function Map.pb__save_data__fin(_s, sndr_url)
-	log._("Map.pb__save_data__fin")
+function Map.pf__file__save(_s, sndr_url)
+
+	_s:pb__file__save(sndr_url)
+end
+
+-- function Map.pb__save_data__fin(_s, sndr_url)
+function Map.pb__file__save(_s, sndr_url)
+	-- log._("Map.pb__file__save")
 
 	pst._(sndr_url, "file__save")
 end
@@ -272,9 +286,16 @@ end
 
 function Map.del(_s)
 
-	go.delete(_.t)
+	_s:obj__clr()
 
-	Map.obj__clr()
+	go.delete(_.t)
+end
+
+function Map.obj__clr(_s)
+
+	for t_cls, t_id_ar in pairs(_s._obj) do
+		ar.clr(t_id_ar)
+	end
 end
 
 function Map.save_del(_s)
@@ -365,13 +386,6 @@ function Map.dstrct_mv_rng_pos__init(_s)
 end
 
 -- static
-
-function Map.obj__clr()
-
-	for clsHa, ids in pairs(Map._obj._) do
-		ar.clr(ids)
-	end
-end
 
 function Map.chara_is_appear_all()
 

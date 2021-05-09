@@ -378,6 +378,19 @@ Serifu = {
 		-- space
 		{len =  3, txt = "せまい"},
 		{len =  3, txt = "ひろい"},
+
+		-- chara name
+		{len =  3, txt = "sanae"},
+		{len =  3, txt = "marin"},
+		{len =  3, txt = "katia"},
+		{len =  4, txt = "matilda"},
+		{len =  3, txt = "sayaka"},
+		{len =  2, txt = "yuki"},
+		{len =  3, txt = "kurumi"},
+		{len =  2, txt = "lily"},
+		{len =  3, txt = "sofia"},
+		{len =  3, txt = "shiki"},
+		{len =  3, txt = "kageri"},
 	},
 	tail = {
 		-- 01 -10

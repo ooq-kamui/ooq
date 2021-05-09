@@ -2,7 +2,7 @@ log.scrpt("ply_data.lua")
 
 Ply_data = {}
 
-function Ply_data._()
+function Ply_data.save_data()
 
 	local data = {}
 
@@ -14,20 +14,20 @@ function Ply_data._()
 	
 	data["gold"] = Ply_data.gold()
 
-	data["reizoko"] = Ply_data.reizoko._()
+	data["reizoko"] = Ply_data.reizoko.save_data()
 	data["zu"]      = Ply_data.zu._()
 	data["kzn"]     = Ply_data.kzn._()
 
 	return data
 end
 
-function Ply_data.__(data)
+function Ply_data.__save_data(data)
 
-	-- log._("Ply_data.__() ver:"..data["ver"])
+	-- log._("Ply_data.__save_data ver"..data["ver"])
 
 	Ply_data.gold__(data["gold"])
 
-	Ply_data.reizoko.__(data)
+	Ply_data.reizoko.__save_data(data)
 	Ply_data.zu.__(data)
 	Ply_data.kzn.__(data)
 end
@@ -40,7 +40,8 @@ function Ply_data.save(ply_slt_idx)
 
 	Msg.s("saving...")
 
-	local data = Ply_data._()
+	-- local data = Ply_data._()
+	local data = Ply_data.save_data()
 
 	file.ts__()
 	
@@ -56,19 +57,23 @@ end
 function Ply_data.load(ply_slt_idx, file_idx)
 	
 	local data = file.ply_data.load(ply_slt_idx, file_idx)
-	Ply_data.__(data)
+
+	Ply_data.__save_data(data)
+
 	return data
 end
 
-function Ply_data.new()
-	Ply_data.clr()
+function Ply_data.__new()
+
+	Ply_data.__clr()
 end
 
-function Ply_data.clr()
+function Ply_data.__clr()
 
 	Ply_data.gold__(0)
 
-	ar.clr(Ply_data._reizoko)
+	Ply_data.reizoko.__clr()
 	Ply_data.zu.clr()
 	ar.clr(Ply_data._kzn)
 end
+

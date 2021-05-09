@@ -7,13 +7,13 @@ g.Dia = {}
 function g.Dia.cre()
 
 	local game_id = Game.id()
-	log._("g.Dia.cre", game_id)
+	-- log._("g.Dia.cre 1", game_id)
 
 	if ha.is_emp(game_id) then return end
 
 	local dia_url = url._(game_id, "fac_dia_gui")
 	local dia_id  = fac.cre(dia_url)
-	log._("g.Dia.cre", dia_id)
+	-- log._("g.Dia.cre 2", dia_id)
 	return dia_id
 end
 

@@ -48,8 +48,6 @@ function Hldabl.hldd_pos(_s)
 	
 	local x
 
-	-- local weight = id.Cls_prp_weight(_s._id)
-
 	if _s._weight == 1 then
 		x = u.x_by_all_w(_s._hldd_idx, Plychara.hld_idx_max, Map.sqh)
 	else

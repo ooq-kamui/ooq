@@ -138,6 +138,8 @@ function Sp.url(_s, cmp)
 end
 
 function Sp.trnsf(_s, p_Cls, prm, scl)
+
+	if _s._hldd_id then return end
 	
 	local t_pos = _s:pos_w()
 	

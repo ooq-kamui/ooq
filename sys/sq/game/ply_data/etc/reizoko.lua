@@ -1,70 +1,70 @@
 log.scrpt("reizoko.lua")
 
-Ply_data._reizoko = {}
-Ply_data.reizoko  = {}
+Ply_data.reizoko       = {}
+Ply_data.reizoko._data = {}
+Ply_data._reizoko = Ply_data.reizoko._data -- old
 
 function Ply_data.reizoko._()
 
-	local nameHaMap, name
-	local data = {}
-	for clsHa, nameHaCnts in pairs(Ply_data._reizoko) do
-		local cls = Cls._(clsHa).cls
+	return Ply_data.reizoko._data
+end
 
-		nameHaMap = {}
-		for idx = 1, Cls._(clsHa).name_idx_max do
-			name = Cls._(clsHa).cls..int.pad(idx, 3)
-			nameHaMap[ha._(name)] = name
-		end
+function Ply_data.reizoko.save_data()
 
-		data[cls] = {}
-		for nameHa, cnt in pairs(nameHaCnts) do
-			name = nameHaMap[nameHa]
-			data[cls][name] = cnt
-		end
-	end
-	-- log._("save reizoko", data)
-	-- pprint(Ply_data._reizoko)
-	-- pprint(data)
+	local data = Ply_data.reizoko._()
+
+	-- log.pp("Ply_data.reizoko.save_data", data)
 	return data
 end
 
 function Ply_data.reizoko.__add(prm)
-	-- u.log("reizoko add()", food_id)
+	-- log._("Ply_data.reizoko.__add")
 
-	local txtr = prm.clsHa
-	local anim = prm.nameHa
-	local reizoko = Ply_data._reizoko
+	local t_cls  = prm._cls
+	local t_name = prm._name
 
-	if not reizoko[txtr]       then reizoko[txtr]       = {} end
-	if not reizoko[txtr][anim] then reizoko[txtr][anim] = 0  end
+	local data = Ply_data.reizoko._data
 
-	reizoko[txtr][anim] = reizoko[txtr][anim] + 1
+	if not data[t_cls]         then data[t_cls]         = {} end
+
+	if not data[t_cls][t_name] then data[t_cls][t_name] = 0  end
+
+	data[t_cls][t_name] = data[t_cls][t_name] + 1
 
 	Se.pst_ply("psh")
 end
 
 function Ply_data.reizoko.__new()
 
-	local anim
+	local t_name
+
 	for idx = 1, 50 do
-		anim = "veget"..int.pad(idx)
-		Ply_data.reizoko.__add({clsHa = ha._("veget"), nameHa = ha._(anim)})
+
+		t_name = "veget"..int.pad(idx)
+		Ply_data.reizoko.__add({_cls = "veget", _name = t_name})
 	end
 end
 
-function Ply_data.reizoko.__(data)
+function Ply_data.reizoko.__save_data(data)
 
-	ar.clr(Ply_data._reizoko)
-	for cls, names in pairs(data["reizoko"]) do
-		for name, cnt in pairs(names) do
+	Ply_data.reizoko.__clr()
+
+	for t_cls, t_name_ar in pairs(data["reizoko"]) do
+
+		for t_name, cnt in pairs(t_name_ar) do
+
 			for i = 1, cnt do
-				Ply_data.reizoko.__add({clsHa = ha._(cls), nameHa = ha._(name)})
+				Ply_data.reizoko.__add({_cls = t_cls, _name = t_name})
 			end
 		end
 	end
-	-- log
-	-- log._("load reizoko")
-	-- pprint(data["reizoko"])
-	-- pprint(Ply_data._reizoko)
+
+	-- log.pp("Ply_data.reizoko.__save_data", Ply_data.reizoko._())
+end
+
+function Ply_data.reizoko.__clr()
+
+	-- ar.clr(Ply_data._reizoko)
+	ar.clr(Ply_data.reizoko._data)
 end
 

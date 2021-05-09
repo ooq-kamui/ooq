@@ -3,13 +3,13 @@ log.scrpt("gui.script")
 function on_message(_s, msg_id, prm, sndr_url)
 	-- log._("gui on_message", msg_id)
 	
-	if     ha.eq(msg_id, "del"            ) then
+	if     ha.eq(msg_id, "del" ) then
 		go.delete()
 
-	elseif ha.eq(msg_id, "save"           ) then
+	elseif ha.eq(msg_id, "save") then
 		pst.scrpt(Sys.game_id(), "save")
 
-	elseif ha.eq(msg_id, "buy"            ) then
+	elseif ha.eq(msg_id, "buy" ) then
 		local t_pos = Game.cloud_pos()
 		Cls._(prm._clsHa).cre(t_pos, prm)
 		
@@ -21,7 +21,7 @@ function on_message(_s, msg_id, prm, sndr_url)
 		local plychara_id = Game.plychara_id()
 		pst.scrpt(plychara_id, "itm_selected__", prm)
 
-	elseif ha.eq(msg_id, "food_cre"       ) then
+	elseif ha.eq(msg_id, "food_cre") then
 		Food.cre_by_cls(nil, prm)
 
 	elseif ha.eq(msg_id, "map_pause__"    ) then

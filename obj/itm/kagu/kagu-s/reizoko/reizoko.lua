@@ -3,7 +3,7 @@ log.scrpt("reizoko.lua")
 Reizoko = {
 
 	act_intrvl_time = 20,
-	name_idx_max = 1,
+	name_idx_max    =  1,
 	z = 0.1,
 
 	weight = 2,
@@ -48,12 +48,16 @@ function Reizoko.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	
+
 end
 
 function Reizoko.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	local st
+
+	st = Sp.on_msg(_s, msg_id, prm, sndr_url)
+	if st then return end
+
 	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 
 	if     ha.eq(msg_id, "opn") then
@@ -81,12 +85,6 @@ end
 
 function Reizoko.into_reizoko(_s, food_id)
 
-	local clsHa = id.clsHa(food_id)
-	
-	if not ar.inHa(clsHa, Food.cls) then return end
-	
-	Ply_data.reizoko.__add({clsHa = clsHa, nameHa = id.nameHa(food_id)})
-	
-	pst.scrpt(food_id, "into_reizoko")
+	pst.scrpt(food_id, "__into_reizoko")
 end
 

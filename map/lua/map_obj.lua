@@ -24,7 +24,9 @@ Map._obj.grp_cls = {
 	-- food = Food.cls, -- def at Food
 
 	living = {
-		"anml", "bush", "flower", "fluff", "mshrm", "plant", "seed", "tree",
+		"anml",
+		"flower", "fluff", "mshrm", "seed", "tree",
+		"plant", "bush",
 	},
 	kagu = {
 		"kagu",
@@ -41,24 +43,13 @@ Map._obj.grp_cls = {
 	},
 }
 
---[[
-Map._obj.grp = {
-
-	"food",
-	"living",
-	"kagu",
-	"elm",
-	"itm",
-}
---]]
-
-Map._obj._ = {} -- < Map.cnt
-
 -- static
 
 Map.st = {}
 
 -- method
+
+-- obj
 
 function Map.obj__add(_s, p_id, p_cls)
 
@@ -72,84 +63,28 @@ function Map.obj__del(_s, p_id, p_cls)
 	if not _s._obj[p_cls] then return end
 
 	ar.del_by_val(_s._obj[p_cls], p_id)
-
-	--[[
-	if not _s._obj[p_cls] then _s._obj[p_cls] = {} end
-	
-	ar.add_unq(_s._obj[p_cls], p_id)
-	--]]
 end
 
-function Map.pi__save_data_obj__(_s)
+function Map.obj_cnt(_s, p_cls)
 
-	for grp, t_cls_ar in pairs(Map._obj.grp_cls) do
+	local cnt
 
-		for idx, t_cls in pairs(t_cls_ar) do
-			_s:pi__obj_grp_cls(t_cls)
-		end
+	if not _s._obj[p_cls] then cnt = 0
+	else                       cnt = #_s._obj[p_cls]
 	end
+
+	return cnt
 end
 
-function Map.pi__obj_grp_cls(_s, p_cls)
+function Map.obj_cnt_all(_s)
 
-	local t_obj = _s._obj[p_cls]
+	local cnt
+	for t_cls, id_ar in pairs(_s._obj) do
+		
+		cnt = _s:obj_cnt(t_cls)
 
-	if not t_obj then log._("Map.obj_cls nil :", p_cls) return end
-
-	for idx, t_id in pairs(t_obj) do
-
-		pst.scrpt(t_id, "pi__save_data")
+		log.pp("Map.obj_cnt_all "..t_cls.." "..cnt, id_ar)
 	end
-end
-
-function Map.save_data_obj__clr(_s)
-
-	ar.clr(_s._save_data.obj)
-end
-
-function Map.save_data_obj__(_s, prm)
-	-- log.pp("Map.save_data_obj__", prm)
-
-	if not _s._save_data.obj           then _s._save_data.obj           = {} end
-	if not _s._save_data.obj[prm._cls] then _s._save_data.obj[prm._cls] = {} end
-
-	ar.add(_s._save_data.obj[prm._cls], prm)
-end
-
--- cre
-
-function Map.cloud__cre(_s, prm)
-
-	local t_pos
-	if prm and prm.pos then
-		t_pos = prm.pos
-	else
-		t_pos = Cloud.pos_init
-	end
-	
-	_s._cloud_id = Cloud.cre(t_pos, prm)
-end
-
-function Map.plychara__cre(_s, p_pos, dir)
-	-- log._("Map.plychara__cre", p_pos, dir)
-	_s._plychara_id = Plychara.cre(p_pos, dir)
-end
-
-function Map.fairy__cre(_s, p_pos, prm)
-	_s._fairy_id = Fairy.cre(p_pos, prm)
-end
-
-function Map.obj__cre_dflt() -- not use
-end
-
-function Map.obj__new(_s)
-
-	_s:obj__new_kagu()
-
-	local t_pos = n.vec( 936, -1464)
-	Mgccrcl.cre(t_pos)
-	t_pos.x = - t_pos.x
-	Mgccrcl.cre(t_pos)
 end
 
 function Map.obj__save_data_objs(_s, p_sd_obj_tb)
@@ -196,67 +131,80 @@ function Map.obj__save_data_obj(_s, p_obj)
 	t_Cls.cre(p_obj["_pos"], prm)
 end
 
---[[
-function Map.obj__save_data(_s, data, grp)
+-- save
 
-	if not data[grp] then return end
+function Map.pf__save_data_obj__(_s)
 
-	log.pp("obj__save_data:"..grp, data[grp])
+	for grp, t_cls_ar in pairs(Map._obj.grp_cls) do
 
-	local t_Cls, prm
-
-	for t_cls, ar in pairs(data[grp]) do
-
-		log._("cls", t_cls, "grp", grp)
-
-		t_Cls = Cls._(t_cls)
-
-		for idx, t_obj in pairs(ar) do
-			-- log._(t_obj._cls, t_obj._name)
-			_s:obj__save_data_obj(t_obj)	
+		for idx, t_cls in pairs(t_cls_ar) do
+			_s:pf__obj_grp_cls(t_cls)
 		end
 	end
 end
---]]
 
---[[
-function Map.obj__save_data(_s, data, grp)
+function Map.pf__obj_grp_cls(_s, p_cls)
 
-	if not data[grp] then return end
+	local t_obj = _s._obj[p_cls]
 
-	log.pp("obj__save_data:"..grp, data[grp])
+	if not t_obj then --[[ log._("Map.obj_cls nil :", p_cls) --]] return end
 
-	local t_Cls, prm
+	for idx, t_id in pairs(t_obj) do
 
-	for t_cls, ar in pairs(data[grp]) do
-
-		log._("cls", t_cls, "grp", grp)
-
-		t_Cls = Cls._(t_cls)
-
-		for idx, tb in pairs(ar) do
-		-- log._("name", tb["name"])
-			
-			prm = {_nameHa = ha._(tb["_name"])}
-
-			if     t_cls == "seed" then
-				prm._grw_clsHa   = ha._(tb["_grw_cls"  ])
-				prm._grw_nameHa  = ha._(tb["_grw_name" ])
-				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
-				prm._bear_nameHa = ha._(tb["_bear_name"])
-
-			elseif t_cls == "tree" then
-				prm._bear_clsHa  = ha._(tb["_bear_cls" ])
-				prm._bear_nameHa = ha._(tb["_bear_name"])
-			end
-
-			t_Cls.cre(tb["_pos"], prm)
-		end
+		pst.scrpt(t_id, "pf__save_data")
 	end
 end
---]]
+
+function Map.save_data_obj__clr(_s)
+
+	ar.clr(_s._save_data.obj)
+end
+
+function Map.save_data_obj__(_s, prm)
+	-- log.pp("Map.save_data_obj__", prm)
+
+	if not _s._save_data.obj           then _s._save_data.obj           = {} end
+	if not _s._save_data.obj[prm._cls] then _s._save_data.obj[prm._cls] = {} end
+
+	ar.add(_s._save_data.obj[prm._cls], prm)
+end
+
+-- cre
+
+function Map.cloud__cre(_s, prm)
+
+	local t_pos
+	if prm and prm.pos then
+		t_pos = prm.pos
+	else
+		t_pos = Cloud.pos_init
+	end
+	
+	_s._cloud_id = Cloud.cre(t_pos, prm)
+end
+
+function Map.plychara__cre(_s, p_pos, dir)
+	_s._plychara_id = Plychara.cre(p_pos, dir)
+end
+
+function Map.fairy__cre(_s, p_pos, prm)
+	_s._fairy_id = Fairy.cre(p_pos, prm)
+end
+
+function Map.obj__cre_dflt() -- not use
+end
 
 -- game start / map new
+
+function Map.obj__new(_s)
+
+	_s:obj__new_kagu()
+
+	local t_pos = n.vec( 936, -1464)
+	Mgccrcl.cre(t_pos)
+	t_pos.x = - t_pos.x
+	Mgccrcl.cre(t_pos)
+end
 
 function Map.obj__new_kagu(_s)
 
@@ -297,31 +245,4 @@ function Map.obj__new_kagu(_s)
 	t_pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
 	Shelf.cre(t_pos)
 end
-
---[[
-function Map.st.obj__init(p_cls) -- old
-	-- log._("obj__init", p_cls)
-
-	Map._obj._[p_cls] = {}
-end
-
-function Map.st.obj(p_cls) -- old
-
-	if not Map._obj._[p_cls] then return end
-
-	return Map._obj._[p_cls]
-end
-
-function Map.st.obj_cnt(p_cls) -- old
-
-	local obj = Map.st.obj(p_cls)
-	log.pp("obj_cnt "..p_cls, obj)
-
-	if not obj then return end
-
-	local cnt = #obj
-	log._("obj_cnt", cnt)
-	return cnt
-end
---]]
 

@@ -12,7 +12,23 @@ function ha._(val)
 	return hash(val)
 end
 
-function ha._2_ha(p_str)
+function ha.de(keyHa) -- rest
+
+	local val = ha._ha[keyHa]
+	if not val then --[[ log._("ha.de() nil", keyHa) --]] end
+	return val
+end
+
+function ha.add_by_ar(p_ar) -- rest
+	local valHa
+	for idx, val in pairs(p_ar) do
+		valHa = ha._(val)
+		ha._ha[valHa] = val
+	end
+end
+
+--[[
+function ha._2_ha(p_str) -- use not ? > del
 
 	local t_type = type(p_str)
 	if t_type == "userdata" then return p_str end
@@ -22,24 +38,10 @@ function ha._2_ha(p_str)
 	return strHa
 end
 
-function ha.de(keyHa)
-	local val = ha._ha[keyHa]
-	if not val then --[[ log._("ha.de() nil", keyHa) --]] end
-	return val
-end
-
 function ha.add(val)
 	-- log._("ha.add", val)
 
 	ha._ha[ha._(val)] = val
-end
-
-function ha.add_by_ar(p_ar)
-	local valHa
-	for idx, val in pairs(p_ar) do
-		valHa = ha._(val)
-		ha._ha[valHa] = val
-	end
 end
 
 function ha.add_by_key_num(key, num)
@@ -59,6 +61,7 @@ function ha.add_by_Cls(p_Cls)
 	
 	ha.add_by_key_num(p_Cls.cls, p_Cls.name_idx_max)
 end
+--]]
 
 -- 
 

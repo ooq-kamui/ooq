@@ -76,6 +76,7 @@ function ar.srch_idx(val, p_ar)
 end
 
 function ar.cp(p_ar)
+
 	local cp = {}
 	for key, val in pairs(p_ar) do
 		cp[key] = val
@@ -109,10 +110,12 @@ function ar.excld(base, exclude)
 end
 
 function ar.exclude_cp(base, exclude) -- old
+
 	return ar.excld_cp(base, exclude)
 end
 
 function ar.excld_cp(base, exclude)
+
 	local cp = ar.cp(base)
 	ar.exclude(cp, exclude)
 	return cp
@@ -126,12 +129,14 @@ function ar.add_ar(p_ar1, p_ar2)
 end
 
 function ar.clr(p_ar)
+
 	for key, val in pairs(p_ar) do
 		p_ar[key] = nil
 	end
 end
 
 function ar.key(p_ar)
+
 	local keys = {}
 	for key, val in pairs(p_ar) do
 		ar.add(keys, key)
@@ -140,6 +145,7 @@ function ar.key(p_ar)
 end
 
 function ar.srt(p_ar, cmp)
+
 	table.sort(p_ar, cmp)
 	return p_ar
 end
@@ -154,6 +160,7 @@ function ar.keyHa_srt(p_ar)
 		return ha.de(val1) < ha.de(val2)
 	end
 	ar.srt(keys, cmp)
+
 	-- log.pp("keyHa_srt", keys)
 	return keys
 end
@@ -165,7 +172,6 @@ function ar.key_mrg(ar_org, ar_add)
 	return ar_org
 end
 
--- function ar.add_unq(val, p_ar) -- old
 function ar.add_unq(p_ar, val)
 
 	if ar.srch_idx(val, p_ar) then return end
@@ -213,14 +219,4 @@ function ar.key___(p_ar)
 	end
 	-- log.pp("ar.key ret", p_ar)
 end
-
---[[
-function ar.val_str_2_ha(p_ar) -- use not ?
-	for key, val in pairs(p_ar) do
-		if type(val) == "string" then
-			p_ar[key] = ha._(val)
-		end
-	end
-end
---]]
 

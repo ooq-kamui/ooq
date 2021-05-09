@@ -247,7 +247,8 @@ function Game.del(_s)
 	_s:map__del()
 	_s:sky__del()
 	
-	Ply_data.clr()
+	-- Ply_data.clr()
+	Ply_data.__clr()
 
 	-- gui del
 	-- go.delete(_s._bag_id)
@@ -286,7 +287,7 @@ function Game.continue(_s, ply_data_file_idx)
 	if not _s._ply_slt_idx then return end
 
 	local data = _s:ply_data__load(ply_data_file_idx)
-	local dstrct       = data["plyr"]["dstrct"] -- n.vec(0, 0)
+	local dstrct       = data["plyr"]["dstrct"]
 	local plychara_pos = data["plyr"]["pos"]
 	
 	_s:map__cre(dstrct)
@@ -312,7 +313,8 @@ end
 -- ply data
 
 function Game.ply_data__new(_s)
-	Ply_data.new()
+
+	Ply_data.__new()
 end
 
 function Game.ply_data__load(_s, ply_data_file_idx)

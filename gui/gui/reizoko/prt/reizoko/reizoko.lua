@@ -13,6 +13,7 @@ end
 -- script method
 
 function p.Reizoko.init(_s, parent_gui)
+	log._("p.Reizoko.init")
 
 	_s._lb  = "reizoko"
 	
@@ -22,12 +23,13 @@ function p.Reizoko.init(_s, parent_gui)
 	extend.init(_s, p.Prt_cursor_mtrx)
 	extend._(   _s, p.Reizoko)
 
-	_s._base_x_diff = Map.sq * 4 -- use ?
+	-- _s._base_x_diff = Map.sq * 4 -- use ?
 	
-	-- _s._xy_max = n.vec(6, 6) -- default
 	_s:dsp_idx_max__()
 	
-	_s._itm = Ply_data._reizoko
+	_s._itm = Ply_data.reizoko._()
+	_s._itm_lst = {}
+
 	_s:food_cre()
 
 	_s:itm_idx_max__()
@@ -37,9 +39,8 @@ end
 -- method
 
 function p.Reizoko.opn(_s)
-	log._("reizoko opn")
+	log._("p.Reizoko.opn")
 	
-	-- _s:food_cre()
 	_s:page__plt()
 	_s:cursor_pos__()
 	_s:base_dsp__(_.t)
@@ -50,7 +51,6 @@ function p.Reizoko.clz(_s)
 
 	p.Prt.clz(_s)
 	
-	-- _s:food__del()
 end
 
 function p.Reizoko.decide(_s)
@@ -60,24 +60,24 @@ function p.Reizoko.decide(_s)
 	idx = idx + _s._xy_size.x * _s._xy_size.y * (_s._page_idx - 1)
 	if idx > #_s._nd.itm then return end
 
+	local t_cls  = _s._itm_lst[idx]._cls
+	local t_name = _s._itm_lst[idx]._name
+	
+	if not _s._itm[t_cls][t_name]      then return end
+	if     _s._itm[t_cls][t_name] <= 0 then return end
+	
+	_s._itm[t_cls][t_name] = _s._itm[t_cls][t_name] - 1
+
 	local food = _s._nd.itm[idx]
-	
-	local txtr = nd.txtr(food[_s:lb("itm")])
-	local anim = nd.anim(food[_s:lb("itm")])
-	local cnt  = str._2_int(nd.txt(food[_s:lb("itm_cnt")]))
-	
-	if (not _s._itm[txtr][anim]) or (_s._itm[txtr][anim] <= 0) then return end
-	
-	cnt = cnt - 1
-	_s._itm[txtr][anim] = cnt
-	nd.txt__(food[_s:lb("itm_cnt")], cnt)
-	if cnt == 0 then
-		_s._itm[txtr][anim] = nil
+	nd.txt__(food[_s:lb("itm_cnt")], _s._itm[t_cls][t_name])
+
+	if _s._itm[t_cls][t_name] == 0 then
+		_s._itm[t_cls][t_name] = nil
 	end
 
-	-- food cre
 	Se.pst_ply("pop")
-	pst.scrpt(p.Reizoko.id, "food_cre", {_clsHa = txtr, _nameHa = anim})
+
+	pst.scrpt(p.Reizoko.id, "food_cre", {_cls = t_cls, _name = t_name})
 	
 	nd.anm.poyon(_s._nd.cursor)
 	nd.anm.poyon(_s._nd.itm[idx][_s:lb("itm")])
@@ -86,39 +86,29 @@ end
 -- food
 
 function p.Reizoko.food_cre(_s)
-	-- log.pp("p.reizoko.food_cre", _s._itm)
+	log.pp("p.reizoko.food_cre")
 	
 	local food, dsp_idx, t_xy
-
-	local txtrs = ar.keyHa_srt(_s._itm)
-	-- log.pp("p.reizoko.food_cre", txtrs)
-	-- log.pp("p.reizoko.food_cre", ha.ha)
 	
 	local itm_idx = 1
-	for i, txtr in pairs(txtrs) do
 
-		local anims = ar.keyHa_srt(_s._itm[txtr])
+	for t_cls, t_name_ar in pairs(_s._itm) do
 
-		for j, anim in pairs(anims) do
-
-			local cnt = _s._itm[txtr][anim]
+		for t_name, cnt in pairs(_s._itm[t_cls]) do
 
 			food = nd.clone(_s._nd.tpl.itm)
-			_s._nd.itm[itm_idx] = food
+			_s._nd.itm[itm_idx]  = food
+			_s._itm_lst[itm_idx] = {_cls = t_cls, _name = t_name}
 
-			nd.txtr__(food[_s:lb("itm")], txtr)
-			nd.anm__(food[_s:lb("itm")], anim)
-			nd.txt__(food[_s:lb("itm_cnt")], cnt)
+			nd.txtr__(food[_s:lb("itm"    )], t_cls )
+			nd.anm__( food[_s:lb("itm"    )], t_name)
+			nd.txt__( food[_s:lb("itm_cnt")], cnt   )
 
-			-- enable
-			nd.enbl__(food[_s:lb("itm")], _.f)
+			nd.enbl__(food[_s:lb("itm")], _.f) -- enable
 
 			itm_idx = itm_idx + 1
 		end
 	end
-	
-	-- _s._page_idx_max = page_idx
-	-- if _s._page_idx > _s._page_idx_max then _s._page_idx = _s._page_idx_max end
 end
 
 function p.Reizoko.food__del(_s)

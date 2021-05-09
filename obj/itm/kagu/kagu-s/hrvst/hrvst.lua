@@ -73,7 +73,7 @@ function Hrvst.box_in(_s, prm)
 	
 	local t_id     = prm.id
 	local t_clsHa  = id.prp(t_id, "_clsHa" )
-	local t_nameHa = id.prp(t_id, "_nameHa")
+	-- local t_nameHa = id.prp(t_id, "_nameHa")
 	
 	if ar.inHa(t_clsHa, {"cloud"}) then return end
 	
@@ -90,13 +90,10 @@ function Hrvst.box_in(_s, prm)
 	Ply_data.gold__add(gold)
 	Se.pst_ply("coin")
 
-	-- Gold.cre(_s:plychara_pos(), {price = gold})
 	local plychara_pos = _s:plychara_pos()
-	-- Efct.cre_gold( plychara_pos + t.vec( 0, Map.sq * 2))
 	Efct.cre_gold( plychara_pos )
 
 	local t_prm = {txt = "x "..gold}
-	-- log._("gold prm", t_prm.txt)
 	Efct.cre_label(plychara_pos + t.vec( 0, Map.sq), t_prm)
 
 	id.del(t_id)
@@ -105,8 +102,8 @@ function Hrvst.box_in(_s, prm)
 	if     ha.eq(t_cls, "flower") then
 		Ply_data._zu.flower[t_nameHa] = _.t
 
-	elseif ha.eq(t_cls, "dish") then
-		Ply_data._zu.dish[t_nameHa] = _.t
+	elseif ha.eq(t_cls, "dish"  ) then
+		Ply_data._zu.dish[t_nameHa]   = _.t
 	end
 end
 

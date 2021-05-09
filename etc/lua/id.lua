@@ -45,33 +45,6 @@ function id.clsHa(p_id) -- old
 	return id.prp(p_id, "_clsHa")
 end
 
---[[
-function id.cls(p_id)
-
-	-- return id.clsHa(p_id)
-end
-
-function id.name(p_id)
-
-	-- return id.nameHa(p_id)
-end
-
-function id.nameHa(p_id)
-
-	return id.prp(p_id, "_nameHa")
-end
-
-function id.anim(p_id)
-
-	-- return id.animHa(p_id)
-end
-
-function id.animHa(p_id)
-
-	return id.prp(p_id, "_animHa")
-end
---]]
-
 function id.pos(p_id)
 	
 	if not p_id then return end
@@ -131,48 +104,4 @@ function id.del(p_id, val)
 		go.delete(p_id)
 	end
 end
-
---[[
-function id.Cls(p_id)
-
-	if not p_id then return end
-
-	local t_clsHa = id.clsHa(p_id)
-
-	local t_Cls = Cls.Cls(t_clsHa)
-
-	return t_Cls
-end
---]]
-
---[[
-function id.Cls_prp(p_id, p_prp)
-
-	if not p_id  then return end
-	if not p_prp then return end
-
-	local t_Cls = id.Cls(p_id)
-
-	if not t_Cls then return end
-
-	local t_prp = t_Cls[p_prp]
-
-	if not t_prp then return end
-
-	return t_prp
-end
---]]
-
---[[
-function id.Cls_prp_weight(p_id)
-
-	if not p_id  then return end
-
-	local weight = id.Cls_prp(p_id, "weight")
-
-	if not weight then weight = 1 end
-
-	return weight
-end
---]]
 

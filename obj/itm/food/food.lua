@@ -8,11 +8,18 @@ Food = {
 }
 Map._obj.grp_cls.food = Food.cls
 
+-- static
+
 function Food.cre_by_cls(p_pos, prm)
 	
 	p_pos = p_pos or Game.plychara_pos()
-	-- log.pp("food cre_by_cls", prm)
-	Cls._(prm._clsHa).cre(p_pos, prm)
+
+	local t_Cls = Cls.Cls(prm._cls)
+	log.pp("food cre_by_cls", prm)
+	prm._cls = nil
+
+	local t_id = t_Cls.cre(p_pos, prm)
+	return t_id
 end
 
 -- script method
@@ -32,8 +39,8 @@ function Food.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "kitchen__x")   then
 		_s:kitchen__x()
 	
-	elseif ha.eq(msg_id, "into_reizoko") then
-		_s:into_reizoko(prm.id)
+	elseif ha.eq(msg_id, "__into_reizoko") then
+		_s:__into_reizoko()
 
 	elseif ha.eq(msg_id, "cook_to_dish") then
 		_s:cook_to_dish()
@@ -61,8 +68,16 @@ end
 
 -- method
 
-function Food.into_reizoko(_s, reizoko_id)
+function Food.__into_reizoko(_s)
+
+	if not ar.in_(_s._cls, Food.cls) then return end
+	
+	Ply_data.reizoko.__add({_cls = _s._cls, _name = _s._name})
+
 	_s:del()
+
+	-- log
+	pst.scrpt(_s._map_id, "obj_cnt_all")
 end
 
 function Food.kitchen__o(_s, kitchen_id)
