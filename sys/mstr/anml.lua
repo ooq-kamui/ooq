@@ -2,6 +2,19 @@ log.scrpt("mstr anml.lua")
 
 Mstr.anml = {}
 
+function Mstr.anml.is_favo(s_name, p_cls, p_name)
+
+	if not Mstr.anml[s_name] then return _.f end
+
+	local favo = Mstr.anml[s_name].favo
+
+	if not favo[p_cls] then return _.f end
+
+	local ret =  ar.in_(p_name, favo[p_cls])
+	return ret
+
+end
+
 Mstr.anml["cat"] = {
 
 	gold = 1000,

@@ -26,11 +26,11 @@ function log.asrt(txt, data)
 	assert(data, txt)
 end
 
-function log.fltr_cls(cls, ...)
+function log.fltr_cls(p_cls, ...)
 	
-	if not ha.eq(id.clsHa(id._()), cls) then return end
+	if not ha.eq(id.clsHa(id._()), p_cls) then return end
 
-	log._(cls, ...)
+	log._(p_cls, ...)
 end
 
 function log.f(txt, val, dgt)

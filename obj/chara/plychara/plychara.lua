@@ -456,17 +456,6 @@ function Plychara.on_msg_clsn_kagu_itm(_s, t_id)
 	elseif ha.eq(t_clsHa, "shelf"  ) then _s:clsn__add("shelf"  , t_id)
 	elseif ha.eq(t_clsHa, "doorwrp") then _s:clsn__add("doorwrp", t_id)
 	end
-
-	--[[
-	if     ha.eq(t_nameHa, "hrvst001"  ) then _s:clsn__add("hrvst"  , t_id)
-	elseif ha.eq(t_nameHa, "reizoko001") then _s:clsn__add("reizoko", t_id)
-	elseif ha.eq(t_nameHa, "kitchen001") then _s:clsn__add("kitchen", t_id)
-	elseif ha.eq(t_nameHa, "flpy001"   ) then _s:clsn__add("flpy"   , t_id)
-	elseif ha.eq(t_nameHa, "pc001"     ) then _s:clsn__add("pc"     , t_id)
-	elseif ha.eq(t_nameHa, "shelf001"  ) then _s:clsn__add("shelf"  , t_id)
-	elseif ha.eq(t_nameHa, "doorwrp001") then _s:clsn__add("doorwrp", t_id)
-	end
-	--]]
 end
 
 function Plychara.hld_dir_h__sync(_s, dir_h)
@@ -877,11 +866,11 @@ function Plychara.hld__x(_s)
 		if     #_s._clsn.chara   >= 1 then
 			pst.scrpt(_s._clsn.chara[1]  , "present"     , {id = t_id})
 
-		elseif #_s._clsn.anml  >= 1 then
+		elseif #_s._clsn.anml    >= 1 then
 			pst.scrpt(_s._clsn.anml[1]   , "present"     , {id = t_id})
 
 		elseif #_s._clsn.hrvst   >= 1 then
-			pst.scrpt(_s._clsn.hrvst[1]  , "in"          , {id = t_id})
+			pst.scrpt(_s._clsn.hrvst[1]  , "__in"        , {id = t_id})
 
 		elseif #_s._clsn.kitchen >= 1 then
 			pst.scrpt(_s._clsn.kitchen[1], "kitchen__o"  , {id = t_id})

@@ -107,6 +107,7 @@ function Fire.burn_obj(_s)
 	
 	local obj_arund, clsHa
 	for idx, cls in pairs(t_cls) do
+
 		clsHa = ha._(cls)
 		obj_arund = _s:obj_arund(clsHa)
 		-- log.pp(clsHa, obj_arund)

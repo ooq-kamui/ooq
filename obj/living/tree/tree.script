@@ -8,8 +8,11 @@ go.property("_z", 0.2)
 go.property("_weight",  1)
 
 go.property("_clsHa",   hash(""))
+
+--[[
 go.property("_bear_clsHa",  hash("fruit"))
 go.property("_bear_nameHa", hash("fruit007"))
+--]]
 
 function init(_s)
 	Tree.init(_s)

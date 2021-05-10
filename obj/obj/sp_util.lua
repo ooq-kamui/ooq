@@ -3,13 +3,14 @@ log.scrpt("sp_util.lua")
 -- log
 
 function Sp.log(_s, ...)
-	log._(_s._clsHa, ...)
+	log._(_s._cls, ...)
 end
 
-function Sp.log_only_cls(_s, cls, ...)
-	if _s._clsHa == ha._(cls) then
-		log._(cls, ...)
-	end
+function Sp.log_only_cls(_s, t_cls, ...)
+
+	if _s._cls ~= t_cls then return end
+
+	log._(t_cls, ...)
 end
 
 -- ply_slt, save
@@ -22,15 +23,6 @@ end
 
 -- anim, anm, sprite
 
-function Sp.animHa__(_s, animHa)
-	
-	if ha.is_emp(animHa) then return end
-
-	pst._("#sprite", "play_animation", {id = animHa})
-
-	_s._animHa = animHa
-end
-
 function Sp.anim__(_s, p_anim)
 	
 	if not p_anim         then return end
@@ -41,7 +33,6 @@ function Sp.anim__(_s, p_anim)
 	-- log._("sp anim__", p_animHa)
 
 	_s._anim   = p_anim
-	-- _s._animHa = p_animHa
 end
 
 function Sp.anm_cancel_pos(_s)

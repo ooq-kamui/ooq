@@ -63,6 +63,8 @@ function Map.obj__del(_s, p_id, p_cls)
 	if not _s._obj[p_cls] then return end
 
 	ar.del_by_val(_s._obj[p_cls], p_id)
+
+	-- log.pp("Map.obj__del "..p_cls, _s._obj[p_cls])
 end
 
 function Map.obj_cnt(_s, p_cls)
@@ -76,32 +78,32 @@ function Map.obj_cnt(_s, p_cls)
 	return cnt
 end
 
-function Map.obj_cnt_all(_s)
+function Map.obj_cnt_all(_s) -- log
 
 	local cnt
 	for t_cls, id_ar in pairs(_s._obj) do
 		
 		cnt = _s:obj_cnt(t_cls)
 
-		log.pp("Map.obj_cnt_all "..t_cls.." "..cnt, id_ar)
+		-- log.pp("Map.obj_cnt_all "..t_cls.." "..cnt, id_ar)
 	end
 end
 
-function Map.obj__save_data_objs(_s, p_sd_obj_tb)
+function Map.obj__save_data_obj_ar(_s, p_sd_obj_tb)
 
 	for grp, t_cls_ar in pairs(Map._obj.grp_cls) do
 
-		log.pp("Map.obj__save_data_objs grp:", grp)
+		-- log.pp("grp:", grp)
 
 		for t_cls_idx, t_cls in pairs(t_cls_ar) do
 
-			log._("Map.obj__save_data_objs cls", t_cls)
+			-- log._("cls:", t_cls)
 
 			if not p_sd_obj_tb[t_cls] then
 			else
 				for t_obj_idx, t_obj in pairs(p_sd_obj_tb[t_cls]) do
 
-					log._("Map.obj__save_data_objs obj", t_obj._name, t_obj._cls)
+					-- log._("obj:", t_obj._name, t_obj._cls)
 
 					_s:obj__save_data_obj(t_obj)	
 				end
@@ -117,15 +119,10 @@ function Map.obj__save_data_obj(_s, p_obj)
 	local prm = {}
 	prm._name = p_obj._name
 
-	if     t_cls == "seed" then
-		prm._grw_cls   = p_obj._grw_cls
-		prm._grw_name  = p_obj._grw_name
-		prm._bear_cls  = p_obj._bear_cls
-		prm._bear_name = p_obj._bear_name
-
-	elseif t_cls == "tree" then
-		prm._bear_cls  = p_obj._bear_cls
-		prm._bear_name = p_obj._bear_name
+	if t_Cls.cre_prm then
+		for idx, prp in pairs(t_Cls.cre_prm) do
+			prm[prp] = p_obj[prp]
+		end
 	end
 
 	t_Cls.cre(p_obj["_pos"], prm)

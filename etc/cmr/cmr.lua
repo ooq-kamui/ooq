@@ -33,8 +33,6 @@ function Cmr.cre(p_pos)
 	local t_url = "/sys#fac_cmr"
 
 	local prm = {}
-	-- prm._clsHa  = ha._(Cmr.cls)
-	-- prm._nameHa = ha._(Cmr.cls)
 
 	local t_id = fac.cre(t_url, p_pos, nil, prm)
 	return t_id

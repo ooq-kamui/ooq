@@ -225,7 +225,7 @@ function Map.load(_s, file_idx)
 	if not save_data then return end
 	
 	_s:tile__(save_data["tile"])
-	_s:obj__save_data_objs( save_data["obj"] )
+	_s:obj__save_data_obj_ar( save_data["obj"] )
 	
 	-- Se.pst_ply("exe")
 	Msg.s("load complete")

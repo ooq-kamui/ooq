@@ -11,11 +11,6 @@ go.property("_is_flyabl", true)
 
 go.property("_clsHa",   hash(""))
 
-go.property("_grw_clsHa",   hash(""))
-go.property("_grw_nameHa",  hash(""))
-go.property("_bear_clsHa",  hash(""))
-go.property("_bear_nameHa", hash(""))
-
 function init(_s)
 	Fluff.init(_s)
 end

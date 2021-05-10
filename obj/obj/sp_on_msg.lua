@@ -58,6 +58,9 @@ function Sp.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "pf__save_data") then
 		-- log._("Sp.on_msg pf__save_data", sndr_url)
 		_s:pb__save_data(sndr_url)
+
+	elseif ha.eq(msg_id, "__to_hrvst"   ) then
+		_s:__to_hrvst()
 	else
 		ret = _.f
 	end
@@ -87,5 +90,26 @@ function Sp.leapup(_s , p_leapup_lv)
 	local speed_y = accl.speed_by_dst(dst_y)
 
 	_s._accl:speed_y__(speed_y)
+end
+
+function Sp.__to_hrvst(_s)
+
+	local gold = Mstr.gold(_s._cls, _s._name)
+
+	Ply_data.gold__add(gold)
+	Se.pst_ply("coin")
+
+	Efct.cre_gold( _s:plychara_pos() )
+
+	local t_prm = {txt = "x "..gold}
+	Efct.cre_label(_s:plychara_pos() + t.vec( 0, Map.sq), t_prm)
+
+	_s:del()
+
+	-- zu unlock
+	if ar.in_(_s._cls, {"flower", "dish"}) then
+
+		Ply_data._zu[_s._cls][_s._name] = _.t
+	end
 end
 

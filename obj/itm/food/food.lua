@@ -30,26 +30,33 @@ end
 
 function Food.on_msg(_s, msg_id, prm, sndr_url)
 	
-	Sp.on_msg(_s, msg_id, prm, sndr_url)
+	local st
+
+	st = Sp.on_msg(_s, msg_id, prm, sndr_url)
+	if st then return end
+
 	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 
-	if     ha.eq(msg_id, "kitchen__o")   then
+	if     ha.eq(msg_id, "kitchen__o") then
 		_s:kitchen__o(prm.id)
 	
-	elseif ha.eq(msg_id, "kitchen__x")   then
+	elseif ha.eq(msg_id, "kitchen__x") then
 		_s:kitchen__x()
 	
 	elseif ha.eq(msg_id, "__into_reizoko") then
 		_s:__into_reizoko()
 
-	elseif ha.eq(msg_id, "cook_to_dish") then
+	elseif ha.eq(msg_id, "cook_to_dish")   then
 		_s:cook_to_dish()
 	
-	elseif ha.eq(msg_id, "bear__o")      then
+	elseif ha.eq(msg_id, "bear__o") then
 		_s:bear__o(prm.tree_id)
 	
-	elseif ha.eq(msg_id, "bear__x")      then
+	elseif ha.eq(msg_id, "bear__x") then
 		_s:bear__x()
+
+	elseif ha.eq(msg_id, "__presentd") then
+		_s:__presentd(prm)
 	end
 end
 
@@ -76,20 +83,22 @@ function Food.__into_reizoko(_s)
 
 	_s:del()
 
-	-- log
-	pst.scrpt(_s._map_id, "obj_cnt_all")
+	-- log pst.scrpt(_s._map_id, "obj_cnt_all")
 end
 
 function Food.kitchen__o(_s, kitchen_id)
+
 	_s._kitchen_id = kitchen_id
 end
 
 function Food.kitchen__x(_s)
+
 	_s._kitchen_id = nil
-	pst.parent__(_s._id, _s._map_id, Cls._(_s._clsHa).z)
+	pst.parent__(_s._id, _s._map_id, Cls.Cls(_s._cls).z)
 end
 
 function Food.cook_to_dish(_s)
+
 	_s._kitchen_id = nil
 	_s:del()
 end
@@ -109,5 +118,19 @@ function Food.bear__x(_s)
 
 	local z = _s:Cls().z or 0.2
 	pst.parent__(_s._id, _s._map_id, z)
+end
+
+function Food.__presentd(_s, prm)
+	log._("Food.__presentd", prm._name, _s._cls, _s._name)
+
+	local ret = Mstr.anml.is_favo(prm._name, _s._cls, _s._name)
+
+	if not ret then return end
+	
+	Emtn.cre(_s:pos() + t.vec(0, Map.sqh * 3 / 2))
+
+	Ply_data._zu.anml[prm._name] = _.t
+
+	_s:del()
 end
 

@@ -11,7 +11,9 @@ function on_message(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "buy" ) then
 		local t_pos = Game.cloud_pos()
-		Cls._(prm._clsHa).cre(t_pos, prm)
+		local t_Cls = Cls.Cls(prm._cls)
+		prm._cls = nil
+		t_Cls.cre(t_pos, prm)
 		
 	elseif ha.eq(msg_id, "to_doorwrp"     ) then
 		local plychara_id = Game.plychara_id()

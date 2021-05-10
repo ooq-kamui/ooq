@@ -99,7 +99,7 @@ function Livingmove.is_flying__rnd(_s)
 	local val = rnd.by_f(rate)
 	_s:is_flying__(val)
 
-	-- log._("Livingmove is_flying__rnd", _s._is_flying, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove is_flying__rnd", _s._is_flying, _s:cls(), _s:name())
 end
 
 function Livingmove.dir_v__rnd(_s)
@@ -116,7 +116,7 @@ function Livingmove.dir_v__rnd(_s)
 	else
 		dir_v = ""
 	end
-	-- log._("Livingmove dir_v__rnd", dir_v, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove dir_v__rnd", dir_v, _s:cls(), _s:name())
 	_s:dir_v__(dir_v)
 end
 
@@ -152,7 +152,7 @@ end
 
 function Livingmove.vec_mv_y__(_s)
 
-	-- log._("Livingmove vec_mv_y__ start", _s._vec_mv.y, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove vec_mv_y__ start", _s._vec_mv.y, _s:cls(), _s:name())
 
 	if not _s:is_flying() then return end
 
@@ -179,6 +179,6 @@ function Livingmove.vec_mv_y__(_s)
 	elseif _s._dir_v == "" then
 		_s._vec_mv.y = 0
 	end
-	-- log._("Livingmove vec_mv_y__ end", _s._vec_mv.y, _s:clsHa(), _s:nameHa())
+	-- log._("Livingmove vec_mv_y__ end", _s._vec_mv.y, _s:cls(), _s:name())
 end
 

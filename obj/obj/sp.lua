@@ -10,22 +10,18 @@ Sp = {
 
 -- static
 
-function Sp.cre(p_Cls, p_pos, prm, p_scl)
+function Sp.cre(p_Cls, p_pos, p_prm, p_scl)
 	
 	p_pos = p_pos or pos.pos_w()
-	prm   = prm   or {}
+	p_prm = p_prm or {}
 
-	local name
-	if prm._name then
-		name = prm._name
-		prm._name = nil
-	else
-		name = p_Cls.cls..rnd.int_pad(p_Cls.name_idx_max)
+	if not p_prm._name then
+		p_prm._name = p_Cls.cls..rnd.int_pad(p_Cls.name_idx_max)
 	end
 
 	local t_url
 	if p_Cls.cls == "anml" then
-		t_url = "/obj-fac/"..Anml.cls.."-fac#"..name
+		t_url = "/obj-fac/"..Anml.cls.."-fac#"..p_prm._name
 	else
 		t_url = "/obj-fac/"..p_Cls.fac
 	end
@@ -33,22 +29,23 @@ function Sp.cre(p_Cls, p_pos, prm, p_scl)
 	local map_id, game_id = Game.map_id()
 	if ha.is_emp(map_id) then log._("Sp.cre map_id is_emp") return end
 	
-	prm._game_id   = game_id
-	prm._map_id    = map_id
-	prm._parent_id = map_id
+	local t_prm = {}
+
+	t_prm._game_id   = game_id
+	t_prm._map_id    = map_id
+	t_prm._parent_id = map_id
 
 	local z_dflt = 0.2
-	prm._z  = p_Cls.z or z_dflt
-	p_pos.z = p_Cls.z or z_dflt
+	t_prm._z = p_Cls.z or z_dflt
+	p_pos.z  = p_Cls.z or z_dflt
 	
 	if p_scl == 0 then p_scl = 0.2 end
 	
-	local t_id = fac.cre(t_url, p_pos, nil, prm, p_scl)
+	local t_id = fac.cre(t_url, p_pos, nil, t_prm, p_scl)
 
-	prm._cls  = p_Cls.cls
-	prm._name = name
+	p_prm._cls  = p_Cls.cls
 
-	pst.scrpt(t_id, "__init", prm)
+	pst.scrpt(t_id, "__init", p_prm)
 
 	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id
@@ -232,7 +229,7 @@ function Sp.cls(_s)
 	return _s._cls
 end
 
-function Sp.clsHa(_s)
+function Sp.clsHa(_s) -- rest
 
 	return _s._clsHa
 end
@@ -240,11 +237,6 @@ end
 function Sp.name(_s)
 
 	return _s._name
-end
-
-function Sp.nameHa(_s)
-
-	return _s._nameHa
 end
 
 function Sp.Cls(_s, p_prp)

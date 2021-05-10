@@ -101,37 +101,18 @@ function Anml.on_msg(_s, msg_id, prm, sndr_url)
 	end
 end
 
-function Anml.present(_s, o_id)
+function Anml.present(_s, p_id)
 	
-	local o_clsHa  = id.clsHa( o_id)
-	local o_nameHa = id.nameHa(o_id)
-	
-	if not _s:is_favo(o_clsHa, o_nameHa) then return end
-	
-	id.del(o_id)
-	Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
-
-	-- Zu_anml_gui.anml__o(_s._nameHa)
-	Ply_data._zu.anml[_s:name()] = _.t
+	local prm = {
+		_cls  = _s._cls,
+		_name = _s._name,
+	}
+	pst.scrpt(p_id, "__presentd", prm)
 end
 
-function Anml.is_favo(_s, o_clsHa, o_nameHa)
-	-- log.pp("anml is_favo", Mstr.anml)
-	-- log._("anml is_favo", o_clsHa, o_nameHa)
+function Anml.is_favo(_s, p_cls, p_name)
 	
-	local ret = _.f
-	
-	local s_name = ha.de(_s:name())
-	-- log._("anml is_favo", s_name)
-	local favo = Mstr.anml[s_name].favo
-
-	local o_cls = ha.de(o_clsHa)
-	-- log._("anml is_favo", o_cls)
-	if not favo[o_cls] then return ret end
-
-	local o_name = ha.de(o_nameHa)
-	ret = ar.in_(o_name, favo[o_cls])
-
+	local ret = Mstr.anml.is_favo(_s:name(), p_cls, p_name)
 	return ret
 end
 

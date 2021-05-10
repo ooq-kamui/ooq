@@ -108,7 +108,7 @@ function p.Shop_kagu_itm.exe(_s)
 	nd.anm.poyon(_s:cursor_itm_nd("icn"), nil, p.Shop.buy_time, 2)
 
 	local cls, name = _s:cursor_itm_cls_name()
-	pst._("#script", "buy", {_clsHa = cls, _nameHa = name})
+	pst._("#script", "buy", {_cls = cls, _name = name})
 
 	Ply_data.gold__sub(_s:cursor_itm_price())
 	_s:ply_data_gold__()

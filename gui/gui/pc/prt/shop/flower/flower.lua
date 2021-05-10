@@ -99,10 +99,10 @@ function p.Shop_flower.exe(_s)
 	
 	local flower_name = _s:cursor_itm()
 	local prm = {
-		_clsHa      = ha._("seed"),
-		_nameHa     = ha._("seed001"),
-		_grw_clsHa  = ha._("flower"),
-		_grw_nameHa = ha._(flower_name),
+		_cls      = "seed",
+		_name     = "seed001",
+		_grw_cls  = "flower",
+		_grw_name = flower_name,
 	}
 	pst._("#script", "buy", prm)
 

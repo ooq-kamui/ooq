@@ -1,10 +1,17 @@
 log.scrpt("tree.lua")
 
 Tree = {
-	act_intrvl_time = 5,
-	name_idx_max = 100,
+
+	-- act_intrvl_time =  60,
+	act_intrvl_time =  20,
+	name_idx_max    = 100,
 
 	z = 0.05,
+
+	cre_prm = {
+		"_bear_cls",
+		"_bear_name",
+	},
 }
 Tree.cls = "tree"
 Tree.fac = Obj.fac..Tree.cls
@@ -28,9 +35,9 @@ end
 
 function Tree.__init(_s, prm)
 	
-	Tree.bear__init(_s)
-
 	Sp.__init(_s, prm)
+
+	_s:bear__init()
 
 	-- scale
 	local size  = 1.5
@@ -38,7 +45,6 @@ function Tree.__init(_s, prm)
 	local scale = go.get(t_url, "scale")
 	go.set(t_url, "scale", scale * size)
 
-	-- log._("tree init", _s._nameHa, _s._bear_clsHa, _s._bear_nameHa)
 	_s._bear = {}
 end
 
@@ -78,17 +84,15 @@ function Tree.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- log._("Tree.act_intrvl", _s._bear_clsHa, _s._bear_nameHa)
-
 	dice100.throw()
-	if     dice100.chk(1) then
-		_s:trnsf(Wood)
+	if     dice100.chk(30) then
+		_s:bear()
 
-	elseif dice100.chk(1) then
+	elseif dice100.chk( 1) then
 		Leaf.cre()
 
-	elseif dice100.chk(5) then
-		_s:bear()
+	elseif dice100.chk( 1) then
+		_s:trnsf(Wood)
 	end
 end
 
@@ -96,17 +100,18 @@ function Tree.bear(_s)
 	
 	if #_s._bear >= 1 then return end
 	
-	if ha.is_emp(_s._bear_clsHa) then _s:bear__init() end
+	if not _s._bear_cls then _s:bear__init() end
 
-	local bear_Cls = Cls._(_s._bear_clsHa)
+	local bear_Cls = Cls.Cls(_s._bear_cls)
 	
-	if ha.is_emp(_s._bear_nameHa) then
-		_s._bear_nameHa = ha._(bear_Cls.cls..rnd.int_pad(bear_Cls.name_idx_max))
+	if not _s._bear_name then
+		_s._bear_name = bear_Cls.cls..rnd.int_pad(bear_Cls.name_idx_max)
 	end
 	
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
 	-- log._("bear fruit cre")
-	local t_id = bear_Cls.cre(t_pos, {_nameHa = _s._bear_nameHa}, 0.2)
+
+	local t_id = bear_Cls.cre(t_pos, {_name = _s._bear_name}, 0.2)
 	pst.scrpt(t_id, "bear__o", {tree_id = _s._id})
 	ar.add(_s._bear, t_id)
 end
@@ -131,8 +136,10 @@ end
 
 function Tree.bear__init(_s)
 
-	ha.is_emp__(_s._bear_clsHa , "fruit"   )
-	ha.is_emp__(_s._bear_nameHa, "fruit007")
+	_s._bear_cls  = _s._bear_cls  or "fruit"
+	_s._bear_name = _s._bear_name or "fruit007"
+
+	log._("Tree.bear__init", _s._bear_cls, _s._bear_name)
 end
 
 function Tree.pb__save_data(_s, map_url)
