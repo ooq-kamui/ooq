@@ -40,7 +40,6 @@ function Kitchen.__init(_s, prm)
 	_s._on = {} -- food_id
 
 	_s._cooking_timer = 0
-	-- _s._cmplt = _.f
 end
 
 function Kitchen.upd(_s, dt)
@@ -62,7 +61,6 @@ function Kitchen.upd_cooking_timer__dec(_s, dt)
 
 	_s._cooking_timer = 0
 	_s:cre_dish()
-	-- _s._cmplt = _.t
 end
 
 function Kitchen.on_msg(_s, msg_id, prm, sndr_url)
@@ -149,11 +147,10 @@ function Kitchen.cre_dish(_s)
 		pst.scrpt(id, "cook_to_dish")
 	end
 	for idx = 1, #_s._on do
-		-- table.remove(_s._on)
 		ar.del(_s._on)
 	end
 	
-	local pos_w = _s:pos_w() + n.vec(0, Map.sqh)
+	local pos_w = _s:pos_w() + t.vec(0, Map.sqh)
 	
 	local dish_id = Dish.cre(pos_w)
 	

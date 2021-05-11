@@ -1,5 +1,7 @@
 log.scrpt("map_obj.lua")
 
+-- static
+
 function Map.add_chara(chara)
 
 	ar.add_unq(Map.chara, chara)
@@ -45,7 +47,7 @@ Map._obj.grp_cls = {
 
 -- static
 
-Map.st = {}
+-- Map.st = {} -- old
 
 -- method
 

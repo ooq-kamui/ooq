@@ -94,6 +94,20 @@ end
 
 function Sp.__to_hrvst(_s)
 
+	if ar.in_(_s._cls, {"cloud"}) then return end
+	
+	if ar.in_(_s._cls, Hrvst.rst_cls) then
+
+		log._("Hrvst.__in", _s._cls, #Map.obj[_s._cls])
+		if #Map.obj[_s._cls] <= 1 then
+
+			Msg.s("last one.., can not release")
+			return
+		end
+	end
+
+	--
+
 	local gold = Mstr.gold(_s._cls, _s._name)
 
 	Ply_data.gold__add(gold)
@@ -107,9 +121,14 @@ function Sp.__to_hrvst(_s)
 	_s:del()
 
 	-- zu unlock
-	if ar.in_(_s._cls, {"flower", "dish"}) then
+	if not ar.in_(_s._cls, Hrvst.unlock_cls) then return end
 
-		Ply_data._zu[_s._cls][_s._name] = _.t
+	if not Ply_data.zu._zu[_s._cls] then
+		Ply_data.zu._zu[_s._cls] = {}
 	end
+
+	Ply_data.zu._zu[_s._cls][_s._name] = _.t
+
+	log.pp("Sp.__to_hrvst ".._s._cls, Ply_data.zu._zu[_s._cls])
 end
 

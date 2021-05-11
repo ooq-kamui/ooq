@@ -28,7 +28,7 @@ function Ply_data.__save_data(data)
 	Ply_data.gold__(data["gold"])
 
 	Ply_data.reizoko.__save_data(data)
-	Ply_data.zu.__(data)
+	Ply_data.zu.__(data["zu"])
 	Ply_data.kzn.__(data)
 end
 
@@ -73,7 +73,7 @@ function Ply_data.__clr()
 	Ply_data.gold__(0)
 
 	Ply_data.reizoko.__clr()
-	Ply_data.zu.clr()
+	Ply_data.zu.__clr()
 	ar.clr(Ply_data._kzn)
 end
 

@@ -24,11 +24,11 @@ function p.Doorwrp.init(_s, parent_gui)
 	_s._itm_pitch = 100
 	_s._itm_scrl_dir = "h"
 
-	_s._dsp_idx_max = Map.st.obj_cnt("doorwrp")
+	_s._dsp_idx_max = #Map.obj["doorwrp"] or 0
 
-	_s:itm__by_ar(Map.st.obj("doorwrp"))
+	_s:itm__by_ar(Map.obj["doorwrp"])
 	
-	_s._itm_txt = Map.st.obj("doorwrp") -- {}
+	_s._itm_txt = Map.obj["doorwrp"] -- {}
 	
 	-- nd itm
 	local node

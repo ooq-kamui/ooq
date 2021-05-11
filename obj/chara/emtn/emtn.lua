@@ -42,7 +42,7 @@ function Emtn.upd(_s, dt)
 	
 	_s:act_intrvl(dt)
 	
-	local t_vec = n.vec(0, 1) * _s._speed * dt
+	local t_vec = t.vec(0, 1) * _s._speed * dt
 	_s:pos__pls(t_vec)
 end
 
@@ -52,3 +52,4 @@ function Emtn.act_intrvl(_s, dt)
 
 	_s:del()
 end
+

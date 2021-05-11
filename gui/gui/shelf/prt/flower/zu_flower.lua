@@ -19,13 +19,13 @@ function p.Zu_flower.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Zu_flower)
+	extend._(   _s, p.Zu_flower)
 
-	_s._itm_pitch = 51
-	_s._dsp_idx_max = 8
+	_s._itm_pitch   = 51
+	_s._dsp_idx_max =  8
 	
-	-- for i = 1, Flower.name_idx_max do
-	_s:itm__by_idx("flower", 10)
+	-- _s:itm__by_idx("flower", Flower.name_idx_max)
+	_s:itm__by_idx("flower", 20)
 	
 	local node
 	for idx, name in pairs(_s._itm) do
@@ -47,19 +47,23 @@ end
 
 function p.Zu_flower.itm_icn__(_s)
 
-	local icn, nameHa
+	local icn
+
 	for idx, name in pairs(_s._itm) do
+
 		icn = _s._nd.itm[idx][_s:lb("icn")]
-		nameHa = ha._(name)
-		if Ply_data._zu.flower[nameHa] then
+
+		if Ply_data.zu._zu.flower[name] then
 			nd.txtr__(icn, "flower")
-			nd.anm__(icn, nameHa)
+			-- nd.anm__( icn, ha._(name))
+			nd.anm__( icn, name)
 		else
 			nd.txtr__(icn, "noimg")
-			nd.anm__(icn, "noimg")
+			nd.anm__( icn, "noimg")
 		end
 	end
 end
 
 function p.Zu_flower.decide(_s)
 end
+

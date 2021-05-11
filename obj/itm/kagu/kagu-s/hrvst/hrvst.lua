@@ -7,6 +7,10 @@ Hrvst = {
 	z = 0.1,
 
 	weight = 2,
+
+	rst_cls = {"flpy", "reizoko", "pc", "shelf", "kitchen"},
+
+	unlock_cls = {"flower", "dish"},
 }
 Hrvst.cls = "hrvst"
 Hrvst.fac = Obj.fac..Hrvst.cls
@@ -71,17 +75,8 @@ end
 
 function Hrvst.__in(_s, prm)
 	
-	local t_id  = prm.id
-	local t_cls = id.prp(t_id, "_clsHa")
-	
-	if ar.in_(t_cls, {"cloud"}) then return end
-	
-	if ar.in_(t_cls, {"flpy", "reizoko", "pc", "shelf", "kitchen"})
-	and Map.st.obj_cnt(t_cls) <= 1 then
-
-		Msg.s("last one.., can not release")
-		return
-	end
+	local t_id    = prm.id
+	-- local t_clsHa = id.prp(t_id, "_clsHa")
 
 	pst.scrpt(t_id, "__to_hrvst")
 end

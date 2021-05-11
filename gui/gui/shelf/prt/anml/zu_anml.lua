@@ -19,7 +19,7 @@ function p.Zu_anml.is_favo(name, o_cls, o_name)
 end
 
 function p.Zu_anml.anml__o(name)
-	Ply_data._zu.anml[name] = _.t
+	Ply_data.zu._zu.anml[name] = _.t
 end
 
 -- script method
@@ -58,13 +58,16 @@ end
 
 function p.Zu_anml.itm_icn__(_s)
 	
-	local icn, nameHa
+	local icn
+
 	for idx, name in pairs(_s._itm) do
-		log._("p.Zu_anml.itm_icn__", name)
+		-- log._("p.Zu_anml.itm_icn__", name)
+
 		icn = _s._nd.itm[idx][_s:lb("icn")]
-		nameHa = ha._(name)
-		if Ply_data._zu.anml[nameHa] then
-			nd.txtr__(icn, nameHa)
+
+		if Ply_data.zu._zu.anml[name] then
+			-- nd.txtr__(icn, ha._(name))
+			nd.txtr__(icn, name  )
 			nd.anm__( icn, "walk")
 		else
 			nd.txtr__(icn, "noimg")

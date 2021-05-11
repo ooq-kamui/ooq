@@ -1,63 +1,52 @@
 log.scrpt("zu.lua")
 
-Ply_data._zu = {
-	
-	anml   = {},
-	flower = {},
-	dish   = {},
-}
 Ply_data.zu = {
+
 	cls = {
-		"anml",
 		"flower",
 		"dish",
+		"anml",
 	},
+
+	_zu = {},
 }
-Ply_data.zu.xxx = {}
+for idx, cls in pairs(Ply_data.zu.cls) do
+	Ply_data.zu._zu[cls] = {}
+end
 
-function Ply_data.zu._()
+function Ply_data.zu._(p_cls)
 	
-	local data = {}
-	
+	local data
+
+	if not p_cls then
+		data = Ply_data.zu._zu
+	else
+		data = Ply_data.zu._zu[p_cls]
+	end
+	return data
+end
+
+function Ply_data.zu.__(save_data)
+
+	Ply_data.zu._zu = save_data
+end
+
+function Ply_data.zu.cls__(p_cls, save_data_cls)
+
+	Ply_data.zu._zu[p_cls] = save_data_cls
+end
+
+function Ply_data.zu.__init()
+
+	for idx, cls in pairs(Ply_data.zu.cls) do
+		Ply_data.zu._zu[cls] = {}
+	end
+end
+
+function Ply_data.zu.__clr()
+
 	for idx, t_cls in pairs(Ply_data.zu.cls) do
-		data[t_cls] = Ply_data.zu.xxx._(Ply_data._zu[t_cls])
-	end
-	return data
-end
-
-function Ply_data.zu.xxx._(p_ar)
-
-	local data = {}
-
-	for t_name, val in pairs(p_ar) do
-		data[t_name] = val
-	end
-	return data
-end
-
-function Ply_data.zu.__(data)
-	-- log.pp("Ply_data.zu.__", Ply_data.zu.cls)
-
-	for idx, cls in pairs(Ply_data.zu.cls) do
-		Ply_data.zu.xxx.__(data, cls, Ply_data._zu[cls])
-	end
-end
-
-function Ply_data.zu.xxx.__(data, p_cls, p_ar)
-
-	ar.clr(p_ar)
-
-	if not data["zu"][p_cls] then return end
-
-	for t_name, val in pairs(data["zu"][p_cls]) do
-		p_ar[t_name] = val
-	end
-end
-
-function Ply_data.zu.clr()
-
-	for idx, cls in pairs(Ply_data.zu.cls) do
-		ar.clr(Ply_data._zu[cls])
+		ar.clr(Ply_data.zu._zu[t_cls])
 	end
 end
 

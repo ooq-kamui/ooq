@@ -121,15 +121,18 @@ function Food.bear__x(_s)
 end
 
 function Food.__presentd(_s, prm)
-	log._("Food.__presentd", prm._name, _s._cls, _s._name)
+	log._("Food.__presentd ", prm._cls, prm._name, _s._cls, _s._name)
 
-	local ret = Mstr.anml.is_favo(prm._name, _s._cls, _s._name)
+	if prm._cls ~= "anml" then return end
 
-	if not ret then return end
+	local is_favo = Mstr.anml.is_favo(prm._name, _s._cls, _s._name)
+
+	if not is_favo then return end
 	
 	Emtn.cre(_s:pos() + t.vec(0, Map.sqh * 3 / 2))
 
-	Ply_data._zu.anml[prm._name] = _.t
+	Ply_data.zu._zu.anml[prm._name] = _.t
+	log.pp("Food.__presentd "..prm._name, Ply_data.zu._zu.anml)
 
 	_s:del()
 end

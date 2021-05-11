@@ -55,6 +55,8 @@ Map.dstrct_mv = {
 	},
 }
 
+Map.obj = nil
+
 -- static
 
 function Map.cre(p_clct)
@@ -84,6 +86,8 @@ function Map.chara__clr()
 	ar.clr(Map.chara_clb.tohoku)
 end
 
+
+
 -- scrpt method
 
 function Map.init(_s)
@@ -101,6 +105,8 @@ function Map.init(_s)
 	_s:dstrct_mv_rng_pos__init()
 	
 	_s._obj = {}
+	Map.obj = _s._obj
+
 	_s:save_data__init()
 
 	Mapobj.init(_s._id)
