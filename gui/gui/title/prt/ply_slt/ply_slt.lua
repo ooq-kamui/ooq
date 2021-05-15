@@ -20,7 +20,7 @@ function p.Ply_slt.init(_s, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
 	extend.init(_s, p.Prt_itm_menu)
-	extend._(_s, p.Ply_slt)
+	extend._(   _s, p.Ply_slt)
 
 	_s._itm_pitch = 70
 	_s._dsp_idx_max = 4
@@ -166,6 +166,6 @@ function p.Ply_slt.clr(_s, ply_slt_idx) -- todo refactoring fnc locale, loop log
 		end
 	end
 	
-	Se.pst_ply("exe")
+	-- Se.pst_ply("exe")
 end
 

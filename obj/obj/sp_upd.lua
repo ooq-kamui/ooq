@@ -138,6 +138,8 @@ end
 
 function Sp.vec_tile__(_s, dt)
 	
+	if not u.eq(_s:map_id(), _s:parent_id()) then return end
+
 	if     _s:is_elv_u( _s:foot_i_pos() ) then
 		vec.xy__(_s._vec_tile, 0, 1)
 

@@ -127,7 +127,9 @@ function Sp.foot_dst_i(_s)
 	
 	local foot_dst_i
 
-	if ar.inHa(_s._clsHa, {"kagu"}) then
+	-- if ar.inHa(_s._clsHa, {"kagu"}) then
+	if ar.in_(_s._cls, {"kagu"}) then
+
 		local h = go.get("#sprite", "size.y")
 		foot_dst_i = num._2_int_d(h / 2)
 	else

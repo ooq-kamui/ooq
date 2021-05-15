@@ -15,3 +15,4 @@ function g.Flpy.init(_s)
 
 	_s:opn("flpy")
 end
+

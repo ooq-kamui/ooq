@@ -32,7 +32,6 @@ function p.Prt.behind(_s, fin)
 end
 
 function p.Prt.clz(_s, se_off)
-	-- log._("p.Prt clz")
 
 	if not se_off then Se.pst_ply("clz") end
 

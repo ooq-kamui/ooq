@@ -47,8 +47,7 @@ function Wood.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- death
-	if _s:per_trnsf(1, Humus) then return end
+	if _s:per_trnsf__humus(1) then return end
 end
 
 function Wood.final(_s)

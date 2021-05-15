@@ -10,15 +10,6 @@ function p.Kzn.cre(parent_gui)
 	return gui_prt
 end
 
-function p.Kzn.add(name) -- name:hash
-	
-	if not Ply_data._kzn[name] then
-		Ply_data._kzn[name] = 0
-	end
-	
-	Ply_data._kzn[name] = Ply_data._kzn[name] + p.Kzn.point
-end
-
 -- script method
 
 function p.Kzn.init(_s, parent_gui)
@@ -28,7 +19,7 @@ function p.Kzn.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Kzn)
+	extend._(   _s, p.Kzn)
 	
 	_s._itm_pitch = 50
 	_s._dsp_idx_max = 8
@@ -46,7 +37,7 @@ end
 function p.Kzn.opn(_s, prm)
 	
 	_s:itm_icn__()
-	_s:item_point__()
+	_s:itm_point__()
 	_s:itm__plt()
 	_s:cursor_pos__()
 	_s:base_dsp__(_.t)
@@ -55,35 +46,32 @@ end
 
 function p.Kzn.itm_icn__(_s)
 	
-	local charaHa, node, anim
-	-- log.pp("n.item", _s._nd.itm)
+	local node
+
 	for idx, chara in pairs(_s._itm) do
-		charaHa = ha._(chara)
+
 		node = _s._nd.itm[idx]
-		if Ply_data._kzn[charaHa] then
+
+		if Ply_data.kzn._kzn[chara] then
 			nd.txtr__(node[_s:lb("img")], "chara")
-			-- gui.play_flipbook(node[_s:lb("img")], charaHa)
-
-			anim  = chara .. "-stand"
-			nd.anm__(node[_s:lb("img")], anim)
-			-- nd.anm__(node[_s:lb("img")], charaHa)
-
+			nd.anm__( node[_s:lb("img")], chara.."-stand")
 		else
 			nd.txtr__(node[_s:lb("img")], "noimg")
-			-- gui.play_flipbook(node[_s:lb("img")], "noimg")
-			nd.anm__(node[_s:lb("img")], "noimg")
+			nd.anm__( node[_s:lb("img")], "noimg")
 		end
 	end
 end
 
-function p.Kzn.item_point__(_s)
+function p.Kzn.itm_point__(_s)
 	
-	local point, charaHa, node
+	local point, node
+
 	for idx, chara in pairs(_s._itm) do
-		charaHa = ha._(chara)
+
 		node = _s._nd.itm[idx]
-		if Ply_data._kzn[charaHa] then
-			point = Ply_data._kzn[charaHa]
+
+		if Ply_data.kzn._kzn[chara] then
+			point = Ply_data.kzn._kzn[chara]
 		else
 			point = 0
 		end

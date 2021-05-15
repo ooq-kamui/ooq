@@ -1,29 +1,31 @@
 log.scrpt("kzn.lua")
 
-Ply_data._kzn = {}
-Ply_data.kzn  = {}
+Ply_data.kzn = {}
+Ply_data.kzn._kzn = {}
 
 function Ply_data.kzn._()
 
-	local data = {}
-	for charaHa, point in pairs(Ply_data._kzn) do
-		data[ha.de(charaHa)] = point
-	end
-	-- log._("kzn")
-	-- pprint(Kzn_gui.kzn)
-	-- pprint(data)
+	local data = Ply_data.kzn._kzn
 	return data
 end
 
-function Ply_data.kzn.__(data)
+function Ply_data.kzn.__save_data(save_data)
 	
-	ar.clr(Ply_data._kzn)
-	
-	for chara, point in pairs(data["kzn"]) do
-		Ply_data._kzn[ha._(chara)] = point
+	Ply_data.kzn._kzn = save_data
+end
+
+function Ply_data.kzn.__pls(chara, point)
+
+	point = point or Mstr.kzn.point
+
+	if not Ply_data.kzn._kzn[chara] then
+		Ply_data.kzn._kzn[chara] = 0
 	end
-	-- log._("load kzn")
-	-- pprint(data["kzn"])
-	-- pprint(Kzn_gui.kzn)
+
+	Ply_data.kzn._kzn[chara] = Ply_data.kzn._kzn[chara] + point
+end
+
+function Ply_data.kzn.__clr()
+	ar.clr(Ply_data.kzn._kzn)
 end
 

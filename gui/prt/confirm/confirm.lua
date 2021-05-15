@@ -19,7 +19,7 @@ function p.Confirm.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Confirm)
+	extend._(   _s, p.Confirm)
 
 	_s._itm_pitch = 240
 	_s._itm_scrl_dir = "h"
@@ -55,13 +55,22 @@ function p.Confirm.decide(_s)
 	local yes = (_s:cursor_itm() == "yes")
 
 	local anm = {}
-	anm[1] = function ()
-		nd.anm.poyon(_s._nd.cursor, anm[2])
-	end
-	anm[2] = function ()
-		if yes then
+	if yes then
+		anm[1] = function ()
+			Se.pst_ply("exe")
+			nd.anm.poyon(_s._nd.cursor, anm[2])
+		end
+		anm[2] = function ()
+			local se_off = _.t
+			_s:clz(se_off)
 			_s:exe()
-		else
+		end
+
+	else
+		anm[1] = function ()
+			nd.anm.poyon(_s._nd.cursor, anm[2])
+		end
+		anm[2] = function ()
 			_s:clz()
 		end
 	end
@@ -69,6 +78,7 @@ function p.Confirm.decide(_s)
 end
 
 function p.Confirm.exe(_s)
-	_s:clz()
+
 	_s._called_by_prt:exe()
 end
+

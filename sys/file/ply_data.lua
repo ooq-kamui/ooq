@@ -167,3 +167,4 @@ function file.ply_data.thmb.file_name_fl(ply_slt_idx, file_idx)
 	local file_name_fl = file.file_name_fl(file_name)
 	return file_name_fl
 end
+

@@ -49,10 +49,11 @@ function Veget.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	if _s:per_trnsf(1 / 40 * 100, Humus) then return end
+	if _s:per_trnsf__humus(1 / 40 * 100) then return end
 
 	dice100.throw()
 	if dice100.chk(7) then
 		_s:trnsf(Seed)
 	end
 end
+

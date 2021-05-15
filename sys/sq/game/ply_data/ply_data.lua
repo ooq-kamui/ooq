@@ -29,7 +29,7 @@ function Ply_data.__save_data(data)
 
 	Ply_data.reizoko.__save_data(data)
 	Ply_data.zu.__(data["zu"])
-	Ply_data.kzn.__(data)
+	Ply_data.kzn.__save_data(data["kzn"])
 end
 
 -- static public
@@ -40,7 +40,6 @@ function Ply_data.save(ply_slt_idx)
 
 	Msg.s("saving...")
 
-	-- local data = Ply_data._()
 	local data = Ply_data.save_data()
 
 	file.ts__()
@@ -49,8 +48,8 @@ function Ply_data.save(ply_slt_idx)
 	
 	local ply_data_ltst_ts = file.ts()
 
-	Se.pst_ply("exe")
 	Msg.s("save complete")
+
 	return ply_data_ltst_ts
 end
 
@@ -74,6 +73,6 @@ function Ply_data.__clr()
 
 	Ply_data.reizoko.__clr()
 	Ply_data.zu.__clr()
-	ar.clr(Ply_data._kzn)
+	Ply_data.kzn.__clr()
 end
 

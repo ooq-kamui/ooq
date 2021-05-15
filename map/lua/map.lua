@@ -233,8 +233,8 @@ function Map.load(_s, file_idx)
 	_s:tile__(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
 	
-	-- Se.pst_ply("exe")
 	Msg.s("load complete")
+	-- Se.pst_ply("exe")
 end
 
 function Map.save_data__init(_s)
@@ -263,13 +263,10 @@ end
 function Map.pf__save_data__(_s)
 
 	_s:save_data__clr()
-	-- log.pp("Map.pf__save_data__ 1", _s._save_data.obj)
 
 	_s._save_data.tile = _s:tile_2_save_data()
 
 	_s:pf__save_data_obj__()
-
-	-- log.pp("Map.pf__save_data__ 2", _s._save_data.obj)
 end
 
 function Map.pf__file__save(_s, sndr_url)
@@ -277,9 +274,7 @@ function Map.pf__file__save(_s, sndr_url)
 	_s:pb__file__save(sndr_url)
 end
 
--- function Map.pb__save_data__fin(_s, sndr_url)
 function Map.pb__file__save(_s, sndr_url)
-	-- log._("Map.pb__file__save")
 
 	pst._(sndr_url, "file__save")
 end

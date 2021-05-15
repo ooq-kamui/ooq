@@ -40,7 +40,6 @@ function Sp.anm_cancel_pos(_s)
 end
 
 function Sp.anm_scl__1(_s)
-	-- log._("sp anm_scl__1")
 	anm.scl__1(_s._id)
 end
 

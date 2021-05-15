@@ -33,23 +33,15 @@ function p.Shop_tree.init(_s, parent_gui)
 	local node, price
 	for idx, name in pairs(_s._itm) do
 
-		-- log._("shop tree init", idx, name)
-
 		node = _s:itm_clone()
 		
-		-- seed
 		nd.txtr__(node[_s:lb("seed")], "seed")
-		nd.anm__(node[_s:lb("seed")], "seed005")
-		
-		-- tree
-		nd.anm__(node[_s:lb("tree")], name)
-		
-		-- price
+		nd.anm__( node[_s:lb("seed")], "seed005")
+		nd.anm__( node[_s:lb("tree")], name)
 		price = Mstr.tree[name].price
-		nd.txt__(node[_s:lb("price")], price.."G")
+		nd.txt__( node[_s:lb("price")], price.."G")
 
-		-- itm_opt (bear)
-		_s._itm_opt[idx] = 1 -- fruit
+		_s._itm_opt[idx] = 1 -- bear fruit
 	end
 end
 

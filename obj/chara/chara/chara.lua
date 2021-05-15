@@ -108,20 +108,14 @@ function Chara.on_msg(_s, msg_id, prm, sndr_url)
 		if not ar.inHa(t_clsHa, Chara.presentabl) then return end
 		
 		id.del(t_id)
-		Emtn.cre(_s:pos() + n.vec(0, Map.sqh * 3 / 2))
+		Emtn.cre(_s:pos() + t.vec(0, Map.sqh * 3 / 2))
 		_s:kzn__pls()
 	end
 end
 
 function Chara.kzn__pls(_s, point)
 
-	point = point or Mstr.kzn.point
-
-	if not Ply_data._kzn[_s:name()] then
-		Ply_data._kzn[_s:name()] = 0
-	end
-
-	Ply_data._kzn[_s:name()] = Ply_data._kzn[_s:name()] + point
+	Ply_data.kzn.__pls(_s:name(), point)
 end
 
 -- method

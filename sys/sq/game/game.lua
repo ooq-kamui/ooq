@@ -21,6 +21,7 @@ function Game.cre_new(ply_slt_idx)
 end
 
 function Game.cre_continue(ply_slt_idx, ply_data_file_idx)
+
 	local t_id = Game.cre(ply_slt_idx)
 	pst._(t_id, "continue", {ply_data_file_idx = ply_data_file_idx})
 	return t_id
@@ -504,19 +505,12 @@ end
 
 -- sky
 
---[[
-function Game.sky_idx(_s) -- use not ?
-	return _s._sky_idx
-end
---]]
-
 function Game.sky_id(_s)
 	return _s._sky_id
 end
 
 function Game.sky__cre(_s)
 	
-	-- _s._sky_id = Sky.cre(_s._sky_idx)
 	_s._sky_id = Sky.cre()
 end
 
@@ -572,7 +566,6 @@ function Game.new_event(_s)
 
 	Ply_data.reizoko.__new()
 
-	-- scnro start
 	Ev._("tst")
 	-- Ev._("game_start")
 	-- Ev._("tree_fall")

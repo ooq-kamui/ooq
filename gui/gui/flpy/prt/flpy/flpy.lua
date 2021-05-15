@@ -43,25 +43,24 @@ function p.Flpy.opn(_s, prm)
 	_s:itm__plt()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
-	Se.pst_ply("forward")
+	-- Se.pst_ply("forward")
 end
 
 function p.Flpy.decide(_s)
 	
+	Se.pst_ply("forward")
+
 	local fin
 	if     _s:cursor_itm() == "save" then
-		Se.pst_ply("forward")
 		_s:behind()
 		_s:exe__(function () _s:save() end)
 		_s:confirm_opn()
 
 	elseif _s:cursor_itm() == "load" then
-		Se.pst_ply("forward")
 		_s:behind()
 		_s._parent_gui:opn("ply_data", {ply_slt_idx = _s._parent_gui._ply_slt_idx})
 		
 	elseif _s:cursor_itm() == "back to title" then
-		Se.pst_ply("forward")
 		_s:behind()
 		_s:exe__(function () _s:back_to_title() end)
 		_s:confirm_opn()
@@ -70,7 +69,7 @@ end
 
 function p.Flpy.back_to_title(_s)
 	
-	Se.pst_ply("forward")
+	-- Se.pst_ply("forward")
 	pst.scrpt(Sys.id, "title")
 	_s:parent_gui_del()
 end
@@ -79,3 +78,4 @@ function p.Flpy.save(_s)
 	pst._(".", "save")
 	_s:parent_gui_del()
 end
+

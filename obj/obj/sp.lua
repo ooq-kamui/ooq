@@ -154,6 +154,16 @@ function Sp.per_trnsf(_s, per, p_Cls, prm, scl)
 	return Sp:trnsf(p_Cls, prm, scl)
 end
 
+function Sp.per_trnsf__humus(_s, per)
+	-- log._("Sp.per_trnsf__humus", per, _s._hldd_id)
+
+	if _s._hldd_id then return end
+
+	local t_id = _s:per_trnsf(per, Humus)
+	-- log._("Sp.per_trnsf__humus", per, _s._hldd_id, t_id)
+	return t_id
+end
+
 function Sp.del(_s)
 	go.delete()
 end
@@ -168,12 +178,14 @@ function Sp.per_del(_s, per)
 end
 
 function Sp.is_pause(_s)
-	-- local ret = Map.pause
 	
 	local ret = id.prp(_s:map_id(), "_pause")
-	-- log._("sp.is_pause", ret)
-	
 	return ret
+end
+
+function Sp.parent_id(_s)
+
+	return _s._parent_id
 end
 
 function Sp.parent__(_s, parent_id, z, p_pos)
@@ -349,11 +361,14 @@ end
 
 function Sp.pb__save_data(_s, map_url)
 
+	if _s._bear_tree_id then return end
+	-- if not u.eq(_s:map_id(), _s:parent_id()) then return end
+
 	local prm = {}
 
 	prm._cls  = _s._cls
 	prm._name = _s._name
-	prm._pos  = _s:pos()
+	prm._pos  = _s:pos_w()
 
 	pst._(map_url, "save_data_obj__", prm)
 end

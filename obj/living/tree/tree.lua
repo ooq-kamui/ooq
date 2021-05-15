@@ -61,8 +61,8 @@ function Tree.on_msg(_s, msg_id, prm, sndr_url)
 	
 	Sp.on_msg(_s, msg_id, prm, sndr_url)
 	
-	if     ha.eq(msg_id, "trnsf_wood") then
-		_s:trnsf_wood()
+	if     ha.eq(msg_id, "trnsf__wood") then
+		_s:trnsf__wood()
 		
 	elseif ha.eq(msg_id, "bear__x"   ) then
 		_s:bear__x(prm.bear_id)
@@ -120,7 +120,7 @@ function Tree.bear__x(_s, bear_id)
 	ar.del_by_val(_s._bear, bear_id)
 end
 
-function Tree.trnsf_wood(_s, num)
+function Tree.trnsf__wood(_s, num)
 
 	num = num or 3
 	local t_pos, x
@@ -139,7 +139,7 @@ function Tree.bear__init(_s)
 	_s._bear_cls  = _s._bear_cls  or "fruit"
 	_s._bear_name = _s._bear_name or "fruit007"
 
-	log._("Tree.bear__init", _s._bear_cls, _s._bear_name)
+	-- log._("Tree.bear__init", _s._bear_cls, _s._bear_name)
 end
 
 function Tree.pb__save_data(_s, map_url)

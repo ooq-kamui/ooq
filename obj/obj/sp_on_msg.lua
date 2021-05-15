@@ -56,7 +56,6 @@ function Sp.on_msg(_s, msg_id, prm, sndr_url)
 		_s:anm_pos__(prm.pos, prm.time)
 
 	elseif ha.eq(msg_id, "pf__save_data") then
-		-- log._("Sp.on_msg pf__save_data", sndr_url)
 		_s:pb__save_data(sndr_url)
 
 	elseif ha.eq(msg_id, "__to_hrvst"   ) then

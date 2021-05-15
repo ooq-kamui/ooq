@@ -64,3 +64,11 @@ function num.pls_loop(val1, val2, max, min)
 	return val1, is_loop
 end
 
+function num._2_str(val, dgt)
+
+	dgt = dgt or "2"
+
+	local str = string.format("%."..dgt.."f", val)
+	return str
+end
+

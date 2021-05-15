@@ -19,7 +19,7 @@ function p.Ply_data.init(_s, parent_gui)
 	extend.init(_s, p.Prt, parent_gui)
 	extend.init(_s, p.Prt_itm_lst)
 	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Ply_data)
+	extend._(   _s, p.Ply_data)
 	
 	_s._itm_pitch = 70
 	_s._dsp_idx_max = 3
@@ -53,22 +53,18 @@ function p.Ply_data.opn(_s, prm)
 	nd.txt__(_s._nd.title, "load")
 
 	_s:ply_data_thmb__load()
-	-- _s:ply_data_file_idx_ltst__load()
 	
 	local ts_str
 	local ply_data_file_idx = _s:ply_data_file_idx_ltst()
-	-- log._("p.ply_data opn ply_data_file_idx_ltst", ply_data_file_idx)
 	
 	for itm_idx, itm_nd in pairs(_s._nd.itm) do
 		
 		nd.txt__(itm_nd[_s:lb("no")], itm_idx)
-		-- log.pp("p.ply_data opn", _s._ply_data_thmb)
 		
 		ts_str = _s._ply_data_thmb[ply_data_file_idx]["ts_str"] or "-- -- -- -- -- --"
 		
 		nd.txt__(itm_nd[_s:lb("ts_str")], ts_str)
 		nd.txt__(itm_nd[_s:lb("data_idx")], int.pad(ply_data_file_idx, 2))
-		-- nd.anm.dsp__(itm_nd[_s:lb("data_idx")], _.f)
 		
 		ply_data_file_idx = int.dec_loop(ply_data_file_idx, #_s._nd.itm)
 	end
@@ -156,6 +152,7 @@ function p.Ply_data.decide(_s)
 		
 	else
 		Se.pst_ply("forward")
+
 		local anm = {}
 		anm[1] = function ()
 			nd.anm.poyon(_s._nd.itm[itm_idx][_s:lb("itm")], anm[2])
@@ -175,3 +172,4 @@ function p.Ply_data.game_continue(_s)
 	_s:parent_gui_del()
 	pst.scrpt(Sys.id, "game_continue", {ply_slt_idx = _s._ply_slt_idx, ply_data_file_idx = _s:cursor_ply_data_thmb_idx()})
 end
+

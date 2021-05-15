@@ -14,7 +14,6 @@ function anm.scl__0(p_id, time, fnc)
 	time = time or anm.time.scl
 
 	anm.scl__(p_id, vec._0, time, fnc)
-	-- anm._(p_id, "scale", apm.fwd, vec._0, es.sin_io, time, 0, fnc)
 end
 
 function anm.scl__1(p_id, time, fnc)
@@ -22,7 +21,6 @@ function anm.scl__1(p_id, time, fnc)
 	time = time or anm.time.scl
 
 	anm.scl__(p_id, vec._1, time, fnc)
-	-- anm._(p_id, "scale", apm.fwd, vec._1, es.sin_io, time, 0, fnc)
 end
 
 function anm.scl__(p_id, p_vec, time, fnc)
@@ -55,7 +53,6 @@ function anm.fade__(p_id, p_cmp, p_w, time, delay, fnc)
 	anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 end
 
--- function anm.w__(p_id, p_w, time, fnc)
 function anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 
 	if not p_id  then return end
@@ -72,6 +69,7 @@ end
 -- pos
 
 function anm.pos__(p_id, p_pos, time, delay)
+	-- log._("anm.pos__")
 
 	p_pos = p_pos or n.vec()
 	time  = time  or anm.time.pos
@@ -83,11 +81,13 @@ function anm.pos__(p_id, p_pos, time, delay)
 end
 
 function anm.pos_y__anm(p_id, p_y, time)
+	-- log._("anm.pos_y__anm")
 
 	anm._(p_id, "position.y", apm.fwd, p_y, es.sin_o, time, 0)
 end
 
 function anm._(t_url, prp, plymode, val, esing, time, delay, fnc) -- alias
+	-- log._("anm._")
 
 	delay = delay or 0
 

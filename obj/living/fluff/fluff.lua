@@ -51,12 +51,8 @@ function Fluff.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- log._("fluff act_intrvl")
-	
-	-- death
-	if _s:per_trnsf(1, Humus) then return end
+	if _s:per_trnsf__humus(1) then return end
 
-	-- trnsf
 	if _s:per_trnsf(5, Seed ) then return end
 
 	-- obj cre

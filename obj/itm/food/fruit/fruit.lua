@@ -2,7 +2,7 @@ log.scrpt("fruit.lua")
 
 Fruit = {
 	act_intrvl_time = 10,
-	name_idx_max = 52,
+	name_idx_max    = 52,
 }
 Fruit.cls = "fruit"
 Fruit.fac = Obj.fac..Fruit.cls
@@ -46,7 +46,6 @@ function Fruit.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt)  then return end
 
-	-- death
-	if _s:per_trnsf(1 / 20 * 100, Humus) then return end
+	if _s:per_trnsf__humus(1 / 20 * 100) then return end
 end
 

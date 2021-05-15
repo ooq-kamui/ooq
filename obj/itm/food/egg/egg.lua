@@ -46,8 +46,8 @@ function Egg.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- death
-	if _s:per_trnsf(1 / 20 * 100, Humus) then return end
+	if _s:per_trnsf__humus(1 / 20 * 100) then return end
 
 	_s:per_trnsf(1 / 25 * 100, Anml, {name = ha._(rnd.ar(Anml.bird))})
 end
+

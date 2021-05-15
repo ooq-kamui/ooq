@@ -49,6 +49,8 @@ function Kitchen.upd(_s, dt)
 	_s:upd_cooking_timer__dec(dt)
 
 	_s:upd_final()
+
+	-- log.if_(_s._hldd_id, "Kitchen.upd", _s._vec_tile, _s._foot_i_pos)
 end
 
 function Kitchen.upd_cooking_timer__dec(_s, dt)

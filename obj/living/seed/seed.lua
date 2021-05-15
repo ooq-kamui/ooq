@@ -22,7 +22,7 @@ Cls.add(Seed)
 
 function Seed.cre(p_pos, prm)
 
-	log.pp("Seed.cre", prm)
+	-- log.pp("Seed.cre", prm)
 
 	local t_Cls = Seed
 	local t_id = Sp.cre(t_Cls, p_pos, prm)
@@ -88,8 +88,7 @@ function Seed.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 	
-	-- death
-	if _s:per_trnsf(1, Humus) then return end
+	if _s:per_trnsf__humus(1) then return end
 
 	local grw_Cls, prm
 

@@ -31,7 +31,7 @@ function Ply_data.reizoko.__add(prm)
 
 	data[t_cls][t_name] = data[t_cls][t_name] + 1
 
-	Se.pst_ply("psh")
+	-- Se.pst_ply("psh")
 end
 
 function Ply_data.reizoko.__new()

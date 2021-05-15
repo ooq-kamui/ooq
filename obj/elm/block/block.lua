@@ -64,10 +64,10 @@ function Block.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 	
-	_s:trnsf_tile()
+	_s:trnsf__tile()
 end
 
-function Block.trnsf_tile(_s)
+function Block.trnsf__tile(_s)
 	
 	if _s._hldd_id then return end
 
@@ -78,7 +78,7 @@ function Block.trnsf_tile(_s)
 	or Tile.is_elv(  foot_o_tile)
 	) then return end
 	
-	_s._is_trnsf_tile = _.t
+	_s._is_trnsf__tile = _.t
 	_s:del()
 end
 
@@ -94,7 +94,7 @@ function Block.final(_s)
 	Sp    .final(_s)
 	Hldabl.final(_s)
 
-	if _s._is_trnsf_tile then
+	if _s._is_trnsf__tile then
 		_s:tile__(_s._tile)
 	end
 end

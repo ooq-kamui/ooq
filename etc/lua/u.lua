@@ -67,10 +67,12 @@ end
 
 function u.eq(val1, val2)
 
-	local ret = _.f
+	local ret
 
 	if val1 == val2 then
 		ret = _.t
+	else
+		ret = _.f
 	end
 	return ret
 end

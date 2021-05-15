@@ -48,8 +48,7 @@ function Dryleaf.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- death
-	_s:per_trnsf(1 / 30 * 100, Humus)
+	_s:per_trnsf__humus(1 / 30 * 100)
 
 end
 

@@ -24,31 +24,20 @@ function p.Shop_flower.init(_s, parent_gui)
 	_s._itm_pitch   = 75
 	_s._dsp_idx_max =  5
 
-	local flower = ar.key(Mstr.flower)
-	-- log.pp("shop_flower", flower)
-	_s:itm__by_ar_lim(flower)
-
+	_s:itm__by_ar_lim(ar.key(Mstr.flower))
 	_s:nd__("ply_data_gold")
-
-	-- log.pp("shop flower", Mstr.flower)
 	
-	local node, price
+	local node
 	for idx, name in pairs(_s._itm) do
-
-		-- log._("shop flower init", idx, name)
 		
 		node = _s:itm_clone()
 		
-		-- seed
 		nd.txtr__(node[_s:lb("icn")], "seed")
-		nd.anm__(node[_s:lb("icn")], "seed001")
-		
-		-- flower
-		nd.anm__(node[_s:lb("flower")], name)
-		
-		-- price
-		price = Mstr.flower[name].price
-		nd.txt__(node[_s:lb("price")], price)
+		nd.anm__( node[_s:lb("icn")], "seed001")
+		nd.anm__( node[_s:lb("flower")], name)
+		nd.txt__( node[_s:lb("price" )], Mstr.flower[name].price)
+
+		nd.enbl__x(node[_s:lb("arw_lr")])
 	end
 end
 

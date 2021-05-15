@@ -575,7 +575,7 @@ function Plychara.itm_use(_s)
 
 	elseif itm == "nokogiri"   then
 		if #_s._clsn.tree > 0 then
-			pst.scrpt(_s._clsn.tree[1], "trnsf_wood")
+			pst.scrpt(_s._clsn.tree[1], "trnsf__wood")
 		end
 	elseif itm == "wand_fire"  then
 		pst.scrpt(_s:fairy_id(), "fire")

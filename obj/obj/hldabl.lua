@@ -24,7 +24,6 @@ function Hldabl.hldd__o(_s, prm)
 	
 	_s._hldd_id  = prm.hldd_id
 	_s._hldd_idx = prm.hldd_idx
-	-- log._("hldabl.hld__o", _s._hldd_id, _s._hldd_idx)
 	
 	_s:anm_cancel_pos()
 	
@@ -40,8 +39,8 @@ function Hldabl.hldd__o(_s, prm)
 
 	local z = - 0.01
 	local t_pos = _s:hldd_pos()
+	log._("Hldabl.hldd__o", t_pos, _s._hldd_id)
 	_s:parent__(_s:plychara_id(), z, t_pos)
-	-- log._("hldabl hldd__o pos", _s:pos())
 end
 
 function Hldabl.hldd_pos(_s)
@@ -55,13 +54,14 @@ function Hldabl.hldd_pos(_s)
 	end
 
 	local y
-	if ar.inHa(_s:cls(), {"kagu"}) then
+	if ar.in_(_s:cls(), {"kagu"}) then
 		y = _s:foot_dst_i()
 	else
 		y = Map.sqh
 	end
 
 	local t_pos = n.vec(x, y)
+	-- log._("hldd_pos", t_pos)
 	return t_pos
 end
 

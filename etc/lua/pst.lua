@@ -40,7 +40,6 @@ function pst.parent__(t_id, p_id, z, p_pos)
 
 	id.prp__(t_id, "_parent_id", p_id)
 
-	-- pos
 	if p_pos then pst.pos__(t_id, p_pos) end
 end
 
@@ -63,3 +62,4 @@ function pst.z__(p_id, z)
 	z = z or 0
 	pst.scrpt(p_id, "z__", {z = z})
 end
+
