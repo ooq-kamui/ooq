@@ -907,15 +907,17 @@ end
 function Plychara.to_doorwrp(_s, doorwrp_id)
 
 	local t_pos = id.pos(doorwrp_id)
-
 	pst.scrpt(Sys.cmr_id(), "pos__anm", {pos = t_pos})
 
 	local fnc = function ()
 		_s:pos__(t_pos)
 	end
-	local hndl = timer.delay(anm.time.tint, _.f, fnc)
+	local time = 0 -- anm.time.tint
+	local hndl = timer.delay(time, _.f, fnc)
 
-	pst.scrpt(_s._map_id, "fade__oi")
+	pst.scrpt(doorwrp_id, "anim__opnclz")
+	pst.scrpt(_s._clsn.doorwrp[1], "anim__opnclz")
+	-- pst.scrpt(_s._map_id, "fade__oi")
 end
 
 function Plychara.anim__(_s, p_anim)

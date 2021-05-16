@@ -57,8 +57,17 @@ function Doorwrp.on_msg(_s, msg_id, prm, sndr_url)
 	Sp    .on_msg(_s, msg_id, prm, sndr_url)
 	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	
-	if ha.eq(msg_id, "opn") then
+	if     ha.eq(msg_id, "opn"         ) then
 		_s:opn()
+
+	elseif ha.eq(msg_id, "anim__opnclz") then
+		_s:anim__opnclz()
+
+	elseif ha.eq(msg_id, "animation_done") then
+
+		if ha.eq(prm.id, _s._name.."-opnclz") then
+			_s:anim__("stand")
+		end
 	end
 end
 
@@ -84,5 +93,10 @@ function Doorwrp.anim__(_s, p_anim)
 
 	local t_anim = _s._name.."-"..p_anim
 	Sp.anim__(_s, t_anim)
+end
+
+function Doorwrp.anim__opnclz(_s)
+
+	_s:anim__("opnclz")
 end
 

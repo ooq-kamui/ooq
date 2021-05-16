@@ -1,6 +1,9 @@
 log.scrpt("p.shop_kagu_itm.lua")
 
-p.Shop_kagu_itm = {}
+p.Shop_kagu_itm = {
+
+	stand = {"mgcpot", "mgccrcl", "trmpln", "parasail", "doorwrp"},
+}
 
 -- static
 
@@ -30,12 +33,11 @@ function p.Shop_kagu_itm.init(_s, parent_gui)
 	_s:nd__("ply_data_gold")
 	
 	local node, name, anim, price
-	local stand = {"mgcpot", "mgccrcl", "trmpln", "parasail"}
 	for idx, cls in pairs(_s._itm) do
 		
 		name = cls.."001"
 
-		if ar.in_(cls, stand) then
+		if ar.in_(cls, p.Shop_kagu_itm.stand) then
 			anim = name.."-stand"
 		else
 			anim = name

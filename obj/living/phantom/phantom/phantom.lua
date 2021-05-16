@@ -2,7 +2,7 @@ log.scrpt("phantom.lua")
 
 Phantom = {
 	act_intrvl_time = 10,
-	name_idx_max = 1,
+	name_idx_max    =  1,
 }
 Phantom.cls = "phantom"
 Phantom.fac = Obj.fac..Phantom.cls

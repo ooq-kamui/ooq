@@ -32,28 +32,6 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm200x50_g"
-  images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm200x50_g.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  playback: PLAYBACK_NONE
-  fps: 0
-  flip_horizontal: 0
-  flip_vertical: 0
-}
-animations {
-  id: "itm140x40_bl"
-  images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm140x40_bl.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  playback: PLAYBACK_NONE
-  fps: 0
-  flip_horizontal: 0
-  flip_vertical: 0
-}
-animations {
   id: "itm150x40_gl"
   images {
     image: "/assets/gui/txtr/atlas/itm/img/itm150x40_gl.png"

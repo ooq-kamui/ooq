@@ -401,7 +401,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "item/itm220x50"
+  texture: "itm/itm220x50"
   id: "ply_data/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

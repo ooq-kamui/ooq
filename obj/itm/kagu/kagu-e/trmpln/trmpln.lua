@@ -68,7 +68,11 @@ end
 
 function Trmpln.on_msg(_s, msg_id, prm, sndr_url)
 
-	Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	local st
+
+	st = Sp    .on_msg(_s, msg_id, prm, sndr_url)
+	if st then return end
+
 	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	_s:on_msg_clsn(   msg_id, prm, sndr_url)
 

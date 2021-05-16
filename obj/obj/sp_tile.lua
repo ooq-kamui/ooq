@@ -10,7 +10,12 @@ function Sp.pos(_s)
 
 	local t_pos = id.pos(_s._id)
 
-	log.if_(num.is_nan(t_pos.x), "Sp.pos", t_pos, _s._cls)
+	local is_nan = num.is_nan(t_pos.x)
+	if is_nan then
+		log._("Sp.pos", t_pos, _s._cls)
+		_s:del()
+		return
+	end
 
 	return t_pos
 end
@@ -24,12 +29,6 @@ function Sp.pos_w(_s)
 	local t_pos = id.pos_w(_s._id)
 	return t_pos
 end
-
---[[
-function Sp.pos__add(_s, p_vec) -- old
-	_s:pos__pls(p_vec)
-end
---]]
 
 function Sp.pos__pls(_s, p_vec)
 	
@@ -51,6 +50,9 @@ function Sp.z__(_s, z)
 	z = z or 0
 
 	local t_pos = _s:pos()
+
+	if not t_pos then return end
+
 	t_pos.z = z
 	pos.pos__(t_pos)
 	_s._z = z
