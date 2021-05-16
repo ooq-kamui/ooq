@@ -20,12 +20,43 @@ function Map.tile__clr(_s)
 	end
 end
 
---
-
-function Map.tile__(_s, data)
+function Map.tile__save_data(_s, data)
 	
 	_s:tile_layer__("ground", data["ground"])
 	_s:tile_layer__("wall"  , data["wall"]  )
+end
+
+function Map.tile_2_save_data(_s)
+	
+	local tile = {}
+	tile["ground"] = _s:tile("ground")
+	tile["wall"]   = _s:tile("wall")
+	return tile
+end
+
+function Map.tile(_s, p_tilemap)
+
+	p_tilemap = p_tilemap or Map.tilemap_dflt
+
+	local tilemap_url = _s:tilemap_url(p_tilemap)
+	-- log._("tilemap_url", tilemap_url)
+	
+	local t_layer = p_tilemap
+
+	local tiles, x, y, tile
+	local rng_tilepos = _s:rng_tilepos(p_tilemap)
+
+	tiles = {} -- tiles[y][x]
+	for y = rng_tilepos.min.y, rng_tilepos.max.y do
+		tiles[int._2_str(y)] = {}
+		for x = rng_tilepos.min.x, rng_tilepos.max.x do
+			
+			tile = tilemap.get_tile(tilemap_url, t_layer, x, y)
+			tiles[int._2_str(y)][int._2_str(x)] = tile
+		end
+	end
+	
+	return tiles
 end
 
 function Map.tile_layer__(_s, p_tilemap, tiles) -- tiles[y][x]
@@ -61,37 +92,3 @@ function Map.rng_tilepos(_s, p_tilemap)
 	return _s._rng_tilepos
 end
 
--- 
-
-function Map.tile_2_save_data(_s)
-	
-	local tile = {}
-	tile["ground"] = _s:tile("ground")
-	tile["wall"]   = _s:tile("wall")
-	return tile
-end
-
-function Map.tile(_s, p_tilemap)
-
-	p_tilemap = p_tilemap or Map.tilemap_dflt
-
-	local tilemap_url = _s:tilemap_url(p_tilemap)
-	-- log._("tilemap_url", tilemap_url)
-	
-	local t_layer = p_tilemap
-
-	local tiles, x, y, tile
-	local rng_tilepos = _s:rng_tilepos(p_tilemap)
-
-	tiles = {} -- tiles[y][x]
-	for y = rng_tilepos.min.y, rng_tilepos.max.y do
-		tiles[int._2_str(y)] = {}
-		for x = rng_tilepos.min.x, rng_tilepos.max.x do
-			
-			tile = tilemap.get_tile(tilemap_url, t_layer, x, y)
-			tiles[int._2_str(y)][int._2_str(x)] = tile
-		end
-	end
-	
-	return tiles
-end

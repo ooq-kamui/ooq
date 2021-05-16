@@ -1,7 +1,18 @@
 animations {
-  id: "door001"
+  id: "doorwrp001-stand"
   images {
-    image: "/assets/obj/itm/kagu/kagu-s/doorwrp/img/door.png"
+    image: "/assets/obj/itm/kagu/kagu-s/doorwrp/img/doorwrp001.stand.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "doorwrp001-opn"
+  images {
+    image: "/assets/obj/itm/kagu/kagu-s/doorwrp/img/doorwrp001.opn.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

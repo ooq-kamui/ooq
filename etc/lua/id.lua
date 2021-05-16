@@ -40,14 +40,17 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
-function id.clsHa(p_id) -- old
+function id.clsHa(p_id) -- old rest
 
 	return id.prp(p_id, "_clsHa")
 end
 
 function id.pos(p_id)
 	
-	if not p_id then return end
+	if not p_id then
+		log._("id.pos", p_id)
+		return
+	end
 	
 	local t_pos = go.get_position(p_id)
 	return t_pos

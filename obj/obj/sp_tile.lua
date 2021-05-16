@@ -9,7 +9,9 @@ log.scrpt("sp_tile.lua")
 function Sp.pos(_s)
 
 	local t_pos = id.pos(_s._id)
-	-- log._("Sp.pos", t_pos, _s._id)
+
+	log.if_(num.is_nan(t_pos.x), "Sp.pos", t_pos, _s._cls)
+
 	return t_pos
 end
 
@@ -23,9 +25,11 @@ function Sp.pos_w(_s)
 	return t_pos
 end
 
+--[[
 function Sp.pos__add(_s, p_vec) -- old
 	_s:pos__pls(p_vec)
 end
+--]]
 
 function Sp.pos__pls(_s, p_vec)
 	
@@ -48,8 +52,6 @@ function Sp.z__(_s, z)
 
 	local t_pos = _s:pos()
 	t_pos.z = z
-	-- log._("sp z__", z)
-
 	pos.pos__(t_pos)
 	_s._z = z
 end

@@ -30,24 +30,21 @@ function Sp.cre(p_Cls, p_pos, p_prm, p_scl)
 	if ha.is_emp(map_id) then log._("Sp.cre map_id is_emp") return end
 	
 	local t_prm = {}
-
 	t_prm._game_id   = game_id
 	t_prm._map_id    = map_id
 	t_prm._parent_id = map_id
 
 	local z_dflt = 0.2
-	t_prm._z = p_Cls.z or z_dflt
 	p_pos.z  = p_Cls.z or z_dflt
+	t_prm._z = p_Cls.z or z_dflt
 	
 	if p_scl == 0 then p_scl = 0.2 end
 	
+	-- log.if_(p_Cls.cls == "fruit", "Sp.cre", p_pos)
+
 	local t_id = fac.cre(t_url, p_pos, nil, t_prm, p_scl)
-
 	p_prm._cls  = p_Cls.cls
-
 	pst.scrpt(t_id, "__init", p_prm)
-
-	-- pst.scrpt(t_id, "scl_anm__1")
 	return t_id
 end
 
@@ -134,13 +131,13 @@ function Sp.url(_s, cmp)
 	return t_url
 end
 
-function Sp.trnsf(_s, p_Cls, prm, scl)
+function Sp.trnsf(_s, p_Cls, prm, p_scl)
 
 	if _s._hldd_id then return end
 	
 	local t_pos = _s:pos_w()
 	
-	local t_id = p_Cls.cre(t_pos, prm, scl)
+	local t_id = p_Cls.cre(t_pos, prm, p_scl)
 	
 	_s:del()
 

@@ -2,7 +2,7 @@ log.scrpt("doorwrp.lua")
 
 Doorwrp = {
 	act_intrvl_time = 60,
-	name_idx_max = 1,
+	name_idx_max    =  1,
 	z = 0.1,
 
 	weight = 2,
@@ -30,6 +30,8 @@ end
 
 function Doorwrp.__init(_s, prm)
 	
+	if not prm._anim then prm._anim = "stand" end
+
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 end
@@ -69,6 +71,18 @@ end
 -- method
 
 function Doorwrp.opn(_s)
-	fac.cre("#fac_doorwrp_gui")
+
+	local t_id = fac.cre("#fac_doorwrp_gui")
+	pst.gui(t_id, "gui:prp__", {_slfobj_id = _s._id})
+
+	-- _s:anim__("opn")
+end
+
+function Doorwrp.anim__(_s, p_anim)
+
+	p_anim = p_anim or "stand"
+
+	local t_anim = _s._name.."-"..p_anim
+	Sp.anim__(_s, t_anim)
 end
 

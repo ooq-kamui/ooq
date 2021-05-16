@@ -92,6 +92,10 @@ function ha.eq(val, key)
 	end
 end
 
+function ha.eq_cpr(msg_id)
+	return ha.eq(msg_id, "contact_point_response")
+end
+
 function ha.emp()
 	return ha._emp
 end

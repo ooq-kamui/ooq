@@ -63,7 +63,6 @@ end
 function p.Shop_kagu.decide(_s)
 	
 	if not _s:is_item_buyabl() then
-		Se.pst_ply("back")
 		_s:cursor_itm_iyaiya()
 	else
 		_s:exe()

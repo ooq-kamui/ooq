@@ -9,7 +9,7 @@ fonts {
 }
 textures {
   name: "doorwrp"
-  texture: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.tilesource"
+  texture: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.atlas"
 }
 textures {
   name: "base"
@@ -163,7 +163,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "doorwrp/doorwrp001"
+  texture: "doorwrp/doorwrp001-stand"
   id: "img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

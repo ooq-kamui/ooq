@@ -8,11 +8,13 @@ Ev = {
 -- static
 
 function Ev._(name)
+
 	Ev.scnro = Scnro[name]
 	pst.scrpt(Ev.id, "start")
 end
 
 function Ev.cre()
+
 	local url = "/sys#ev"
 	local t_id = fac.cre(url)
 	Ev.id = t_id

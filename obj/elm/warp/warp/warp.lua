@@ -11,7 +11,7 @@ end
 
 function Warp.on_msg_clsn(_s, msg_id, prm, sndr_url)
 	
-	if not ha.eq(msg_id, "contact_point_response") then return end
+	if not ha.eq_cpr(msg_id) then return end
 	
 	if _s._hldd_id then return end
 

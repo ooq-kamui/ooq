@@ -149,3 +149,10 @@ Scnro.game_start = {
 	--]]
 }
 
+Scnro.game_continue = {
+	function ()
+		D.c("sanae")
+		D.x("つづきだよ")
+	end,
+}
+

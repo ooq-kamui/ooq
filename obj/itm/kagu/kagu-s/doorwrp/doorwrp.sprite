@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.tilesource"
-default_animation: "doorwrp001"
+tile_set: "/assets/obj/itm/kagu/kagu-s/doorwrp/doorwrp.atlas"
+default_animation: "doorwrp001-stand"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

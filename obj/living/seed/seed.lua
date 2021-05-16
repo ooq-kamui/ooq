@@ -110,7 +110,8 @@ function Seed.act_intrvl(_s, dt)
 				_bear_cls  = _s._bear_cls,
 				_bear_name = _s._bear_name,
 			}
-			local t_id = _s:trnsf(grw_Cls, prm)
+			local t_id = _s:trnsf(grw_Cls, prm, 0.2)
+			pst.scrpt(t_id, "anm_scl__1")
 		end
 	else
 		dice100.throw()

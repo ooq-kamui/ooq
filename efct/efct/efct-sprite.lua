@@ -15,8 +15,7 @@ function Efct_sprite.init(_s)
 	_s:w__0()
 	_s:fade__i()
 
-	-- del
-	_s:life__()
+	_s:life__() -- del
 
 	_s:z__()
 	-- log._("efct init z", _s:z())

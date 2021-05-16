@@ -206,6 +206,15 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "obj_cnt_all"  ) then
 		_s:obj_cnt_all()
+
+	elseif ha.eq(msg_id, "fade__i") then
+		_s:fade__i(nil, prm.delay)
+
+	elseif ha.eq(msg_id, "fade__o") then
+		_s:fade__o(nil, prm.delay)
+
+	elseif ha.eq(msg_id, "fade__oi") then
+		_s:fade__oi(nil, prm.delay)
 	end
 end
 
@@ -230,7 +239,7 @@ function Map.load(_s, file_idx)
 
 	if not save_data then return end
 	
-	_s:tile__(save_data["tile"])
+	_s:tile__save_data(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
 	
 	Msg.s("load complete")
@@ -384,6 +393,40 @@ function Map.dstrct_mv_rng_pos__init(_s)
 	_s._dstrct_mv_rng_pos_max = _s._dstrct_mv_rng_pos.max
 	
 	return _s._dstrct_mv_rng_pos
+end
+
+-- anm
+
+function Map.fade__i(_s, fnc, delay)
+
+	delay = delay or 0
+
+	anm.fade__i(_s._id, "ground", nil, delay, fnc)
+end
+
+function Map.fade__o(_s, fnc, delay)
+
+	delay = delay or 0
+
+	anm.fade__o(_s._id, "ground", nil, delay, fnc)
+end
+
+function Map.fade__oi(_s, fnc, delay)
+
+	local t_anm = {}
+	t_anm[1] = function ()
+		_s:fade__o(t_anm[2])
+	end
+	t_anm[2] = function ()
+		if fnc then
+			fnc()
+		end
+		t_anm[3]()
+	end
+	t_anm[3] = function ()
+		_s:fade__i()
+	end
+	t_anm[1]()
 end
 
 -- static

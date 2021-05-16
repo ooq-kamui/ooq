@@ -2,7 +2,7 @@ log.scrpt("flpy.lua")
 
 Flpy ={
 	act_intrvl_time = 50,
-	name_idx_max = 1,
+	name_idx_max    =  1,
 	z = 0.1,
 }
 Flpy.cls = "flpy"
@@ -53,7 +53,7 @@ function Flpy.on_msg(_s, msg_id, prm, sndr_url)
 	Sp    .on_msg(_s, msg_id, prm, sndr_url)
 	Hldabl.on_msg(_s, msg_id, prm, sndr_url)
 	
-	if     ar.inHa(msg_id, {"opn"}) then
+	if ar.inHa(msg_id, {"opn"}) then
 		_s:opn()
 	end
 end
@@ -64,12 +64,12 @@ function Flpy.final(_s)
 	Hldabl.final(_s)
 end
 
--- -- method
+-- method
 
 function Flpy.opn(_s)
 	
-	local gui_id = fac.cre("#fac_flpy_gui")
+	local t_id = fac.cre("#fac_flpy_gui")
 	local ply_slt_idx = _s:ply_slt_idx()
-	pst.gui(gui_id, "gui:prp__", {ply_slt_idx = ply_slt_idx})
+	pst.gui(t_id, "gui:prp__", {_ply_slt_idx = ply_slt_idx})
 end
 

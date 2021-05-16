@@ -25,8 +25,10 @@ function g.Gui.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "gui:prp__") then
 		_s:prp__(prm)
 		
+	elseif ha.eq(msg_id, "prt:slfobj__") then
+		_s:actv_prt_slfobj__()
+		
 	elseif ha.eq(msg_id, "key"      ) then
-		-- log.pp("g.gui on_msg key", prm)
 		_s:actv_prt_key_2_act(prm)
 	end
 end
@@ -102,7 +104,6 @@ function g.Gui.actv_prt__psh(_s, prt_lb)
 	_s:actv_prt_actv__o()
 end
 
--- function g.Gui.actv_prt__pop(_s, prt_lb)
 function g.Gui.actv_prt__pop(_s)
 
 	if #_s._actv_prt <= 0 then return end
@@ -116,7 +117,6 @@ end
 function g.Gui.actv_prt_actv__x(_s)
 	
 	local actv_prt = _s:actv_prt()
-	-- log.pp("actv_prt_actv__x actv_prt", actv_prt)
 	
 	if not actv_prt then return end
 	
@@ -133,8 +133,8 @@ function g.Gui.actv_prt_actv__o(_s)
 end
 
 function g.Gui.actv_prt_opn(_s, prm)
+
 	local actv_prt = _s:actv_prt()
-	-- log.pp("activ_prt", actv_prt)
 	actv_prt:opn(prm)
 end
 
@@ -149,16 +149,16 @@ function g.Gui.actv_prt_key_2_act(_s, prm)
 
 	if not actv_prt then return end
 	
-	-- log.pp("g.gui actv_prt_key_2_act", prm)
 	actv_prt:key_2_act(prm)
 end
 
 -- confirm
 
 function g.Gui.confirm(_s)
-	local confirm
+
 	if not _s._confirm then return end
-	confirm = _s._confirm
+
+	local confirm = _s._confirm
 	return confirm
 end
 
@@ -180,8 +180,16 @@ function g.Gui.focus__(_s, val)
 end
 
 function g.Gui.prp__(_s, prm)
+
 	for key, val in pairs(prm) do
-		_s["_"..key] = val
+		_s[key] = val
+		-- _s["_"..key] = val
 	end
+end
+
+function g.Gui.actv_prt_slfobj__(_s)
+
+	local actv_prt = _s:actv_prt()
+	actv_prt:slfobj__()
 end
 

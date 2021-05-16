@@ -206,6 +206,12 @@ function Cmr.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "target_pos__" ) then
 		_s:target_pos__(prm.pos)
 
+	elseif ha.eq(msg_id, "pos__anm") then
+		_s:pos__anm(prm.pos)
+
+	elseif ha.eq(msg_id, "pos__anm_plychara") then
+		_s:pos__anm_plychara()
+
 	elseif ha.eq(msg_id, "__game_start" ) then
 		_s:__game_start()
 
@@ -273,6 +279,25 @@ function Cmr.pos__plychara(_s)
 	
 	local t_pos = _s:plychara_pos()
 	_s:pos__(t_pos)
+end
+
+function Cmr.pos__anm(_s, p_pos)
+
+	p_pos = p_pos or _s:plychara_pos()
+
+	if not p_pos then return end
+
+	local time = 2
+	anm.pos__(_s._id, p_pos, time)
+end
+
+function Cmr.pos__anm_plychara(_s)
+
+	t_pos = t_pos or _s:plychara_pos()
+
+	if not t_pos then return end
+
+	anm.pos__(_s._id, t_pos)
 end
 
 function Cmr.pos__chara_rnd(_s)
@@ -364,7 +389,9 @@ end
 function Cmr.zoom__anm(_s, time)
 
 	time = time or 2
-	go.animate(_s._id, "position.z", es.fwd, _s:target_z(), es.sin_o, time, 0)
+
+	-- go.animate(_s._id, "position.z", es.fwd, _s:target_z(), es.sin_o, time, 0)
+	anm._(_s._id, "position.z", es.fwd, _s:target_z(), es.sin_o, time, 0)
 end
 
 -- plychara

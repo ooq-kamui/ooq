@@ -1,53 +1,59 @@
 log.scrpt("gui.script")
 
 function on_message(_s, msg_id, prm, sndr_url)
-	-- log._("gui on_message", msg_id)
 	
 	if     ha.eq(msg_id, "del" ) then
+
 		go.delete()
 
 	elseif ha.eq(msg_id, "save") then
+
 		pst.scrpt(Sys.game_id(), "save")
 
 	elseif ha.eq(msg_id, "buy" ) then
+
 		local t_pos = Game.cloud_pos()
 		local t_Cls = Cls.Cls(prm._cls)
 		prm._cls = nil
 		t_Cls.cre(t_pos, prm)
 		
 	elseif ha.eq(msg_id, "to_doorwrp"     ) then
+
 		local plychara_id = Game.plychara_id()
 		pst.scrpt(plychara_id, "to_doorwrp", prm)
 		
 	elseif ha.eq(msg_id, "plychara_itm_selected__") then
+
 		local plychara_id = Game.plychara_id()
 		pst.scrpt(plychara_id, "itm_selected__", prm)
 
 	elseif ha.eq(msg_id, "food_cre") then
+
 		Food.cre_by_cls(nil, prm)
 
 	elseif ha.eq(msg_id, "map_pause__"    ) then
+
 		pst.scrpt(Game.map_id(), "pause__", prm)
 
 	elseif ha.eq(msg_id, "msg_base_pos__" ) then
-		-- log._("gui msg_base_pos__")
+
 		Msg.base_pos__()
 
 	elseif ha.eq(msg_id, "msg_base_pos__d") then
-		-- log._("gui msg_base_pos__d")
+
 		Msg.base_pos__d()
 
 	elseif ha.eq(msg_id, "game_dia__clr"  ) then
+
 		local game_id = Game.id()
 		pst.scrpt(game_id, "dia__clr")
 
 	elseif ha.eq(msg_id, "inp_focus__t"   ) then
-		-- log._("gui inp_focus__t")
+
 		local inp_id = Sys.inp_id()
 		pst.scrpt(inp_id, "focus__t", prm)
 
 	elseif ha.eq(msg_id, "inp_focus__f"   ) then
-		-- log._("gui inp_focus__f")
 		local inp_id = Sys.inp_id()
 		pst.scrpt(inp_id, "focus__f")
 	end

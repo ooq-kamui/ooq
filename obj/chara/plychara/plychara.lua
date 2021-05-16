@@ -411,12 +411,11 @@ end
 
 function Plychara.on_msg_clsn(_s, msg_id, prm, sndr_url)
 
-	if     ha.eq(msg_id, "collision_response")     then return _.t end
-	if not ha.eq(msg_id, "contact_point_response") then return     end
+	if     ha.eq(msg_id, "collision_response") then return _.t end
+	if not ha.eq_cpr(msg_id) then return end
 	
 	local t_id  = prm.other_id
-	-- log.pp("Plychara.on_msg_clsn", prm)
-		
+
 	if     ha.eq(prm.group, "chara"   ) then
 		_s:clsn__add("chara" , t_id)
 
@@ -464,7 +463,6 @@ function Plychara.hld_dir_h__sync(_s, dir_h)
 
 	if not ar.inHa(t_clsHa, Plychara.hld_dir_sync_cls) then return end
 
-	-- log._("plychara hld_dir_h__sync")
 	dir_h = dir_h or ha.de(_s._mv_dir_h_Ha)
 
 	pst.scrpt(t_id, "dir_h__", {dir_h = dir_h})
@@ -474,7 +472,7 @@ function Plychara.on_msg_mv(_s, msg_id, prm, sndr_url)
 	
 	if not ha.eq(msg_id, "mv") then return end
 
-	if     ar.in_(prm.dir, u.dir_h) then
+	if ar.in_(prm.dir, u.dir_h) then
 		
 		_s._is_moving_h = _.t
 		
@@ -539,26 +537,17 @@ end
 
 function Plychara.menu_opn(_s)
 
-	local is_icn_opn
-
-	local t_clss = {"reizoko", "pc", "shelf", "doorwrp"}
+	local t_clss = {"reizoko", "pc", "shelf", "doorwrp", "flpy"}
 
 	for idx, t_cls in pairs(t_clss) do
-		if     #_s._clsn[t_cls] >= 1 then
+		if #_s._clsn[t_cls] >= 1 then
 			pst.scrpt(_s._clsn[t_cls][1], "opn")
-			is_icn_opn = _.t
-			break
+			return
 		end
 	end
 
-	if not is_icn_opn and #_s._clsn.flpy >= 1 then
-		pst.scrpt(_s._clsn.flpy[1], "opn")
-		is_icn_opn = _.t
-	end
-
-	if not is_icn_opn then
-		pst.scrpt(Game.id(), "bag_opn")
-	end
+	-- else
+	pst.scrpt(Game.id(), "bag_opn")
 end
 
 function Plychara.itm_use(_s)
@@ -918,8 +907,15 @@ end
 function Plychara.to_doorwrp(_s, doorwrp_id)
 
 	local t_pos = id.pos(doorwrp_id)
-	_s:pos__(t_pos)
-	pst.scrpt(Sys.cmr_id(), "pos__plychara")
+
+	pst.scrpt(Sys.cmr_id(), "pos__anm", {pos = t_pos})
+
+	local fnc = function ()
+		_s:pos__(t_pos)
+	end
+	local hndl = timer.delay(anm.time.tint, _.f, fnc)
+
+	pst.scrpt(_s._map_id, "fade__oi")
 end
 
 function Plychara.anim__(_s, p_anim)

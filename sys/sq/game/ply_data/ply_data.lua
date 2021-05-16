@@ -23,13 +23,11 @@ end
 
 function Ply_data.__save_data(data)
 
-	-- log._("Ply_data.__save_data ver"..data["ver"])
-
 	Ply_data.gold__(data["gold"])
 
-	Ply_data.reizoko.__save_data(data)
-	Ply_data.zu.__(data["zu"])
-	Ply_data.kzn.__save_data(data["kzn"])
+	Ply_data.reizoko.__save_data(data["reizoko"])
+	Ply_data.zu.__(              data["zu"     ])
+	Ply_data.kzn.__save_data(    data["kzn"    ])
 end
 
 -- static public

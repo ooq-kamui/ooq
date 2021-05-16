@@ -120,15 +120,6 @@ end
 
 -- method
 
-function Chara.anim__(_s, p_anim)
-
-	p_anim = p_anim or "walk"
-
-	local t_anim = _s._name.."-"..p_anim
-
-	Sp.anim__(_s, t_anim)
-end
-
 function Chara.act_intrvl__(_s, dt)
 
 	local is_loop
@@ -139,6 +130,14 @@ end
 function Chara.act_intrvl_time__(_s)
 
 	_s._act_intrvl_time = _s:Cls().act_intrvl_time + rnd.int(0, 3)
+end
+
+function Chara.anim__(_s, p_anim)
+
+	p_anim = p_anim or "walk"
+
+	local t_anim = _s._name.."-"..p_anim
+	Sp.anim__(_s, t_anim)
 end
 
 function Chara.say(_s, str)

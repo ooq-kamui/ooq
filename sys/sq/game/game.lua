@@ -15,6 +15,7 @@ function Game.cre(ply_slt_idx)
 end
 
 function Game.cre_new(ply_slt_idx)
+
 	local t_id = Game.cre(ply_slt_idx)
 	pst._(t_id, "new")
 	return t_id
@@ -150,23 +151,16 @@ function Game.init(_s)
 	extend._(_s, Game)
 
 	_s._id = id._()
-	-- log._("Game.init 1")
 
-	-- gui
-	_s._bag_id = fac.cre("#fac_bag_gui")
-	-- log._("Game.init 2")
+	_s._bag_id = fac.cre("#fac_bag_gui") -- gui
 	
 	Ev.cre()
-	-- log._("Game.init 3")
 
 	_s._ply_start_ts = ts.now()
-	-- log._("Game.init 4")
 
 	_s._act_intrvl = 0
-	-- log._("Game.init 5")
 
 	_s:bgm_ply_rnd()
-	-- log._("Game.init 6")
 end
 
 function Game.upd(_s, dt)
@@ -226,15 +220,12 @@ function Game.on_msg(_s, msg_id, prm, sndr_url)
 		_s:save()
 
 	elseif ha.eq(msg_id, "dia__opn") then
-		-- log._("game dia__opn")
 		_s:dia__opn()
 
 	elseif ha.eq(msg_id, "dia__clr") then
-		-- log._("game dia__clr")
 		_s:dia__clr()
 
 	elseif ha.eq(msg_id, "map_dstrct__mv") then
-		-- log._("game map_dstrct__mv", prm.dir, prm.plychara_dir)
 		_s:map_dstrct__mv(prm.dir, prm.plychara_dir)
 
 	elseif ha.eq(msg_id, "map_dstrct__ch_map_cre") then
@@ -243,19 +234,14 @@ function Game.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Game.del(_s)
-	-- log._("game del")
 
 	_s:map__del()
 	_s:sky__del()
 	
-	-- Ply_data.clr()
 	Ply_data.__clr()
 
-	-- gui del
-	-- go.delete(_s._bag_id)
 	id.del(_s._bag_id)
 	
-	-- go.delete()
 	id.del()
 
 	log._("game del fin")
@@ -267,7 +253,6 @@ end
 -- game
 
 function Game.new(_s)
-	-- log._("game new()")
 
 	_s:ply_data__new()
 	
@@ -292,6 +277,7 @@ function Game.continue(_s, ply_data_file_idx)
 	local plychara_pos = data["plyr"]["pos"]
 	
 	_s:map__cre(dstrct)
+
 	_s:sky__cre()
 
 	_s:map_cloud__cre()
@@ -299,14 +285,14 @@ function Game.continue(_s, ply_data_file_idx)
 	_s:map_fairy__cre()
 	
 	pst.scrpt(Sys.cmr_id(), "__game_start")
+
+	_s:continue_event()
 end
 
 function Game.save(_s)
-	-- log._("game save")
 
 	if not _s._ply_slt_idx then return end
 
-	-- save
 	_s:ply_data__save()
 	_s:map__save()
 end
@@ -336,10 +322,8 @@ function Game.map__cre(_s, dstrct)
 
 	_s._dstrct = dstrct or n.vec(0, 0)
 
-	local clct    = Game.map_clct(_s._dstrct)
-	_s._map_id    = Map.cre(clct)
-	-- log._("map__cre", _s._map_id)
-	
+	local clct = Game.map_clct(_s._dstrct)
+	_s._map_id = Map.cre(clct)
 	return _s._map_id
 end
 
@@ -571,5 +555,10 @@ function Game.new_event(_s)
 	-- Ev._("tree_fall")
 	-- Ev._("fire_fall")
 	-- Ev._("chara_fall")
+end
+
+function Game.continue_event(_s)
+
+	Ev._("game_continue")
 end
 

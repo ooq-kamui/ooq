@@ -72,3 +72,9 @@ function num._2_str(val, dgt)
 	return str
 end
 
+function num.is_nan(val)
+
+	local ret = ( val ~= val )
+	return ret
+end
+

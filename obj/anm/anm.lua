@@ -5,7 +5,7 @@ anm.time = {}
 anm.time.scl  = 1
 anm.time.pos  = 0.2
 anm.time.tint = 1
-anm.time.color = anm.time.tint -- old
+-- anm.time.color = anm.time.tint -- old
 
 -- scl
 
@@ -34,7 +34,7 @@ end
 
 function anm.fade__o(p_id, p_cmp, time, delay, fnc)
 
-	time = time or anm.time.color
+	time = time or anm.time.tint
 
 	local w = 0
 	anm.fade__(p_id, p_cmp, w, time, delay, fnc)
@@ -42,7 +42,7 @@ end
 
 function anm.fade__i(p_id, p_cmp, time, delay, fnc)
 
-	time = time or anm.time.color
+	time = time or anm.time.tint
 
 	local w = 1
 	anm.fade__(p_id, p_cmp, w, time, delay, fnc)
@@ -59,7 +59,7 @@ function anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 	if not p_cmp then return end
 	if not p_w   then return end
 
-	time  = time  or anm.time.color
+	time  = time  or anm.time.tint
 	delay = delay or 0
 
 	local t_url = url._(p_id, p_cmp)
@@ -87,7 +87,6 @@ function anm.pos_y__anm(p_id, p_y, time)
 end
 
 function anm._(t_url, prp, plymode, val, esing, time, delay, fnc) -- alias
-	-- log._("anm._")
 
 	delay = delay or 0
 

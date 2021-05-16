@@ -102,23 +102,23 @@ end
 
 function p.Prt_cursor.cursor__plt_anm(_s)
 
-	local pos = _s:cursor_pos()
+	local t_pos = _s:cursor_pos()
 	local time = 0.1
-	nd.anm.mv(_s._nd.cursor, pos, nil, time)
+	nd.anm.mv(_s._nd.cursor, t_pos, nil, time)
 	Se.pst_ply("cursor_mv")
 end
 
 function p.Prt_cursor.cursor_pos__(_s)
 	
-	local pos = _s:cursor_pos()
-	nd.pos__(_s._nd.cursor, pos)
+	local t_pos = _s:cursor_pos()
+	nd.pos__(_s._nd.cursor, t_pos)
 end
 
 function p.Prt_cursor.cursor_pos(_s)
 	
-	local pos = _s:itm_pos_by_dsp_idx(_s._cursor_dsp_idx)
-	pos = pos + _s._cursor_pos_df_itm
-	return pos
+	local t_pos = _s:itm_pos_by_dsp_idx(_s._cursor_dsp_idx)
+	t_pos = t_pos + _s._cursor_pos_df_itm
+	return t_pos
 end
 
 function p.Prt_cursor.cursor_dsp__(_s, val)
@@ -136,6 +136,7 @@ end
 -- cursor itm
 
 function p.Prt_cursor.cursor_itm_idx(_s)
+
 	return _s._dsp1_itm_idx + _s._cursor_dsp_idx - 1
 end
 
@@ -148,23 +149,30 @@ function p.Prt_cursor.cursor_itm(_s)
 end
 
 function p.Prt_cursor.cursor_itm_nd_ar(_s)
+
 	local cursor_itm_idx = _s:cursor_itm_idx()
 	local t_nd_ar = _s._nd.itm[cursor_itm_idx]
 	return t_nd_ar
 end
 
 function p.Prt_cursor.cursor_itm_nd(_s, nd_id)
+
 	local t_nd_ar = _s:cursor_itm_nd_ar()
 	local t_nd = t_nd_ar[_s:lb(nd_id)]
 	return t_nd
 end
 
 function p.Prt_cursor.cursor_itm_iyaiya(_s)
+
 	local t_nd = _s:cursor_itm_nd("itm")
 	nd.anm.iyaiya(t_nd)
+
+	Se.pst_ply("back")
 end
 
 function p.Prt_cursor.cursor_itm_poyon(_s, fin)
+
 	local t_nd = _s:cursor_itm_nd("itm")
 	nd.anm.poyon(t_nd, fin)
 end
+

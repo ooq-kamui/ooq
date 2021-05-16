@@ -49,7 +49,8 @@ function Ply_data.reizoko.__save_data(data)
 
 	Ply_data.reizoko.__clr()
 
-	for t_cls, t_name_ar in pairs(data["reizoko"]) do
+	-- for t_cls, t_name_ar in pairs(data["reizoko"]) do
+	for t_cls, t_name_ar in pairs(data) do
 
 		for t_name, cnt in pairs(t_name_ar) do
 

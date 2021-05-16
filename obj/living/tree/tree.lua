@@ -3,7 +3,7 @@ log.scrpt("tree.lua")
 Tree = {
 
 	-- act_intrvl_time =  60,
-	act_intrvl_time =  20,
+	act_intrvl_time =  20, -- tst
 	name_idx_max    = 100,
 
 	z = 0.05,
@@ -109,7 +109,6 @@ function Tree.bear(_s)
 	end
 	
 	local t_pos = _s:pos_w() + n.vec(0, Map.sqh)
-	-- log._("bear fruit cre")
 
 	local t_id = bear_Cls.cre(t_pos, {_name = _s._bear_name}, 0.2)
 	pst.scrpt(t_id, "bear__o", {tree_id = _s._id})

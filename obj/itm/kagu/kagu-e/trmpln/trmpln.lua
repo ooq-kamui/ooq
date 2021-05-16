@@ -84,17 +84,13 @@ function Trmpln.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function Trmpln.on_msg_clsn(_s, msg_id, prm, sndr_url)
-	
-	-- log._("trmpln on_msg_clsn", msg_id, prm.group)
 
-	if not ha.eq(msg_id, "contact_point_response") then return end
+	if not ha.eq_cpr(msg_id) then return end
 	
 	if _s._hldd_id then return end
 
 	local o_pos = prm.other_position
 	local o_id  = prm.other_id
-
-	-- log._("trmpln on_msg_clsn", prm.group)
 
 	if ar.inHa(prm.group, Trmpln.t_cls) then
 
@@ -107,7 +103,6 @@ function Trmpln.on_msg_clsn(_s, msg_id, prm, sndr_url)
 end
 
 function Trmpln.leapup_anim(_s)
-	-- log._("trmpln leapup_anim")
 
 	_s:anim__("trmpln001-leapup")
 	Se.pst_ply("leapup")

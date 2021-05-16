@@ -146,10 +146,7 @@ function p.Ply_data.decide(_s)
 	local itm_idx = _s:cursor_itm_idx()
 
 	if _s:is_emp_cursor_ply_data_thmb() then
-		
-		Se.pst_ply("back")
 		_s:cursor_itm_iyaiya()
-		
 	else
 		Se.pst_ply("forward")
 

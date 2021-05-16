@@ -50,8 +50,23 @@ function p.Doorwrp.opn(_s)
 end
 
 function p.Doorwrp.decide(_s)
+
 	local doorwrp_id = _s:cursor_itm()
-	-- log._("doorwrp decide doorwrp_id", doorwrp_id)
+
+	if u.eq(doorwrp_id, _s._parent_gui._slfobj_id) then
+		_s:cursor_itm_iyaiya()
+		return
+	end
+
 	pst._("#script", "to_doorwrp", {doorwrp_id = doorwrp_id})
+	-- _s._parent_gui._slfobj_id = doorwrp_id
+
+	_s:clz()
+end
+
+function p.Doorwrp.slfobj__(_s) -- use not
+	-- log._("p.Doorwrp.slfobj__", _s._parent_gui._slfobj_id)
+
+	-- _s:cursor_pos__()
 end
 
