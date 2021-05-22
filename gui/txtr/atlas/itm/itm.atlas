@@ -1,7 +1,7 @@
 animations {
-  id: "itm-ply_data-220x50"
+  id: "ply_data-itm"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm-ply_data-220x50.png"
+    image: "/assets/gui/txtr/atlas/itm/img/ply_data-itm.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -10,9 +10,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm-confirm-180x60"
+  id: "confirm-itm"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm-confirm-180x60.png"
+    image: "/assets/gui/txtr/atlas/itm/img/confirm-itm.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -21,9 +21,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm-ply_slt-200x50_p"
+  id: "ply_slt-itm"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm-ply_slt-200x50_p.png"
+    image: "/assets/gui/txtr/atlas/itm/img/ply_slt-itm.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -32,9 +32,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm-flpy-150x40_gl"
+  id: "flpy-itm"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm-flpy-150x40_gl.png"
+    image: "/assets/gui/txtr/atlas/itm/img/flpy-itm.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -43,9 +43,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "itm-zu_anml-250x50_bl"
+  id: "zu_anml-itm"
   images {
-    image: "/assets/gui/txtr/atlas/itm/img/itm-zu_anml-250x50_bl.png"
+    image: "/assets/gui/txtr/atlas/itm/img/zu_anml-itm.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

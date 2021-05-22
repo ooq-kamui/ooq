@@ -81,7 +81,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base-flpy-300x300"
+  texture: "base/flpy-base"
   id: "flpy/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -189,7 +189,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm-flpy-150x40_gl"
+  texture: "itm/flpy-itm"
   id: "flpy/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

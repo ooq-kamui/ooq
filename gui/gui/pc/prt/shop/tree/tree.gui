@@ -62,7 +62,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base-shop-tree-400x450_pl"
+  texture: "base/shop-tree-base"
   id: "base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
