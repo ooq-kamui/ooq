@@ -21,8 +21,8 @@ function p.Ply_data.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Ply_data)
 	
-	_s._itm_pitch = 70
-	_s._dsp_idx_max = 3
+	_s._itm_pitch   = 70
+	_s._dsp_idx_max =  3
 
 	_s:itm__by_idx("", file.ply_data.file_idx_max)
 
