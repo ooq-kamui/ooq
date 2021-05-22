@@ -20,8 +20,8 @@ end
 
 function Plant.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Plant)
+	extnd._(_s, Sp)
+	extnd._(_s, Plant)
 end
 
 function Plant.__init(_s, prm)

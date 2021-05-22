@@ -4,8 +4,8 @@ p.Prt_itm_mtrx = {}
 
 function p.Prt_itm_mtrx.init(_s)
 
-	extend.init(_s, p.Prt_itm)
-	extend._(_s, p.Prt_itm_mtrx)
+	extnd.init(_s, p.Prt_itm)
+	extnd._(_s, p.Prt_itm_mtrx)
 	
 	_s._itm_scrl_dir = "h"
 

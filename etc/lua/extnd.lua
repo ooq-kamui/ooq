@@ -1,8 +1,8 @@
-log.scrpt("extend.lua")
+log.scrpt("extnd.lua")
 
-extend = {}
+extnd = {}
 
-function extend._(obj, Cls)
+function extnd._(obj, Cls)
 	for key, func in pairs(Cls) do
 		if type(func) == "function" then
 			obj[key] = func
@@ -10,7 +10,7 @@ function extend._(obj, Cls)
 	end
 end
 
-function extend.init(_s, Cls, ...)
-	extend._(_s, Cls)
+function extnd.init(_s, Cls, ...)
+	extnd._(_s, Cls)
 	_s:init(...)
 end

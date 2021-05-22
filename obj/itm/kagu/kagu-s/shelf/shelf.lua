@@ -24,9 +24,9 @@ end
 
 function Shelf.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Shelf)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Shelf)
 end
 
 function Shelf.__init(_s, prm)

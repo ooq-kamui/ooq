@@ -29,8 +29,8 @@ end
 
 function Tree.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Tree)
+	extnd._(_s, Sp)
+	extnd._(_s, Tree)
 end
 
 function Tree.__init(_s, prm)

@@ -22,8 +22,8 @@ end
 
 function Fairy.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Fairy)
+	extnd._(_s, Sp)
+	extnd._(_s, Fairy)
 end
 
 function Fairy.__init(_s, prm)

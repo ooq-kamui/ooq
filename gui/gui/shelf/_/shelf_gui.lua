@@ -4,7 +4,7 @@ g.Shelf = {}
 
 function g.Shelf.init(_s)
 
-	extend.init(_s, g.Gui)
+	extnd.init(_s, g.Gui)
 
 	_s._prt.shelf = p.Shelf.cre(_s)
 

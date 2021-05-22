@@ -16,8 +16,8 @@ function p.Logo.init(_s, parent_gui)
 
 	_s._lb = "logo"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend._(_s, p.Logo)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd._(_s, p.Logo)
 	
 	_s._itm_pitch = 100
 	

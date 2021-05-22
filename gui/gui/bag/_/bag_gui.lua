@@ -15,8 +15,8 @@ function g.Bag.init(_s)
 
 	_s._lb = "bag"
 	
-	extend.init(_s, g.Gui)
-	extend._(_s, g.Bag)
+	extnd.init(_s, g.Gui)
+	extnd._(_s, g.Bag)
 
 	_s._l = {prt = {}}
 	_s._l.prt.bag_inf   = p.Bag_inf.cre(_s)
@@ -182,6 +182,6 @@ function g.Bag.focus__ch(_s)
 	else
 		_s:actv_prt__pop()
 	end
-	Se.pst_ply("cursor_mv")
+	Se.pst_ply("cursor__mv")
 end
 

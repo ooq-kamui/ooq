@@ -22,10 +22,10 @@ end
 
 function Mgccrcl.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Warp)
-	extend._(_s, Mgccrcl)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Warp)
+	extnd._(_s, Mgccrcl)
 end
 
 function Mgccrcl.__init(_s, prm)

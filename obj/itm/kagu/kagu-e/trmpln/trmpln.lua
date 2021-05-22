@@ -36,9 +36,9 @@ end
 
 function Trmpln.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Trmpln)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Trmpln)
 end
 
 function Trmpln.__init(_s, prm)

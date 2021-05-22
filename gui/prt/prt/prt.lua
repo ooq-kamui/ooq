@@ -21,7 +21,7 @@ function p.Prt.init(_s, parent_gui)
 	_s._nd = {}
 	_s._nd.tpl = {}
 	
-	extend.init(_s, p.Prt_base)
+	extnd.init(_s, p.Prt_base)
 end
 
 -- basic method
@@ -125,13 +125,13 @@ end
 function p.Prt.arw_act(_s, arwHa, keyact)
 	-- log._("prt arw_act", arwHa, keyact)
 	
-	if not _s.is_cursor_mv then return end
+	if not _s.is_cursor__mv then return end
 
-	local is_cursor_mv, inc_dir = _s:is_cursor_mv(arwHa)
-	-- log._("is_cursor_mv", is_cursor_mv)
+	local is_cursor__mv, inc_dir = _s:is_cursor__mv(arwHa)
+	-- log._("is_cursor__mv", is_cursor__mv)
 	
-	if is_cursor_mv then
-		_s:cursor_mv(inc_dir, keyact)
+	if is_cursor__mv then
+		_s:cursor__mv(inc_dir, keyact)
 	else
 		_s:arw_act_othr(inc_dir, keyact)
 	end

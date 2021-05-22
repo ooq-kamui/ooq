@@ -8,7 +8,7 @@ Tile = { -- tile num
 		-- 2, 5,
 		6,          -- elv
 		7,          -- airflw
-		9,          -- 
+		-- 9,          -- mgccrcl
 
 		-- block x1x1
 		26, 28,

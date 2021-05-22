@@ -58,7 +58,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base400x450_wl"
+  texture: "base/base-kzn-400x450_wl"
   id: "base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

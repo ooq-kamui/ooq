@@ -16,10 +16,10 @@ function p.Shop_kagu.init(_s, parent_gui)
 
 	_s._lb = "shop_kagu"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(   _s, p.Shop_kagu)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(   _s, p.Shop_kagu)
 	
 	_s._itm_pitch = 105
 	_s._dsp_idx_max = 4

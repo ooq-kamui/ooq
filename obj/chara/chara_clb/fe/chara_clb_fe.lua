@@ -52,8 +52,8 @@ end
 
 function Chara_clb_fe.init(_s)
 
-	extend.init(_s, Chara_clb)
-	extend._(   _s, Chara_clb_fe)
+	extnd.init(_s, Chara_clb)
+	extnd._(   _s, Chara_clb_fe)
 end
 
 -- method

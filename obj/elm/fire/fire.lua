@@ -20,8 +20,8 @@ end
 
 function Fire.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Fire)
+	extnd._(_s, Sp)
+	extnd._(_s, Fire)
 end
 
 function Fire.__init(_s, prm)

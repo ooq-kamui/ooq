@@ -21,10 +21,10 @@ end
 
 function Dairy.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Food)
-	extend._(_s, Dairy)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Food)
+	extnd._(_s, Dairy)
 end
 
 function Dairy.__init(_s, prm)

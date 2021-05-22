@@ -148,7 +148,7 @@ end
 
 function Game.init(_s)
 	
-	extend._(_s, Game)
+	extnd._(_s, Game)
 
 	_s._id = id._()
 

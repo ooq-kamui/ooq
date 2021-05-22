@@ -1,7 +1,7 @@
 animations {
-  id: "base400x400"
+  id: "base-ply_slt-400x400"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x400.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-ply_slt-400x400.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -10,9 +10,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base300x300"
+  id: "base-flpy-300x300"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base300x300.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-flpy-300x300.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -21,9 +21,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base550x180"
+  id: "base-confirm-550x180"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base550x180.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-confirm-550x180.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -32,9 +32,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x400_b"
+  id: "base-shop-400x400_b"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x400_b.png"
+    image: "/assets/gui/txtr/atlas/base/img/shop/base-shop-400x400_b.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -43,9 +43,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x400_p"
+  id: "base-pc-400x400_p"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x400_p.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-pc-400x400_p.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -54,9 +54,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base450x180_p"
+  id: "base-doorwrp-450x180_p"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base450x180_p.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-doorwrp-450x180_p.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -65,9 +65,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base450x220_g"
+  id: "base-shelf-450x220_g"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base450x220_g.png"
+    image: "/assets/gui/txtr/atlas/base/img/zu/base-shelf-450x220_g.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -76,9 +76,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base350x450_bl"
+  id: "base-zu-anml-350x450_bl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base350x450_bl.png"
+    image: "/assets/gui/txtr/atlas/base/img/zu/base-zu-anml-350x450_bl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -87,9 +87,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x450_pl"
+  id: "base-shop-flower-400x450_pl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x450_pl.png"
+    image: "/assets/gui/txtr/atlas/base/img/shop/base-shop-flower-400x450_pl.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -98,9 +98,9 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base450x50_s"
+  id: "base-msg-450x50_s"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base450x50_s.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-msg-450x50_s.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
@@ -109,9 +109,75 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "base400x450_wl"
+  id: "base-kzn-400x450_wl"
   images {
-    image: "/assets/gui/txtr/atlas/base/img/base400x450_wl.png"
+    image: "/assets/gui/txtr/atlas/base/img/base-kzn-400x450_wl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-shop-kagu-400x450_pl"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/shop/base-shop-kagu-400x450_pl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-shop-kagu_itm-400x450_pl"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/shop/base-shop-kagu_itm-400x450_pl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-shop-tree-400x450_pl"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/shop/base-shop-tree-400x450_pl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-zu-dish-400x450_pl"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/zu/base-zu-dish-400x450_pl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-zu-flower-400x450_pl"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/zu/base-zu-flower-400x450_pl.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "base-ply_data-300x300"
+  images {
+    image: "/assets/gui/txtr/atlas/base/img/base-ply_data-300x300.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

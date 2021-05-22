@@ -21,9 +21,9 @@ end
 
 function Flpy.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Flpy)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Flpy)
 end
 
 function Flpy.__init(_s, prm)

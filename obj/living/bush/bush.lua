@@ -22,8 +22,8 @@ end
 
 function Bush.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Bush)
+	extnd._(_s, Sp)
+	extnd._(_s, Bush)
 end
 
 function Bush.__init(_s, prm)

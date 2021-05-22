@@ -1,4 +1,4 @@
-tile_set: "/assets/obj/living/phantom/grave/grave.atlas"
+tile_set: "/assets/obj/living/phntm/phntm/phntm.atlas"
 default_animation: "stand"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

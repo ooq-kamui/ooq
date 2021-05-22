@@ -23,10 +23,10 @@ end
 
 function Cloud.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Livingmove)
-	extend._(_s, Hldabl)
-	extend._(_s, Cloud)
+	extnd._(_s, Sp)
+	extnd._(_s, Livingmove)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Cloud)
 end
 
 function Cloud.__init(_s, prm)

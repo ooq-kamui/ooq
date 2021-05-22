@@ -60,11 +60,10 @@ Map.obj = nil
 -- static
 
 function Map.cre(p_clct)
-	-- log._("Map cre")
 
 	local area = "grassy"
 
-	local clct_url = "/mapClctFac#"..area.."_fac_"..p_clct
+	local clct_url = "/map-clct-fac#"..area.."-"..p_clct
 	local t_pos = n.vec()
 	local prm = {}
 	prm[ha._("/ground")] = {
@@ -75,7 +74,6 @@ function Map.cre(p_clct)
 	
 	Map.chara__clr()
 
-	-- log.pp("map cre map_id", map_id)
 	return map_id
 end
 
@@ -86,13 +84,11 @@ function Map.chara__clr()
 	ar.clr(Map.chara_clb.tohoku)
 end
 
-
-
 -- scrpt method
 
 function Map.init(_s)
 
-	extend._(_s, Map)
+	extnd._(_s, Map)
 
 	_s._id          = id._()
 	_s._game_id     = Game.id()
@@ -171,16 +167,16 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "save") then
 		_s:save()
 
-	elseif ha.eq(msg_id, "save_del"     ) then
+	elseif ha.eq(msg_id, "save_del"  ) then
 		_s:save_del()
 
-	elseif ha.eq(msg_id, "dstrct__ch"   ) then
+	elseif ha.eq(msg_id, "dstrct__ch") then
 		_s:dstrct__ch(prm.plychara)
 		
-	elseif ha.eq(msg_id, "pause__"      ) then
+	elseif ha.eq(msg_id, "pause__"   ) then
 		_s:pause__(prm.val)
 		
-	elseif ha.eq(msg_id, "cloud__cre"   ) then
+	elseif ha.eq(msg_id, "cloud__cre") then
 		_s:cloud__cre()
 		
 	elseif ha.eq(msg_id, "plychara__cre") then
@@ -204,17 +200,23 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "obj__del"  ) then
 		_s:obj__del(prm.id, prm.cls)
 
-	elseif ha.eq(msg_id, "obj_cnt_all"  ) then
+	elseif ha.eq(msg_id, "obj_cnt_all") then
 		_s:obj_cnt_all()
 
-	elseif ha.eq(msg_id, "fade__i") then
+	elseif ha.eq(msg_id, "fade__i")  then
 		_s:fade__i(nil, prm.delay)
 
-	elseif ha.eq(msg_id, "fade__o") then
+	elseif ha.eq(msg_id, "fade__o")  then
 		_s:fade__o(nil, prm.delay)
 
 	elseif ha.eq(msg_id, "fade__oi") then
 		_s:fade__oi(nil, prm.delay)
+
+	elseif ha.eq(msg_id, "drk__i") then
+		_s:drk__i()
+
+	elseif ha.eq(msg_id, "drk__o") then
+		_s:drk__o()
 	end
 end
 
@@ -427,6 +429,18 @@ function Map.fade__oi(_s, fnc, delay)
 		_s:fade__i()
 	end
 	t_anm[1]()
+end
+
+function Map.drk__i(_s, fnc)
+
+	local time = 60
+	anm.drk__i(_s._id, "ground", time, nil, fnc)
+end
+
+function Map.drk__o(_s, fnc)
+
+	local time = 60
+	anm.drk__o(_s._id, "ground", time, nil, fnc)
 end
 
 -- static

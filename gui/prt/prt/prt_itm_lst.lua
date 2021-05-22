@@ -4,8 +4,8 @@ p.Prt_itm_lst = {}
 
 function p.Prt_itm_lst.init(_s)
 
-	extend.init(_s, p.Prt_itm)
-	extend._(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_itm)
+	extnd._(_s, p.Prt_itm_lst)
 
 	-- default
 	_s._itm_scrl_dir = "v"
@@ -22,7 +22,7 @@ function p.Prt_itm_lst.itm_scrl(_s, inc_dir)
 	end
 
 	_s:itm__plt_anm()
-	Se.pst_ply("cursor_mv")
+	Se.pst_ply("cursor__mv")
 end
 
 function p.Prt_itm_lst.itm_pos_by_dsp_idx(_s, dsp_idx)

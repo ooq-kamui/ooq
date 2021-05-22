@@ -53,9 +53,9 @@ end
 
 function Chara.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Livingmove)
-	extend._(_s, Chara)
+	extnd._(_s, Sp)
+	extnd._(_s, Livingmove)
+	extnd._(_s, Chara)
 end
 
 function Chara.__init(_s, prm)

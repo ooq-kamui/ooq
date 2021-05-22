@@ -4,8 +4,8 @@ g.Flpy = {}
 
 function g.Flpy.init(_s)
 	
-	extend.init(_s, g.Gui)
-	extend._(_s, g.Flpy)
+	extnd.init(_s, g.Gui)
+	extnd._(_s, g.Flpy)
 
 	_s._prt.flpy     = p.Flpy.cre(_s)
 	_s._prt.ply_data = p.Ply_data.cre(_s)

@@ -24,9 +24,9 @@ end
 
 function Shtngstr.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Shtngstr)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Shtngstr)
 end
 
 function Shtngstr.__init(_s, prm)

@@ -17,7 +17,7 @@ end
 
 function Accl.new()
 	local obj = {}
-	extend.init(obj, Accl)
+	extnd.init(obj, Accl)
 	return obj
 end
 

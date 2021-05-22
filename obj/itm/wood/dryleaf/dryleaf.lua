@@ -22,10 +22,10 @@ end
 
 function Dryleaf.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Spwood)
-	extend._(_s, Dryleaf)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Spwood)
+	extnd._(_s, Dryleaf)
 end
 
 function Dryleaf.__init(_s, prm)

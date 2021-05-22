@@ -8,8 +8,8 @@ function Efct_label.init(_s)
 
 	_s._cmp = "label"
 
-	extend._(_s, Efct)
-	extend._(_s, Efct_label)
+	extnd._(_s, Efct)
+	extnd._(_s, Efct_label)
 
 	_s:id__()
 	_s:life__() -- del

@@ -16,10 +16,10 @@ function p.Snn_dtl.init(_s, parent_gui)
 
 	_s._lb = "snn_dtl"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Snn_dtl)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(_s, p.Snn_dtl)
 
 	_s._itm_pitch = 350
 	_s._itm_scrl_dir = "h"

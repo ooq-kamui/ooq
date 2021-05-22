@@ -7,8 +7,8 @@ Arw = {
 
 function Arw.init(_s)
 
-	extend.init(Sp, _s)
-	extend._(Arw, _s)
+	extnd.init(Sp, _s)
+	extnd._(Arw, _s)
 
 	_s._speed = 200
 end

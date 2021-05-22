@@ -26,10 +26,10 @@ end
 
 function Parasail.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Airride)
-	extend._(_s, Parasail)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Airride)
+	extnd._(_s, Parasail)
 end
 
 function Parasail.__init(_s, prm)

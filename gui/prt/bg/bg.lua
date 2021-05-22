@@ -21,9 +21,9 @@ function p.Bg.init(_s, parent_gui)
 
 	_s._lb = "bg"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm)
-	extend._(_s, p.Bg)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm)
+	extnd._(_s, p.Bg)
 
 	_s:nd__("img")
 	nd.dsp__o(_s._nd.base)

@@ -7,8 +7,8 @@ function Efct_sprite.init(_s)
 
 	_s._cmp = "sprite"
 
-	extend._(_s, Efct)
-	extend._(_s, Efct_sprite)
+	extnd._(_s, Efct)
+	extnd._(_s, Efct_sprite)
 
 	_s:id__()
 

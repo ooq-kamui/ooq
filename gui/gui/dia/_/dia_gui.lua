@@ -22,8 +22,8 @@ end
 function g.Dia.init(_s)
 	-- log._("gui dia init")
 
-	extend.init(_s, g.Gui)
-	extend._(_s, g.Dia)
+	extnd.init(_s, g.Gui)
+	extnd._(_s, g.Dia)
 
 	_s._prt.dia = p.Dia.cre(_s)
 

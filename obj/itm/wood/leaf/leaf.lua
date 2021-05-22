@@ -21,10 +21,10 @@ end
 
 function Leaf.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Spwood)
-	extend._(_s, Leaf)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Spwood)
+	extnd._(_s, Leaf)
 end
 
 function Leaf.__init(_s, prm)

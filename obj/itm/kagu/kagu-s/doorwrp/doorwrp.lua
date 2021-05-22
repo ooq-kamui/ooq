@@ -23,9 +23,9 @@ end
 
 function Doorwrp.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Doorwrp)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Doorwrp)
 end
 
 function Doorwrp.__init(_s, prm)

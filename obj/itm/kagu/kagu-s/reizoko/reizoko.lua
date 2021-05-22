@@ -24,9 +24,9 @@ end
 
 function Reizoko.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Reizoko)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Reizoko)
 end
 
 function Reizoko.__init(_s, prm)

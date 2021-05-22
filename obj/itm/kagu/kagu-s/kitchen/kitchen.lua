@@ -27,9 +27,9 @@ end
 
 function Kitchen.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Kitchen)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Kitchen)
 end
 
 function Kitchen.__init(_s, prm)

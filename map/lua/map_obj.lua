@@ -199,26 +199,21 @@ function Map.obj__new(_s)
 
 	_s:obj__new_kagu()
 
-	local t_pos = n.vec( 936, -1464)
-	Mgccrcl.cre(t_pos)
-	t_pos.x = - t_pos.x
-	Mgccrcl.cre(t_pos)
+
 end
 
 function Map.obj__new_kagu(_s)
 
 	local pos_init = Cloud.pos_init -- refactoring
 
-	-- box
 	local t_pos
-	t_pos = pos_init + n.vec(- Map.sq * 1, 0) -- > t.vec()
+
+	t_pos = pos_init + t.vec(- Map.sq * 1, 0) -- > t.vec()
+	Hrvst.cre(t_pos)
+	t_pos = pos_init + t.vec(- Map.sq * 5, 0)
 	Hrvst.cre(t_pos)
 
-	t_pos = pos_init + n.vec(- Map.sq * 5, 0)
-	Hrvst.cre(t_pos)
-
-	-- reizoko
-	t_pos = pos_init + n.vec(- Map.sq * 4, Map.sq * 5)
+	t_pos = pos_init + t.vec(- Map.sq * 4, Map.sq * 5)
 	Reizoko.cre(t_pos)
 
 	-- kitchen
@@ -232,16 +227,23 @@ function Map.obj__new_kagu(_s)
 		Kitchen.cre(t_pos)
 	end
 
-	-- flpy
-	t_pos = pos_init + n.vec(Map.sq * 1, 0)
+	t_pos = pos_init + t.vec(Map.sq * 1, 0)
 	Flpy.cre(t_pos)
 
-	-- pc
-	t_pos = pos_init + n.vec(Map.sq * 2, Map.sq * 1) -- 10)
+	t_pos = pos_init + t.vec(Map.sq * 2, Map.sq * 1) -- 10)
 	Pc.cre(t_pos)
 
-	-- shelf
-	t_pos = pos_init + n.vec(Map.sq * 3, Map.sq * 1) -- 10)
+	t_pos = pos_init + t.vec(Map.sq * 3, Map.sq * 1) -- 10)
 	Shelf.cre(t_pos)
+
+	-- _s:obj__new_mgccrcl()
+end
+
+function Map.obj__new_mgccrcl(_s)
+
+	local t_pos = n.vec( 936, -1464)
+	Mgccrcl.cre(t_pos)
+	t_pos.x = - t_pos.x
+	Mgccrcl.cre(t_pos)
 end
 

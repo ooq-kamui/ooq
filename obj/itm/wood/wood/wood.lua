@@ -21,10 +21,10 @@ end
 
 function Wood.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Spwood)
-	extend._(_s, Wood)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Spwood)
+	extnd._(_s, Wood)
 end
 
 function Wood.__init(_s, prm)

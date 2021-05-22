@@ -16,7 +16,7 @@ end
 -- script
 
 function Fg.init(_s)
-	extend._(_s, Fg)
+	extnd._(_s, Fg)
 end
 
 function Fg.upd(_s, dt)

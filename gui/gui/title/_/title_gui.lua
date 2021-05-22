@@ -4,7 +4,7 @@ g.Title = {}
 
 function g.Title.init(_s)
 	
-	extend.init(_s, g.Gui)
+	extnd.init(_s, g.Gui)
 
 	_s._prt.logo      = p.Logo.cre(_s)
 	_s._prt.ply_slt  = p.Ply_slt.cre(_s)

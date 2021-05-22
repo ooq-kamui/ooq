@@ -16,11 +16,11 @@ function p.Shop_tree.init(_s, parent_gui)
 
 	_s._lb = "shop_tree"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend.init(_s, p.Prt_itm_opt)
-	extend._(   _s, p.Shop_tree)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd.init(_s, p.Prt_itm_opt)
+	extnd._(   _s, p.Shop_tree)
 	
 	_s._itm_pitch   = 75
 	_s._dsp_idx_max =  5

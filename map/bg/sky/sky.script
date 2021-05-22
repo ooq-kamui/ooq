@@ -8,8 +8,6 @@ go.property("_mv_rng_pos_algn", hash("c"))
 go.property("_sky_idx", 0)
 
 function init(_s)
-	extend._(_s, Bg)
-	extend._(_s, Sky)
 	Sky.init(_s)
 end
 

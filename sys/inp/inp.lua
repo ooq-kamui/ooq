@@ -50,12 +50,12 @@ function Inp.init(_s)
 	_s._id = id._()
 	pst.scrpt(_s._id, "acquire_input_focus")
 
-	extend._(_s, Inp)
+	extnd._(_s, Inp)
 
-	extend._(_s, Inp.gui)
+	extnd._(_s, Inp.gui)
 	_s:init_gui()
 
-	extend._(_s, Inp.plyr)
+	extnd._(_s, Inp.plyr)
 	_s:init_plyr()
 end
 

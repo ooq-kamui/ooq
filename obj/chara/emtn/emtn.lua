@@ -20,8 +20,8 @@ end
 
 function Emtn.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Emtn)
+	extnd._(_s, Sp)
+	extnd._(_s, Emtn)
 end
 
 function Emtn.__init(_s, prm)

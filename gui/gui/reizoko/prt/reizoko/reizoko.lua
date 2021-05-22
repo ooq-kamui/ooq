@@ -17,11 +17,11 @@ function p.Reizoko.init(_s, parent_gui)
 
 	_s._lb  = "reizoko"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_mtrx)
-	extend.init(_s, p.Prt_cursor)
-	extend.init(_s, p.Prt_cursor_mtrx)
-	extend._(   _s, p.Reizoko)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_mtrx)
+	extnd.init(_s, p.Prt_cursor)
+	extnd.init(_s, p.Prt_cursor_mtrx)
+	extnd._(   _s, p.Reizoko)
 
 	-- _s._base_x_diff = Map.sq * 4 -- use ?
 	

@@ -18,7 +18,7 @@ end
 -- script method
 
 function Wa.init(_s)
-	extend._(_s, Wa)
+	extnd._(_s, Wa)
 	_s.sec = 0 -- wait sec
 end
 

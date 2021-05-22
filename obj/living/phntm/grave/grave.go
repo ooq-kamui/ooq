@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/assets/obj/living/phantom/grave/grave.script"
+  component: "/assets/obj/living/phntm/grave/grave.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/assets/obj/living/phantom/grave/grave.sprite"
+  component: "/assets/obj/living/phntm/grave/grave.sprite"
   position {
     x: 0.0
     y: 0.0

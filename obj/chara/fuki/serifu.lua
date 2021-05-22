@@ -12,6 +12,8 @@ Serifu = {
 		{len =  2, txt = "ねる"},
 		{len =  5, txt = "ねむらない"},
 
+		{len =  3, txt = "おかね"},
+
 		{len =  3, txt = "たべる"},
 		{len =  2, txt = "にく"},
 		{len =  3, txt = "やさい"},
@@ -158,15 +160,17 @@ Serifu = {
 		{len =  4, txt = "きゃっ！"},
 		{len =  2, txt = "あら"},
 		{len =  4, txt = "うわーっ"},
-		{len =  3, txt = "..."},
+		{len =  2, txt = "..."},
 		
 		-- demonstrative pronoun
 		{len =  2, txt = "その"},
-		{len =  6, txt = "これは..."},
+		{len =  5, txt = "これは..."},
 		{len =  2, txt = "それ"},
 		{len =  2, txt = "これ"},
 		{len =  3, txt = "こっち"},
 		{len =  7, txt = "こっち こっち"},
+
+		{len =  6, txt = "これじゃない"},
 
 		-- shop
 		{len =  5, txt = "まいどあり"},

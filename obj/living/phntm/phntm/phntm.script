@@ -1,4 +1,4 @@
-log.scrpt("phantom.script")
+log.scrpt("phntm.script")
 
 go.property("_game_id", hash(""))
 go.property("_map_id",  hash(""))
@@ -10,7 +10,7 @@ go.property("_weight",  1)
 go.property("_clsHa", hash(""))
 
 function init(_s)
-	Phantom.init(_s)
+	Phntm.init(_s)
 end
 
 function update(_s, dt)

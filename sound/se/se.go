@@ -59,7 +59,7 @@ components {
   }
 }
 components {
-  id: "cursor_mv"
+  id: "cursor__mv"
   component: "/assets/sound/se/poket-s/mv_cursor.sound"
   position {
     x: 0.0

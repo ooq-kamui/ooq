@@ -23,7 +23,7 @@ function p.Prt_cursor.actv__(_s, val)
 	_s:cursor_dsp__(val)
 end
 
-function p.Prt_cursor.is_cursor_mv(_s, arwHa)
+function p.Prt_cursor.is_cursor__mv(_s, arwHa)
 
 	local ret = _.f
 
@@ -50,7 +50,7 @@ function p.Prt_cursor.is_cursor_mv(_s, arwHa)
 	return ret, inc_dir
 end
 
-function p.Prt_cursor.cursor_mv(_s, inc_dir, keyact)
+function p.Prt_cursor.cursor__mv(_s, inc_dir, keyact)
 
 	local cursor_edge, dsp_itm_edge
 
@@ -70,13 +70,13 @@ function p.Prt_cursor.cursor_mv(_s, inc_dir, keyact)
 		_s:itm_scrl(inc_dir)
 
 	elseif keyact == "p" then
-		_s:cursor_mv_loop(inc_dir)
+		_s:cursor__mv_loop(inc_dir)
 	end
 
-	_s:cursor_mv_exe()
+	_s:cursor__mv_exe()
 end
 
-function p.Prt_cursor.cursor_mv_exe(_s)
+function p.Prt_cursor.cursor__mv_exe(_s)
 	-- empty
 end
 
@@ -84,7 +84,7 @@ function p.Prt_cursor.cursor_itm_opt_ch(_s, dir)
 	-- empty
 end
 
-function p.Prt_cursor.cursor_mv_loop(_s, inc_dir)
+function p.Prt_cursor.cursor__mv_loop(_s, inc_dir)
 
 	if     inc_dir == "dec" then
 		_s._dsp1_itm_idx = _s._dsp1_itm_idx_max
@@ -97,7 +97,7 @@ function p.Prt_cursor.cursor_mv_loop(_s, inc_dir)
 
 	_s:itm__plt()
 	_s:cursor_pos__()
-	Se.pst_ply("cursor_mv")
+	Se.pst_ply("cursor__mv")
 end
 
 function p.Prt_cursor.cursor__plt_anm(_s)
@@ -105,13 +105,7 @@ function p.Prt_cursor.cursor__plt_anm(_s)
 	local t_pos = _s:cursor_pos()
 	local time = 0.1
 	nd.anm.mv(_s._nd.cursor, t_pos, nil, time)
-	Se.pst_ply("cursor_mv")
-end
-
-function p.Prt_cursor.cursor_pos__(_s)
-	
-	local t_pos = _s:cursor_pos()
-	nd.pos__(_s._nd.cursor, t_pos)
+	Se.pst_ply("cursor__mv")
 end
 
 function p.Prt_cursor.cursor_pos(_s)
@@ -121,8 +115,10 @@ function p.Prt_cursor.cursor_pos(_s)
 	return t_pos
 end
 
-function p.Prt_cursor.cursor_dsp__(_s, val)
-	_s:nd_dsp__("cursor", val)
+function p.Prt_cursor.cursor_pos__(_s)
+	
+	local t_pos = _s:cursor_pos()
+	nd.pos__(_s._nd.cursor, t_pos)
 end
 
 function p.Prt_cursor.cursor_dsp__o(_s)
@@ -131,6 +127,10 @@ end
 
 function p.Prt_cursor.cursor_dsp__x(_s)
 	_s:cursor_dsp__(_.f)
+end
+
+function p.Prt_cursor.cursor_dsp__(_s, val)
+	_s:nd_dsp__("cursor", val)
 end
 
 -- cursor itm

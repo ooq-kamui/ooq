@@ -16,10 +16,10 @@ function p.Shelf.init(_s, parent_gui)
 
 	_s._lb = "shelf"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Shelf)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(_s, p.Shelf)
 	
 	_s._itm_pitch = 130
 	_s._dsp_idx_max = 3

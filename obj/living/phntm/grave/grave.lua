@@ -24,8 +24,8 @@ end
 
 function Grave.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Grave)
+	extnd._(_s, Sp)
+	extnd._(_s, Grave)
 end
 
 function Grave.__init(_s, prm)
@@ -49,7 +49,7 @@ function Grave.act_intrvl(_s, dt)
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- dead
-	if _s:per_trnsf(1 / 10 * 100, Phantom) then return end
+	if _s:per_trnsf(1 / 10 * 100, Phntm) then return end
 
 	if _s:per_del(1 / 20 * 100) then return end
 	

@@ -16,10 +16,10 @@ function p.Confirm.init(_s, parent_gui)
 
 	_s._lb = "confirm"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(   _s, p.Confirm)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(   _s, p.Confirm)
 
 	_s._itm_pitch = 240
 	_s._itm_scrl_dir = "h"

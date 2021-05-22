@@ -16,10 +16,10 @@ function p.Shop_block.init(_s, parent_gui)
 
 	_s._lb = "shop_block"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Shop_block)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(_s, p.Shop_block)
 	
 	_s._itm_pitch = 50
 

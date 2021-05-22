@@ -22,10 +22,10 @@ end
 
 function Mgcpot.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Warp)
-	extend._(_s, Mgcpot)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Warp)
+	extnd._(_s, Mgcpot)
 end
 
 function Mgcpot.__init(_s, prm)

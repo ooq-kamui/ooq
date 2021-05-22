@@ -16,10 +16,10 @@ function p.Ply_data.init(_s, parent_gui)
 
 	_s._lb = "ply_data"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(   _s, p.Ply_data)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(   _s, p.Ply_data)
 	
 	_s._itm_pitch = 70
 	_s._dsp_idx_max = 3

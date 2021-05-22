@@ -26,8 +26,8 @@ end
 
 function Magic.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Magic)
+	extnd._(_s, Sp)
+	extnd._(_s, Magic)
 end
 
 function Magic.__init(_s, prm)

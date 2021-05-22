@@ -17,8 +17,8 @@ function p.Dia.init(_s, parent_gui)
 
 	_s._lb = "dia"
 
-	extend.init(_s, p.Prt, parent_gui)
-	extend._(_s, p.Dia)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd._(_s, p.Dia)
 	
 	_s._itm_pitch = 100
 

@@ -1,7 +1,7 @@
 animations {
   id: "stand"
   images {
-    image: "/assets/obj/living/phantom/phantom/img/phantom.png"
+    image: "/assets/obj/living/phntm/grave/img/grave.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE

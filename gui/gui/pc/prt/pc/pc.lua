@@ -16,10 +16,10 @@ function p.Pc.init(_s, parent_gui)
 
 	_s._lb = "pc"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend._(_s, p.Pc)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd._(_s, p.Pc)
 	
 	_s._itm_pitch = 50
 	_s._dsp_idx_max = 4

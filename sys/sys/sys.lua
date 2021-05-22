@@ -65,7 +65,7 @@ end
 
 function Sys.init(_s)
 
-	extend._(_s, Sys)
+	extnd._(_s, Sys)
 	
 	Sys.id = id._()
 	-- log._("Sys.init 1")

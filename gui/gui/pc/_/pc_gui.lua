@@ -5,7 +5,7 @@ g.Pc = {}
 function g.Pc.init(_s)
 	log._("g.pc init")
 
-	extend.init(_s, g.Gui)
+	extnd.init(_s, g.Gui)
 
 	_s._prt.pc  = p.Pc.cre(_s)
 

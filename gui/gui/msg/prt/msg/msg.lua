@@ -17,10 +17,10 @@ function p.Msg.init(_s, parent_gui)
 
 	_s._lb = "msg"
 
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm)
-	extend.init(_s, p.Prt_itm_lst)
-	extend._(   _s, p.Msg)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd._(   _s, p.Msg)
 
 	_s._itm_pitch   = 75
 	_s._dsp_idx_max =  5

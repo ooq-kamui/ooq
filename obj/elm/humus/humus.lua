@@ -20,8 +20,8 @@ end
 
 function Humus.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Humus)
+	extnd._(_s, Sp)
+	extnd._(_s, Humus)
 end
 
 function Humus.__init(_s, prm)

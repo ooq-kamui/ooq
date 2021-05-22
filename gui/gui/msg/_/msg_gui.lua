@@ -7,8 +7,8 @@ g.Msg = {
 function g.Msg.init(_s)
 	-- log._("g msg init")
 
-	extend.init(_s, g.Gui)
-	extend._(   _s, g.Msg)
+	extnd.init(_s, g.Gui)
+	extnd._(   _s, g.Msg)
 
 	_s._prt.msg = p.Msg.cre(_s)
 

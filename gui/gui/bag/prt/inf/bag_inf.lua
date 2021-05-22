@@ -18,9 +18,9 @@ function p.Bag_inf.init(_s, parent_gui)
 
 	_s._lb = "bag_inf"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend._(_s, p.Bag_prt)
-	extend._(_s, p.Bag_inf)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd._(_s, p.Bag_prt)
+	extnd._(_s, p.Bag_inf)
 	
 	_s:nd__("gold")
 	_s:nd__("coin")

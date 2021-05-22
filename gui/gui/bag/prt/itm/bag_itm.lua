@@ -22,14 +22,14 @@ function p.Bag_itm.init(_s, parent_gui)
 
 	_s._lb = "bag_itm"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Bag_prt)
-	extend.init(_s, p.Prt_itm)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend.init(_s, p.Prt_selected)
-	extend.init(_s, p.Bag_prt_itm)
-	extend._(   _s, p.Bag_itm)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Bag_prt)
+	extnd.init(_s, p.Prt_itm)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd.init(_s, p.Prt_selected)
+	extnd.init(_s, p.Bag_prt_itm)
+	extnd._(   _s, p.Bag_itm)
 
 	_s._dsp_idx_max = 3
 
@@ -94,7 +94,7 @@ function p.Bag_itm.bag_r_view__(_s)
 	_s._parent_gui:r_view_prt__(prt_lb)
 end
 
-function p.Bag_itm.cursor_mv_exe(_s)
+function p.Bag_itm.cursor__mv_exe(_s)
 	_s:decide()
 end
 

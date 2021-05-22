@@ -4,7 +4,7 @@ g.Doorwrp = {}
 
 function g.Doorwrp.init(_s)
 
-	extend.init(_s, g.Gui)
+	extnd.init(_s, g.Gui)
 
 	_s._prt.doorwrp = p.Doorwrp.cre(_s)
 

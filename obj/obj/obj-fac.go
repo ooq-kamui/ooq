@@ -120,7 +120,7 @@ components {
 }
 components {
   id: "phantom"
-  component: "/assets/obj/living/phantom/phantom/phantom.factory"
+  component: "/assets/obj/living/phntm/phntm/phntm.factory"
   position {
     x: 0.0
     y: 0.0
@@ -540,7 +540,7 @@ components {
 }
 components {
   id: "grave"
-  component: "/assets/obj/living/phantom/grave/grave.factory"
+  component: "/assets/obj/living/phntm/grave/grave.factory"
   position {
     x: 0.0
     y: 0.0

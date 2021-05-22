@@ -16,14 +16,14 @@ function p.Bag_wall.init(_s, parent_gui)
 
 	_s._lb = "bag_wall"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Bag_prt)
-	extend.init(_s, p.Prt_itm)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend.init(_s, p.Prt_selected)
-	extend.init(_s, p.Bag_prt_itm)
-	extend._(_s, p.Bag_wall)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Bag_prt)
+	extnd.init(_s, p.Prt_itm)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd.init(_s, p.Prt_selected)
+	extnd.init(_s, p.Bag_prt_itm)
+	extnd._(_s, p.Bag_wall)
 
 	-- _s._dsp_idx_max = 7
 	_s._dsp_idx_max = 6

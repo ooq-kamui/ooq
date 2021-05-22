@@ -20,9 +20,9 @@ end
 
 function Flower.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Flower)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Flower)
 end
 
 function Flower.__init(_s, prm)

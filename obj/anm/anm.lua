@@ -66,6 +66,37 @@ function anm.w__(p_id, p_cmp, p_w, time, delay, fnc)
 	anm._(t_url, "tint.w", apm.fwd, p_w, es.sin_o, time, delay, fnc)
 end
 
+function anm.drk__o(p_id, p_cmp, time, delay, fnc)
+
+	time = time or anm.time.tint
+
+	local v = 1
+	local vec4 = vmath.vector4(v, v, v, 1)
+	anm.drk__(p_id, p_cmp, vec4, time, delay, fnc)
+end
+
+function anm.drk__i(p_id, p_cmp, time, delay, fnc)
+
+	time = time or anm.time.tint
+
+	local v = 0.6
+	local vec4 = vmath.vector4(v, v, v, 1)
+	anm.drk__(p_id, p_cmp, vec4, time, delay, fnc)
+end
+
+function anm.drk__(p_id, p_cmp, p_vec4, time, delay, fnc)
+
+	if not p_id   then return end
+	if not p_cmp  then return end
+	if not p_vec4 then return end
+
+	time  = time  or anm.time.tint
+	delay = delay or 0
+
+	local t_url = url._(p_id, p_cmp)
+	anm._(t_url, "tint", apm.fwd, p_vec4, es.sin_o, time, delay, fnc)
+end
+
 -- pos
 
 function anm.pos__(p_id, p_pos, time, delay)

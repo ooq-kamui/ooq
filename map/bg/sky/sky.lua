@@ -22,7 +22,7 @@ function Sky.cre(sky_idx)
 
 	sky_idx = sky_idx or 1
 
-	local url = "/mapClctFac#sky_fac"
+	local url = "/map-clct-fac#sky"
 	local pos = n.vec()
 	pos.z = - 1
 	local t_id = fac.cre(url, pos, nil, {_sky_idx = sky_idx})
@@ -33,7 +33,8 @@ end
 
 function Sky.init(_s)
 
-	Bg.init(_s)
+	extnd.init(_s, Bg)
+	extnd._(   _s, Sky)
 	
 	_s._rng = map.rng_tilepos(_s._id, "sky")
 	
@@ -78,7 +79,7 @@ end
 
 function Sky.changing_obj()
 
-	local obj = {
+	local obj = { -- refactoring
 		_ = {}, -- entry -- child
 		rng = {min = 0, max = 0},
 		min = 0,
@@ -89,7 +90,6 @@ function Sky.changing_obj()
 end
 
 function Sky.upd(_s, dt)
-	-- log._("sky upd")
 
 	_s:act_intrvl__(dt)
 
@@ -97,7 +97,7 @@ function Sky.upd(_s, dt)
 	
 	_s:upd_tile__(dt)
 
-	-- _s:upd_dsp__() -- not use now
+	-- _s:upd_dsp__() -- use not
 end
 
 function Sky.plychara_id(_s)
@@ -114,7 +114,7 @@ function Sky.plychara_pos(_s)
 	return t_pos
 end
 
-function Sky.upd_dsp__(_s) -- not use now
+function Sky.upd_dsp__(_s) -- use not rest
 
 	if ha.is_emp(_s:plychara_id()) then return end
 	
@@ -138,7 +138,6 @@ function Sky.act_intrvl__(_s, dt)
 	
 	_s._act_intrvl = 0 -- reset
 
-	-- changing init
 	_s._is_changing = _.t
 	_s:changing__start()
 end
@@ -184,6 +183,12 @@ function Sky.upd_tile_v__(_s, dt)
 	if gradation_idx > Sky.gradation_idx_max + 1 then  
 		_s._is_changing = _.f
 		_s._sky_idx = int.inc_loop(_s._sky_idx, Sky.sky_idx_max)
+
+		if     _s._sky_idx == 1 then
+			pst.scrpt(Game.map_id(), "drk__o")
+		elseif _s._sky_idx == 3 then
+			pst.scrpt(Game.map_id(), "drk__i")
+		end
 		return
 	end
 	
@@ -223,9 +228,9 @@ function Sky.upd_tile_v__by_gradation_x(_s, gradation_idx, x)
 	-- next
 	y = y - 1
 	if y >= _s._rng.min.y then
-		_s._changing._[gradation_idx]._[x    ] = y
+		_s._changing._[gradation_idx]._[x] = y
 	else
-		_s._changing._[gradation_idx]._[x    ] = nil
+		_s._changing._[gradation_idx]._[x] = nil
 
 		if x + _s._x_once -1 >= _s._rng.max.x then
 			_s._changing._[gradation_idx] = nil
@@ -344,11 +349,8 @@ function Sky.dsp__(_s, val)
 end
 
 function Sky.del(_s)
-	
 	go.delete(_.t)
 end
-
---
 
 function Sky.upd_tile__raindrop(_s, dt)
 

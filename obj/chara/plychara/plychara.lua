@@ -65,19 +65,16 @@ end
 
 function Plychara.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Plychara)
+	extnd._(_s, Sp)
+	extnd._(_s, Plychara)
 end
 
 function Plychara.__init(_s, prm)
-	-- log._("Plychara.__init 1")
 	
 	Sp.__init(_s, prm)
-	-- log._("Plychara.__init 2")
 
 	_s._name = prm._name
 	_s:anim__("walk")
-	-- log._("Plychara.__init 3")
 	
 	_s._speed = Plychara.speed
 	_s._mv_dir_h_Ha   = ha._("l")
@@ -122,19 +119,15 @@ function Plychara.__init(_s, prm)
 	_s._clsn_hldabl = {}
 
 	local fairy_id = _s:fairy_id()
-	-- log._("Plychara.__init 4")
 
 	local z = 0.01
 	local t_pos = n.vec(0, Map.sq)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
-	-- log._("Plychara.__init 5")
 
 	_s:skl__dtch_airride()
-	-- log._("Plychara.__init 6")
 end
 
 function Plychara.upd(_s, dt)
-	-- log._("plychara upd start")
 
 	-- upd init
 	_s:on_chara__clr()

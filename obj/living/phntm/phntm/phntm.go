@@ -1,6 +1,6 @@
 components {
   id: "sprite"
-  component: "/assets/obj/living/phantom/phantom/phantom.sprite"
+  component: "/assets/obj/living/phntm/phntm/phntm.sprite"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/assets/obj/living/phantom/phantom/phantom.script"
+  component: "/assets/obj/living/phntm/phntm/phntm.script"
   position {
     x: 0.0
     y: 0.0

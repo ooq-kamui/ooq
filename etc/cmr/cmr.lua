@@ -42,7 +42,7 @@ end
 
 function Cmr.init(_s)
 	
-	extend._(_s, Cmr)
+	extnd._(_s, Cmr)
 	-- log._("Cmr.init 1")
 
 	_s._id = id._()
@@ -287,7 +287,7 @@ function Cmr.pos__anm(_s, p_pos)
 
 	if not p_pos then return end
 
-	local time = 2
+	local time = 3 -- 2
 	anm.pos__(_s._id, p_pos, time)
 end
 

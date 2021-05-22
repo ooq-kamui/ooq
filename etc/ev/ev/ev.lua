@@ -27,7 +27,7 @@ end
 -- script method
 
 function Ev.init(_s)
-	extend._(_s, Ev)
+	extnd._(_s, Ev)
 	_s.idx = 0
 end
 

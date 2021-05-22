@@ -31,8 +31,8 @@ end
 
 function Fuki.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Fuki)
+	extnd._(_s, Sp)
+	extnd._(_s, Fuki)
 end
 
 function Fuki.__init(_s, prm)

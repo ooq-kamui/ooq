@@ -20,10 +20,10 @@ end
 
 function Fruit.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Hldabl)
-	extend._(_s, Food)
-	extend._(_s, Fruit)
+	extnd._(_s, Sp)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Food)
+	extnd._(_s, Fruit)
 end
 
 function Fruit.__init(_s, prm)

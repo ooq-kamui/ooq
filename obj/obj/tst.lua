@@ -88,7 +88,7 @@ function Tst.obj.game_start()
 		Dryleaf,Dryleaf,Dryleaf,Dryleaf,
 		Kagu,Kagu,Kagu,Kagu,Kagu,Kagu,
 		Grave,
-		Phantom,
+		Phntm,
 		Fire,
 		Doorwrp,Doorwrp,
 		-- Block,Block,Block,Block,Block,

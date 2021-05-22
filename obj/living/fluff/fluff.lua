@@ -25,10 +25,10 @@ end
 
 function Fluff.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Livingmove)
-	extend._(_s, Hldabl)
-	extend._(_s, Fluff)
+	extnd._(_s, Sp)
+	extnd._(_s, Livingmove)
+	extnd._(_s, Hldabl)
+	extnd._(_s, Fluff)
 end
 
 function Fluff.__init(_s, prm)

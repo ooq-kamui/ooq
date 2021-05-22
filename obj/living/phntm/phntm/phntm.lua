@@ -1,18 +1,18 @@
-log.scrpt("phantom.lua")
+log.scrpt("phntm.lua")
 
-Phantom = {
+Phntm = {
 	act_intrvl_time = 10,
 	name_idx_max    =  1,
 }
-Phantom.cls = "phantom"
-Phantom.fac = Obj.fac..Phantom.cls
-Cls.add(Phantom)
+Phntm.cls = "phntm"
+Phntm.fac = Obj.fac..Phntm.cls
+Cls.add(Phntm)
 
 -- static
 
-function Phantom.cre(p_pos, prm)
+function Phntm.cre(p_pos, prm)
 
-	local t_Cls = Phantom
+	local t_Cls = Phntm
 
 	prm = prm or {}
 
@@ -22,13 +22,13 @@ end
 
 -- script method
 
-function Phantom.init(_s)
+function Phntm.init(_s)
 
-	extend._(_s, Sp)
-	extend._(_s, Phantom)
+	extnd._(_s, Sp)
+	extnd._(_s, Phntm)
 end
 
-function Phantom.__init(_s, prm)
+function Phntm.__init(_s, prm)
 	
 	prm._anim = prm._anim or "stand"
 
@@ -37,7 +37,7 @@ function Phantom.__init(_s, prm)
 	vec.xy__(_s._vec_mv, 0, 0.5)
 end
 
-function Phantom.upd(_s, dt)
+function Phntm.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
@@ -48,7 +48,7 @@ function Phantom.upd(_s, dt)
 	_s:upd_final()
 end
 
-function Phantom.act_intrvl(_s, dt)
+function Phntm.act_intrvl(_s, dt)
 
 	if not _s:is_loop__act_intrvl__(dt) then return end
 
@@ -60,12 +60,12 @@ function Phantom.act_intrvl(_s, dt)
 
 end
 
-function Phantom.on_msg(_s, msg_id, prm, sndr_url)
+function Phntm.on_msg(_s, msg_id, prm, sndr_url)
 
 	Sp.on_msg(_s, msg_id, prm, sndr_url)
 end
 
-function Phantom.final(_s)
+function Phntm.final(_s)
 
 	Sp.final(_s)
 end

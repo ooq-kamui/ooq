@@ -12,7 +12,7 @@ function Sp.pos(_s)
 
 	local is_nan = num.is_nan(t_pos.x)
 	if is_nan then
-		log._("Sp.pos", t_pos, _s._cls)
+		log._("Sp.pos is_nan", t_pos, _s._cls)
 		_s:del()
 		return
 	end

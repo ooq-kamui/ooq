@@ -17,7 +17,7 @@ function Title.init(_s)
 
 	_s._id = id._()
 	
-	extend._(_s, Title)
+	extnd._(_s, Title)
 	
 	local t_id = fac.cre("#fac_title_gui")
 

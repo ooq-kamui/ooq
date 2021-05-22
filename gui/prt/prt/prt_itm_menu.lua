@@ -112,11 +112,11 @@ function p.Prt_itm_menu.itm_menu_dsp__(_s, val)
 end
 
 function p.Prt_itm_menu.itm_menu_arw_act(_s, prm)
-	_s:itm_menu_cursor_mv(prm)
+	_s:itm_menu_cursor__mv(prm)
 end
 
-function p.Prt_itm_menu.itm_menu_cursor_mv(_s, prm)
-	log._("itm_menu_cursor_mv()")
+function p.Prt_itm_menu.itm_menu_cursor__mv(_s, prm)
+	log._("itm_menu_cursor__mv()")
 end
 
 function p.Prt_itm_menu.itm_menu_decide(_s)

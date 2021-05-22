@@ -9,8 +9,8 @@ function p.Prt_cursor_mtrx.init(_s)
 	_s._cursor_xy = n.vec(1, 1)
 end
 
-function p.Prt_cursor_mtrx.is_cursor_mv(_s, arwHa)
-	-- log._("cursor_mtrx is_cursor_mv", arwHa)
+function p.Prt_cursor_mtrx.is_cursor__mv(_s, arwHa)
+	-- log._("cursor_mtrx is_cursor__mv", arwHa)
 
 	local inc_dir
 	if     ha.eq(arwHa, "arw_l") then inc_dir = "dec"
@@ -22,8 +22,8 @@ function p.Prt_cursor_mtrx.is_cursor_mv(_s, arwHa)
 	return ret, inc_dir
 end
 
-function p.Prt_cursor_mtrx.cursor_mv(_s, dir)
-	-- log._("prt mtrx cursor_mv", dir)
+function p.Prt_cursor_mtrx.cursor__mv(_s, dir)
+	-- log._("prt mtrx cursor__mv", dir)
 
 	local edge    = _.f
 	
@@ -51,7 +51,7 @@ function p.Prt_cursor_mtrx.cursor_mv(_s, dir)
 	_s:cursor_pos__()
 	
 	-- se
-	if _.t then Se.pst_ply("cursor_mv") end
+	if _.t then Se.pst_ply("cursor__mv") end
 end
 
 function p.Prt_cursor_mtrx.cursor_pos__(_s)

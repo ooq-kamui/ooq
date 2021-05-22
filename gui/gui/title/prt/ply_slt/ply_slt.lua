@@ -16,11 +16,11 @@ function p.Ply_slt.init(_s, parent_gui)
 
 	_s._lb = "ply_slt"
 	
-	extend.init(_s, p.Prt, parent_gui)
-	extend.init(_s, p.Prt_itm_lst)
-	extend.init(_s, p.Prt_cursor)
-	extend.init(_s, p.Prt_itm_menu)
-	extend._(   _s, p.Ply_slt)
+	extnd.init(_s, p.Prt, parent_gui)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd.init(_s, p.Prt_cursor)
+	extnd.init(_s, p.Prt_itm_menu)
+	extnd._(   _s, p.Ply_slt)
 
 	_s._itm_pitch = 70
 	_s._dsp_idx_max = 4
@@ -88,10 +88,10 @@ function p.Ply_slt.opn(_s, prm)
 	_s:itm_menu_icn_dsp__auto()
 end
 
-function p.Ply_slt.cursor_mv(_s, inp_dir, itm_scrl_dir, keyact)
-	-- log._("ply_slt_gui cursor_mv")
+function p.Ply_slt.cursor__mv(_s, inp_dir, itm_scrl_dir, keyact)
+	-- log._("ply_slt_gui cursor__mv")
 
-	p.Prt_cursor.cursor_mv(_s, inp_dir, itm_scrl_dir, keyact)
+	p.Prt_cursor.cursor__mv(_s, inp_dir, itm_scrl_dir, keyact)
 
 	_s:itm_menu_icn_dsp__auto()
 end
