@@ -650,7 +650,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base-ply_slt-400x400"
+  texture: "base/ply_slt-base"
   id: "ply_slt/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -705,7 +705,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm-ply_slt-200x50_p"
+  texture: "itm/ply_slt-itm"
   id: "ply_slt/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1332,7 +1332,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base-ply_data-300x300"
+  texture: "base/ply_data-base"
   id: "ply_data/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1387,7 +1387,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm-ply_data-220x50"
+  texture: "itm/ply_data-itm"
   id: "ply_data/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1786,7 +1786,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "base/base-confirm-550x180"
+  texture: "base/confirm-base"
   id: "confirm/base"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1896,7 +1896,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "itm/itm-confirm-180x60"
+  texture: "itm/confirm-itm"
   id: "confirm/itm"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

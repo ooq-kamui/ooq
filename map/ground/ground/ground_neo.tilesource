@@ -510,6 +510,60 @@ animations {
   flip_vertical: 0
 }
 animations {
+  id: "block089"
+  start_tile: 89
+  end_tile: 89
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block090"
+  start_tile: 90
+  end_tile: 90
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block091"
+  start_tile: 91
+  end_tile: 91
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block092"
+  start_tile: 92
+  end_tile: 92
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block093"
+  start_tile: 93
+  end_tile: 93
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "block094"
+  start_tile: 94
+  end_tile: 94
+  playback: PLAYBACK_NONE
+  fps: 0
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
   id: "block126"
   start_tile: 126
   end_tile: 126
@@ -663,18 +717,18 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "block516"
-  start_tile: 516
-  end_tile: 516
+  id: "block626"
+  start_tile: 626
+  end_tile: 626
   playback: PLAYBACK_NONE
   fps: 0
   flip_horizontal: 0
   flip_vertical: 0
 }
 animations {
-  id: "block521"
-  start_tile: 521
-  end_tile: 521
+  id: "block631"
+  start_tile: 631
+  end_tile: 631
   playback: PLAYBACK_NONE
   fps: 0
   flip_horizontal: 0
