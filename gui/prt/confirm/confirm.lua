@@ -21,9 +21,9 @@ function p.Confirm.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Confirm)
 
-	_s._itm_pitch = 240
-	_s._itm_scrl_dir = "h"
-	_s._dsp_idx_max = 2
+	_s._itm_pitch      = 240
+	_s._itm_scrl_dir   = "h"
+	_s._dsp_idx_max    = 2
 	_s._cursor_dsp_idx = 2
 
 	_s:itm__by_ar({"cancel", "yes"})

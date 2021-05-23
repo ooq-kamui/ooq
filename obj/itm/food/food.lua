@@ -104,7 +104,7 @@ function Food.cook_to_dish(_s)
 end
 
 function Food.bear__o(_s, tree_id)
-	log._("Food.bear__o", _s:pos())
+	-- log._("Food.bear__o", _s:pos())
 	
 	_s._bear_tree_id = tree_id
 	pst.parent__(_s._id, tree_id, 0.05)

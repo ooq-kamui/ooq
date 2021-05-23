@@ -21,8 +21,8 @@ function p.Pc.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Pc)
 	
-	_s._itm_pitch = 50
-	_s._dsp_idx_max = 4
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  4
 	
 	_s:itm__by_ar({"shop", "kzn", "snn_lst", "cfg"})
 	_s._itm_txt = {"おみせ", "きずな", "しなん", "せってい"}

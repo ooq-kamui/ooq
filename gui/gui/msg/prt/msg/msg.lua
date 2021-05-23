@@ -50,7 +50,7 @@ end
 function p.Msg.itm__add(_s, itm)
 	-- log._("msg itm itm__add", itm)
 
-	local itm_nd = p.Prt_itm.itm__add(_s, itm)
+	local itm_nd = p.Prt_itm_lst.itm__add(_s, itm)
 	
 	local txt = itm
 	local txt_len_max = 20

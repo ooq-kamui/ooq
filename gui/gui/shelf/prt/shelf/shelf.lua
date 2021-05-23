@@ -21,8 +21,8 @@ function p.Shelf.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Shelf)
 	
-	_s._itm_pitch = 130
-	_s._dsp_idx_max = 3
+	_s._itm_pitch    = 130
+	_s._dsp_idx_max  =   3
 	_s._itm_scrl_dir = "h"
 
 	_s:itm__by_ar({"anml", "flower", "dish"})

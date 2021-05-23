@@ -21,8 +21,8 @@ function p.Kzn.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Kzn)
 	
-	_s._itm_pitch = 50
-	_s._dsp_idx_max = 8
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  8
 	
 	_s:itm__by_ar(Chara.chara)
 	

@@ -21,7 +21,7 @@ function p.Snn_dtl.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Snn_dtl)
 
-	_s._itm_pitch = 350
+	_s._itm_pitch    = 350
 	_s._itm_scrl_dir = "h"
 	
 	_s:itm__by_ar({"page_1", "page_2"})

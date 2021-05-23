@@ -21,8 +21,8 @@ function p.Shop_kagu.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_kagu)
 	
-	_s._itm_pitch = 105
-	_s._dsp_idx_max = 4
+	_s._itm_pitch   = 105
+	_s._dsp_idx_max =   4
 
 	local kagu = ar.key(Mstr.kagu)
 	_s:itm__by_ar_lim(kagu)

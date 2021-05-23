@@ -21,8 +21,8 @@ function p.Cfg.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Cfg)
 	
-	_s._itm_pitch = 50
-	_s._dsp_idx_max = 2
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  2
 	
 	_s:itm__by_ar({"cfg_1", "cfg_2"})
 	_s._itm_txt = {"setting 1", "setting 2"}

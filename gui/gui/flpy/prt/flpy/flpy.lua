@@ -21,8 +21,8 @@ function p.Flpy.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Flpy)
 	
-	_s._itm_pitch = 80
-	_s._dsp_idx_max = 3
+	_s._itm_pitch    = 80
+	_s._dsp_idx_max  = 3
 	_s._itm_scrl_dir = "v"
 
 	_s:itm__by_ar({"save", "load", "back to title"})

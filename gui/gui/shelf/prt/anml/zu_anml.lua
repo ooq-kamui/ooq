@@ -33,8 +33,8 @@ function p.Zu_anml.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Zu_anml)
 	
-	_s._itm_pitch = 51
-	_s._dsp_idx_max = 8
+	_s._itm_pitch   = 51
+	_s._dsp_idx_max =  8
 	
 	_s:itm__by_ar(Anml.anml)
 	

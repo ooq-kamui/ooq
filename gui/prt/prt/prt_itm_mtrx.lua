@@ -69,3 +69,4 @@ function p.Prt_itm_mtrx.dsp1_itm_idx__(_s)
 
 	_s._dsp1_itm_idx = page.dsp1_itm_idx(_s._page_idx, _s._dsp_idx_max)
 end
+

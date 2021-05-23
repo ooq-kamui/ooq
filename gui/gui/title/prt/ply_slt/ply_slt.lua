@@ -22,8 +22,8 @@ function p.Ply_slt.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_itm_menu)
 	extnd._(   _s, p.Ply_slt)
 
-	_s._itm_pitch = 70
-	_s._dsp_idx_max = 4
+	_s._itm_pitch   = 70
+	_s._dsp_idx_max =  4
 
 	_s:itm__()
 	_s:nd_itm__()

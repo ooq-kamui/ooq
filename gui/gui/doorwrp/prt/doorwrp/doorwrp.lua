@@ -21,7 +21,7 @@ function p.Doorwrp.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Doorwrp)
 	
-	_s._itm_pitch = 100
+	_s._itm_pitch    = 100
 	_s._itm_scrl_dir = "h"
 
 	_s._dsp_idx_max = #Map.obj["doorwrp"] or 0
@@ -47,11 +47,14 @@ function p.Doorwrp.opn(_s)
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 	Se.pst_ply("forward")
+
+	-- _s:slfobj__()
 end
 
 function p.Doorwrp.decide(_s)
 
 	local doorwrp_id = _s:cursor_itm()
+	-- log._("p.Doorwrp.decide", doorwrp_id)
 
 	if u.eq(doorwrp_id, _s._parent_gui._slfobj_id) then
 		_s:cursor_itm_iyaiya()
@@ -64,9 +67,10 @@ function p.Doorwrp.decide(_s)
 	_s:clz()
 end
 
-function p.Doorwrp.slfobj__(_s) -- use not
-	-- log._("p.Doorwrp.slfobj__", _s._parent_gui._slfobj_id)
+function p.Doorwrp.slfobj__(_s)
 
-	-- _s:cursor_pos__()
+	local itm_idx = ar.srch_idx(_s._parent_gui._slfobj_id, _s._itm)
+
+	_s:cursor__itm_idx(itm_idx)
 end
 

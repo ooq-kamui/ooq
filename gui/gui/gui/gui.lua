@@ -25,8 +25,10 @@ function g.Gui.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "gui:prp__") then
 		_s:prp__(prm)
 		
+		---[[
 	elseif ha.eq(msg_id, "prt:slfobj__") then
 		_s:actv_prt_slfobj__()
+		--]]
 		
 	elseif ha.eq(msg_id, "key"      ) then
 		_s:actv_prt_key_2_act(prm)
@@ -40,7 +42,7 @@ function g.Gui.final(_s)
 	end
 end
 
--- -- method
+-- method
 
 function g.Gui.opn(_s, prt_lb, prm)
 	
@@ -187,9 +189,11 @@ function g.Gui.prp__(_s, prm)
 	end
 end
 
+---[[
 function g.Gui.actv_prt_slfobj__(_s)
 
 	local actv_prt = _s:actv_prt()
 	actv_prt:slfobj__()
 end
+--]]
 

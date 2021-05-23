@@ -24,8 +24,8 @@ function p.Shop.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Shop)
 	
-	_s._itm_pitch = 50
-	_s._dsp_idx_max = 4
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  4
 	
 	_s:itm__by_ar({"shop_flower", "shop_tree", "shop_kagu_itm", "shop_kagu"})
 	_s._itm_txt = {"はな", "き", "べんりな かぐ", "ふつうの かぐ"}

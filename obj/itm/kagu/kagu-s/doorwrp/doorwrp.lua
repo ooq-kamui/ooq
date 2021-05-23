@@ -82,7 +82,8 @@ end
 function Doorwrp.opn(_s)
 
 	local t_id = fac.cre("#fac_doorwrp_gui")
-	pst.gui(t_id, "gui:prp__", {_slfobj_id = _s._id})
+	pst.gui(t_id, "gui:prp__"   , {_slfobj_id = _s._id})
+	pst.gui(t_id, "prt:slfobj__", {_slfobj_id = _s._id})
 
 	-- _s:anim__("opn")
 end

@@ -35,7 +35,8 @@ function Tile_bndl.is_tile_bndl_x5x5(p_tile)
 end
 
 function Tile_bndl.is_base_tile_bndl(p_tile, p_base_tile)
-	-- log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
+	log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
+
 	if not p_tile then return end
 
 	local ret = _.f
