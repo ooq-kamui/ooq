@@ -15,33 +15,32 @@ end
 function p.Shop_kagu.init(_s, parent_gui)
 
 	_s._lb = "shop_kagu"
+	_s._itm_pitch   = 105
+	_s._dsp_idx_max =   4
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_kagu)
 	
-	_s._itm_pitch   = 105
-	_s._dsp_idx_max =   4
+	_s:nd__("ply_data_gold")
 
 	local kagu = ar.key(Mstr.kagu)
-	_s:itm__by_ar_lim(kagu)
+	_s:itm__6_ar(kagu)
+	_s:whel__init()
+end
 
-	_s:nd__("ply_data_gold")
-	
-	local node, name, price
-	for idx, name in pairs(_s._itm) do
+function p.Shop_kagu.whel_i_nd__(_s, whel_idx, itm_idx)
 
-		-- log._("shop kagu init", idx, name)
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
 
-		node = _s:itm_clone()
-		-- kagu
-		nd.txtr__(node[_s:lb("icn")], "kagu")
-		nd.anm__(node[_s:lb("icn")], name)
-		-- price
-		price = Mstr.kagu[name].price
-		nd.txt__(node[_s:lb("price")], price.."G")
-	end
+	local name = _s:itm_i(itm_idx)
+
+	nd.txtr__(nd_ar[_s:lb("icn")], "kagu")
+	nd.anm__( nd_ar[_s:lb("icn")], name)
+
+	local price = Mstr.kagu[name].price
+	nd.txt__( nd_ar[_s:lb("price")], price.."G")
 end
 
 -- method

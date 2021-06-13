@@ -48,7 +48,7 @@ function Hldabl.hldd_pos(_s)
 	local x
 
 	if _s._weight == 1 then
-		x = u.x_by_all_w(_s._hldd_idx, Plychara.hld_idx_max, Map.sqh)
+		x = u.x_6_all_w(_s._hldd_idx, Plychara.hld_idx_max, Map.sqh)
 	else
 		x = 0
 	end

@@ -15,24 +15,26 @@ end
 function p.Snn_dtl.init(_s, parent_gui)
 
 	_s._lb = "snn_dtl"
+	_s._itm_pitch    = 350
+	_s._dsp_idx_max  =   1
+	_s._itm_scrl_dir = "h"
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
-	extnd._(_s, p.Snn_dtl)
-
-	_s._itm_pitch    = 350
-	_s._itm_scrl_dir = "h"
+	extnd._(   _s, p.Snn_dtl)
 	
-	_s:itm__by_ar({"page_1", "page_2"})
-
 	_s:nd__("title")
-	
-	local node
-	for idx, itm in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("itm")], _s._itm[idx])
-	end
+
+	_s:itm__6_ar({"page_1", "page_2"})
+	_s:whel__init()
+end
+
+function p.Snn_dtl.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("itm")], _s._itm[itm_idx])
 end
 
 -- method

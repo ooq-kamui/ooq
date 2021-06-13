@@ -27,3 +27,4 @@ function page.dsp1_itm_idx(page_idx, dsp_idx_max)
 	local dsp1_itm_idx = (page_idx - 1) * dsp_idx_max + 1
 	return dsp1_itm_idx
 end
+

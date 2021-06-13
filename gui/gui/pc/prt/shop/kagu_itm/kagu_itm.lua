@@ -18,37 +18,40 @@ end
 function p.Shop_kagu_itm.init(_s, parent_gui)
 
 	_s._lb = "shop_kagu_itm"
+	_s._itm_pitch   = 75
+	_s._dsp_idx_max =  5
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_kagu_itm)
 	
-	_s._itm_pitch   = 75
-	_s._dsp_idx_max =  5
+	_s:nd__("ply_data_gold")
 
 	local kagu_itm = ar.key(Mstr.kagu_itm)
-	_s:itm__by_ar(kagu_itm)
-	
-	_s:nd__("ply_data_gold")
-	
-	local node, name, anim, price
-	for idx, cls in pairs(_s._itm) do
-		
-		name = cls.."001"
+	_s:itm__6_ar(kagu_itm)
+	_s:whel__init()
+end
 
-		if ar.in_(cls, p.Shop_kagu_itm.stand) then
-			anim = name.."-stand"
-		else
-			anim = name
-		end
+function p.Shop_kagu_itm.whel_i_nd__(_s, whel_idx, itm_idx)
 
-		node = _s:itm_clone()
-		nd.txtr__(node[_s:lb("icn")  ], cls)
-		nd.anm__( node[_s:lb("icn")  ], anim)
-		-- price
-		nd.txt__( node[_s:lb("price")], _s:price(cls, name))
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	local cls = _s:itm_i(itm_idx)
+	
+	local name = cls.."001"
+	local anim
+
+	if ar.in_(cls, p.Shop_kagu_itm.stand) then
+		anim = name.."-stand"
+	else
+		anim = name
 	end
+
+	nd.txtr__(nd_ar[_s:lb("icn")  ], cls)
+	nd.anm__( nd_ar[_s:lb("icn")  ], anim)
+
+	nd.txt__( nd_ar[_s:lb("price")], _s:price(cls, name))
 end
 
 -- method

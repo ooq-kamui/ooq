@@ -205,8 +205,8 @@ function p.Prt.confirm(_s)
 end
 
 function p.Prt.confirm_opn(_s)
-	local called_by_prt = _s
-	_s._parent_gui:confirm_opn(called_by_prt)
+	local called_6_prt = _s
+	_s._parent_gui:confirm_opn(called_6_prt)
 end
 
 -- url

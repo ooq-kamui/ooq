@@ -35,7 +35,7 @@ function Tile_bndl.is_tile_bndl_x5x5(p_tile)
 end
 
 function Tile_bndl.is_base_tile_bndl(p_tile, p_base_tile)
-	log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
+	-- log._("Tile_bndl.is_base_tile_bndl", p_tile, p_base_tile)
 
 	if not p_tile then return end
 
@@ -70,11 +70,11 @@ function Tile_bndl.crct_tile(base_tile, arund_val)
 
 	local df = Tile_bndl.arund_val_2_df_x5x5(arund_val)
 	
-	local crct_tile = Tile_bndl.crct_tile_by_df(base_tile, df)
+	local crct_tile = Tile_bndl.crct_tile_6_df(base_tile, df)
 	return crct_tile
 end
 
-function Tile_bndl.crct_tile_by_df(base_tile, df)
+function Tile_bndl.crct_tile_6_df(base_tile, df)
 
 	local crct_tile = base_tile + ( Tile.col_idx_max * df.y ) + df.x
 	return crct_tile

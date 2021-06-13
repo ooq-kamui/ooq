@@ -10,12 +10,12 @@ Map._obj.grp_cls.food = Food.cls
 
 -- static
 
-function Food.cre_by_cls(p_pos, prm)
+function Food.cre_6_cls(p_pos, prm)
 	
 	p_pos = p_pos or Game.plychara_pos()
 
 	local t_Cls = Cls.Cls(prm._cls)
-	log.pp("food cre_by_cls", prm)
+	log.pp("food cre_6_cls", prm)
 	prm._cls = nil
 
 	local t_id = t_Cls.cre(p_pos, prm)

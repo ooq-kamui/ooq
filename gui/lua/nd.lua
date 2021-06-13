@@ -3,11 +3,13 @@ log.scrpt("nd.lua")
 nd = {}
 
 function nd._(name)
+
 	local t_nd = gui.get_node(name)
 	return t_nd
 end
 
-function nd.clone(p_nd)
+function nd.cln(p_nd)
+
 	local t_nd = gui.clone_tree(p_nd)
 	return t_nd
 end
@@ -104,11 +106,11 @@ function nd.anm__(p_nd, p_anm)
 	gui.play_flipbook(p_nd, p_anm)
 end
 
-function nd.order__by_abv(p_nd, p_nd_abv)
+function nd.order__6_abv(p_nd, p_nd_abv)
 	gui.move_above(p_nd, p_nd_abv)
 end
 
-function nd.order__by_blw(p_nd, p_nd_blw)
+function nd.order__6_blw(p_nd, p_nd_blw)
 	gui.move_below(p_nd, p_nd_blw)
 end
 

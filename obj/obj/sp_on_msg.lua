@@ -86,7 +86,7 @@ function Sp.leapup(_s , p_leapup_lv)
 	local dst_y = Plychara.jmp_h_max * p_leapup_lv
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
-	local speed_y = accl.speed_by_dst(dst_y)
+	local speed_y = accl.speed_6_dst(dst_y)
 
 	_s._accl:speed_y__(speed_y)
 end

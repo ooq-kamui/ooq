@@ -15,6 +15,8 @@ end
 function p.Ply_slt.init(_s, parent_gui)
 
 	_s._lb = "ply_slt"
+	_s._itm_pitch   = 70
+	_s._dsp_idx_max =  4
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
@@ -22,18 +24,15 @@ function p.Ply_slt.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_itm_menu)
 	extnd._(   _s, p.Ply_slt)
 
-	_s._itm_pitch   = 70
-	_s._dsp_idx_max =  4
-
-	_s:itm__()
-	_s:nd_itm__()
+	_s:itm__init()
+	_s:whel__init()
 
 	_s._itm_menu = {"delete"} -- {"delete", "itm_menu1", "itm_menu2"}
 	_s:nd_itm_menu__()
 	_s:itm_menu_actv__x()
 end
 
-function p.Ply_slt.itm__(_s)
+function p.Ply_slt.itm__init(_s)
 	
 	local data
 	for idx = 1, file.ply_slt.idx_max do
@@ -44,35 +43,23 @@ end
 
 function p.Ply_slt.itm__load(_s, ply_slt_idx)
 	
-	-- local data = file.ply_slt.load(idx)
 	local data = file.ply_data.ltst.thmb(ply_slt_idx)
 	_s._itm[ply_slt_idx] = data
 end
 
-function p.Ply_slt.nd_itm__(_s)
-	
-	local itm
-	for idx, data in pairs(_s._itm) do
-		itm = _s:itm_clone()
-		nd.txt__(itm[_s:lb("no")], int._2_str(idx))
-
-		_s:nd_itm_txt__(idx)
-	end
-end
-
-function p.Ply_slt.nd_itm_txt__(_s, idx)
+function p.Ply_slt.whel_i_nd__(_s, whel_idx, itm_idx)
 	
 	local lb, thmb
-
-	-- log.pp("txt__", _s:itm(idx))
 	
-	if ar.is_emp(_s:itm(idx)) then
+	nd.txt__(_s._nd.itm[whel_idx][_s:lb("no")], int._2_str(itm_idx))
+
+	local itm_i = _s:itm_i(itm_idx)
+	if ar.is_emp(itm_i) then
 		lb = "new"
 	else
-		-- thmb = file.ply_data.ltst.thmb(idx)
-		lb = _s:itm(idx)["ts_str"]
+		lb = itm_i["ts_str"]
 	end
-	nd.txt__(_s._nd.itm[idx][_s:lb("txt")], lb)
+	nd.txt__(_s._nd.itm[whel_idx][_s:lb("txt")], lb)
 end
 
 -- method
@@ -84,7 +71,6 @@ function p.Ply_slt.opn(_s, prm)
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 
-	-- itm_menu
 	_s:itm_menu_icn_dsp__auto()
 end
 

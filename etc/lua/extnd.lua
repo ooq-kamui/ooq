@@ -11,6 +11,8 @@ function extnd._(obj, Cls)
 end
 
 function extnd.init(_s, Cls, ...)
+
 	extnd._(_s, Cls)
 	_s:init(...)
 end
+

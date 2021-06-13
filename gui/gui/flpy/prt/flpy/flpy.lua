@@ -15,23 +15,26 @@ end
 function p.Flpy.init(_s, parent_gui)
 
 	_s._lb = "flpy"
+	_s._itm_pitch   = 80
+	_s._dsp_idx_max =  3
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Flpy)
 	
-	_s._itm_pitch    = 80
-	_s._dsp_idx_max  = 3
 	_s._itm_scrl_dir = "v"
 
-	_s:itm__by_ar({"save", "load", "back to title"})
-	
-	local node
-	for idx, txt in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("txt")], txt)
-	end
+	_s:itm__6_ar({"save", "load", "back to title"})
+	_s:whel__init()
+end
+
+function p.Flpy.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	local txt = _s:itm_i(itm_idx)
+	nd.txt__(nd_ar[_s:lb("txt")], txt)
 end
 
 -- method

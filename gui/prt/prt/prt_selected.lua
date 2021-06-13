@@ -49,7 +49,7 @@ end
 function p.Prt_selected.is_selected_dsp(_s)
 	
 	local ret = _.f
-	if num.is_rng(_s._selected_itm_idx, {_s._dsp1_itm_idx, _s:dspE_itm_idx()}) then
+	if num.is_rng(_s._selected_itm_idx, {_s:dsp1_itm_idx(), _s:dspE_itm_idx()}) then
 		ret = _.t
 	end
 	return ret
@@ -67,7 +67,7 @@ function p.Prt_selected.selected_drw(_s)
 end
 
 function p.Prt_selected.selected_dsp_idx(_s)
-	local selected_dsp_idx = _s._selected_itm_idx - _s._dsp1_itm_idx + 1
+	local selected_dsp_idx = _s._selected_itm_idx - _s:dsp1_itm_idx() + 1
 	return selected_dsp_idx
 end
 

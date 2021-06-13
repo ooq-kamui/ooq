@@ -20,7 +20,7 @@ Anml = {
 Anml.cls = "anml"
 Anml.fac = Obj.fac..Anml.cls
 Cls.add(Anml)
-ha.add_by_ar(Anml.anml)
+ha.add_6_ar(Anml.anml)
 
 -- static
 

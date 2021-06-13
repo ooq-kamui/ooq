@@ -4,7 +4,7 @@ map = {
 	_ = {}, -- cache - [tilemap][bound]
 }
 
-function map.pos_by_tilepos(tilepos)
+function map.pos_6_tilepos(tilepos)
 	local pos = n.vec(Map.sq * tilepos.x - Map.sqh, Map.sq * tilepos.y - Map.sqh)
 	return pos
 end
@@ -29,11 +29,11 @@ function map.tile(p_pos, p_id, p_tilemap, layer)
 	local is_inside, dir = map.is_inside_tilepos(t_tilepos, p_id, p_tilemap)
 	if not is_inside then return end
 	
-	return map.tile_by_tilepos(t_tilepos, p_id, p_tilemap, layer)
+	return map.tile_6_tilepos(t_tilepos, p_id, p_tilemap, layer)
 end
 
-function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
-	-- log._("map tile_by_tilepos", p_tilemap)
+function map.tile_6_tilepos(tilepos, p_id, p_tilemap, layer)
+	-- log._("map tile_6_tilepos", p_tilemap)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer = layer or p_tilemap
@@ -41,12 +41,12 @@ function map.tile_by_tilepos(tilepos, p_id, p_tilemap, layer)
 	local is_inside, dir = map.is_inside_tilepos(tilepos, p_id, p_tilemap)
 	if not is_inside then return end
 	
-	-- log._("map tile_by_tilepos", p_tilemap)
+	-- log._("map tile_6_tilepos", p_tilemap)
 
 	local t_url = url._(p_id, p_tilemap)
 
 	if not ( p_tilemap == "sky" ) then
-		-- log._("map.tile_by_tilepos", t_url, p_id, p_tilemap)
+		-- log._("map.tile_6_tilepos", t_url, p_id, p_tilemap)
 	end
 
 	local t_tile = tilemap.get_tile(t_url, layer, tilepos.x, tilepos.y)
@@ -58,18 +58,18 @@ function map.tile__(p_pos, p_tile, p_id, p_tilemap, layer)
 	layer = layer or p_tilemap
 	
 	local t_tilepos = map.pos_2_tilepos(p_pos)
-	map.tile__by_tilepos(t_tilepos, p_tile, p_id, p_tilemap, layer)
+	map.tile__6_tilepos(t_tilepos, p_tile, p_id, p_tilemap, layer)
 end
 
-function map.tile__by_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer)
+function map.tile__6_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer)
 
 	layer = layer or p_tilemap
 
-	-- log._("map.tile__by_tilepos")
+	-- log._("map.tile__6_tilepos")
 	local is_inside, dir = map.is_inside_tilepos(p_tilepos, p_id, p_tilemap)
 	if not is_inside then return end
 
-	local tile_prv = map.tile_by_tilepos(p_tilepos, p_id, p_tilemap, layer)
+	local tile_prv = map.tile_6_tilepos(p_tilepos, p_id, p_tilemap, layer)
 	
 	local t_url = url._(p_id, p_tilemap)
 	tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, p_tile)
@@ -80,7 +80,7 @@ function map.tile__by_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer)
 	Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)
 
 	-- arund_tile__crct
-	-- log._("map.tile__by_tilepos  arund_tile__crct")
+	-- log._("map.tile__6_tilepos  arund_tile__crct")
 	-- local arund_ar  = map.tile_bndl_arund_ar(p_tilepos)
 
 	local tile_bndl = p_tile == 0 and tile_prv or p_tile
@@ -123,10 +123,10 @@ function map.is_inside_tilepos_cmpr(tilepos, rng_tilepos)
 	return ret, dir
 end
 
-function map.pos_by_pos(p_pos) -- center in tile
+function map.pos_6_pos(p_pos) -- center in tile
 
 	local t_tilepos = map.pos_2_tilepos(p_pos)
-	return map.pos_by_tilepos(t_tilepos)
+	return map.pos_6_tilepos(t_tilepos)
 end
 
 function map.tile_bound(p_id, p_tilemap)

@@ -108,7 +108,7 @@ function Tst.obj._(p_Cls)
 	while #p_Cls > 0 do
 		idx = rnd.int(1, #p_Cls)
 		p_Cls[idx].cre(t_pos, nil)
-		ar.del_by_idx(p_Cls, idx)
+		ar.del_6_idx(p_Cls, idx)
 		t_pos.x = t_pos.x + Map.sq
 		if t_pos.x > rng.max.x - Map.verge then
 			t_pos.x = t_pos_ini.x + cnt * 10

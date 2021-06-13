@@ -64,7 +64,7 @@ function Map.obj__del(_s, p_id, p_cls)
 
 	if not _s._obj[p_cls] then return end
 
-	ar.del_by_val(_s._obj[p_cls], p_id)
+	ar.del_6_val(_s._obj[p_cls], p_id)
 
 	-- log.pp("Map.obj__del "..p_cls, _s._obj[p_cls])
 end

@@ -15,27 +15,26 @@ end
 function p.Doorwrp.init(_s, parent_gui)
 
 	_s._lb = "doorwrp"
+	_s._itm_pitch   = 100
+	_s._dsp_idx_max = #Map.obj["doorwrp"] or 0
+	_s._itm_scrl_dir = "h"
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Doorwrp)
-	
-	_s._itm_pitch    = 100
-	_s._itm_scrl_dir = "h"
 
-	_s._dsp_idx_max = #Map.obj["doorwrp"] or 0
-
-	_s:itm__by_ar(Map.obj["doorwrp"])
-	
+	_s:itm__6_ar(Map.obj["doorwrp"])
 	_s._itm_txt = Map.obj["doorwrp"] -- {}
-	
-	-- nd itm
-	local node
-	for idx, itm in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("txt")], "doorwrp"..int.pad(idx))
-	end
+
+	_s:whel__init()
+end
+
+function p.Doorwrp.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("txt")], "doorwrp"..int.pad(itm_idx))
 end
 
 -- method
@@ -69,7 +68,9 @@ end
 
 function p.Doorwrp.slfobj__(_s)
 
-	local itm_idx = ar.srch_idx(_s._parent_gui._slfobj_id, _s._itm)
+	local itm_idx = ar.srch_idx(_s._itm, _s._parent_gui._slfobj_id)
+
+	log._("p.Doorwrp.slfobj__", _s._cursor_dsp_idx, _s._lb)
 
 	_s:cursor__itm_idx(itm_idx)
 end

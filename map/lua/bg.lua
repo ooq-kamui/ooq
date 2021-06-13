@@ -27,7 +27,7 @@ end
 function Bg.pos__(_s, pos)
 	-- log._("bg pos__", _s._areaHa, _s._nameHa)
 
-	pos = pos or _s:pos_by_bg_mv_scl()
+	pos = pos or _s:pos_6_bg_mv_scl()
 
 	id.pos__(_s._id, pos)
 end
@@ -66,7 +66,7 @@ function Bg.map_tilesize(_s)
 	return _s._map_tilesize
 end
 
-function Bg.pos_by_bg_mv_scl(_s)
+function Bg.pos_6_bg_mv_scl(_s)
 
 	local bg_mv_scl   = _s:bg_mv_scl()
 	local mv_cntr_pos = _s:mv_cntr_pos()

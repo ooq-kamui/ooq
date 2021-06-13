@@ -29,7 +29,7 @@ function on_message(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "food_cre") then
 
-		Food.cre_by_cls(nil, prm)
+		Food.cre_6_cls(nil, prm)
 
 	elseif ha.eq(msg_id, "map_pause__"    ) then
 

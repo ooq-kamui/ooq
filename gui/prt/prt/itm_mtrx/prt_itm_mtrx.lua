@@ -4,8 +4,8 @@ p.Prt_itm_mtrx = {}
 
 function p.Prt_itm_mtrx.init(_s)
 
-	extnd.init(_s, p.Prt_itm)
-	extnd._(_s, p.Prt_itm_mtrx)
+	-- extnd.init(_s, p.Prt_itm)
+	extnd._(   _s, p.Prt_itm_mtrx)
 	
 	_s._itm_scrl_dir = "h"
 
@@ -49,13 +49,11 @@ end
 
 -- itm
 
-function p.Prt_itm_mtrx.itm_pos_by_dsp_idx(_s, dsp_idx)
-	-- log._("itm mtrx itm_pos_by_dsp_idx", dsp_idx)
+function p.Prt_itm_mtrx.itm_pos_6_dsp_idx(_s, dsp_idx)
 
-	-- pos
 	local t_xy = xy.idx_2_xy(dsp_idx, _s._xy_size)
-	local pos  = xy._2_pos(t_xy, _s._xy_size, _s._itm_pitch)
-	return pos
+	local t_pos  = xy._2_pos(t_xy, _s._xy_size, _s._itm_pitch)
+	return t_pos
 end
 
 -- dsp 

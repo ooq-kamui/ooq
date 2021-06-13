@@ -164,8 +164,8 @@ function g.Gui.confirm(_s)
 	return confirm
 end
 
-function g.Gui.confirm_opn(_s, called_by_prt)
-	_s:opn("confirm", {called_by_prt = called_by_prt})
+function g.Gui.confirm_opn(_s, called_6_prt)
+	_s:opn("confirm", {called_6_prt = called_6_prt})
 end
 
 -- focus

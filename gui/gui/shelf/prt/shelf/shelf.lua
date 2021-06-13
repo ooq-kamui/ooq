@@ -15,25 +15,25 @@ end
 function p.Shelf.init(_s, parent_gui)
 
 	_s._lb = "shelf"
+	_s._itm_pitch   = 130
+	_s._dsp_idx_max =   3
+	_s._itm_scrl_dir = "h"
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Shelf)
-	
-	_s._itm_pitch    = 130
-	_s._dsp_idx_max  =   3
-	_s._itm_scrl_dir = "h"
 
-	_s:itm__by_ar({"anml", "flower", "dish"})
+	_s:itm__6_ar({"anml", "flower", "dish"})
 	_s._itm_txt = {"どうぶつ", "おはな", "りょうり", }
-	
-	local node
-	for idx, title in pairs(_s._itm) do
-		node = _s:itm_clone()
-		-- nd.txt__(node[_s:lb("title")], title)
-		nd.txt__(node[_s:lb("title")], _s._itm_txt[idx])
-	end
+	_s:whel__init()
+end
+
+function p.Shelf.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("title")], _s._itm_txt[itm_idx])
 end
 
 -- method

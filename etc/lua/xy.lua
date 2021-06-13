@@ -10,7 +10,7 @@ function xy.idx_2_xy(idx, xy_size)
 end
 
 function xy._2_pos(p_xy, xy_size, pitch)
-	local pos = n.vec(u.x_by_itm_w(p_xy.x, xy_size.x, pitch.w), - u.x_by_itm_w(p_xy.y, xy_size.y, pitch.h))
+	local pos = n.vec(u.x_6_itm_w(p_xy.x, xy_size.x, pitch.w), - u.x_6_itm_w(p_xy.y, xy_size.y, pitch.h))
 	return pos
 end
 

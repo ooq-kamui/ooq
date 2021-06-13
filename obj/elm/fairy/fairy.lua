@@ -98,7 +98,7 @@ end
 function Fairy.mv__dir(_s, p_dir)
 
 	_s:tilepos__add_dir(p_dir)
-	_s:mv__by_tilepos()
+	_s:mv__6_tilepos()
 end
 
 function Fairy.tilepos__add_dir(_s, p_dir)
@@ -139,7 +139,7 @@ end
 function Fairy.mv__plychara_v(_s, p_dir)
 
 	_s:tilepos__plychara_v(p_dir)
-	_s:mv__by_tilepos()
+	_s:mv__6_tilepos()
 end
 
 function Fairy.tilepos__plychara_v(_s, p_dir)
@@ -154,13 +154,13 @@ function Fairy.tilepos__plychara_v(_s, p_dir)
 	end
 end
 
-function Fairy.mv__by_tilepos(_s)
+function Fairy.mv__6_tilepos(_s)
 
-	local t_pos = _s:pos_by_tilepos()
+	local t_pos = _s:pos_6_tilepos()
 	_s:mv__pos(t_pos)
 end
 
-function Fairy.pos_by_tilepos(_s)
+function Fairy.pos_6_tilepos(_s)
 
 	local t_pos = _s._tilepos * Map.sq
 	return t_pos

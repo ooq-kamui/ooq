@@ -15,22 +15,24 @@ end
 function p.Snn_lst.init(_s, parent_gui)
 
 	_s._lb = "snn_lst"
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  2
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
-	extnd._(_s, p.Snn_lst)
+	extnd._(   _s, p.Snn_lst)
 	
-	_s._itm_pitch   = 50
-	_s._dsp_idx_max =  2
-	
-	_s:itm__by_ar({"snn_dtl_1", "snn_dtl_2"})
-	
-	local node
-	for idx, itm in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("itm")], _s._itm[idx])
-	end
+	_s:itm__6_ar({"snn_dtl_1", "snn_dtl_2"})
+	_s:whel__init()
+end
+
+function p.Snn_lst.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+	local itm_i = _s:itm_i(itm_idx)
+
+	nd.txt__(nd_ar[_s:lb("itm")], itm_i)
 end
 
 -- method
@@ -48,3 +50,4 @@ function p.Snn_lst.decide(_s)
 	_s._parent_gui:opn("snn_dtl", {snn_no = _s:cursor_itm()})
 	_s:behind()
 end
+

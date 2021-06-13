@@ -19,7 +19,7 @@ function ha.de(keyHa) -- rest
 	return val
 end
 
-function ha.add_by_ar(p_ar) -- rest
+function ha.add_6_ar(p_ar) -- rest
 	local valHa
 	for idx, val in pairs(p_ar) do
 		valHa = ha._(val)
@@ -44,7 +44,7 @@ function ha.add(val)
 	ha._ha[ha._(val)] = val
 end
 
-function ha.add_by_key_num(key, num)
+function ha.add_6_key_num(key, num)
 	local keyHa
 	for idx = 1, num do
 		val   = key .. int.pad(idx)
@@ -53,13 +53,13 @@ function ha.add_by_key_num(key, num)
 	end
 end
 
-function ha.add_by_Cls(p_Cls)
+function ha.add_6_Cls(p_Cls)
 	
 	ha.add(p_Cls.cls)
 	
 	if not p_Cls.name_idx_max then return end
 	
-	ha.add_by_key_num(p_Cls.cls, p_Cls.name_idx_max)
+	ha.add_6_key_num(p_Cls.cls, p_Cls.name_idx_max)
 end
 --]]
 

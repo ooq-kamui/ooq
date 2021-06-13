@@ -116,7 +116,7 @@ function Tree.bear(_s)
 end
 
 function Tree.bear__x(_s, bear_id)
-	ar.del_by_val(_s._bear, bear_id)
+	ar.del_6_val(_s._bear, bear_id)
 end
 
 function Tree.trnsf__wood(_s, num)
@@ -124,7 +124,7 @@ function Tree.trnsf__wood(_s, num)
 	num = num or 3
 	local t_pos, x
 	for i = 1, num do
-		x = u.x_by_all_w(i, num, Map.sq)
+		x = u.x_6_all_w(i, num, Map.sq)
 		t_pos = _s:pos() + n.vec(x, Map.sqh)
 		Wood.cre(t_pos)
 	end

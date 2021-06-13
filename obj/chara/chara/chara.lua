@@ -20,7 +20,7 @@ Chara = {
 Chara.cls = "chara"
 Chara.fac = Obj.fac..Chara.cls
 Cls.add(Chara)
-ha.add_by_ar(Chara.chara)
+ha.add_6_ar(Chara.chara)
 
 -- static
 

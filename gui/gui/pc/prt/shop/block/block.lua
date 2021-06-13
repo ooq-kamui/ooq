@@ -23,17 +23,21 @@ function p.Shop_block.init(_s, parent_gui)
 	
 	_s._itm_pitch = 50
 
-	_s:itm__by_ar({"block001", "block002", "block003"})
+	_s:itm__6_ar({"block001", "block002", "block003"})
 	_s._itm_txt = _s._itm
 	
-	local node
-	for idx, item in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("itm")], _s._itm_txt[idx])
-	end
+	_s:whel__init()
+end
+
+function p.Shop_block.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("itm")], _s._itm_txt[itm_idx])
 end
 
 -- method
 
 function p.Shop_block.decide(_s)
 end
+

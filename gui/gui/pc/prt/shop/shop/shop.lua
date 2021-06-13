@@ -18,23 +18,25 @@ end
 function p.Shop.init(_s, parent_gui)
 
 	_s._lb = "shop"
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  4
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
-	extnd._(_s, p.Shop)
+	extnd._(   _s, p.Shop)
 	
-	_s._itm_pitch   = 50
-	_s._dsp_idx_max =  4
+	_s:itm__6_ar({"shop_flower", "shop_tree", "shop_kagu_itm", "shop_kagu"})
+	_s._itm_txt = {"はなのたね", "きのみ", "べんりな かぐ", "ふつうの かぐ"}
 	
-	_s:itm__by_ar({"shop_flower", "shop_tree", "shop_kagu_itm", "shop_kagu"})
-	_s._itm_txt = {"はな", "き", "べんりな かぐ", "ふつうの かぐ"}
-	
-	local node
-	for idx, item in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("itm")], _s._itm_txt[idx])
-	end
+	_s:whel__init()
+end
+
+function p.Shop.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("itm")], _s._itm_txt[itm_idx])
 end
 
 -- method

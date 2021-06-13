@@ -28,7 +28,6 @@ function p.Dia.init(_s, parent_gui)
 
 	local t_pos = Disp.center + n.vec(0, 150)
 	_s:base_pos__(t_pos)
-	-- log._("prt dia init", _s._cursor_idx, _s._dsp1_itm_idx)
 end
 
 -- method

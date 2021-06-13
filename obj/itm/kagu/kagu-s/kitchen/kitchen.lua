@@ -110,7 +110,7 @@ function Kitchen.food_pos__(_s)
 
 	local x, t_pos
 	for idx, food_id in ipairs(_s._on) do
-		x = u.x_by_all_w(idx, Kitchen.on_food_idx_max, Map.sq)
+		x = u.x_6_all_w(idx, Kitchen.on_food_idx_max, Map.sq)
 		t_pos = n.vec(x, Map.sqh*3/2)
 		
 		pst.parent__(food_id, _s._id)
@@ -136,7 +136,7 @@ function Kitchen.kitchen__x(_s, food_id)
 	
 	if not (#_s._on > 0) then return end
 
-	ar.del_by_val(_s._on, food_id)
+	ar.del_6_val(_s._on, food_id)
 	
 	_s._cooking_timer = 0
 

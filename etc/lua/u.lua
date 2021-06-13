@@ -6,7 +6,7 @@ u = { -- util
 }
 u.dir_h = u.lr
 u.dir_v = u.ud
-ha.add_by_ar(u.dir_h)
+ha.add_6_ar(u.dir_h)
 
 -- log.scrpt("util.script")
 
@@ -21,7 +21,7 @@ function u.is_emp(val)
 	return _.f
 end
 
-function u.x_by_itm_w(idx, max, w)
+function u.x_6_itm_w(idx, max, w)
 	
 	local x = idx * w - (w / 2)
 	local aw = w * max -- all w
@@ -30,7 +30,7 @@ function u.x_by_itm_w(idx, max, w)
 	return x
 end
 
-function u.x_by_all_w(idx, max, wa)
+function u.x_6_all_w(idx, max, wa)
 	local w1 = wa / (max - 1)
 	local x1 = - wa / 2
 	local x = x1 + w1 * (idx - 1)

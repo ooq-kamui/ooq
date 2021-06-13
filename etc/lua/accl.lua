@@ -2,7 +2,7 @@ log.scrpt("accl.lua")
 
 accl = {}
 
-function accl.dst_by_speed(p_speed, p_accl, t_speed)
+function accl.dst_6_speed(p_speed, p_accl, t_speed)
 
 	if not p_speed then return end
 
@@ -15,19 +15,19 @@ function accl.dst_by_speed(p_speed, p_accl, t_speed)
 	local t_dst = 0
 
 	t_dst = - ( t_speed ^ 2 - p_speed ^ 2 ) / ( 2 * p_accl )
-	-- log._("accl.dst_by_speed", t_dst)
+	-- log._("accl.dst_6_speed", t_dst)
 
 	return t_dst
 end
 
-function accl.speed_by_dst(p_dst, p_accl)
+function accl.speed_6_dst(p_dst, p_accl)
 
 	if not p_dst then return end
 
 	p_accl = p_accl or - Accl.grv_dflt.y
 
 	local t_speed = math.sqrt( 2 * p_accl  * p_dst )
-	-- log._("accl.speed_by_dst", p_dst, t_speed)
+	-- log._("accl.speed_6_dst", p_dst, t_speed)
 
 	return t_speed
 end

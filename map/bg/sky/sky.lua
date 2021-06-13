@@ -58,7 +58,7 @@ function Sky.tile__init(_s)
 	
 	for y = _s._rng.min.y, _s._rng.max.y do
 		for x = _s._rng.min.x, _s._rng.max.x do
-			map.tile__by_tilepos(n.vec(x, y), tile_base, _s._id, "sky", "sky")
+			map.tile__6_tilepos(n.vec(x, y), tile_base, _s._id, "sky", "sky")
 		end
 	end
 end
@@ -192,7 +192,7 @@ function Sky.upd_tile_v__(_s, dt)
 		return
 	end
 	
-	_s:upd_tile_v__by_gradation(gradation_idx)
+	_s:upd_tile_v__6_gradation(gradation_idx)
 end
 
 function Sky.upd_tile_v_gradation(_s)
@@ -208,22 +208,22 @@ function Sky.upd_tile_v_gradation_x(_s, gradation_idx)
 	return x
 end
 
-function Sky.upd_tile_v__by_gradation(_s, gradation_idx)
+function Sky.upd_tile_v__6_gradation(_s, gradation_idx)
 
 	local x = _s:upd_tile_v_gradation_x(gradation_idx)
-	_s:upd_tile_v__by_gradation_x(gradation_idx, x)
+	_s:upd_tile_v__6_gradation_x(gradation_idx, x)
 end
 
-function Sky.upd_tile_v__by_gradation_x(_s, gradation_idx, x)
-	-- log._("upd_tile_v__by_gradation_x", gradation_idx, x)
+function Sky.upd_tile_v__6_gradation_x(_s, gradation_idx, x)
+	-- log._("upd_tile_v__6_gradation_x", gradation_idx, x)
 	
 	local y = _s._changing._[gradation_idx]._[x]
 	if not y then log._("y is nil", gradation_idx, x) end
 	local pos = n.vec(x, y)
 	local t_tile = _s:upd_tile(gradation_idx)
 	
-	-- log._("upd_tile_v__by_gradation_x", t_tile, pos)
-	_s:tile__by_pos(t_tile, pos)
+	-- log._("upd_tile_v__6_gradation_x", t_tile, pos)
+	_s:tile__6_pos(t_tile, pos)
 
 	-- next
 	y = y - 1
@@ -301,13 +301,13 @@ function Sky.upd_tile(_s, gradation_idx)
 	return t_tile
 end
 
-function Sky.tile__by_pos(_s, p_tile, p_pos)
-	-- log._("tile__by_pos", p_tile, p_pos)
+function Sky.tile__6_pos(_s, p_tile, p_pos)
+	-- log._("tile__6_pos", p_tile, p_pos)
 	local t_pos = n.vec(p_pos.x, p_pos.y)
 	
 	for i = 1, _s._x_once do
-		map.tile__by_tilepos(t_pos                        , p_tile, _s._id, "sky", "sky")
-		map.tile__by_tilepos(n.vec(- t_pos.x + 1, t_pos.y), p_tile, _s._id, "sky", "sky")
+		map.tile__6_tilepos(t_pos                        , p_tile, _s._id, "sky", "sky")
+		map.tile__6_tilepos(n.vec(- t_pos.x + 1, t_pos.y), p_tile, _s._id, "sky", "sky")
 		-- t_pos = t_pos + n.vec(1, 0)
 		vec.xy__add(t_pos, 1, 0)
 	end

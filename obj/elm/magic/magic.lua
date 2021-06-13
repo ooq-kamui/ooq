@@ -70,7 +70,7 @@ end
 
 -- static
 
-function Magic.tilepos_by_inp_prm(dir_h, prm) -- return tilepos diff
+function Magic.tilepos_6_inp_prm(dir_h, prm) -- return tilepos diff
 	
 	local x, y
 	if prm.dir_h == "" then
@@ -94,7 +94,7 @@ function Magic.tilepos_by_inp_prm(dir_h, prm) -- return tilepos diff
 	if prm.dir_v == "d" then y = -y end
 	
 	-- local t_tilepos = n.vec(x, y)
-	local t_tilepos = n.vec(x, y, nil, "tilepos_by_inp_prm")
+	local t_tilepos = n.vec(x, y, nil, "tilepos_6_inp_prm")
 	return t_tilepos
 end
 

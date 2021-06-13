@@ -15,23 +15,25 @@ end
 function p.Cfg.init(_s, parent_gui)
 
 	_s._lb = "cfg"
+	_s._itm_pitch   = 50
+	_s._dsp_idx_max =  2
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
-	extnd._(_s, p.Cfg)
+	extnd._(   _s, p.Cfg)
 	
-	_s._itm_pitch   = 50
-	_s._dsp_idx_max =  2
-	
-	_s:itm__by_ar({"cfg_1", "cfg_2"})
+	_s:itm__6_ar({"cfg_1", "cfg_2"})
 	_s._itm_txt = {"setting 1", "setting 2"}
 	
-	local node
-	for idx, item in pairs(_s._itm) do
-		node = _s:itm_clone()
-		nd.txt__(node[_s:lb("txt")], _s._itm_txt[idx])
-	end
+	_s:whel__init()
+end
+
+function p.Cfg.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txt__(nd_ar[_s:lb("txt")], _s._itm_txt[itm_idx])
 end
 
 -- method
@@ -47,3 +49,4 @@ end
 
 function p.Cfg.decide(_s)
 end
+

@@ -14,7 +14,7 @@ Chara_clb_tohoku.cls = "chara_clb_tohoku"
 Chara_clb_tohoku.fac = Obj.fac..Chara_clb_tohoku.cls
 Cls.add(Chara_clb_tohoku)
 
-ha.add_by_ar(Chara_clb_tohoku.chara)
+ha.add_6_ar(Chara_clb_tohoku.chara)
 
 -- static
 

@@ -12,7 +12,7 @@ function Wall.__(p_tilepos, wall_idx)
 	if ha.is_emp(map_id) then return end
 
 	local t_tile
-	local tile_crnt = map.tile_by_tilepos(p_tilepos, map_id, "wall", layer)
+	local tile_crnt = map.tile_6_tilepos(p_tilepos, map_id, "wall", layer)
 	if     tile_crnt == 0 then
 		t_tile = Tile.wall[wall_idx]
 		Efct.cre_magic()
@@ -22,6 +22,6 @@ function Wall.__(p_tilepos, wall_idx)
 	end
 	
 	-- log._("wall __", t_tile)
-	map.tile__by_tilepos(p_tilepos, t_tile, map_id, "wall", layer)
+	map.tile__6_tilepos(p_tilepos, t_tile, map_id, "wall", layer)
 end
 

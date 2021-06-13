@@ -20,10 +20,11 @@ end
 function p.Bg.init(_s, parent_gui)
 
 	_s._lb = "bg"
+	_s._dsp_idx_max =  1
 	
 	extnd.init(_s, p.Prt, parent_gui)
-	extnd.init(_s, p.Prt_itm)
-	extnd._(_s, p.Bg)
+	extnd.init(_s, p.Prt_itm_lst)
+	extnd._(   _s, p.Bg)
 
 	_s:nd__("img")
 	nd.dsp__o(_s._nd.base)
@@ -63,3 +64,4 @@ function p.Bg.bg__rnd(_s)
 	local anm = _s._lb..rnd.int_pad(p.Bg.bg_idx_max)
 	_s:bg__(anm)
 end
+

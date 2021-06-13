@@ -394,7 +394,7 @@ function Sp.crct_block_foot(_s, p_vec)
 	                and not _s:is_block(_s._foot_i_pos_nxt_up)
 	if not is_crct then return p_vec end
 
-	p_vec.y = map.pos_by_pos(_s._foot_i_pos_nxt).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
+	p_vec.y = map.pos_6_pos(_s._foot_i_pos_nxt).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
 	return p_vec
 end
 
@@ -404,7 +404,7 @@ function Sp.crct_block_head(_s, p_vec)
 	
 	if not _s:is_block(head_o_pos_nxt) then return p_vec end
 	
-	p_vec.y = map.pos_by_pos(head_o_pos_nxt).y - Map.sq - _s:pos().y
+	p_vec.y = map.pos_6_pos(head_o_pos_nxt).y - Map.sq - _s:pos().y
 	return p_vec
 end
 
@@ -423,10 +423,10 @@ function Sp.crct_block_side(_s, p_vec)
 	local df_x = Map.sqh + _s._w/2
 
 	if     side_l_nxt_is_block then
-		crct_pos_x = map.pos_by_pos(_s:side_l_pos(p_vec)).x + df_x
+		crct_pos_x = map.pos_6_pos(_s:side_l_pos(p_vec)).x + df_x
 		
 	elseif side_r_nxt_is_block then
-		crct_pos_x = map.pos_by_pos(_s:side_r_pos(p_vec)).x - df_x
+		crct_pos_x = map.pos_6_pos(_s:side_r_pos(p_vec)).x - df_x
 	end
 	p_vec.x = crct_pos_x - _s:pos().x
 	return p_vec
@@ -442,7 +442,7 @@ function Sp.crct_clmb(_s, p_vec)
 	local is_crct = _s:is_clmb(foot_i_pos) and not _s:is_clmb(foot_i_pos_nxt)
 	if not is_crct then return p_vec end
 	
-	p_vec.y = map.pos_by_pos(foot_i_pos).y + Map.sq - _s:pos().y
+	p_vec.y = map.pos_6_pos(foot_i_pos).y + Map.sq - _s:pos().y
 	return p_vec
 end
 
@@ -537,7 +537,7 @@ function Sp.is_jmpabl(_s)
 	or Tile.is_elv(  foot_o_tile)
 	-- or _s:is_on_chara()
 	-- or _s:is_on_obj_block()
-	-- or _s:on_by_mapobj()
+	-- or _s:on_6_mapobj()
 	then
 		ret = _.t
 	end

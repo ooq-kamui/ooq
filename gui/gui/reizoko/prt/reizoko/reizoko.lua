@@ -96,7 +96,7 @@ function p.Reizoko.food_cre(_s)
 
 		for t_name, cnt in pairs(_s._itm[t_cls]) do
 
-			food = nd.clone(_s._nd.tpl.itm)
+			food = nd.cln(_s._nd.tpl.itm)
 			_s._nd.itm[itm_idx]  = food
 			_s._itm_lst[itm_idx] = {_cls = t_cls, _name = t_name}
 

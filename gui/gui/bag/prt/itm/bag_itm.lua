@@ -1,6 +1,9 @@
 log.scrpt("p.bag_itm.lua")
 
-p.Bag_itm = {}
+p.Bag_itm = {
+
+	itm_hand = {"wand_block", "wand_wall", "nokogiri", "wand_fire"},
+}
 p.Bag_itm.itm_lb_2_r_view_prt_lb = {
 	wand_block = "bag_block",
 	wand_wall  = "bag_wall",
@@ -21,35 +24,30 @@ end
 function p.Bag_itm.init(_s, parent_gui)
 
 	_s._lb = "bag_itm"
+	_s._dsp_idx_max  = 3
+	_s._itm_scrl_dir = "v"
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Bag_prt)
-	extnd.init(_s, p.Prt_itm)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd.init(_s, p.Prt_selected)
 	extnd.init(_s, p.Bag_prt_itm)
 	extnd._(   _s, p.Bag_itm)
 
-	_s._dsp_idx_max = 3
-
-	local itm_hand = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
-	-- local itm_hand_txtr = {"wand_block", "wand_wall", "nokogiri", "wand_fire"}
-
-	_s:itm__by_ar(itm_hand)
-	
-	local node, anim
-	for idx, name in pairs(_s._itm) do
-		node = _s:itm_clone()
-		-- anim = name
-		-- nd.txtr__(node[_s:lb("itm")], itm_hand_txtr[idx])
-		nd.txtr__(node[_s:lb("itm")], itm_hand[idx])
-		nd.anm__(node[_s:lb("itm")], "001")
-		-- nd.anm__(node[_s:lb("itm")], anim)
-	end
+	_s:itm__6_ar(p.Bag_itm.itm_hand)
+	_s:whel__init()
 
 	_s:selected__cursor_itm()
 	_s:cursor_pos__()
+end
+
+function p.Bag_itm.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	nd.txtr__(nd_ar[_s:lb("itm")], _s:itm_i(itm_idx))
+	nd.anm__( nd_ar[_s:lb("itm")], "001")
 end
 
 -- key 2 act

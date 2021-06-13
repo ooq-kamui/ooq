@@ -8,7 +8,7 @@ Inp.plyr = {
 Inp.plyr.keys = {}
 ar.add_ar(Inp.plyr.keys, Inp.keys_arw)
 ar.add_ar(Inp.plyr.keys, Inp.keys_btn)
-ha.add_by_ar(Inp.plyr.keys)
+ha.add_6_ar(Inp.plyr.keys)
 
 -- script method
 

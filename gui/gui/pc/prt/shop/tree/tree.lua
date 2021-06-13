@@ -15,6 +15,8 @@ end
 function p.Shop_tree.init(_s, parent_gui)
 
 	_s._lb = "shop_tree"
+	_s._itm_pitch   = 75
+	_s._dsp_idx_max =  5
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
@@ -22,27 +24,27 @@ function p.Shop_tree.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_itm_opt)
 	extnd._(   _s, p.Shop_tree)
 	
-	_s._itm_pitch   = 75
-	_s._dsp_idx_max =  5
+	_s:nd__("ply_data_gold")
 
 	local tree = ar.key(Mstr.tree)
-	_s:itm__by_ar_lim(tree)
+	_s:itm__6_ar(tree)
+	_s:whel__init()
+end
 
-	_s:nd__("ply_data_gold")
+function p.Shop_tree.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
 	
-	local node, price
-	for idx, name in pairs(_s._itm) do
+	nd.txtr__(nd_ar[_s:lb("seed")], "seed")
+	nd.anm__( nd_ar[_s:lb("seed")], "seed005")
 
-		node = _s:itm_clone()
-		
-		nd.txtr__(node[_s:lb("seed")], "seed")
-		nd.anm__( node[_s:lb("seed")], "seed005")
-		nd.anm__( node[_s:lb("tree")], name)
-		price = Mstr.tree[name].price
-		nd.txt__( node[_s:lb("price")], price.."G")
+	local name = _s:itm_i(itm_idx)
+	nd.anm__( nd_ar[_s:lb("tree")], name)
 
-		_s._itm_opt[idx] = 1 -- bear fruit
-	end
+	local price = Mstr.tree[name].price
+	nd.txt__( nd_ar[_s:lb("price")], price.."G")
+
+	_s._itm_opt[itm_idx] = 1 -- bear fruit
 end
 
 -- method

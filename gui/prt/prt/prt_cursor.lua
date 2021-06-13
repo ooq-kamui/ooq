@@ -47,19 +47,19 @@ function p.Prt_cursor.cursor__mv(_s, inc_dir, keyact)
 
 	if     inc_dir == "inc" then
 		t_dsp_idx, cursor_edge = int.inc_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
-		dsp_itm_edge = _s:is_dsp_itm_E()
+		dsp_itm_edge = _s:is_dsp_itm_edge_E()
 
 	elseif inc_dir == "dec" then
 		t_dsp_idx, cursor_edge = int.dec_stop(_s._cursor_dsp_idx, _s._dsp_idx_max)
-		dsp_itm_edge = _s:is_dsp_itm_1()
+		dsp_itm_edge = _s:is_dsp_itm_edge_1()
 	end
 	-- log._("cursor__mv", t_dsp_idx, cursor_edge)
 
 	if     not cursor_edge then
-		_s:cursor__mv_by_dsp_idx(t_dsp_idx)
+		_s:cursor__mv_6_dsp_idx(t_dsp_idx)
 
 	elseif not dsp_itm_edge then
-		_s:itm_scrl(inc_dir)
+		_s:itm__scrl(inc_dir)
 
 	elseif keyact == "p" then
 		_s:cursor__mv_loop(inc_dir)
@@ -95,12 +95,12 @@ function p.Prt_cursor.cursor__mv_loop(_s, inc_dir)
 	_s:itm__plt()
 
 	_s:cursor_dsp_idx__(t_dsp_idx)
-	_s:cursor_pos__by_dsp_idx(t_dsp_idx)
+	_s:cursor_pos__6_dsp_idx(t_dsp_idx)
 
 	Se.pst_ply("cursor__mv")
 end
 
-function p.Prt_cursor.cursor__mv_by_pos(_s, p_pos)
+function p.Prt_cursor.cursor__mv_6_pos(_s, p_pos)
 
 	_s:cursor_pos__anm(p_pos)
 end
@@ -114,28 +114,29 @@ function p.Prt_cursor.cursor_pos__anm(_s, p_pos)
 	Se.pst_ply("cursor__mv")
 end
 
-function p.Prt_cursor.cursor_pos_by_dsp_idx(_s, dsp_idx)
+function p.Prt_cursor.cursor_pos_6_dsp_idx(_s, dsp_idx)
 	
 	dsp_idx = dsp_idx or _s._cursor_dsp_idx
+	-- log._("p.Prt_cursor.cursor_pos_6_dsp_idx", dsp_idx, _s._cursor_dsp_idx, _s._lb)
 
-	local t_pos = _s:itm_pos_by_dsp_idx(dsp_idx)
+	local t_pos = _s:dsp_pos(dsp_idx)
 
 	t_pos = t_pos + _s._cursor_pos_df_itm
 
 	return t_pos
 end
 
-function p.Prt_cursor.cursor_pos__by_dsp_idx(_s, dsp_idx)
+function p.Prt_cursor.cursor_pos__6_dsp_idx(_s, dsp_idx)
 
 	dsp_idx = dsp_idx or _s._cursor_dsp_idx
 
-	local t_pos = _s:cursor_pos_by_dsp_idx(dsp_idx)
+	local t_pos = _s:cursor_pos_6_dsp_idx(dsp_idx)
 	_s:cursor_pos__(t_pos)
 end
 
 function p.Prt_cursor.cursor_pos__(_s, p_pos)
 	
-	p_pos = p_pos or _s:cursor_pos_by_dsp_idx()
+	p_pos = p_pos or _s:cursor_pos_6_dsp_idx()
 
 	nd.pos__(_s._nd.cursor, p_pos)
 end
@@ -154,15 +155,15 @@ end
 
 -- cursor dsp idx
 
-function p.Prt_cursor.cursor__mv_by_dsp_idx(_s, dsp_idx)
+function p.Prt_cursor.cursor__mv_6_dsp_idx(_s, dsp_idx)
 
-	local t_pos = _s:cursor_pos_by_dsp_idx(dsp_idx)
+	local t_pos = _s:cursor_pos_6_dsp_idx(dsp_idx)
 
-	_s:cursor__mv_by_pos(t_pos)
+	_s:cursor__mv_6_pos(t_pos)
 
 	_s:cursor_dsp_idx__(dsp_idx)
 
-	-- log._("cursor__mv_by_dsp_idx", dsp_idx)
+	-- log._("cursor__mv_6_dsp_idx", dsp_idx)
 end
 
 function p.Prt_cursor.cursor_dsp_idx__(_s, dsp_idx)
@@ -173,15 +174,14 @@ end
 -- cursor itm idx
 
 function p.Prt_cursor.cursor_itm_idx(_s)
-	-- log._("p.Prt_cursor.cursor_itm_idx", _s._dsp1_itm_idx, _s._cursor_dsp_idx)
 
-	return _s._dsp1_itm_idx + _s._cursor_dsp_idx - 1
+	local cursor_itm_idx = _s:dsp1_itm_idx() + _s._cursor_dsp_idx - 1
+	return cursor_itm_idx
 end
 
 function p.Prt_cursor.cursor_itm(_s)
 
 	local cursor_itm_idx = _s:cursor_itm_idx()
-	-- log._("p.Prt_cursor.cursor_itm", cursor_itm_idx)
 
 	local itm = _s._itm[cursor_itm_idx]
 
@@ -190,15 +190,14 @@ function p.Prt_cursor.cursor_itm(_s)
 	return itm
 end
 
-function p.Prt_cursor.cursor__itm_idx(_s, p_itm_idx)
+function p.Prt_cursor.cursor__itm_idx(_s, itm_idx)
 
-	local dsp_idx
-
-	dsp_idx = _s:itm__plt(p_itm_idx)
-	-- log._("p.Prt_cursor.cursor__itm_idx", dsp_idx)
+	local dsp_idx = _s:itm__plt(itm_idx)
+	-- log._("p.Prt_cursor.cursor__itm_idx", dsp_idx, itm_idx)
 
 	_s:cursor_dsp_idx__(dsp_idx)
-	_s:cursor_pos__by_dsp_idx()
+	_s:cursor_pos__6_dsp_idx()
+	-- _s:cursor_pos__6_dsp_idx(dsp_idx)
 end
 
 function p.Prt_cursor.cursor_itm_nd_ar(_s)

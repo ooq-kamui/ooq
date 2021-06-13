@@ -40,7 +40,7 @@ function p.Prt_itm_menu.nd_itm_menu__(_s)
 
 	_s._nd.itm_menu = {}
 	for idx, txt in pairs(_s._itm_menu) do
-		local itm_menu = nd.clone(_s._nd.tpl.itm_menu)
+		local itm_menu = nd.cln(_s._nd.tpl.itm_menu)
 		nd.txt__(itm_menu[_s:lb("itm_menu_txt")], txt)
 		ar.add(_s._nd.itm_menu, itm_menu)
 	end

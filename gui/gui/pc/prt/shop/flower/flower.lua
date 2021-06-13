@@ -15,30 +15,32 @@ end
 function p.Shop_flower.init(_s, parent_gui)
 
 	_s._lb = "shop_flower"
+	_s._itm_pitch   = 75
+	_s._dsp_idx_max =  5
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_flower)
 	
-	_s._itm_pitch   = 75
-	_s._dsp_idx_max =  5
-
-	_s:itm__by_ar_lim(ar.key(Mstr.flower))
 	_s:nd__("ply_data_gold")
-	
-	local node
-	for idx, name in pairs(_s._itm) do
-		
-		node = _s:itm_clone()
-		
-		nd.txtr__(node[_s:lb("icn")], "seed")
-		nd.anm__( node[_s:lb("icn")], "seed001")
-		nd.anm__( node[_s:lb("flower")], name)
-		nd.txt__( node[_s:lb("price" )], Mstr.flower[name].price)
 
-		nd.enbl__x(node[_s:lb("arw_lr")])
-	end
+	_s:itm__6_ar(ar.key(Mstr.flower))
+	_s:whel__init()
+end
+
+function p.Shop_flower.whel_i_nd__(_s, whel_idx, itm_idx)
+
+	local nd_ar = _s:whel_i_nd_ar(whel_idx)
+
+	local name = _s:itm_i(itm_idx)
+	
+	nd.txtr__(nd_ar[_s:lb("icn")], "seed")
+	nd.anm__( nd_ar[_s:lb("icn")], "seed001")
+	nd.anm__( nd_ar[_s:lb("flower")], name)
+	nd.txt__( nd_ar[_s:lb("price" )], Mstr.flower[name].price)
+
+	nd.enbl__x(nd_ar[_s:lb("arw_lr")])
 end
 
 -- method

@@ -45,9 +45,9 @@ function ar.pop(p_ar)
 	table.remove(p_ar)
 end
 
-function ar.del_by_val(p_ar, val)
+function ar.del_6_val(p_ar, val)
 	
-	local idx = ar.srch_idx(val, p_ar)
+	local idx = ar.srch_idx(p_ar, val)
 	
 	if not idx        then return end
 	if not (idx >= 1) then return end
@@ -55,15 +55,15 @@ function ar.del_by_val(p_ar, val)
 	table.remove(p_ar, idx)
 end
 
-function ar.del_by_idx(p_ar, idx)
+function ar.del_6_idx(p_ar, idx)
 	table.remove(p_ar, idx)
 end
 
 function ar.del_1(p_ar)
-	ar.del_by_idx(p_ar, 1)
+	ar.del_6_idx(p_ar, 1)
 end
 
-function ar.srch_idx(val, p_ar)
+function ar.srch_idx(p_ar, val)
 	
 	if not p_ar then return end
 
@@ -174,7 +174,7 @@ end
 
 function ar.add_unq(p_ar, val)
 
-	if ar.srch_idx(val, p_ar) then return end
+	if ar.srch_idx(p_ar, val) then return end
 
 	ar.add(p_ar, val)
 end
