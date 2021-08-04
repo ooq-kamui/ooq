@@ -13,6 +13,7 @@ end
 -- script method
 
 function p.Ply_slt.init(_s, parent_gui)
+	log._("p.Ply_slt.init")
 
 	_s._lb = "ply_slt"
 	_s._itm_pitch   = 70
@@ -25,7 +26,6 @@ function p.Ply_slt.init(_s, parent_gui)
 	extnd._(   _s, p.Ply_slt)
 
 	_s:itm__init()
-	_s:whel__init()
 
 	_s._itm_menu = {"delete"} -- {"delete", "itm_menu1", "itm_menu2"}
 	_s:nd_itm_menu__()
@@ -48,6 +48,7 @@ function p.Ply_slt.itm__load(_s, ply_slt_idx)
 end
 
 function p.Ply_slt.whel_i_nd__(_s, whel_idx, itm_idx)
+	-- log._("p.Ply_slt.whel_i_nd__", whel_idx, itm_idx)
 	
 	local lb, thmb
 	
@@ -65,12 +66,16 @@ end
 -- method
 
 function p.Ply_slt.opn(_s, prm)
+	log._("p.Ply_slt.opn 0")
 
 	_s:itm__plt()
+	log._("p.Ply_slt.opn 1")
+
 	_s:cursor_pos__()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 
+	log._("p.Ply_slt.opn 2")
 	_s:itm_menu_icn_dsp__auto()
 end
 

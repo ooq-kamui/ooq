@@ -23,10 +23,11 @@ function p.Flpy.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Flpy)
 	
+	-- _s:whel__init()
+
 	_s._itm_scrl_dir = "v"
 
 	_s:itm__6_ar({"save", "load", "back to title"})
-	_s:whel__init()
 end
 
 function p.Flpy.whel_i_nd__(_s, whel_idx, itm_idx)
@@ -43,6 +44,7 @@ function p.Flpy.opn(_s, prm)
 	-- log._("p.flpy.opn")
 	
 	_s:cursor_pos__()
+
 	_s:itm__plt()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)

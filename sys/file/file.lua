@@ -60,7 +60,8 @@ end
 -- ply_slt
 
 file.ply_slt = {
-	idx_max = 4,
+	-- idx_max = 4,
+	idx_max = 6,
 }
 
 -- file name

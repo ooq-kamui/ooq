@@ -35,8 +35,9 @@ function p.Zu_anml.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Zu_anml)
 	
+	-- _s:whel__init()
+
 	_s:itm__6_ar(Anml.anml)
-	_s:whel__init()
 end
 
 function p.Zu_anml.whel_i_nd__(_s, whel_idx, itm_idx)

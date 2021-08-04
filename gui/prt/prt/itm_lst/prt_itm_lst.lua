@@ -14,11 +14,9 @@ function p.Prt_itm_lst.init(_s)
 
 	_s._itm_scrl_dir = _s._itm_scrl_dir or "v"
 
-	_s._itm = {}
 	_s:whel__init()
 
-	_s:dsp1_whel_idx__(1)
-	_s:dsp1_itm_idx_max__()
+	_s._itm = {}
 end
 
 -- itm __
@@ -42,20 +40,10 @@ end
 
 function p.Prt_itm_lst.itm__scrl(_s, inc_dir)
 
-	local dsp1_itm_idx
-
-	if     inc_dir == "inc" then
-		dsp1_itm_idx = int.inc_stop(_s:dsp1_itm_idx(), _s._dsp1_itm_idx_max)
-
-	elseif inc_dir == "dec" then
-		dsp1_itm_idx = int.dec_stop(_s:dsp1_itm_idx(), _s._dsp1_itm_idx_max)
-	end
-
-	_s:itm__plt_anm(dsp1_itm_idx)
-	Se.pst_ply("cursor__mv")
+	_s:whel__roll(inc_dir)
 end
 
--- itm basic
+-- itm
 
 function p.Prt_itm_lst.itm_idx_max(_s)
 
@@ -71,15 +59,31 @@ function p.Prt_itm_lst.itm_i(_s, itm_idx)
 	return _s._itm[itm_idx]
 end
 
--- itm plt alias
+-- itm utl
 
-function p.Prt_itm_lst.itm__plt_anm(_s, dsp1_itm_idx) -- alias
+function p.Prt_itm_lst.itm_idx_6_whel_idx(_s, whel_idx)
 
-	return _s:whel__plt_anm(dsp1_itm_idx)
+	if not _s:dsp1_itm_idx()  then return end
+	if not _s:dsp1_whel_idx() then return end
+
+	local dsp1_whel_idx = _s:dsp1_whel_idx()
+	local dsp_df = int.loop_df(dsp1_whel_idx, whel_idx, _s:whel_idx_max())
+
+	local dsp1_itm_idx = _s:dsp1_itm_idx()
+	local itm_idx = dsp1_itm_idx + dsp_df
+
+	if not _s:itm_i(itm_idx) then return end
+
+	return itm_idx
 end
 
-function p.Prt_itm_lst.itm__plt(_s, dsp1_itm_idx) -- alias
+-- itm plt alias
 
-	return _s:whel__plt(dsp1_itm_idx)
+function p.Prt_itm_lst.itm__plt_anm(_s, dsp1_itm_idx)
+	return _s:dsp__plt_anm(dsp1_itm_idx)
+end
+
+function p.Prt_itm_lst.itm__plt(_s, dsp1_itm_idx)
+	return _s:dsp__plt(dsp1_itm_idx)
 end
 

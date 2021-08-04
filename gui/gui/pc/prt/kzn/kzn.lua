@@ -23,9 +23,9 @@ function p.Kzn.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Kzn)
 	
-	_s:itm__6_ar(Chara.chara)
-	_s:whel__init()
+	-- _s:whel__init()
 
+	_s:itm__6_ar(Chara.chara)
 end
 
 function p.Kzn.whel_i_nd__(_s, whel_idx, itm_idx)

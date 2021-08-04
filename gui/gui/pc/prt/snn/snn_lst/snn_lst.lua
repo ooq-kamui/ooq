@@ -23,8 +23,9 @@ function p.Snn_lst.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Snn_lst)
 	
+	-- _s:whel__init()
+
 	_s:itm__6_ar({"snn_dtl_1", "snn_dtl_2"})
-	_s:whel__init()
 end
 
 function p.Snn_lst.whel_i_nd__(_s, whel_idx, itm_idx)

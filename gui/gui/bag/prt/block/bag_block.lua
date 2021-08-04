@@ -26,8 +26,9 @@ function p.Bag_block.init(_s, parent_gui)
 	extnd.init(_s, p.Bag_prt_itm)
 	extnd._(   _s, p.Bag_block)
 	
+	-- _s:whel__init()
+
 	_s:itm__6_ar(Tile.magic_block)
-	_s:whel__init()
 	
 	_s:selected__cursor_itm()
 	_s:cursor_pos__()

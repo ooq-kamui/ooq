@@ -23,8 +23,9 @@ function p.Zu_dish.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Zu_dish)
 	
+	-- _s:whel__init()
+
 	_s:itm__6_num("dish", Dish.name_idx_max)
-	_s:whel__init()
 end
 
 function p.Zu_dish.whel_i_nd__(_s, whel_idx, itm_idx)
@@ -48,7 +49,7 @@ end
 
 function p.Zu_dish.opn(_s, prm)
 
-	_s:itm__plt_anm()
+	_s:itm__plt()
 	_s:cursor_pos__()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)

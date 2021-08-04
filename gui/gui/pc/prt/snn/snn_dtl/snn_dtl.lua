@@ -15,8 +15,8 @@ end
 function p.Snn_dtl.init(_s, parent_gui)
 
 	_s._lb = "snn_dtl"
-	_s._itm_pitch    = 350
-	_s._dsp_idx_max  =   1
+	_s._itm_pitch   = 350
+	_s._dsp_idx_max =   1
 	_s._itm_scrl_dir = "h"
 	
 	extnd.init(_s, p.Prt, parent_gui)
@@ -24,10 +24,11 @@ function p.Snn_dtl.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Snn_dtl)
 	
+	-- _s:whel__init()
+
 	_s:nd__("title")
 
 	_s:itm__6_ar({"page_1", "page_2"})
-	_s:whel__init()
 end
 
 function p.Snn_dtl.whel_i_nd__(_s, whel_idx, itm_idx)

@@ -51,7 +51,11 @@ function num.__pls_stop_min(p_num, p_pls, p_min)
 	return p_num
 end
 
-function num.pls_loop(val1, val2, max, min)
+function num.pls_loop(val1, val2, max, min) -- old
+	return num.__pls_loop(val1, val2, max, min)
+end
+
+function num.__pls_loop(val1, val2, max, min)
 
 	min = min or 0
 	local is_loop = _.f

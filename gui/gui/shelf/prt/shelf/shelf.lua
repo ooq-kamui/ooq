@@ -24,9 +24,10 @@ function p.Shelf.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Shelf)
 
+	-- _s:whel__init()
+
 	_s:itm__6_ar({"anml", "flower", "dish"})
 	_s._itm_txt = {"どうぶつ", "おはな", "りょうり", }
-	_s:whel__init()
 end
 
 function p.Shelf.whel_i_nd__(_s, whel_idx, itm_idx)

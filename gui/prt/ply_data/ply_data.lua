@@ -39,7 +39,7 @@ function p.Ply_data.opn(_s, prm)
 	if not _s._ply_slt_idx then log._("ply_slt_idx nil") return end
 	
 	_s:itm__()
-	_s:whel__init()
+	-- _s:whel__init()
 
 	_s:itm__plt()
 	_s:cursor_pos__()
@@ -66,7 +66,7 @@ function p.Ply_data.ply_data_file_idx_6_itm_idx(_s, itm_idx)
 
 	local ply_data_file_idx_ltst = _s:ply_data_file_idx_ltst()
 	local d = itm_idx - 1
-	local ply_data_file_idx = int.sub_loop( ply_data_file_idx_ltst, d, #_s._itm)
+	local ply_data_file_idx = int.__sub_loop( ply_data_file_idx_ltst, d, #_s._itm)
 	return ply_data_file_idx
 end
 
@@ -154,7 +154,7 @@ end
 
 function p.Ply_data.itm_idx_2_ply_data_thmb_idx(_s, itm_idx)
 
-	local ply_data_thmb_idx = int.sub_loop(_s:ply_data_file_idx_ltst(), itm_idx - 1, file.ply_data.file_idx_max)
+	local ply_data_thmb_idx = int.__sub_loop(_s:ply_data_file_idx_ltst(), itm_idx - 1, file.ply_data.file_idx_max)
 	return ply_data_thmb_idx
 end
 

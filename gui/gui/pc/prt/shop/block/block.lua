@@ -23,10 +23,10 @@ function p.Shop_block.init(_s, parent_gui)
 	
 	_s._itm_pitch = 50
 
+	-- _s:whel__init()
+
 	_s:itm__6_ar({"block001", "block002", "block003"})
 	_s._itm_txt = _s._itm
-	
-	_s:whel__init()
 end
 
 function p.Shop_block.whel_i_nd__(_s, whel_idx, itm_idx)

@@ -16,10 +16,11 @@ end
 -- script method
 
 function p.Confirm.init(_s, parent_gui)
+	log._("p.Confirm.init")
 
 	_s._lb = "confirm"
-	_s._itm_pitch    = 240
-	_s._dsp_idx_max  =   2
+	_s._itm_pitch   = 240
+	_s._dsp_idx_max =   2
 	_s._itm_scrl_dir = "h"
 	-- _s._cursor_dsp_idx = 2
 	
@@ -28,8 +29,9 @@ function p.Confirm.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Confirm)
 
+	-- _s:whel__init()
+
 	_s:itm__init()
-	_s:whel__init()
 end
 
 function p.Confirm.itm__init(_s)
@@ -40,6 +42,8 @@ function p.Confirm.whel_i_nd__(_s, whel_idx, itm_idx)
 
 	local itm_i_nd_ar = _s:whel_i_nd_ar(whel_idx)
 
+	log._("p.Confirm.whel_i_nd__", itm_idx)
+	_s:log("p.Confirm.whel_i_nd__")
 	nd.txt__(itm_i_nd_ar[_s:lb("txt")], _s._itm[itm_idx])
 end
 
@@ -51,6 +55,7 @@ function p.Confirm.opn(_s, prm)
 	
 	_s._cursor_dsp_idx = 2
 	_s:cursor_pos__()
+
 	_s:itm__plt()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)

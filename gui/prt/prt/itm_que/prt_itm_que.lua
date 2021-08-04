@@ -25,7 +25,7 @@ end
 
 function p.Prt_itm_que.itm_nd__cln(_s)
 
-	local itm_nd_ar = p.Prt_itm_lst.whel_i_nd__cln(_s) -- refactoring
+	local itm_nd_ar = p.Prt_itm_lst.whel_i_nd__cln(_s)
 	return itm_nd_ar
 end
 

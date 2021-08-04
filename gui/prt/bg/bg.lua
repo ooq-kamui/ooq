@@ -20,7 +20,7 @@ end
 function p.Bg.init(_s, parent_gui)
 
 	_s._lb = "bg"
-	_s._dsp_idx_max =  1
+	_s._dsp_idx_max = 1
 	
 	extnd.init(_s, p.Prt, parent_gui)
 	extnd.init(_s, p.Prt_itm_lst)

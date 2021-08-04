@@ -220,3 +220,9 @@ function ar.key___(p_ar)
 	-- log.pp("ar.key ret", p_ar)
 end
 
+function ar.tail(p_ar)
+
+	local ret = p_ar[#p_ar]
+	return ret
+end
+
