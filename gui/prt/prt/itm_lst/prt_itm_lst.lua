@@ -68,11 +68,14 @@ function p.Prt_itm_lst.itm_idx_6_whel_idx(_s, whel_idx)
 
 	local dsp1_whel_idx = _s:dsp1_whel_idx()
 	local dsp_df = int.loop_df(dsp1_whel_idx, whel_idx, _s:whel_idx_max())
+	if dsp_df >= _s:whel_idx_max() - 1 then dsp_df = dsp_df - _s:whel_idx_max() end
+	-- if dsp_df == _s:whel_idx_max() - 1 then dsp_df = -1 end
 
 	local dsp1_itm_idx = _s:dsp1_itm_idx()
 	local itm_idx = dsp1_itm_idx + dsp_df
+	-- log._("itm_idx_6_whel_idx", dsp_df, itm_idx)
 
-	if not _s:itm_i(itm_idx) then return end
+	if not _s:itm_i(itm_idx) then itm_idx = nil end
 
 	return itm_idx
 end

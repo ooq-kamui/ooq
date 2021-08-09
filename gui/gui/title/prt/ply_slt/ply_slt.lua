@@ -13,7 +13,7 @@ end
 -- script method
 
 function p.Ply_slt.init(_s, parent_gui)
-	log._("p.Ply_slt.init")
+	-- log._("p.Ply_slt.init")
 
 	_s._lb = "ply_slt"
 	_s._itm_pitch   = 70
@@ -66,16 +66,16 @@ end
 -- method
 
 function p.Ply_slt.opn(_s, prm)
-	log._("p.Ply_slt.opn 0")
+	-- log._("p.Ply_slt.opn a")
 
 	_s:itm__plt()
-	log._("p.Ply_slt.opn 1")
+	-- log._("p.Ply_slt.opn b")
 
 	_s:cursor_pos__()
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 
-	log._("p.Ply_slt.opn 2")
+	-- log._("p.Ply_slt.opn c")
 	_s:itm_menu_icn_dsp__auto()
 end
 

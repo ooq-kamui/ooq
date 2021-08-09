@@ -58,7 +58,12 @@ end
 
 function int.__pls_loop(val1, val2, max)
 
-	return num.__pls_loop(val1, val2, max, 1)
+	local ret = val1 + val2
+	if ret > max then
+		ret =  ret - max
+	end
+	return ret
+	-- return num.__pls_loop(val1, val2, max, 1)
 end
 
 function int._2_str(p_int)
@@ -104,5 +109,9 @@ function int.loop_df(fr_idx, to_idx, max)
 
 	-- log._("int.loop_df", df)
 	return df
+end
+
+function int.min(...)
+	return math.min(...)
 end
 

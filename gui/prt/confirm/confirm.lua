@@ -16,7 +16,7 @@ end
 -- script method
 
 function p.Confirm.init(_s, parent_gui)
-	log._("p.Confirm.init")
+	-- log._("p.Confirm.init")
 
 	_s._lb = "confirm"
 	_s._itm_pitch   = 240
@@ -42,8 +42,9 @@ function p.Confirm.whel_i_nd__(_s, whel_idx, itm_idx)
 
 	local itm_i_nd_ar = _s:whel_i_nd_ar(whel_idx)
 
-	log._("p.Confirm.whel_i_nd__", itm_idx)
-	_s:log("p.Confirm.whel_i_nd__")
+	-- log._("p.Confirm.whel_i_nd__", itm_idx)
+	-- _s:log("p.Confirm.whel_i_nd__")
+
 	nd.txt__(itm_i_nd_ar[_s:lb("txt")], _s._itm[itm_idx])
 end
 

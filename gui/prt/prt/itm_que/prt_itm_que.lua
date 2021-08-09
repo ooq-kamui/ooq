@@ -13,12 +13,11 @@ function p.Prt_itm_que.init(_s, itm)
 end
 
 function p.Prt_itm_que.itm__add(_s, itm)
+	-- log.pp("itm__add", itm)
 
 	ar.add(_s._itm, itm)
 
 	local itm_nd_ar = _s:itm_nd__cln()
-
-	ar.add(_s._nd.itm, itm_nd_ar)
 
 	return itm_nd_ar
 end
@@ -41,7 +40,7 @@ function p.Prt_itm_que.itm__del_1(_s)
 		nd.del(t_itm_nd)
 		ar.del_1(_s._nd.itm)
 		ar.del_1(_s._itm)
-		
+
 		if #_s._itm == 0 then
 			_s:clz()
 		else

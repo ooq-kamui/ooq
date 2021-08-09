@@ -13,7 +13,7 @@ end
 -- script method
 
 function p.Ply_data.init(_s, parent_gui)
-	log._("p.Ply_data.init")
+	-- log._("p.Ply_data.init")
 
 	_s._lb = "ply_data"
 	_s._itm_pitch   = 70
@@ -30,7 +30,7 @@ function p.Ply_data.init(_s, parent_gui)
 end
 
 function p.Ply_data.opn(_s, prm)
-	log._("p.ply_data.opn")
+	-- log._("p.ply_data.opn")
 
 	if prm and prm.ply_slt_idx then
 		_s._ply_slt_idx = prm.ply_slt_idx

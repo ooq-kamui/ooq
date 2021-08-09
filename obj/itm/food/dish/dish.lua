@@ -2,8 +2,8 @@ log.scrpt("dish.lua")
 
 Dish = {
 	act_intrvl_time =  10,
-	-- name_idx_max    = 188,
-	name_idx_max    = 6,
+	name_idx_max    = 188,
+	-- name_idx_max    = 6,
 }
 Dish.cls = "dish"
 Dish.fac = Obj.fac..Dish.cls
