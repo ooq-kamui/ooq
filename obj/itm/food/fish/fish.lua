@@ -8,8 +8,6 @@ Fish.cls = "fish"
 Fish.fac = Obj.fac..Fish.cls
 Cls.add(Fish)
 
--- ar.idx_2_ha(Fish.gold, "fish")
-
 function Fish.cre(p_pos, prm)
 	local t_Cls = Fish
 	local t_id = Sp.cre(t_Cls, p_pos, prm)

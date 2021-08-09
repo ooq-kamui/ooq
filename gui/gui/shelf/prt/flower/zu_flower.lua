@@ -23,8 +23,6 @@ function p.Zu_flower.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Zu_flower)
 
-	-- _s:whel__init()
-
 	_s:itm__6_num("flower", Flower.name_idx_max)
 end
 

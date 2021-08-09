@@ -9,8 +9,6 @@ Veget.cls = "veget"
 Veget.fac = Obj.fac..Veget.cls
 Cls.add(Veget)
 
--- ar.idx_2_ha(Veget.gold, "veget")
-
 -- static
 
 function Veget.cre(p_pos, prm)

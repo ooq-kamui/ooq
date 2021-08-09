@@ -9,8 +9,6 @@ Wood.cls = "wood"
 Wood.fac = Obj.fac..Wood.cls
 Cls.add(Wood)
 
--- ar.idx_2_ha(Wood.gold, "wood")
-
 function Wood.cre(p_pos)
 	local t_Cls = Wood
 	local t_id = Sp.cre(t_Cls, p_pos)

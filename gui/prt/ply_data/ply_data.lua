@@ -39,7 +39,6 @@ function p.Ply_data.opn(_s, prm)
 	if not _s._ply_slt_idx then log._("ply_slt_idx nil") return end
 	
 	_s:itm__()
-	-- _s:whel__init()
 
 	_s:itm__plt()
 	_s:cursor_pos__()

@@ -17,6 +17,7 @@ function p.Prt_selected.selected__cursor_itm(_s)
 
 	-- log._("selected_itm_idx cursor itm idx", _s:cursor_itm_idx())
 	_s:selected_nd_parent__(_s:cursor_itm_nd("itm"))
+
 	-- _s:selected_drw()
 end
 
@@ -26,6 +27,7 @@ function p.Prt_selected.selected_nd_parent__(_s, p_parent_nd)
 end
 
 function p.Prt_selected.selected_nd(_s)
+
 	local selected_nd = nd._(_s:lb("selected"))
 	return selected_nd
 end
@@ -101,3 +103,4 @@ function p.Prt_selected.is_selected_eq_cursor(_s)
 	end
 	return ret
 end
+

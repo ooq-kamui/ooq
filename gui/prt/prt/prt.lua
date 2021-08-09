@@ -105,6 +105,8 @@ function p.Prt.key_2_act_itm(_s, prm)
 			_s:clz()
 		end
 	end
+
+	-- log._("key_2_act_itm end")
 end
 
 -- arw -> cursor
@@ -125,7 +127,7 @@ end
 function p.Prt.arw_act(_s, arwHa, keyact)
 	-- log._("prt arw_act", arwHa, keyact)
 	
-	if not _s.is_cursor__mv then return end
+	-- if not _s.is_cursor__mv then return end -- necessary ?
 
 	local is_cursor__mv, inc_dir = _s:is_cursor__mv(arwHa)
 	-- log._("is_cursor__mv", is_cursor__mv)

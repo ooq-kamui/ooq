@@ -8,8 +8,6 @@ Egg.cls = "egg"
 Egg.fac = Obj.fac..Egg.cls
 Cls.add(Egg)
 
--- ar.idx_2_ha(Egg.gold, "egg")
-
 function Egg.cre(p_pos, prm)
 	local t_Cls = Egg
 	local t_id = Sp.cre(t_Cls, p_pos, prm)

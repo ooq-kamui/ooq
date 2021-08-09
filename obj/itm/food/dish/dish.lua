@@ -3,13 +3,10 @@ log.scrpt("dish.lua")
 Dish = {
 	act_intrvl_time =  10,
 	name_idx_max    = 188,
-	-- name_idx_max    = 6,
 }
 Dish.cls = "dish"
 Dish.fac = Obj.fac..Dish.cls
 Cls.add(Dish)
-
--- ar.idx_2_ha(Dish.gold, "dish")
 
 function Dish.cre(p_pos, prm)
 	local t_Cls = Dish

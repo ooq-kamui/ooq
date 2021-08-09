@@ -11,8 +11,6 @@ Fluff.cls = "fluff"
 Fluff.fac = Obj.fac..Fluff.cls
 Cls.add(Fluff)
 
--- ar.idx_2_ha(Fluff.gold, "fluff")
-
 -- static
 
 function Fluff.cre(t_pos, prm)

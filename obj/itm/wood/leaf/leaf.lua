@@ -9,8 +9,6 @@ Leaf.cls = "leaf"
 Leaf.fac = Obj.fac..Leaf.cls
 Cls.add(Leaf)
 
--- ar.idx_2_ha(Leaf.gold, "leaf")
-
 function Leaf.cre(p_pos)
 	local t_Cls = Leaf
 	local t_id = Sp.cre(t_Cls, p_pos)

@@ -23,8 +23,6 @@ function p.Zu_dish.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Zu_dish)
 	
-	-- _s:whel__init()
-
 	_s:itm__6_num("dish", Dish.name_idx_max)
 end
 

@@ -32,14 +32,24 @@ function p.Prt_itm_lst.whel__(_s)
 	if not _s:dsp1_itm_idx()  then return end
 	if not _s:dsp1_whel_idx() then return end
 
-	-- log._("whel__", _s:whel_idx_max())
-
 	for whel_idx = 1, _s:whel_idx_max() do
 
 		_s:whel_i__(whel_idx)
 	end
-
 	-- log._("whel__ end")
+end
+
+-- whel __ plt
+
+function p.Prt_itm_lst.whel__plt(_s)
+
+	if not _s:dsp1_itm_idx()  then return end
+	if not _s:dsp1_whel_idx() then return end
+
+	for whel_idx = 1, _s:whel_idx_max() do
+
+		_s:whel_i__plt(whel_idx)
+	end
 end
 
 -- whel __ roll
@@ -51,12 +61,25 @@ function p.Prt_itm_lst.whel__roll(_s, inc_dir)
 	if _s:is_dsp_itm_edge(inc_dir) then return end
 
 	_s:dsp1_itm_idx__dir(inc_dir)
-	-- log._("whel__roll a")
 
 	_s:dsp__plt_anm()
+
 	Se.pst_ply("cursor__mv")
 
 	-- _s:log("whel__roll end")
+end
+
+--[[
+function p.Prt_itm_lst.dsp1o_nd__(_s) -- use not ?
+
+	if _s:is_dsp_itm_1() then return end
+
+	local dsp1o_itm_idx  = _s:dsp1o_itm_idx()
+	local dsp1o_whel_idx = _s:dsp1o_whel_idx()
+
+	log._("whel_nd__roll_dec", dsp1o_whel_idx, dsp1o_itm_idx)
+
+	_s:whel_i_nd__(dsp1o_whel_idx, dsp1o_itm_idx)
 end
 
 function p.Prt_itm_lst.dspEo_nd__(_s) -- use not ?
@@ -71,17 +94,7 @@ function p.Prt_itm_lst.dspEo_nd__(_s) -- use not ?
 	_s:whel_i_nd__(dspEo_whel_idx, dspEo_itm_idx)
 end
 
-function p.Prt_itm_lst.dsp1o_nd__(_s) -- use not ?
-
-	if _s:is_dsp_itm_1() then return end
-
-	local dsp1o_itm_idx  = _s:dsp1o_itm_idx()
-	local dsp1o_whel_idx = _s:dsp1o_whel_idx()
-
-	log._("whel_nd__roll_dec", dsp1o_whel_idx, dsp1o_itm_idx)
-
-	_s:whel_i_nd__(dsp1o_whel_idx, dsp1o_itm_idx)
-end
+--]]
 
 -- whel w
 
@@ -121,7 +134,7 @@ function p.Prt_itm_lst.whel_i__plt_anm(_s, whel_idx)
 end
 
 function p.Prt_itm_lst.whel_i__plt(_s, whel_idx)
-	-- log._("whel_i__plt start", whel_idx)
+	log._("whel_i__plt start", whel_idx)
 
 	if not whel_idx then return end
 	
@@ -174,11 +187,12 @@ function p.Prt_itm_lst.whel_i__(_s, whel_idx)
 
 	local itm_idx = _s:itm_idx_6_whel_idx(whel_idx)
 
-	-- if not itm_idx then return end
-
 	_s._whel[whel_idx] = itm_idx
 
-	if not itm_idx then return end
+	if not itm_idx then
+
+		return
+	end
 
 	_s:whel_i_nd__(whel_idx, itm_idx)
 end
@@ -191,7 +205,7 @@ function p.Prt_itm_lst.is_whel_i_dsp(_s, whel_idx)
 
 	local itm_idx = _s:whel_i(whel_idx)
 
-	if not itm_idx  then return ret end
+	if not itm_idx then return ret end
 
 	if int.is_rng(itm_idx, _s:dsp_itm_rng()) then
 		ret = _.t
@@ -253,6 +267,7 @@ function p.Prt_itm_lst.whel_idx_max__(_s)
 	if not _s._dsp_idx_max then return end
 
 	local val = _s._dsp_idx_max + 2
+	-- local val = _s:dspE_idx() + 2
 
 	_s._whel_idx_max = val
 end

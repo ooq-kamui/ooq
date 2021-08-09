@@ -6,7 +6,7 @@ function ar.rnd(p_ar)
 	return rnd.ar(p_ar)
 end
 
-function ar.idx_2_ha(p_ar, pre)
+function ar.idx_2_ha(p_ar, pre) -- old
 	for idx = 1, #p_ar do
 		p_ar[ha._(pre..int.pad(idx))] = p_ar[idx]
 		p_ar[idx] = nil

@@ -23,8 +23,6 @@ function p.Shop_flower.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_flower)
 	
-	-- _s:whel__init()
-
 	_s:nd__("ply_data_gold")
 
 	_s:itm__6_ar(ar.key(Mstr.flower))

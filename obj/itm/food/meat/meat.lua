@@ -9,8 +9,6 @@ Meat.cls = "meat"
 Meat.fac = Obj.fac..Meat.cls
 Cls.add(Meat)
 
--- ar.idx_2_ha(Meat.gold, "meat")
-
 function Meat.cre(p_pos, prm)
 	local t_Cls = Meat
 	local t_id = Sp.cre(t_Cls, p_pos, prm)

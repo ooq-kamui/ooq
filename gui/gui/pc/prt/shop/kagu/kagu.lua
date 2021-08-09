@@ -23,8 +23,6 @@ function p.Shop_kagu.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop_kagu)
 	
-	-- _s:whel__init()
-
 	_s:nd__("ply_data_gold")
 
 	local kagu = ar.key(Mstr.kagu)

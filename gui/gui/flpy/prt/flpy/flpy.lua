@@ -23,8 +23,6 @@ function p.Flpy.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(_s, p.Flpy)
 	
-	-- _s:whel__init()
-
 	_s._itm_scrl_dir = "v"
 
 	_s:itm__6_ar({"save", "load", "back to title"})

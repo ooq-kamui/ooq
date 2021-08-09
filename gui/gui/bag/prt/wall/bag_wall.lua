@@ -26,8 +26,6 @@ function p.Bag_wall.init(_s, parent_gui)
 	extnd.init(_s, p.Bag_prt_itm)
 	extnd._(   _s, p.Bag_wall)
 
-	-- _s:whel__init()
-
 	_s:itm__6_ar(Tile.wall)
 	
 	_s:selected__cursor_itm()
@@ -41,7 +39,8 @@ function p.Bag_wall.whel_i_nd__(_s, whel_idx, itm_idx)
 	local t_tile = _s:itm_i(itm_idx)
 	local anim = "wall"..int.pad(t_tile, 3)
 	nd.anm__(nd_ar[_s:lb("itm")], ha._(anim))
-	nd.order__6_blw(nd_ar[_s:lb("itm")], _s:selected_nd())
+
+	-- nd.order__6_blw(nd_ar[_s:lb("itm")], _s:selected_nd())
 end
 
 -- method

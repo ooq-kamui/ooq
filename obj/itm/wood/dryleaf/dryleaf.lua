@@ -8,8 +8,6 @@ Dryleaf.cls = "dryleaf"
 Dryleaf.fac = Obj.fac..Dryleaf.cls
 Cls.add(Dryleaf)
 
--- ar.idx_2_ha(Dryleaf.gold, "dryleaf")
-
 -- static
 
 function Dryleaf.cre(p_pos)

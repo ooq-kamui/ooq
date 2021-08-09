@@ -29,8 +29,6 @@ function p.Confirm.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Confirm)
 
-	-- _s:whel__init()
-
 	_s:itm__init()
 end
 

@@ -23,8 +23,6 @@ function p.Pc.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Pc)
 	
-	-- _s:whel__init()
-
 	_s:itm__6_ar({"shop", "kzn", "snn_lst", "cfg"})
 	_s._itm_txt = {"おみせ", "きずな", "しなん", "せってい"}
 end

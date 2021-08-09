@@ -26,8 +26,6 @@ function p.Bag_block.init(_s, parent_gui)
 	extnd.init(_s, p.Bag_prt_itm)
 	extnd._(   _s, p.Bag_block)
 	
-	-- _s:whel__init()
-
 	_s:itm__6_ar(Tile.magic_block)
 	
 	_s:selected__cursor_itm()
@@ -35,13 +33,17 @@ function p.Bag_block.init(_s, parent_gui)
 end
 
 function p.Bag_block.whel_i_nd__(_s, whel_idx, itm_idx)
+	-- log._("p.Bag_block.whel_i_nd__ start", whel_idx, itm_idx)
 
 	local nd_ar  = _s:whel_i_nd_ar(whel_idx)
 
 	local t_tile = _s:itm_i(itm_idx)
 	local anim   = "block"..int.pad(t_tile, 3)
 	nd.anm__(nd_ar[_s:lb("itm")], ha._(anim))
-	nd.order__6_blw(nd_ar[_s:lb("itm")], _s:selected_nd())
+
+	-- nd.order__6_blw(nd_ar[_s:lb("itm")], _s:selected_nd())
+
+	-- log._("p.Bag_block.whel_i_nd__ end")
 end
 
 -- method

@@ -24,8 +24,6 @@ function p.Shop_tree.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_itm_opt)
 	extnd._(   _s, p.Shop_tree)
 	
-	-- _s:whel__init()
-
 	_s:nd__("ply_data_gold")
 
 	local tree = ar.key(Mstr.tree)

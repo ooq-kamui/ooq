@@ -26,8 +26,6 @@ function p.Shop.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Shop)
 	
-	-- _s:whel__init()
-
 	_s:itm__6_ar({"shop_flower", "shop_tree", "shop_kagu_itm", "shop_kagu"})
 	_s._itm_txt = {"はなのたね", "きのみ", "べんりな かぐ", "ふつうの かぐ"}
 end

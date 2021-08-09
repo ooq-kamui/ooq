@@ -9,8 +9,6 @@ Dairy.cls = "dairy"
 Dairy.fac = Obj.fac..Dairy.cls
 Cls.add(Dairy)
 
--- ar.idx_2_ha(Dairy.gold, "dairy")
-
 function Dairy.cre(p_pos, prm)
 	local t_Cls = Dairy
 	local t_id = Sp.cre(t_Cls, p_pos, prm)

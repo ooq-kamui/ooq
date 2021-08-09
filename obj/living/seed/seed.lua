@@ -76,12 +76,14 @@ function Seed.grw_bear__init(_s)
 	_s._bear_cls  = _s._bear_cls  or "fruit"
 	_s._bear_name = _s._bear_name or "fruit007"
 
+	--[[
 	log._("Seed.grw_bear__init",
 		_s._grw_cls,
 		_s._grw_name,
 		_s._bear_cls,
 		_s._bear_name
 	)
+	--]]
 end
 
 function Seed.act_intrvl(_s, dt)

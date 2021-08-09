@@ -111,6 +111,8 @@ function nd.order__6_abv(p_nd, p_nd_abv)
 end
 
 function nd.order__6_blw(p_nd, p_nd_blw)
+	log._("order__6_blw", p_nd, p_nd_blw)
+
 	gui.move_below(p_nd, p_nd_blw)
 end
 

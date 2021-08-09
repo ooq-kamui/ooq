@@ -53,7 +53,6 @@ end
 function p.Prt_cursor.is_cursor_dsp_E(_s)
 
 	local ret = _.f
-	-- if _s:cursor_dsp_idx() == _s:dsp_idx_max() then ret = _.t end
 	if _s:cursor_dsp_idx() == _s:cursor_dsp_idx_max() then
 		ret = _.t
 	end
@@ -98,10 +97,12 @@ function p.Prt_cursor.cursor_dsp_idx__dir(_s, inc_dir)
 	local n_cursor_dsp_idx
 
 	if     inc_dir == "inc" then
-		n_cursor_dsp_idx = int.inc_stop(_s:cursor_dsp_idx(), _s:dsp_idx_max())
+		-- n_cursor_dsp_idx = int.inc_stop(_s:cursor_dsp_idx(), _s:dsp_idx_max())
+		n_cursor_dsp_idx = int.inc_stop(_s:cursor_dsp_idx(), _s:dspE_idx())
 
 	elseif inc_dir == "dec" then
-		n_cursor_dsp_idx = int.dec_stop(_s:cursor_dsp_idx(), _s:dsp_idx_max())
+		-- n_cursor_dsp_idx = int.dec_stop(_s:cursor_dsp_idx(), _s:dsp_idx_max())
+		n_cursor_dsp_idx = int.dec_stop(_s:cursor_dsp_idx(), _s:dspE_idx())
 	end
 
 	-- log._("cursor__mv", n_cursor_dsp_idx)
@@ -126,6 +127,8 @@ function p.Prt_cursor.cursor__mv(_s, inc_dir, keyact)
 	end
 
 	_s:cursor__mv_exe()
+
+	-- log._("cursor__mv end")
 end
 
 function p.Prt_cursor.cursor__mv_exe(_s)
@@ -169,7 +172,6 @@ function p.Prt_cursor.cursor__mv_itmE(_s)
 	_s:itm__plt()
 
 	local t_dsp_idx = _s:cursor_dsp_idx_max()
-	-- local t_dsp_idx = _s:dsp_idx_max()
 
 	_s:cursor_dsp_idx__(     t_dsp_idx)
 	_s:cursor_pos__6_dsp_idx(t_dsp_idx)
@@ -282,19 +284,49 @@ function p.Prt_cursor.cursor__itm_idx(_s, itm_idx)
 
 	_s:cursor_dsp_idx__(dsp_idx)
 	_s:cursor_pos__6_dsp_idx()
-	-- _s:cursor_pos__6_dsp_idx(dsp_idx)
 end
 
-function p.Prt_cursor.cursor_itm_nd_ar(_s)
+function p.Prt_cursor.cursor_itm_nd_ar(_s) -- alias
 
-	local cursor_itm_idx = _s:cursor_itm_idx()
-	local t_nd_ar = _s._nd.itm[cursor_itm_idx]
+	return _s:cursor_whel_nd_ar()
+
+	--[[
+	local cursor_whel_idx = _s:cursor_whel_idx()
+	local t_nd_ar = _s:whel_i_nd_ar(cursor_whel_idx)
+	return t_nd_ar
+	--]]
+end
+
+function p.Prt_cursor.cursor_itm_nd(_s, nd_id) -- alias
+
+	return _s:cursor_whel_nd(nd_id)
+
+	--[[
+	local t_nd_ar = _s:cursor_itm_nd_ar()
+	local t_nd = t_nd_ar[_s:lb(nd_id)]
+	return t_nd
+	--]]
+end
+
+function p.Prt_cursor.cursor_whel_idx(_s)
+
+	-- local cursor_whel_idx = _s:dsp1_whel_idx() + _s:cursor_dsp_idx() - 1
+
+	local whel_df = _s:cursor_dsp_idx() - 1
+	local cursor_whel_idx = int.__pls_loop(_s:dsp1_whel_idx(), whel_df, _s:whel_idx_max())
+	return cursor_whel_idx
+end
+
+function p.Prt_cursor.cursor_whel_nd_ar(_s)
+
+	local cursor_whel_idx = _s:cursor_whel_idx()
+	local t_nd_ar = _s:whel_i_nd_ar(cursor_whel_idx)
 	return t_nd_ar
 end
 
-function p.Prt_cursor.cursor_itm_nd(_s, nd_id)
+function p.Prt_cursor.cursor_whel_nd(_s, nd_id)
 
-	local t_nd_ar = _s:cursor_itm_nd_ar()
+	local t_nd_ar = _s:cursor_whel_nd_ar()
 	local t_nd = t_nd_ar[_s:lb(nd_id)]
 	return t_nd
 end

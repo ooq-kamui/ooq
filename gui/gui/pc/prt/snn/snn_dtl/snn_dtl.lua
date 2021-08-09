@@ -24,8 +24,6 @@ function p.Snn_dtl.init(_s, parent_gui)
 	extnd.init(_s, p.Prt_cursor)
 	extnd._(   _s, p.Snn_dtl)
 	
-	-- _s:whel__init()
-
 	_s:nd__("title")
 
 	_s:itm__6_ar({"page_1", "page_2"})

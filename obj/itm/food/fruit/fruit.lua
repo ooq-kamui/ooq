@@ -8,8 +8,6 @@ Fruit.cls = "fruit"
 Fruit.fac = Obj.fac..Fruit.cls
 Cls.add(Fruit)
 
--- ar.idx_2_ha(Fruit.gold, "fruit")
-
 function Fruit.cre(p_pos, prm, scl)
 	local t_Cls = Fruit
 	local t_id = Sp.cre(t_Cls, p_pos, prm, scl)
