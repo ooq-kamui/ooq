@@ -68,8 +68,6 @@ function Sp.__init(_s, prm)
 
 	if     ar.in_(_s._cls, {"plychara", }) then
 		-- excld
-	-- elseif ar.in_(_s._cls, {"chara", "chara_clb_fe", "chara_clb_tohoku", }) then
-		-- _s:anim__()
 	else
 		prm._anim = prm._anim or prm._name
 		_s:anim__(prm._anim)
@@ -319,6 +317,8 @@ end
 
 function Sp.mapobj__(_s)
 	-- log._("sp mapobj__")
+
+	-- if _.t then return end
 	
 	local t_tilepos = _s:tilepos()
 	
@@ -332,7 +332,7 @@ function Sp.mapobj__(_s)
 	_s._tilepos_pre = t_tilepos
 end
 
-function Sp.is_on_obj_block(_s)
+function Sp.is_on_obj_block(_s) -- 
 
 	local ret = _.f
 	

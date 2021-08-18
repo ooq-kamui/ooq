@@ -43,7 +43,7 @@ function Phntm.upd(_s, dt)
 
 	_s._vec_total = _s._vec_mv
 
-	_s:pos__pls(_s._vec_total)
+	_s:pos__pls_vec_total()
 
 	_s:upd_final()
 end

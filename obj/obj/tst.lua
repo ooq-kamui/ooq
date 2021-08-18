@@ -7,7 +7,8 @@ function Tst.obj.tst()
 
 	local t_Cls = {
 		-- Chara,
-		Anml, Anml, Anml,
+		Anml,
+		Anml, Anml,
 		Seed, Seed, Seed, Seed, Seed, Seed,
 		Kagu, Kagu, Kagu,
 		Plant,
@@ -25,9 +26,9 @@ function Tst.obj.tst()
 		Mgccrcl,
 		Mgcpot,
 		Balloon, Balloon,
+		Block,
 		--[[
 		--]]
-		Block,
 	}
 	Tst.obj._(t_Cls)
 end

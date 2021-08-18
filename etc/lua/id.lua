@@ -47,10 +47,7 @@ end
 
 function id.pos(p_id)
 	
-	if not p_id then
-		log._("id.pos", p_id)
-		return
-	end
+	if not p_id then log._("id.pos", p_id) return end
 	
 	local t_pos = go.get_position(p_id)
 	return t_pos

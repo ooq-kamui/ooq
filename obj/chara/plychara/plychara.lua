@@ -134,15 +134,16 @@ function Plychara.upd(_s, dt)
 	
 	_s:vec_mv__(dt)
 	
-	_s:vec_tile__(dt)
+	_s:vec_tile__()
 
-	-- _s:vec_on_chara__(dt)
+	-- _s:vec_on_chara__(dt) -- 3sec
 
-	_s:vec_grv__(dt)
+	_s:vec_grv__()
 	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
-	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara
-	_s:pos__pls(_s._vec_total)
+	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara -- 3sec
+
+	_s:pos__pls_vec_total()
 	
 	_s:ox_dstrct__mv()
 	
@@ -209,7 +210,7 @@ function Plychara.vec_mv_v__(_s)
 	end
 end
 
-function Plychara.vec_grv__(_s, dt)
+function Plychara.vec_grv__(_s)
 
 	if _s._is_jmp_start then
 
@@ -219,7 +220,7 @@ function Plychara.vec_grv__(_s, dt)
 		if _s:is_on_chara() then
 			vec.xy__clr(_s._vec_grv)
 		else
-			Sp.vec_grv__(_s, dt)
+			Sp.vec_grv__(_s)
 		end
 	end
 end
@@ -358,7 +359,7 @@ end
 function Plychara.is_on_chara__(_s)
 
 	if _s._is_dive_start then
-		vec.xy__add(_s._vec_on_chara, 0, 0)
+		vec.xy__pls(_s._vec_on_chara, 0, 0)
 		_s._is_on_chara_flg = _.t
 		return
 	end
@@ -372,7 +373,7 @@ function Plychara.is_on_chara__(_s)
 	end
 
 	_s._on_pos = id.pos(_s._on_chara_id)
-	vec.xy__add(_s._on_pos, 0, Map.sq)
+	vec.xy__pls(_s._on_pos, 0, Map.sq)
 
 	_s._vec_on_chara = _s._on_pos - _s:pos()
 
@@ -874,7 +875,6 @@ function Plychara.hld_tile_side(_s)
 	local dir_h = ha.de(_s._mv_dir_h_Ha)
 
 	local side_is_block, t_tile = _s:side_is_block(dir_h)
-	-- log._("hld_tile_side ", side_is_block, t_tile)
 	
 	if not side_is_block               then return end
 	if not Magic.is_magic_vnsh(t_tile) then return end
@@ -885,8 +885,10 @@ function Plychara.hld_tile_side(_s)
 
 	-- tile emp
 	local side_pos = _s:side_pos(dir_h)
-	if dir_h == "l" then vec.xy__add(side_pos, -1, 0) end
-	_s:tile__(Tile.emp, side_pos)
+	if dir_h == "l" then vec.xy__pls(side_pos, -1, 0) end
+
+	-- _s:tile__(Tile.emp, side_pos)
+	_s:map_tile__(Tile.emp, side_pos)
 end
 
 -- to xxx

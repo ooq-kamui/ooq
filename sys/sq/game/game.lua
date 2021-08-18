@@ -164,9 +164,11 @@ function Game.init(_s)
 end
 
 function Game.upd(_s, dt)
+	-- log._("Game.upd start")
 	
 	_s:act_intrvl(dt)
 	
+	log._("Game.upd end")
 end
 
 function Game.act_intrvl(_s, dt)

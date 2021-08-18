@@ -43,10 +43,8 @@ end
 function Cmr.init(_s)
 	
 	extnd._(_s, Cmr)
-	-- log._("Cmr.init 1")
 
 	_s._id = id._()
-	-- log._("Cmr.init 2")
 	
 	local prm = {
 		aspect_ratio = Disp.x / Disp.y,
@@ -56,16 +54,13 @@ function Cmr.init(_s)
 	}
 	pst._("#cmr", "set_camera", prm)
 	pst._("#cmr", "acquire_camera_focus")
-	-- log._("Cmr.init 3")
 
 	_s:pos__dflt()
 	_s._z_idx = Cmr.dflt.z_idx
-	-- log._("Cmr.init 4")
 	
 	if not ha.is_emp(_s:plychara_id()) then
 		_s._target_pos = _s:plychara_pos()
 	end
-	-- log._("Cmr.init 5")
 	
 	_s._speed = 0
 	_s._speed_max = 6.5

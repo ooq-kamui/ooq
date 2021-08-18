@@ -55,7 +55,7 @@ function Block.upd(_s, dt)
 	
 	_s:act_intrvl(dt)
 	
-	_s:upd_pos_static(dt)
+	_s:upd_pos_static()
 
 	_s:upd_final()
 end
@@ -95,7 +95,7 @@ function Block.final(_s)
 	Hldabl.final(_s)
 
 	if _s._is_trnsf__tile then
-		_s:tile__(_s._tile)
+		_s:map_tile__(_s._tile)
 	end
 end
 

@@ -82,7 +82,7 @@ end
 
 function Fairy.magic_wall(_s)
 
-	local t_tilepos = map.pos_2_tilepos( _s:pos_w() )
+	local t_tilepos = map.tilepos_6_pos( _s:pos_w() )
 	Wall.__(t_tilepos, Wand.wand_wall.tile_idx)
 end
 

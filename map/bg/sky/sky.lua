@@ -308,8 +308,7 @@ function Sky.tile__6_pos(_s, p_tile, p_pos)
 	for i = 1, _s._x_once do
 		map.tile__6_tilepos(t_pos                        , p_tile, _s._id, "sky", "sky")
 		map.tile__6_tilepos(n.vec(- t_pos.x + 1, t_pos.y), p_tile, _s._id, "sky", "sky")
-		-- t_pos = t_pos + n.vec(1, 0)
-		vec.xy__add(t_pos, 1, 0)
+		vec.xy__pls(t_pos, 1, 0)
 	end
 end
 

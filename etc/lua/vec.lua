@@ -22,7 +22,8 @@ function vec.tmp(x, y, z) -- tmp
 end
 
 function n.vec(x, y, z, note) -- alias
-	-- log._("n.vec", note)
+	log.if_(note, "n.vec", note)
+
 	return vec.new(x, y, z)
 end
 
@@ -77,9 +78,26 @@ function vec.xy__(p_vec, p_x, p_y)
 	p_vec.y = p_y
 end
 
-function vec.xy__add(p_vec, p_x, p_y)
+function vec.xy__vec(p_vec, p_vec2)
+
+	vec.xy__(p_vec, p_vec2.x, p_vec2.y)
+end
+
+function vec.xy__pls(p_vec, p_x, p_y)
 
 	p_vec.x = p_vec.x + p_x
 	p_vec.y = p_vec.y + p_y
 end
+
+function vec.xy__pls_vec(p_vec, p_vec2)
+
+	p_vec.x = p_vec.x + p_vec2.x
+	p_vec.y = p_vec.y + p_vec2.y
+end
+
+--[[
+function vec.xy__add(p_vec, p_x, p_y) -- old
+	vec.xy__pls(p_vec, p_x, p_y)
+end
+--]]
 

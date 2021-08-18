@@ -275,7 +275,7 @@ function Map.pf__save_data__(_s)
 
 	_s:save_data__clr()
 
-	_s._save_data.tile = _s:tile_2_save_data()
+	_s._save_data.tile = _s:save_data_6_tile()
 
 	_s:pf__save_data_obj__()
 end
@@ -552,21 +552,23 @@ function Map.tile_bndl_arund_val(p_tilepos)
 	local tile_bndl_arund_ar  = Map.arund_tile_bndl_ar(p_tilepos)
 	local tile_bndl_arund_val = Tile_bndl.arund_ar_2_arund_val(tile_bndl_arund_ar)
 	-- log._("tile_bndl_arund_val", tile_bndl_arund_val)
+
 	return tile_bndl_arund_val
 end
 
-function Map.tilepos_arund(p_tilepos)
+function Map.tilepos_arund(p_tilepos) -- todo cache
+
 	local tilepos_arund = {
-		n.vec(p_tilepos.x - 1, p_tilepos.y + 1),
-		n.vec(p_tilepos.x + 0, p_tilepos.y + 1),
-		n.vec(p_tilepos.x + 1, p_tilepos.y + 1),
+		n.vec(p_tilepos.x - 1, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
+		n.vec(p_tilepos.x + 0, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
+		n.vec(p_tilepos.x + 1, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
 
-		n.vec(p_tilepos.x - 1, p_tilepos.y    ),
-		n.vec(p_tilepos.x + 1, p_tilepos.y    ),
+		n.vec(p_tilepos.x - 1, p_tilepos.y    , nil, "Map.tilepos_arund"),
+		n.vec(p_tilepos.x + 1, p_tilepos.y    , nil, "Map.tilepos_arund"),
 
-		n.vec(p_tilepos.x - 1, p_tilepos.y - 1),
-		n.vec(p_tilepos.x + 0, p_tilepos.y - 1),
-		n.vec(p_tilepos.x + 1, p_tilepos.y - 1),
+		n.vec(p_tilepos.x - 1, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
+		n.vec(p_tilepos.x + 0, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
+		n.vec(p_tilepos.x + 1, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
 	}
 	return tilepos_arund
 end

@@ -26,7 +26,7 @@ function Map.tile__save_data(_s, data)
 	_s:tile_layer__("wall"  , data["wall"]  )
 end
 
-function Map.tile_2_save_data(_s)
+function Map.save_data_6_tile(_s)
 	
 	local tile = {}
 	tile["ground"] = _s:tile("ground")

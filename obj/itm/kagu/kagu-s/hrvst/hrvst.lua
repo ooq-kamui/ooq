@@ -43,7 +43,7 @@ function Hrvst.upd(_s, dt)
 
 	_s:act_intrvl(dt)
 
-	_s:upd_pos_static(dt)
+	_s:upd_pos_static()
 
 	_s:upd_final()
 end

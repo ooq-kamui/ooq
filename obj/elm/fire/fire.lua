@@ -42,12 +42,12 @@ function Fire.upd(_s, dt)
 	if Tile.is_wood(t_tile) or Tile.is_wood_burn(t_tile) then
 		vec.xy__clr(_s._vec_grv)
 	else
-		_s:vec_grv__(dt)
+		_s:vec_grv__()
 	end
 
 	_s._vec_total = _s._vec_grv
 
-	_s:pos__pls(_s._vec_total)
+	_s:pos__pls_vec_total()
 
 	_s:upd_final()
 end

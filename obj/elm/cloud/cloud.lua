@@ -43,8 +43,6 @@ function Cloud.upd(_s, dt)
 	_s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
-	-- _s:vec_mv__(dt)
-	-- _s:pos__pls(_s._vec_mv)
 
 	_s:upd_final()
 end

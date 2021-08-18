@@ -44,7 +44,7 @@ end
 
 function Kitchen.upd(_s, dt)
 
-	_s:upd_pos_static(dt)
+	_s:upd_pos_static()
 
 	_s:upd_cooking_timer__dec(dt)
 

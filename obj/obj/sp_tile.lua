@@ -1,43 +1,62 @@
 log.scrpt("sp_tile.lua")
 
 --
--- pos, tile, etc
+-- tile, pos, etc
 --
 
--- pos
+-- crnt pos
 
 function Sp.pos(_s)
 
-	local t_pos = id.pos(_s._id)
+	if _s._pos then return _s._pos end
 
-	local is_nan = num.is_nan(t_pos.x)
+	_s._pos = id.pos(_s._id)
+	log._("Sp.pos")
+
+	local is_nan = num.is_nan(_s._pos.x)
 	if is_nan then
-		log._("Sp.pos is_nan", t_pos, _s._cls)
+		log._("Sp.pos is_nan", _s._pos, _s._cls)
 		_s:del()
 		return
 	end
 
-	return t_pos
+	return _s._pos
 end
 
 function Sp.pos__(_s, p_pos)
-	id.pos__(_s._id, p_pos)
+
+	if not p_pos then return end
+
+	if not _s._pos then _s._pos = n.vec() end
+
+	vec.xy__(_s._pos, p_pos.x, p_pos.y)
+
+	id.pos__(_s._id, _s._pos)
+end
+
+function Sp.pos__pls(_s, p_vec)
+
+	if not _s._pos then _s._pos = n.vec() end
+
+	vec.xy__pls(_s._pos, p_vec.x, p_vec.y)
+
+	id.pos__(_s._id, _s._pos)
+end
+
+function Sp.pos__pls_vec_total(_s) -- 3sec
+	-- log._("Sp.pos__pls_vec_total")
+	
+	if _s:is_pause() then return end
+	
+	_s:vec_total__crct() -- 3sec
+	
+	_s:pos__pls(_s._vec_total)
 end
 
 function Sp.pos_w(_s)
 
 	local t_pos = id.pos_w(_s._id)
 	return t_pos
-end
-
-function Sp.pos__pls(_s, p_vec)
-	
-	if _s:is_pause() then return end
-	
-	p_vec = _s:crct_vec(p_vec)
-	
-	local t_pos = _s:pos() + p_vec
-	_s:pos__(t_pos)
 end
 
 function Sp.z(_s)
@@ -58,38 +77,57 @@ function Sp.z__(_s, z)
 	_s._z = z
 end
 
--- tile
+-- crnt tile
 
-function Sp.tile(_s, p_pos)
-	
-	p_pos = p_pos or _s:pos()
-	
-	local t_tile = map.tile(p_pos, _s._map_id, "ground")
+function Sp.tile_6_pos(_s, p_pos) -- alias
+
+	if not p_pos then return end
+
+	local t_tile = map.tile(p_pos, _s._map_id, "ground", nil, _s._id)
+	-- local t_tile = 1
 	return t_tile
 end
 
+function Sp.tile(_s)
+	-- log._("Sp.tile")
+	
+	if _s._c_tile_flg then return _s._c_tile end
+	
+	_s._c_tile = _s:tile_6_pos(_s:pos())
+	_s._c_tile_flg = _.t
+
+	return _s._c_tile
+end
+
 function Sp.tile__(_s, p_tile, p_pos)
+
+	_s:map_tile__(p_tile, p_pos)
+end
+
+function Sp.map_tile__(_s, p_tile, p_pos)
 
 	p_pos = p_pos or _s:pos()
 
 	map.tile__(p_pos, p_tile, _s._map_id, "ground")
 end
 
--- tilepos
+-- crnt tilepos
 
 function Sp.tilepos(_s)
 
 	if _s._tilepos_flg then return _s._tilepos end
 
 	_s:tilepos__()
-	_s._tilepos_flg = _.t
 
 	return _s._tilepos
 end
 
 function Sp.tilepos__(_s)
 
-	_s._tilepos = map.pos_2_tilepos( _s:pos() )
+	local x, y = map.tilepos_xy_6_pos( _s:pos() )
+	vec.xy__(_s._tilepos, x, y)
+
+	_s._tilepos_flg = _.t
 end
 
 function Sp.tilepos_arund(_s)
@@ -99,39 +137,113 @@ function Sp.tilepos_arund(_s)
 	return tilepos_arund
 end
 
--- pos foot
+function Sp.tilepos_d(_s)
+
+	if _s._tilepos_d_flg then return _s._tilepos_d end
+
+	_s:tilepos_d__()
+
+	return _s._tilepos_d
+end
+
+function Sp.tilepos_d__(_s)
+
+	vec.xy__vec(_s._tilepos_d, _s:tilepos())
+	vec.xy__pls(_s._tilepos_d, 0, - 1)
+
+	_s._tilepos_d_flg = _.t
+end
+
+-- crnt is tile
+
+function Sp.is_airflw_u(_s)
+	
+	local t_tile = _s:tile()
+	local ret = Tile.is_airflw_u(t_tile)
+	return ret
+end
+
+function Sp.is_soil(_s)
+	
+	local t_tile = _s:tile()
+	local ret = Tile.is_soil(t_tile)
+	return ret
+end
+
+-- foot pos, tile
 
 function Sp.foot_i_pos(_s)
 
 	if _s._foot_i_pos_flg then return _s._foot_i_pos end
 
-	local c_pos = _s:pos()
-	_s._foot_i_pos.x = c_pos.x
-	_s._foot_i_pos.y = c_pos.y - _s:foot_dst_i()
-
-	_s._foot_i_pos_flg = _.t
+	_s:foot_i_pos__()
 
 	return _s._foot_i_pos
 end
+
+function Sp.foot_i_pos__(_s)
+
+	local c_pos = _s:pos()
+
+	local x = c_pos.x
+	local y = c_pos.y - _s:foot_dst_i()
+	vec.xy__(_s._foot_i_pos, x, y)
+
+	_s._foot_i_pos_flg = _.t
+end
+
+function Sp.foot_i_tile(_s)
+	
+	if _s._c_foot_i_tile_flg then return _s._c_foot_i_tile end
+
+	_s:foot_i_tile__()
+
+	return _s._c_foot_i_tile
+end
+
+function Sp.foot_i_tile__(_s)
+
+	_s._c_foot_i_tile = _s:tile_6_pos(_s:foot_i_pos())
+	_s._c_foot_i_tile_flg = _.t
+end
+
+function Sp.foot_i_is_clmb(_s)
+
+	local t_tile = _s:foot_i_tile()
+	local ret = Tile.is_clmb(t_tile)
+	return ret
+end
+
+function Sp.foot_i_is_elv_u(_s)
+
+	local t_tile = _s:foot_i_tile()
+	local ret = Tile.is_elv(t_tile)
+	return ret
+end
+
+-- foot o
 
 function Sp.foot_o_pos(_s)
 
 	if _s._foot_o_pos_flg then return _s._foot_o_pos end
 
-	local c_foot_i_pos = _s:foot_i_pos()
-	_s._foot_o_pos.x = c_foot_i_pos.x
-	_s._foot_o_pos.y = c_foot_i_pos.y - 1
-
-	_s._foot_o_pos_flg = _.t
+	_s:foot_o_pos__()
 
 	return _s._foot_o_pos
 end
 
-function Sp.foot_dst_i(_s)
+function Sp.foot_o_pos__(_s)
+
+	vec.xy__vec(_s._foot_o_pos, _s:foot_i_pos())
+	vec.xy__pls(_s._foot_o_pos, 0, - 1)
+
+	_s._foot_o_pos_flg = _.t
+end
+
+function Sp.foot_dst_i(_s) -- todo cache
 	
 	local foot_dst_i
 
-	-- if ar.inHa(_s._clsHa, {"kagu"}) then
 	if ar.in_(_s._cls, {"kagu"}) then
 
 		local h = go.get("#sprite", "size.y")
@@ -142,117 +254,71 @@ function Sp.foot_dst_i(_s)
 	return foot_dst_i
 end
 
-function Sp.foot_i_tile(_s)
-	
-	local t_pos  = _s:foot_i_pos()
-	local t_tile = _s:tile(t_pos)
-	return t_tile
-end
-
 function Sp.foot_o_tile(_s)
 	
-	local t_pos  = _s:foot_o_pos()
-	local t_tile = _s:tile(t_pos)
-	return t_tile
+	if _s._c_foot_o_tile_flg then return _s._c_foot_o_tile end
+
+	_s:foot_o_tile__()
+
+	return _s._c_foot_o_tile
 end
 
-function Sp.tilepos_d(_s)
+function Sp.foot_o_tile__(_s)
 
-	if _s._tilepos_d_flg then return _s._tilepos_d end
-
-	_s:tilepos_d__()
-	_s._tilepos_d_flg = _.t
-
-	-- return tilepos_d
-	return _s._tilepos_d
+	_s._c_foot_o_tile = _s:tile_6_pos(_s:foot_o_pos())
+	_s._c_foot_o_tile_flg = _.t
 end
 
-function Sp.tilepos_d__(_s)
+function Sp.foot_o_is_block(_s)
 
-	local t_tilepos = _s:tilepos()
-	vec.xy__(_s._tilepos_d, t_tilepos.x, t_tilepos.y - 1)
+	local t_tile = _s:foot_o_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
 end
 
--- pos head
+-- head pos, tile
 
 function Sp.head_o_pos(_s)
-	-- log._("sp head_o_pos ", _s._head_o_pos_flg)
 
 	if _s._head_o_pos_flg then return _s._head_o_pos end
 
-	local c_pos = _s:pos()
-
-	_s._head_o_pos.x = c_pos.x
-	_s._head_o_pos.y = c_pos.y + Map.sqh
-
-	_s._head_o_pos_flg = _.t
+	_s:head_o_pos__()
 
 	return _s._head_o_pos
 end
 
+function Sp.head_o_pos__(_s)
+
+	local c_pos = _s:pos()
+	_s._head_o_pos.x = c_pos.x
+	_s._head_o_pos.y = c_pos.y + Map.sqh
+
+	_s._head_o_pos_flg = _.t
+end
+
 function Sp.head_o_tile(_s)
 	
-	local t_pos  = _s:head_o_pos()
-	local t_tile = _s:tile(t_pos)
-	return t_tile
+	if _s._c_head_o_tile_flg then return _s._c_head_o_tile end
+
+	_s:head_o_tile__()
+
+	return _s._c_head_o_tile
 end
 
--- pos side
+function Sp.head_o_tile__(_s)
 
-function Sp.side_l_pos(_s, p_vec)
-
-	if _s._side_l_pos_flg then
-
-		if p_vec then
-			return _s._side_l_pos + p_vec
-		else
-			return _s._side_l_pos
-		end
-	end
-
-	_s:side_l_pos__()
-	_s._side_l_pos_flg = _.t
-
-	if p_vec then
-		return _s._side_l_pos + p_vec
-	else
-		return _s._side_l_pos
-	end
+	_s._c_head_o_tile = _s:tile_6_pos(_s:head_o_pos())
+	_s._c_head_o_tile_flg = _.t
 end
 
-function Sp.side_r_pos(_s, p_vec)
+function Sp.head_o_is_block(_s)
 
-	if _s._side_r_pos_flg then
-
-		if p_vec then
-			return _s._side_r_pos + p_vec
-		else
-			return _s._side_r_pos
-		end
-	end
-
-	_s:side_r_pos__()
-	_s._side_r_pos_flg = _.t
-
-	if p_vec then
-		return _s._side_r_pos + p_vec
-	else
-		return _s._side_r_pos
-	end
+	local t_tile = _s:head_o_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
 end
 
-function Sp.side_l_pos__(_s)
-
-	local c_pos = _s:pos()
-	vec.xy__(_s._side_l_pos, c_pos.x - _s._w/2 - 1, c_pos.y)
-end
-
-function Sp.side_r_pos__(_s)
-
-	local c_pos = _s:pos()
-
-	vec.xy__(_s._side_r_pos, c_pos.x + _s._w/2    , c_pos.y)
-end
+-- side pos
 
 function Sp.side_pos(_s, dir_h)
 
@@ -263,79 +329,98 @@ function Sp.side_pos(_s, dir_h)
 	end
 end
 
--- is tile
+-- side is tile
 
-function Sp.is_block(_s, p_pos)
-
-	local ret = _.f
-
-	local t_tile = _s:tile(p_pos)
-
-	if Tile.is_block(t_tile) then ret = _.t
-	else                          t_tile = nil
-	end
-
-	return ret, t_tile
-end
-
-function Sp.is_clmb(_s, p_pos)
+function Sp.side_is_block(_s, dir_h)
 	
-	local t_tile = _s:tile(p_pos)
-	local ret = Tile.is_clmb(t_tile)
+	local t_pos = _s:side_pos(dir_h)
+	local t_tile = _s:tile_6_pos(t_pos)
+	local ret = Tile.is_block(t_tile)
 	return ret
 end
 
-function Sp.is_elv_u(_s, p_pos)
-	
-	local t_tile = _s:tile(p_pos)
-	local ret = Tile.is_elv(t_tile)
+-- side l
+
+function Sp.side_l_pos(_s)
+
+	if _s._side_l_pos_flg then return _s._side_l_pos end
+
+	_s:side_l_pos__()
+
+	return _s._side_l_pos
+end
+
+function Sp.side_l_pos__(_s)
+
+	local c_pos = _s:pos()
+	vec.xy__(_s._side_l_pos, c_pos.x - _s._w/2 - 1, c_pos.y)
+
+	_s._side_l_pos_flg = _.t
+end
+
+function Sp.side_l_tile(_s)
+
+	if _s._side_l_tile_flg then return _s._side_l_tile end
+
+	_s:side_l_tile__()
+
+	return _s._side_l_tile
+end
+
+function Sp.side_l_tile__(_s)
+
+	_s._side_l_tile = _s:tile_6_pos(_s:side_l_pos())
+	_s._side_l_tile_flg = _.t
+end
+
+function Sp.side_l_is_block(_s)
+
+	local t_tile = _s:side_l_tile()
+	local ret = Tile.is_block(t_tile)
 	return ret
 end
 
-function Sp.is_airflw_u(_s, p_pos)
-	
-	local t_tile = _s:tile(p_pos)
-	local ret = Tile.is_airflw_u(t_tile)
+-- side r
+
+function Sp.side_r_pos(_s)
+
+	if _s._side_r_pos_flg then return _s._side_r_pos end
+
+	_s:side_r_pos__()
+
+	return _s._side_r_pos
+end
+
+function Sp.side_r_pos__(_s)
+
+	local c_pos = _s:pos()
+	vec.xy__(_s._side_r_pos, c_pos.x + _s._w/2    , c_pos.y)
+	_s._side_r_pos_flg = _.t
+end
+
+function Sp.side_r_tile(_s)
+
+	if _s._side_r_tile_flg then return _s._side_r_tile end
+
+	_s:side_r_tile__()
+
+	return _s._side_r_tile
+end
+
+function Sp.side_r_tile__(_s)
+
+	_s._side_r_tile = _s:tile_6_pos(_s:side_r_pos())
+	_s._side_r_tile_flg = _.t
+end
+
+function Sp.side_r_is_block(_s)
+
+	local t_tile = _s:side_r_tile()
+	local ret = Tile.is_block(t_tile)
 	return ret
 end
 
-function Sp.is_soil(_s, p_pos)
-	
-	local t_tile = _s:tile(p_pos)
-	local ret = Tile.is_soil(t_tile)
-	return ret
-end
-
--- is tile foot
-
-function Sp.foot_o_is_block(_s)
-
-	local ret = _.f
-
-	local foot_o_tile = _s:foot_o_tile()
-	if Tile.is_block(foot_o_tile) then ret = _.t end
-
-	return ret
-end
-
--- is tile head
-
-function Sp.head_o_is_block(_s)
-
-	local t_pos = _s:head_o_pos()
-	local ret = _s:is_block(t_pos)
-	return ret
-end
-
--- is tile side
-
-function Sp.side_is_block(_s, dir_h, p_vec)
-	
-	p_vec = p_vec or n.vec(nil, nil, nil, "sp.side_is_block")
-
-	local t_pos = _s:side_pos(dir_h) + p_vec
-	return _s:is_block(t_pos)
-end
+-- is grounding
 
 function Sp.is_tile_grounding(_s)
 
@@ -357,116 +442,357 @@ end
 
 -- crct
 
-function Sp.crct_vec(_s, p_vec)
+function Sp.vec_total__crct(_s) -- 3sec
+	-- log._("Sp.vec_total__crct")
 	
-	if not (_s._parent_id == _s._map_id) then return p_vec end
+	if not (_s._parent_id == _s._map_id) then return end
 	
-	p_vec = _s:crct_block(p_vec)
+	_s:vec_total__crct_block() -- 3sec heavy
 	
-	p_vec = _s:crct_clmb(p_vec)
+	_s:vec_total__crct_clmb() -- 3sec
 	
-	p_vec = _s:crct_inside_map(p_vec)
-	
-	return p_vec
+	_s:vec_total__crct_inside_map() -- 3sec
 end
 
-function Sp.crct_block(_s, p_vec)
+function Sp.vec_total__crct_block(_s) -- 3sec heavy
+	-- log._("Sp.vec_total__crct_block")
 	
-	if ha.eq(_s._clsHa, "fire") then return p_vec end
+	if ha.eq(_s._clsHa, "fire") then return end
 	
-	p_vec = _s:crct_block_side(p_vec)
+	_s:vec_total__crct_block_side() -- 3sec heavy
+
+	_s:vec_total__crct_block_foot() -- 3sec heavy
 	
-	p_vec = _s:crct_block_foot(p_vec)
-	
-	p_vec = _s:crct_block_head(p_vec)
-	
-	return p_vec
+	_s:vec_total__crct_block_head() -- 3sec heavy
 end
 
-function Sp.crct_block_foot(_s, p_vec)
+function Sp.vec_total__crct_block_foot(_s) -- 3sec
+	-- log._("Sp.vec_total__crct_block_foot")
 	
-	local foot_i_pos = _s:foot_i_pos()
+	local is_crct =         _s:nxt_foot_i_is_block()
+	                and not _s:nxt_foot_i_up_is_block()
 
-	vec.xy__(_s._foot_i_pos_nxt, foot_i_pos.x + p_vec.x, foot_i_pos.y + p_vec.y)
-	vec.xy__(_s._foot_i_pos_nxt_up, _s._foot_i_pos_nxt.x, _s._foot_i_pos_nxt.y + Map.sq)
-	
-	local is_crct =         _s:is_block(_s._foot_i_pos_nxt   )
-	                and not _s:is_block(_s._foot_i_pos_nxt_up)
-	if not is_crct then return p_vec end
+	if not is_crct then return end
 
-	p_vec.y = map.pos_6_pos(_s._foot_i_pos_nxt).y + Map.sqh + _s:foot_dst_i() - _s:pos().y
-	return p_vec
+	local x, y = map.pos_xy_6_pos(_s:nxt_foot_i_pos())
+	_s._vec_total.y = y + Map.sqh + _s:foot_dst_i() - _s:pos().y
 end
 
-function Sp.crct_block_head(_s, p_vec)
+function Sp.vec_total__crct_block_head(_s) -- 3sec
+	-- log._("Sp.vec_total__crct_block_head")
 
-	local head_o_pos_nxt = _s:head_o_pos() + p_vec
+	local nxt_head_o_pos = _s:nxt_head_o_pos()
+
+	if not _s:nxt_head_o_is_block() then return end
 	
-	if not _s:is_block(head_o_pos_nxt) then return p_vec end
-	
-	p_vec.y = map.pos_6_pos(head_o_pos_nxt).y - Map.sq - _s:pos().y
-	return p_vec
+	local x, y = map.pos_xy_6_pos(nxt_head_o_pos)
+	_s._vec_total.y = y - Map.sq - _s:pos().y
 end
 
-function Sp.crct_block_side(_s, p_vec)
+function Sp.vec_total__crct_block_side(_s) -- 3sec heavy
+	-- log._("Sp.vec_total__crct_block_side")
 	
-	local side_l_nxt_is_block = _s:side_is_block("l", p_vec)
-	local side_r_nxt_is_block = _s:side_is_block("r", p_vec)
-	
-	if not side_l_nxt_is_block and not side_r_nxt_is_block then return p_vec end
+	local nxt_side_l_is_block = _s:nxt_side_l_is_block()
+	local nxt_side_r_is_block = _s:nxt_side_r_is_block()
+
+	if not nxt_side_l_is_block and not nxt_side_r_is_block then return end
 
 	_s._accl:speed_x__clr()
 
-	if     side_l_nxt_is_block and     side_r_nxt_is_block then return p_vec end
+	if     nxt_side_l_is_block and     nxt_side_r_is_block then return end
 
-	local crct_pos_x
+	local crct_pos_x, x, y
 	local df_x = Map.sqh + _s._w/2
 
-	if     side_l_nxt_is_block then
-		crct_pos_x = map.pos_6_pos(_s:side_l_pos(p_vec)).x + df_x
+	if     nxt_side_l_is_block then
+		x, y = map.pos_xy_6_pos(_s:nxt_side_l_pos())
+		crct_pos_x = x + df_x
 		
-	elseif side_r_nxt_is_block then
-		crct_pos_x = map.pos_6_pos(_s:side_r_pos(p_vec)).x - df_x
+	elseif nxt_side_r_is_block then
+		x, y = map.pos_xy_6_pos(_s:nxt_side_r_pos())
+		crct_pos_x = x - df_x
 	end
-	p_vec.x = crct_pos_x - _s:pos().x
-	return p_vec
+
+	_s._vec_total.x = crct_pos_x - _s:pos().x
 end
 
-function Sp.crct_clmb(_s, p_vec)
+function Sp.vec_total__crct_clmb(_s ) -- 3sec
+	-- log._("Sp.vec_total__crct_clmb")
 	
-	if not (_s._moving_v and _s._dir_v == "u") then return p_vec end
+	if not (_s._moving_v and _s._dir_v == "u") then return end
+	
+	local is_crct = _s:foot_i_is_clmb() and not _s:nxt_foot_i_is_clmb()
 
-	local foot_i_pos     = _s:foot_i_pos()
-	local foot_i_pos_nxt =    foot_i_pos + p_vec
-	
-	local is_crct = _s:is_clmb(foot_i_pos) and not _s:is_clmb(foot_i_pos_nxt)
-	if not is_crct then return p_vec end
-	
-	p_vec.y = map.pos_6_pos(foot_i_pos).y + Map.sq - _s:pos().y
-	return p_vec
+	if not is_crct then return end
+
+	local x, y = map.pos_xy_6_pos(_s:foot_i_pos())
+	_s._vec_total.y = y + Map.sq - _s:pos().y
 end
 
-function Sp.crct_inside_map(_s, p_vec)
+function Sp.vec_total__crct_inside_map(_s ) -- 3sec
+	-- log._("Sp.vec_total__crct_inside_map")
 	
-	local pos_nxt = _s:pos() + p_vec
+	_s:nxt_pos__() -- todo cache
 
-	local is_inside, dir = _s:map_is_inside(pos_nxt)
+	local is_inside, dir = _s:map_is_inside(_s._nxt_pos)
 	
-	if is_inside then return p_vec end
-
-	-- log._("crct_inside_map", dir)
+	if is_inside then return end
 	
 	local inside_rng_pos = _s:map_inside_rng_pos()
 	
-	if     dir == "l" then pos_nxt.x = inside_rng_pos.min.x
-	elseif dir == "r" then pos_nxt.x = inside_rng_pos.max.x
-	elseif dir == "d" then pos_nxt.y = inside_rng_pos.min.y
-	elseif dir == "u" then pos_nxt.y = inside_rng_pos.max.y
+	if     dir == "l" then _s._nxt_pos.x = inside_rng_pos.min.x
+	elseif dir == "r" then _s._nxt_pos.x = inside_rng_pos.max.x
+	elseif dir == "d" then _s._nxt_pos.y = inside_rng_pos.min.y
+	elseif dir == "u" then _s._nxt_pos.y = inside_rng_pos.max.y
 	end
 	
-	p_vec = pos_nxt - _s:pos()
+	-- _s._vec_total = nxt_pos - _s:pos()
+	vec.xy__(   _s:vec_total(),   _s:nxt_pos().x,   _s:nxt_pos().y)
+	vec.xy__pls(_s:vec_total(), - _s:pos().x    , - _s:pos().y    )
+end
+
+-- nxt
+
+function Sp.nxt_pos(_s)
+
+	return _s._nxt_pos
+end
+
+function Sp.nxt_pos__(_s)
+
+	-- local nxt_pos = _s:pos() + _s._vec_total
+	vec.xy__(   _s._nxt_pos, _s:pos().x     , _s:pos().y     )
+	vec.xy__pls(_s._nxt_pos, _s._vec_total.x, _s._vec_total.y)
+end
+
+function Sp.nxt_foot_i_pos(_s)
+
+	if _s._nxt_foot_i_pos_flg then return _s._nxt_foot_i_pos end
+
+	_s:nxt_foot_i_pos__()
+
+	return _s._nxt_foot_i_pos
+end
+
+function Sp.nxt_foot_i_pos__(_s)
+
+	vec.xy__vec(_s._nxt_foot_i_pos, _s:foot_i_pos())
+	vec.xy__pls(_s._nxt_foot_i_pos, _s._vec_total.x, _s._vec_total.y)
+
+	_s._nxt_foot_i_pos_flg = _.t
+end
+
+function Sp.nxt_foot_i_tile(_s)
+
+	if _s._nxt_foot_i_tile_flg then return _s._nxt_foot_i_tile end
+
+	_s:nxt_foot_i_tile__()
+
+	return _s._nxt_foot_i_tile
+end
+
+function Sp.nxt_foot_i_tile__(_s)
+
+	_s._nxt_foot_i_tile = _s:tile_6_pos(_s:nxt_foot_i_pos())
+	_s._nxt_foot_i_tile_flg = _.t
+end
+
+function Sp.nxt_foot_i_is_block(_s)
+
+	local t_tile = _s:nxt_foot_i_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
+end
+
+function Sp.nxt_foot_i_is_clmb(_s)
+
+	local t_tile = _s:nxt_foot_i_tile()
+	local ret = Tile.is_clmb(t_tile)
+	return ret
+end
+
+function Sp.nxt_foot_i_up_pos(_s)
+
+	if _s._nxt_foot_i_up_pos_flg then return _s._nxt_foot_i_up_pos end
+
+	_s:nxt_foot_i_up_pos__()
+
+	return _s._nxt_foot_i_up_pos
+end
+
+function Sp.nxt_foot_i_up_pos__(_s)
+
+	vec.xy__vec(_s._nxt_foot_i_up_pos, _s:nxt_foot_i_pos())
+	vec.xy__pls(_s._nxt_foot_i_up_pos, 0, Map.sq)
+
+	_s._nxt_foot_i_up_pos_flg = _.t
+end
+
+function Sp.nxt_foot_i_up_tile(_s)
+
+	if _s._nxt_foot_i_up_tile_flg then return _s._nxt_foot_i_up_tile end
+
+	_s:nxt_foot_i_up_tile__()
+
+	return _s._nxt_foot_i_up_tile
+end
+
+function Sp.nxt_foot_i_up_tile__(_s)
+
+	_s._nxt_foot_i_up_tile = _s:tile_6_pos(_s:nxt_foot_i_up_pos())
+	_s._nxt_foot_i_up_tile_flg = _.t
+end
+
+function Sp.nxt_foot_i_up_is_block(_s)
+
+	local t_tile = _s:nxt_foot_i_up_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
+end
+
+function Sp.nxt_head_o_pos(_s)
+
+	if _s._nxt_head_o_pos_flg then return _s._nxt_head_o_pos end
+
+	_s:nxt_head_o_pos__()
+
+	return _s._nxt_head_o_pos
+end
+
+function Sp.nxt_head_o_pos__(_s)
+
+	vec.xy__vec(_s._nxt_head_o_pos, _s:head_o_pos())
+	vec.xy__pls(_s._nxt_head_o_pos, _s._vec_total.x, _s._vec_total.y)
+
+	_s._nxt_head_o_pos_flg = _.t
+end
+
+function Sp.nxt_head_o_tile(_s)
+
+	if _s._nxt_head_o_tile_flg then return _s._nxt_head_o_tile end
+
+	_s:nxt_head_o_tile__()
+
+	return _s._nxt_head_o_tile
+end
+
+function Sp.nxt_head_o_tile__(_s)
+
+	_s._nxt_head_o_tile = _s:tile_6_pos(_s:nxt_head_o_pos())
+	_s._nxt_head_o_tile_flg = _.t
+end
+
+function Sp.nxt_head_o_is_block(_s)
+
+	local t_tile = _s:nxt_head_o_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
+end
+
+-- nxt side
+
+function Sp.nxt_side_l_pos(_s)
+
+	if _s._nxt_side_l_pos_flg then return _s._nxt_side_l_pos end
+
+	_s:nxt_side_l_pos__()
+
+	return _s._nxt_side_l_pos
+end
+
+function Sp.nxt_side_l_pos__(_s)
+
+	vec.xy__vec(    _s._nxt_side_l_pos, _s:side_l_pos())
+	vec.xy__pls_vec(_s._nxt_side_l_pos, _s:vec_total() )
+
+	_s._nxt_side_l_pos_flg = _.t
+end
+
+function Sp.nxt_side_l_tile(_s)
+
+	if _s._nxt_side_l_tile_flg then return _s._nxt_side_l_tile end
+
+	_s:nxt_side_l_tile__()
+
+	return _s._nxt_side_l_tile
+end
+
+function Sp.nxt_side_l_tile__(_s)
+
+	_s._nxt_side_l_tile = _s:tile_6_pos(_s:nxt_side_l_pos())
+	_s._nxt_side_l_tile_flg = _.t
+end
+
+function Sp.nxt_side_l_is_block(_s)
+
+	local t_tile = _s:nxt_side_l_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
+end
+
+function Sp.nxt_side_r_pos(_s)
+
+	if _s._nxt_side_r_pos_flg then return _s._nxt_side_r_pos end
+
+	_s:nxt_side_r_pos__()
+
+	return _s._nxt_side_r_pos
+end
+
+function Sp.nxt_side_r_pos__(_s)
+
+	vec.xy__vec(    _s._nxt_side_r_pos, _s:side_r_pos())
+	vec.xy__pls_vec(_s._nxt_side_r_pos, _s:vec_total() )
+
+	_s._nxt_side_r_pos_flg = _.t
+end
+
+function Sp.nxt_side_r_tile(_s)
+
+	if _s._nxt_side_r_tile_flg then return _s._nxt_side_r_tile end
+
+	_s:nxt_side_r_tile__()
+
+	return _s._nxt_side_r_tile
+end
+
+function Sp.nxt_side_r_tile__(_s)
+
+	_s._nxt_side_r_tile = _s:tile_6_pos(_s:nxt_side_r_pos())
+	_s._nxt_side_r_tile_flg = _.t
+end
+
+function Sp.nxt_side_r_is_block(_s)
+
+	local t_tile = _s:nxt_side_r_tile()
+	local ret = Tile.is_block(t_tile)
+	return ret
+end
+
+--
+
+function Sp.is_leapupabl(_s) -- alias
+
+	return _s:is_jmpabl()
+end
+
+function Sp.is_jmpabl(_s)
+
+	local ret = _.f
+
+	local foot_o_tile = _s:foot_o_tile()
 	
-	return p_vec
+	if Tile.is_block(foot_o_tile)
+	or Tile.is_clmb( foot_o_tile)
+	or Tile.is_elv(  foot_o_tile)
+	-- or _s:is_on_chara()
+	-- or _s:is_on_obj_block()
+	-- or _s:on_6_mapobj()
+	then
+		ret = _.t
+	end
+
+	return ret
 end
 
 -- init, final, flg
@@ -486,8 +812,12 @@ end
 
 function Sp.pos__init(_s)
 
+	-- _s._pos = n.vec()
+
+	-- pos
 	_s._foot_i_pos = n.vec()
 	_s._foot_o_pos = n.vec()
+
 	_s._head_o_pos = n.vec()
 
 	_s._side_l_pos = n.vec()
@@ -496,21 +826,30 @@ function Sp.pos__init(_s)
 	_s._tilepos    = n.vec()
 	_s._tilepos_d  = n.vec()
 
-	_s:pos_flg__f()
+	-- nxt pos
+	_s._nxt_pos           = n.vec()
 
-	-- flg non
-	_s._foot_i_pos_nxt    = n.vec()
-	_s._foot_i_pos_nxt_up = n.vec()
+	_s._nxt_foot_i_pos    = n.vec()
+	_s._nxt_foot_i_up_pos = n.vec()
+
+	_s._nxt_head_o_pos    = n.vec()
+
+	_s._nxt_side_l_pos = n.vec()
+	_s._nxt_side_r_pos = n.vec()
+
+	-- pos tmp -- use local
+	_s._pos_tmp1 = n.vec()
+	_s._pos_tmp2 = n.vec()
+
+	_s:cflg__f()
 end
 
-function Sp.pos_flg__clr(_s)
-	_s:pos_flg__f()
-end
+function Sp.cflg__f(_s) -- upd cache
 
-function Sp.pos_flg__f(_s)
-
+	-- pos
 	_s._foot_i_pos_flg = _.f
 	_s._foot_o_pos_flg = _.f
+
 	_s._head_o_pos_flg = _.f
 
 	_s._side_l_pos_flg = _.f
@@ -518,30 +857,37 @@ function Sp.pos_flg__f(_s)
 
 	_s._tilepos_flg    = _.f
 	_s._tilepos_d_flg  = _.f
-end
 
-function Sp.is_leapupabl(_s) -- alias
+	-- tile
+	_s._c_tile_flg     = _.f
 
-	return _s:is_jmpabl()
-end
+	_s._c_foot_i_tile_flg = _.f
+	_s._c_foot_o_tile_flg = _.f
 
-function Sp.is_jmpabl(_s)
+	_s._c_head_i_tile_flg = _.f
+	_s._c_head_o_tile_flg = _.f
 
-	local ret = _.f
+	_s._side_l_tile_flg   = _.f
+	_s._side_r_tile_flg   = _.f
 
-	local foot_o_tile = _s:foot_o_tile()
-	local foot_i_tile = _s:foot_i_tile()
-	
-	if Tile.is_block(foot_o_tile)
-	or Tile.is_clmb( foot_o_tile)
-	or Tile.is_elv(  foot_o_tile)
-	-- or _s:is_on_chara()
-	-- or _s:is_on_obj_block()
-	-- or _s:on_6_mapobj()
-	then
-		ret = _.t
-	end
+	-- nxt pos
+	_s._nxt_pos_flg        = _.f
 
-	return ret
+	_s._nxt_foot_i_pos_flg = _.f
+	_s._nxt_head_o_pos_flg = _.f
+
+	_s._nxt_foot_i_up_pos_flg = _.f
+
+	_s._nxt_side_l_pos_flg = _.f
+	_s._nxt_side_r_pos_flg = _.f
+
+	-- nxt tile
+	_s._nxt_foot_i_tile_flg = _.f
+	_s._nxt_head_o_tile_flg = _.f
+
+	_s._nxt_foot_i_up_tile_flg = _.f
+
+	_s._nxt_side_l_tile_flg = _.f
+	_s._nxt_side_r_tile_flg = _.f
 end
 

@@ -137,7 +137,10 @@ function p.Prt_itm_menu.itm_menu_exe(_s) -- refactoring
 
 	-- redrw
 	_s:itm__load(ply_slt_idx)
-	_s:nd_itm_txt__(ply_slt_idx)
+
+	-- _s:nd_itm_txt__(ply_slt_idx)
+	_s:whel_i_nd__(_s:whel_idx_6_itm_idx(ply_slt_idx), ply_slt_idx)
 
 	_s:itm_menu_clz()
 end
+

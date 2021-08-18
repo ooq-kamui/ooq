@@ -21,13 +21,13 @@ function Livingmove.upd_pos_movabl(_s, dt)
 	
 	_s:vec_mv__(dt)
 
-	_s:vec_tile__(dt)
+	_s:vec_tile__()
 
-	_s:vec_grv__(dt)
+	_s:vec_grv__()
 
 	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
 
-	_s:pos__pls(_s._vec_total)
+	_s:pos__pls_vec_total()
 end
 
 function Livingmove.is_moving(_s)

@@ -12,6 +12,7 @@ function p.Prt_itm_lst.whel__init(_s)
 	if not _s._whel then
 		_s._whel   = {}
 		_s._nd.itm = {}
+		_s._nd.whel = _s._nd.itm -- alias
 	else
 		ar.clr(_s._whel  )
 		ar.clr(_s._nd.itm)
@@ -134,7 +135,7 @@ function p.Prt_itm_lst.whel_i__plt_anm(_s, whel_idx)
 end
 
 function p.Prt_itm_lst.whel_i__plt(_s, whel_idx)
-	log._("whel_i__plt start", whel_idx)
+	-- log._("whel_i__plt start", whel_idx)
 
 	if not whel_idx then return end
 	
