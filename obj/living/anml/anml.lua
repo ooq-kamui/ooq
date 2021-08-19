@@ -59,7 +59,7 @@ end
 
 function Anml.upd(_s, dt)
 	
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
 
@@ -68,7 +68,7 @@ end
 
 function Anml.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("anml z", _s:z())
 	

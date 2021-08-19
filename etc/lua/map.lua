@@ -40,7 +40,7 @@ function map.tilepos_6_pos(p_pos) -- rpl must > map.tilepos_xy_6_pos()
 end
 
 function map.tile(p_pos, p_id, p_tilemap, layer, obj_id) -- specify heavy
-	log._("map.tile", obj_id)
+	-- log.if_(ha.eq(obj_id, "/instance11"), "map.tile", obj_id)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer     = layer     or p_tilemap

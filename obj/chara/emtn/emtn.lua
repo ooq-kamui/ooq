@@ -40,7 +40,7 @@ end
 
 function Emtn.upd(_s, dt)
 	
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 	
 	_s._vec_total = t.vec(0, 1) * _s._speed * dt -- 3sec
 
@@ -49,7 +49,7 @@ end
 
 function Emtn.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	_s:del()
 end

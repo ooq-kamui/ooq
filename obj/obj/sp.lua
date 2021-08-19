@@ -76,16 +76,19 @@ function Sp.__init(_s, prm)
 	_s._act_intrvl = 0
 	_s:vec__init()
 	_s:pos__init()
+
+	_s:intrvl__init()
 end
 
 function Sp.final(_s)
 	
 	_s:map_obj__del()
 	
-	if _s:
-		cls_is_mapobj() then
+	if _s:cls_is_mapobj() then
 		_s:mapobj_del()
 	end
+
+	_s:intrvl__final()
 end
 
 -- method
@@ -368,5 +371,19 @@ function Sp.pb__save_data(_s, map_url)
 	prm._pos  = _s:pos_w()
 
 	pst._(map_url, "save_data_obj__", prm)
+end
+
+function Sp.intrvl__init(_s)
+
+	local time = _s:Cls("act_intrvl_time")
+	_s._intrvl_hndl = timer.delay(time, _.t, _s.act_intrvl)
+end
+
+function Sp.intrvl__final(_s)
+
+	timer.cancel(_s._intrvl_hndl)
+end
+
+function Sp.act_intrvl(_s)
 end
 

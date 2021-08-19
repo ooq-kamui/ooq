@@ -40,7 +40,7 @@ end
 
 function Cloud.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
 
@@ -50,7 +50,7 @@ end
 function Cloud.act_intrvl(_s, dt)
 	-- log._("Cloud.act_intrvl", _s._id)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 	
 	dice100.throw()
 	if     not Map.chara_is_appear_all()

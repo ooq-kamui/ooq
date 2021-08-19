@@ -42,14 +42,14 @@ end
 
 function Fuki.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 	
 	_s:pos__(_s:pos() + Fuki.mv_vec)
 end
 
 function Fuki.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("fuki pos", _s:pos())
 

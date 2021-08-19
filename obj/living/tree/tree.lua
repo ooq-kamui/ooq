@@ -2,8 +2,8 @@ log.scrpt("tree.lua")
 
 Tree = {
 
-	-- act_intrvl_time =  60,
-	act_intrvl_time =  20, -- tst
+	act_intrvl_time =  60,
+	-- act_intrvl_time =  20, -- tst
 	name_idx_max    = 100,
 
 	z = 0.05,
@@ -50,7 +50,7 @@ end
 
 function Tree.upd(_s, dt)
 	
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 	
 	_s:upd_pos_static()
 
@@ -81,8 +81,9 @@ end
 -- method
 
 function Tree.act_intrvl(_s, dt)
+	log._("Tree.act_intrvl")
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	dice100.throw()
 	if     dice100.chk(30) then

@@ -31,7 +31,7 @@ end
 
 function Humus.upd(_s, dt)
 	
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -45,7 +45,7 @@ end
 
 function Humus.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 	if _s:per_del(1 / 5 * 100) then return end

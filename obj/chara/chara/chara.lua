@@ -71,7 +71,7 @@ end
 
 function Chara.upd(_s, dt)
 	
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 	
 	_s:upd_pos_movabl(dt)
 
@@ -80,7 +80,7 @@ end
 
 function Chara.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("chara act_intrvl is_loop", _s:name(), _s._act_intrvl_time)
 	

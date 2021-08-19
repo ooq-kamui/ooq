@@ -39,7 +39,7 @@ end
 
 function Phntm.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s._vec_total = _s._vec_mv
 
@@ -50,7 +50,7 @@ end
 
 function Phntm.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 	if _s:per_trnsf(1 / 10 * 100, Fire) then return end

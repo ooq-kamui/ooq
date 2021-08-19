@@ -37,14 +37,14 @@ end
 
 function Magic.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 
 end
 
 function Magic.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- _s:tile__()
 	_s:map_tile__()

@@ -33,7 +33,7 @@ end
 
 function Dish.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -42,7 +42,7 @@ end
 
 function Dish.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf__humus(1 / 20 * 100) then return end
 end

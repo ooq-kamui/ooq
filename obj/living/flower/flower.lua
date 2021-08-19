@@ -2,6 +2,7 @@ log.scrpt("flower.lua")
 
 Flower = {
 	act_intrvl_time = 100,
+	-- act_intrvl_time = 10, -- tst
 	name_idx_max    = 159,
 }
 Flower.cls = "flower"
@@ -34,7 +35,7 @@ end
 function Flower.upd(_s, dt)
 	-- log._("Flower.upd start")
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -44,8 +45,9 @@ function Flower.upd(_s, dt)
 end
 
 function Flower.act_intrvl(_s, dt)
+	log._("Flower.act_intrvl")
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf__humus(1 / 15 * 100) then return end
 	

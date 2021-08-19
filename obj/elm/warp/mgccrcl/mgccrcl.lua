@@ -39,7 +39,7 @@ end
 
 function Mgccrcl.upd(_s, dt)
 
-	_s:act_intrvl(dt)
+	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -48,7 +48,7 @@ end
 
 function Mgccrcl.act_intrvl(_s, dt)
 
-	if not _s:is_loop__act_intrvl__(dt) then return end
+	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- death
 end
