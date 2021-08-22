@@ -168,7 +168,7 @@ function Game.upd(_s, dt)
 	
 	_s:act_intrvl(dt)
 	
-	log._("Game.upd end")
+	-- log._("Game.upd end")
 end
 
 function Game.act_intrvl(_s, dt)

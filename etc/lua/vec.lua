@@ -78,6 +78,16 @@ function vec.xy__(p_vec, p_x, p_y)
 	p_vec.y = p_y
 end
 
+function vec.x__(p_vec, p_x)
+
+	p_vec.x = p_x
+end
+
+function vec.y__(p_vec, p_y)
+
+	p_vec.y = p_y
+end
+
 function vec.xy__vec(p_vec, p_vec2)
 
 	vec.xy__(p_vec, p_vec2.x, p_vec2.y)

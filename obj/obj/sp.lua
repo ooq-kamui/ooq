@@ -196,6 +196,7 @@ function Sp.parent__map(_s)
 	local z = _s:Cls().z or 0.2
 	
 	pst.parent__(_s._id, _s:map_id(), z)
+	_s._pos = nil
 end
 
 -- id

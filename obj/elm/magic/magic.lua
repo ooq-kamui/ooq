@@ -46,13 +46,12 @@ function Magic.act_intrvl(_s, dt)
 
 	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
-	-- _s:tile__()
 	_s:map_tile__()
 	
 	_s:del()
 end
 
-function Magic.tile__(_s)
+function Magic.map_tile__(_s)
 
 	local c_tile = _s:tile()
 	local t_tile

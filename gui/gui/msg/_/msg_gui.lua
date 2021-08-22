@@ -32,7 +32,7 @@ function g.Msg.on_msg(_s, msg_id, prm, sndr_url)
 end
 
 function g.Msg.itm__add(_s, itm)
-	log._("g.Msg.itm__add", itm)
+	-- log._("g.Msg.itm__add", itm)
 
 	_s:actv_prt():itm__add(itm)
 end

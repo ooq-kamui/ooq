@@ -39,7 +39,8 @@ function Hldabl.hldd__o(_s, prm)
 
 	local z = - 0.01
 	local t_pos = _s:hldd_pos()
-	log._("Hldabl.hldd__o", t_pos, _s._hldd_id)
+	-- log._("Hldabl.hldd__o", t_pos, _s._hldd_id)
+
 	_s:parent__(_s:plychara_id(), z, t_pos)
 end
 

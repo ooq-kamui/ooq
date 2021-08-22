@@ -132,7 +132,7 @@ function Plychara.upd(_s, dt)
 	-- upd init
 	_s:on_chara__clr()
 	
-	_s:vec_mv__(dt)
+	_s:vec_mv__()
 	
 	_s:vec_tile__()
 
@@ -163,7 +163,7 @@ function Plychara.vec_total__(_s)
 	vec.xy__pls_vec(_s._vec_total, _s._vec_on_chara)
 end
 
-function Plychara.vec_mv__(_s, dt)
+function Plychara.vec_mv__(_s)
 
 	vec.xy__clr(_s._vec_mv_dir)
 	
@@ -183,7 +183,8 @@ function Plychara.vec_mv__(_s, dt)
 	-- _s._vec_mv_dir = _s:vec__crct_hyprspc(_s._vec_mv_dir)
 	_s:vec__crct_hyprspc(_s._vec_mv_dir)
 
-	_s._vec_mv = _s._vec_mv_dir * _s._speed
+	-- _s._vec_mv = _s._vec_mv_dir * _s._speed
+	vec.xy__vec(_s._vec_mv, _s._vec_mv_dir * _s._speed)
 end
 
 function Plychara.vec_mv_v__(_s)
@@ -224,7 +225,6 @@ function Plychara.vec_grv__(_s)
 	if _s._is_jmp_start then
 
 		_s._is_jmp_start = _.f
-
 	else
 		if _s:is_on_chara() then
 			vec.xy__clr(_s._vec_grv)
@@ -896,7 +896,6 @@ function Plychara.hld_tile_side(_s)
 	local side_pos = _s:side_pos(dir_h)
 	if dir_h == "l" then vec.xy__pls(side_pos, -1, 0) end
 
-	-- _s:tile__(Tile.emp, side_pos)
 	_s:map_tile__(Tile.emp, side_pos)
 end
 

@@ -45,7 +45,7 @@ function Flower.upd(_s, dt)
 end
 
 function Flower.act_intrvl(_s, dt)
-	log._("Flower.act_intrvl")
+	-- log._("Flower.act_intrvl")
 
 	-- if not _s:is_loop__act_intrvl__(dt) then return end
 

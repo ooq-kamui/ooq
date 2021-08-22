@@ -40,7 +40,7 @@ function Plant.upd(_s, dt)
 end
 
 function Plant.act_intrvl(_s, dt)
-	log._("Plant.act_intrvl")
+	-- log._("Plant.act_intrvl")
 
 	-- if not _s:is_loop__act_intrvl__(dt) then return end
 

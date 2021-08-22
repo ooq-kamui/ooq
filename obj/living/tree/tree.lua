@@ -81,7 +81,7 @@ end
 -- method
 
 function Tree.act_intrvl(_s, dt)
-	log._("Tree.act_intrvl")
+	-- log._("Tree.act_intrvl")
 
 	-- if not _s:is_loop__act_intrvl__(dt) then return end
 

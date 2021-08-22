@@ -19,13 +19,12 @@ end
 
 function Livingmove.upd_pos_movabl(_s, dt)
 	
-	_s:vec_mv__(dt)
+	_s:vec_mv__()
 
 	_s:vec_tile__()
 
 	_s:vec_grv__()
 
-	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
 	_s:vec_total__()
 
 	_s:pos__pls_vec_total()
@@ -129,7 +128,7 @@ function Livingmove.dir_v__rnd(_s)
 	_s:dir_v__(dir_v)
 end
 
-function Livingmove.vec_mv__(_s, dt)
+function Livingmove.vec_mv__(_s)
 
 	if     _s._hldd_id   then _s:vec_mv__clr() return end
 

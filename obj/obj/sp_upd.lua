@@ -74,14 +74,21 @@ function Sp.upd_pos_static(_s) -- 3sec root
 	if ha.eq(_s._id, "/instance11") then
 		log.flg__(_.t)
 		log._(_s:cls())
-	end
-	--]]
+	end --]]
 
-	if _s:is_vec_grv_0() then log._("upd_pos_static return") return end
+	-- if _s:is_vec_grv_0() then return end
+
+	if _s:is_grv_off() then return end
+
+	if _s:is_grounding() then
+
+		_s:pos__tile()
+		return
+	end
 	
 	log._("upd_pos_static")
 
-	_s:vec_tile__() -- 3sec
+	-- _s:vec_tile__() -- 3sec
 	
 	_s:vec_grv__() -- 3sec
 

@@ -25,11 +25,33 @@ end
 
 function Sp.pos__(_s, p_pos)
 
-	if not p_pos then return end
+	-- if not p_pos then return end
 
 	if not _s._pos then _s._pos = n.vec() end
 
 	vec.xy__(_s._pos, p_pos.x, p_pos.y)
+
+	id.pos__(_s._id, _s._pos)
+end
+
+function Sp.pos__y(_s, pos_y)
+
+	-- if not pos_y then return end
+
+	if not _s._pos then _s._pos = n.vec() end
+
+	vec.y__(_s._pos, pos_y)
+
+	id.pos__(_s._id, _s._pos)
+end
+
+function Sp.pos__pls_y(_s, pos_y)
+
+	-- if not pos_y then return end
+
+	if not _s._pos then _s._pos = n.vec() end
+
+	vec.y__(_s._pos, _s._pos.y + pos_y)
 
 	id.pos__(_s._id, _s._pos)
 end
@@ -51,6 +73,21 @@ function Sp.pos__pls_vec_total(_s) -- 3sec
 	_s:vec_total__crct() -- 3sec
 	
 	_s:pos__pls(_s._vec_total)
+end
+
+function Sp.pos__tile(_s)
+	-- log._("Sp.vec_tile__")
+	
+	if not u.eq(_s:map_id(), _s:parent_id()) then return end
+
+	if     _s:foot_i_is_elv_u() then
+		-- vec.xy__(_s._pos, 0, 1)
+		_s:pos__pls_y(1)
+
+	elseif _s:is_airflw_u() then
+		-- vec.xy__(_s._pos, 0, Sp.airflw_u_vec_y)
+		_s:pos__pls_y(Sp.airflw_u_vec_y)
+	end
 end
 
 function Sp.pos_w(_s)
@@ -79,14 +116,11 @@ end
 
 -- crnt tile
 
-function Sp.tile_6_pos(_s, p_pos)
+function Sp.tile_6_pos(_s, p_pos) -- alias
 
 	if not p_pos then return end
 
 	local t_tile = map.tile(p_pos, _s._map_id, "ground", nil, _s._id)
-	-- local t_tile = 1
-	-- log._("Sp.tile_6_pos")
-
 	return t_tile
 end
 
@@ -99,11 +133,6 @@ function Sp.tile(_s)
 	_s._c_tile_flg = _.t
 
 	return _s._c_tile
-end
-
-function Sp.tile__(_s, p_tile, p_pos)
-
-	_s:map_tile__(p_tile, p_pos)
 end
 
 function Sp.map_tile__(_s, p_tile, p_pos)
@@ -433,7 +462,14 @@ function Sp.is_grounding(_s)
 	local foot_o_tile = _s:foot_o_tile()
 
 	if Tile.is_block(foot_o_tile)
-	or Tile.is_elv(  foot_o_tile)
+	then
+		_s:foot_o__crct()
+
+		ret = _.t
+		return ret
+	end
+
+	if Tile.is_elv(  foot_o_tile)
 	or Tile.is_clmb( foot_o_tile)
 	then ret = _.t return ret end
 
@@ -444,6 +480,13 @@ function Sp.is_grounding(_s)
 	then ret = _.t return ret end
 
 	return ret
+end
+
+function Sp.foot_o__crct(_s)
+
+	local x, y = map.tile_pos_xy_6_pos(_s:foot_o_pos())
+	local crct_y = y + Map.sqh + _s:foot_dst_i()
+	_s:pos__y(crct_y)
 end
 
 -- crct
@@ -709,6 +752,7 @@ end
 function Sp.nxt_head_o_is_block(_s)
 
 	local t_tile = _s:nxt_head_o_tile()
+	-- log._("Sp.nxt_head_o_is_block", t_tile)
 	local ret = Tile.is_block(t_tile)
 	return ret
 end

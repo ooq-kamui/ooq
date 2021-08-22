@@ -26,7 +26,13 @@ end
 
 -- tile center pos
 
-function map.pos_xy_6_pos(p_pos) -- tile center pos
+function map.pos_xy_6_pos(p_pos) -- old
+
+	local x, y = map.tile_pos_xy_6_pos(p_pos)
+	return x, y
+end
+
+function map.tile_pos_xy_6_pos(p_pos) -- tile center pos
 
 	local tilepos_x, tilepos_y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
 
