@@ -492,7 +492,7 @@ end
 function Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)
 	-- log._("map.tile__crct", p_tilepos, p_tilemap, layer)
 
-	local center_tile = map.tile_6_tilepos(p_tilepos, p_id, p_tilemap, layer)
+	local center_tile = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, p_id, p_tilemap, layer)
 	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(center_tile)
 	-- log._("tile__crct ", center_tile, is_tile_bndl, base_tile)
 
@@ -510,7 +510,7 @@ end
 
 function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
 
-	p_tile = p_tile or map.tile_6_tilepos(p_tilepos, Game.map_id(), "ground")
+	p_tile = p_tile or map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, Game.map_id(), "ground")
 
 	local base_tile = Tile_bndl.base_tile(p_tile)
 
@@ -525,7 +525,7 @@ function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
 
 	for idx, t_tilepos in pairs(tilepos_arund) do
 
-		t_tile = map.tile_6_tilepos(t_tilepos, Game.map_id(), "ground")
+		t_tile = map.tile_6_tilepos_xy(t_tilepos.x, t_tilepos.y, Game.map_id(), "ground")
 		-- log._("map.arund_tile_bndl_ar", idx, t_tile, t_tilepos)
 
 		if t_tile then
@@ -545,7 +545,7 @@ end
 function Map.tile_bndl_arund_val(p_tilepos)
 	-- log._("map.tile_bndl_arund_val", p_tilepos)
 
-	local center_tile = map.tile_6_tilepos(p_tilepos, Game.map_id(), "ground")
+	local center_tile = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, Game.map_id(), "ground")
 	local base_tile = Tile_bndl.base_tile(center_tile)
 	if not base_tile then return end
 

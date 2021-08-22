@@ -45,11 +45,16 @@ function Fire.upd(_s, dt)
 		_s:vec_grv__()
 	end
 
-	_s._vec_total = _s._vec_grv
+	_s:vec_total__()
 
 	_s:pos__pls_vec_total()
 
 	_s:upd_final()
+end
+
+function Fire.vec_total__(_s)
+
+	vec.xy__vec(_s._vec_total, _s._vec_grv)
 end
 
 function Fire.act_intrvl(_s, dt)
@@ -84,12 +89,12 @@ function Fire.burn_tile(_s)
 	
 	local tileposs = _s:tilepos_arund()
 	local t_tile
-	for idx, tilepos in pairs(tileposs) do
-		t_tile = map.tile_6_tilepos(tilepos, _s:map_id())
+	for idx, t_tilepos in pairs(tileposs) do
+		t_tile = map.tile_6_tilepos_xy(t_tilepos.x, t_tilepos.y, _s:map_id())
 
 		if Tile.is_wood(t_tile) then
-			map.tile__6_tilepos(tilepos, ar.rnd(Tile.wood_burn))
-			Fire.cre(map.pos_6_tilepos(tilepos))
+			map.tile__6_tilepos(t_tilepos, ar.rnd(Tile.wood_burn))
+			Fire.cre(map.pos_6_tilepos(t_tilepos))
 		end
 	end
 

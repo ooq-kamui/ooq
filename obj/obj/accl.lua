@@ -35,7 +35,7 @@ end
 
 function Accl.speed__add_accl(_s, is_airride)
 
-	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x,   Accl.speed_max_x)
+	_s._speed.x = num.__pls_stop_abs(_s._speed.x, _s._accl.x, Accl.speed_max_x)
 
 	local speed_y
 	if is_airride then speed_y = Accl.speed_max_y_airride

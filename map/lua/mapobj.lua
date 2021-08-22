@@ -17,11 +17,9 @@ function Mapobj.init(map_id)
 
 	Mapobj._map_rng_tilepos = map.rng_tilepos(map_id, "ground")
 	
-	-- for y = -31, 32 do
 	for y = Mapobj._map_rng_tilepos.min.y, Mapobj._map_rng_tilepos.max.y do
 		Mapobj._obj_[y] = {}
 		
-		-- for x = -62, 63 do
 		for x = Mapobj._map_rng_tilepos.min.x, Mapobj._map_rng_tilepos.max.x do
 			Mapobj._obj_[y][x] = {}
 		end
@@ -34,7 +32,6 @@ end
 
 function Mapobj.__(tilepos, cls, id)
 
-	-- if tilepos.y > 32 then return end
 	if tilepos.y > Mapobj._map_rng_tilepos.max.y then return end
 	
 	if not Mapobj._obj_[tilepos.y][tilepos.x][cls] then
@@ -47,7 +44,6 @@ end
 
 function Mapobj.del(tilepos, cls, id)
 
-	-- if tilepos.y > 32 then return end
 	if tilepos.y > Mapobj._map_rng_tilepos.max.y then return end
 	
 	if not Mapobj._obj_[tilepos.y][tilepos.x][cls]     then return end
@@ -58,7 +54,7 @@ end
 
 function Mapobj.obj(tilepos, clsHa)
 
-	local is_inside, dir = map.is_inside_tilepos_cmpr(tilepos, Mapobj._map_rng_tilepos)
+	local is_inside, dir = map.is_inside_tilepos_xy_cmpr(tilepos.x, tilepos.y, Mapobj._map_rng_tilepos)
 	
 	if not is_inside then return {} end
 
@@ -84,3 +80,4 @@ function Mapobj.obj_arund(p_tilepos, clsHa)
 	
 	return obj_arund
 end
+

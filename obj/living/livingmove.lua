@@ -25,9 +25,18 @@ function Livingmove.upd_pos_movabl(_s, dt)
 
 	_s:vec_grv__()
 
-	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
+	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
+	_s:vec_total__()
 
 	_s:pos__pls_vec_total()
+end
+
+function Livingmove.vec_total__(_s)
+
+	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
+	vec.xy__vec(    _s._vec_total, _s._vec_mv)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_tile)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_grv)
 end
 
 function Livingmove.is_moving(_s)

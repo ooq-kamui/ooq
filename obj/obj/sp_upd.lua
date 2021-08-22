@@ -1,5 +1,6 @@
 log.scrpt("sp_upd.lua")
 
+--[[
 function Sp.is_loop__act_intrvl__(_s, dt)
 	
 	if _s:is_pause() then return end
@@ -13,8 +14,6 @@ end
 
 function Sp.act_intrvl__(_s, dt)
 
-	-- if _.t then return end
-
 	local act_intrvl_time = _s:Cls("act_intrvl_time")
 
 	log.if_(not act_intrvl_time, "Sp.act_intrvl__", act_intrvl_time)
@@ -25,9 +24,9 @@ function Sp.act_intrvl__(_s, dt)
 
 	return is_loop
 end
+--]]
 
 function Sp.upd_final(_s)
-    -- _s:pos_flg__f()
     _s:cflg__f()
 end
 
@@ -70,8 +69,17 @@ function Sp.dir_v__(_s, dir_v)
 end
 
 function Sp.upd_pos_static(_s) -- 3sec root
+
+	--[[
+	if ha.eq(_s._id, "/instance11") then
+		log.flg__(_.t)
+		log._(_s:cls())
+	end
+	--]]
+
+	if _s:is_vec_grv_0() then log._("upd_pos_static return") return end
 	
-	-- if _.t then return end
+	log._("upd_pos_static")
 
 	_s:vec_tile__() -- 3sec
 	
@@ -81,9 +89,9 @@ function Sp.upd_pos_static(_s) -- 3sec root
 
 	_s:pos__pls_vec_total() -- 3sec
 
-	if _s:cls_is_mapobj() then
-		_s:mapobj__()
-	end
+	_s:mapobj__()
+
+	log.flg__(_.f)
 end
 
 function Sp.map_is_inside(_s, p_pos)
@@ -149,33 +157,13 @@ end
 function Sp.vec_grv__(_s) -- 3sec
 	-- log._("Sp.vec_grv__")
 
-	--[[
-	if     _s:is_on_obj_block() then
-		_s:vec_grv__clr()
-	--]]
+	local is_vec_grv_0, is_grounding = _s:is_vec_grv_0()
 
-	-- elseif _s._is_flying        then -- only flyable
-	if     _s._is_flying        then -- only flyable
-		_s:vec_grv__clr()
-	
-	elseif _s._hldd_id          then -- only holdable
-		_s:vec_grv__clr()
-	
-	elseif _s._kitchen_id       then -- only food
-		_s:vec_grv__clr()
-	
-	elseif _s._bear_tree_id     then -- only fruit
+	if is_vec_grv_0 then
 		_s:vec_grv__clr()
 		
-	elseif _s:is_tile_grounding() then
-
-		if _s._accl._speed.y > 0 then
-			_s:vec_grv__grv()
-		else
-			if _s._accl._speed.y <= Sp.sand_smoke_speed_y then
-				Efct.cre_sand_smoke(nil, _s:foot_i_pos())
-			end
-			_s:vec_grv__clr()
+		if is_grounding and _s._accl._speed.y <= Sp.sand_smoke_speed_y then
+			Efct.cre_sand_smoke(nil, _s:foot_i_pos())
 		end
 	else
 		_s:vec_grv__grv()
@@ -186,13 +174,44 @@ function Sp.vec_grv__grv(_s)
 	-- log._("Sp.vec_grv__grv")
 
 	_s._accl:speed__add_accl(_s._is_airride)
-	_s._vec_grv = _s._accl:speed()
+
+	vec.xy__vec(_s._vec_grv, _s._accl:speed())
 end
 
 function Sp.vec_grv__clr(_s)
 
 	vec.xy__clr(_s._vec_grv)
 	_s:accl_speed__clr()
+end
+
+function Sp.is_grv_off(_s)
+
+	local ret = _.t
+
+	if _s._is_flying    -- only flyable
+	or _s._hldd_id      -- only holdable
+	or _s._kitchen_id   -- only food
+	or _s._bear_tree_id -- only fruit
+	then
+	else
+		ret = _.f
+	end
+	return ret
+end
+
+function Sp.is_vec_grv_0(_s)
+
+	local ret, is_grounding = _.t, _.f
+
+	if     _s:is_grv_off()   then
+	elseif _s:is_grounding() then
+		is_grounding = _.t
+
+	-- elseif _s:is_on_obj_block() then
+	else
+		ret = _.f
+	end
+	return ret, is_grounding
 end
 
 function Sp.vec_total(_s)
@@ -202,8 +221,9 @@ end
 
 function Sp.vec_total__(_s)
 
-	vec.xy__(   _s._vec_total, _s._vec_tile.x, _s._vec_tile.y)
-	vec.xy__pls(_s._vec_total, _s._vec_grv.x , _s._vec_grv.y )
+	-- _s._vec_total = _s._vec_tile + _s._vec_tile
+	vec.xy__vec(    _s._vec_total, _s._vec_tile)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_grv )
 end
 
 function Sp.on_clsn(_s)

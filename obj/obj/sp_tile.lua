@@ -11,7 +11,7 @@ function Sp.pos(_s)
 	if _s._pos then return _s._pos end
 
 	_s._pos = id.pos(_s._id)
-	log._("Sp.pos")
+	-- log._("Sp.pos")
 
 	local is_nan = num.is_nan(_s._pos.x)
 	if is_nan then
@@ -79,12 +79,14 @@ end
 
 -- crnt tile
 
-function Sp.tile_6_pos(_s, p_pos) -- alias
+function Sp.tile_6_pos(_s, p_pos)
 
 	if not p_pos then return end
 
 	local t_tile = map.tile(p_pos, _s._map_id, "ground", nil, _s._id)
 	-- local t_tile = 1
+	-- log._("Sp.tile_6_pos")
+
 	return t_tile
 end
 
@@ -124,7 +126,7 @@ end
 
 function Sp.tilepos__(_s)
 
-	local x, y = map.tilepos_xy_6_pos( _s:pos() )
+	local x, y = map.tilepos_xy_6_pos_xy(_s:pos().x, _s:pos().y)
 	vec.xy__(_s._tilepos, x, y)
 
 	_s._tilepos_flg = _.t
@@ -422,20 +424,24 @@ end
 
 -- is grounding
 
-function Sp.is_tile_grounding(_s)
+function Sp.is_grounding(_s)
 
 	local ret = _.f
 
-	local foot_i_tile = _s:foot_i_tile()
+	if _s._accl._speed.y > 0 then return ret end
+
 	local foot_o_tile = _s:foot_o_tile()
+
+	if Tile.is_block(foot_o_tile)
+	or Tile.is_elv(  foot_o_tile)
+	or Tile.is_clmb( foot_o_tile)
+	then ret = _.t return ret end
+
+	local foot_i_tile = _s:foot_i_tile()
 	
 	if Tile.is_elv(  foot_i_tile)
-	or Tile.is_elv(  foot_o_tile)
 	or Tile.is_clmb( foot_i_tile)
-	or Tile.is_clmb( foot_o_tile)
-	or Tile.is_block(foot_o_tile) then
-		ret = _.t
-	end
+	then ret = _.t return ret end
 
 	return ret
 end
@@ -469,6 +475,9 @@ end
 function Sp.vec_total__crct_block_foot(_s) -- 3sec
 	-- log._("Sp.vec_total__crct_block_foot")
 	
+	_s:nxt_foot_i__clr()
+	_s:nxt_foot_i_up__clr()
+
 	local is_crct =         _s:nxt_foot_i_is_block()
 	                and not _s:nxt_foot_i_up_is_block()
 
@@ -481,17 +490,20 @@ end
 function Sp.vec_total__crct_block_head(_s) -- 3sec
 	-- log._("Sp.vec_total__crct_block_head")
 
-	local nxt_head_o_pos = _s:nxt_head_o_pos()
+	_s:nxt_head_o__clr()
 
 	if not _s:nxt_head_o_is_block() then return end
 	
-	local x, y = map.pos_xy_6_pos(nxt_head_o_pos)
+	local x, y = map.pos_xy_6_pos(_s:nxt_head_o_pos())
 	_s._vec_total.y = y - Map.sq - _s:pos().y
 end
 
 function Sp.vec_total__crct_block_side(_s) -- 3sec heavy
 	-- log._("Sp.vec_total__crct_block_side")
 	
+	_s:nxt_side_l__clr()
+	_s:nxt_side_r__clr()
+
 	local nxt_side_l_is_block = _s:nxt_side_l_is_block()
 	local nxt_side_r_is_block = _s:nxt_side_r_is_block()
 
@@ -521,6 +533,8 @@ function Sp.vec_total__crct_clmb(_s ) -- 3sec
 	
 	if not (_s._moving_v and _s._dir_v == "u") then return end
 	
+	_s:nxt_foot_i__clr()
+
 	local is_crct = _s:foot_i_is_clmb() and not _s:nxt_foot_i_is_clmb()
 
 	if not is_crct then return end
@@ -534,7 +548,7 @@ function Sp.vec_total__crct_inside_map(_s ) -- 3sec
 	
 	_s:nxt_pos__() -- todo cache
 
-	local is_inside, dir = _s:map_is_inside(_s._nxt_pos)
+	local is_inside, dir = _s:map_is_inside(_s:nxt_pos())
 	
 	if is_inside then return end
 	
@@ -547,8 +561,8 @@ function Sp.vec_total__crct_inside_map(_s ) -- 3sec
 	end
 	
 	-- _s._vec_total = nxt_pos - _s:pos()
-	vec.xy__(   _s:vec_total(),   _s:nxt_pos().x,   _s:nxt_pos().y)
-	vec.xy__pls(_s:vec_total(), - _s:pos().x    , - _s:pos().y    )
+	vec.xy__vec(_s:vec_total(), _s:nxt_pos())
+	vec.xy__pls(_s:vec_total(), - _s:pos().x, - _s:pos().y)
 end
 
 -- nxt
@@ -561,8 +575,8 @@ end
 function Sp.nxt_pos__(_s)
 
 	-- local nxt_pos = _s:pos() + _s._vec_total
-	vec.xy__(   _s._nxt_pos, _s:pos().x     , _s:pos().y     )
-	vec.xy__pls(_s._nxt_pos, _s._vec_total.x, _s._vec_total.y)
+	vec.xy__vec(    _s:nxt_pos(), _s:pos())
+	vec.xy__pls_vec(_s:nxt_pos(), _s._vec_total)
 end
 
 function Sp.nxt_foot_i_pos(_s)
@@ -611,6 +625,11 @@ function Sp.nxt_foot_i_is_clmb(_s)
 	return ret
 end
 
+function Sp.nxt_foot_i__clr(_s)
+	_s._nxt_foot_i_pos_flg  = _.f
+	_s._nxt_foot_i_tile_flg = _.f
+end
+
 function Sp.nxt_foot_i_up_pos(_s)
 
 	if _s._nxt_foot_i_up_pos_flg then return _s._nxt_foot_i_up_pos end
@@ -650,6 +669,11 @@ function Sp.nxt_foot_i_up_is_block(_s)
 	return ret
 end
 
+function Sp.nxt_foot_i_up__clr(_s)
+	_s._nxt_foot_i_up_pos_flg  = _.f
+	_s._nxt_foot_i_up_tile_flg = _.f
+end
+
 function Sp.nxt_head_o_pos(_s)
 
 	if _s._nxt_head_o_pos_flg then return _s._nxt_head_o_pos end
@@ -687,6 +711,11 @@ function Sp.nxt_head_o_is_block(_s)
 	local t_tile = _s:nxt_head_o_tile()
 	local ret = Tile.is_block(t_tile)
 	return ret
+end
+
+function Sp.nxt_head_o__clr(_s)
+	_s._nxt_head_o_pos_flg  = _.f
+	_s._nxt_head_o_tile_flg = _.f
 end
 
 -- nxt side
@@ -730,6 +759,11 @@ function Sp.nxt_side_l_is_block(_s)
 	return ret
 end
 
+function Sp.nxt_side_l__clr(_s)
+	_s._nxt_side_l_pos_flg  = _.f
+	_s._nxt_side_l_tile_flg = _.f
+end
+
 function Sp.nxt_side_r_pos(_s)
 
 	if _s._nxt_side_r_pos_flg then return _s._nxt_side_r_pos end
@@ -767,6 +801,11 @@ function Sp.nxt_side_r_is_block(_s)
 	local t_tile = _s:nxt_side_r_tile()
 	local ret = Tile.is_block(t_tile)
 	return ret
+end
+
+function Sp.nxt_side_r__clr(_s)
+	_s._nxt_side_r_pos_flg  = _.f
+	_s._nxt_side_r_tile_flg = _.f
 end
 
 --
@@ -847,47 +886,38 @@ end
 function Sp.cflg__f(_s) -- upd cache
 
 	-- pos
-	_s._foot_i_pos_flg = _.f
-	_s._foot_o_pos_flg = _.f
+	_s._c_tile_flg = _.f
 
-	_s._head_o_pos_flg = _.f
-
-	_s._side_l_pos_flg = _.f
-	_s._side_r_pos_flg = _.f
-
-	_s._tilepos_flg    = _.f
-	_s._tilepos_d_flg  = _.f
-
-	-- tile
-	_s._c_tile_flg     = _.f
-
+	_s._foot_i_pos_flg    = _.f
 	_s._c_foot_i_tile_flg = _.f
+
+	_s._foot_o_pos_flg    = _.f
 	_s._c_foot_o_tile_flg = _.f
 
-	_s._c_head_i_tile_flg = _.f
+	-- _s._head_i_pos_flg    = _.f
+	-- _s._c_head_i_tile_flg = _.f
+
+	_s._head_o_pos_flg    = _.f
 	_s._c_head_o_tile_flg = _.f
 
-	_s._side_l_tile_flg   = _.f
-	_s._side_r_tile_flg   = _.f
+	_s._side_l_pos_flg  = _.f
+	_s._side_l_tile_flg = _.f
 
-	-- nxt pos
-	_s._nxt_pos_flg        = _.f
+	_s._side_r_pos_flg  = _.f
+	_s._side_r_tile_flg = _.f
 
-	_s._nxt_foot_i_pos_flg = _.f
-	_s._nxt_head_o_pos_flg = _.f
+	_s._tilepos_flg   = _.f
+	_s._tilepos_d_flg = _.f
+end
 
-	_s._nxt_foot_i_up_pos_flg = _.f
+function Sp.nxt_cflg__f(_s) -- upd cache
 
-	_s._nxt_side_l_pos_flg = _.f
-	_s._nxt_side_r_pos_flg = _.f
+	-- _s._nxt_pos_flg  = _.f
 
-	-- nxt tile
-	_s._nxt_foot_i_tile_flg = _.f
-	_s._nxt_head_o_tile_flg = _.f
-
-	_s._nxt_foot_i_up_tile_flg = _.f
-
-	_s._nxt_side_l_tile_flg = _.f
-	_s._nxt_side_r_tile_flg = _.f
+	_s:nxt_foot_i__clr()
+	_s:nxt_foot_i_up__clr()
+	_s:nxt_head_o__clr()
+	_s:nxt_side_l__clr()
+	_s:nxt_side_r__clr()
 end
 

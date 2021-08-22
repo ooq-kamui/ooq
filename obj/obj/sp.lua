@@ -84,9 +84,7 @@ function Sp.final(_s)
 	
 	_s:map_obj__del()
 	
-	if _s:cls_is_mapobj() then
-		_s:mapobj_del()
-	end
+	_s:mapobj__del()
 
 	_s:intrvl__final()
 end
@@ -235,12 +233,10 @@ function Sp.cloud_pos(_s)
 end
 
 function Sp.cls(_s)
-
 	return _s._cls
 end
 
 function Sp.clsHa(_s) -- rest
-
 	return _s._clsHa
 end
 
@@ -301,7 +297,9 @@ function Sp.map_obj__del(_s)
 	pst.scrpt(_s:map_id(), "obj__del", prm)
 end
 
-function Sp.mapobj_del(_s)
+function Sp.mapobj__del(_s)
+
+	if not _s:cls_is_mapobj() then return end
 
 	Mapobj.del(_s:tilepos(), _s._clsHa, _s._id)
 end
@@ -321,7 +319,7 @@ end
 function Sp.mapobj__(_s)
 	-- log._("sp mapobj__")
 
-	-- if _.t then return end
+	if not _s:cls_is_mapobj() then return end
 	
 	local t_tilepos = _s:tilepos()
 	
@@ -362,7 +360,6 @@ end
 function Sp.pb__save_data(_s, map_url)
 
 	if _s._bear_tree_id then return end
-	-- if not u.eq(_s:map_id(), _s:parent_id()) then return end
 
 	local prm = {}
 

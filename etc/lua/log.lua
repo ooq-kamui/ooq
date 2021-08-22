@@ -1,4 +1,6 @@
-log = {}
+log = {
+	_flg = _.f
+}
 
 function log._(...)
 	print(...)
@@ -23,6 +25,18 @@ function log.if_(cnd, ...)
 	if not cnd then return end
 
 	log._(...)
+end
+
+function log.flg(...)
+
+	if not log._flg then return end
+
+	log._(...)
+end
+
+function log.flg__(val)
+
+	log._flg = val
 end
 
 function log.f(txt, val, dgt)

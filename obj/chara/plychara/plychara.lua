@@ -139,9 +139,8 @@ function Plychara.upd(_s, dt)
 	-- _s:vec_on_chara__(dt) -- 3sec
 
 	_s:vec_grv__()
-	_s._vec_grv = _s:dir__crct_hyprspc(_s._vec_grv)
 
-	_s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara -- 3sec
+	_s:vec_total__()
 
 	_s:pos__pls_vec_total()
 	
@@ -153,6 +152,15 @@ function Plychara.upd(_s, dt)
 	_s:act__clr()
 	_s:clsn__clr()
 	_s:upd_final() -- sp
+end
+
+function Plychara.vec_total__(_s)
+
+	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara -- 3sec
+	vec.xy__vec(    _s._vec_total, _s._vec_mv)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_tile)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_grv)
+	vec.xy__pls_vec(_s._vec_total, _s._vec_on_chara)
 end
 
 function Plychara.vec_mv__(_s, dt)
@@ -172,7 +180,8 @@ function Plychara.vec_mv__(_s, dt)
 	-- move v
 	_s:vec_mv_v__()
 
-	_s._vec_mv_dir = _s:dir__crct_hyprspc(_s._vec_mv_dir)
+	-- _s._vec_mv_dir = _s:vec__crct_hyprspc(_s._vec_mv_dir)
+	_s:vec__crct_hyprspc(_s._vec_mv_dir)
 
 	_s._vec_mv = _s._vec_mv_dir * _s._speed
 end
@@ -223,6 +232,8 @@ function Plychara.vec_grv__(_s)
 			Sp.vec_grv__(_s)
 		end
 	end
+
+	_s:vec__crct_hyprspc(_s._vec_grv)
 end
 
 -- jmp
@@ -269,28 +280,26 @@ function Plychara.cruch__f(_s)
 	_s:anim__("walk")
 end
 
-function Plychara.dir__crct_hyprspc(_s, dir)
+function Plychara.vec__crct_hyprspc(_s, p_vec)
 	
 	local is_hyprspc, hyprspc_dir = _s:is_hyprspc()
 
-	if not is_hyprspc then return dir end
+	if not is_hyprspc then return end
 
 	if     ar.in_(hyprspc_dir, u.lr) then
-		dir.y = 0
+		p_vec.y = 0
 		
 	elseif ar.in_(hyprspc_dir, u.ud) then
-		dir.x = 0
+		p_vec.x = 0
 	end
-	
-	return dir
 end
 
 function Plychara.is_hyprspc(_s)
 
 	local is_inside, dir = map.is_inside_cmpr(_s:pos(), _s:map_rng_pos())
+	-- rpl local is_inside, dir = _s:map_is_inside()
 
 	local is_hyprspc = not is_inside
-
 	return is_hyprspc, dir
 end
 
