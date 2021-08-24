@@ -13,10 +13,6 @@ function init(_s)
 	Fairy.init(_s)
 end
 
-function update(_s, dt)
-	_s:upd(dt)
-end
-
 function on_message(_s, msg_id, prm, sndr_url)
 	_s:on_msg(msg_id, prm, sndr_url)
 end

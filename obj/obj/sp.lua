@@ -5,7 +5,10 @@ Sp = {
 	thrwd_speed_y  = 4,
 
 	airflw_u_vec_y = 3,
-	sand_smoke_speed_y = - 4
+	sand_smoke_speed_y = - 4,
+
+	upd_sec = 0.034, -- 30 frm
+	-- upd_sec = 0.05, -- 20 frm
 }
 
 -- static
@@ -48,7 +51,7 @@ function Sp.cre(p_Cls, p_pos, p_prm, p_scl)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Sp.__init(_s, prm)
 
@@ -73,7 +76,7 @@ function Sp.__init(_s, prm)
 		_s:anim__(prm._anim)
 	end
 
-	_s._act_intrvl = 0
+	-- _s._act_intrvl = 0
 	_s:vec__init()
 	_s:pos__init()
 
@@ -87,6 +90,8 @@ function Sp.final(_s)
 	_s:mapobj__del()
 
 	_s:intrvl__final()
+
+	_s:upd__cncl()
 end
 
 -- method
@@ -196,7 +201,6 @@ function Sp.parent__map(_s)
 	local z = _s:Cls().z or 0.2
 	
 	pst.parent__(_s._id, _s:map_id(), z)
-	_s._pos = nil
 end
 
 -- id
@@ -251,7 +255,7 @@ function Sp.Cls(_s, p_prp)
 	local t_Cls
 
 	if     _s._cls then
-		t_Cls = Cls.Cls(_s._cls  )
+		t_Cls = Cls.Cls(_s._cls)
 
 	else
 		log._("Sp.Cls _s._cls is nil") return
@@ -380,6 +384,22 @@ end
 function Sp.intrvl__final(_s)
 
 	timer.cancel(_s._intrvl_hndl)
+end
+
+function Sp.upd__dly(_s)
+	log._("Sp.upd__dly", _s._cls)
+
+	-- _s._upd_hndl = timer.delay(Sp.upd_sec, _.t, _s:Cls().upd)
+	_s._upd_hndl = timer.delay(Sp.upd_sec, _.t, _s.upd)
+end
+
+function Sp.upd__cncl(_s)
+
+	if not _s._upd_hndl then return end
+
+	timer.cancel(_s._upd_hndl)
+
+	-- log._("Sp.upd__cncl", _s._cls)
 end
 
 function Sp.act_intrvl(_s)

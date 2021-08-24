@@ -25,7 +25,7 @@ function Tree.cre(p_pos, prm, p_scl)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Tree.init(_s)
 
@@ -46,6 +46,8 @@ function Tree.__init(_s, prm)
 	go.set(t_url, "scale", scale * size)
 
 	_s._bear = {}
+
+	_s:upd__dly()
 end
 
 function Tree.upd(_s, dt)

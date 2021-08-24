@@ -10,7 +10,7 @@ function p.Bag_wall.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Bag_wall.init(_s, parent_gui)
 

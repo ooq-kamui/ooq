@@ -16,7 +16,7 @@ function Fire.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Fire.init(_s)
 
@@ -29,6 +29,8 @@ function Fire.__init(_s, prm)
 	Sp.__init(_s, prm)
 
 	Se.pst_ply("fire")
+
+	_s:upd__dly()
 end
 
 function Fire.upd(_s, dt)

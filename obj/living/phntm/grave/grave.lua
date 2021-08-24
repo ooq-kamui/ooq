@@ -20,7 +20,7 @@ function Grave.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Grave.init(_s)
 
@@ -33,6 +33,8 @@ function Grave.__init(_s, prm)
 	prm._anim = prm._anim or "stand"
 
 	Sp.__init(_s, prm)
+
+	_s:upd__dly()
 end
 
 function Grave.upd(_s, dt)

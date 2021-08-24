@@ -12,7 +12,7 @@ function p.Bag_inf.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Bag_inf.init(_s, parent_gui)
 

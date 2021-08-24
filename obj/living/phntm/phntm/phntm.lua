@@ -20,7 +20,7 @@ function Phntm.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Phntm.init(_s)
 
@@ -35,6 +35,8 @@ function Phntm.__init(_s, prm)
 	Sp.__init(_s, prm)
 
 	vec.xy__(_s._vec_mv, 0, 0.5)
+
+	_s:upd__dly()
 end
 
 function Phntm.upd(_s, dt)

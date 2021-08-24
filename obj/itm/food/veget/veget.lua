@@ -17,7 +17,7 @@ function Veget.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Veget.init(_s)
 
@@ -32,6 +32,8 @@ function Veget.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Veget.upd(_s, dt)

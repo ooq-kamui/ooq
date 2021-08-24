@@ -43,7 +43,7 @@ function Inp.cre()
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Inp.init(_s)
 

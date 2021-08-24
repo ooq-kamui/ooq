@@ -17,7 +17,7 @@ function g.Dia.cre()
 	return dia_id
 end
 
--- script method
+-- scrpt method
 
 function g.Dia.init(_s)
 	-- log._("gui dia init")

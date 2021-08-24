@@ -22,7 +22,7 @@ function Parasol.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Parasol.init(_s)
 
@@ -39,6 +39,8 @@ function Parasol.__init(_s, prm)
 	Sp     .__init(_s, prm)
 	Hldabl .__init(_s)
 	Airride.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Parasol.upd(_s, dt)

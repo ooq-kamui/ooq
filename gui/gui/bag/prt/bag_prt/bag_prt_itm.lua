@@ -2,7 +2,7 @@ log.scrpt("p.bag_prt_itm.lua")
 
 p.Bag_prt_itm = {}
 
--- script method
+-- scrpt method
 
 function p.Bag_prt_itm.init(_s)
 	

@@ -48,7 +48,7 @@ function Chara_clb_fe.new_name(clb_grp)
 	return new_name
 end
 
--- script method
+-- scrpt method
 
 function Chara_clb_fe.init(_s)
 

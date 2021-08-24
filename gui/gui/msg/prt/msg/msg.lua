@@ -10,7 +10,7 @@ function p.Msg.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Msg.init(_s, parent_gui)
 	-- log._("p msg init")

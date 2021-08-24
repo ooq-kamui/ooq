@@ -9,7 +9,7 @@ Airride = {
 	},
 }
 
--- script method
+-- scrpt method
 
 function Airride.__init(_s)
 end

@@ -15,7 +15,7 @@ function p.Bg.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Bg.init(_s, parent_gui)
 

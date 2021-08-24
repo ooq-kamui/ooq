@@ -20,7 +20,7 @@ function Reizoko.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Reizoko.init(_s)
 
@@ -33,6 +33,8 @@ function Reizoko.__init(_s, prm)
 	
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Reizoko.upd(_s, dt)

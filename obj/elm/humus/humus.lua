@@ -16,7 +16,7 @@ function Humus.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Humus.init(_s)
 
@@ -27,6 +27,8 @@ end
 function Humus.__init(_s, prm)
 	
 	Sp.__init(_s, prm)
+
+	_s:upd__dly()
 end
 
 function Humus.upd(_s, dt)

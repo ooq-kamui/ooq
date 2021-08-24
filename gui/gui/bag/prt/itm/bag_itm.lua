@@ -2,13 +2,18 @@ log.scrpt("p.bag_itm.lua")
 
 p.Bag_itm = {
 
-	itm_hand = {"wand_block", "wand_wall", "nokogiri", "wand_fire"},
+	itm_hand = {
+		"wand_block",
+		"nokogiri",
+		"wand_fire",
+		"wand_wall",
+	},
 }
 p.Bag_itm.itm_lb_2_r_view_prt_lb = {
 	wand_block = "bag_block",
-	wand_wall  = "bag_wall",
 	nokogiri   = nil,
 	wand_fire  = nil,
+	wand_wall  = "bag_wall",
 }
 
 -- static
@@ -19,7 +24,7 @@ function p.Bag_itm.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Bag_itm.init(_s, parent_gui)
 

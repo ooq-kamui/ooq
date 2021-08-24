@@ -15,7 +15,7 @@ function Wood.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Wood.init(_s)
 
@@ -30,6 +30,8 @@ function Wood.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Spwood.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Wood.upd(_s, dt)

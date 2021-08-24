@@ -1,8 +1,8 @@
 log.scrpt("cmr.lua")
 
 Cmr = {
-	act_intrvl_time = 20,
-	name_idx_max = 1,
+	act_intrvl_time = 20, -- use not
+	name_idx_max    =  1,
 	
 	z_lst = {
 		Disp.xh + Disp.xh/4*(-2),
@@ -38,7 +38,7 @@ function Cmr.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Cmr.init(_s)
 	
@@ -72,8 +72,12 @@ end
 
 function Cmr.upd(_s, dt)
 
-	if ha.is_emp(_s:game_id()    ) then return end
-	if ha.is_emp(_s:plychara_id()) then return end
+	-- if ha.is_emp(_s:game_id()    ) then return end
+	-- if ha.is_emp(_s:plychara_id()) then return end
+
+	if ha.is_emp(_s:game_id()    )
+	or ha.is_emp(_s:plychara_id())
+	then return end
 
 	_s._pos = _s:pos()
 	

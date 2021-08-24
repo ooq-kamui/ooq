@@ -11,7 +11,7 @@ function p.Prt.cre(p_Prt, parent_gui)
 	return prt
 end
 
--- script method
+-- scrpt method
 
 function p.Prt.init(_s, parent_gui)
 	-- log._("prt init", _s._lb)

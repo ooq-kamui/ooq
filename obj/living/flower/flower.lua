@@ -17,7 +17,7 @@ function Flower.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Flower.init(_s)
 
@@ -30,6 +30,8 @@ function Flower.__init(_s, prm)
 	
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Flower.upd(_s, dt)

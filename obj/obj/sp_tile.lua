@@ -8,61 +8,64 @@ log.scrpt("sp_tile.lua")
 
 function Sp.pos(_s)
 
-	if _s._pos then return _s._pos end
+	-- if _s._pos then return _s._pos end
 
-	_s._pos = id.pos(_s._id)
+	local t_pos = id.pos(_s._id)
 	-- log._("Sp.pos")
 
-	local is_nan = num.is_nan(_s._pos.x)
+	local is_nan = num.is_nan(t_pos.x)
 	if is_nan then
-		log._("Sp.pos is_nan", _s._pos, _s._cls)
+		log._("Sp.pos is_nan", t_pos, _s._cls)
 		_s:del()
 		return
 	end
 
-	return _s._pos
+	return t_pos
 end
 
 function Sp.pos__(_s, p_pos)
 
 	-- if not p_pos then return end
 
-	if not _s._pos then _s._pos = n.vec() end
+	-- if not _s._pos then _s._pos = n.vec() end
 
-	vec.xy__(_s._pos, p_pos.x, p_pos.y)
+	-- vec.xy__(_s._pos, p_pos.x, p_pos.y)
 
-	id.pos__(_s._id, _s._pos)
+	id.pos__(_s._id, p_pos)
 end
 
 function Sp.pos__y(_s, pos_y)
 
 	-- if not pos_y then return end
 
-	if not _s._pos then _s._pos = n.vec() end
+	-- if not _s._pos then _s._pos = n.vec() end
 
-	vec.y__(_s._pos, pos_y)
+	local t_pos = _s:pos()
+	vec.y__(t_pos, pos_y)
 
-	id.pos__(_s._id, _s._pos)
+	id.pos__(_s._id, t_pos)
 end
 
 function Sp.pos__pls_y(_s, pos_y)
 
 	-- if not pos_y then return end
 
-	if not _s._pos then _s._pos = n.vec() end
+	-- if not _s._pos then _s._pos = n.vec() end
 
-	vec.y__(_s._pos, _s._pos.y + pos_y)
+	local t_pos = _s:pos()
+	vec.y__(t_pos, t_pos.y + pos_y)
 
-	id.pos__(_s._id, _s._pos)
+	id.pos__(_s._id, t_pos)
 end
 
 function Sp.pos__pls(_s, p_vec)
 
-	if not _s._pos then _s._pos = n.vec() end
+	-- if not _s._pos then _s._pos = n.vec() end
 
-	vec.xy__pls(_s._pos, p_vec.x, p_vec.y)
+	local t_pos = _s:pos()
+	vec.xy__pls(t_pos, p_vec.x, p_vec.y)
 
-	id.pos__(_s._id, _s._pos)
+	id.pos__(_s._id, t_pos)
 end
 
 function Sp.pos__pls_vec_total(_s) -- 3sec

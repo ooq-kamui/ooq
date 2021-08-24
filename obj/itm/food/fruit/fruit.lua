@@ -14,7 +14,7 @@ function Fruit.cre(p_pos, prm, scl)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Fruit.init(_s)
 
@@ -29,6 +29,8 @@ function Fruit.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Fruit.upd(_s, dt)

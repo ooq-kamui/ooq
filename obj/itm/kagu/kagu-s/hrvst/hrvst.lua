@@ -24,7 +24,7 @@ function Hrvst.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Hrvst.init(_s)
 
@@ -37,6 +37,8 @@ function Hrvst.__init(_s, prm)
 	
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Hrvst.upd(_s, dt)

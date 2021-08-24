@@ -14,7 +14,7 @@ function Dish.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Dish.init(_s)
 
@@ -29,6 +29,8 @@ function Dish.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Dish.upd(_s, dt)

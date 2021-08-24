@@ -27,6 +27,8 @@ function Fish.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Fish.upd(_s, dt)

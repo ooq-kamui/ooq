@@ -10,7 +10,7 @@ ar.add_ar(Inp.plyr.keys, Inp.keys_arw)
 ar.add_ar(Inp.plyr.keys, Inp.keys_btn)
 ha.add_6_ar(Inp.plyr.keys)
 
--- script method
+-- scrpt method
 
 -- init
 

@@ -4,7 +4,7 @@ Warp = {
 	t_cls = {"chara", "plychara"},
 }
 
--- script method
+-- scrpt method
 
 function Warp.__init(_s)
 end

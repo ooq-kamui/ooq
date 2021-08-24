@@ -6,7 +6,7 @@ Bg = {
 	_cmr_pos_rng = nil,
 }
 
--- script
+-- script method
 
 function Bg.init(_s)
 
@@ -24,12 +24,12 @@ function Bg.upd(_s, dt)
 	_s:pos__()
 end
 
-function Bg.pos__(_s, pos)
+function Bg.pos__(_s, p_pos)
 	-- log._("bg pos__", _s._areaHa, _s._nameHa)
 
-	pos = pos or _s:pos_6_bg_mv_scl()
+	p_pos = p_pos or _s:pos_6_bg_mv_scl()
 
-	id.pos__(_s._id, pos)
+	id.pos__(_s._id, p_pos)
 end
 
 function Bg.rng_pos(_s)
@@ -246,3 +246,4 @@ function Bg.cmr_pos_rng(_s)
 	
 	return Bg._cmr_pos_rng
 end
+

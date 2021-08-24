@@ -10,7 +10,7 @@ function p.Dia.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Dia.init(_s, parent_gui)
 	-- log._("dia init")

@@ -10,7 +10,7 @@ function p.Kzn.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Kzn.init(_s, parent_gui)
 

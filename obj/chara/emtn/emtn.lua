@@ -16,7 +16,7 @@ function Emtn.cre(p_pos, emtnnum)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Emtn.init(_s)
 
@@ -36,6 +36,8 @@ function Emtn.__init(_s, prm)
 	if _s._emtnnum == 1 then
 		Se.pst_ply("heart")
 	end
+
+	-- _s:upd__dly()
 end
 
 function Emtn.upd(_s, dt)

@@ -35,7 +35,7 @@ Inp.gui.dir_2_arw["d"] = "arw_d"
 Inp.gui.dir_2_arw["l"] = "arw_l"
 Inp.gui.dir_2_arw["r"] = "arw_r"
 
--- script method
+-- scrpt method
 
 -- init
 

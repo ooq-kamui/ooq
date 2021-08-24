@@ -2,7 +2,7 @@ log.scrpt("efct-label.lua")
 
 Efct_label = {}
 
--- script method
+-- scrpt method
 
 function Efct_label.init(_s)
 

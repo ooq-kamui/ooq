@@ -61,7 +61,7 @@ function Plychara.cre(p_pos, dir)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Plychara.init(_s)
 
@@ -125,6 +125,8 @@ function Plychara.__init(_s, prm)
 	pst.parent__(fairy_id, _s._id, z, t_pos)
 
 	_s:skl__dtch_airride()
+
+	-- _s:upd__dly()
 end
 
 function Plychara.upd(_s, dt)
@@ -152,11 +154,12 @@ function Plychara.upd(_s, dt)
 	_s:act__clr()
 	_s:clsn__clr()
 	_s:upd_final() -- sp
+
+	log._("Plychara.upd", _s:pos())
 end
 
 function Plychara.vec_total__(_s)
 
-	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv + _s._vec_on_chara -- 3sec
 	vec.xy__vec(    _s._vec_total, _s._vec_mv)
 	vec.xy__pls_vec(_s._vec_total, _s._vec_tile)
 	vec.xy__pls_vec(_s._vec_total, _s._vec_grv)
@@ -167,8 +170,7 @@ function Plychara.vec_mv__(_s)
 
 	vec.xy__clr(_s._vec_mv_dir)
 	
-	-- move h
-	if _s._is_moving_h then
+	if _s._is_moving_h then -- move h
 
 		if ha.eq(_s._mv_dir_h_Ha, "l") then
 			_s._vec_mv_dir.x = - 1
@@ -177,13 +179,10 @@ function Plychara.vec_mv__(_s)
 		end
 	end
 	
-	-- move v
 	_s:vec_mv_v__()
 
-	-- _s._vec_mv_dir = _s:vec__crct_hyprspc(_s._vec_mv_dir)
 	_s:vec__crct_hyprspc(_s._vec_mv_dir)
 
-	-- _s._vec_mv = _s._vec_mv_dir * _s._speed
 	vec.xy__vec(_s._vec_mv, _s._vec_mv_dir * _s._speed)
 end
 
@@ -852,7 +851,7 @@ function Plychara.hld__x(_s)
 		_s:anim__("thrw")
 		-- log._("anim thrw")
 
-	-- hld__x_rls -- < old rlas
+	-- hld__x_rls
 	else
 		-- target action
 		if     #_s._clsn.chara   >= 1 then
@@ -873,7 +872,7 @@ function Plychara.hld__x(_s)
 	end
 end
 
-function Plychara.hld__x_rlas(_s)
+function Plychara.hld__x_rls(_s)
 end
 
 function Plychara.hld__x_thrw(_s)

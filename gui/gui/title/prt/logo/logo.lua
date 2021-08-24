@@ -10,7 +10,7 @@ function p.Logo.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Logo.init(_s, parent_gui)
 

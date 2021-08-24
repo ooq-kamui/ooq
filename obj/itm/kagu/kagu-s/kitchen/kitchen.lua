@@ -23,7 +23,7 @@ function Kitchen.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Kitchen.init(_s)
 
@@ -40,6 +40,8 @@ function Kitchen.__init(_s, prm)
 	_s._on = {} -- food_id
 
 	_s._cooking_timer = 0
+
+	_s:upd__dly()
 end
 
 function Kitchen.upd(_s, dt)

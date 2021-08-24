@@ -15,7 +15,7 @@ function Dairy.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Dairy.init(_s)
 
@@ -30,6 +30,8 @@ function Dairy.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Dairy.upd(_s, dt)

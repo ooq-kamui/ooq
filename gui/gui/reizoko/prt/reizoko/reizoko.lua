@@ -10,7 +10,7 @@ function p.Reizoko.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Reizoko.init(_s, parent_gui)
 	log._("p.Reizoko.init")

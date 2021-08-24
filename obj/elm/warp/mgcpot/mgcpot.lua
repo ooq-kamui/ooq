@@ -18,7 +18,7 @@ function Mgcpot.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Mgcpot.init(_s)
 
@@ -35,6 +35,8 @@ function Mgcpot.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Warp  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Mgcpot.upd(_s, dt)

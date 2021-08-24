@@ -10,7 +10,7 @@ function p.Zu_flower.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Zu_flower.init(_s, parent_gui)
 

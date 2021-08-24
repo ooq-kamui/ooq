@@ -14,7 +14,7 @@ function Egg.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Egg.init(_s)
 
@@ -29,6 +29,8 @@ function Egg.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Egg.upd(_s, dt)

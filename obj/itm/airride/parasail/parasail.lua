@@ -22,7 +22,7 @@ function Parasail.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Parasail.init(_s)
 
@@ -39,6 +39,8 @@ function Parasail.__init(_s, prm)
 	Sp     .__init(_s, prm)
 	Hldabl .__init(_s)
 	Airride.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Parasail.upd(_s, dt)

@@ -24,7 +24,7 @@ end
 function Ev.fin()
 end
 
--- script method
+-- scrpt method
 
 function Ev.init(_s)
 	extnd._(_s, Ev)

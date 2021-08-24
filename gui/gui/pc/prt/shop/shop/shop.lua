@@ -13,7 +13,7 @@ function p.Shop.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Shop.init(_s, parent_gui)
 

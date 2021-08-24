@@ -1,31 +1,5 @@
 log.scrpt("sp_upd.lua")
 
---[[
-function Sp.is_loop__act_intrvl__(_s, dt)
-	
-	if _s:is_pause() then return end
-
-	local is_loop = _s:act_intrvl__(dt)
-
-	-- log._("Sp.is_loop__act_intrvl__", _s._cls, _s._name, _s._anim)
-
-	return is_loop
-end
-
-function Sp.act_intrvl__(_s, dt)
-
-	local act_intrvl_time = _s:Cls("act_intrvl_time")
-
-	log.if_(not act_intrvl_time, "Sp.act_intrvl__", act_intrvl_time)
-
-	local is_loop
-
-	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, act_intrvl_time)
-
-	return is_loop
-end
---]]
-
 function Sp.upd_final(_s)
     _s:cflg__f()
 end
@@ -161,7 +135,7 @@ function Sp.vec_tile__(_s)
 	end
 end
 
-function Sp.vec_grv__(_s) -- 3sec
+function Sp.vec_grv__(_s)
 	-- log._("Sp.vec_grv__")
 
 	local is_vec_grv_0, is_grounding = _s:is_vec_grv_0()
@@ -256,4 +230,30 @@ function Sp.on_clsn(_s)
 	-- log._(on_id)
 	return on_id, on_cls
 end
+
+--[[
+function Sp.is_loop__act_intrvl__(_s, dt)
+	
+	if _s:is_pause() then return end
+
+	local is_loop = _s:act_intrvl__(dt)
+
+	-- log._("Sp.is_loop__act_intrvl__", _s._cls, _s._name, _s._anim)
+
+	return is_loop
+end
+
+function Sp.act_intrvl__(_s, dt)
+
+	local act_intrvl_time = _s:Cls("act_intrvl_time")
+
+	log.if_(not act_intrvl_time, "Sp.act_intrvl__", act_intrvl_time)
+
+	local is_loop
+
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, act_intrvl_time)
+
+	return is_loop
+end
+--]]
 

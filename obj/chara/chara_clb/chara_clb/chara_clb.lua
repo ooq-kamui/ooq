@@ -8,11 +8,22 @@ Chara_clb = {
 
 -- static
 
--- script method
+-- scrpt method
 
-Chara_clb.init       = Chara.init
+-- Chara_clb.init       = Chara.init
+
+function Chara_clb.init(_s)
+
+	extnd._(_s, Sp)
+	extnd._(_s, Livingmove)
+	extnd._(_s, Chara)
+end
 
 Chara_clb.upd        = Chara.upd
+
+-- Chara_clb.__init     = Chara.__init
+
+--[[
 
 Chara_clb.act_intrvl = Chara.act_intrvl
 
@@ -27,4 +38,5 @@ Chara_clb.act_intrvl__      = Chara.act_intrvl__
 Chara_clb.act_intrvl_time__ = Chara.act_intrvl_time__
 
 Chara_clb.say               = Chara.say
+--]]
 

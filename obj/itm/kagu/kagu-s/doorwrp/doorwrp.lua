@@ -19,7 +19,7 @@ function Doorwrp.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Doorwrp.init(_s)
 
@@ -34,6 +34,8 @@ function Doorwrp.__init(_s, prm)
 
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Doorwrp.upd(_s, dt)

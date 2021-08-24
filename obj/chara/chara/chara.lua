@@ -49,7 +49,7 @@ function Chara.new_name()
 	return new_name
 end
 
--- script method
+-- scrpt method
 
 function Chara.init(_s)
 
@@ -67,6 +67,8 @@ function Chara.__init(_s, prm)
 
 	_s:say()
 	_s:act_intrvl_time__()
+
+	_s:upd__dly()
 end
 
 function Chara.upd(_s, dt)

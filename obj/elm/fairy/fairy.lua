@@ -18,7 +18,7 @@ function Fairy.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Fairy.init(_s)
 
@@ -35,6 +35,8 @@ function Fairy.__init(_s, prm)
 
 	_s._tilepos = n.vec()
 	_s:tilepos__init(rnd.ar(u.lr))
+
+	-- _s:upd__dly()
 end
 
 function Fairy.tilepos__init(_s, p_dir)
@@ -47,9 +49,6 @@ function Fairy.tilepos__init(_s, p_dir)
 		_s._tilepos.x =   1
 		_s._tilepos.y =   0
 	end
-end
-
-function Fairy.upd(_s, dt)
 end
 
 function Fairy.on_msg(_s, msg_id, prm, sndr_url)

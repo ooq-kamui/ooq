@@ -10,7 +10,7 @@ function p.Flpy.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Flpy.init(_s, parent_gui)
 

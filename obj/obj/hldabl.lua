@@ -2,7 +2,7 @@ log.scrpt("hldabl.lua")
 
 Hldabl = {}
 
--- script method
+-- scrpt method
 
 function Hldabl.__init(_s)
 

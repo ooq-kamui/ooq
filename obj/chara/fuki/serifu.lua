@@ -8,6 +8,7 @@ Serifu = {
 		{len =  3, txt = "いたか"},
 		{len =  2, txt = "でた"},
 
+		{len =  3, txt = "さあね"},
 		{len =  2, txt = "うそ"},
 		{len =  2, txt = "ねる"},
 		{len =  5, txt = "ねむらない"},
@@ -117,20 +118,24 @@ Serifu = {
 		
 		-- guess
 		{len =  3, txt = "かもね"},
+
 		-- console
 		{len = 10, txt = "そんなときも あるよ"},
 		
 		-- amount many
 		{len =  4, txt = "いっぱい"},
+
 		-- time
 		{len =  2, txt = "とき"},
 		{len =  6, txt = "ときが きた"},
+
 		-- thanks
 		{len =  5, txt = "ありがとう"},
 
 		-- name
 		{len =  4, txt = "ねえさま"},
 		{len =  7, txt = "しらない ひと"},
+
 		-- personal pronoun
 		{len =  5, txt = "あたしたち"},
 		{len =  3, txt = "わたし"},
@@ -247,6 +252,7 @@ Serifu = {
 		{len =  3, txt = "かくご"},
 		{len =  5, txt = "かくごしろ"},
 		{len =  4, txt = "おしおき"},
+
 		-- fight win
 		{len =  3, txt = "かった"},
 		{len =  4, txt = "わざあり"},
@@ -255,6 +261,7 @@ Serifu = {
 		{len =  3, txt = "まもる"},
 		{len =  8, txt = "わたしが まもる"},
 		{len =  3, txt = "つるぎ"},
+
 		-- fight lose
 		{len =  4, txt = "たすけて"},
 		{len =  5, txt = "たすかった"},
@@ -267,6 +274,7 @@ Serifu = {
 		-- yes
 		{len =  3, txt = "いいよ"},
 		{len =  4, txt = "そうだよ"},
+
 		-- no
 		{len =  2, txt = "だめ"},
 		{len =  2, txt = "いや"},
@@ -303,6 +311,7 @@ Serifu = {
 		{len =  8, txt = "せつめい してね"},
 
 		-- know
+		{len =  3, txt = "なまえ"},
 		{len =  3, txt = "わかる"},
 		{len =  4, txt = "わかった"},
 		{len =  6, txt = "わかりました"},

@@ -12,8 +12,9 @@ go.property("_clsHa", hash(""))
 function init(_s)
 end
 
+---[[ upd
 function update(_s, dt)
-end
+end --]]
 
 function on_message(_s, msg_id, prm, sndr_url)
 	_s:on_msg(msg_id, prm, sndr_url)

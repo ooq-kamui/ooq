@@ -20,7 +20,7 @@ function Shelf.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Shelf.init(_s)
 
@@ -33,6 +33,8 @@ function Shelf.__init(_s, prm)
 	
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Shelf.upd(_s, dt)

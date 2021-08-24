@@ -13,7 +13,6 @@ Chara_clb_tohoku = {
 Chara_clb_tohoku.cls = "chara_clb_tohoku"
 Chara_clb_tohoku.fac = Obj.fac..Chara_clb_tohoku.cls
 Cls.add(Chara_clb_tohoku)
-
 ha.add_6_ar(Chara_clb_tohoku.chara)
 
 -- static
@@ -45,7 +44,7 @@ function Chara_clb_tohoku.new_name(clb_grp)
 	return new_name
 end
 
--- script method
+-- scrpt method
 
 function Chara_clb_tohoku.init(_s)
 	

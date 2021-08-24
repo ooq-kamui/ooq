@@ -2,7 +2,7 @@ log.scrpt("spwood.lua")
 
 Spwood = {}
 
--- script method
+-- scrpt method
 
 function Spwood.__init(_s)
 end

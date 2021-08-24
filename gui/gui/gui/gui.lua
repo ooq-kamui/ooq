@@ -3,7 +3,7 @@ log.scrpt("gui.lua")
 g = {}
 g.Gui = {}
 
--- -- script method
+-- scrpt method
 
 function g.Gui.init(_s)
 	

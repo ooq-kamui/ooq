@@ -2,7 +2,7 @@ log.scrpt("livingmove.lua")
 
 Livingmove = {}
 
--- script method
+-- scrpt method
 
 function Livingmove.__init(_s)
 	
@@ -17,7 +17,7 @@ end
 
 --- method
 
-function Livingmove.upd_pos_movabl(_s, dt)
+function Livingmove.upd_pos_movabl(_s)
 	
 	_s:vec_mv__()
 

@@ -9,7 +9,7 @@ g.Bag.lr_df_clz  = Map.sq * 3 / 4
 g.Bag.lr_pos_opn = n.vec(Disp.xh - g.Bag.lr_df_opn, 0)
 g.Bag.lr_pos_clz = n.vec(Disp.xh + g.Bag.lr_df_clz, 0)
 
--- script method
+-- scrpt method
 
 function g.Bag.init(_s)
 

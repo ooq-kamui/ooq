@@ -13,7 +13,7 @@ function p.Confirm.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Confirm.init(_s, parent_gui)
 	-- log._("p.Confirm.init")

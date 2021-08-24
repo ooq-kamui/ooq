@@ -10,7 +10,7 @@ function p.Snn_dtl.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Snn_dtl.init(_s, parent_gui)
 

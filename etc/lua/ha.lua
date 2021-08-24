@@ -27,42 +27,6 @@ function ha.add_6_ar(p_ar) -- rest
 	end
 end
 
---[[
-function ha._2_ha(p_str) -- use not ? > del
-
-	local t_type = type(p_str)
-	if t_type == "userdata" then return p_str end
-
-	local strHa = ha._(p_str)
-
-	return strHa
-end
-
-function ha.add(val)
-	-- log._("ha.add", val)
-
-	ha._ha[ha._(val)] = val
-end
-
-function ha.add_6_key_num(key, num)
-	local keyHa
-	for idx = 1, num do
-		val   = key .. int.pad(idx)
-		keyHa = ha._(val)
-		ha._ha[keyHa] = val
-	end
-end
-
-function ha.add_6_Cls(p_Cls)
-	
-	ha.add(p_Cls.cls)
-	
-	if not p_Cls.name_idx_max then return end
-	
-	ha.add_6_key_num(p_Cls.cls, p_Cls.name_idx_max)
-end
---]]
-
 -- 
 
 function ha.is_emp(val)
@@ -99,4 +63,40 @@ end
 function ha.emp()
 	return ha._emp
 end
+
+--[[
+function ha._2_ha(p_str) -- use not ? > del
+
+	local t_type = type(p_str)
+	if t_type == "userdata" then return p_str end
+
+	local strHa = ha._(p_str)
+
+	return strHa
+end
+
+function ha.add(val)
+	-- log._("ha.add", val)
+
+	ha._ha[ha._(val)] = val
+end
+
+function ha.add_6_key_num(key, num)
+	local keyHa
+	for idx = 1, num do
+		val   = key .. int.pad(idx)
+		keyHa = ha._(val)
+		ha._ha[keyHa] = val
+	end
+end
+
+function ha.add_6_Cls(p_Cls)
+	
+	ha.add(p_Cls.cls)
+	
+	if not p_Cls.name_idx_max then return end
+	
+	ha.add_6_key_num(p_Cls.cls, p_Cls.name_idx_max)
+end
+--]]
 

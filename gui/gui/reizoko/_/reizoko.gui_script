@@ -1,6 +1,6 @@
 log.scrpt("reizoko.gui_script")
 
--- script method
+-- scrpt method
 
 function init(_s)
 	g.Reizoko.init(_s)

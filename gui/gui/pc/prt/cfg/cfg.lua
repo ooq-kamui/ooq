@@ -10,7 +10,7 @@ function p.Cfg.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Cfg.init(_s, parent_gui)
 

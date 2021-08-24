@@ -17,7 +17,7 @@ function Plant.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Plant.init(_s)
 
@@ -28,6 +28,8 @@ end
 function Plant.__init(_s, prm)
 	
 	Sp.__init(_s, prm)
+
+	_s:upd__dly()
 end
 
 function Plant.upd(_s, dt)

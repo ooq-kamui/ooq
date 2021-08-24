@@ -32,7 +32,7 @@ function Trmpln.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Trmpln.init(_s)
 
@@ -47,6 +47,8 @@ function Trmpln.__init(_s, prm)
 
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Trmpln.upd(_s, dt)

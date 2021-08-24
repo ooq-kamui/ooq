@@ -13,7 +13,7 @@ function Fg.add(p_tilemap, area, p_id)
 	Fg._[p_tilemap].area = area
 end
 
--- script
+-- script method
 
 function Fg.init(_s)
 	extnd._(_s, Fg)

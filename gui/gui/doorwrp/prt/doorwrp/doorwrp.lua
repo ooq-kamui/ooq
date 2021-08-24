@@ -10,7 +10,7 @@ function p.Doorwrp.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Doorwrp.init(_s, parent_gui)
 
@@ -44,8 +44,6 @@ function p.Doorwrp.opn(_s)
 	_s:base_dsp__(_.t)
 	_s:focus__(_.t)
 	Se.pst_ply("forward")
-
-	-- _s:slfobj__()
 end
 
 function p.Doorwrp.decide(_s)
@@ -59,7 +57,6 @@ function p.Doorwrp.decide(_s)
 	end
 
 	pst._("#script", "to_doorwrp", {doorwrp_id = doorwrp_id})
-	-- _s._parent_gui._slfobj_id = doorwrp_id
 
 	_s:clz()
 end

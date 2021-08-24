@@ -16,7 +16,7 @@ function Dryleaf.cre(p_pos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Dryleaf.init(_s)
 
@@ -31,6 +31,8 @@ function Dryleaf.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Spwood.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Dryleaf.upd(_s, dt)

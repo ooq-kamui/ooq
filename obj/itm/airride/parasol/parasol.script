@@ -13,9 +13,10 @@ function init(_s)
 	Parasol.init(_s)
 end
 
+--[[ upd
 function update(_s, dt)
 	_s:upd(dt)
-end
+end --]]
 
 function on_message(_s, msg_id, prm, sndr_url)
 	_s:on_msg(msg_id, prm, sndr_url)

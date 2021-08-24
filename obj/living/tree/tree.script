@@ -9,18 +9,14 @@ go.property("_weight",  1)
 
 go.property("_clsHa",   hash(""))
 
---[[
-go.property("_bear_clsHa",  hash("fruit"))
-go.property("_bear_nameHa", hash("fruit007"))
---]]
-
 function init(_s)
 	Tree.init(_s)
 end
 
+--[[ upd
 function update(_s, dt)
 	_s:upd(dt)
-end
+end --]]
 
 function on_message(_s, msg_id, prm, sndr_url)
 	_s:on_msg(msg_id, prm, sndr_url)

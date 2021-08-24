@@ -19,7 +19,7 @@ function Cloud.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Cloud.init(_s)
 
@@ -34,9 +34,9 @@ function Cloud.__init(_s, prm)
 	Sp        .__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
-end
 
--- script method
+	_s:upd__dly()
+end
 
 function Cloud.upd(_s, dt)
 

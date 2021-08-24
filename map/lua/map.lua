@@ -128,30 +128,26 @@ function Map.cmr_pos__plychara(_s)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
+--[[
 function Map.upd(_s, dt)
-
 	_s:act_intrvl(dt)
-	
 end
 
 function Map.act_intrvl(_s, dt)
-
 	if not _s:is_loop__act_intrvl__(dt) then return end
-	
 end
 
 function Map.is_loop__act_intrvl__(_s, dt)
-
 	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
 end
 
 function Map.act_intrvl__(_s, dt)
-
 	local is_loop
 	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
 	return is_loop
 end
+--]]
 
 function Map.on_msg(_s, msg_id, prm, sndr_url)
 	

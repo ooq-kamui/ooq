@@ -20,7 +20,7 @@ function Broom.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Broom.init(_s)
 
@@ -35,6 +35,8 @@ function Broom.__init(_s, prm)
 
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Broom.upd(_s, dt)

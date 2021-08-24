@@ -10,7 +10,7 @@ function p.Pc.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Pc.init(_s, parent_gui)
 

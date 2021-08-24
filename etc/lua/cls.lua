@@ -6,14 +6,8 @@ Cls = {
 
 function Cls.add(p_Cls)
 	
-	Cls._Cls[ha._(p_Cls.cls)] = p_Cls
 	Cls._Cls[     p_Cls.cls ] = p_Cls
-
-	-- ha.add_6_Cls(p_Cls)
-end
-
-function Cls._(p_cls) -- alias old
-	return Cls.Cls(p_cls)
+	-- Cls._Cls[ha._(p_Cls.cls)] = p_Cls
 end
 
 function Cls.Cls(p_cls)
@@ -26,4 +20,10 @@ function Cls.Cls(p_cls)
 	-- log._("Cls._", p_cls)
 	return r_Cls
 end
+
+--[[
+function Cls._(p_cls) -- alias old
+	return Cls.Cls(p_cls)
+end
+--]]
 

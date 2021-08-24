@@ -19,7 +19,7 @@ function Fluff.cre(t_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Fluff.init(_s)
 
@@ -34,6 +34,8 @@ function Fluff.__init(_s, prm)
 	Sp        .__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Fluff.upd(_s, dt)

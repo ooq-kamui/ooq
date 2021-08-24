@@ -10,7 +10,7 @@ function p.Ply_data.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Ply_data.init(_s, parent_gui)
 	-- log._("p.Ply_data.init")

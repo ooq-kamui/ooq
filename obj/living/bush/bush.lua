@@ -18,7 +18,7 @@ function Bush.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Bush.init(_s)
 
@@ -29,6 +29,8 @@ end
 function Bush.__init(_s, prm)
 
 	Sp.__init(_s, prm)
+
+	_s:upd__dly()
 end
 
 function Bush.upd(_s, dt)

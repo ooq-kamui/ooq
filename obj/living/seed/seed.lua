@@ -29,7 +29,7 @@ function Seed.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Seed.init(_s)
 
@@ -44,6 +44,8 @@ function Seed.__init(_s, prm)
 	Hldabl.__init(_s)
 
 	_s:grw_bear__init()
+
+	_s:upd__dly()
 end
 
 function Seed.upd(_s, dt)

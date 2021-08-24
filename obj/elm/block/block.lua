@@ -36,7 +36,7 @@ function Block.cre(p_pos, p_tile)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Block.init(_s)
 
@@ -49,6 +49,8 @@ function Block.__init(_s, prm)
 	
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Block.upd(_s, dt)

@@ -10,7 +10,7 @@ function p.Shelf.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Shelf.init(_s, parent_gui)
 

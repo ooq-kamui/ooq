@@ -22,7 +22,7 @@ function p.Zu_anml.anml__o(name)
 	Ply_data.zu._zu.anml[name] = _.t
 end
 
--- script method
+-- scrpt method
 
 function p.Zu_anml.init(_s, parent_gui)
 

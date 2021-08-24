@@ -10,7 +10,7 @@ function p.Snn_lst.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Snn_lst.init(_s, parent_gui)
 

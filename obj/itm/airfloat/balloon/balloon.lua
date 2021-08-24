@@ -20,7 +20,7 @@ function Balloon.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Balloon.init(_s)
 
@@ -35,6 +35,8 @@ function Balloon.__init(_s, prm)
 
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
+
+	_s:upd__dly()
 end
 
 function Balloon.upd(_s, dt)

@@ -22,7 +22,7 @@ function Magic.cre(p_pos, p_tilepos)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Magic.init(_s)
 
@@ -33,6 +33,8 @@ end
 function Magic.__init(_s, prm)
 	
 	Sp.__init(_s, prm)
+
+	-- _s:upd__dly()
 end
 
 function Magic.upd(_s, dt)

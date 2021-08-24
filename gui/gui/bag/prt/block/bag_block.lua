@@ -10,7 +10,7 @@ function p.Bag_block.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Bag_block.init(_s, parent_gui)
 

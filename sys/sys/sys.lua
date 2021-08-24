@@ -61,7 +61,7 @@ function Sys.is_inp_focus_gui()
 	return ret
 end
 
--- script method
+-- scrpt method
 
 function Sys.init(_s)
 

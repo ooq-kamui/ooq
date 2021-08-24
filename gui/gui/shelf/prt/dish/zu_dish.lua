@@ -10,7 +10,7 @@ function p.Zu_dish.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Zu_dish.init(_s, parent_gui)
 

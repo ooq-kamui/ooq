@@ -27,7 +27,7 @@ function Fuki.cre(p_pos, prm, scl)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Fuki.init(_s)
 
@@ -38,6 +38,8 @@ end
 function Fuki.__init(_s, prm)
 	
 	Sp.__init(_s, prm)
+
+	-- _s:upd__dly()
 end
 
 function Fuki.upd(_s, dt)

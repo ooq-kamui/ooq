@@ -15,7 +15,7 @@ function Meat.cre(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Meat.init(_s)
 
@@ -30,6 +30,8 @@ function Meat.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
+
+	_s:upd__dly()
 end
 
 function Meat.upd(_s, dt)

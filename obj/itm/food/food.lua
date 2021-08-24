@@ -22,7 +22,7 @@ function Food.cre_6_cls(p_pos, prm)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Food.__init(_s)
 	_s._kitchen_id = nil
@@ -95,6 +95,7 @@ function Food.kitchen__x(_s)
 
 	_s._kitchen_id = nil
 	pst.parent__(_s._id, _s._map_id, Cls.Cls(_s._cls).z)
+	-- _s._pos = nil
 end
 
 function Food.cook_to_dish(_s)
@@ -108,6 +109,7 @@ function Food.bear__o(_s, tree_id)
 	
 	_s._bear_tree_id = tree_id
 	pst.parent__(_s._id, tree_id, 0.05)
+	-- _s._pos = nil
 	
 	_s:anm_scl__1()
 end
@@ -118,6 +120,7 @@ function Food.bear__x(_s)
 
 	local z = _s:Cls().z or 0.2
 	pst.parent__(_s._id, _s._map_id, z)
+	-- _s._pos = nil
 end
 
 function Food.__presentd(_s, prm)

@@ -144,7 +144,7 @@ function Game.dia_id()
 	return dia_id
 end
 
--- script method
+-- scrpt method
 
 function Game.init(_s)
 	
@@ -161,20 +161,21 @@ function Game.init(_s)
 	_s._act_intrvl = 0
 
 	_s:bgm_ply_rnd()
+
+	_s._intrvl_hndl = timer.delay(Game.act_intrvl_time, _.t, _s.act_intrvl)
 end
 
+--[[
 function Game.upd(_s, dt)
 	-- log._("Game.upd start")
 	
-	_s:act_intrvl(dt)
+	if _s:is_loop__act_intrvl__(dt) then _s:act_intrvl() end
 	
 	-- log._("Game.upd end")
 end
+--]]
 
-function Game.act_intrvl(_s, dt)
-
-	if not _s:is_loop__act_intrvl__(dt) then return end
-
+function Game.act_intrvl(_s)
 	-- log._("game act_intrvl", _s._id)
 	
 	if _s:is_map_pause()      then log._("map is_pause")         return end
@@ -185,6 +186,7 @@ function Game.act_intrvl(_s, dt)
 	_s:bgm_ply_nxt_rnd()
 end
 
+--[[
 function Game.is_loop__act_intrvl__(_s, dt)
 	local is_loop = _s:act_intrvl__(dt)
 	return is_loop
@@ -195,6 +197,7 @@ function Game.act_intrvl__(_s, dt)
 	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
 	return is_loop
 end
+--]]
 
 function Game.bgm_ply_rnd(_s)
 	Bgm.fade_o_ply_rnd()
@@ -250,6 +253,8 @@ function Game.del(_s)
 end
 
 function Game.final(_s)
+
+	timer.cancel(_s._intrvl_hndl)
 end
 
 -- game

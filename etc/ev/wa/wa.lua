@@ -15,7 +15,7 @@ function Wa.cre(sec)
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Wa.init(_s)
 	extnd._(_s, Wa)

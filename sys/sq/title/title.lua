@@ -11,7 +11,7 @@ function Title.cre()
 	return t_id
 end
 
--- script method
+-- scrpt method
 
 function Title.init(_s)
 

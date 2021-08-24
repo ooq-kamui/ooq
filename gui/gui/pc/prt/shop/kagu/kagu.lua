@@ -10,7 +10,7 @@ function p.Shop_kagu.cre(parent_gui)
 	return gui_prt
 end
 
--- script method
+-- scrpt method
 
 function p.Shop_kagu.init(_s, parent_gui)
 
