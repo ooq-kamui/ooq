@@ -26,7 +26,7 @@ function p.Bag_wall.init(_s, parent_gui)
 	extnd.init(_s, p.Bag_prt_itm)
 	extnd._(   _s, p.Bag_wall)
 
-	_s:itm__6_ar(Tile.wall)
+	_s:itm__6_ar(Tile.mstr.wall)
 	
 	_s:selected__cursor_itm()
 	_s:cursor_pos__()

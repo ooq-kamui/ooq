@@ -60,6 +60,10 @@ function Sp.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "__to_hrvst"   ) then
 		_s:__to_hrvst()
+
+	elseif ha.eq(msg_id, "st__"         ) then
+		_s:st__(prm.val)
+
 	else
 		ret = _.f
 	end

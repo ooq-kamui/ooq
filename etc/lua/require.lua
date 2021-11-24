@@ -78,6 +78,7 @@ require("assets/etc/lua/dice100")
 require("assets/etc/cmr/cmr")
 
 require("assets/etc/lua/tile")
+require("assets/etc/lua/tile_1")
 require("assets/etc/lua/tile_bndl")
 
 require("assets/map/lua/map")

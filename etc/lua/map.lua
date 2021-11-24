@@ -110,7 +110,7 @@ function map.tile__(p_pos, p_tile, p_id, p_tilemap, layer)
 end
 
 function map.tile__6_tilepos_xy(tilepos_x, tilepos_y, p_tile, p_id, p_tilemap, layer)
-	log._("map.tile__6_tilepos_xy")
+	-- log._("map.tile__6_tilepos_xy")
 
 	local p_tilepos = n.vec(tilepos_x, tilepos_y, nil, "map.tile__6_tilepos_xy")
 	map.tile__6_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer) -- todo mod
@@ -127,7 +127,8 @@ function map.tile__6_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer) -- rpl
 	local tile_prv = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, p_id, p_tilemap, layer)
 	
 	local t_url = url._(p_id, p_tilemap)
-	tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, p_tile)
+	-- tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, p_tile)
+	tile.__(t_url, layer, p_tilepos.x, p_tilepos.y, p_tile)
 
 	if not (p_tilemap == "ground" and layer == "ground") then return end
 

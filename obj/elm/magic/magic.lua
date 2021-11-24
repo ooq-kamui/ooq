@@ -63,11 +63,12 @@ function Magic.map_tile__(_s)
 		Efct.cre_magic()
 
 	elseif Magic.is_magic_vnsh(c_tile) then
-		t_tile = Tile.emp
+		t_tile = Tile.mstr.emp
 		Efct.cre_tile_vnsh()
 	end
 
-	map.tile__(_s:pos(), t_tile, Game.map_id(), "ground")
+	-- map.tile__(_s:pos(), t_tile, Game.map_id(), "ground")
+	pst.scrpt(Game.map_id(), "tile__", {_s:pos(), t_tile})
 end
 
 -- static
@@ -101,8 +102,8 @@ function Magic.tilepos_6_inp_prm(dir_h, prm) -- return tilepos diff
 end
 
 function Magic.magic_tile()
-	-- local t_tile = Tile.magic_block[Wand.wand001.block_idx]
-	local t_tile = Tile.magic_block[Wand.wand_block.block_idx]
+	-- local t_tile = Tile.mstr.magic_block[Wand.wand001.block_idx]
+	local t_tile = Tile.mstr.magic_block[Wand.wand_block.block_idx]
 	return t_tile
 end
 
@@ -111,7 +112,7 @@ function Magic.is_magic_vnsh(p_tile)
 	if p_tile == nil then return _.f end
 	
 	local ret = _.t
-	if ar.in_(p_tile, Tile.magic_vnsh_impsbl) then
+	if ar.in_(p_tile, Tile.mstr.magic_vnsh_impsbl) then
 		ret = _.f
 	end
 	return ret

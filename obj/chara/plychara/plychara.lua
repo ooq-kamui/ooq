@@ -895,7 +895,7 @@ function Plychara.hld_tile_side(_s)
 	local side_pos = _s:side_pos(dir_h)
 	if dir_h == "l" then vec.xy__pls(side_pos, -1, 0) end
 
-	_s:map_tile__(Tile.emp, side_pos)
+	_s:map_tile__(Tile.mstr.emp, side_pos)
 end
 
 -- to xxx

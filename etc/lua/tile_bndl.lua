@@ -44,7 +44,7 @@ function Tile_bndl.is_base_tile_bndl(p_tile, p_base_tile)
 
 	local t_tile
 	for idx = 1, 5 do
-		t_tile = p_base_tile + Tile.col_idx_max * (idx - 1)
+		t_tile = p_base_tile + Tile.mstr.col_idx_max * (idx - 1)
 		-- log._("is_base_tile_bndl", t_tile, p_tile, t_tile + (5 - 1))
 		if t_tile <= p_tile and p_tile <= t_tile + (5 - 1) then
 			ret = _.t
@@ -76,7 +76,7 @@ end
 
 function Tile_bndl.crct_tile_6_df(base_tile, df)
 
-	local crct_tile = base_tile + ( Tile.col_idx_max * df.y ) + df.x
+	local crct_tile = base_tile + ( Tile.mstr.col_idx_max * df.y ) + df.x
 	return crct_tile
 end
 

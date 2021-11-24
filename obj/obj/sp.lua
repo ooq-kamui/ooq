@@ -9,6 +9,11 @@ Sp = {
 
 	upd_sec = 0.034, -- 30 frm
 	-- upd_sec = 0.05, -- 20 frm
+
+	st = {
+		on   = "on"   ,
+		fall = "fall" ,
+	},
 }
 
 -- static
@@ -81,6 +86,8 @@ function Sp.__init(_s, prm)
 	_s:pos__init()
 
 	_s:intrvl__init()
+
+	_s:st__init()
 end
 
 function Sp.final(_s)
@@ -403,5 +410,22 @@ function Sp.upd__cncl(_s)
 end
 
 function Sp.act_intrvl(_s)
+end
+
+-- st
+
+function Sp.st__init(_s)
+
+	_s._st = Sp.st.fall
+end
+
+function Sp.st(_s)
+
+	return _s._st
+end
+
+function Sp.st__(_s, val)
+
+	_s._st = val
 end
 

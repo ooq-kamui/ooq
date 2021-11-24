@@ -1,7 +1,7 @@
 log.scrpt("block.lua")
 
 Block = {
-	tile = Tile.magic_block,
+	tile = Tile.mstr.magic_block,
 	act_intrvl_time = 3, -- 7, -- 20,
 }
 Block.name_idx_max = #Block.tile
@@ -11,7 +11,7 @@ Block.fac = Obj.fac..Block.cls
 Cls.add(Block)
 
 Block.gold = {}
-for idx, tile in pairs(Tile.magic_block) do
+for idx, tile in pairs(Tile.mstr.magic_block) do
 	Block.gold[ha._("block"..int.pad(tile))] = 10
 end
 
@@ -20,7 +20,7 @@ end
 function Block.cre(p_pos, p_tile)
 	-- log._("block.cre p_tile", p_tile)
 	
-	p_tile = p_tile or rnd.ar(Tile.magic_block)
+	p_tile = p_tile or rnd.ar(Tile.mstr.magic_block)
 	log._("block.cre p_tile", p_tile)
 
 	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(p_tile)

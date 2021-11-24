@@ -95,7 +95,7 @@ function Fire.burn_tile(_s)
 		t_tile = map.tile_6_tilepos_xy(t_tilepos.x, t_tilepos.y, _s:map_id())
 
 		if Tile.is_wood(t_tile) then
-			map.tile__6_tilepos(t_tilepos, ar.rnd(Tile.wood_burn))
+			map.tile__6_tilepos(t_tilepos, ar.rnd(Tile.mstr.wood_burn))
 			Fire.cre(map.pos_6_tilepos(t_tilepos))
 		end
 	end
@@ -103,7 +103,7 @@ function Fire.burn_tile(_s)
 	if Tile.is_wood_burn(_s:tile())
 	and rnd.by_p(50)
 	then
-		map.tile__6_tilepos(_s:tilepos(), Tile.emp)
+		map.tile__6_tilepos(_s:tilepos(), Tile.mstr.emp)
 	end
 end
 

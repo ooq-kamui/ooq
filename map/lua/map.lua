@@ -55,7 +55,7 @@ Map.dstrct_mv = {
 	},
 }
 
-Map.obj = nil
+Map.obj = nil -- alias -- old
 
 -- static
 
@@ -100,8 +100,10 @@ function Map.init(_s)
 	_s:rng_pos__init()
 	_s:dstrct_mv_rng_pos__init()
 	
-	_s._obj = {}
-	Map.obj = _s._obj
+	_s._obj = {} -- cnt
+	Map.obj = _s._obj -- alias -- old
+
+	_s._tile = {}
 
 	_s:save_data__init()
 
@@ -213,6 +215,9 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "drk__o") then
 		_s:drk__o()
+
+	elseif ha.eq(msg_id, "tile__") then
+		_s:tile__(prm)
 	end
 end
 
@@ -439,6 +444,19 @@ function Map.drk__o(_s, fnc)
 	anm.drk__o(_s._id, "ground", time, nil, fnc)
 end
 
+-- tile
+
+function Map.tile__(_s, p_pos, p_tile)
+
+	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	map.tile__6_tilepos_xy(x, y, p_tile, _s._id, "ground")
+
+	if not _s._tile[y]    then _s._tile[y]    = {} end
+	if not _s._tile[y][x] then _s._tile[y][x] = {} end
+
+	_s._tile[y][x]["tile"] = p_tile
+end
+
 -- static
 
 function Map.chara_is_appear_all()
@@ -501,7 +519,8 @@ function Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)
 	local crct_tile = Tile_bndl.crct_tile(base_tile, tile_bndl_arund_val)
 
 	local t_url = url._(p_id, p_tilemap)
-	tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, crct_tile)
+	-- tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, crct_tile)
+	tile.__(t_url, layer, p_tilepos.x, p_tilepos.y, crct_tile)
 end
 
 function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
