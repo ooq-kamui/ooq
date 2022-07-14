@@ -33,13 +33,11 @@ function Pc.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Pc.upd(_s, dt)
 
-	-- _s:act_intrvl(dt)
-	
 	_s:upd_pos_static()
 
 	_s:upd_final()
@@ -47,9 +45,6 @@ end
 
 function Pc.act_intrvl(_s, dt)
 
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
-
-	
 end
 
 function Pc.on_msg(_s, msg_id, prm, sndr_url)

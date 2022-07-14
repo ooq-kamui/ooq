@@ -36,7 +36,7 @@ function Fairy.__init(_s, prm)
 	_s._tilepos = n.vec()
 	_s:tilepos__init(rnd.ar(u.lr))
 
-	-- _s:upd__dly()
+	-- _s:upd__o()
 end
 
 function Fairy.tilepos__init(_s, p_dir)

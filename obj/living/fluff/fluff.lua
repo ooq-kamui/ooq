@@ -35,12 +35,10 @@ function Fluff.__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Fluff.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
 
@@ -48,8 +46,6 @@ function Fluff.upd(_s, dt)
 end
 
 function Fluff.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf__humus(1) then return end
 

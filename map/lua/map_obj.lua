@@ -47,8 +47,6 @@ Map._obj.grp_cls = {
 
 -- static
 
--- Map.st = {} -- old
-
 -- method
 
 -- obj

@@ -25,47 +25,41 @@ end
 
 function Sp.pos__(_s, p_pos)
 
-	-- if not p_pos then return end
-
-	-- if not _s._pos then _s._pos = n.vec() end
-
-	-- vec.xy__(_s._pos, p_pos.x, p_pos.y)
+	local pos_c = _s:pos()
 
 	id.pos__(_s._id, p_pos)
+
+	-- if u.is_emp(_s:map_id()) then return end
+
+	local prm = {id = _s._id, cls = _s._cls, pos_c = pos_c, pos_n = p_pos}
+	pst.scrpt(_s:map_id(), "tile_obj__del_add", prm)
 end
 
-function Sp.pos__y(_s, pos_y)
-
-	-- if not pos_y then return end
-
-	-- if not _s._pos then _s._pos = n.vec() end
+function Sp.pos__y(_s, p_pos_y)
 
 	local t_pos = _s:pos()
-	vec.y__(t_pos, pos_y)
+	vec.y__(t_pos, p_pos_y)
 
-	id.pos__(_s._id, t_pos)
+	_s:pos__(t_pos)
+	-- id.pos__(_s._id, t_pos)
 end
 
-function Sp.pos__pls_y(_s, pos_y)
-
-	-- if not pos_y then return end
-
-	-- if not _s._pos then _s._pos = n.vec() end
+function Sp.pos__pls_y(_s, p_pos_y)
 
 	local t_pos = _s:pos()
-	vec.y__(t_pos, t_pos.y + pos_y)
+	vec.y__(t_pos, t_pos.y + p_pos_y)
 
-	id.pos__(_s._id, t_pos)
+	_s:pos__(t_pos)
+	-- id.pos__(_s._id, t_pos)
 end
 
 function Sp.pos__pls(_s, p_vec)
 
-	-- if not _s._pos then _s._pos = n.vec() end
-
 	local t_pos = _s:pos()
 	vec.xy__pls(t_pos, p_vec.x, p_vec.y)
 
-	id.pos__(_s._id, t_pos)
+	_s:pos__(t_pos)
+	-- id.pos__(_s._id, t_pos)
 end
 
 function Sp.pos__pls_vec_total(_s) -- 3sec
@@ -84,17 +78,16 @@ function Sp.pos__tile(_s)
 	if not u.eq(_s:map_id(), _s:parent_id()) then return end
 
 	if     _s:foot_i_is_elv_u() then
-		-- vec.xy__(_s._pos, 0, 1)
+
 		_s:pos__pls_y(1)
 
 	elseif _s:is_airflw_u() then
-		-- vec.xy__(_s._pos, 0, Sp.airflw_u_vec_y)
+
 		_s:pos__pls_y(Sp.airflw_u_vec_y)
 	end
 end
 
 function Sp.pos_w(_s)
-
 	local t_pos = id.pos_w(_s._id)
 	return t_pos
 end

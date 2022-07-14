@@ -34,19 +34,14 @@ function Magic.__init(_s, prm)
 	
 	Sp.__init(_s, prm)
 
-	-- _s:upd__dly()
+	-- _s:upd__o()
 end
 
 function Magic.upd(_s, dt)
 
-	-- _s:act_intrvl(dt)
-
-
 end
 
 function Magic.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	_s:map_tile__()
 	
@@ -68,7 +63,7 @@ function Magic.map_tile__(_s)
 	end
 
 	-- map.tile__(_s:pos(), t_tile, Game.map_id(), "ground")
-	pst.scrpt(Game.map_id(), "tile__", {_s:pos(), t_tile})
+	pst.scrpt(Game.map_id(), "tile__", {pos = _s:pos(), tile = t_tile})
 end
 
 -- static

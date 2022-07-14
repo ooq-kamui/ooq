@@ -40,12 +40,10 @@ function Parasail.__init(_s, prm)
 	Hldabl .__init(_s)
 	Airride.__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Parasail.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -54,9 +52,8 @@ end
 
 function Parasail.act_intrvl(_s, dt)
 
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
-	
 	-- death
+
 end
 
 function Parasail.on_msg(_s, msg_id, prm, sndr_url)

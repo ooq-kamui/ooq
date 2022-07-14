@@ -126,7 +126,7 @@ function Plychara.__init(_s, prm)
 
 	_s:skl__dtch_airride()
 
-	-- _s:upd__dly()
+	-- _s:upd__o()
 end
 
 function Plychara.upd(_s, dt)
@@ -155,7 +155,7 @@ function Plychara.upd(_s, dt)
 	_s:clsn__clr()
 	_s:upd_final() -- sp
 
-	log._("Plychara.upd", _s:pos())
+	-- log._("Plychara.upd", _s:pos())
 end
 
 function Plychara.vec_total__(_s)

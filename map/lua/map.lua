@@ -130,27 +130,6 @@ function Map.cmr_pos__plychara(_s)
 	pst.scrpt(Sys.cmr_id(), "pos__plychara")
 end
 
---[[
-function Map.upd(_s, dt)
-	_s:act_intrvl(dt)
-end
-
-function Map.act_intrvl(_s, dt)
-	if not _s:is_loop__act_intrvl__(dt) then return end
-end
-
-function Map.is_loop__act_intrvl__(_s, dt)
-	local is_loop = _s:act_intrvl__(dt)
-	return is_loop
-end
-
-function Map.act_intrvl__(_s, dt)
-	local is_loop
-	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
-	return is_loop
-end
---]]
-
 function Map.on_msg(_s, msg_id, prm, sndr_url)
 	
 	if     ha.eq(msg_id, "del" ) then
@@ -217,7 +196,16 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 		_s:drk__o()
 
 	elseif ha.eq(msg_id, "tile__") then
-		_s:tile__(prm)
+		_s:tile__(prm.pos, prm.tile)
+
+	elseif ha.eq(msg_id, "tile_obj__del_add") then
+		_s:tile_obj__del_add(prm.id, prm.cls, prm.pos_c, prm.pos_n)
+
+	elseif ha.eq(msg_id, "tile_obj__add") then
+		_s:tile_obj__add(prm.id, prm.cls, prm.pos)
+
+	elseif ha.eq(msg_id, "tile_obj__del") then
+		_s:tile_obj__del(prm.id, prm.cls, prm.pos)
 	end
 end
 
@@ -444,19 +432,6 @@ function Map.drk__o(_s, fnc)
 	anm.drk__o(_s._id, "ground", time, nil, fnc)
 end
 
--- tile
-
-function Map.tile__(_s, p_pos, p_tile)
-
-	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
-	map.tile__6_tilepos_xy(x, y, p_tile, _s._id, "ground")
-
-	if not _s._tile[y]    then _s._tile[y]    = {} end
-	if not _s._tile[y][x] then _s._tile[y][x] = {} end
-
-	_s._tile[y][x]["tile"] = p_tile
-end
-
 -- static
 
 function Map.chara_is_appear_all()
@@ -501,90 +476,24 @@ function Map.not_appear_chara_clb_tohoku()
 	return not_appear
 end
 
---
-
-function Map.tile__crct(p_tilepos, p_id, p_tilemap, layer)
-	-- log._("map.tile__crct", p_tilepos, p_tilemap, layer)
-
-	local center_tile = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, p_id, p_tilemap, layer)
-	local is_tile_bndl, base_tile = Tile_bndl.is_tile_bndl(center_tile)
-	-- log._("tile__crct ", center_tile, is_tile_bndl, base_tile)
-
-	if not is_tile_bndl then return end
-
-	--
-	-- tile bndl
-	--
-	local tile_bndl_arund_val = Map.tile_bndl_arund_val(p_tilepos)
-	local crct_tile = Tile_bndl.crct_tile(base_tile, tile_bndl_arund_val)
-
-	local t_url = url._(p_id, p_tilemap)
-	-- tilemap.set_tile(t_url, layer, p_tilepos.x, p_tilepos.y, crct_tile)
-	tile.__(t_url, layer, p_tilepos.x, p_tilepos.y, crct_tile)
+--[[
+function Map.upd(_s, dt)
+	_s:act_intrvl(dt)
 end
 
-function Map.arund_tile_bndl_ar(p_tilepos, p_tile)
-
-	p_tile = p_tile or map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, Game.map_id(), "ground")
-
-	local base_tile = Tile_bndl.base_tile(p_tile)
-
-	if not base_tile then return end
-
-	-- arund_tile
-	local tilepos_arund = Map.tilepos_arund(p_tilepos)
-	-- log.pp("Map.arund_tile_bndl_ar", tilepos_arund)
-
-	local tile_bndl_arund_ar = {}
-	local t_tile, t_tilepos, is_base_tile_bndl
-
-	for idx, t_tilepos in pairs(tilepos_arund) do
-
-		t_tile = map.tile_6_tilepos_xy(t_tilepos.x, t_tilepos.y, Game.map_id(), "ground")
-		-- log._("map.arund_tile_bndl_ar", idx, t_tile, t_tilepos)
-
-		if t_tile then
-			is_base_tile_bndl = Tile_bndl.is_base_tile_bndl(t_tile, base_tile)
-		else
-			is_base_tile_bndl = _.f
-		end
-		-- log._("is_base_tile_bndl", is_base_tile_bndl)
-
-		ar.add(tile_bndl_arund_ar, is_base_tile_bndl)
-		-- log.pp("tile_bndl_arund_ar", tile_bndl_arund_ar)
-	end
-	-- log.pp("Map.arund_tile_bndl_ar", tile_bndl_arund_ar)
-	return tile_bndl_arund_ar
+function Map.act_intrvl(_s, dt)
+	if not _s:is_loop__act_intrvl__(dt) then return end
 end
 
-function Map.tile_bndl_arund_val(p_tilepos)
-	-- log._("map.tile_bndl_arund_val", p_tilepos)
-
-	local center_tile = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, Game.map_id(), "ground")
-	local base_tile = Tile_bndl.base_tile(center_tile)
-	if not base_tile then return end
-
-	local tile_bndl_arund_ar  = Map.arund_tile_bndl_ar(p_tilepos)
-	local tile_bndl_arund_val = Tile_bndl.arund_ar_2_arund_val(tile_bndl_arund_ar)
-	-- log._("tile_bndl_arund_val", tile_bndl_arund_val)
-
-	return tile_bndl_arund_val
+function Map.is_loop__act_intrvl__(_s, dt)
+	local is_loop = _s:act_intrvl__(dt)
+	return is_loop
 end
 
-function Map.tilepos_arund(p_tilepos) -- todo cache
-
-	local tilepos_arund = {
-		n.vec(p_tilepos.x - 1, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
-		n.vec(p_tilepos.x + 0, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
-		n.vec(p_tilepos.x + 1, p_tilepos.y + 1, nil, "Map.tilepos_arund"),
-
-		n.vec(p_tilepos.x - 1, p_tilepos.y    , nil, "Map.tilepos_arund"),
-		n.vec(p_tilepos.x + 1, p_tilepos.y    , nil, "Map.tilepos_arund"),
-
-		n.vec(p_tilepos.x - 1, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
-		n.vec(p_tilepos.x + 0, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
-		n.vec(p_tilepos.x + 1, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
-	}
-	return tilepos_arund
+function Map.act_intrvl__(_s, dt)
+	local is_loop
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
+	return is_loop
 end
+--]]
 

@@ -64,6 +64,13 @@ function Sp.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "st__"         ) then
 		_s:st__(prm.val)
 
+	elseif ha.eq(msg_id, "upd__x"       ) then
+		_s:upd__x()
+
+	elseif ha.eq(msg_id, "upd__o"       ) then
+		_s:upd__o()
+
+
 	else
 		ret = _.f
 	end

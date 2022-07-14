@@ -37,12 +37,10 @@ function Emtn.__init(_s, prm)
 		Se.pst_ply("heart")
 	end
 
-	-- _s:upd__dly()
+	-- _s:upd__o()
 end
 
 function Emtn.upd(_s, dt)
-	
-	-- _s:act_intrvl(dt)
 	
 	_s._vec_total = t.vec(0, 1) * _s._speed * dt -- 3sec
 
@@ -50,8 +48,6 @@ function Emtn.upd(_s, dt)
 end
 
 function Emtn.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	_s:del()
 end

@@ -10,7 +10,7 @@ Sp = {
 	upd_sec = 0.034, -- 30 frm
 	-- upd_sec = 0.05, -- 20 frm
 
-	st = {
+	_st_ = {
 		on   = "on"   ,
 		fall = "fall" ,
 	},
@@ -98,7 +98,7 @@ function Sp.final(_s)
 
 	_s:intrvl__final()
 
-	_s:upd__cncl()
+	_s:upd__x()
 end
 
 -- method
@@ -393,20 +393,23 @@ function Sp.intrvl__final(_s)
 	timer.cancel(_s._intrvl_hndl)
 end
 
-function Sp.upd__dly(_s)
-	log._("Sp.upd__dly", _s._cls)
+function Sp.upd__o(_s)
+	log._("Sp.upd__o", _s._cls)
 
-	-- _s._upd_hndl = timer.delay(Sp.upd_sec, _.t, _s:Cls().upd)
+	if _s._upd_hndl then return end
+
 	_s._upd_hndl = timer.delay(Sp.upd_sec, _.t, _s.upd)
 end
 
-function Sp.upd__cncl(_s)
+function Sp.upd__x(_s)
 
 	if not _s._upd_hndl then return end
 
 	timer.cancel(_s._upd_hndl)
 
-	-- log._("Sp.upd__cncl", _s._cls)
+	log._("Sp.upd__x", _s._cls, _s._upd_hndl)
+
+	_s._upd_hndl = nil
 end
 
 function Sp.act_intrvl(_s)
@@ -416,7 +419,7 @@ end
 
 function Sp.st__init(_s)
 
-	_s._st = Sp.st.fall
+	_s._st = Sp._st_.fall
 end
 
 function Sp.st(_s)
@@ -427,5 +430,9 @@ end
 function Sp.st__(_s, val)
 
 	_s._st = val
+
+	if     val == Sp._st_.on   then _s:upd__x()
+	elseif val == Sp._st_.fall then _s:upd__o()
+	end
 end
 

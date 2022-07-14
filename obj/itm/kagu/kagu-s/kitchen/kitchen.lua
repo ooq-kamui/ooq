@@ -41,7 +41,7 @@ function Kitchen.__init(_s, prm)
 
 	_s._cooking_timer = 0
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Kitchen.upd(_s, dt)

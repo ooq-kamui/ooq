@@ -34,12 +34,10 @@ function Grave.__init(_s, prm)
 
 	Sp.__init(_s, prm)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Grave.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -47,8 +45,6 @@ function Grave.upd(_s, dt)
 end
 
 function Grave.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- dead
 	if _s:per_trnsf(1 / 10 * 100, Phntm) then return end

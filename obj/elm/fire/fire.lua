@@ -30,12 +30,10 @@ function Fire.__init(_s, prm)
 
 	Se.pst_ply("fire")
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Fire.upd(_s, dt)
-	
-	-- _s:act_intrvl(dt)
 	
 	local t_tile = _s:tile()
 	
@@ -60,8 +58,6 @@ function Fire.vec_total__(_s)
 end
 
 function Fire.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	log._("fire.act_intrvl", _s:pos())
 	

@@ -35,12 +35,10 @@ function Cloud.__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Cloud.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_movabl(dt)
 
@@ -50,8 +48,6 @@ end
 function Cloud.act_intrvl(_s, dt)
 	-- log._("Cloud.act_intrvl", _s._id)
 
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
-	
 	dice100.throw()
 	if     not Map.chara_is_appear_all()
 	and    dice100.chk(20) then

@@ -351,7 +351,8 @@ end
 
 function Cmr.pos__(_s, pos)
 
-	Sp.pos__(_s, pos)
+	id.pos__(_s._id, pos)
+	-- Sp.pos__(_s, pos)
 end
 
 function Cmr.pos__far(_s)

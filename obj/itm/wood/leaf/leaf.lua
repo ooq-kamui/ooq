@@ -31,12 +31,10 @@ function Leaf.__init(_s, prm)
 	Hldabl.__init(_s)
 	Spwood.__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Leaf.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -44,8 +42,6 @@ function Leaf.upd(_s, dt)
 end
 
 function Leaf.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf__humus(1 / 20 * 100) then return end
 	

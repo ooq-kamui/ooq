@@ -68,12 +68,10 @@ function Chara.__init(_s, prm)
 	_s:say()
 	_s:act_intrvl_time__()
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Chara.upd(_s, dt)
-	
-	-- _s:act_intrvl(dt)
 	
 	_s:upd_pos_movabl(dt)
 
@@ -81,9 +79,6 @@ function Chara.upd(_s, dt)
 end
 
 function Chara.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
-
 	-- log._("chara act_intrvl is_loop", _s:name(), _s._act_intrvl_time)
 	
 	dice100.throw()

@@ -1,9 +1,6 @@
 
-# mac
-.DS_Store
-.swp
-.tags
-*.org
+/sh/
+/doc/
 
 img/
 
@@ -28,9 +25,7 @@ img/
 # 
 # *.camera
 
-
 *.font
-
 *.icns
 
 *.gif
@@ -54,10 +49,14 @@ img/
 typescript
 
 # originalImportedContentDocumentInfo ( .pxd )
-#obj/chara/chara/img/
-#obj/itm/blbrd/img/
-#obj/itm/kagu/bed/img/
-#obj/itm/kagu/door/img/
+# obj/chara/chara/img/
+# obj/itm/blbrd/img/
+# obj/itm/kagu/bed/img/
+# obj/itm/kagu/door/img/
 
-
+# mac
+.DS_Store
+.swp
+.tags
+*.org
 

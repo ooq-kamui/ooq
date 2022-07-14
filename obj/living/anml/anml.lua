@@ -56,21 +56,17 @@ function Anml.__init(_s, prm)
 	Livingmove.__init(_s)
 	Hldabl    .__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Anml.upd(_s, dt)
 	
-	-- _s:act_intrvl(dt)
-
 	_s:upd_pos_movabl(dt)
 
 	_s:upd_final()
 end
 
 function Anml.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	-- log._("anml z", _s:z())
 	

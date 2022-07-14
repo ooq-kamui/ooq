@@ -47,12 +47,10 @@ function Tree.__init(_s, prm)
 
 	_s._bear = {}
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Tree.upd(_s, dt)
-	
-	-- _s:act_intrvl(dt)
 	
 	_s:upd_pos_static()
 
@@ -84,8 +82,6 @@ end
 
 function Tree.act_intrvl(_s, dt)
 	-- log._("Tree.act_intrvl")
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	dice100.throw()
 	if     dice100.chk(30) then

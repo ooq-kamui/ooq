@@ -30,12 +30,10 @@ function Fruit.__init(_s, prm)
 	Hldabl.__init(_s)
 	Food  .__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Fruit.upd(_s, dt)
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -43,8 +41,6 @@ function Fruit.upd(_s, dt)
 end
 
 function Fruit.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt)  then return end
 
 	if _s:per_trnsf__humus(1 / 20 * 100) then return end
 end

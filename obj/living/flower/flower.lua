@@ -31,13 +31,11 @@ function Flower.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Flower.upd(_s, dt)
 	-- log._("Flower.upd start")
-
-	-- _s:act_intrvl(dt)
 
 	_s:upd_pos_static()
 
@@ -48,8 +46,6 @@ end
 
 function Flower.act_intrvl(_s, dt)
 	-- log._("Flower.act_intrvl")
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
 
 	if _s:per_trnsf__humus(1 / 15 * 100) then return end
 	

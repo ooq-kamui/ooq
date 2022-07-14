@@ -34,22 +34,17 @@ function Shelf.__init(_s, prm)
 	Sp    .__init(_s, prm)
 	Hldabl.__init(_s)
 
-	_s:upd__dly()
+	_s:upd__o()
 end
 
 function Shelf.upd(_s, dt)
 
-	-- _s:act_intrvl(dt)
-	
 	_s:upd_pos_static()
 
 	_s:upd_final()
 end
 
 function Shelf.act_intrvl(_s, dt)
-
-	-- if not _s:is_loop__act_intrvl__(dt) then return end
-
 	-- log._("shelf z", _s:z())
 
 end
