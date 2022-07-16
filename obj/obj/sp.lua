@@ -394,7 +394,7 @@ function Sp.intrvl__final(_s)
 end
 
 function Sp.upd__o(_s)
-	log._("Sp.upd__o", _s._cls)
+	-- log._("Sp.upd__o", _s._cls)
 
 	if _s._upd_hndl then return end
 
@@ -407,7 +407,7 @@ function Sp.upd__x(_s)
 
 	timer.cancel(_s._upd_hndl)
 
-	log._("Sp.upd__x", _s._cls, _s._upd_hndl)
+	-- log._("Sp.upd__x", _s._cls, _s._upd_hndl)
 
 	_s._upd_hndl = nil
 end

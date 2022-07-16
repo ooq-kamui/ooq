@@ -66,28 +66,26 @@ function Tile_bndl.base_tile(p_tile)
 	return base_tile
 end
 
-function Tile_bndl.crct_tile(base_tile, arund_val)
+function Tile_bndl.tile_crct(base_tile, arund_code)
 
-	local df = Tile_bndl.arund_val_2_df_x5x5(arund_val)
+	local df = Tile_bndl.arund_code_2_df_x5x5(arund_code)
 	
-	local crct_tile = Tile_bndl.crct_tile_6_df(base_tile, df)
-	return crct_tile
+	local tile_crct = Tile_bndl.tile_crct_6_df(base_tile, df)
+	return tile_crct
 end
 
-function Tile_bndl.crct_tile_6_df(base_tile, df)
+function Tile_bndl.tile_crct_6_df(base_tile, df)
 
-	local crct_tile = base_tile + ( Tile.mstr.col_idx_max * df.y ) + df.x
-	return crct_tile
+	local tile_crct = base_tile + ( Tile.mstr.col_idx_max * df.y ) + df.x
+	return tile_crct
 end
 
-function Tile_bndl.arund_ar_2_arund_val(arund_ar)
-	-- log._("arund_ar_2_arund_val")
-	-- log.pp("arund_ar", arund_ar)
+function Tile_bndl.arund_flg_2_arund_code(arund_flg)
 
-	if not arund_ar then log._("arund_ar_2_arund_val : prm nil") return end
+	if not arund_flg then log._("arund_flg_2_arund_code : prm nil") return end
 
-	local arund_val
-	local a = arund_ar
+	local arund_code
+	local a = arund_flg
 
 	if              not a[2]
 	and    not a[4]      and not a[5]
@@ -95,7 +93,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		--  H  
 		--     
-		arund_val = 020
+		arund_code = 020
 
 	elseif          not a[2]
 	and    not a[4]      and     a[5]
@@ -103,7 +101,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		--  H# 
 		--     
-		arund_val = 030
+		arund_code = 030
 
 	elseif          not a[2]
 	and        a[4]      and     a[5]
@@ -111,7 +109,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		-- #H# 
 		--     
-		arund_val = 070
+		arund_code = 070
 
 	elseif          not a[2]
 	and        a[4]      and not a[5]
@@ -119,7 +117,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--    
 		-- #H 
 		--    
-		arund_val = 060
+		arund_code = 060
 
 	elseif          not a[2]
 	and    not a[4]      and not a[5]
@@ -127,7 +125,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		--  H  
 		--  #  
-		arund_val = 022
+		arund_code = 022
 
 	elseif          not a[2]
 	and    not a[4]      and     a[5]
@@ -135,7 +133,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		--  H# 
 		--  #. 
-		arund_val = 032
+		arund_code = 032
 
 	elseif          not a[2]
 	and        a[4]      and     a[5]
@@ -143,7 +141,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--     
 		-- #H# 
 		-- .#. 
-		arund_val = 072
+		arund_code = 072
 
 	elseif          not a[2]
 	and        a[4]      and not a[5]
@@ -151,7 +149,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--    
 		-- #H 
 		-- .# 
-		arund_val = 062
+		arund_code = 062
 
 	elseif              a[2]
 	and    not a[4]      and not a[5]
@@ -159,7 +157,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--  #  
 		--  H  
 		--  #  
-		arund_val = 222
+		arund_code = 222
 
 	elseif              a[2]
 	and    not a[4]      and     a[5]
@@ -167,7 +165,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--  #. 
 		--  H# 
 		--  #. 
-		arund_val = 232
+		arund_code = 232
 
 	elseif              a[2]
 	and        a[4]      and     a[5]
@@ -175,7 +173,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		-- .#. 
 		-- #H# 
 		-- .#. 
-		arund_val = 272
+		arund_code = 272
 
 	elseif              a[2]
 	and        a[4]      and not a[5]
@@ -183,7 +181,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		-- .# 
 		-- #H 
 		-- .# 
-		arund_val = 262
+		arund_code = 262
 
 	elseif              a[2]
 	and    not a[4]      and not a[5]
@@ -191,7 +189,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--  #  
 		--  H  
 		--     
-		arund_val = 220
+		arund_code = 220
 		
 	elseif              a[2]
 	and    not a[4]      and     a[5]
@@ -199,7 +197,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		--  #. 
 		--  H# 
 		--     
-		arund_val = 230
+		arund_code = 230
 
 	elseif              a[2]
 	and        a[4]      and     a[5]
@@ -207,7 +205,7 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		-- .#. 
 		-- #H# 
 		--     
-		arund_val = 270
+		arund_code = 270
 
 	elseif              a[2]
 	and        a[4]      and not a[5]
@@ -215,14 +213,14 @@ function Tile_bndl.arund_ar_2_arund_val(arund_ar)
 		-- .# 
 		-- #H 
 		--    
-		arund_val = 260
+		arund_code = 260
 	end
 
-	-- log._("arund_ar_2_arund_val end", arund_val)
-	return arund_val
+	-- log._("arund_flg_2_arund_code end", arund_code)
+	return arund_code
 end
 
-function Tile_bndl.arund_val_2_df_x5x5(arund_val)
+function Tile_bndl.arund_code_2_df_x5x5(arund_code)
 
 	local x, y
 
@@ -247,25 +245,25 @@ function Tile_bndl.arund_val_2_df_x5x5(arund_val)
 	--                   
 	---------------------
 
-	if     arund_val == 020 then x = 0; y = 0
-	elseif arund_val == 030 then x = 1; y = 0
-	elseif arund_val == 070 then x = 2; y = 0
-	elseif arund_val == 060 then x = 3; y = 0
+	if     arund_code == 020 then x = 0; y = 0
+	elseif arund_code == 030 then x = 1; y = 0
+	elseif arund_code == 070 then x = 2; y = 0
+	elseif arund_code == 060 then x = 3; y = 0
 	
-	elseif arund_val == 022 then x = 0; y = 1
-	elseif arund_val == 032 then x = 1; y = 1
-	elseif arund_val == 072 then x = 2; y = 1
-	elseif arund_val == 062 then x = 3; y = 1
+	elseif arund_code == 022 then x = 0; y = 1
+	elseif arund_code == 032 then x = 1; y = 1
+	elseif arund_code == 072 then x = 2; y = 1
+	elseif arund_code == 062 then x = 3; y = 1
 	
-	elseif arund_val == 222 then x = 0; y = 2
-	elseif arund_val == 232 then x = 1; y = 2
-	elseif arund_val == 272 then x = 2; y = 2
-	elseif arund_val == 262 then x = 3; y = 2
+	elseif arund_code == 222 then x = 0; y = 2
+	elseif arund_code == 232 then x = 1; y = 2
+	elseif arund_code == 272 then x = 2; y = 2
+	elseif arund_code == 262 then x = 3; y = 2
 	
-	elseif arund_val == 220 then x = 0; y = 3
-	elseif arund_val == 230 then x = 1; y = 3
-	elseif arund_val == 270 then x = 2; y = 3
-	elseif arund_val == 260 then x = 3; y = 3
+	elseif arund_code == 220 then x = 0; y = 3
+	elseif arund_code == 230 then x = 1; y = 3
+	elseif arund_code == 270 then x = 2; y = 3
+	elseif arund_code == 260 then x = 3; y = 3
 	end
 	
 	local df = {x = x, y =y}

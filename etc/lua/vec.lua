@@ -2,12 +2,26 @@ log.scrpt("vec.lua")
 
 vec = {
 	-- const
-	_0   = vmath.vector3(0, 0, 0),
-	_1   = vmath.vector3(1, 1, 0),
-	_tmp = vmath.vector3(0, 0, 0),
+	_0 = vmath.vector3(0, 0, 0),
+	_1 = vmath.vector3(1, 1, 0),
+	
+	-- tmp
+	_tmp  = vmath.vector3(0, 0, 0),
+	
+	-- tmp tile arund
+	_tmp1 = vmath.vector3(0, 0, 0),
+	_tmp2 = vmath.vector3(0, 0, 0),
+	_tmp3 = vmath.vector3(0, 0, 0),
+	_tmp4 = vmath.vector3(0, 0, 0),
+	_tmp5 = vmath.vector3(0, 0, 0),
+	_tmp6 = vmath.vector3(0, 0, 0),
+	_tmp7 = vmath.vector3(0, 0, 0),
+	_tmp8 = vmath.vector3(0, 0, 0),
+	_tmp9 = vmath.vector3(0, 0, 0),
 }
 
 t = {}
+
 function t.vec(x, y, z) -- alias
 	-- log._("t.vec", note)
 	return vec.tmp(x, y, z)
@@ -19,6 +33,23 @@ function vec.tmp(x, y, z) -- tmp
 	vec._tmp.y = y or 0
 	vec._tmp.z = z or 0
 	return vec._tmp
+end
+
+function t.vec_i(x, y, z, idx, note) -- alias
+	log._("t.vec", note)
+	
+	return vec.tmp_idx(x, y, z, idx, note)
+end
+
+function vec.tmp_idx(x, y, z, idx, note) -- tmp
+	-- log.if_(note, "vec.tmp_idx", note)
+	
+	local tmp_key = "_tmp" .. idx
+	
+	vec[tmp_key].x = x or 0
+	vec[tmp_key].y = y or 0
+	vec[tmp_key].z = z or 0
+	return vec[tmp_key]
 end
 
 function n.vec(x, y, z, note) -- alias

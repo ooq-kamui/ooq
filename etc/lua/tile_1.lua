@@ -3,6 +3,7 @@ log.scrpt("tile_1.lua")
 Tile.mstr = { -- tile num
 
 	emp = 0,
+
 	magic_block = { -- wand block, enum
 
 		1, 3, 4, 8, -- clmb

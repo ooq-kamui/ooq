@@ -203,7 +203,21 @@ function ar.is_emp(p_ar)
 	return _.t
 end
 
-function ar.key___(p_ar)
+function ar.tail(p_ar)
+
+	local ret = p_ar[#p_ar]
+	return ret
+end
+
+function ar.__init_ar_if_nil(p_ar, key)
+	
+	if not p_ar[key] then
+		p_ar[key] = {}
+	end
+end
+
+--[[
+function ar.key___(p_ar) -- use not
 	-- log.pp("ar.key in", p_ar)
 
 	local keys = ar.key(p_ar)
@@ -219,10 +233,5 @@ function ar.key___(p_ar)
 	end
 	-- log.pp("ar.key ret", p_ar)
 end
-
-function ar.tail(p_ar)
-
-	local ret = p_ar[#p_ar]
-	return ret
-end
+--]]
 

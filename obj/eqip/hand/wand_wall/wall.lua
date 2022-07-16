@@ -13,7 +13,7 @@ function Wall.__(p_tilepos, wall_idx)
 
 	local t_tile
 	local tile_crnt = map.tile_6_tilepos_xy(p_tilepos.x, p_tilepos.y, map_id, "wall", layer)
-	if     tile_crnt == 0 then
+	if tile_crnt == 0 then
 		t_tile = Tile.mstr.wall[wall_idx]
 		Efct.cre_magic()
 	else

@@ -32,7 +32,7 @@ function Sp.pos__(_s, p_pos)
 	-- if u.is_emp(_s:map_id()) then return end
 
 	local prm = {id = _s._id, cls = _s._cls, pos_c = pos_c, pos_n = p_pos}
-	pst.scrpt(_s:map_id(), "tile_obj__del_add", prm)
+	pst.scrpt(_s:map_id(), "tile_xy_obj__del_add", prm)
 end
 
 function Sp.pos__y(_s, p_pos_y)

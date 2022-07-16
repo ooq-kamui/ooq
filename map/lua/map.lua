@@ -103,7 +103,7 @@ function Map.init(_s)
 	_s._obj = {} -- cnt
 	Map.obj = _s._obj -- alias -- old
 
-	_s._tile = {}
+	_s:tile_xy__init()
 
 	_s:save_data__init()
 
@@ -198,14 +198,14 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "tile__") then
 		_s:tile__(prm.pos, prm.tile)
 
-	elseif ha.eq(msg_id, "tile_obj__del_add") then
-		_s:tile_obj__del_add(prm.id, prm.cls, prm.pos_c, prm.pos_n)
+	elseif ha.eq(msg_id, "tile_xy_obj__del_add") then
+		_s:tile_xy_obj__del_add(prm.id, prm.cls, prm.pos_c, prm.pos_n)
 
-	elseif ha.eq(msg_id, "tile_obj__add") then
-		_s:tile_obj__add(prm.id, prm.cls, prm.pos)
+	elseif ha.eq(msg_id, "tile_xy_obj__add")     then
+		_s:tile_xy_obj__add(prm.id, prm.cls, prm.pos)
 
-	elseif ha.eq(msg_id, "tile_obj__del") then
-		_s:tile_obj__del(prm.id, prm.cls, prm.pos)
+	elseif ha.eq(msg_id, "tile_xy_obj__del")     then
+		_s:tile_xy_obj__del(prm.id, prm.cls, prm.pos)
 	end
 end
 
@@ -230,7 +230,7 @@ function Map.load(_s, file_idx)
 
 	if not save_data then return end
 	
-	_s:tile__save_data(save_data["tile"])
+	_s:tiles__save_data(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
 	
 	Msg.s("load complete")
@@ -264,7 +264,7 @@ function Map.pf__save_data__(_s)
 
 	_s:save_data__clr()
 
-	_s._save_data.tile = _s:save_data_6_tile()
+	_s._save_data.tile = _s:save_data_tiles()
 
 	_s:pf__save_data_obj__()
 end

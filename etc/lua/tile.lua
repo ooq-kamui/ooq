@@ -8,11 +8,9 @@ Tile = {
 
 function Tile.tile__init()
 
-
 end
 
 function Tile.tile__clr()
-
 
 end
 

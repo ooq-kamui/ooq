@@ -13,20 +13,27 @@ Mapobj = {
 function Mapobj.init(map_id)
 	-- log._("Mapobj init")
 
-	Mapobj._map_id = map_id
-
-	Mapobj._map_rng_tilepos = map.rng_tilepos(map_id, "ground")
+	local tilemap = "ground"
 	
-	for y = Mapobj._map_rng_tilepos.min.y, Mapobj._map_rng_tilepos.max.y do
+	Mapobj._map_id = map_id
+	
+	local rng_tilepos = map.rng_tilepos(map_id, tilemap)
+	Mapobj.map_rng_tilepos__(rng_tilepos)
+	
+	local x_min, x_max, y_min, y_max = map.rng_tilepos_xy(map_id, tilemap)
+	
+	for y = y_min, y_max do
+		
 		Mapobj._obj_[y] = {}
 		
-		for x = Mapobj._map_rng_tilepos.min.x, Mapobj._map_rng_tilepos.max.x do
+		for x = x_min, x_max do
 			Mapobj._obj_[y][x] = {}
 		end
 	end
 end
 
 function Mapobj.map_rng_tilepos__(rng_tilepos)
+	
 	Mapobj._map_rng_tilepos = rng_tilepos
 end
 
