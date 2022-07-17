@@ -48,10 +48,15 @@ end
 function Map.tile_6_tilepos_xy(_s, x, y, p_tilemap)
 	
 	local t_layer = p_tilemap
+	
+	local r_tile = map.tile_6_tilepos_xy(x, y, _s._id, p_tilemap, t_layer)
+	return  r_tile
+	
+--[[
 	local tilemap_url = _s:tilemap_url(p_tilemap)
-
 	local r_tile = tile._(tilemap_url, t_layer, x, y)
 	return  r_tile
+--]]
 end
 	
 function Map.tile__clr(_s, p_tilemap) -- use not
@@ -133,11 +138,23 @@ end
 
 function Map.tile_xy_tile__6_tilepos_xy(_s, x, y, p_tile)
 
-	_s:tile_xy__init_6_tilepos_xy(x, y)
+	-- _s:tile_xy__init_6_tilepos_xy(x, y)
 
 	_s._tile[y][x]["tile"] = p_tile
+end
+
+function Map.tile_xy_tile__crnt(_s)
 	
-	-- _s:log_tile_xy(x, y)
+	local t_tilemap = "ground"
+	local t_tile
+	local x_min, x_max, y_min, y_max = _s:rng_tilepos_xy(t_tilemap)
+	for   y = y_min, y_max do
+		for x = x_min, x_max do
+			
+			t_tile = _s:tile_6_tilepos_xy(x, y, t_tilemap)
+			_s:tile_xy_tile__6_tilepos_xy(x, y, t_tile)
+		end
+	end
 end
 
 -- tile_xy obj
@@ -193,9 +210,11 @@ function Map.tile_layer__save_data(_s, p_tilemap, p_tiles) -- p_tiles[y][x]
 			t_tile = p_tiles[int._2_str(y)][int._2_str(x)]
 			map.tile__6_tilepos_xy(x, y, t_tile, _s._id, p_tilemap)
 			
+--[[
 			if p_tilemap == "ground" then
 				_s:tile_xy_tile__6_tilepos_xy(x, y, t_tile)
 			end
+--]]
 		end
 	end
 end
@@ -357,11 +376,11 @@ function Map.log_tile_xy(_s, x, y)
 
 	log.pp(
 		"log_tile_xy",
-		_s._tile[y + 1][x    ],
-		_s._tile[y    ][x - 1],
-		_s._tile[y    ][x    ],
-		_s._tile[y    ][x + 1],
-		_s._tile[y - 1][x    ]
+		_s._tile[y][x - 1],
+		_s._tile[y][x    ],
+		_s._tile[y][x + 1]
+		-- _s._tile[y + 1][x    ],
+		-- _s._tile[y - 1][x    ]
 	)
 end
 

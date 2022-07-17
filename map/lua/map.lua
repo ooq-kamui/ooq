@@ -100,14 +100,13 @@ function Map.init(_s)
 	_s:rng_pos__init()
 	_s:dstrct_mv_rng_pos__init()
 	
+	_s:save_data__init()
+	
 	_s._obj = {} -- cnt
 	Map.obj = _s._obj -- alias -- old
+	Mapobj.init(_s._id) -- old
 
 	_s:tile_xy__init()
-
-	_s:save_data__init()
-
-	Mapobj.init(_s._id)
 
 	_s:new_or_load()
 end
@@ -219,6 +218,8 @@ end
 function Map.new(_s, plychara_pos)
 	
 	_s:obj__new()
+	
+	_s:tile_xy_tile__crnt()
 end
 
 function Map.load(_s, file_idx)
@@ -233,6 +234,8 @@ function Map.load(_s, file_idx)
 	_s:tiles__save_data(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
 
+	_s:tile_xy_tile__crnt()
+	
 	Msg.s("load complete")
 	-- Se.pst_ply("exe")
 end

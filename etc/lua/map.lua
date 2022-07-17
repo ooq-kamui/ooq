@@ -44,14 +44,8 @@ end
 
 function map.tilepos_xy_6_pos_xy(p_pos_x, p_pos_y)
 
-	-- local x = math.floor( (p_pos.x + Map.sq) / Map.sq )
-	-- local y = math.floor( (p_pos.y + Map.sq) / Map.sq )
-
 	local x = map.tilepos_x_6_pos_x(p_pos_x)
 	local y = map.tilepos_x_6_pos_x(p_pos_y)
-
-	-- local x = 1 -- dbg
-	-- local y = 1 -- dbg
 	return x, y
 end
 
@@ -213,6 +207,7 @@ function map.rng_tilepos(map_id, p_tilemap)
 		return map._[p_tilemap].rng_tilepos
 	end
 
+	-- log._(p_tilemap)
 	ar.__init_ar_if_nil(map._, p_tilemap)
 	
 	local x, y, w, h = map.tile_bound(map_id, p_tilemap)
