@@ -229,10 +229,10 @@ function Map.load(_s, file_idx)
 	local save_data = file.map.load(_s._ply_slt_idx, _s._dstrct, file_idx)
 
 	if not save_data then return end
-	
+
 	_s:tiles__save_data(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
-	
+
 	Msg.s("load complete")
 	-- Se.pst_ply("exe")
 end

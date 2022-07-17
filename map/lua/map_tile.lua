@@ -5,12 +5,17 @@ log.scrpt("map_tile.lua")
 function Map.tile__(_s, p_pos, p_tile, p_tilemap) -- alias
 	
 	_s:tile__6_pos(p_pos, p_tile, p_tilemap)
+	
+	-- log
+	
+	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	_s:log_tile_xy(x, y)
 end
 
-function Map.tile__6_pos(_s, p_pos, p_tile, p_tilemap) -- 6_pos
+function Map.tile__6_pos(_s, p_pos, p_tile, p_tilemap)
 
 	p_tilemap = p_tilemap or "ground"
-	
+
 	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
 
 	_s:tile__6_tilepos_xy(x, y, p_tile, p_tilemap)
@@ -131,17 +136,17 @@ function Map.tile_xy_tile__6_tilepos_xy(_s, x, y, p_tile)
 	_s:tile_xy__init_6_tilepos_xy(x, y)
 
 	_s._tile[y][x]["tile"] = p_tile
+	
+	-- _s:log_tile_xy(x, y)
 end
 
-function Map.tile_xy_obj__del_add(_s, p_id, p_cls, p_pos_c, p_pos_n)
+-- tile_xy obj
 
-	-- _s:tile_xy__init_6_pos(p_pos_n)
+function Map.tile_xy_obj__del_add(_s, p_id, p_cls, p_pos_c, p_pos_n)
 	
 	_s:tile_xy_obj__del(p_id, p_cls, p_pos_c)
 	_s:tile_xy_obj__add(p_id, p_cls, p_pos_n)
 end
-
--- tile_xy obj
 
 function Map.tile_xy_obj__del(_s, p_id, p_cls, p_pos)
 
@@ -186,9 +191,11 @@ function Map.tile_layer__save_data(_s, p_tilemap, p_tiles) -- p_tiles[y][x]
 		for x = x_min, x_max do
 			
 			t_tile = p_tiles[int._2_str(y)][int._2_str(x)]
-			
-			-- _s:tile__6_tilepos_xy(x, y, t_tile, p_tilemap)
 			map.tile__6_tilepos_xy(x, y, t_tile, _s._id, p_tilemap)
+			
+			if p_tilemap == "ground" then
+				_s:tile_xy_tile__6_tilepos_xy(x, y, t_tile)
+			end
 		end
 	end
 end
@@ -205,9 +212,6 @@ function Map.save_data_tile(_s, p_tilemap)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 
-	-- local tilemap_url = _s:tilemap_url(p_tilemap)
-	-- local t_layer = p_tilemap
-
 	local r_tiles, _tile
 	r_tiles = {} -- r_tiles[y][x]
 	
@@ -219,7 +223,6 @@ function Map.save_data_tile(_s, p_tilemap)
 		for x = x_min, x_max do
 			
 			_tile = _s:tile_6_tilepos_xy(x, y, p_tilemap)
-			-- _tile = tile._(tilemap_url, t_layer, x, y)
 			
 			r_tiles[int._2_str(y)][int._2_str(x)] = _tile
 		end
@@ -243,9 +246,6 @@ end
 function Map.rng_tilepos_xy(_s, p_tilemap)
 	
 	p_tilemap = p_tilemap or Map.tilemap_dflt
-	
-	-- local r = _s:rng_tilepos(p_tilemap)
-	-- return r.min.x, r.max.x, r.min.y, r.max.y
 	
 	return map.rng_tilepos_xy(_s._id, p_tilemap)
 end
@@ -316,7 +316,7 @@ end
 
 -- tile crct static
 
-function Map.tilepos_arund(p_tilepos)
+function Map.tilepos_arund(p_tilepos) -- todo cache
 
 --[[
 	local tilepos_arund = {
@@ -345,5 +345,23 @@ function Map.tilepos_arund(p_tilepos)
 		n.vec(p_tilepos.x + 1, p_tilepos.y - 1, nil, "Map.tilepos_arund"),
 	}
 	return tilepos_arund
+end
+
+-- log
+
+function Map.log_tile_xy(_s, x, y)
+	
+	local is_inside, dir = map.is_inside_tilepos_xy(x, y, _s._id, "ground")
+	
+	if not is_inside then return end
+
+	log.pp(
+		"log_tile_xy",
+		_s._tile[y + 1][x    ],
+		_s._tile[y    ][x - 1],
+		_s._tile[y    ][x    ],
+		_s._tile[y    ][x + 1],
+		_s._tile[y - 1][x    ]
+	)
 end
 

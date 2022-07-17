@@ -11,13 +11,16 @@ function log.scrpt(file)
 	if flg then log._(file) end
 end
 
-function log.pp(txt, data) -- alias
-	log.p(txt, data)
+function log.pp(txt, ...) -- alias
+	log.p(txt, ...)
 end
 
-function log.p(txt, data)
+function log.p(txt, ...)
 	log._(txt)
-	pprint(data)
+	
+	for idx, data in pairs({...}) do
+		pprint(data)
+	end
 end
 
 function log.if_(cnd, ...)

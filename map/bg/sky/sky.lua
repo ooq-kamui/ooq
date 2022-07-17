@@ -303,6 +303,7 @@ end
 
 function Sky.tile__6_pos(_s, p_tile, p_pos)
 	-- log._("tile__6_pos", p_tile, p_pos)
+	
 	local t_pos = n.vec(p_pos.x, p_pos.y)
 	
 	for i = 1, _s._x_once do
