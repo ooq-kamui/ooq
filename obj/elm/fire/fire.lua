@@ -88,7 +88,7 @@ function Fire.burn_tile(_s)
 	local tileposs = _s:tilepos_arund()
 	local t_tile
 	for idx, t_tilepos in pairs(tileposs) do
-		t_tile = map.tile_6_tilepos_xy(t_tilepos.x, t_tilepos.y, _s:map_id())
+		t_tile = map.tile_6_tile_xy(t_tilepos.x, t_tilepos.y, _s:map_id())
 
 		if Tile.is_wood(t_tile) then
 			map.tile__6_tilepos(t_tilepos, ar.rnd(Tile.mstr.wood_burn))

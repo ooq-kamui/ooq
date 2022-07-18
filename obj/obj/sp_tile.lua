@@ -152,7 +152,7 @@ end
 
 function Sp.tilepos__(_s)
 
-	local x, y = map.tilepos_xy_6_pos_xy(_s:pos().x, _s:pos().y)
+	local x, y = map.tile_xy_6_pos_xy(_s:pos().x, _s:pos().y)
 	vec.xy__(_s._tilepos, x, y)
 
 	_s._tilepos_flg = _.t

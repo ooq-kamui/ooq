@@ -13,14 +13,14 @@ end
 
 function map.pos_xy_6_tilepos(p_tilepos)
 
-	local x, y = map.pos_xy_6_tilepos_xy(p_tilepos.x, p_tilepos.y)
+	local x, y = map.pos_xy_6_tile_xy(p_tilepos.x, p_tilepos.y)
 	return x, y
 end
 
-function map.pos_xy_6_tilepos_xy(p_tilepos_x, p_tilepos_y)
+function map.pos_xy_6_tile_xy(p_tile_x, p_tile_y)
 
-	local x = Map.sq * p_tilepos_x - Map.sqh
-	local y = Map.sq * p_tilepos_y - Map.sqh
+	local x = Map.sq * p_tile_x - Map.sqh
+	local y = Map.sq * p_tile_y - Map.sqh
 	return x, y
 end
 
@@ -34,22 +34,22 @@ end
 
 function map.tile_pos_xy_6_pos(p_pos) -- tile center pos
 
-	local tilepos_x, tilepos_y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	local tile_x, tile_y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 
-	local x, y = map.pos_xy_6_tilepos_xy(tilepos_x, tilepos_y)
+	local x, y = map.pos_xy_6_tile_xy(tile_x, tile_y)
 	return x, y
 end
 
 -- tilepos
 
-function map.tilepos_xy_6_pos_xy(p_pos_x, p_pos_y)
+function map.tile_xy_6_pos_xy(p_pos_x, p_pos_y)
 
-	local x = map.tilepos_x_6_pos_x(p_pos_x)
-	local y = map.tilepos_x_6_pos_x(p_pos_y)
+	local x = map.tile_x_6_pos_x(p_pos_x)
+	local y = map.tile_x_6_pos_x(p_pos_y)
 	return x, y
 end
 
-function map.tilepos_x_6_pos_x(p_pos_x)
+function map.tile_x_6_pos_x(p_pos_x)
 
 	local x = math.floor( (p_pos_x + Map.sq) / Map.sq )
 	return x
@@ -72,18 +72,18 @@ function map.tile_6_pos(p_pos, p_id, p_tilemap, layer, obj_id)
 	-- local is_inside, dir = _.t, nil -- dbg
 	if not is_inside then return end
 	
-	local tilepos_x, tilepos_y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	local tile_x, tile_y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 
-	local t_tile = map.tile_6_tilepos_xy(tilepos_x, tilepos_y, p_id, p_tilemap, layer)
+	local t_tile = map.tile_6_tile_xy(tile_x, tile_y, p_id, p_tilemap, layer)
 	return t_tile
 end
 
-function map.tile_6_tilepos_xy(x, y, p_id, p_tilemap, layer)
+function map.tile_6_tile_xy(x, y, p_id, p_tilemap, layer)
 
 	p_tilemap = p_tilemap or Map.tilemap_dflt
 	layer = layer or p_tilemap
 
-	local is_inside, dir = map.is_inside_tilepos_xy(x, y, p_id, p_tilemap)
+	local is_inside, dir = map.is_inside_tile_xy(x, y, p_id, p_tilemap)
 	
 	if not is_inside then return end
 
@@ -96,21 +96,21 @@ function map.tile__(p_pos, p_tile, p_id, p_tilemap, layer)
 
 	layer = layer or p_tilemap
 	
-	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 
-	map.tile__6_tilepos_xy(x, y, p_tile, p_id, p_tilemap, layer)
+	map.tile__6_tile_xy(x, y, p_tile, p_id, p_tilemap, layer)
 end
 
 function map.tile__6_tilepos(p_tilepos, p_tile, p_id, p_tilemap, layer) -- rpl
 
-	map.tile__6_tilepos_xy(p_tilepos.x, p_tilepos.y, p_tile, p_id, p_tilemap, layer) -- todo mod
+	map.tile__6_tile_xy(p_tilepos.x, p_tilepos.y, p_tile, p_id, p_tilemap, layer) -- todo mod
 end
 
-function map.tile__6_tilepos_xy(x, y, p_tile, map_id, p_tilemap, layer)
+function map.tile__6_tile_xy(x, y, p_tile, map_id, p_tilemap, layer)
 
 	layer = layer or p_tilemap
 
-	local is_inside, dir = map.is_inside_6_tilepos_xy(x, y, map_id, p_tilemap)
+	local is_inside, dir = map.is_inside_6_tile_xy(x, y, map_id, p_tilemap)
 	if not is_inside then return end
 
 	local t_url = url._(map_id, p_tilemap)
@@ -119,27 +119,17 @@ end
 
 -- is_inside
 
---[[
-function map.is_inside(p_pos, p_id, p_tilemap, tilesize) -- use not
-
-	local inside_rng_pos = map.inside_rng_pos(p_id, p_tilemap, tilesize)
-
-	local ret, dir = map.is_inside_cmpr(p_pos, inside_rng_pos)
-	return ret, dir
-end
---]]
-
 function map.is_inside_6_pos_xy(p_pos_x, p_pos_y, p_id, p_tilemap)
 
-	local tilepos_x, tilepos_y = map.tilepos_xy_6_pos_xy(p_pos_x, p_pos_y)
+	local tile_x, tile_y = map.tile_xy_6_pos_xy(p_pos_x, p_pos_y)
 
-	local ret, dir = map.is_inside_tilepos_xy(tilepos_x, tilepos_y, p_id, p_tilemap)
+	local ret, dir = map.is_inside_tile_xy(tile_x, tile_y, p_id, p_tilemap)
 	return ret, dir
 end
 
-function map.is_inside_6_tilepos_xy(p_tilepos_x, p_tilepos_y, p_id, p_tilemap)
+function map.is_inside_6_tile_xy(p_tile_x, p_tile_y, p_id, p_tilemap)
 
-	local ret, dir = map.is_inside_tilepos_xy(p_tilepos_x, p_tilepos_y, p_id, p_tilemap)
+	local ret, dir = map.is_inside_tile_xy(p_tile_x, p_tile_y, p_id, p_tilemap)
 	return ret, dir
 end
 
@@ -162,14 +152,14 @@ function map.is_inside_cmpr(p_pos, inside_rng_pos)
 	return ret, dir
 end
 
-function map.is_inside_tilepos_xy(x, y, p_id, p_tilemap)
+function map.is_inside_tile_xy(x, y, p_id, p_tilemap)
 
 	local rng_tilepos = map.rng_tilepos(p_id, p_tilemap)
-	local ret, dir = map.is_inside_tilepos_xy_cmpr(x, y, rng_tilepos)
+	local ret, dir = map.is_inside_tile_xy_cmpr(x, y, rng_tilepos)
 	return ret, dir
 end
 
-function map.is_inside_tilepos_xy_cmpr(x, y, rng_tilepos)
+function map.is_inside_tile_xy_cmpr(x, y, rng_tilepos)
 
 	local ret, dir = _.t, nil
 
@@ -218,7 +208,7 @@ function map.rng_tilepos(map_id, p_tilemap)
 	return map._[p_tilemap].rng_tilepos
 end
 
-function map.rng_tilepos_xy(map_id, p_tilemap)
+function map.rng_tile_xy(map_id, p_tilemap)
 	
 	local r = map.rng_tilepos(map_id, p_tilemap)
 	return r.min.x, r.max.x, r.min.y, r.max.y
@@ -251,4 +241,16 @@ function map.tile_bound(p_id, p_tilemap)
 	local x, y, w, h = tilemap.get_bounds(t_url)
 	return x, y, w, h
 end
+
+-- old
+
+--[[
+function map.is_inside(p_pos, p_id, p_tilemap, tilesize) -- use not
+
+	local inside_rng_pos = map.inside_rng_pos(p_id, p_tilemap, tilesize)
+
+	local ret, dir = map.is_inside_cmpr(p_pos, inside_rng_pos)
+	return ret, dir
+end
+--]]
 

@@ -25,7 +25,7 @@ function Mapobj.init(map_id)
 	local rng_tilepos = map.rng_tilepos(map_id, tilemap)
 	Mapobj.map_rng_tilepos__(rng_tilepos)
 	
-	local x_min, x_max, y_min, y_max = map.rng_tilepos_xy(map_id, tilemap)
+	local x_min, x_max, y_min, y_max = map.rng_tile_xy(map_id, tilemap)
 	
 	for y = y_min, y_max do
 		
@@ -66,7 +66,7 @@ end
 
 function Mapobj.obj(tilepos, clsHa)
 
-	local is_inside, dir = map.is_inside_tilepos_xy_cmpr(tilepos.x, tilepos.y, Mapobj._map_rng_tilepos)
+	local is_inside, dir = map.is_inside_tile_xy_cmpr(tilepos.x, tilepos.y, Mapobj._map_rng_tilepos)
 	
 	if not is_inside then return {} end
 
