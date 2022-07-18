@@ -209,29 +209,10 @@ function ar.tail(p_ar)
 	return ret
 end
 
-function ar.__init_ar_if_nil(p_ar, key)
+function ar.chld_ar__init_if_nil(p_ar, key)
 	
 	if not p_ar[key] then
 		p_ar[key] = {}
 	end
 end
-
---[[
-function ar.key___(p_ar) -- use not
-	-- log.pp("ar.key in", p_ar)
-
-	local keys = ar.key(p_ar)
-
-	for idx, key in pairs(keys) do
-		
-		if type(key) == "string" and string.sub(key, 1, 1) ~= "_" then
-			p_ar["_"..key] = p_ar[key]-- val
-			p_ar[key] = nil
-		else
-			-- log._("ar.key", key, type(key))
-		end
-	end
-	-- log.pp("ar.key ret", p_ar)
-end
---]]
 

@@ -79,7 +79,7 @@ function Fire.burn(_s)
 	if not rnd.by_p(60) then return end
 	
 	_s:burn_tile()
-	_s:burn_obj()
+	-- _s:burn_obj()
 end
 
 function Fire.burn_tile(_s)
@@ -103,7 +103,7 @@ function Fire.burn_tile(_s)
 	end
 end
 
-function Fire.burn_obj(_s)
+function Fire.burn_obj(_s) -- old
 	-- log._("fire.burn_obj")
 	
 	local t_cls = {"wood", "dryleaf", "leaf"}

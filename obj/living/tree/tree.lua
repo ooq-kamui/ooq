@@ -20,6 +20,9 @@ Cls.add(Tree)
 -- static
 
 function Tree.cre(p_pos, prm, p_scl)
+	
+	-- prm._tmp = {aaa = hash("ccc")}
+	
 	local t_Cls = Tree
 	local t_id = Sp.cre(t_Cls, p_pos, prm, p_scl)
 	return t_id
@@ -48,6 +51,8 @@ function Tree.__init(_s, prm)
 	_s._bear = {}
 
 	_s:upd__o()
+	
+	-- log.pp("_tmp", _s._tmp)
 end
 
 function Tree.upd(_s, dt)

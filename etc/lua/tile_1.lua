@@ -70,7 +70,6 @@ function Tile.is_airflw_u(p_tile)
 end
 
 function Tile.is_elv(p_tile, dir)
-	log.flg("Tile.is_elv")
 	
 	dir = dir or "u"
 	

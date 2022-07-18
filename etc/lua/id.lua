@@ -21,7 +21,7 @@ function id.prp(p_id, key)
 	return val
 end
 
-function id.prp_de(p_id, key)
+function id.prp_de(p_id, key) -- use not
 
 	local valHa = id.prp(p_id, key)
 

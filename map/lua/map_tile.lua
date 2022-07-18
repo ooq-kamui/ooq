@@ -7,9 +7,8 @@ function Map.tile__(_s, p_pos, p_tile, p_tilemap) -- alias
 	_s:tile__6_pos(p_pos, p_tile, p_tilemap)
 	
 	-- log
-	
-	local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
-	_s:log_tile_xy(x, y)
+	-- local x, y = map.tilepos_xy_6_pos_xy(p_pos.x, p_pos.y)
+	-- _s:log_tile_xy(x, y)
 end
 
 function Map.tile__6_pos(_s, p_pos, p_tile, p_tilemap)
@@ -34,7 +33,7 @@ function Map.tile__6_tilepos_xy(_s, x, y, p_tile, p_tilemap)
 	
 	-- tile crct
 	
-	local tile_bndl = (p_tile == 0) and tile_prv or p_tile
+	local tile_bndl = (p_tile == Tile.mstr.emp) and tile_prv or p_tile
 	
 	_s:tile_arund__crct_6_tilepos_xy(x, y, tile_bndl, p_tilemap)
 
@@ -51,19 +50,13 @@ function Map.tile_6_tilepos_xy(_s, x, y, p_tilemap)
 	
 	local r_tile = map.tile_6_tilepos_xy(x, y, _s._id, p_tilemap, t_layer)
 	return  r_tile
-	
---[[
-	local tilemap_url = _s:tilemap_url(p_tilemap)
-	local r_tile = tile._(tilemap_url, t_layer, x, y)
-	return  r_tile
---]]
 end
 	
 function Map.tile__clr(_s, p_tilemap) -- use not
 
 	p_tilemap = p_tilemap or "ground"
 
-	local t_tile = 0
+	local t_tile = Tile.mstr.emp
 
 	local x_min, x_max, y_min, y_max = _s:rng_tilepos_xy(p_tilemap)
 	for y = y_min, y_max do
@@ -110,22 +103,22 @@ function Map.tile_xy__init(_s)
 	local x_min, x_max, y_min, y_max = _s:rng_tilepos_xy(tilemap)
 	for y = y_min, y_max do
 		
-		ar.__init_ar_if_nil(_s._tile, y)
+		ar.chld_ar__init_if_nil(_s._tile, y)
 		
 		for x = x_min, x_max do
 			
-			ar.__init_ar_if_nil(_s._tile[y]   , x    )
-			ar.__init_ar_if_nil(_s._tile[y][x], "obj")
-			_s._tile[y][x]["tile"] = 0
+			ar.chld_ar__init_if_nil(_s._tile[y]   , x    )
+			ar.chld_ar__init_if_nil(_s._tile[y][x], "obj")
+			_s._tile[y][x]["tile"] = Tile.mstr.emp
 		end
 	end
 end
 
 function Map.tile_xy__init_6_tilepos_xy(_s, x, y)
 
-	ar.__init_ar_if_nil(_s._tile      , y    )
-	ar.__init_ar_if_nil(_s._tile[y]   , x    )
-	ar.__init_ar_if_nil(_s._tile[y][x], "obj")
+	ar.chld_ar__init_if_nil(_s._tile      , y    )
+	ar.chld_ar__init_if_nil(_s._tile[y]   , x    )
+	ar.chld_ar__init_if_nil(_s._tile[y][x], "obj")
 end
 
 function Map.tile_xy__init_6_pos(_s, p_pos)
@@ -171,9 +164,13 @@ function Map.tile_xy_obj__del(_s, p_id, p_cls, p_pos)
 	
 	_s:tile_xy__init_6_tilepos_xy(x, y)
 	
-	ar.__init_ar_if_nil(_s._tile[y][x]["obj"], p_cls)
+	ar.chld_ar__init_if_nil(_s._tile[y][x]["obj"], p_cls)
 	
 	_s._tile[y][x]["obj"][p_cls][p_id] = nil
+	
+	if ar.is_emp(_s._tile[y][x]["obj"][p_cls]) then
+		_s._tile[y][x]["obj"][p_cls] = nil
+	end
 end
 
 function Map.tile_xy_obj__add(_s, p_id, p_cls, p_pos)

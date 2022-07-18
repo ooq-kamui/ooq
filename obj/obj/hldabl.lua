@@ -37,10 +37,16 @@ function Hldabl.hldd__o(_s, prm)
 		_s._bear_tree_id = nil
 	end
 
+	if _s:is_parent_eq_map() then
+		
+		local t_prm = {id = _s._id, cls = _s._cls, pos = _s:pos()}
+		pst.scrpt(_s:map_id(), "tile_xy_obj__del", t_prm)
+	end
+
 	local z = - 0.01
 	local t_pos = _s:hldd_pos()
 	-- log._("Hldabl.hldd__o", t_pos, _s._hldd_id)
-
+	
 	_s:parent__(_s:plychara_id(), z, t_pos)
 end
 

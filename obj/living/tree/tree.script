@@ -9,6 +9,8 @@ go.property("_weight",  1)
 
 go.property("_clsHa",   hash(""))
 
+-- go.property("_tmp", {aaa = 2})
+
 function init(_s)
 	Tree.init(_s)
 end

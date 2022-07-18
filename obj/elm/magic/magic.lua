@@ -62,7 +62,6 @@ function Magic.map_tile__(_s)
 		Efct.cre_tile_vnsh()
 	end
 
-	-- map.tile__(_s:pos(), t_tile, Game.map_id(), "ground")
 	pst.scrpt(Game.map_id(), "tile__", {pos = _s:pos(), tile = t_tile})
 end
 

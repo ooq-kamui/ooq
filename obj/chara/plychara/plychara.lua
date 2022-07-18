@@ -542,7 +542,9 @@ function Plychara.menu_opn(_s)
 	local t_clss = {"reizoko", "pc", "shelf", "doorwrp", "flpy"}
 
 	for idx, t_cls in pairs(t_clss) do
+		
 		if #_s._clsn[t_cls] >= 1 then
+			
 			pst.scrpt(_s._clsn[t_cls][1], "opn")
 			return
 		end
@@ -560,9 +562,7 @@ function Plychara.itm_use(_s)
 		pst.scrpt(_s:fairy_id(), "magic")
 		
 	elseif itm == "wand_wall"  then
-		-- Wall.__(_s:tilepos(), Wand.wand_wall.tile_idx)
 		pst.scrpt(_s:fairy_id(), "magic_wall")
-		-- Wall.__(_s:fairy_tilepos(), Wand.wand_wall.tile_idx)
 
 	elseif itm == "nokogiri"   then
 		if #_s._clsn.tree > 0 then
@@ -861,6 +861,19 @@ function Plychara.hld__x(_s)
 			pst.scrpt(_s._clsn.anml[1]   , "present"     , {id = t_id})
 
 		elseif #_s._clsn.hrvst   >= 1 then
+			
+		--[[ -- old - Map.obj
+			if ar.in_(_s._cls, Hrvst.rst_cls) then
+
+				log._("Hrvst.__in", _s._cls, #Map.obj[_s._cls])
+				if #Map.obj[_s._cls] <= 1 then
+
+					Msg.s("last one.., can not release")
+					return
+				end
+			end
+		--]]
+			
 			pst.scrpt(_s._clsn.hrvst[1]  , "__in"        , {id = t_id})
 
 		elseif #_s._clsn.kitchen >= 1 then
@@ -878,7 +891,7 @@ end
 function Plychara.hld__x_thrw(_s)
 end
 
-function Plychara.hld_tile_side(_s)
+function Plychara.hld_tile_side(_s) -- tmp use not
 
 	local dir_h = ha.de(_s._mv_dir_h_Ha)
 
@@ -895,7 +908,7 @@ function Plychara.hld_tile_side(_s)
 	local side_pos = _s:side_pos(dir_h)
 	if dir_h == "l" then vec.xy__pls(side_pos, -1, 0) end
 
-	_s:map_tile__(Tile.mstr.emp, side_pos)
+	_s:map_tile__(Tile.mstr.emp, side_pos) -- todo ch
 end
 
 -- to xxx

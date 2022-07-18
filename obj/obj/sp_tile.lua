@@ -75,7 +75,8 @@ end
 function Sp.pos__tile(_s)
 	-- log._("Sp.vec_tile__")
 	
-	if not u.eq(_s:map_id(), _s:parent_id()) then return end
+	-- if not u.eq(_s:map_id(), _s:parent_id()) then return end
+	if not _s:is_parent_eq_map() then return end
 
 	if     _s:foot_i_is_elv_u() then
 
@@ -131,7 +132,7 @@ function Sp.tile(_s)
 	return _s._c_tile
 end
 
-function Sp.map_tile__(_s, p_tile, p_pos)
+function Sp.map_tile__(_s, p_tile, p_pos) -- ???
 
 	p_pos = p_pos or _s:pos()
 
@@ -490,7 +491,8 @@ end
 function Sp.vec_total__crct(_s) -- 3sec
 	-- log._("Sp.vec_total__crct")
 	
-	if not (_s._parent_id == _s._map_id) then return end
+	-- if not (_s._parent_id == _s._map_id) then return end
+	if not _s:is_parent_eq_map() then return end
 	
 	_s:vec_total__crct_block() -- 3sec heavy
 	
@@ -959,5 +961,14 @@ function Sp.nxt_cflg__f(_s) -- upd cache
 	_s:nxt_head_o__clr()
 	_s:nxt_side_l__clr()
 	_s:nxt_side_r__clr()
+end
+
+function Sp.is_parent_eq_map(_s)
+	
+	if u.eq(_s:map_id(), _s:parent_id()) then
+		return _.t
+	else
+		return _.f
+	end
 end
 

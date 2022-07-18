@@ -44,14 +44,6 @@ end
 
 function Sp.upd_pos_static(_s) -- 3sec root
 
-	--[[
-	if ha.eq(_s._id, "/instance11") then
-		log.flg__(_.t)
-		log._(_s:cls())
-	end --]]
-
-	-- if _s:is_vec_grv_0() then return end
-
 	if _s:is_grv_off() then return end
 
 	if _s:is_grounding() then
@@ -70,7 +62,7 @@ function Sp.upd_pos_static(_s) -- 3sec root
 
 	_s:pos__pls_vec_total() -- 3sec
 
-	_s:mapobj__()
+	-- _s:mapobj__()
 
 	log.flg__(_.f)
 end
@@ -123,7 +115,8 @@ end
 function Sp.vec_tile__(_s)
 	-- log._("Sp.vec_tile__")
 	
-	if not u.eq(_s:map_id(), _s:parent_id()) then return end
+	-- if not u.eq(_s:map_id(), _s:parent_id()) then return end
+	if not _s:is_parent_eq_map() then return end
 
 	if     _s:foot_i_is_elv_u() then
 		vec.xy__(_s._vec_tile, 0, 1)

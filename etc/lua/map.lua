@@ -207,8 +207,7 @@ function map.rng_tilepos(map_id, p_tilemap)
 		return map._[p_tilemap].rng_tilepos
 	end
 
-	-- log._(p_tilemap)
-	ar.__init_ar_if_nil(map._, p_tilemap)
+	ar.chld_ar__init_if_nil(map._, p_tilemap)
 	
 	local x, y, w, h = map.tile_bound(map_id, p_tilemap)
 	local min = {x = x        , y = y        }
@@ -216,14 +215,10 @@ function map.rng_tilepos(map_id, p_tilemap)
 
 	map._[p_tilemap].rng_tilepos = {min = min, max = max}
 	
-	-- log._("map.rng_tilepos")
-	-- log.pp("map.rng_tilepos:"..p_tilemap, map._[p_tilemap].rng_tilepos)
-	
 	return map._[p_tilemap].rng_tilepos
 end
 
 function map.rng_tilepos_xy(map_id, p_tilemap)
-	-- log._("map.rng_tilepos_xy")
 	
 	local r = map.rng_tilepos(map_id, p_tilemap)
 	return r.min.x, r.max.x, r.min.y, r.max.y

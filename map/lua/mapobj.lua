@@ -1,6 +1,11 @@
 log.scrpt("mapobj.lua")
 
+-- 
+-- old
+-- 
+
 Mapobj = {
+	
 	cls = {"wood", "dryleaf", "leaf", "block"}, -- use by fire , block
 
 	_obj_ = {},

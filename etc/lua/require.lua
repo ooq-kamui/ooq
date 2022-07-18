@@ -64,6 +64,7 @@ require("assets/obj/obj/sp_tile")
 require("assets/obj/obj/sp_upd")
 require("assets/obj/obj/sp_on_msg")
 require("assets/obj/obj/sp_util")
+require("assets/obj/obj/sp_map_obj")
 
 require("assets/obj/obj/hldabl")
 

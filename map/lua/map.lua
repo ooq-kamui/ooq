@@ -55,7 +55,7 @@ Map.dstrct_mv = {
 	},
 }
 
-Map.obj = nil -- alias -- old
+-- Map.obj = nil -- alias -- old
 
 -- static
 
@@ -103,8 +103,9 @@ function Map.init(_s)
 	_s:save_data__init()
 	
 	_s._obj = {} -- cnt
-	Map.obj = _s._obj -- alias -- old
-	Mapobj.init(_s._id) -- old
+	-- Map.obj = _s._obj -- alias -- old
+	
+	-- Mapobj.init(_s._id) -- old
 
 	_s:tile_xy__init()
 
@@ -205,6 +206,9 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "tile_xy_obj__del")     then
 		_s:tile_xy_obj__del(prm.id, prm.cls, prm.pos)
+		
+	elseif ha.eq(msg_id, "gui:doorwrp:opn") then
+		_s:gui_doorwrp_opn(prm.doorwrp_id, prm.doorwrp_gui_id)
 	end
 end
 
@@ -433,6 +437,17 @@ function Map.drk__o(_s, fnc)
 
 	local time = 60
 	anm.drk__o(_s._id, "ground", time, nil, fnc)
+end
+
+-- gui
+
+function Map.gui_doorwrp_opn(_s, doorwrp_id, doorwrp_gui_id)
+	
+	local prm = {
+		_slfobj_id  = doorwrp_id,
+		doorwrp_lst = _s._obj["doorwrp"],
+	}
+	pst.gui(doorwrp_gui_id, "prt:slfobj__", prm)
 end
 
 -- static

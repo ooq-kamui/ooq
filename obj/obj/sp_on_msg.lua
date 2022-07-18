@@ -106,16 +106,6 @@ function Sp.__to_hrvst(_s)
 
 	if ar.in_(_s._cls, {"cloud"}) then return end
 	
-	if ar.in_(_s._cls, Hrvst.rst_cls) then
-
-		log._("Hrvst.__in", _s._cls, #Map.obj[_s._cls])
-		if #Map.obj[_s._cls] <= 1 then
-
-			Msg.s("last one.., can not release")
-			return
-		end
-	end
-
 	--
 
 	local gold = Mstr.gold(_s._cls, _s._name)
