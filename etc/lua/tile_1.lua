@@ -85,8 +85,8 @@ function Tile.is_block(p_tile)
 	if p_tile == nil then return _.f end
 	
 	local ret = _.f
-	if int.is_rng(p_tile, Tile.mstr.block) and not ar.in_(p_tile, Tile.mstr.block_excld) then 
-		-- ^ Tile.block is min max
+	if  int.is_rng(p_tile, Tile.mstr.block)
+	and not ar.in_(p_tile, Tile.mstr.block_excld) then
 		ret = _.t
 	end
 	return ret

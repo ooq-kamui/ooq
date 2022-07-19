@@ -147,7 +147,7 @@ function Chara.say(_s, str)
 		len = Serifu._[idx].len
 	end
 	
-	local t_id = Fuki.cre(nil, {parent_id = _s._id})
+	local t_id = Fuki.cre(nil, {_parent_id = _s._id})
 	pst.scrpt(t_id, "s", {str = str, len = len})
 end
 

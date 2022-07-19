@@ -6,11 +6,11 @@ function Sp.log(_s, ...)
 	log._(_s._cls, ...)
 end
 
-function Sp.log_only_cls(_s, t_cls, ...)
+function Sp.log_if_cls(_s, p_cls, ...)
 
-	if _s._cls ~= t_cls then return end
+	if _s._cls ~= p_cls then return end
 
-	log._(t_cls, ...)
+	log._(p_cls, ...)
 end
 
 -- ply_slt, save

@@ -6,9 +6,10 @@ function Map.tile__(_s, p_pos, p_tile, p_tilemap) -- alias
 	
 	_s:tile__6_pos(p_pos, p_tile, p_tilemap)
 	
-	-- log
+	---[[ log
 	-- local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 	-- _s:log_tile_xy(x, y)
+	--]]
 end
 
 function Map.tile__6_pos(_s, p_pos, p_tile, p_tilemap)

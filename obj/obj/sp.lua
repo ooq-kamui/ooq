@@ -72,7 +72,6 @@ function Sp.__init(_s, prm)
 	_s._weight     = _s:Cls().weight     or 1
 
 	_s:parent__map()
-	_s:map_obj__add()
 
 	if     ar.in_(_s._cls, {"plychara", }) then
 		-- excld
@@ -81,19 +80,19 @@ function Sp.__init(_s, prm)
 		_s:anim__(prm._anim)
 	end
 
-	-- _s._act_intrvl = 0
 	_s:vec__init()
 	_s:pos__init()
-
 	_s:intrvl__init()
-
 	_s:st__init()
+	
+	_s:map_obj__add()
+	_s:map_tile_xy_obj__add()
 end
 
 function Sp.final(_s)
 	
 	_s:map_obj__del()
-	-- _s:mapobj__del()
+	_s:map_tile_xy_obj__del()
 
 	_s:intrvl__final()
 
@@ -247,10 +246,6 @@ function Sp.cls(_s)
 	return _s._cls
 end
 
-function Sp.clsHa(_s) -- rest
-	return _s._clsHa
-end
-
 function Sp.name(_s)
 
 	return _s._name
@@ -328,22 +323,39 @@ end
 
 -- st
 
-function Sp.st__init(_s)
-
-	_s._st = Sp._st_.fall
-end
-
 function Sp.st(_s)
 
 	return _s._st
+end
+
+function Sp.st__init(_s)
+	_s:st__fall()
+end
+
+function Sp.st__on(_s)
+	_s._st = Sp._st_.on
+end
+
+function Sp.st__fall(_s)
+	_s._st = Sp._st_.fall
 end
 
 function Sp.st__(_s, val)
 
 	_s._st = val
 
-	if     val == Sp._st_.on   then _s:upd__x()
-	elseif val == Sp._st_.fall then _s:upd__o()
+	if     val == Sp._st_.on   then
+		-- _s:upd__x()
+	elseif val == Sp._st_.fall then
+		-- _s:upd__o()
 	end
 end
+
+-- old
+
+--[[
+function Sp.clsHa(_s) -- use not
+	return _s._clsHa
+end
+--]]
 

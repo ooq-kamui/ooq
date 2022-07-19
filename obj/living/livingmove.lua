@@ -32,7 +32,6 @@ end
 
 function Livingmove.vec_total__(_s)
 
-	-- _s._vec_total = _s._vec_mv + _s._vec_tile + _s._vec_grv
 	vec.xy__vec(    _s._vec_total, _s._vec_mv)
 	vec.xy__pls_vec(_s._vec_total, _s._vec_tile)
 	vec.xy__pls_vec(_s._vec_total, _s._vec_grv)

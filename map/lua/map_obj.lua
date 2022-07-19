@@ -45,10 +45,6 @@ Map._obj.grp_cls = {
 	},
 }
 
--- static
-
--- method
-
 -- obj
 
 function Map.obj__add(_s, p_id, p_cls)

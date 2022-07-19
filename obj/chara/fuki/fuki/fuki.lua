@@ -52,7 +52,8 @@ function Fuki.act_intrvl(_s, dt)
 
 	local anim = {}
 	anim[1] = function ()
-		go.animate(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
+		-- go.animate(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
+		anm._(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
 	end
 	anim[2] = function ()
 		go.delete(_.t)

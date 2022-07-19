@@ -4,8 +4,8 @@ Plychara = {
 	
 	speed     = 4.5,
 
-	jmp_h_max   = Map.sq,
-	jmp_h_mrgn  = 2, -- 1,
+	jmp_h_max  = Map.sq,
+	jmp_h_mrgn = 2, -- 1,
 
 	jmp_lv_dflt = 1, -- 2,
 
@@ -81,14 +81,11 @@ function Plychara.__init(_s, prm)
 	_s._face_dir_h_Ha = ha._("l")
 	_s._dir_v = ""
 	
-	_s._is_moving_h = _.f
-	_s._is_moving_v = _.f
-	_s._is_clmb_d   = _.f
-	_s._is_clmb_u   = _.f
-	_s._is_cruch    = _.f
+	_s:act__clr()
+	_s._is_cruch = _.f
 
-	_s._is_jmp_start  = _.f
-	_s._is_dive_start = _.f
+	_s._is_jmp_start = _.f
+	_s._jmp_lv = Plychara.jmp_lv_dflt
 	
 	_s._vec_mv_dir = n.vec()
 
@@ -97,9 +94,25 @@ function Plychara.__init(_s, prm)
 
 	_s._itm_selected = "wand_block" -- name
 
-	_s._jmp_lv = Plychara.jmp_lv_dflt
-
 	_s._hld  = {} -- id
+	
+	_s:clsn__init()
+	
+	_s._clsn_hldabl = {}
+
+	local fairy_id = _s:fairy_id()
+
+	local z = 0.01
+	local t_pos = n.vec(0, Map.sq)
+	pst.parent__(fairy_id, _s._id, z, t_pos)
+
+	_s:skl__dtch_airride()
+
+	-- _s:upd__o()
+end
+
+function Plychara.clsn__init(_s)
+	
 	_s._clsn = { -- clsn group
 		hld     = {},
 		hrvst   = {},
@@ -116,17 +129,6 @@ function Plychara.__init(_s, prm)
 		trmpln  = {},
 		warp    = {},
 	}
-	_s._clsn_hldabl = {}
-
-	local fairy_id = _s:fairy_id()
-
-	local z = 0.01
-	local t_pos = n.vec(0, Map.sq)
-	pst.parent__(fairy_id, _s._id, z, t_pos)
-
-	_s:skl__dtch_airride()
-
-	-- _s:upd__o()
 end
 
 function Plychara.upd(_s, dt)
@@ -134,11 +136,11 @@ function Plychara.upd(_s, dt)
 	-- upd init
 	_s:on_chara__clr()
 	
+	-- _s:vec_on_chara__(dt) -- 3sec
+
 	_s:vec_mv__()
 	
 	_s:vec_tile__()
-
-	-- _s:vec_on_chara__(dt) -- 3sec
 
 	_s:vec_grv__()
 
@@ -146,16 +148,22 @@ function Plychara.upd(_s, dt)
 
 	_s:pos__pls_vec_total()
 	
+	--
+	
 	_s:ox_dstrct__mv()
 	
 	_s:turn_time__add(dt)
 	
-	-- upd final
-	_s:act__clr()
-	_s:clsn__clr()
-	_s:upd_final() -- sp
+	_s:upd_final()
 
 	-- log._("Plychara.upd", _s:pos())
+end
+
+function Plychara.upd_final(_s)
+
+	_s:act__clr()
+	_s:clsn__clr()
+	Sp.upd_final(_s)
 end
 
 function Plychara.vec_total__(_s)

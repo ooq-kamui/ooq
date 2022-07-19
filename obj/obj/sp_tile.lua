@@ -72,10 +72,9 @@ function Sp.pos__pls_vec_total(_s) -- 3sec
 	_s:pos__pls(_s._vec_total)
 end
 
-function Sp.pos__tile(_s)
+function Sp.pos__6_tile(_s)
 	-- log._("Sp.vec_tile__")
 	
-	-- if not u.eq(_s:map_id(), _s:parent_id()) then return end
 	if not _s:is_parent_eq_map() then return end
 
 	if     _s:foot_i_is_elv_u() then
@@ -199,6 +198,53 @@ function Sp.is_soil(_s)
 end
 
 -- foot pos, tile
+
+-- is grounding
+
+function Sp.is_ground(_s)
+end
+
+function Sp.is_grounding(_s)
+
+	local ret = _.f
+
+	if _s._accl._speed.y > 0 then return ret end
+
+	local foot_o_tile = _s:foot_o_tile()
+
+	if Tile.is_block(foot_o_tile) then return _.t end
+
+	if Tile.is_elv( foot_o_tile)
+	or Tile.is_clmb(foot_o_tile) then return _.t end
+
+	local foot_i_tile = _s:foot_i_tile()
+	
+	if Tile.is_elv( foot_i_tile)
+	or Tile.is_clmb(foot_i_tile) then return _.t end
+
+	return ret
+end
+
+function Sp.is_vec_grv_0(_s)
+
+	-- local ret, is_grounding = _.t, _.f
+	local ret, is_grounding
+
+	if     _s:is_grv_off()   then
+		ret = _.t
+		is_grounding = _.f
+		
+	elseif _s:is_grounding() then
+		ret = _.t
+		is_grounding = _.t
+
+	-- elseif _s:is_on_obj_block() then
+	else
+		ret = _.f
+		is_grounding = _.f
+	end
+	return ret, is_grounding
+end
 
 function Sp.foot_i_pos(_s)
 
@@ -448,50 +494,11 @@ function Sp.side_r_is_block(_s)
 	return ret
 end
 
--- is grounding
-
-function Sp.is_grounding(_s)
-
-	local ret = _.f
-
-	if _s._accl._speed.y > 0 then return ret end
-
-	local foot_o_tile = _s:foot_o_tile()
-
-	if Tile.is_block(foot_o_tile)
-	then
-		_s:foot_o__crct()
-
-		ret = _.t
-		return ret
-	end
-
-	if Tile.is_elv(  foot_o_tile)
-	or Tile.is_clmb( foot_o_tile)
-	then ret = _.t return ret end
-
-	local foot_i_tile = _s:foot_i_tile()
-	
-	if Tile.is_elv(  foot_i_tile)
-	or Tile.is_clmb( foot_i_tile)
-	then ret = _.t return ret end
-
-	return ret
-end
-
-function Sp.foot_o__crct(_s)
-
-	local x, y = map.tile_pos_xy_6_pos(_s:foot_o_pos())
-	local crct_y = y + Map.sqh + _s:foot_dst_i()
-	_s:pos__y(crct_y)
-end
-
 -- crct
 
 function Sp.vec_total__crct(_s) -- 3sec
 	-- log._("Sp.vec_total__crct")
 	
-	-- if not (_s._parent_id == _s._map_id) then return end
 	if not _s:is_parent_eq_map() then return end
 	
 	_s:vec_total__crct_block() -- 3sec heavy
@@ -504,7 +511,7 @@ end
 function Sp.vec_total__crct_block(_s) -- 3sec heavy
 	-- log._("Sp.vec_total__crct_block")
 	
-	if ha.eq(_s._clsHa, "fire") then return end
+	if _s._cls == "fire" then return end
 	
 	_s:vec_total__crct_block_side() -- 3sec heavy
 
@@ -601,9 +608,15 @@ function Sp.vec_total__crct_inside_map(_s ) -- 3sec
 	elseif dir == "u" then _s._nxt_pos.y = inside_rng_pos.max.y
 	end
 	
-	-- _s._vec_total = nxt_pos - _s:pos()
 	vec.xy__vec(_s:vec_total(), _s:nxt_pos())
 	vec.xy__pls(_s:vec_total(), - _s:pos().x, - _s:pos().y)
+end
+
+function Sp.foot_o__crct(_s)
+
+	local x, y = map.tile_pos_xy_6_pos(_s:foot_o_pos())
+	local crct_y = y + Map.sqh + _s:foot_dst_i()
+	_s:pos__y(crct_y)
 end
 
 -- nxt
@@ -615,7 +628,6 @@ end
 
 function Sp.nxt_pos__(_s)
 
-	-- local nxt_pos = _s:pos() + _s._vec_total
 	vec.xy__vec(    _s:nxt_pos(), _s:pos())
 	vec.xy__pls_vec(_s:nxt_pos(), _s._vec_total)
 end
@@ -889,6 +901,7 @@ function Sp.vec__init(_s)
 	_s._vec_total = n.vec()
 
 	_s._accl_speed = _s._accl._speed -- alias
+	_s._accl_speed_y_pre = 0
 end
 
 function Sp.pos__init(_s)
@@ -952,7 +965,7 @@ function Sp.cflg__f(_s) -- upd cache
 	_s._tilepos_d_flg = _.f
 end
 
-function Sp.nxt_cflg__f(_s) -- upd cache
+function Sp.nxt_cflg__f(_s) -- upd cache -- use not
 
 	-- _s._nxt_pos_flg  = _.f
 
@@ -965,10 +978,8 @@ end
 
 function Sp.is_parent_eq_map(_s)
 	
-	if u.eq(_s:map_id(), _s:parent_id()) then
-		return _.t
-	else
-		return _.f
+	if u.eq(_s:map_id(), _s:parent_id()) then return _.t
+	else                                      return _.f
 	end
 end
 
