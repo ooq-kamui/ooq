@@ -40,7 +40,7 @@ function Hldabl.hldd__o(_s, prm)
 	if _s:is_parent_eq_map() then
 		
 		local t_prm = {id = _s._id, cls = _s._cls, pos = _s:pos()}
-		pst.scrpt(_s:map_id(), "tile_xy_obj__del", t_prm)
+		pst.scrpt(_s:map_id(), "gtile_obj__del", t_prm)
 	end
 
 	local z = - 0.01

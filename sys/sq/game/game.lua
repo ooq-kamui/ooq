@@ -144,6 +144,15 @@ function Game.dia_id()
 	return dia_id
 end
 
+function Game.gtile(x, y)
+	
+	if x and y then
+		return Game._gtile[y][x]
+	else
+		return Game._gtile
+	end
+end
+
 -- scrpt method
 
 function Game.init(_s)
@@ -165,16 +174,6 @@ function Game.init(_s)
 	_s._intrvl_hndl = timer.delay(Game.act_intrvl_time, _.t, _s.act_intrvl)
 end
 
---[[
-function Game.upd(_s, dt)
-	-- log._("Game.upd start")
-	
-	if _s:is_loop__act_intrvl__(dt) then _s:act_intrvl() end
-	
-	-- log._("Game.upd end")
-end
---]]
-
 function Game.act_intrvl(_s)
 	-- log._("game act_intrvl", _s._id)
 	
@@ -185,19 +184,6 @@ function Game.act_intrvl(_s)
 
 	_s:bgm_ply_nxt_rnd()
 end
-
---[[
-function Game.is_loop__act_intrvl__(_s, dt)
-	local is_loop = _s:act_intrvl__(dt)
-	return is_loop
-end
-
-function Game.act_intrvl__(_s, dt)
-	local is_loop
-	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
-	return is_loop
-end
---]]
 
 function Game.bgm_ply_rnd(_s)
 	Bgm.fade_o_ply_rnd()
@@ -568,4 +554,25 @@ function Game.continue_event(_s)
 
 	Ev._("game_continue")
 end
+
+--[[
+function Game.upd(_s, dt)
+	-- log._("Game.upd start")
+	
+	if _s:is_loop__act_intrvl__(dt) then _s:act_intrvl() end
+	
+	-- log._("Game.upd end")
+end
+
+function Game.is_loop__act_intrvl__(_s, dt)
+	local is_loop = _s:act_intrvl__(dt)
+	return is_loop
+end
+
+function Game.act_intrvl__(_s, dt)
+	local is_loop
+	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Game.act_intrvl_time)
+	return is_loop
+end
+--]]
 

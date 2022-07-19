@@ -17,7 +17,7 @@ function Sp.upd_pos_static(_s) -- 3sec root
 end
 
 function Sp.upd_final(_s)
-	_s:log_if_cls("pc", "upd_final")
+	-- _s:log_if_cls("pc", "upd_final")
 	
 	if _s:is_grounding() then
 		

@@ -69,8 +69,10 @@ function Sp.on_msg(_s, msg_id, prm, sndr_url)
 
 	elseif ha.eq(msg_id, "upd__o"       ) then
 		_s:upd__o()
-
-
+--[[
+	elseif ha.eq(msg_id, "pb__gtile__") then
+		_s:pb__gtile__(prm.gtile)
+--]]
 	else
 		ret = _.f
 	end

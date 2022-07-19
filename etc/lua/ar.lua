@@ -216,3 +216,10 @@ function ar.chld_ar__init_if_nil(p_ar, key)
 	end
 end
 
+function ar.chld_ar__nil_if_emp(p_ar, key)
+	
+	if ar.is_emp(p_ar[key]) then
+		p_ar[key] = nil
+	end
+end
+

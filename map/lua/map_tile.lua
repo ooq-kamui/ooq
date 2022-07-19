@@ -7,8 +7,8 @@ function Map.tile__(_s, p_pos, p_tile, p_tilemap) -- alias
 	_s:tile__6_pos(p_pos, p_tile, p_tilemap)
 	
 	---[[ log
-	-- local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
-	-- _s:log_tile_xy(x, y)
+	local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
+	_s:log_gtile(x, y)
 	--]]
 end
 
@@ -40,9 +40,9 @@ function Map.tile__6_tile_xy(_s, x, y, p_tile, p_tilemap)
 
 	if p_tilemap ~= "ground" then return end
 	
-	-- tile_xy
+	-- gtile
 	
-	_s:tile_xy_tile__6_tile_xy(x, y, p_tile)
+	_s:gtile_tile__6_tile_xy(x, y, p_tile)
 end
 
 function Map.tile_6_tile_xy(_s, x, y, p_tilemap)
@@ -93,51 +93,50 @@ function Map.tile_arund__crct_6_tile_xy(_s, x, y, p_tile, p_tilemap, layer)
 	if arund_flg[7] then _s:tile__crct(arund_tilepos[7], p_tilemap, layer) end
 end
 
--- tile_xy ( ground )
+-- gtile ( ground )
 
-function Map.tile_xy__init(_s)
+function Map.gtile__init(_s)
 	
 	local tilemap = "ground"
 	
-	_s._tile = {}
+	_s._gtile = {}
+	Game._gtile = _s._gtile -- global
 	
 	local x_min, x_max, y_min, y_max = _s:rng_tile_xy(tilemap)
 	for y = y_min, y_max do
 		
-		ar.chld_ar__init_if_nil(_s._tile, y)
+		ar.chld_ar__init_if_nil(_s._gtile, y)
 		
 		for x = x_min, x_max do
 			
-			ar.chld_ar__init_if_nil(_s._tile[y]   , x    )
-			ar.chld_ar__init_if_nil(_s._tile[y][x], "obj")
-			_s._tile[y][x]["tile"] = Tile.mstr.emp
+			ar.chld_ar__init_if_nil(_s._gtile[y]   , x    )
+			ar.chld_ar__init_if_nil(_s._gtile[y][x], "obj")
+			_s._gtile[y][x]["tile"] = Tile.mstr.emp
 		end
 	end
 end
 
-function Map.tile_xy__init_6_tile_xy(_s, x, y)
+function Map.gtile__init_6_tile_xy(_s, x, y)
 
-	ar.chld_ar__init_if_nil(_s._tile      , y    )
-	ar.chld_ar__init_if_nil(_s._tile[y]   , x    )
-	ar.chld_ar__init_if_nil(_s._tile[y][x], "obj")
+	ar.chld_ar__init_if_nil(_s._gtile      , y    )
+	ar.chld_ar__init_if_nil(_s._gtile[y]   , x    )
+	ar.chld_ar__init_if_nil(_s._gtile[y][x], "obj")
 end
 
-function Map.tile_xy__init_6_pos(_s, p_pos)
+function Map.gtile__init_6_pos(_s, p_pos)
 	
 	local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
-	_s:tile_xy__init_6_tile_xy(x, y)
+	_s:gtile__init_6_tile_xy(x, y)
 end
 
--- tile_xy tile
+-- gtile tile
 
-function Map.tile_xy_tile__6_tile_xy(_s, x, y, p_tile)
+function Map.gtile_tile__6_tile_xy(_s, x, y, p_tile)
 
-	-- _s:tile_xy__init_6_tile_xy(x, y)
-
-	_s._tile[y][x]["tile"] = p_tile
+	_s._gtile[y][x]["tile"] = p_tile
 end
 
-function Map.tile_xy_tile__crnt(_s)
+function Map.gtile_tile__now(_s)
 	
 	local t_tilemap = "ground"
 	local t_tile
@@ -146,44 +145,67 @@ function Map.tile_xy_tile__crnt(_s)
 		for x = x_min, x_max do
 			
 			t_tile = _s:tile_6_tile_xy(x, y, t_tilemap)
-			_s:tile_xy_tile__6_tile_xy(x, y, t_tile)
+			_s:gtile_tile__6_tile_xy(x, y, t_tile)
 		end
 	end
 end
 
--- tile_xy obj
+-- gtile obj
 
-function Map.tile_xy_obj__del_add(_s, p_id, p_cls, p_pos_c, p_pos_n)
+function Map.gtile_obj__del_add(_s, p_id, p_cls, p_pos_c, p_pos_n)
 	
-	_s:tile_xy_obj__del(p_id, p_cls, p_pos_c)
-	_s:tile_xy_obj__add(p_id, p_cls, p_pos_n)
+	_s:gtile_obj__del(p_id, p_cls, p_pos_c)
+	_s:gtile_obj__add(p_id, p_cls, p_pos_n)
 end
 
-function Map.tile_xy_obj__del(_s, p_id, p_cls, p_pos)
+function Map.gtile_obj__del(_s, p_id, p_cls, p_pos)
 
 	local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 	
-	_s:tile_xy__init_6_tile_xy(x, y)
+	if not _s._gtile[y][x]["obj"][p_cls] then return end -- mod ?
 	
-	ar.chld_ar__init_if_nil(_s._tile[y][x]["obj"], p_cls)
+	_s:gtile_obj_cls(x, y, p_cls)[p_id] = nil
 	
-	_s._tile[y][x]["obj"][p_cls][p_id] = nil
-	
-	if ar.is_emp(_s._tile[y][x]["obj"][p_cls]) then
-		_s._tile[y][x]["obj"][p_cls] = nil
-	end
+	ar.chld_ar__nil_if_emp(_s:gtile_obj(x, y), p_cls)
 end
 
-function Map.tile_xy_obj__add(_s, p_id, p_cls, p_pos)
+function Map.gtile_obj__add(_s, p_id, p_cls, p_pos)
 	
 	local x, y = map.tile_xy_6_pos_xy(p_pos.x, p_pos.y)
 
-	if not _s._tile[y][x]["obj"][p_cls] then
-		_s._tile[y][x]["obj"][p_cls] = {}
-	end
-
-	_s._tile[y][x]["obj"][p_cls][p_id] = _.t
+	ar.chld_ar__init_if_nil(_s:gtile_obj(x, y), p_cls)
+	
+	_s:gtile_obj_cls(x, y, p_cls)[p_id] = _.t
 end
+
+function Map.gtile(_s, x, y)
+
+	if (not x) and (not y) then
+		return _s._gtile
+	else
+		return _s._gtile[y][x]
+	end
+end
+
+function Map.gtile_obj(_s, x, y)
+	
+	return _s:gtile(x, y)["obj"]
+end
+
+function Map.gtile_obj_cls(_s, x, y, p_cls)
+	
+	if not _s:gtile_obj(x, y)[p_cls] then return end
+	
+	return _s:gtile_obj(x, y)[p_cls]
+end
+
+-- --[[
+function Map.pb__gtile__(_s, sndr_url) -- del
+	
+	local gtile = _s:gtile(2, 2)
+	pst._(sndr_url, "pb__gtile__", {gtile = gtile})
+end
+--]]
 
 -- tile save_data
 
@@ -207,12 +229,6 @@ function Map.tile_layer__save_data(_s, p_tilemap, p_tiles) -- p_tiles[y][x]
 			
 			t_tile = p_tiles[int._2_str(y)][int._2_str(x)]
 			map.tile__6_tile_xy(x, y, t_tile, _s._id, p_tilemap)
-			
---[[
-			if p_tilemap == "ground" then
-				_s:tile_xy_tile__6_tile_xy(x, y, t_tile)
-			end
---]]
 		end
 	end
 end
@@ -366,19 +382,20 @@ end
 
 -- log
 
-function Map.log_tile_xy(_s, x, y)
+function Map.log_gtile(_s, x, y)
 	
 	local is_inside, dir = map.is_inside_tile_xy(x, y, _s._id, "ground")
 	
 	if not is_inside then return end
 
 	log.pp(
-		"log_tile_xy",
-		_s._tile[y][x - 1],
-		_s._tile[y][x    ],
-		_s._tile[y][x + 1]
-		-- _s._tile[y + 1][x    ],
-		-- _s._tile[y - 1][x    ]
+		"gtile " .. y .. " " .. x,
+		-- _s._gtile[y][x - 1],
+		_s._gtile[y][x    ],
+		-- _s._gtile[y][x + 1]
+		-- _s._gtile[y + 1][x    ],
+		-- _s._gtile[y - 1][x    ],
+		nil
 	)
 end
 

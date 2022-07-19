@@ -103,11 +103,7 @@ function Map.init(_s)
 	_s:save_data__init()
 	
 	_s._obj = {} -- cnt
-	-- Map.obj = _s._obj -- alias -- old
-	
-	-- Mapobj.init(_s._id) -- old
-
-	_s:tile_xy__init()
+	_s:gtile__init()
 
 	_s:new_or_load()
 end
@@ -198,15 +194,18 @@ function Map.on_msg(_s, msg_id, prm, sndr_url)
 	elseif ha.eq(msg_id, "tile__") then
 		_s:tile__(prm.pos, prm.tile)
 
-	elseif ha.eq(msg_id, "tile_xy_obj__del_add") then
-		_s:tile_xy_obj__del_add(prm.id, prm.cls, prm.pos_c, prm.pos_n)
+	elseif ha.eq(msg_id, "gtile_obj__del_add") then
+		_s:gtile_obj__del_add(prm.id, prm.cls, prm.pos_c, prm.pos_n)
 
-	elseif ha.eq(msg_id, "tile_xy_obj__add")     then
-		_s:tile_xy_obj__add(prm.id, prm.cls, prm.pos)
+	elseif ha.eq(msg_id, "gtile_obj__add")     then
+		_s:gtile_obj__add(prm.id, prm.cls, prm.pos)
 
-	elseif ha.eq(msg_id, "tile_xy_obj__del")     then
-		_s:tile_xy_obj__del(prm.id, prm.cls, prm.pos)
-		
+	elseif ha.eq(msg_id, "gtile_obj__del")     then
+		_s:gtile_obj__del(prm.id, prm.cls, prm.pos)
+--[[
+	elseif ha.eq(msg_id, "pb__gtile__") then
+		_s:pb__gtile__(sndr_url, prm.x, prm.y)
+--]]
 	elseif ha.eq(msg_id, "gui:doorwrp:opn") then
 		_s:gui_doorwrp_opn(prm.doorwrp_id, prm.doorwrp_gui_id)
 	end
@@ -223,7 +222,7 @@ function Map.new(_s, plychara_pos)
 	
 	_s:obj__new()
 	
-	_s:tile_xy_tile__crnt()
+	_s:gtile_tile__now()
 end
 
 function Map.load(_s, file_idx)
@@ -238,7 +237,7 @@ function Map.load(_s, file_idx)
 	_s:tiles__save_data(save_data["tile"])
 	_s:obj__save_data_obj_ar( save_data["obj"] )
 
-	_s:tile_xy_tile__crnt()
+	_s:gtile_tile__now()
 	
 	Msg.s("load complete")
 	-- Se.pst_ply("exe")
@@ -493,25 +492,4 @@ function Map.not_appear_chara_clb_tohoku()
 	local not_appear = ar.exclude_cp(Chara_clb_tohoku.chara, Map.chara_clb.tohoku)
 	return not_appear
 end
-
---[[
-function Map.upd(_s, dt)
-	_s:act_intrvl(dt)
-end
-
-function Map.act_intrvl(_s, dt)
-	if not _s:is_loop__act_intrvl__(dt) then return end
-end
-
-function Map.is_loop__act_intrvl__(_s, dt)
-	local is_loop = _s:act_intrvl__(dt)
-	return is_loop
-end
-
-function Map.act_intrvl__(_s, dt)
-	local is_loop
-	_s._act_intrvl, is_loop = num.pls_loop(_s._act_intrvl, dt, Map.act_intrvl_time)
-	return is_loop
-end
---]]
 

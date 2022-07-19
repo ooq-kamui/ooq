@@ -21,16 +21,6 @@ function id.prp(p_id, key)
 	return val
 end
 
-function id.prp_de(p_id, key) -- use not
-
-	local valHa = id.prp(p_id, key)
-
-	if ha.is_emp(valHa) then return nil end
-
-	local val = ha.de(valHa)
-	return val
-end
-
 function id.prp__(p_id, key, val)
 
 	if ha.is_emp(p_id) then return end
@@ -40,7 +30,7 @@ function id.prp__(p_id, key, val)
 	go.set(t_url, key, val)
 end
 
-function id.clsHa(p_id) -- old rest
+function id.clsHa(p_id) -- old rest wish del
 
 	return id.prp(p_id, "_clsHa")
 end
@@ -51,6 +41,11 @@ function id.pos(p_id)
 	
 	local t_pos = go.get_position(p_id)
 	return t_pos
+end
+
+function id.pos_y(p_id)
+	
+	return id.pos(p_id).y
 end
 
 function id.z(p_id)
@@ -103,5 +98,15 @@ function id.del(p_id, val)
 	else
 		go.delete(p_id)
 	end
+end
+
+function id.prp_de(p_id, key) -- use not
+
+	local valHa = id.prp(p_id, key)
+
+	if ha.is_emp(valHa) then return nil end
+
+	local val = ha.de(valHa)
+	return val
 end
 

@@ -23,6 +23,11 @@ function Sp.pos(_s)
 	return t_pos
 end
 
+function Sp.pos_y(_s)
+	
+	return _s:pos().y
+end
+
 function Sp.pos__(_s, p_pos)
 
 	local pos_c = _s:pos()
@@ -32,7 +37,7 @@ function Sp.pos__(_s, p_pos)
 	-- if u.is_emp(_s:map_id()) then return end
 
 	local prm = {id = _s._id, cls = _s._cls, pos_c = pos_c, pos_n = p_pos}
-	pst.scrpt(_s:map_id(), "tile_xy_obj__del_add", prm)
+	pst.scrpt(_s:map_id(), "gtile_obj__del_add", prm)
 end
 
 function Sp.pos__y(_s, p_pos_y)
@@ -139,6 +144,12 @@ function Sp.map_tile__(_s, p_tile, p_pos) -- ???
 end
 
 -- crnt tilepos
+
+function Sp.tile_xy(_s)
+	
+	local t_tilepos = _s:tilepos()
+	return t_tilepos.x, t_tilepos.y
+end
 
 function Sp.tilepos(_s)
 

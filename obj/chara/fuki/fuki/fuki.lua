@@ -43,8 +43,17 @@ function Fuki.__init(_s, prm)
 end
 
 function Fuki.upd(_s, dt)
-
-	_s:pos__(_s:pos() + Fuki.mv_vec)
+	
+	local dy = Fuki.mv_vec.y
+	
+	local t_id = _s:gtile_obj_othr1(_s._cls, "d")
+	if t_id then
+		dy = dy * 5
+	end
+	
+	_s:pos__pls_y(dy)
+	
+	_s:upd_final()
 end
 
 function Fuki.act_intrvl(_s, dt)
@@ -52,7 +61,6 @@ function Fuki.act_intrvl(_s, dt)
 
 	local anim = {}
 	anim[1] = function ()
-		-- go.animate(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
 		anm._(_s._id, "scale", es.fwd, n.vec(), es.sin_io, 0.3, 0, anim[2])
 	end
 	anim[2] = function ()

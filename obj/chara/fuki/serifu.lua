@@ -19,6 +19,7 @@ Serifu = {
 		{len =  2, txt = "にく"},
 		{len =  3, txt = "やさい"},
 		{len =  3, txt = "けーき"},
+		{len =  4, txt = "でざーと"},
 
 		{len =  3, txt = "まいご"},
 		{len =  4, txt = "さまよう"},
@@ -32,10 +33,12 @@ Serifu = {
 		{len =  6, txt = "いんびじぶる"},
 		{len =  4, txt = "みえない"},
 		{len =  4, txt = "はかない"},
+		{len =  3, txt = "みえた"},
+		
 		{len =  4, txt = "たりない"},
 		{len =  4, txt = "はじまる"},
 
-		{len =  3, txt = "みえた"},
+		{len =  2, txt = "ない"},
 		{len =  4, txt = "じゃない"},
 
 		{len =  6, txt = "あたしだって"},
@@ -57,6 +60,7 @@ Serifu = {
 
 		{len =  6, txt = "かたじけない"},
 		
+		{len =  3, txt = "ひとり"},
 		{len =  6, txt = "ひとりぼっち"},
 		{len =  4, txt = "ようやく"},
 		{len =  3, txt = "へんだ"},
@@ -67,6 +71,7 @@ Serifu = {
 		{len =  4, txt = "おもいで"},
 
 		{len =  5, txt = "しましょう"},
+		{len =  2, txt = "する"},
 		{len =  4, txt = "おすきに"},
 
 		{len =  7, txt = "どうでもいいわ"},
@@ -122,7 +127,7 @@ Serifu = {
 		-- console
 		{len = 10, txt = "そんなときも あるよ"},
 		
-		-- amount many
+		-- many
 		{len =  4, txt = "いっぱい"},
 
 		-- time
@@ -261,6 +266,7 @@ Serifu = {
 		{len =  3, txt = "まもる"},
 		{len =  8, txt = "わたしが まもる"},
 		{len =  3, txt = "つるぎ"},
+		{len =  6, txt = "だいかつやく"},
 
 		-- fight lose
 		{len =  4, txt = "たすけて"},
@@ -321,6 +327,7 @@ Serifu = {
 		{len =  6, txt = "わからないわ"},
 		{len =  6, txt = "わかりません"},
 		{len =  4, txt = "わからん"},
+		{len =  5, txt = "わかんない"},
 		
 		{len =  4, txt = "しってる"},
 		{len =  5, txt = "しってる?"},

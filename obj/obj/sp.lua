@@ -86,13 +86,13 @@ function Sp.__init(_s, prm)
 	_s:st__init()
 	
 	_s:map_obj__add()
-	_s:map_tile_xy_obj__add()
+	_s:gtile__init()
 end
 
 function Sp.final(_s)
 	
 	_s:map_obj__del()
-	_s:map_tile_xy_obj__del()
+	_s:map_gtile_obj__del()
 
 	_s:intrvl__final()
 
