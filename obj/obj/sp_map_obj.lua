@@ -52,11 +52,11 @@ function Sp.gtile__(_s)
 	_s._gtile = Game.gtile()
 end
 
-function Sp.gtile(_s, x, y)
+function Sp.gtile(_s, x, y, dx, dy)
 	
 	x, y = _s:gtile_prm_dflt(x, y)
 	
-	return Game.gtile(x, y)
+	return Game.gtile(x, y, dx, dy)
 end
 
 function Sp.gtile_obj(_s, x, y, p_cls)
@@ -82,27 +82,47 @@ function Sp.gtile_obj_cls(_s, p_cls, x, y)
 	return _s:gtile_obj(x, y, p_cls)
 end
 
-function Sp.gtile_obj_othr1(_s, p_cls, dir, x, y)
+function Sp.gtile_obj_othr1(_s, p_cls, dir, x, y, dx, dy)
 	
-	-- x, y = _s:gtile_prm_dflt(x, y)
-	-- x, y = _s:tile_xy()
+	x, y = _s:gtile_prm_dflt(x, y)
+	
+	dx = dx or 0
+	dy = dy or 0
+	
+	local x_s = x - dx
+	local x_e = x + dx
+	local y_s = y - dy
+	local y_e = y + dy
+	
+	local x_min, x_max, y_min, y_max = map.rng_tile_xy(_s:map_id(), "ground")
+	if x_s < x_min then x_s = x_min end
+	if x_e > x_max then x_e = x_max end
+	if y_s < y_min then y_s = y_min end
+	if y_e > y_max then y_e = y_max end
 	
 	local r_id, t_pos_y
 	local s_pos_y = _s:pos_y()
-	local t_obj = _s:gtile_obj_cls(_s._cls, x, y)
+	local t_obj
 	
-	for _id, val in pairs(t_obj) do
+	for x_idx = x_s, x_e do
 		
-		if not (_id == _s._id) then
+		t_obj = _s:gtile_obj_cls(_s._cls, x_idx, y)
+		
+		for _id, val in pairs(t_obj) do
 			
-			if not dir then
-				r_id = _id
-				break
-			else
-				t_pos_y = id.pos_y(_id)
-				if dir == "d" and t_pos_y <= s_pos_y then
+			if not (_id == _s._id) then
+				
+				if not dir then
 					r_id = _id
-					break
+					return r_id
+					-- break
+				else
+					t_pos_y = id.pos_y(_id)
+					if dir == "d" and t_pos_y <= s_pos_y then
+						r_id = _id
+						return r_id
+						-- break
+					end
 				end
 			end
 		end

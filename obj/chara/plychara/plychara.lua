@@ -262,7 +262,7 @@ function Plychara.jmp(_s, p_jmp_lv)
 
 	if _s._is_cruch then p_jmp_lv = p_jmp_lv + 1 end
 
-	local dst_y = Plychara.jmp_h_max * p_jmp_lv
+	local dst_y = Plychara.jmp_h_max * p_jmp_lv + 1 -- 1:afford 
 	dst_y = dst_y + Plychara.jmp_h_mrgn
 
 	local speed_y = accl.speed_6_dst(dst_y)

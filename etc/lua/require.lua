@@ -85,10 +85,10 @@ require("assets/etc/lua/tile_bndl")
 require("assets/map/lua/map")
 require("assets/map/lua/map_tile")
 require("assets/map/lua/map_obj")
+-- require("assets/map/lua/mapobj")
 
 require("assets/map/lua/bg")
 require("assets/map/lua/fg")
-require("assets/map/lua/mapobj")
 require("assets/map/bg/sky/sky")
 
 require("assets/obj/elm/block/block")

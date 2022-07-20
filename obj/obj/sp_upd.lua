@@ -6,6 +6,7 @@ function Sp.upd_pos_static(_s) -- 3sec root
 
 	if _s:is_grounding() then
 		_s:accl_speed__clr()
+		
 		_s:pos__6_tile()
 	else
 		_s:vec_grv__() -- 3sec
@@ -17,7 +18,7 @@ function Sp.upd_pos_static(_s) -- 3sec root
 end
 
 function Sp.upd_final(_s)
-	-- _s:log_if_cls("pc", "upd_final")
+	-- _s:log_cls("pc", "upd_final")
 	
 	if _s:is_grounding() then
 		
@@ -58,9 +59,8 @@ function Sp.vec_grv__(_s)
 	
 	_s._accl_speed_y_pre = _s._accl:speed_y()
 
-	if _s:is_grv_off() then return end
-	
-	if _s:is_grounding() then
+	if _s:is_grv_off()
+	or _s:is_grounding() then
 		_s:accl_speed__clr()
 	else
 		_s._accl:speed__add_accl(_s._is_airride)
@@ -82,7 +82,7 @@ end
 
 function Sp.is_grv_off(_s)
 
-	local ret = _.t
+	local ret
 
 	if _s._is_flying    -- only flyable
 	or _s._hldd_id      -- only holdable
@@ -90,6 +90,7 @@ function Sp.is_grv_off(_s)
 	or _s._bear_tree_id -- only fruit
 	-- or _s._is_on_ground
 	then
+		ret = _.t
 	else
 		ret = _.f
 	end

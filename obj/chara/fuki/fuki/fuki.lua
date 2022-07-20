@@ -44,14 +44,16 @@ end
 
 function Fuki.upd(_s, dt)
 	
-	local dy = Fuki.mv_vec.y
+	local vec_y   = Fuki.mv_vec.y
+	local tile_dx = 4
+	local boost   = 5
 	
-	local t_id = _s:gtile_obj_othr1(_s._cls, "d")
+	local t_id = _s:gtile_obj_othr1(_s._cls, "d", nil, nil, tile_dx, 0)
 	if t_id then
-		dy = dy * 5
+		vec_y = vec_y * boost
 	end
 	
-	_s:pos__pls_y(dy)
+	_s:pos__pls_y(vec_y)
 	
 	_s:upd_final()
 end

@@ -90,6 +90,10 @@ function Sp.pos__6_tile(_s)
 
 		_s:pos__pls_y(Sp.airflw_u_vec_y)
 	end
+	
+	_s:vec_total__crct_block()
+	_s:pos__pls(_s._vec_total)
+	vec.xy__clr(_s._vec_total) -- todo mod
 end
 
 function Sp.pos_w(_s)

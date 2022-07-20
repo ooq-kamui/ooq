@@ -3,6 +3,45 @@ log.scrpt("serifu.lua")
 Serifu = {
 
 	_ = {
+		
+		-- 
+		-- human
+		-- 
+		
+		-- heart, emotion
+		
+		-- communication
+		
+		-- action
+		
+		-- sleep
+		{len =  3, txt = "ねてた"},
+		{len =  2, txt = "ゆめ"},
+		{len =  8, txt = "ゆめを みていた"},
+		{len =  7, txt = "むにゃ むにゃ"},
+		{len =  3, txt = "ねむい"},
+		{len =  2, txt = "ねる"},
+		{len =  5, txt = "ねむらない"},
+		{len =  5, txt = "りらっくす"},
+
+		-- 
+		-- thing
+		-- 
+		
+		-- food
+		
+		-- animal
+		
+		-- money
+		{len =  3, txt = "おかね"},
+
+		-- 
+		-- world
+		-- 
+		
+		
+		----------------
+		
 		{len =  3, txt = "ここに"},
 		{len =  2, txt = "ここ"},
 		{len =  3, txt = "いたか"},
@@ -10,10 +49,6 @@ Serifu = {
 
 		{len =  3, txt = "さあね"},
 		{len =  2, txt = "うそ"},
-		{len =  2, txt = "ねる"},
-		{len =  5, txt = "ねむらない"},
-
-		{len =  3, txt = "おかね"},
 
 		{len =  3, txt = "たべる"},
 		{len =  2, txt = "にく"},
@@ -191,9 +226,10 @@ Serifu = {
 		{len =  4, txt = "のみたい"},
 		{len =  4, txt = "たべたい"},
 		
-		--
+		-- 
 		-- emotion
-		--
+		-- 
+		
 		-- joyful
 		{len =  4, txt = "よろこび"},
 		{len =  4, txt = "たのしい"},
@@ -203,22 +239,21 @@ Serifu = {
 		{len =  3, txt = "げんき"},
 		{len =  4, txt = "うれしい"},
 		{len =  3, txt = "あはは"},
+		
+		-- fine
+		{len =  4, txt = "すこやか"},
+		{len =  4, txt = "さわやか"},
+		
 		-- calm
 		{len =  4, txt = "よかった"},
+		
 		-- surprise
 		{len =  6, txt = "びっくりした"},
+		
 		-- pretty low
 		{len =  3, txt = "なんだ"},
 		{len =  4, txt = "そんなぁ"},
 		
-		-- sleep
-		{len =  3, txt = "ねてた"},
-		{len =  8, txt = "ゆめを みていた"},
-		{len =  2, txt = "ゆめ"},
-		{len =  7, txt = "むにゃ むにゃ"},
-		{len =  3, txt = "ねむい"},
-		{len =  5, txt = "りらっくす"},
-
 		-- like
 		{len =  4, txt = "なかよし"},
 		{len =  4, txt = "だきしめ"},
@@ -237,6 +272,8 @@ Serifu = {
 		{len =  3, txt = "きらい"},
 		{len =  4, txt = "しつこい"},
 		{len =  2, txt = "こら"},
+		{len =  4, txt = "うるさい"},
+		{len =  4, txt = "にぎやか"},
 
 		-- fin
 		{len =  4, txt = "やめない"},

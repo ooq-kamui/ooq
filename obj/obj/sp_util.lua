@@ -6,7 +6,7 @@ function Sp.log(_s, ...)
 	log._(_s._cls, ...)
 end
 
-function Sp.log_if_cls(_s, p_cls, ...)
+function Sp.log_cls(_s, p_cls, ...)
 
 	if _s._cls ~= p_cls then return end
 
