@@ -71,6 +71,7 @@ require("assets/obj/obj/hldabl")
 require("assets/obj/obj/obj")
 require("assets/obj/obj/tst")
 require("assets/obj/obj/accl")
+require("assets/obj/obj/sttc")
 
 require("assets/obj/anm/anm")
 require("assets/obj/anm/es")

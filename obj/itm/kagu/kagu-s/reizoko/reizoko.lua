@@ -31,7 +31,7 @@ end
 
 function Reizoko.__init(_s, prm)
 	
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 
 	_s:upd__o()
@@ -39,7 +39,7 @@ end
 
 function Reizoko.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

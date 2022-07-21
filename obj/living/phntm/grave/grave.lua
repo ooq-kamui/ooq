@@ -39,7 +39,7 @@ end
 
 function Grave.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

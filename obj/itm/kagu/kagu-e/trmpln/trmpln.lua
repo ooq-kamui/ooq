@@ -45,7 +45,7 @@ function Trmpln.__init(_s, prm)
 	
 	if not prm._anim then prm._anim = prm._cls.."001-stand" end
 
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 
 	_s:upd__o()
@@ -53,7 +53,7 @@ end
 
 function Trmpln.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

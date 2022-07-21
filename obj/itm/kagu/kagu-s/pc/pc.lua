@@ -30,7 +30,7 @@ end
 
 function Pc.__init(_s, prm)
 	
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 
 	_s:upd__o()
@@ -38,7 +38,7 @@ end
 
 function Pc.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

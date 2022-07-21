@@ -27,7 +27,7 @@ end
 
 function Wood.__init(_s, prm)
 	
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 	Spwood.__init(_s)
 
@@ -36,7 +36,7 @@ end
 
 function Wood.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

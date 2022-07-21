@@ -52,9 +52,9 @@ function Anml.__init(_s, prm)
 	
 	prm._anim = "-walk"
 
-	Sp        .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Livingmove.__init(_s)
-	Hldabl    .__init(_s)
+	Hldabl.__init(_s)
 
 	_s:upd__o()
 end

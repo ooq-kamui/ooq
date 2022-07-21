@@ -28,7 +28,7 @@ end
 
 function Dryleaf.__init(_s, prm)
 	
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 	Spwood.__init(_s)
 
@@ -37,7 +37,7 @@ end
 
 function Dryleaf.upd(_s, dt)
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 end

@@ -31,9 +31,9 @@ end
 
 function Fluff.__init(_s, prm)
 
-	Sp        .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Livingmove.__init(_s)
-	Hldabl    .__init(_s)
+	Hldabl.__init(_s)
 
 	_s:upd__o()
 end

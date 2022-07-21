@@ -28,7 +28,7 @@ end
 
 function Flower.__init(_s, prm)
 	
-	Sp    .__init(_s, prm)
+	Sp.__init(_s, prm)
 	Hldabl.__init(_s)
 
 	_s:upd__o()
@@ -37,7 +37,7 @@ end
 function Flower.upd(_s, dt)
 	-- log._("Flower.upd start")
 
-	_s:upd_pos_static()
+	_s:upd_pos_sttc()
 
 	_s:upd_final()
 
