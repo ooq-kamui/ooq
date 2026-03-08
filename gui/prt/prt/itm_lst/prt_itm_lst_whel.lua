@@ -10,8 +10,8 @@ function p.Prt_itm_lst.whel__init(_s)
 	if not _s._dsp_idx_max then log._("whel__init:dsp_idx_max nil") return end
 
 	if not _s._whel then
-		_s._whel   = {}
-		_s._nd.itm = {}
+		_s._whel    = {}
+		_s._nd.itm  = {}
 		_s._nd.whel = _s._nd.itm -- alias
 	else
 		ar.clr(_s._whel  )

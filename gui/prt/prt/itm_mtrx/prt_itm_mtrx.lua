@@ -4,9 +4,14 @@ p.Prt_itm_mtrx = {}
 
 function p.Prt_itm_mtrx.init(_s)
 
-	-- extnd.init(_s, p.Prt_itm)
 	extnd._(   _s, p.Prt_itm_mtrx)
-	
+
+	_s._nd.tpl.itm = nd._(_s:lb("itm"))
+	_s._tpl_itm_pos = nd.pos(_s._nd.tpl.itm)
+	nd.enbl__(_s._nd.tpl.itm, _.f)
+
+	_s._nd.itm  = {}
+
 	_s._itm_scrl_dir = "h"
 
 	_s._xy_size = n.vec(6, 6) -- default
@@ -39,9 +44,13 @@ function p.Prt_itm_mtrx.page_mv(_s, dir)
 end
 
 function p.Prt_itm_mtrx.page_idx__mv(_s, dir)
+
 	if     dir == "dec" then
+
 		_s._page_idx = int.dec_loop(_s._page_idx, _s._page_idx_max)
+
 	elseif dir == "inc" then
+
 		_s._page_idx = int.inc_loop(_s._page_idx, _s._page_idx_max)
 	end
 	log._("itm mtrx page_idx__mv", _s._page_idx)

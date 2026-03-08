@@ -8,7 +8,7 @@ fonts {
   font: "/builtins/fonts/system_font.font"
 }
 textures {
-  name: "pc"
+  name: "pc_cursor"
   texture: "/assets/gui/txtr/atlas/pc/pc.atlas"
 }
 textures {
@@ -41,8 +41,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 400.0
-    y: 400.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -74,6 +74,9 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
 }
 nodes {
   position {
@@ -137,6 +140,9 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
 }
 nodes {
   position {
@@ -192,6 +198,9 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -18,7 +18,9 @@ function p.Reizoko.init(_s, parent_gui)
 	_s._lb  = "reizoko"
 	
 	extnd.init(_s, p.Prt, parent_gui)
+
 	extnd.init(_s, p.Prt_itm_mtrx)
+
 	extnd.init(_s, p.Prt_cursor)
 	extnd.init(_s, p.Prt_cursor_mtrx)
 	extnd._(   _s, p.Reizoko)

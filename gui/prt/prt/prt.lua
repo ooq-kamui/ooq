@@ -52,6 +52,7 @@ function p.Prt.exe__(_s, exe)
 end
 
 function p.Prt.lb(_s, nd_lb)
+
 	local lb = _s._lb
 	if nd_lb then lb = _s._lb.."/"..nd_lb end
 	return lb
